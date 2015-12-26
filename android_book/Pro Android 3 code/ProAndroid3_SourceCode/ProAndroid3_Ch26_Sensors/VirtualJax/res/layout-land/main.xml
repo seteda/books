@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"  android:layout_height="fill_parent"
+    >
+  <Button  android:id="@+id/update"  android:text="@string/update"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content" 
+    android:onClick="doUpdate" />
+  <Button  android:id="@+id/show"  android:text="@string/show"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content" 
+    android:onClick="doShow" android:layout_toRightOf="@id/update" />
+  <TextView  android:id="@+id/preferred" android:textSize="20sp"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content"
+    android:layout_below="@id/update" />
+  <TextView  android:id="@+id/orientation" android:textSize="20sp"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content"
+    android:layout_below="@id/show"
+    android:layout_toRightOf="@id/preferred" />
+</RelativeLayout>

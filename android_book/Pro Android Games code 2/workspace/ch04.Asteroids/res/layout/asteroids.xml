@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ch04.game.Asteroids xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/ll_asteroids"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FF000000">
+    
+    
+</ch04.game.Asteroids>

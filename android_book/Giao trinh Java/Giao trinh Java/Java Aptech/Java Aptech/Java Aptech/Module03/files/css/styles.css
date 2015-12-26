@@ -1,0 +1,53 @@
+.breadCrumb {
+	font-family: Arial;
+	color: #000000;
+	font-size: 15px;
+	font-weight:bold;
+}
+.title {
+	font-family: Arial;
+	color: #000000;
+	font-size: 22px;
+	font-weight:bold;
+}
+.body {
+	font-family: Verdana;
+	font-size: 13px;
+  	color: #000000;
+	line-height: 30px
+}
+.instruction {
+	font-family: Verdana;
+	font-size: 13px;
+	color:#006600;
+	line-height: 10px
+}
+.hyperlink {
+	font-family: Verdana;
+	font-size: 13px;
+	color: #0000FF;
+	line-height: 10px
+}
+.pageno {	
+	font-family: Arial;
+	font-size: 11px;
+	color: #333333;
+}
+.bullet {
+	font-family: Verdana;
+	font-size: 13px;
+  	color: #000000;
+	margin-left: 25px;
+}
+.subbullet {
+	font-family: Verdana;
+	font-size: 13px;
+  	color: #000000;
+	margin-left: 42px;
+}
+.code {
+	font-family: Courier New;
+	font-size: 13px;
+	color: #000000;
+	line-height: 10px
+}

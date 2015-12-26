@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="org.doom"
+      android:versionName="1.0.12" android:versionCode="12">
+      
+      
+    <uses-sdk android:minSdkVersion="2" />
+    
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".DoomClient"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 
+        <activity android:name=".DoomServer"
+                  android:label="@string/srv_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         -->
+    </application>
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    
+</manifest> 

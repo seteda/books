@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+        <item android:id="@+id/MenuId_OpenGL15_Current"
+            android:title="Current" />
+            
+        <item android:id="@+id/menu_clear"
+	     android:title="clear" />
+	     
+        <item android:id="@+id/menu_send_broadcast"
+            android:title="broadcast" />
+    </group>
+</menu>

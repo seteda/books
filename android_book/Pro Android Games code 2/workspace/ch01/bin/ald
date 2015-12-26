@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#############################################
+# Android Stuff
+#############################################
+
+HOME=/home/user
+JAVA_HOME=/usr/lib/jvm/java-6-sun
+
+SYS_ROOT=$HOME/tmp/android/system
+SYS_DEV=$HOME/mydroid
+
+# Tool chain Root
+TOOLCHAIN_ROOT=$HOME/Desktop/android/arm-2008q3
+
+# Android Toolchain
+LIBGCC=${SYS_DEV}/prebuilt/darwin-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/libgcc.a
+
+# Code Sourcery
+#LIBGCC=${TOOLCHAIN_ROOT}/lib/gcc/arm-none-linux-gnueabi/4.3.2/libgcc.a
+
+LIBRARIES="-lc -lm ${LIBGCC}" 
+
+LIB_PATHS="-rpath /system/lib \
+ -rpath ${SYS_ROOT}/lib \
+ -L${SYS_ROOT}/lib \
+ -L${JAVA_HOME}/jre/lib/i386 -L."
+
+# When compiling statically remove -nostdlib
+LD_FLAGS="--dynamic-linker=/system/bin/linker -nostdlib"
+
+#############################################
+# End Android Stuff
+#############################################
+
+CROSS=arm-none-linux-gnueabi-
+GCC=${CROSS}ld
+
+#echo "${GCC} $LD_FLAGS $LIB_PATHS $@ $LIBRARIES"
+
+${GCC} $LD_FLAGS $LIB_PATHS $@ $LIBRARIES 
+
+
+

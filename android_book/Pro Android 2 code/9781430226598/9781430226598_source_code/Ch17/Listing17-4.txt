@@ -1,0 +1,12 @@
+c:\work\AndroidTest1
+   \build
+      \android\<eclipse like project structure>
+   \Resources
+      \android\appicon.png
+         \default.png
+      \<your files and sub directories go here>
+      \index.html
+      \index.css
+      \about.html
+   \manifest
+   \tiapp.xml

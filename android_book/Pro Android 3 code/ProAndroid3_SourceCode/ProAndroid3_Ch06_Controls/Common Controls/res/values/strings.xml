@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Common Controls</string>
+    <string name="button_name">Button Demo</string>
+    <string name="checkbox_name">CheckBox Demo</string>
+    <string name="datetimepicker_name">Date/Time Picker Demo</string>
+    <string name="frame_name">Frame Layout Demo</string>
+    <string name="gallery_name">Gallery Demo</string>
+    <string name="gridview_name">GridView Demo</string>
+    <string name="gridviewcustom_name">GridView-Custom Adapter Demo</string>
+    <string name="imageview_name">ImageView Demo</string>
+    <string name="layout_name">Layout Demo</string>
+    <string name="listview_name">ListView Demo</string>
+    <string name="listview2_name">ListView Demo 2</string>
+    <string name="listview3_name">ListView Demo 3</string>
+    <string name="listview4_name">ListView Demo 4</string>
+    <string name="listview5_name">ListView Demo 5</string>
+    <string name="radio_name">RadioGroup Demo</string>
+    <string name="spinner_name">Spinner Demo</string>
+    <string name="styles_name">Styles Demo</string>
+    <string name="textview_name">TextView Demo</string>
+
+    <string name="styledText"><i>Static</i> style in a <b>TextView</b>. Here\'s <strike>strike-through</strike>
+ and here\'s <sub>subscript</sub>, four squared: 4<sup>2</sup>. How about <big>BIG</big>, <small>small</small>
+ and <tt>monospace</tt>? And finally, what about <small><sub>small subscripts</sub></small>?</string>
+    <string name="italics"><i>Italics</i></string>
+
+    <string name="tv">I am a TextView</string>
+    <string name="et">I am an EditText</string>
+    <string name="actv">AutoComplete:</string>
+    <string name="mactv">MultiAutoComplete:</string>
+    <string name="spinnerprompt">Please choose a planet</string>
+</resources>

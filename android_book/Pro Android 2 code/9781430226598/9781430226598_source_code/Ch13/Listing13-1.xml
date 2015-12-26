@@ -1,0 +1,16 @@
+<manifest..>
+   <application>
+      ....
+      <receiver android:name=".BDayWidgetProvider">
+         <meta-data android:name="android.appwidget.provider"
+            android:resource="@xml/bday_appwidget_provider" />
+         <intent-filter>
+            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+         </intent-filter>
+      </receiver>
+      ...
+      <activity>
+         .....
+      </activity>
+   <application>
+</manifest>

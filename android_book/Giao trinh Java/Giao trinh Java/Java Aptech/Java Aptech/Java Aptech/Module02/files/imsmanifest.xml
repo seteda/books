@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="Just_Care" version="1.0" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+	<metadata>
+		<schema>ADL SCORM</schema>
+		<schemaversion>1.2</schemaversion>
+		<lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+			<general>
+				<title>
+					<langstring xml:lang="x-none">Aptech Courses </langstring>
+				</title>
+				<description>
+					<langstring xml:lang="x-none"></langstring>
+				</description>
+				<keyword>
+					<langstring xml:lang="x-none">Aptech Courses </langstring>
+				    <langstring xml:lang="x-none">Aptech Courses </langstring>
+        		</keyword>
+			</general>
+			<lifecycle>
+				<version>
+					<langstring xml:lang="x-none">1</langstring>
+				</version>
+				<status>
+					<source>
+						<langstring xml:lang="x-none">LOMv1.0</langstring>
+					</source>
+					<value>
+						<langstring xml:lang="x-none">Final</langstring>
+					</value>
+				</status>
+			</lifecycle>
+			<metametadata>
+				<metadatascheme>ADL SCORM 1.2</metadatascheme>
+			</metametadata>
+			<technical>
+				<format>text/html</format>
+				<location>.</location>
+			</technical>
+			<educational>
+				<typicallearningtime>
+					<datetime>01:00:00</datetime>
+				</typicallearningtime>
+			</educational>
+			<rights>
+				<cost>
+					<source>
+						<langstring xml:lang="x-none">LOMv1.0</langstring>
+					</source>
+					<value>
+						<langstring xml:lang="x-none">no</langstring>
+					</value>
+				</cost>
+				<copyrightandotherrestrictions>
+					<source>
+						<langstring xml:lang="x-none">LOMv1.0</langstring>
+					</source>
+					<value>
+						<langstring xml:lang="x-none">no</langstring>
+					</value>
+				</copyrightandotherrestrictions>
+			</rights>
+			<classification>
+				<purpose>
+					<source>
+						<langstring xml:lang="x-none">LOMv1.0</langstring>
+					</source>
+					<value>
+						<langstring xml:lang="x-none">Idea</langstring>
+					</value>
+				</purpose>
+				<description>
+					<langstring xml:lang="x-none"></langstring>
+				</description>
+				<keyword>
+					<langstring xml:lang="x-none">Aptech Courses</langstring>
+					<langstring xml:lang="x-none">Aptech Courses</langstring>
+        		</keyword>
+			</classification>
+		</lom>
+	</metadata>
+	<organizations default="PEM_ORG">
+		<organization identifier="PEM_ORG">
+			<title>Aptech </title>
+			<item identifier="SCO1" isvisible="true" identifierref="SCO1_RES">
+				<title>Aptech Courses </title>
+				<adlcp:maxtimeallowed>01:00:00</adlcp:maxtimeallowed>
+				<adlcp:datafromlms></adlcp:datafromlms>
+				<adlcp:masteryscore>0</adlcp:masteryscore>
+				<adlcp:timelimitaction>exit,message</adlcp:timelimitaction>
+			</item>		
+		</organization>
+	</organizations>
+	<resources>
+	    <resource identifier="SCO1_RES" type="webcontent" href="index.htm" adlcp:scormtype="sco">
+		</resource>	
+	</resources>
+</manifest>

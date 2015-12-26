@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Lưu trữ và hiển thị các giá trị</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>07 of 32</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>Một mảng có thể được khởi tạo lúc khai báo hoặc sau khi khai báo chỉ rõ kích thước của mảng. Điểm quan trọng là thứ tự sử dụng một mảng, nó phải được khai báo và khởi tạo.<br></p>
+		<p class='body'>Các cách khởi tạo và hiển thị các phần tử mảng được chỉ ra như sau:<br></p>
+		<p class='body'><font face="Verdana, Arial, Helvetica, sans-serif" color="#0000FF" size="13px"><img src='images/bullet.jpg' vspace ='1'>Khởi tạo các phần tử mảng riêng biệt</font><br></p>
+		<p class='body'><font face="Verdana, Arial, Helvetica, sans-serif" color="#0000FF" size="13px"><img src='images/bullet.jpg' vspace ='1'>Sử dụng vòng lặp để khởi tạo</font><br></p>
+		<p class='body'><font face="Verdana, Arial, Helvetica, sans-serif" color="#0000FF" size="13px"><img src='images/bullet.jpg' vspace ='1'>Hiển thị mảng (vòng lặp đơn)</font><br></p>
+		<p class='body'><font face="Verdana, Arial, Helvetica, sans-serif" color="#0000FF" size="13px"><img src='images/bullet.jpg' vspace ='1'>Hiển thị mảng (vòng lặp for-each)</font><br></p>
+		<p><font face="Verdana, Arial, Helvetica, sans-serif" color="#006600" size="13px">Kích vào mỗi liên kết để học được nhiều hơn.</font></p>
+		
+
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m05/jm_m05_l01/imagedata/jm_m05_l01_t02_p02.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[#]]></knowMore>
+	</Cont>
+ </content>

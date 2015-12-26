@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/values/strings.xml -->
+<resources>
+    <string name="translateBtn">>  Translate  ></string>
+    <string name="input">Enter the text to translate</string>
+    <string name="translation">The translation will appear here</string>
+    <string name="prompt">Choose a language</string>
+</resources>

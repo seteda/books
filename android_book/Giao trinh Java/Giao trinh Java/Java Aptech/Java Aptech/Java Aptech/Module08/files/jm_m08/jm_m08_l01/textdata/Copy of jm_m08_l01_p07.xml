@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">static Initializer</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>01 of 48</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>SA static initializer is a block of code embraced in curly braces { }. It is preceded by the keyword static. It initializes the static variables in a class.<br></p>
+		]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_m08/jm_m08_l01/imagedata/jm_m08_l01_p07.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[There can be more than one static initialization block in a class. These can be placed anywhere in the class. Java compiler does not allow forward referencing of class variables in static initialization block. In other words, a static initialization block can reference only those class variables that have been declared before it.]]></knowMore>
+	</Cont>
+ </content>

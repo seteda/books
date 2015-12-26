@@ -1,0 +1,56 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+  <TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1"
+    android:shrinkColumns="1"
+    >
+    <TableRow>
+      <TextView android:text="Name:" />
+      <EditText android:id="@+id/name" />
+    </TableRow>
+    <TableRow>
+      <TextView android:text="Address:" />
+      <EditText android:id="@+id/addr" />
+    </TableRow>
+    <TableRow>
+      <TextView android:text="Phone:" />
+      <EditText android:id="@+id/phone" android:inputType="phone" />
+    </TableRow>
+    <TableRow>
+      <TextView android:text="Type:" />
+      <RadioGroup android:id="@+id/types">
+        <RadioButton android:id="@+id/take_out"
+          android:text="Take-Out"
+          android:checked="true"
+        />
+        <RadioButton android:id="@+id/sit_down"
+          android:text="Sit-Down"
+        />
+        <RadioButton android:id="@+id/delivery"
+          android:text="Delivery"
+        />
+      </RadioGroup>
+    </TableRow>
+    <TableRow>
+      <TextView android:text="Location:" />
+      <TextView android:id="@+id/location" android:text="(not set)" />
+    </TableRow>
+    <EditText android:id="@+id/notes"
+      android:inputType="textMultiLine"
+      android:gravity="top"
+      android:lines="2"
+      android:scrollHorizontally="false"
+      android:maxLines="2"
+      android:layout_span="2"
+      android:hint="Notes"
+      android:layout_marginTop="4dip"
+    />
+    <EditText android:id="@+id/feed"
+      android:layout_span="2"
+      android:hint="Feed URL"
+    />
+  </TableLayout>
+</ScrollView>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- MAIN MENU LAYOUT -->    
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/layout_main"
+    android:paddingLeft="5px">
+<!-- 
+	<TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Game"
+           android:width="85px"
+           android:textAppearance="?android:attr/textAppearanceLarge"/>
+        -->
+       
+    <Spinner android:id="@+id/s_files"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:drawSelectorOnTop="true"
+			android:minWidth="210px"
+           />
+	 
+	<CheckBox android:id="@+id/cb_force"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:drawSelectorOnTop="true"
+			android:minWidth="210px"
+           android:text="Force download"/>
+</LinearLayout>
+<!-- END MAIN MENU LAYOUT -->
+    
+

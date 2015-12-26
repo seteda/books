@@ -1,0 +1,56 @@
+<resources xmlns="http://schemas.android.com/apk/res/android">
+<item type="id" name="menu_da_clear"/>
+
+<!-- From Listing 3-1 -->
+<string name="hello">hello</string>
+<string name="app_name">hello appname</string>
+
+<!-- To support configuration qualifiers -->
+<string name="teststring_all">teststring in root</string>
+<string name="t1_enport">t1 in root</string>
+<string name="t1_1_en_port">t1_1 in root</string>
+<string name="t2">t2 in root</string>
+<string name="testport_port">testport in root</string>
+
+<!-- To support plurals -->
+<plurals name="test_plurals">
+    <item quantity='one'>You are one</item>
+    <item quantity='other'>You are many</item>
+</plurals>
+
+<!-- To support arrays -->
+<string-array name="test_array">
+	<item>one</item>
+	<item>two</item>
+	<item>three</item>
+</string-array>
+
+
+<!-- To support String Resource Nuances -->
+<string name="simple_string">simple string</string>
+<string name="quoted_string">"quoted'string"</string>
+<string name="double_quoted_string">\"double quotes\"</string>
+<string name="java_format_string">
+       hello %2$s java format string. %1$s again
+ </string>
+ <string name="tagged_string">
+     Hello <b><i>Slanted Android</i></b>, You are bold.
+ </string>
+
+<!-- To support colors -->
+<color name="red">#f00</color>
+<color name="blue">#0000ff</color>
+<color name="green">#f0f0</color>
+<color name="main_back_ground_color">#ffffff00</color>
+
+<!-- To support dimensions -->
+<dimen name="mysize_in_pixels">1px</dimen>
+<dimen name="mysize_in_dp">5dp</dimen>
+<dimen name="medium_size">100sp</dimen>
+
+<!-- Color Drawables -->
+<drawable name="red_rectangle">#f00</drawable>
+<drawable name="blue_rectangle">#0000ff</drawable>
+<drawable name="green_rectangle">#f0f0</drawable>
+
+</resources>

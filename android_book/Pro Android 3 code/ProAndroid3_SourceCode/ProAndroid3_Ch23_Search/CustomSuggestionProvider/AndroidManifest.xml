@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.androidbook.search.custom"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+    <application android:icon="@drawable/icon" android:label="Custom Suggestions Provider">
+<!--
+****************************************************************
+* Search related code: search activity 
+**************************************************************** 
+ -->                  
+	<activity android:name=".SearchActivity"
+                  android:label="Custom Search Activity"
+                  android:launchMode="singleTop">
+	  <intent-filter>
+	      <action android:name="android.intent.action.SEARCH" />
+	      <category android:name="android.intent.category.DEFAULT" />
+	   </intent-filter>
+	  <meta-data android:name="android.app.searchable"
+            android:resource="@xml/searchable" />
+	</activity>
+	
+	<meta-data android:name="android.app.default_searchable"
+            android:value=".SearchActivity" />
+            
+    <provider android:name="SuggestUrlProvider"
+                  android:authorities="com.androidbook.search.custom.suggesturlprovider" />
+	</application>
+    <uses-sdk android:minSdkVersion="4" />
+</manifest> 

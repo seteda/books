@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<content>
+	<Cont id ="1">
+		<type>h</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Vòng lặp “for”</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>34 of 37</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>Cho một dự án tên là <b>Article </b>được tạo trong NetBeans IDE, bạn sẽ quan sát và luyện tập cách thức sử dụng vòng lặp để đánh giá một  điều khoản được công bố.<br></p>
+		<p><font face="Verdana, Arial, Helvetica, sans-serif" color="#006600" size="13px">Kích vào các biểu tượng để học tiếp.</font></span>
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m03/jm_m03_l05/imagedata/jm_m03_l05_p04.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[#]]></knowMore>
+	</Cont>
+ </content>

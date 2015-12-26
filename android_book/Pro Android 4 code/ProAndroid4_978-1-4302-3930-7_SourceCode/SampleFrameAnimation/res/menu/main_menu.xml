@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+    
+        <item android:id="@+id/menu_list_animation"
+            android:orderInCategory="1"
+            android:title="Animate Frame" />
+            
+        <item android:id="@+id/menu_clear"
+            android:orderInCategory="10"
+            android:title="clear" />
+    </group>
+</menu>

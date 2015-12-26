@@ -1,0 +1,13 @@
+<resources>
+  <string name="simple_string">simple string</string>
+  <string name="quoted_string">"quoted'string"</string>
+  <string name="double_quoted_string">\"double quotes\"</string>
+  <string name="java_format_string">
+      hello %2$s java format string. %1$s again
+  </string>
+  <string name="tagged_string">
+      Hello <b><i>Slanted Android</i></b>, You are bold.
+   </string>
+</resources>
+
+

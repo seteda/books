@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns="http://schemas.android.com/apk/res/android">
+    <string name="hello1">hello 1</string>
+    <string name="app_name1">hello appname 1</string>
+</resources>

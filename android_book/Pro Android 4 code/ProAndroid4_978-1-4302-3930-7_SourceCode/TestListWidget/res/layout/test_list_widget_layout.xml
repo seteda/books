@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- /res/layout/test_list_widget_layout.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="150dp"
+    android:layout_height="match_parent"
+    android:background="@drawable/box1">
+<TextView  
+	android:id="@+id/listwidget_header_textview_id"
+    android:layout_width="fill_parent" 
+    android:layout_height="30dp" 
+    android:text="Header View"
+    android:background="@drawable/box1"
+    android:gravity="center"
+    android:layout_weight="0"/>
+<FrameLayout        
+    android:layout_width="match_parent"        
+    android:layout_height="match_parent"        
+    android:layout_weight="1"        
+    android:layout_gravity="center">
+		  <ListView android:id="@+id/listwidget_list_view_id"
+		    android:layout_width="match_parent" 
+          android:layout_height="match_parent"/>        
+        <TextView            
+        android:id="@+id/listwidget_empty_view_id"            
+        android:layout_width="match_parent"            
+        android:layout_height="match_parent"            
+        android:gravity="center"            
+        android:visibility="gone"            
+        android:textColor="#ffffff"            
+        android:text="Empty Records View"            
+        android:textSize="20sp" />    
+</FrameLayout> 
+<TextView  
+	android:id="@+id/listwidget_footer_textview_id"
+    android:layout_width="fill_parent" 
+    android:layout_height="30dp" 
+    android:text="Footer View"
+    android:background="@drawable/box1"
+    android:gravity="center"
+    android:layout_weight="0"/>
+</LinearLayout>

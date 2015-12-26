@@ -1,0 +1,43 @@
+<!-- /res/menu/menu.xml -->
+<menu 
+xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+
+        <item android:id="@+id/menu_search"
+            android:title="Search"
+			android:showAsAction="ifRoom"  
+			android:actionViewClass="android.widget.SearchView"            
+            />
+        <item android:id="@+id/menu_action_icon1"
+            android:title="Action Icon1" 
+            android:icon="@drawable/creep001" 
+            android:showAsAction="ifRoom"/>
+            
+        <item android:id="@+id/menu_action_icon2"
+            android:title="Action Icon2"
+            android:icon="@drawable/creep002"
+            android:showAsAction="ifRoom"/>
+            
+        <item android:id="@+id/menu_icon_test"
+            android:title="Icon Test"
+            android:icon="@drawable/creep003"/>
+            
+        <item android:id="@+id/menu_invoke_listnav"
+            android:title="Invoke List Nav"
+            />
+            
+        <item android:id="@+id/menu_invoke_standardnav"
+            android:title="Invoke Standard Nav"
+            />
+            
+        <item android:id="@+id/menu_invoke_tabnav"
+            android:title="Invoke Tab Nav"
+            />
+            
+        <item android:id="@+id/menu_da_clear"
+            android:orderInCategory="10"
+            android:title="clear" />
+            
+    </group>
+</menu>

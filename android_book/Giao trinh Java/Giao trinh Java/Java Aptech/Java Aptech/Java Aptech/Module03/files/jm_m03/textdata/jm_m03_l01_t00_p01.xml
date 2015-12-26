@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Lesson Overview</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>02 of 30</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>In this first lesson,<b>Decision-Making Statements</b>, you will learn to:</p>
+		<p><br><li>Identify the need for decision-making statements and its types.</li></br> <br><li>Explain various forms of the if statement.</li></br><br><li>Explain the switch-case statement.</li></br><br><li>Compare the if-else and the switch-case construct.</li></br></p>
+		]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_m03/jm_m03_l01/imagedata/jm_m03_l01_t00_p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+	</Cont>
+ </content>

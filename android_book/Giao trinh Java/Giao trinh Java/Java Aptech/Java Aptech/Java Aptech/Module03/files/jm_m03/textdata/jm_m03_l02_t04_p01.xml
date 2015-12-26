@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>for statement</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>22 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>The for statement is similar to the while statement in its function. The statements within the body of the loop are executed as long as the condition is true. Here too, the condition is checked before the statements are executed.<b><span class='hyperlink'></span></b><br></p>
+
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='instruction'></p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/jm_c01_t01_p34.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore>
+		
+		<b>Syntax:</b>
+
+		<p class='body'>
+		for(initialization; condition; increment/decrement)
+		{
+		// one or more statements
+		}
+		</p>
+		<p class='body'>
+		where,
+		</p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>initialization: initializes the variable(s) that will be used in the condition.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>•	condition: comprises the condition that is tested before the statements in the loop are executed.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>•	increment/decrement: comprises the statement that changes the value of the variable(s) to ensure that the condition specified in the condition section is reached. Typically, increment and decrement operators like ++, -- and shortcut operators like += or -= are used in this section. Note that there is no semicolon at the end of the increment/decrement expressions. <br></p>
+
+		<b>Snippet:</b>
+
+		<p class='body'>
+		int num, product;
+		for(num = 1; num <= 5; num++) {
+		product = num * 10;
+		System.out.printf("\n%d *  10 = %d ",num,product);      
+		}
+		</p>
+		<p class='body'>
+		In the initialization section of the for loop, the num variable is initialized to 1. The condition statement, num <= 5, ensures that the for loop executes as long as num is less than or equal to 5. The loop exits when the condition becomes false, that is, when the value of num becomes equal to 6. Finally, the increment statement num++ in the increment/decrement section of the for statement increments the value of num by 1. The increment/decrement expression is evaluated after the first round of iteration.
+		</p>
+		<p class='body'>
+		Output:
+		1 *  10 = 10 
+		2 *  10 = 20 
+		3 *  10 = 30 
+		4 *  10 = 40 
+		5 *  10 = 50 
+		</p>
+		
+		
+		</knowMore>
+	</Cont>
+ </content>

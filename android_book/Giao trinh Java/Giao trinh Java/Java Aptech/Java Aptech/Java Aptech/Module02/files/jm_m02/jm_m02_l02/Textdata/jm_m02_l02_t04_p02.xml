@@ -1,0 +1,30 @@
+ <?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Lesson Review</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>12 of 34</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>In this second lesson,<b>Introduction to Data Types</b>, you learnt to:<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'>Identify the different data types and explain their purpose.<br></span></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'>State the different primitive data types. <br></span></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'>State the different reference data types.<br></span></p>
+		
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m02/jm_m02_l02/imagedata/jm_m02_l02_t04_p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[#]]></knowMore>
+	</Cont>
+ </content>

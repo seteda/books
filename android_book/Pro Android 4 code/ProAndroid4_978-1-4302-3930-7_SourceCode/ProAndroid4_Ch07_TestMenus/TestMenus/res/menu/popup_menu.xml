@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Popup">
+        <item android:id="@+id/popup_menu_1"
+            android:title="Menu 1" />
+
+        <item android:id="@+id/popup_menu_2"
+            android:title="Menu 2" />
+    </group>
+</menu>

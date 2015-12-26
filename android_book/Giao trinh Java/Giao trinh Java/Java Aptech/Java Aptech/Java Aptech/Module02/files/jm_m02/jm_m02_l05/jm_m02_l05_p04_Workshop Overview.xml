@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Operators</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>01 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>Given a Java Project named <b> StudentScore</b> created in NetBeans IDE, you will view and practice how to use operators to compute and compare the scores of two students.</p>
+		<span class='instruction'>Click on each icon to learn more.</span>
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m03/jm_m03_l00/imagedata/jm_m02_l05_t04_p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[#]]></knowMore>
+	</Cont>
+ </content>

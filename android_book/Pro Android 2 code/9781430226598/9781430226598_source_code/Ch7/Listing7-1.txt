@@ -1,0 +1,4 @@
+keytool -genkey -v -keystore ”"FULL PATH OF release.keystore FILE FROM STEP 1"” 
+-alias androidbook -storepass paxxword -keypass paxxword -keyalg RSA 
+-validity 14000
+

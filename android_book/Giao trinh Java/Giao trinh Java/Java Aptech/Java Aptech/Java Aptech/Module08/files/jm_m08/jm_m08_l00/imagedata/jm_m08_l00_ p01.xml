@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Welcome</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>01 of 48</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>Welcome to the course <b>Learn Java by Example</b>. This course aims to teach the basics of Java programming language.<br></p>
+		<p class='body'>To facilitate your understanding of the content, this course is organized into modules, lessons, and topics. It is recommended that you proceed linearly, using the <b>Back</b> and <b>Next</b> buttons provided at the bottom right corner of the interface. If you wish to review your learning, you may access specific topics easily by using the <b>Menu</b> button. Any time during your learning, should you need assistance on how to navigate and interact within this course, click the <b>Help</b> button. <br></p>
+		]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_m01/jm_m01_l00/imagedata/jm_m01_l00_t00_ p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[#]]></knowMore>
+	</Cont>
+ </content>

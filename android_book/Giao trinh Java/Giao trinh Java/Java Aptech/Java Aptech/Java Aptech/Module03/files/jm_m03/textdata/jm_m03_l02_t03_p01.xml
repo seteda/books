@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>do-while Statement</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>22 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>The do-while statement checks the condition at the end of the loop rather than at the beginning to ensure that the loop is executed at least once. The condition of the do-while statement usually comprises of an expression that evaluates to boolean value.<b><span class='hyperlink'></span></b><br></p>
+
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='instruction'></p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/jm_c01_t01_p34.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore>
+		
+		<b>Syntax:</b>
+
+		<p class='body'>
+		do {
+		statement(s);
+		} while (expression);
+
+		</p>
+		<p class='body'></p>
+		<p class='body'></p>
+
+		<b>Snippet:</b>
+
+		<p class='body'>
+		int num = 1, sum = 0;
+		do {
+		sum = sum + num;
+		 num++;
+		} while(num <= 10);
+		System.out.printf("Sum = %d",sum);
+		</p>
+		<p class='body'>
+		In the code snippet, two integer variables, num and sum are declared and initialized to 1 and 0 respectively. The loop block begins with a do statement. The first statement in the body of the loop calculates the value of sum by adding the current value of sum with num and  the next statement in the loop changes the value of num by incrementing it by 1. Next, the condition, num <= 10, included in the while statement is evaluated. If the condition is met, the instructions in the loop are repeated. If the condition is not met (that is, when the value of num becomes 11), the loop terminates and the value in the variable sum is printed.
+		</p>
+		<p class='body'>
+		Output:
+		Sum = 55
+		</p>
+			
+		</knowMore>
+	</Cont>
+ </content>

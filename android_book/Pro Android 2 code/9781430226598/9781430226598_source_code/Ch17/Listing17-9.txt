@@ -1,0 +1,8 @@
+keytool
+   -genkey //generate a public/private key
+   -alias mykey //name of the key
+   -keystore c:\somekeystore.store //location of a store
+   -storepass abc //password
+   -keypass abc //password
+   -keyalg RSA //key algorithm
+   -validaty 14000 //how many days is it valid

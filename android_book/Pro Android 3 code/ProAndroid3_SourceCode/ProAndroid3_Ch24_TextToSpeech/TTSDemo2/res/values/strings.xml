@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wordsToSpeak">Type words to speak here</string>
+    <string name="speak">Speak</string>
+    <string name="app_name">TTS Demo</string>
+</resources>

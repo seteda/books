@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/layout/main.xml -->
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"  android:tag="trueLayout"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    android:layout_weight="1" >
+
+    <TextView android:text="Touch fingers on the screen and look at LogCat"
+    android:id="@+id/message"  android:tag="trueText"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true" />
+</RelativeLayout>

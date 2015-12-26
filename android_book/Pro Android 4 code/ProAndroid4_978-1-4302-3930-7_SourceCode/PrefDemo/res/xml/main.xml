@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/xml/mypreferences.xml -->
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="flight_option_preference"
+    android:title="@string/prefTitle"
+    android:summary="@string/prefSummary">
+
+  <ListPreference
+    android:key="@string/selected_flight_sort_option"
+    android:title="@string/listTitle"
+    android:summary="@string/listSummary"
+    android:entries="@array/flight_sort_options"
+    android:entryValues="@array/flight_sort_options_values"
+    android:dialogTitle="@string/dialogTitle"
+    android:defaultValue="@string/flight_sort_option_default_value" />
+
+  <PreferenceScreen
+	android:key="flight_columns_pref" 
+	android:title="Flight Search Preferences"
+	android:summary="Set Columns for Search Results">
+	<CheckBoxPreference
+	    android:key="show_airline_column_pref"
+		android:title="Airline"
+		android:summary="Show Airline column" />
+	<CheckBoxPreference
+	    android:key="show_departure_column_pref"
+		android:title="Departure"
+		android:summary="Show Departure column" />
+	<CheckBoxPreference
+	    android:key="show_arrival_column_pref"
+		android:title="Arrival"
+		android:summary="Show Arrival column" />
+	<CheckBoxPreference
+	    android:key="show_total_travel_time_column_pref"
+		android:title="Total Travel Time" 
+		android:summary="Show Total Travel Time column" />
+	<CheckBoxPreference
+	    android:key="show_price_column_pref"
+		android:title="Price" 
+		android:summary="Show Price column" />
+  </PreferenceScreen>
+
+  <PreferenceScreen
+        android:key="package_name_screen"
+        android:title="Package Name"
+        android:summary="Set package name">
+
+    <EditTextPreference
+        android:key="package_name_preference"
+        android:title="Set Package Name"
+        android:summary="Set the package name for generated code"
+        android:dialogTitle="Package Name" />
+
+  </PreferenceScreen>
+
+  <PreferenceScreen
+        android:key="ringtone_option_preference"
+        android:title="Ringtones"
+        android:summary="Set Ring Tone Preference">
+    <RingtonePreference
+        android:key="ring_tone_pref"
+        android:title="Set Ringtone Preference"
+        android:showSilent="true"
+        android:ringtoneType="ringtone"
+        android:summary="Set Ringtone" />
+  </PreferenceScreen>
+
+  <PreferenceScreen
+	android:key="using_screens_in_root_screen"
+	android:title="Organizing Preferences"
+	android:summary="Using Preference Categories in Nested Screens">
+	  <PreferenceScreen
+		android:key="meats_screen"
+		android:title="Meats"
+		android:summary="Preferences related to Meats">
+		<CheckBoxPreference 
+		    android:key="fish_selection_pref"
+			android:title="Fish" 
+			android:summary="Fish is great for the healthy" />
+		<CheckBoxPreference 
+		    android:key="chicken_selection_pref"
+			android:title="Chicken" 
+			android:summary="A common type of poultry" />
+		<CheckBoxPreference 
+		    android:key="lamb_selection_pref"
+			android:title="Lamb" 
+			android:summary="Lamb is a young sheep" />
+	  </PreferenceScreen>
+	  <PreferenceScreen
+		android:key="vegi_screen" 
+		android:title="Vegetables"
+		android:summary="Preferences related to vegetable">
+		<CheckBoxPreference 
+		    android:key="tomato_selection_pref"
+			android:title="Tomato" 
+			android:summary="It's actually a fruit" />
+		<CheckBoxPreference 
+		    android:key="potato_selection_pref"
+			android:title="Potato" 
+			android:summary="My favorite vegetable" />
+	  </PreferenceScreen>
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="using_categories_in_root_screen"
+        android:title="Organizing Preferences"
+	    android:summary="Using Stacked Categories in one Screen">
+
+      <PreferenceCategory
+                android:key="meats_category"
+                android:title="Meats"
+                android:summary="Preferences related to Meats">
+
+        <CheckBoxPreference
+                android:key="fish_selection_pref"
+                android:title="Fish"
+                android:summary="Fish is great for the healthy" />
+        <CheckBoxPreference
+                android:key="chicken_selection_pref"
+                android:title="Chicken"
+                android:summary="A common type of poultry" />
+        <CheckBoxPreference
+                android:key="lamb_selection_pref"
+                android:title="Lamb"
+                android:summary="Lamb is a young sheep" />
+
+      </PreferenceCategory>
+      <PreferenceCategory
+                android:key="vegi_category"
+                android:title="Vegetables"
+                android:summary="Preferences related to vegetable">
+        <CheckBoxPreference
+                android:key="tomato_selection_pref"
+                android:title="Tomato "
+                android:summary="It's actually a fruit" />
+        <CheckBoxPreference
+                android:key="potato_selection_pref"
+                android:title="Potato"
+                android:summaryOff="Yeah!"
+                android:summaryOn="My favorite vegetable" />
+
+      </PreferenceCategory>
+
+    </PreferenceScreen>
+
+    <PreferenceCategory
+                android:title="Alerts" >
+            
+        <CheckBoxPreference
+                android:key="alert_email"
+                android:title="Send email?" />
+            
+        <EditTextPreference
+                android:key="alert_email_address"
+                android:layout="?android:attr/preferenceLayoutChild"
+                android:title="Email Address"
+                android:dependency="alert_email" />
+            
+    </PreferenceCategory>
+                
+</PreferenceScreen>

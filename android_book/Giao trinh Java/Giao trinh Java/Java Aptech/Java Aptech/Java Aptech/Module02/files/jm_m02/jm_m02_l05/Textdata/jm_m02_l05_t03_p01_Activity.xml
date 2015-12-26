@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Explicit Type Casting</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>01 of 34</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>A data type with lower precision, such as <p class='code'>short</p>, can be converted to a type of higher precision, such as <p class='code'>int</p>, without using explicit casting. However, to convert a higher precision data type to a lower precision data type, such as <p class='code'>float</p> to <p class='code'>int</p> data type, an explicit cast is required. Otherwise, the compiler will display an error message.<b></b><br></p>
+
+		<p class='body'>The following code adds a <p class='code'>float</p> value to an <p class='code'>int</p> and stores the result as an integer.<b></b><br></p>
+
+		<p class='body'>float a = 21.3476f;<b></b><br></p>
+		<p class='body'>int b = (int) a + 5;<b></b><br></p>
+		<p class='body'>The <p class='code'>float value in a is converted into an integer value 21. It is then added to 5, and the resulting value, 26, is stored in b. This type of conversion is known as truncation. The fractional component is lost when a floating point is assigned to an integer type, resulting in the loss of precision.<b></b><br></p>
+						
+		<p class='instruction'><b></b></p>
+		
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m02/jm_m02_l05/imagedata/jm_m02_l05_t03_p01.swf </img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+			</Cont>
+		</content>

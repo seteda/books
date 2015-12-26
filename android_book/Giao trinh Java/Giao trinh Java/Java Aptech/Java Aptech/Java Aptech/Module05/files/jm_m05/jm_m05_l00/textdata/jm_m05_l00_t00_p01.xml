@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Giới thiệu về chuyên mục</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>01 of 32</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>Chào mừng đến với chuyên mục, <b>Mảng</b>. <br></p>
+		<p class='body'>Một mảng là một kiểu lưu trữ ở đó dữ liệu có cùng kiểu có thể được lưu trữ hoặc bảo trì trong các vị trí bộ nhớ nằm liền kề nhau. Chuyên mục này trọng tâm nhiều vào các mảng một chiều và mảng hai chiều. Chuyên mục cũng chuyển tải các lớp khác nhau được dùng để thao tác chuỗi. Chuỗi là một lớp cung cấp các phương thức khác nhau để thao tác trên các kí tự. <br></p>
+		<p class='body'>Trong chuyên mục này, bạn sẽ học về:<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'>Mảng</span><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'>Chuỗi</span><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'>Các lớp chuỗi khác</span><br></p>
+		<p class='body'>Theo hướng đó đến cuối chuyên mục, bạn sẽ nhận được một tập hợp các bài tập vận dụng để thực hành các khái niệm lý thuyết mà bạn đã học được trong các bài học.<br></p>
+					
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m05/jm_m05_l00/imagedata/jm_m05_l00_t00_ p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[#]]></knowMore>
+	</Cont>
+ </content>

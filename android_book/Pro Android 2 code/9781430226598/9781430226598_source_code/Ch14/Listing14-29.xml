@@ -1,0 +1,21 @@
+<searchable xmlns:android="http://schemas.android.com/apk/res/android"
+   android:label="@string/search_label"
+   android:hint="@string/search_hint"
+   android:searchMode="showSearchLabelAsBadge"
+   android:includeInGlobalSearch="true"
+   android:searchSuggestAuthority="com.ai.android.search.simplesp.SimpleSuggestionProvider"
+   android:searchSuggestSelection=" ? "
+>
+<actionkey
+   android:keycode="KEYCODE_CALL"
+   android:queryActionMsg="call"
+   android:suggestActionMsg="call"
+   android:suggestActionMsgColumn="call_column" />
+
+<actionkey
+   android:keycode="KEYCODE_DPAD_CENTER"
+   android:queryActionMsg="doquery"
+   android:suggestActionMsg="dosuggest"
+   android:suggestActionMsgColumn="my_column" />
+.....
+</searchable>

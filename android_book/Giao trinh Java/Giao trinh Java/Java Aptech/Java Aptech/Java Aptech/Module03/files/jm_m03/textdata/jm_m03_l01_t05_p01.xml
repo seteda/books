@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Introduction</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>06 of 30</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>The if-else-if and the switch-case decision-making statements have similar use in a program, but there are distinct differences between them.</p>
+		<p class='body'>The differences of if and switch statements are described in the table below.</p>
+		</span></p>
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_m03/jm_m03_l01/imagedata/jm_m03_l01_t04_p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+	</Cont>
+ </content>

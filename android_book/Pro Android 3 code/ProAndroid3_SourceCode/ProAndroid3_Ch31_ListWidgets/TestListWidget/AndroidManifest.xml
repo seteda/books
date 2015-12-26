@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.androidbook.homewidgets.listwidget"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+    <application android:icon="@drawable/icon" 
+       android:label="Test List Widget Application">
+<!--
+**********************************************************************
+*  Birthday Provider
+********************************************************************** 
+ -->
+	<receiver android:name=".TestListWidgetProvider">
+	   <meta-data android:name="android.appwidget.provider"
+	          android:resource="@xml/test_list_appwidget_provider" />
+	   <intent-filter>
+	        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+	   </intent-filter>
+	</receiver>
+	
+   <!-- The service serving the RemoteViews to the collection widget -->        
+   <service android:name=".TestRemoteViewsService"            
+   android:permission="android.permission.BIND_REMOTEVIEWS"            
+   android:exported="false" />
+        	
+    </application>
+    <uses-sdk android:minSdkVersion="Honeycomb" />
+</manifest> 

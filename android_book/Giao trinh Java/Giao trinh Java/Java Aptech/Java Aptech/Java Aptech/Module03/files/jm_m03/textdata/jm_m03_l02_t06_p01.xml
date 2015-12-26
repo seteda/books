@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Comparison</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>22 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>The type of loop that is chosen while writing a program depends on the good programming practice.<b><span class='hyperlink'></span></b><br></p>
+
+		<p class='body'>A loop written using the while statement can also be rewritten using the for statement and vice versa. The do-while statement can be rewritten using the while or the for statement. However, this is not advisable because the do-while statement is executed at least once. When the number of times the statements within the loop should be executed is known, the for statement is used.<img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'>The differences between while/for and do-while loops are described in the table below.<img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='instruction'></p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/jm_c01_t01_p34.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+	</Cont>
+ </content>

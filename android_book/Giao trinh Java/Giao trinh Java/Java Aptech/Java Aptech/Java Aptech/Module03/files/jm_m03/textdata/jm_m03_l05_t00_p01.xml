@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Module Summary</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>31 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>In this module,<b><span class='hyperlink'>Decision-making and Iterations,</span></b>you learnt about:<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Decision-making statements<br> </p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Loops<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Jump statements<br></p>
+		<p class='instruction'>Click on each link for a summary of the lesson.</p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/jm_c01_t01_p34.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore>
+		<b>Decision-Making statements</b>
+
+			The decision-making statements in Java allow us to control the flow of program execution based upon certain conditions. The if statement tells your program to execute a certain section of code only if a particular test evaluates to true. The if-else statement also provides a secondary path of execution when an "if" clause evaluates to false. Unlike if and if-else, the switch statement allows for any number of possible execution paths. 
+
+		<b>Loops</b>
+
+			Loops allow you to execute a block of statements repeatedly. Java uses three types of loop statements: while, do-while and for. The while statement executes a block of statements as long as the condition is true. The do-while statement executes a block of statements at least once and then keeps going as long as a condition is true. The for statement executes a block of statements for a specified number of times.
+
+		<b>Jump statements</b>
+
+			Jump statements unconditionally transfer control to another point within the program. The break statement exits to the nearest enclosing switch, while, do-while and for statements. The continue statement starts a new iteration of the outer while, do-while or for statements. The frequent use of break and continue statements are not advisable in programming
+
+		</knowMore>
+	</Cont>
+ </content>

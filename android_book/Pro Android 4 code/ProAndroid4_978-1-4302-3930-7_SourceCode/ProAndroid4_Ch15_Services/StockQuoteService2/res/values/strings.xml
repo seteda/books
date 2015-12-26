@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Stock Quote Service2</string>
+    <item type="id" name="app_notification_id"/>
+</resources>

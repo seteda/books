@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is res/layout/main.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+  <fragment class="com.androidbook.drag.drop.demo.Palette"
+      android:id="@+id/palette"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_weight="1" />
+
+  <fragment class="com.androidbook.drag.drop.demo.DropZone"
+      android:id="@+id/dropzone"
+      android:layout_width="0px"
+      android:layout_height="match_parent"
+      android:layout_weight="2" />
+
+</LinearLayout>

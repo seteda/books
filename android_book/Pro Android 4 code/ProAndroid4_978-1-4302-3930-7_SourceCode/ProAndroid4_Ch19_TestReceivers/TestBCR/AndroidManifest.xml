@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.androidbook.bcr"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+    <application android:icon="@drawable/icon" android:label="Test Broadcast Receiver">
+        <activity android:name=".TestBCRActivity"
+                  android:label="Test Broadcast Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+    <receiver android:name=".TestReceiver">
+	    <intent-filter>
+	    	<action android:name="com.androidbook.intents.testbc"/>
+	    </intent-filter>
+    </receiver>
+    
+    <receiver android:name=".TestTimeDelayReceiver">
+	    <intent-filter>
+	    	<action android:name="com.androidbook.intents.testbc"/>
+	    </intent-filter>
+    </receiver>
+    
+    <receiver android:name=".TestReceiver2">
+	    <intent-filter>
+	    	<action android:name="com.androidbook.intents.testbc"/>
+	    </intent-filter>
+    </receiver>
+    
+</application>
+    <uses-sdk android:minSdkVersion="3" />
+</manifest> 

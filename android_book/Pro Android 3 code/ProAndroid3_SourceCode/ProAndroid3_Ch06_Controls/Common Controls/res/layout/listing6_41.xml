@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"  android:layout_height="fill_parent">
+
+  <TableRow>
+    <TextView android:text="First Name:"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content" />
+
+    <EditText android:text="Edgar"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content" />
+  </TableRow>
+
+  <TableRow>
+    <TextView android:text="Last Name:"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content" />
+
+    <EditText android:text="Poe"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content" />
+  </TableRow>
+
+</TableLayout>
+

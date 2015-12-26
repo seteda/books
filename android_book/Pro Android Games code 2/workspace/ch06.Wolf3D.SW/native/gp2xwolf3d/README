@@ -1,0 +1,32 @@
+Wolfenstein 3D for Linux - http://www.icculus.org/wolf3d/
+------------------------
+
+This is an in-progress port of the id Software MS-DOS game, Wolfenstein 3D,
+to the GNU/Linux operating system.
+
+Save game and configuration file formats are not yet "solid" (files created
+with an older version may not work with a new binary), but they probably
+won't have to change.
+
+NOTE: This requires SDL 1.2 (http://www.libsdl.org)
+
+NOTE: edit version.h to change the gametype.
+
+How to use:
+
+About:
+
+Thanks:
+* id Software
+* David Haslam
+* Ryan Gordon
+* Bill Heineman
+* Dan Olson
+* Leonardo Zide
+* Tatsuyuki Satoh
+* Chuck Mason
+* And everyone who has emailed me about this code! Thanks!
+
+-- 
+Steven Fuller
+relnev@icculus.org

@@ -1,0 +1,6 @@
+<TextView android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:textColor="@color/ red"
+  android:text="Sample Text to Show Red Color"/>
+
+

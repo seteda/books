@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/menu/mainmenu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/menu_prefs"
+    android:title="@string/menu_prefs_title"
+    />
+</menu>

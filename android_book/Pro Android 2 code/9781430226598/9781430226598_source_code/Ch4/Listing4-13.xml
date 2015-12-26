@@ -1,0 +1,7 @@
+<ToggleButton android:id="@+id/cctglBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:textOn="Run"
+        android:textOff="Stop" 
+        android:text="Toggle Button"/>
+

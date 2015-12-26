@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frmLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+       <ImageView
+        android:id="@+id/oneImgView" android:src="@drawable/one"
+        android:scaleType="fitCenter"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+    <ImageView
+        android:id="@+id/twoImgView" android:src="@drawable/two"
+        android:scaleType="fitCenter"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone" />
+
+</FrameLayout>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/layout/mapview.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+     <com.google.android.maps.MapView android:id="@+id/mapview"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:clickable="true"
+             android:apiKey="0VZxsz6LgwjLucBYjYK5xcEhldOIZ2C7m06KtOg"
+             />
+</RelativeLayout>

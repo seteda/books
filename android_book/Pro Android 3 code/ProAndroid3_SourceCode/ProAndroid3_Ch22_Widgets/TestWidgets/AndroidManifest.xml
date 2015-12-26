@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.androidbook.BDayWidget"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+    <application android:icon="@drawable/icon" android:label="Birthday Widget">
+<!--
+**********************************************************************
+*  Birthday Provider
+********************************************************************** 
+ -->
+	<activity android:name=".ConfigureBDayWidgetActivity"
+                  android:label="Configure Birthday Widget">
+	    <intent-filter>
+	        <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+	    </intent-filter>
+	</activity>
+	
+	<receiver android:name=".BDayWidgetProvider">
+	   <meta-data android:name="android.appwidget.provider"
+	          android:resource="@xml/bday_appwidget_provider" />
+	   <intent-filter>
+	        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+	   </intent-filter>
+	</receiver>
+	
+    </application>
+    <uses-sdk android:minSdkVersion="3" />
+</manifest> 

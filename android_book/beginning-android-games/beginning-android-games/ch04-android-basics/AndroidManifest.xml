@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.badlogic.androidgames" 
+	android:versionCode="1"
+	android:versionName="1.0">
+	<application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="true">
+		<activity android:label="Android Basics" android:name=".AndroidBasicsStarter">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:label="Life Cycle Test" 
+		          android:name=".LifeCycleTest"	
+		          android:configChanges="keyboard|keyboardHidden|orientation" />
+		<activity android:label="Single Touch Test" 
+		          android:name=".SingleTouchTest"
+			      android:configChanges="keyboard|keyboardHidden|orientation" />
+		<activity android:label="Multi-Touch Test" 
+		          android:name=".MultiTouchTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation" />
+		<activity android:label="Touch Test" 
+		          android:name=".KeyTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation" />
+        <activity android:label="Accelerometer Test" 
+                  android:name=".AccelerometerTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation" />
+        <activity android:label="Assets Test" 
+                  android:name=".AssetsTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation" />
+        <activity android:label="External Storage Test" 
+                  android:name=".ExternalStorageTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation" />
+		<activity android:label="SoundPool Test" 
+                  android:name=".SoundPoolTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation" />       
+		<activity android:label="MediaPlayer Test" 
+                  android:name=".MediaPlayerTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation" />                                               
+		<activity android:label="Fullscreen Test" 
+		          android:name=".FullScreenTest"
+		          android:screenOrientation="portrait"
+			      android:configChanges="keyboard|keyboardHidden|orientation" />
+        <activity android:label="Wake Lock Test" 
+                  android:name=".WakeLockTest"
+                  android:screenOrientation="portrait"
+                  android:configChanges="keyboard|keyboardHidden|orientation" />			      
+		<activity android:label="RenderView Test" 
+		          android:name=".RenderViewTest"
+		          android:screenOrientation="portrait"
+			      android:configChanges="keyboard|keyboardHidden|orientation" />
+		<activity android:label="Shape Test" 
+		          android:name=".ShapeTest"
+		          android:screenOrientation="portrait"
+			      android:configChanges="keyboard|keyboardHidden|orientation" />
+		<activity android:label="Bitmap Test" 
+		          android:name=".BitmapTest"
+		          android:screenOrientation="portrait"
+			      android:configChanges="keyboard|keyboardHidden|orientation" />	
+		<activity android:label="Font Test" 
+		          android:name=".FontTest"
+		          android:screenOrientation="portrait"
+			      android:configChanges="keyboard|keyboardHidden|orientation" />
+		<activity android:label="SurfaceView Test" 
+		          android:name=".SurfaceViewTest"
+		          android:screenOrientation="portrait"
+			      android:configChanges="keyboard|keyboardHidden|orientation" />				      				      		      
+			      			      			     
+	</application>
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-sdk android:minSdkVersion="3" android:targetSdkVersion="8" />
+</manifest> 

@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+
+        <item android:id="@+id/menu_display_table"
+            android:title="Show" />
+
+        <item android:id="@+id/menu_add"
+            android:title="Add Book" />
+            
+        <item android:id="@+id/menu_delete"
+            android:title="Remove Book" />
+            
+        <item android:id="@id/menu_da_clear"
+	     android:title="clear" />
+    </group>
+</menu>

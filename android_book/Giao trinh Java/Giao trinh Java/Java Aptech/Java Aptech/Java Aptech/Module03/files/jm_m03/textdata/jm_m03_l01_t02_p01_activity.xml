@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>m03_l01_t03_p01:Question 01</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>22 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>In this first lesson,<b>Decision-Making statements<span class='hyperlink'></span></b><br>, you learnt to:</p>
+
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Identify the need for decision-making statements and its types.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Explain various forms of the if statement.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Explain the switch-case statement.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Compare the if-else and the switch-case construct.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='instruction'></p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/m03_l02_t01_p02.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+	</Cont>
+ </content>

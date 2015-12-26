@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="help_text">
+\n
+1. You are reading the help text for this test
+program.
+\n
+2. Click on the menu icon at top right
+to see a list of available menu items.
+\n
+3. Click on a dialog menu item
+to see that dialog.
+\n
+4. You can flip the orientation using
+Ctrl-F11 to see if the dialogs work when
+the device is rotated.
+</string>
+<string name="help1">
+Here is more help text that could be displayed to the user in
+a dialog. When the user clicks the Close button, the previous
+dialog is re-displayed to them.
+</string>
+</resources>

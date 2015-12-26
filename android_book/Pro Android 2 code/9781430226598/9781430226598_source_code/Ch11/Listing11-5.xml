@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="show_total_travel_time_column_pref" value="false" />
+    <boolean name="show_price_column_pref" value="true" />
+    <boolean name="show_arrival_column_pref" value="false" />
+    <boolean name="show_airline_column_pref" value="true" />
+    <boolean name="show_departure_column_pref" value="false" />
+</map>
+

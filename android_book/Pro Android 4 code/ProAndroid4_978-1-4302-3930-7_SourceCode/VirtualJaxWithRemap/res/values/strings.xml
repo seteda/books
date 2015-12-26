@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Virtual Jax</string>
+    <string name="update">Update Values</string>
+    <string name="show">Show Me!</string>
+</resources>

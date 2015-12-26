@@ -1,0 +1,9 @@
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="150dp"
+    android:minHeight="120dp"
+    android:updatePeriodMillis="100000"
+    android:initialLayout="@layout/bday_widget"
+    android:configure="com.ai.android.BDayWidget.ConfigureBDayWidgetActivity"
+    android:label="My Birthday widget"
+    >
+</appwidget-provider>

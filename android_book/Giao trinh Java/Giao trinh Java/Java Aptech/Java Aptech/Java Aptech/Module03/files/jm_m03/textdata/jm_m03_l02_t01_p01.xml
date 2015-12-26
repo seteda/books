@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Need for Loops</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>22 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>A computer program is a set of statements, which are usually executed sequentially. However, in certain situations it is necessary to repeat certain steps to meet a specified condition.<b><span class='hyperlink'></span></b><br></p>
+
+		<p class='body'>For example, if the user wants to write a program that calculates and displays the sum of the first 10 numbers 1,2 3, …, 10.<img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'>One way to calculate the same is as follows:<img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>1+2=3<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>3+3=6<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>6+4=10<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>10+5=15<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>15+6=21<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>..<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>and so on.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>This technique is suitable for relatively small calculations. However, if the program requires adding the first 200 numbers, it would be tedious to add up all the numbers from 1 to 200 using the above mentioned technique. In such situations, iterations or loops come to our rescue.<br></p>
+		<p class='instruction'></p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/m03_l02_t01_p02.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+	</Cont>
+ </content>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.androidbook.services.stock2"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".MainActivity"  android:label="@string/app_name"
+                android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+      <service android:name="StockQuoteService2">
+        <intent-filter>
+            <action android:name="com.androidbook.services.stock2.IStockQuoteService" />
+        </intent-filter>
+      </service>
+    </application>
+    <uses-sdk android:minSdkVersion="7" />
+</manifest> 

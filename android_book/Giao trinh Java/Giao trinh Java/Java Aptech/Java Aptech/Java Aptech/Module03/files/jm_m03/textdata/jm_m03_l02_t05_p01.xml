@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Nested Loops</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>22 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>The placing of a loop in the body of another loop is called nesting. For example, a while statement can be enclosed within a do-while statement and a for statement can be enclosed within a while statement. When you nest two loops, the outer loop controls the number of times the inner loop is executed. For each iteration of the outer loop the inner loop will execute all of its iterations.<b><span class='hyperlink'></span></b><br></p>
+
+		<p class='body'>There can be any number of combinations between the three loops. While all types of loop statements may be nested, the most commonly nested loops are formed by for statements.<img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='instruction'></p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/jm_c01_t01_p34.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore>
+		
+		<b>Snippet:</b>
+
+		<p class='body'>
+		int i, j;
+		for (i = 1; i <= 3; i++) {
+		for (j = 1; j <= 2; j++){
+        System.out.printf("\n%d %d", i , j );
+		}
+		}
+		</p>
+		<p class='body'>
+		The first for statement is executed first, and the value of ‘i’ is verified to be less than or equal to three, if true, the inner for loop is executed. The inner loop is executed till the condition returns false (in this case, it is run twice) before control is handed back to the outer loop. When the outer loop is run a second time, the value of ‘i’ is incremented, then verified and the inner loop is executed again two times. In this manner, the execution continues till the outer loop’s condition returns ‘false’.
+		</p>
+		<p class='body'>
+		Output:
+		1 1
+		1 2
+		2 1
+		2 2
+		3 1
+		3 2
+		</p>
+		
+		
+		</knowMore>
+	</Cont>
+ </content>

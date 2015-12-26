@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Rules</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>22 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>The following points should be noted when using the while statement.<b><span class='hyperlink'></span></b><br></p>
+
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>The values of the variables used in the expression must be set at some point before the while loop is reached. This process is called the initialization of variables and has to be performed once before the execution of the loop.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>The body of the loop must have an expression that changes the value of the variable that is a part of the loop’s expression. A variable is said to be incremented if its value increases in the body of the loop and is said to be decremented if its value decreases.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>For example, if a while statement is written as follows:
+		while (true) {
+		…
+		}<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='instruction'>The condition is simply a boolean value true. This leads to an infinite loop.</p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/jm_c01_t01_p34.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+	</Cont>
+ </content>

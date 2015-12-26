@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- /res/layout/prompt_dialog.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:padding="4dip"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView 
+        android:id="@+id/promptmessage"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:text="Enter Text"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="top|center_horizontal" />
+            
+    <EditText
+        android:id="@+id/inputtext"
+        android:layout_height="wrap_content"
+        android:layout_width="400dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:scrollHorizontally="true"
+        android:autoText="false"
+        android:capitalize="none"
+        android:gravity="fill_horizontal"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content" android:layout_height="wrap_content">
+
+      <Button android:id="@+id/btn_save"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Save">
+      </Button>
+
+      <Button android:id="@+id/btn_dismiss"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Dismiss">
+      </Button>
+
+      <Button android:id="@+id/btn_help"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Help">
+      </Button>
+
+    </LinearLayout>
+</LinearLayout>

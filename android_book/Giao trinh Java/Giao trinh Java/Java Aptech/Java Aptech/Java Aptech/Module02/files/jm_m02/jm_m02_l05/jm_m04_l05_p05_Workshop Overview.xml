@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Workshop Review</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>01 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>In this workshop, you learnt to:<b></b></p>
+		<p class='body'></p><br><img src='images/bullet.jpg' vspace ='1'>Use local variables to store information.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Use format specifiers to display formatted output.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Use operators to compute and compare information.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Use typecasting, operator precedence and associativity.<br></p>
+	</span></p>
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m03/jm_m03_l00/imagedata/jm_m02_l05_t04_p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[#]]></knowMore>
+	</Cont>
+ </content>

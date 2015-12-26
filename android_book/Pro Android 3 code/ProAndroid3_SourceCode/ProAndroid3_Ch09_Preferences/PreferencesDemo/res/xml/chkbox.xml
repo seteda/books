@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/xml/chkbox.xml -->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:key="flight_columns_pref" 
+	android:title="Flight Search Preferences"
+	android:summary="Set Columns for Search Results">
+	<CheckBoxPreference
+	    android:key="show_airline_column_pref"
+		android:title="Airline"
+		android:summary="Show Airline column" />
+	<CheckBoxPreference
+	    android:key="show_departure_column_pref"
+		android:title="Departure"
+		android:summary="Show Departure column" />
+	<CheckBoxPreference
+	    android:key="show_arrival_column_pref"
+		android:title="Arrival"
+		android:summary="Show Arrival column" />
+	<CheckBoxPreference
+	    android:key="show_total_travel_time_column_pref"
+		android:title="Total Travel Time" 
+		android:summary="Show Total Travel Time column" />
+	<CheckBoxPreference
+	    android:key="show_price_column_pref"
+		android:title="Price" 
+		android:summary="Show Price column" />
+</PreferenceScreen>

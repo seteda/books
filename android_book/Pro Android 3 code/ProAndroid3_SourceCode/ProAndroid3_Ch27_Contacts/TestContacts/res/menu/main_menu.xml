@@ -1,0 +1,38 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+
+       <item android:id="@+id/menu_add_contact"
+            android:title="Add Contact" />
+            
+         <item android:id="@+id/menu_show_rce_data"
+            android:title="contact data" />
+            
+        <item android:id="@+id/menu_show_rce_cursor"
+            android:title="contact entity cursor" />
+            
+        <item android:id="@+id/menu_show_rc_all"
+            android:title="all raw contacts" />
+
+        <item android:id="@+id/menu_show_rc"
+            android:title="raw contacts" />
+            
+        <item android:id="@+id/menu_show_rc_cursor"
+            android:title="raw contacts cursor" />
+            
+        <item android:id="@+id/menu_show_contact_cursor"
+            android:title="Contacts Cursor" />
+            
+        <item android:id="@+id/menu_show_contacts"
+            android:title="Contacts" />
+            
+        <item android:id="@+id/menu_show_single_contact_cursor"
+            android:title="Single Contact Cursor" />
+            
+        <item android:id="@+id/menu_show_accounts"
+            android:title="Accounts" />
+            
+        <item android:id="@id/menu_da_clear"
+         android:title="clear" />
+    </group>
+</menu>

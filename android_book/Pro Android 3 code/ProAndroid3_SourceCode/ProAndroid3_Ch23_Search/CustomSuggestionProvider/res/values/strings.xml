@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_activity_main_text">
+    This is the search activity.
+    \n\n
+    This will be invoked if action_search
+    is used as opposed to action_view.
+    \n\n
+    action_search happens if you press the search icon.
+    \n\n
+    action_view happens if you press on the suggestion
+    </string>
+    <string name="app_name">Custom Suggest Application</string>
+	<string name="search_label">Custom Suggest Demo</string>
+	<string name="search_hint">Custom Suggest Demo Hint</string>
+</resources>

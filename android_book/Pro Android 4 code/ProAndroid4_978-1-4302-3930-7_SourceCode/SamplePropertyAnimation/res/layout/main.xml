@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btn_st_animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toggleAnimation"
+        android:text="Fade Out: Animator" />
+    
+    <Button
+        android:id="@+id/btn_st_animation1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sequentialAnimation"
+        android:text="FadeOut/FadeIn: Sequential" />
+    
+    <Button
+        android:id="@+id/btn_st_animation1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="testAnimationBuilder"
+        android:text="FadeOut/FadeIn: Builder" />
+    
+    <Button
+        android:id="@+id/btn_st_animation1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sequentialAnimationXML"
+        android:text="FadeOut/FadeIn XML" />
+    
+    <Button
+        android:id="@+id/btn_st_animation1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="testPropertiesHolder"
+        android:text="PVHolder" />
+    <Button
+        android:id="@+id/btn_st_animation1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="testViewAnimator"
+        android:text="ViewAnimator" />
+    
+    <Button
+        android:id="@+id/btn_st_animation1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="testTypeEvaluator"
+        android:text="Type Evaluator" />
+    
+    <Button
+        android:id="@+id/btn_st_animation1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="testKeyFrames"
+        android:text="Key Frames" />
+    <LinearLayout
+	    android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+        >
+	    <TextView
+	        android:id="@+id/tv_id"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@color/blue"
+	        android:textColor="@color/white"
+	        android:text="@string/hello" />
+    </LinearLayout>
+</LinearLayout>

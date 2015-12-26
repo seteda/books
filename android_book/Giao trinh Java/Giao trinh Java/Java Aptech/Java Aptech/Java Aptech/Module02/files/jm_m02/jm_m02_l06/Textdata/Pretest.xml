@@ -1,0 +1,78 @@
+﻿<Assessments>
+
+<Assessment>
+<QuestionText>Which of these are valid data types in Java?</QuestionText>
+<Options>
+<Option>double</Option>
+<Option>single</Option>
+<Option>numeric</Option>
+<Option>long</Option>
+<Option>short</Option>
+</Options>
+<type>MCMS</type>
+<CorrectAnswer>1,4,5</CorrectAnswer>
+<CorrectFeedback>The valid data types in Java are double, long and short.</CorrectFeedback>
+<incorrectFeedback>The correct answers are A, D and E. Single and numeric are not valid data types in Java.</incorrectFeedback>
+</Assessment>
+
+<Assessment>
+<QuestionText>Which of these are legal identifiers?</QuestionText>
+<Options>
+<Option>2variable</Option>
+<Option>variable2</Option>
+<Option>_whatvariable</Option>
+<Option>_3_</Option>
+<Option>#myvar</Option>
+</Options>
+<type>MCMS</type>
+<CorrectAnswer>2,3,4</CorrectAnswer>
+<CorrectFeedback>The legal identifiers are variable2,_whatvariable and _3_.</CorrectFeedback>
+<incorrectFeedback>The correct answers are B, C and D. 2variable and #myvar are not legal identifiers.</incorrectFeedback>
+</Assessment>
+
+<Assessment>
+<QuestionText>Which of these statements about type casting are correct?</QuestionText>
+<Options>
+<Option>Type casting refers to data conversion</Option>
+<Option>Automatic Type Conversion needs to be conveyed explicitly to the compiler</Option>
+<Option>Type casting can be done explicitly and implicitly</Option>
+<Option>Type casting creates casts of classes of various types</Option>
+
+</Options>
+<type>MCMS</type>
+<CorrectAnswer>1,3</CorrectAnswer>
+<CorrectFeedback>Type casting refers to data conversion and it can be done explicitly and implicitly.</CorrectFeedback>
+<incorrectFeedback>The correct answers are A and C. Automatic Type Conversion need not be conveyed explicitly to the compiler. Type casting does not create casts of classes of various types.</incorrectFeedback>
+</Assessment>
+
+<Assessment>
+<QuestionText>Which of these statements about variables are true?</QuestionText>
+<Options>
+<Option>Used to hold literals</Option>
+<Option>Are keywords used in the Java language syntax</Option>
+<Option>Used to store only numbers</Option>
+<Option>Can only be defined locally</Option>
+<Option>Are the basic units of storage in a Java program</Option>
+</Options>
+<type>MCMS</type>
+<CorrectAnswer>1,5</CorrectAnswer>
+<CorrectFeedback>Variables are used to hold literals and are the basic units of storage in a Java program.</CorrectFeedback>
+<incorrectFeedback>The correct answers are A and E. Variables are neither keywords used in the Java language syntax nor do they store only numbers. Also, they need not be defined only locally.</incorrectFeedback>
+</Assessment>
+
+<Assessment>
+<QuestionText>Which of these statements about Java operators are correct?</QuestionText>
+<Options>
+<Option>Java supports arithmetic, bitwise , relational, conditional and unary operators</Option>
+<Option>Operators require a minimum of two operands to operate on</Option>
+<Option>Conditional operators only operate on single bit operands</Option>
+<Option>Unary operators perform operations on one operand</Option>
+<Option>Relational operators are a part of the arithmetic operators</Option>
+</Options>
+<type>MCMS</type>
+<CorrectAnswer>1,4</CorrectAnswer>
+<CorrectFeedback>Java supports arithmetic, bitwise, relational, conditional and unary operators. Unary operators perform operations on one operand.</CorrectFeedback>
+<incorrectFeedback>The correct answers are A and D. All operators do not require a minimum of two operands to operate on. The conditional operators do not operate on single bit operands only. Also, relational operators are not a part of the arithmetic operators.</incorrectFeedback>
+</Assessment>
+
+</Assessments>

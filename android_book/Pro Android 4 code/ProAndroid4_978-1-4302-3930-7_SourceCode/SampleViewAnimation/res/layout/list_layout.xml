@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is at /res/layout/list_layout.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    
+<Button 
+   android:id="@+id/btn_animate"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Start Animation"
+/>
+
+    <ListView
+        android:id="@+id/list_view_id"
+        android:persistentDrawingCache="animation|scrolling"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        />
+</LinearLayout>

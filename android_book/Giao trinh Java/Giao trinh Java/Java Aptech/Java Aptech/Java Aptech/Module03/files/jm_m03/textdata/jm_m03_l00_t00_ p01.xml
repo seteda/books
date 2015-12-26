@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Module Introduction</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>01 of 30</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>Welcome to the module,<b>Decision-Making and Iterations</b>.</p>
+		<p></p>
+		<p class='body'>The ability to compare values and alter the course of a program based on the result of the comparison is what gives a computer the power to solve problems. There are two aspects to making decisions: the first is the comparison of data and the second is the sequence of execution. This module focuses more on decision-making statements and the iteration constructs. The module also covers the various jump statements that are used in Java programs.</p>		
+		<p></p>
+		<p class='body'>In this module, you will learn about:</p><br><li>Decision-Making Statements</li></br><li>Introduction to Loops</li><li>Jump Statements</li></p>
+		<p></p>
+		<p class='body'>Towards the end of this module, you will be given a set of workshop activities to practice the theoretical concepts you learnt in the lessons.</br></p>
+		
+		
+</span></p>
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m03/jm_m03_l00/imagedata/jm_m03_l00_t00_ p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+	</Cont>
+ </content>

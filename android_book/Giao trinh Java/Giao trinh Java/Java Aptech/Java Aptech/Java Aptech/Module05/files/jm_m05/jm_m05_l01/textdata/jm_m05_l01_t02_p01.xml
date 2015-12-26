@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Mảng một chiều</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>06 of 32</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>Các mảng trong Java có 2 kiểu: mảng một chiều và mảng đa chiều. Mảng một chiều có thể chỉ có một chiều và được mô tả một cách trực quan thấy có các hàng nhưng chỉ có một cột dữ liệu. Mảng nhiều chiều có thể có nhiều hơn một chiều nhưng đặc thù có mảng 2 hay 3 chiều được dùng. Bộ nhớ được cấp cho một biến mảng thông qua việc sử dụng toán tử <font face="Courier New, Courier, mono">new</font>.<br></p>
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m05/jm_m05_l01/imagedata/jm_m05_l01_t02_p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[Một mảng có 4 cột không thể gọi là mảng 4 chiều; nó chỉ là một mảng 2 chiều. Số các chỉ số mảng cần để truy cập các phần tử dựa trên các chiều của mảng.]]></knowMore>
+	</Cont>
+ </content>

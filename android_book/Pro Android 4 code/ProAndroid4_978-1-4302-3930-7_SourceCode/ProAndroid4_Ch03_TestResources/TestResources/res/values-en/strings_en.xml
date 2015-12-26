@@ -1,0 +1,5 @@
+<resources xmlns="http://schemas.android.com/apk/res/android">
+	<string name="teststring_all">teststring-en</string>
+	<string name="t1_enport">t1_en</string>
+	<string name="t1_1_en_port">t1_1_en</string>
+</resources>

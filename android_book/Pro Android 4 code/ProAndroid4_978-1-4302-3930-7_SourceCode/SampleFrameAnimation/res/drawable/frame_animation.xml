@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+	android:oneshot="false">
+    <item android:drawable="@drawable/colored_ball1" android:duration="50" />
+    <item android:drawable="@drawable/colored_ball2" android:duration="50" />
+    <item android:drawable="@drawable/colored_ball3" android:duration="50" />
+    <item android:drawable="@drawable/colored_ball4" android:duration="50" />
+    <item android:drawable="@drawable/colored_ball5" android:duration="50" />
+    <item android:drawable="@drawable/colored_ball6" android:duration="50" />
+    <item android:drawable="@drawable/colored_ball7" android:duration="50" />
+    <item android:drawable="@drawable/colored_ball8" android:duration="50" />
+    <item android:drawable="@drawable/colored_ball9" android:duration="50" />
+ </animation-list>

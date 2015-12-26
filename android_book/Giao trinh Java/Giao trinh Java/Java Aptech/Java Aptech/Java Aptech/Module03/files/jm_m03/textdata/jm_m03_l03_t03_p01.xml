@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>continue statement</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>28 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>Java provides another keyword named continue to skip statements within a loop and proceed to the next iteration of the loop. <b><span class='hyperlink'></span></b><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br> </p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='instruction'></p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/jm_c01_t01_p34.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore>
+<b>Snippet:</b>
+
+int cnt, square, cube;
+ for (cnt=1 ; cnt <= 10; cnt++) {
+   if(cnt % 3 == 0)
+      continue;
+   square = cnt * cnt;
+   cube = cnt * cnt * cnt;
+   System.out.printf("\nSquare of %d is %d and Cube is %d", cnt, square, cube);
+   }
+
+The code declares a variable cnt and uses the for statement which contains the initialization, termination and increment expression. In the body of the loop, the value of cnt is divided by 3 and the remainder is checked. If the remainder is 0, the continue statement is used to skip the rest of the statements in the body of the loop. If remainder is not 0, the if statement evaluates to false, and the square and cube of cnt is calculated and displayed.
+
+Output:
+Square of 1 is 1 and Cube is 1
+Square of 2 is 4 and Cube is 8
+Square of 4 is 16 and Cube is 64
+Square of 5 is 25 and Cube is 125
+Square of 7 is 49 and Cube is 343
+Square of 8 is 64 and Cube is 512
+Square of 10 is 100 and Cube is 1000
+		
+		</knowMore>
+	</Cont>
+ </content>

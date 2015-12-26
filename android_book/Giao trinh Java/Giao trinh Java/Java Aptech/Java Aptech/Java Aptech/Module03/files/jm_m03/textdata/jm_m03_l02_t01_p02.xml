@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Definition and Types</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>22 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>A loop comprises a statement or a block of statements that are executed repeatedly until a particular condition evaluates to true or false.<b><span class='hyperlink'></span></b><br></p>
+
+		<p class='body'>Loops enable programmers to develop concise programs, which otherwise would require thousands of program statements.<img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'>The loop statements supported by Java programming language are :<img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>while<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>do-while<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>for<br></p>
+		<p class='instruction'></p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/m03_l02_t01_p02.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+	</Cont>
+ </content>

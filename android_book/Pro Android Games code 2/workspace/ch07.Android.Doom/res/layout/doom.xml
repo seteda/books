@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+
+	<!-- GAME IMAGE -->    
+	<ImageView android:id="@+id/doom_iv" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="fill_parent" 
+	    android:adjustViewBounds="true"
+	    android:visibility="visible"
+	    android:background="@drawable/doom"
+	    android:focusableInTouchMode="true" android:focusable="true"/>
+
+    <!-- Pan Controls -->         
+	<TableLayout android:id="@+id/pan_ctls"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentLeft="true"
+	        android:visibility="gone"
+			android:focusable="false" 
+			android:focusableInTouchMode="false">
+			
+		<TableRow>
+	    <ImageButton android:id="@+id/btn_upleft"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	        android:src="@drawable/blank"
+	         />
+	    <ImageButton android:id="@+id/btn_up"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:src="@drawable/up"
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	         />
+	    <ImageButton android:id="@+id/btn_upright"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:src="@drawable/blank"
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	         />
+		</TableRow>
+		<TableRow>
+	    <ImageButton android:id="@+id/btn_left"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	        android:src="@drawable/left"
+	         />
+	    <ImageButton 
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:src="@drawable/blank"
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	         />
+	    <ImageButton android:id="@+id/btn_right"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:src="@drawable/right"
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	         />
+		</TableRow>
+		<TableRow>
+	    <ImageButton android:id="@+id/btn_downleft"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	        android:src="@drawable/blank"
+	         />
+	    <ImageButton android:id="@+id/btn_down"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:src="@drawable/down"
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	         />
+	    <ImageButton android:id="@+id/btn_downright"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:src="@drawable/blank"
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	         />
+		</TableRow>
+	</TableLayout> 
+
+	<!-- Other controls: Map, Open, strafe -->
+	<TableLayout android:id="@+id/other_ctls"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentRight="true"
+	        android:visibility="gone"
+			android:focusable="false" 
+			android:focusableInTouchMode="false">
+			
+		<TableRow>
+		
+	    <ImageButton android:id="@+id/btn_map"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	        android:src="@drawable/map"
+	         />
+		
+	    <ImageButton android:id="@+id/btn_open"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	        android:src="@drawable/open"
+	         />
+		
+	    <ImageButton android:id="@+id/btn_stleft"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:src="@drawable/stleft"
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	         />
+	    <ImageButton android:id="@+id/btn_stright"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:src="@drawable/stright"
+	        android:background="#00000000"
+	        android:layout_margin="0px"
+	         />
+		</TableRow>
+    </TableLayout>
+    
+</RelativeLayout>

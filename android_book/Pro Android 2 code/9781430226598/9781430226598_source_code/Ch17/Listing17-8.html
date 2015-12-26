@@ -1,0 +1,29 @@
+<html><head>
+
+<script>
+function myalert(message)
+{
+   var a = Titanium.UI.createAlertDialog();
+   a.setMessage(message);
+   a.setTitle('My Alert');
+   a.setButtonNames(["OK"]);
+   a.show();
+}
+function dalert(message)
+{
+   Titanium.API.info(message);
+   alert(message);
+   //var a = prompt(message);
+   myalert(message);
+}
+</script>
+
+</head>
+<body>
+
+<h2>Hello World</h2>
+<p><a href="javascript:dalert('hello')">
+Click here to execute JavaScript
+</a></p>
+
+</body></html>

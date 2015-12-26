@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- MAIN MENU LAYOUT -->    
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/layout_main"
+    android:paddingLeft="5px">
+
+	<TextView android:id="@+id/tv_game"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:text="Game"
+           android:width="85px"
+           android:textAppearance="?android:attr/textAppearanceMedium"/>
+       
+       
+    <Spinner android:id="@+id/s_files"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:drawSelectorOnTop="true"
+			android:minWidth="210px"
+           />
+           
+	<EditText android:id="@+id/t_wad"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:drawSelectorOnTop="true"
+				android:maxLength="30"
+				android:text="doom.wad"
+				android:visibility="gone"
+	           />
+
+	<TextView android:id="@+id/lbl_mp"
+	           android:layout_width="fill_parent"
+	           android:layout_height="wrap_content"
+	           android:text="Server IP [:port]"
+	           android:textAppearance="?android:attr/textAppearanceMedium"
+	           android:visibility="gone"
+	           />
+
+	<EditText android:id="@+id/t_server"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:drawSelectorOnTop="true"
+				android:maxLength="30"
+				android:text=""
+				android:visibility="gone"
+	           />
+           
+<!-- 
+		<TextView
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:text="Sound"
+	           android:width="85px"
+	           android:textAppearance="?android:attr/textAppearanceMedium"/>
+	           
+		<Spinner android:id="@+id/s_sound"
+       		android:layout_width="wrap_content"
+           	android:layout_height="wrap_content"
+           	android:drawSelectorOnTop="true"
+            android:minWidth="230px"/>
+            
+            
+		<TextView
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:width="85px"
+	           android:text="Window"
+	           android:textAppearance="?android:attr/textAppearanceMedium"/>
+	           
+		<Spinner android:id="@+id/s_size"
+       		android:layout_width="wrap_content"
+           	android:layout_height="wrap_content"
+           	android:drawSelectorOnTop="true"
+           	android:minWidth="230px"
+           />
+-->
+</LinearLayout>
+<!-- END MAIN MENU LAYOUT -->
+    
+

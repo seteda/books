@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.androidbook.salbcr"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application android:icon="@drawable/icon" 
+               android:label="Standalone Broadcast Receiver">
+
+<!--
+************************************************************
+* A receiver in a process outside of the 
+* broadcast sender. 
+************************************************************ 
+--> 
+    <receiver android:name=".StandaloneReceiver">
+	    <intent-filter>
+	    	<action android:name="com.androidbook.intents.testbc"/>
+	    </intent-filter>
+    </receiver>
+<!--
+************************************************************
+* A receiver to prove notifications 
+************************************************************ 
+--> 
+    <receiver android:name=".NotificationReceiver">
+	    <intent-filter>
+	    	<action android:name="com.androidbook.intents.testbc"/>
+	    </intent-filter>
+    </receiver>
+    
+<!--
+************************************************************
+* Long Running Receiver Basic Test 
+************************************************************ 
+--> 
+    <receiver android:name=".TestLRBCR">
+	    <intent-filter>
+	    	<action android:name="com.androidbook.intents.testbc"/>
+	    </intent-filter>
+    </receiver>
+
+	<service android:name=".TestLRBCRService"/>
+
+<!--
+************************************************************
+* Long Running Receiver 30 sec slepp Test 
+************************************************************ 
+--> 
+    <receiver android:name=".Test30SecBCR">
+	    <intent-filter>
+	    	<action android:name="com.androidbook.intents.testbc"/>
+	    </intent-filter>
+    </receiver>
+	<service android:name=".Test30SecBCRService"/>
+
+<!--
+************************************************************
+* Long Running Receiver 60 sec sleep Test 
+************************************************************ 
+--> 
+    <receiver android:name=".Test60SecBCR">
+	    <intent-filter>
+	    	<action android:name="com.androidbook.intents.testbc"/>
+	    </intent-filter>
+    </receiver>
+	<service android:name=".Test60SecBCRService"/>
+	
+<!--
+************************************************************
+* Long Running Receiver that throws ANR 30 sec sleep Test
+* Uncomment the following section to simulate ANR
+* You will an ANR in the logcat and the pid killed 
+************************************************************ 
+    <receiver android:name=".TestPlain30SecBCR">
+        <intent-filter>
+            <action android:name="com.androidbook.intents.testbc"/>
+        </intent-filter>
+    </receiver>
+    <service android:name="TestPlain30SecBCRService"/>
+--> 
+    
+</application>
+    <uses-sdk android:minSdkVersion="3" />
+</manifest> 

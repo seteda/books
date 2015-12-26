@@ -1,0 +1,121 @@
+#define NUMSOUNDSSOD		81
+#define NUMSNDCHUNKSSOD		267
+
+/* Sound names & indexes */
+typedef enum {
+		HITWALLSNDSOD,              // 0
+		MISSILEHITSNDSOD,           // 1
+		SELECTITEMSNDSOD,           // 2
+		GHOSTSIGHTSND,           // 3
+		MOVEGUN2SNDSOD,             // 4
+		MOVEGUN1SNDSOD,             // 5
+		NOWAYSNDSOD,                // 6
+		NAZIHITPLAYERSNDSOD,        // 7
+		MISSILEFIRESNDSOD,          // 8
+		PLAYERDEATHSNDSOD,          // 9
+		DOGDEATHSNDSOD,             // 10
+		ATKGATLINGSNDSOD,           // 11
+		GETKEYSNDSOD,               // 12
+		NOITEMSNDSOD,               // 13
+		WALK1SNDSOD,                // 14
+		WALK2SNDSOD,                // 15
+		TAKEDAMAGESNDSOD,           // 16
+		GAMEOVERSNDSOD,             // 17
+		OPENDOORSNDSOD,             // 18
+		CLOSEDOORSNDSOD,            // 19
+		DONOTHINGSNDSOD,            // 20
+		HALTSNDSOD,                 // 21
+		DEATHSCREAM2SNDSOD,         // 22
+		ATKKNIFESNDSOD,             // 23
+		ATKPISTOLSNDSOD,            // 24
+		DEATHSCREAM3SNDSOD,         // 25
+		ATKMACHINEGUNSNDSOD,        // 26
+		HITENEMYSNDSOD,             // 27
+		SHOOTDOORSNDSOD,            // 28
+		DEATHSCREAM1SNDSOD,         // 29
+		GETMACHINESNDSOD,           // 30
+		GETAMMOSNDSOD,              // 31
+		SHOOTSNDSOD,                // 32
+		HEALTH1SNDSOD,              // 33
+		HEALTH2SNDSOD,              // 34
+		BONUS1SNDSOD,               // 35
+		BONUS2SNDSOD,               // 36
+		BONUS3SNDSOD,               // 37
+		GETGATLINGSNDSOD,           // 38
+		ESCPRESSEDSNDSOD,           // 39
+		LEVELDONESNDSOD,            // 40
+		DOGBARKSNDSOD,              // 41
+		ENDBONUS1SNDSOD,            // 42
+		ENDBONUS2SNDSOD,            // 43
+		BONUS1UPSNDSOD,             // 44
+		BONUS4SNDSOD,               // 45
+		PUSHWALLSNDSOD,             // 46
+		NOBONUSSNDSOD,              // 47
+		PERCENT100SNDSOD,           // 48
+		BOSSACTIVESNDSOD,           // 49
+		DEATHSCREAM4SNDSOD,         // 50
+		SCHUTZADSNDSOD,             // 51
+		AHHHGSNDSOD,                // 52
+		DEATHSCREAM5SNDSOD,         // 53
+		DEATHSCREAM7SNDSOD,         // 54
+		DEATHSCREAM8SNDSOD,         // 55
+		LEBENSNDSOD,                // 56
+		DEATHSCREAM6SNDSOD,         // 57
+		NAZIFIRESNDSOD,             // 58
+		BOSSFIRESNDSOD,             // 59
+		SSFIRESNDSOD,               // 60
+		SLURPIESNDSOD,              // 61
+		GHOSTFADESND,            // 62
+		DEATHSCREAM9SNDSOD,         // 63
+		GETAMMOBOXSND,           // 64
+		ANGELSIGHTSND,           // 65
+		SPIONSNDSOD,                // 66
+		NEINSOVASSNDSOD,            // 67
+		DOGATTACKSNDSOD,            // 68
+		ANGELFIRESNDSOD,            // 69
+		TRANSSIGHTSND,           // 70
+		TRANSDEATHSND,           // 71
+		WILHELMSIGHTSND,         // 72
+		WILHELMDEATHSND,         // 73
+		UBERDEATHSND,            // 74
+		KNIGHTSIGHTSND,          // 75
+		KNIGHTDEATHSND,          // 76
+		ANGELDEATHSND,           // 77
+		KNIGHTMISSILESNDSOD,        // 78
+		GETSPEARSND,             // 79
+		ANGELTIREDSNDSOD,           // 80
+		LASTSOUNDSOD
+	     } soundnamesSOD;
+
+/* Base offsets */
+#define STARTADLIBSOUNDSSOD	81
+#define STARTMUSICSOD		243
+
+/* Music names & indexes */
+typedef enum {
+		XFUNKIE_MUS,             // 0
+		DUNGEON_MUSSOD,             // 1
+		XDEATH_MUS,              // 2
+		GETTHEM_MUSSOD,             // 3
+		XTIPTOE_MUS,             // 4
+		GOINGAFT_MUSSOD,            // 5
+		URAHERO_MUSSOD,             // 6
+		XTHEEND_MUS,             // 7
+		NAZI_OMI_MUSSOD,            // 8
+		POW_MUSSOD,                 // 9
+		TWELFTH_MUSSOD,             // 10
+		SEARCHN_MUSSOD,             // 11
+		SUSPENSE_MUSSOD,            // 12
+		ZEROHOUR_MUSSOD,            // 13
+		WONDERIN_MUSSOD,            // 14
+		ULTIMATE_MUSSOD,            // 15
+		ENDLEVEL_MUSSOD,            // 16
+		XEVIL_MUS,               // 17
+		XJAZNAZI_MUS,            // 18
+		COPYPRO_MUS,             // 19
+		XAWARD_MUS,              // 20
+		XPUTIT_MUS,              // 21
+		XGETYOU_MUS,             // 22
+		XTOWER2_MUS,             // 23
+		LASTMUSICSOD
+	     } musicnamesSOD;

@@ -1,0 +1,4 @@
+<resources>
+        <string name="slabel">Search Label</string>
+        <string name="shint">Search Hint</string>
+</resources>

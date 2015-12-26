@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"  android:layout_height="fill_parent"
+    >
+<TextView
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    android:text="@string/tv"
+    />
+<EditText android:id="@+id/et"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    android:hint="@string/et"
+    />
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    >
+    <TextView
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:text="@string/actv" />
+    <AutoCompleteTextView android:id="@+id/actv"
+        android:layout_width="fill_parent"  android:layout_height="wrap_content"
+     />
+</LinearLayout>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    >
+    <TextView
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:text="@string/mactv"/>
+    <MultiAutoCompleteTextView android:id="@+id/mactv"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    />
+</LinearLayout>
+<TextView
+    android:layout_width="wrap_content"  android:layout_height="wrap_content"
+    android:text="@string/et"/>
+<EditText android:id="@+id/et2"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    android:minLines="2"
+    />
+</LinearLayout>

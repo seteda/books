@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns="http://schemas.android.com/apk/res/android">
+<!--
+**************************************************  
+* regular_activity_prompt
+**************************************************  
+-->
+    <string name="regular_activity_prompt">
+    This is a sample application to test how QSB and Search Key
+    interacts with activities. This application has 4 activities
+    including this one. The activity you are looking at is 
+    called a Regular Activity and is one of 4. The other three
+    you can access through the menu.
+    \n\n
+    This activity is a regular activity that is unaware of 
+    any search capabilities. If you click search key now
+    it will NOT invoke the global search by default. You can
+    override onSearchRequested() to enable global search.
+    \n
+    \nThe other activities demonstrate:`
+    \n\n1) No search Activity: An activity that disables search
+    \n2) Invoke search: programatically invoke global search
+    \n3) Local Search Activity: Invoke Local Search
+    \n
+    \nYour debug will appear here
+    </string>
+    
+<!--
+**************************************************  
+* no_search_activity_prompt
+**************************************************  
+-->
+    <string name="no_search_activity_prompt">
+    In this activity the onSearchRequested
+    returns a false. The search button
+    should be ignored now.
+    \n
+    \nYou can click back now to access the 
+    previous activity and use the menus again
+    to choose other activities.
+    </string>
+<!--
+**************************************************  
+* search_activity_prompt
+**************************************************  
+-->
+    <string name="search_activity_prompt">
+This is called a search activity or search results activity. This activity
+is invoked by clicking on the search key when
+some other activity uses this activity as its
+search results activity.
+\n\n
+Typically you can retrieve the query string
+from the intent to see what the query is.
+    </string>
+<!--
+**************************************************  
+* search_invoker_activity_prompt
+**************************************************  
+-->
+    <string name="search_invoker_activity_prompt">
+In this activity a search menu item is used
+to invoke the default search. In this case
+as there is no local search for this activity
+specified global search is invoked. Use the
+menu button to see the "search" menu. when you
+click on that search menu you will see the 
+global search.
+    </string>
+<!--
+**************************************************  
+* local_search_enabled_activity_prompt
+**************************************************  
+-->
+    <string name="local_search_enabled_activity_prompt">
+This is a very simple activity that has indicated through 
+the manifest file that there is a an associated search
+activity. With this association when the search key is 
+pressed the local search is presented instead of global.
+\n\n
+You can see the local nature of it by looking at the 
+label of the QSB and also the hint in the QSB. Both
+came from the search metadata.
+\n\n
+Once you click on the query icon, it will transfer
+you to the local search activity.
+    </string>
+<!--
+**************************************************  
+* Other values
+**************************************************  
+    <string name="app_name">Sample Search Application</string>
+-->
+	<string name="search_label">Local Search Demo</string>
+	<string name="search_hint">Local Search Demo Hint</string>
+</resources>

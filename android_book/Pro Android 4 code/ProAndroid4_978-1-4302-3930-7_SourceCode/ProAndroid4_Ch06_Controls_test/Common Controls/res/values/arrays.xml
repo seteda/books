@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_titles">
+        <item>Buttons</item>
+        <item>Checkboxes</item>
+        <item>DateTime Picker</item>
+        <item>Gallery</item>
+        <item>GridView</item>
+        <item>GridView Custom</item>
+        <item>ImageView</item>
+        <item>Layout - Frame</item>
+        <item>Layout - Relative</item>
+        <item>Layout - Table 1</item>
+        <item>Layout - Table 2</item>
+        <item>Layout - Table 3</item>
+        <item>ListView 1</item>
+        <item>ListView 2</item>
+        <item>ListView 3</item>
+        <item>ListView 4</item>
+        <item>Radio Button</item>
+        <item>Spinner</item>
+        <item>Styles</item>
+        <item>TextView</item>
+        <item>Weight vs. Gravity</item>
+    </string-array>
+    <string-array name="list_activities">
+        <item>ButtonActivity</item>
+        <item>CheckBoxActivity</item>
+        <item>DateTimePickerActivity</item>
+        <item>GalleryActivity</item>
+        <item>GridViewActivity</item>
+        <item>GridViewCustomAdapter</item>
+        <item>ImageViewActivity</item>
+        <item>FrameLayoutActivity</item>
+        <item>RelativeLayoutActivity</item>
+        <item>TableLayoutActivity1</item>
+        <item>TableLayoutActivity2</item>
+        <item>TableLayoutActivity3</item>
+        <item>ListViewActivity</item>
+        <item>ListViewActivity2</item>
+        <item>ListViewActivity3</item>
+        <item>ListViewActivity4</item>
+        <item>RadioGroupActivity</item>
+        <item>SpinnerActivity</item>
+        <item>StylesActivity</item>
+        <item>TextViewActivity</item>
+        <item>WeightGravity</item>
+    </string-array>
+</resources>

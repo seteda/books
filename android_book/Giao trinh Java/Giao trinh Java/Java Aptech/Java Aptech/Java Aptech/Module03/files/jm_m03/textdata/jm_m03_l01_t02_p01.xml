@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Various forms of if statement</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>04 of 30</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>The different forms of the if statement are:<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'><span class='hyperlink'>Simple if statement </span><br> </span></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'><span class='hyperlink'>if-else statement</span><br> </span></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'><span class='hyperlink'>Multiple if statements</span><br> </span></p>
+		<p></p>
+		<p class='body'>Click on each link to learn more.</p>
+		
+		]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_m03/jm_m03_l01/imagedata/jm_m03_l01_t02_p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+	</Cont>
+ </content>

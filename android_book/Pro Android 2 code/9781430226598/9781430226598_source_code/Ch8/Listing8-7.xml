@@ -1,0 +1,4 @@
+// service definition entry: must go in the AndroidManifest.xml file as
+// a child of <application>.
+<service android:name="TestService1"></service>
+

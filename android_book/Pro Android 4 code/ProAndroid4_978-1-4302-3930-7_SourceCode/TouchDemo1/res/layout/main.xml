@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is res/layout/main.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"  android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+  <RelativeLayout  android:id="@+id/layout1"
+    android:tag="trueLayoutTop"  android:orientation="vertical"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    android:layout_weight="1" >
+
+    <com.androidbook.touch.demo1.TrueButton android:text="returns true" 
+    android:id="@+id/trueBtn1"  android:tag="trueBtnTop"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content" />
+
+    <com.androidbook.touch.demo1.FalseButton android:text="returns false"
+    android:id="@+id/falseBtn1"  android:tag="falseBtnTop"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content"
+    android:layout_below="@id/trueBtn1" />
+
+  </RelativeLayout>
+  <RelativeLayout  android:id="@+id/layout2"
+    android:tag="falseLayoutBottom"  android:orientation="vertical"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    android:layout_weight="1"  android:background="#FF00FF" >
+
+    <com.androidbook.touch.demo1.TrueButton android:text="returns true" 
+    android:id="@+id/trueBtn2"  android:tag="trueBtnBottom"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content" />
+
+    <com.androidbook.touch.demo1.FalseButton android:text="returns false"
+    android:id="@+id/falseBtn2"  android:tag="falseBtnBottom"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content"
+    android:layout_below="@id/trueBtn2" />
+
+  </RelativeLayout>
+</LinearLayout>

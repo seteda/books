@@ -1,0 +1,127 @@
+<course>
+	<modules>
+	<!-- MLTP structure -->
+			<module name="Stress and Coping: Introduction" type="normal">			
+					<topics>						
+						<topic name="Introduction">
+							<pages>
+								<page pagename = "session0/files/akl0_01.swf" pagetitle = "Introduction" pagetype = "static" slider = "yes" audio = "yes" back = "no" next = "no" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+						</topics>
+							
+			</module>
+			<module name="Stress and Coping: Understanding Stress" type="normal">			
+					<topics>						
+						<topic name="Objectives">
+							<pages>
+								<page pagename = "session01/files/akl1_01.swf" pagetitle = "Objectives" pagetype = "static" slider = "yes" audio = "yes" back = "no" next = "yes" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+						<topic name="What is Stress?">
+							<pages>
+								<page pagename = "session01/files/akl1_02.swf" pagetitle = "What is Stress?" pagetype = "static" slider = "yes" audio = "yes" back = "yes" next = "yes" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+						<topic name="Positive and Negative Stress">
+							<pages>
+								<page pagename = "session01/files/akl1_03.swf" pagetitle = "Positive and Negative Stress" pagetype = "static" slider = "yes" audio = "yes" back = "yes" next = "yes" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+						<topic name="Practice">
+							<pages>
+								<page pagename = "session01/files/akl1_04.swf" pagetitle = "Practice" pagetype = "interactivity" slider = "yes" audio = "yes" back = "yes" next = "yes" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+						
+						<topic name="Sources of Stress">
+							<pages>
+								<page pagename = "session01/files/akl1_05.swf" pagetitle = "Sources of Stress" pagetype = "static" slider = "yes" audio = "yes" back = "yes" next = "yes" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+						
+						<topic name="Practice">
+							<pages>
+								<page pagename = "session01/files/akl1_06.swf" pagetitle = "Practice" pagetype = "interactivity" slider = "yes" audio = "yes" back = "yes" next = "yes" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+						
+						<topic name="Sources of Stress – A Case Study">
+							<pages>
+								<page pagename = "session01/files/akl1_07.swf" pagetitle = "Sources of Stress – A Case Study" pagetype = "static" slider = "yes" audio = "yes" back = "yes" next = "yes" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+						
+						<topic name="Detecting Stress in Others">
+							<pages>
+								<page pagename = "session01/files/akl1_08.swf" pagetitle = "Detecting Stress in Others" pagetype = "static" slider = "yes" audio = "yes" back = "yes" next = "yes" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+								<page pagename = "session01/files/akl1_09.swf" pagetitle = "Detecting Stress in Others" pagetype = "static" slider = "yes" audio = "yes" back = "yes" next = "yes" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+						
+						<topic name="Practice">
+							<pages>
+								<page pagename = "session01/files/akl1_10.swf" pagetitle = "Practice" pagetype = "interactivity" slider = "yes" audio = "yes" back = "yes" next = "yes" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+						
+						<topic name="Summary">
+							<pages>
+								<page pagename = "session01/files/akl1_11.swf" pagetitle = "Summary" pagetype = "static" slider = "yes" audio = "yes" back = "yes" next = "yes" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+					</topics>
+							
+			</module>
+			
+				<module name="Risk Assessment: Post-Assessment" type="normal">			
+					<topics>						
+						<topic name="Post-Assessment">
+							<pages>
+								<page pagename = "session06/files/akl6_01.swf" pagetitle = "Post-Assessment" pagetype = "assessment" slider = "no" audio = "yes" back = "no" next = "no" >	
+								<transcripttext><![CDATA[#]]></transcripttext>
+								<words>page1</words>
+								</page>
+							</pages>
+						</topic>
+						</topics>
+							
+			</module>
+	</modules>
+</course>		

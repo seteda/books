@@ -1,0 +1,40 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+        <item  android:id="@+id/menu_test_strings"
+            android:title="Test en strings" />
+
+        <item  android:id="@+id/menu_test_layout"
+            android:title="Test Layout" />
+            
+        <item  android:id="@+id/menu_test_image"
+            android:title="Test Image" />
+            
+        <item  android:id="@+id/menu_test_colors"
+            android:title="Test Colors" />
+            
+        <item  android:id="@+id/menu_test_color_drawables"
+            android:title="Color Drawables" />
+            
+        <item  android:id="@+id/menu_test_string_variations"
+            android:title="Test Strings" />
+            
+        <item  android:id="@+id/menu_test_shape"
+            android:title="Test Shape" />
+            
+        <item  android:id="@+id/menu_test_xml"
+            android:title="Test xml" />
+            
+        <item  android:id="@+id/menu_test_rawfile"
+            android:title="Test rawfile" />
+            
+        <item  android:id="@+id/menu_test_assets"
+            android:title="Test assets" />
+            
+        <item  android:id="@+id/menu_test_arrays"
+            android:title="Test array" />
+            
+        <item android:id="@id/menu_da_clear"
+         android:title="clear" />
+    </group>
+</menu>

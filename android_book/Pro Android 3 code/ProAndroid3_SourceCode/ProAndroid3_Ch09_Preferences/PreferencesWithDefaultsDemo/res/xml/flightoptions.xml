@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/xml/mypreferences.xml -->
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="flight_option_preference"
+    android:title="@string/prefTitle"
+    android:summary="@string/prefSummary">
+
+  <ListPreference
+    android:key="@string/selected_flight_sort_option"
+    android:title="@string/listTitle"
+    android:summary="@string/listSummary"
+    android:entries="@array/flight_sort_options"
+    android:entryValues="@array/flight_sort_options_values"
+    android:dialogTitle="@string/dialogTitle"
+    android:defaultValue="@string/flight_sort_option_default_value" />
+
+</PreferenceScreen>

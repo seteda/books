@@ -1,0 +1,18 @@
+.blocklink {
+ width:200px;
+ display:block;
+ background:yellow;
+ text-decoration:none;
+}
+
+.blocklink:hover {
+ background:red;
+}
+
+.blocklink span {
+  margin-left:2px;
+}
+
+.blocklink:hover span {
+  text-decoration:underline;
+}

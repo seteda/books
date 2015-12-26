@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/xml/ringtone.xml -->
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+                android:key="ringtone_option_preference"
+                android:title="My Preferences"
+                android:summary="Set Ring Tone Preferences">
+    <RingtonePreference
+        android:key="ring_tone_pref"
+        android:title="Set Ringtone Preference"
+        android:showSilent="true"
+        android:ringtoneType="ringtone"
+        android:summary="Set Ringtone" />
+</PreferenceScreen>

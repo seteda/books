@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.androidbook.search.simplesp"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+    <application android:icon="@drawable/icon" 
+              android:label="Simple Search Suggestion Provider:SSSP">
+        <activity android:name=".SimpleMainActivity"
+                  android:label="SSSP:Simple Main Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+<!--
+****************************************************************
+* Search related code: search activity 
+**************************************************************** 
+ -->                  
+	<activity android:name=".SearchActivity"
+                  android:label="SSSP: Search Activity"
+                  android:launchMode="singleTop">
+	  <intent-filter>
+	      <action android:name="android.intent.action.SEARCH" />
+	      <category android:name="android.intent.category.DEFAULT" />
+	   </intent-filter>
+	  <meta-data android:name="android.app.searchable"
+            android:resource="@xml/searchable" />
+	</activity>
+	
+	<meta-data android:name="android.app.default_searchable"
+            android:value=".SearchActivity" />
+            
+    <provider android:name=".SimpleSuggestionProvider"
+         android:authorities
+           ="com.androidbook.search.simplesp.SimpleSuggestionProvider" />
+                  
+	</application>
+    <uses-sdk android:minSdkVersion="4" />
+</manifest> 

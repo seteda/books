@@ -1,0 +1,32 @@
+﻿<Assessments>
+
+<Assessment>
+<QuestionText>Click an option on the left and its matching option to the right, and then click on Submit.</QuestionText>
+<Heading>
+<Leftside>Description</Leftside>
+<Rightside>Term</Rightside>
+</Heading>
+<Options>
+<Option>Cannot refer directly to instance variables or methods defined in its enclosing class</Option>
+<Option>Can be declared as public, protected, private, abstract, final, or static</Option>
+<Option>Is declared inside a method, constructor or an initializer</Option>
+<Option>Cannot define a constructor</Option>
+<Option>Is defined within another class</Option>
+
+
+</Options>
+<Steps>
+<Step>Member class</Step>
+<Step>Local class</Step>
+<Step>Static nested class</Step>
+<Step>Nested class</Step>
+<Step>Anonymous class</Step>
+
+</Steps>
+<type>Click&Match</type>
+<CorrectAnswer>3,1,2,5,4</CorrectAnswer>
+<CorrectFeedback>Yes, that's correct. You get one point for your response.</CorrectFeedback>
+<incorrectFeedback>No, that's incorrect. The correct combinations are: (A) – (3), (B) – (1), (C) – (2), (D) – (5), (E) – (4).</incorrectFeedback>
+</Assessment>
+
+</Assessments>

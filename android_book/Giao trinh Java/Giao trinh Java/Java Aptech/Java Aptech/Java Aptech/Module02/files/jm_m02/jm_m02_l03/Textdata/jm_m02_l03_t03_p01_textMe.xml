@@ -1,0 +1,26 @@
+<Assessments>
+
+<Assessment>
+<QuestionText>Which of these statements about escape sequences are true and which of these are false?</QuestionText>
+<Heading>
+<Leftside></Leftside>
+<Rightside></Rightside>
+</Heading>
+<Options>
+<Option><![CDATA[The escape sequence character <font face="Courier New" size="15px">\n</font> represents a new line character.</Option>
+<Option>The nextDouble() method of Scanner class returns the next token as a byte value.</Option>
+<Option>The escape sequence character <font face="Courier New" size="15px">\r</font> represents a backslash character.</Option>
+<Option>The escape sequence character <font face="Courier New" size="15px">\\</font> represents a new line character.</Option>
+<Option>The nextByte() method of Scanner class returns the next token as a byte value.</Option>]]
+
+</Options>
+<Steps>
+<Step></Step>
+</Steps>
+<type>True&False</type>
+<CorrectAnswer>1,0,0,0,1</CorrectAnswer>
+<CorrectFeedback><![CDATA[Yes, that's correct. You have identified the correct selections for escape sequences.]]></CorrectFeedback>
+<incorrectFeedback><![CDATA[No, that's incorrect. The correct selections are (A)-True, (B)–False, (C)–False, (D)–False <br>and (E)-True.]]></incorrectFeedback>
+</Assessment>
+
+</Assessments>

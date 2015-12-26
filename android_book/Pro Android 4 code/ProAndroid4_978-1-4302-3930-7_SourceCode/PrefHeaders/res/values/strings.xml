@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Use the menu to launch the preferences screen</string>
+
+    <string name="app_name">Pref Headers</string>
+</resources>

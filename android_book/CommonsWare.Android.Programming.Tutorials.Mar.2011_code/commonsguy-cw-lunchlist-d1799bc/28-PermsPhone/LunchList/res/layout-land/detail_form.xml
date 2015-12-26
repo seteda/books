@@ -1,0 +1,76 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+  <TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="2"
+    android:shrinkColumns="2"
+    >
+    <TableRow>
+      <TextView android:text="Name:" />
+      <EditText android:id="@+id/name"
+        android:layout_span="2"
+      />
+    </TableRow>
+    <TableRow>
+      <TextView android:text="Address:" />
+      <EditText android:id="@+id/addr"
+        android:layout_span="2"
+      />
+    </TableRow>
+    <TableRow>
+      <TextView android:text="Phone:" />
+      <EditText android:id="@+id/phone"
+        android:layout_span="2"
+      />
+    </TableRow>
+    <TableRow>
+      <TextView android:text="Type:" />
+      <RadioGroup android:id="@+id/types">
+        <RadioButton android:id="@+id/take_out"
+          android:text="Take-Out"
+          android:checked="true"
+        />
+        <RadioButton android:id="@+id/sit_down"
+          android:text="Sit-Down"
+        />
+        <RadioButton android:id="@+id/delivery"
+          android:text="Delivery"
+        />
+      </RadioGroup>
+      <LinearLayout android:orientation="vertical">
+        <EditText android:id="@+id/notes"
+          android:inputType="textMultiLine"
+          android:gravity="top"
+          android:lines="2"
+          android:scrollHorizontally="false"
+          android:maxLines="2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Notes"
+        />
+        <EditText android:id="@+id/feed"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Feed URL"
+        />
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          >
+          <TextView android:text="Location:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          />
+          <TextView android:id="@+id/location"
+            android:text="(not set)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          />
+        </LinearLayout>
+      </LinearLayout>
+    </TableRow>
+  </TableLayout>
+</ScrollView>

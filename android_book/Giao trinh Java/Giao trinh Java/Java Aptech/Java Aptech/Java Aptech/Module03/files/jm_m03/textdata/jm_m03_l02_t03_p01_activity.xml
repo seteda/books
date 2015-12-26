@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>m03_l02_t03_p01:Question 02</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>29 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>In this last lesson,<b><span class='hyperlink'>Jump Statements</span></b>, you learnt to:<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>State the purpose of jump statements.<br> </p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Describe break statement.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Describe continue statement.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Compare break and continue statements.<br></p>
+		<p class='instruction'></p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/jm_c01_t01_p34.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+	</Cont>
+ </content>

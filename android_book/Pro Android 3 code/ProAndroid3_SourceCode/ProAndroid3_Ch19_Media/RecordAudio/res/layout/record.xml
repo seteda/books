@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/layout/record.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"  android:layout_height="fill_parent">
+
+  <Button android:id="@+id/beginBtn"  android:text="Begin Recording"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    android:onClick="doClick" />
+
+  <Button android:id="@+id/stopBtn"  android:text="Stop Recording"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    android:onClick="doClick" />
+
+  <Button android:id="@+id/playRecordingBtn" android:text="Play Recording"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    android:onClick="doClick" />
+
+  <Button android:id="@+id/stopPlayingRecordingBtn"
+    android:text="Stop Playing Recording"
+    android:layout_width="fill_parent"  android:layout_height="wrap_content"
+    android:onClick="doClick" />
+
+</LinearLayout>

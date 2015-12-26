@@ -1,0 +1,12 @@
+<!-- /res/xml/bday_appwidget_provider.xml -->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="150dp"
+    android:minHeight="120dp"
+    android:updatePeriodMillis="100000"
+    android:initialLayout="@layout/bday_widget"
+    android:configure="com.androidbook.BDayWidget.ConfigureBDayWidgetActivity"
+    android:label="My Birthday widget"
+    android:resizeMode="horizontal|vertical"
+    android:previewImage="@drawable/robot"
+    >
+</appwidget-provider>

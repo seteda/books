@@ -1,0 +1,17 @@
+keycode_dpad_up
+keycode_dpad_down
+keycode_dpad_left
+keycode_dpad_right
+keycode_dpad_center
+keycode_back
+keycode_call
+keycode_camera
+keycode_clear
+kecode_endcall
+keycode_home
+keycode_menu
+keycode_mute
+keycode_power
+keycode_search
+keycode_volume_up
+keycode_volume_down

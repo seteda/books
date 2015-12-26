@@ -1,0 +1,38 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+    
+        <item android:id="@+id/mid_OpenGL_SimpleTriangle"
+            android:title="Simple Triangle" />
+            
+        <item android:id="@+id/mid_OpenGL_SimpleTriangle2"
+            android:title="Two Triangles" />
+            
+        <item android:id="@+id/mid_OpenGL_AnimatedTriangle"
+            android:title="Animated Triangle" />
+            
+        <item android:id="@+id/mid_rectangle"
+            android:title="Rectangle" />
+            
+        <item android:id="@+id/mid_square_polygon"
+            android:title="Square polygon" />
+            
+        <item android:id="@+id/mid_polygon"
+            android:title="Polygon" />
+            
+        <item android:id="@+id/mid_textured_square"
+            android:title="Textured Square" />
+
+        <item android:id="@+id/mid_textured_polygon"
+            android:title="Textured Polygon" />
+
+        <item android:id="@+id/mid_multiple_figures"
+            android:title="Multiple Figures" />
+
+        <item android:id="@+id/mid_OpenGL_Current"
+            android:title="Current" />
+            
+        <item android:id="@+id/mid_es20_triangle"
+            android:title="ES20 Triangle" />
+    </group>
+</menu> 

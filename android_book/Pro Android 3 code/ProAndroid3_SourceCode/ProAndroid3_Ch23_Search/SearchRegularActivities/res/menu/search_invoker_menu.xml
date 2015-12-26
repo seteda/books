@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+        <item android:id="@+id/mid_si_search"
+            android:title="Search" />
+            
+        <item android:id="@+id/mid_si_clear"
+            android:title="clear" />
+    </group>
+</menu>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/values/arrays.xml -->
+<resources>
+<string-array name="languages">
+    <item>Chinese</item>
+    <item>English</item>
+    <item>French</item>
+    <item>German</item>
+    <item>Japanese</item>
+    <item>Spanish</item>
+</string-array>
+<string-array name="language_values">
+    <item>zh</item>
+    <item>en</item>
+    <item>fr</item>
+    <item>de</item>
+    <item>ja</item>
+    <item>es</item>
+</string-array>
+</resources>

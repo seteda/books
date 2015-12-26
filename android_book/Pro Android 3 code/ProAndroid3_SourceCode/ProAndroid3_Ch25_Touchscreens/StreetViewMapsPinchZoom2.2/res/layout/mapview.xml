@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!-- This file is /res/layout/mapview.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical" android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <Button android:id="@+id/zoomin" android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:text="+"
+      android:onClick="myClickHandler" android:padding="12px" />
+
+    <Button android:id="@+id/zoomout" android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:text="-"
+      android:onClick="myClickHandler" android:padding="12px" />
+
+    <Button android:id="@+id/sat" android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:text="Satellite"
+      android:onClick="myClickHandler" android:padding="8px" />
+
+    <Button android:id="@+id/street" android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:text="Street"
+      android:onClick="myClickHandler" android:padding="8px" />
+
+    <Button android:id="@+id/traffic" android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:text="Traffic"
+      android:onClick="myClickHandler" android:padding="8px" />
+
+    <Button android:id="@+id/normal" android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:text="Normal"
+      android:onClick="myClickHandler" android:padding="8px" />
+
+  </LinearLayout>
+
+  <com.google.android.maps.MapView
+    android:id="@+id/mapview" android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:clickable="true"
+    android:apiKey="0VZxsz6LgwjLucBYjYK5xcEhldOIZ2C7m06KtOg" />
+
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is res/layout/palette.xml -->
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:dot="http://schemas.android.com/apk/res/com.androidbook.drag.drop.demo"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <com.androidbook.drag.drop.demo.Dot android:id="@+id/dot1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    android:tag="Blue dot"
+    dot:color="#ff1111ff"
+    dot:radius="20dp"
+  />
+
+  <com.androidbook.drag.drop.demo.Dot android:id="@+id/dot2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:tag="White dot"
+    dot:color="#ffffffff"
+    dot:radius="40dp"
+  />
+
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/layout/main.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+  <EditText android:id="@+id/wordsToSpeak"
+    android:text="Dohn Keyhotay"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"/>
+
+  <Button android:id="@+id/speakBtn"
+    android:text="Speak"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:onClick="doButton"
+	android:enabled="false" />
+
+  <TextView android:id="@+id/filenameLabel"
+    android:text="Filename:"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+  <EditText android:id="@+id/filename"
+    android:text="/sdcard/donquixote.wav"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"/>
+
+  <Button android:id="@+id/recordBtn"
+    android:text="Record"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:onClick="doButton"
+	android:enabled="false" />
+
+  <Button android:id="@+id/playBtn"
+    android:text="Play"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:onClick="doButton"
+	android:enabled="false" />
+
+  <TextView android:id="@+id/useWithLabel"
+    android:text="Use with:"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+  <EditText android:id="@+id/realText"
+    android:text="Don Quixote"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"/>
+
+  <Button android:id="@+id/assocBtn"
+    android:text="Associate"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:onClick="doButton"
+	android:enabled="false" />
+
+</LinearLayout>

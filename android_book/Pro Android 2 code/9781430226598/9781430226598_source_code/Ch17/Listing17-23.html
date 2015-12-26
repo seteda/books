@@ -1,0 +1,37 @@
+<html><head>
+<script src="../../js/jquery132-dev.js"></script>
+<script src="../../js/template-engine.js"></script>
+
+<script>
+//Data
+var itemArray = [
+   {name: "Social", value: "12345678"},
+   {name: "cell1", value: "12345678"},
+   {name: "cell2", value: "12345678"}
+];
+
+function onloadFunction()
+{
+   var s = $("#MyTemplate").html();
+   var s1 = parseTemplate(s, {itemArrayData: itemArray});
+   $("#target").html(s1);
+}
+</script>
+
+<script id="MyTemplate" type="text/html">
+<#
+for(var i=0; i < itemArrayData.length; i++)
+{
+   var item = itemArrayData[i];
+#>
+   <p><#=item.name #>:<#=item.value #></p>
+<# } #>
+</script>
+
+</head>
+<body onload="onloadFunction()">
+<div id="target">
+<p>target</p>
+</div>
+</body></html>
+

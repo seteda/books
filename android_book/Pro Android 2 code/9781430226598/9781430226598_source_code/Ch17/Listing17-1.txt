@@ -1,0 +1,3 @@
+\documents and settings\all users\application data\Titanium
+\documents and settings\\application data\Titanium
+\Program Files\Titanium (your install directory)

@@ -1,0 +1,4 @@
+<resources xmlns="http://schemas.android.com/apk/res/android">
+	<string name="teststring_all">test-en-port</string>
+	<string name="t1_1_en_port">t1_1_en_port</string>
+</resources>

@@ -1,0 +1,3 @@
+jarsigner -keystore ”"PATH TO YOUR release.keystore FILE” " -storepass paxxword 
+-keypass paxxword  ”"PATH TO YOUR APK FILE” " androidbook
+

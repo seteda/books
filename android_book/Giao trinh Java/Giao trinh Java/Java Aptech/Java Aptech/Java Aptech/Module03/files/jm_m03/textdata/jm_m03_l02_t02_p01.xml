@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>while statement</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>22 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>TThe while statement in Java is used to execute a statement or a block of statements while a particular condition is true. The condition is checked before the statements are executed. The condition for the while statement can be any expression which returns a boolean value.<b><span class='hyperlink'></span></b><br></p>
+
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='instruction'></p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/jm_c01_t01_p34.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore>
+		
+		<b>Syntax:</b>
+
+		<p class='body'>
+		while (expression) {
+		// one or more statements
+		}
+		</p>
+		<p class='body'></p>
+		<p class='body'></p>
+
+		<b>Snippet:</b>
+
+		<p class='body'>
+		int num = 1;
+		while(num <= 5) {
+		System.out.printf("\n%d * 10 = %d",num,(num * 10));
+		num++;
+		}
+		</p>
+		<p class='body'>
+		In the snippet, a variable of type integer, num, is declared to store the number. The variable num is initialized to 1 and is used in the while loop to start multiplication from 1.
+		</p>
+		<p class='body'>
+		The condition num <= 5 ensures that the while loop executes as long as the value in num is less than or equal to 5. The execution of the loop stops when condition becomes false, that is, when the value of num reaches 6. The first statement within the body of the loop calculates the value of product by multiplying num with 10. The next statement prints this value and the last statement within the body of the loop changes the value of num by incrementing it by 1.
+		</p>
+		<p class='body'>
+		Output:
+		1 * 10 = 10
+		2 * 10 = 20
+		3 * 10 = 30
+		4 * 10 = 40
+		5 * 10 = 50
+		</p>
+			
+		</knowMore>
+	</Cont>
+ </content>

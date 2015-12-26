@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Decision-Making Statements</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>03 of 30</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>A Java program is a set of statements, which are executed sequentially in the order in which they appear. However, in some cases, the order of execution of statements may change based on the evaluation of certain conditions.</p>
+		<p></p>
+		<p class='body'>The Java programming language possesses decision-making capabilities. The decision-making or control statements supported by Java are:</p>
+		<br><li>if statement </li></br><li>if-else-if statement </li> <li>switch-case statement</li></br>
+		<p></p>
+		<p class='body'>Decision-making statements enable us to change the flow of the program. Based on the evaluation of a condition, a statement or a sequence of statements is executed.</p>
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m03/jm_m03_l01/imagedata/jm_m03_l01_t01_p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore></knowMore>
+	</Cont>
+ </content>

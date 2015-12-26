@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gridImageView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#555"
+    android:scaleType="centerInside"
+    android:padding="5dip"
+    android:maxHeight="50dip"
+    android:maxWidth="50dip"
+  />

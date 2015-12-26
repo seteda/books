@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.androidbook.actionbar"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+    <application android:icon="@drawable/icon" 
+        android:label="ActionBars Demo App">
+        <activity android:name=".TabNavigationActionBarActivity"
+                  android:label="Action Bar Demonstration: TabNav">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ListNavigationActionBarActivity"
+                  android:label="Action Bar Demonstration: ListNav">
+        </activity>
+        <activity android:name=".DropdownListNavigationActionBarActivity"
+                  android:label="Action Bar Demonstration: DropdownNav">
+        </activity>
+        <activity android:name=".StandardNavigationActionBarActivity"
+                  android:label="Action Bar Demonstration: StandardNav">
+        </activity>
+    </application>
+    <uses-sdk android:minSdkVersion="Honeycomb" />
+</manifest> 

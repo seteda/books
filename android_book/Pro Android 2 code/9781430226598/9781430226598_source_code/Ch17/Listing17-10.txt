@@ -1,0 +1,8 @@
+adb install [-l] [-r]
+   - push this package file to the device and instal it
+   ('-l' means forward-lock the app)
+   ('-r' means reinstall the app, keeping its data)
+
+adb uninstall [-k]
+   - remove this app package from the device
+   ('-k' means keep the data and cache directorie)

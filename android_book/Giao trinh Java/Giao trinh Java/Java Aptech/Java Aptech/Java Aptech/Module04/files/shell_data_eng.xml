@@ -1,0 +1,265 @@
+﻿<course>
+	<modules>
+	<!-- MLTP structure -->
+			
+			<module name="Introducing Classes " type="normal">	
+			
+				 <lessons>
+	 <!-- Lesson start here -->
+					<lesson name="Creating Classes and Objects" type ="normal">		
+						<topics>	
+						<topic name="Module Introduction">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l00/textdata/jm_m04_l00_t00_p01.xml" pagetitle = "Module Introduction" pagetype = "static" slider = "yes" audio = "no" back = "no" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>				
+							<topic name="Lesson Overview">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l01/textdata/jm_m04_l01_t00_p01.xml" pagetitle = "Lesson Overview" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>	
+							<topic name="Class Declaration">
+								<pages>
+									
+									<page pagename = "./jm_m04/jm_m04_l01/textdata/jm_m04_l01_t01_p01.xml" pagetitle = "Declaring Classes" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Constructor ">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l01/textdata/jm_m04_l01_t03_p01.xml" pagetitle = "Constructor " pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Creating Objects ">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l01/textdata/jm_m04_l01_t04_p01.xml" pagetitle = "Creating Objects " pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Knowledge Checks">
+								<pages>
+								<page pagename = "./jm_m04/jm_m04_l01/textdata/jm_m04_l01_t01_p02.xml" pagetitle = "Question 01 " pagetype = "interactivity" slider = "no" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+									<page pagename = "./jm_m04/jm_m04_l01/textdata/jm_m04_l01_t04_p02.xml" pagetitle = "Question 01 " pagetype = "interactivity" slider = "no" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+								
+							<topic name="Lesson Review">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l01/textdata/jm_m04_l01_t05_p01.xml" pagetitle = "Lesson Review" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+						</topics>
+					</lesson>
+					<lesson name="Instance Variables" type ="normal">		
+						<topics>						
+							<topic name="Concept of Instance Variables">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l02/textdata/jm_m04_l02_t00_p01.xml" pagetitle = "Lesson Overview" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+									<page pagename = "./jm_m04/jm_m04_l02/textdata/jm_m04_l02_t01_p01.xml" pagetitle = "Concept of Instance Variables" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Declare and Access Instance Variables">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l02/textdata/jm_m04_l02_t02_p01.xml" pagetitle = "Declare and Access Instance Variables" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Knowledge Checks">
+								<pages>
+								<page pagename = "./jm_m04/jm_m04_l02/textdata/jm_m04_l02_t02_p02.xml" pagetitle = "Question 01" pagetype = "interactivity" slider = "no" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Lesson Review">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l02/textdata/jm_m04_l02_t03_p01.xml" pagetitle = "Lesson Review" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+						</topics>
+					</lesson>
+					<lesson name="Methods" type ="normal">		
+						<topics>						
+							<topic name="Concept of Methods">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l03/textdata/jm_m04_l03_t00_p01.xml" pagetitle = "Lesson Overview" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+									<page pagename = "./jm_m04/jm_m04_l03/textdata/jm_m04_l03_t01_p01.xml" pagetitle = "Concept of Methods" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Declaring Instance Methods">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l03/textdata/jm_m04_l03_t02_p01.xml" pagetitle = "Instance Methods" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+									<page pagename = "./jm_m04/jm_m04_l03/textdata/jm_m04_l03_t02_p02.xml" pagetitle = "Passing arguments by value" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+									<page pagename = "./jm_m04/jm_m04_l03/textdata/jm_m04_l03_t02_p03.xml" pagetitle = "Passing arguments by reference" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Variable Argument Methods">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l03/textdata/jm_m04_l03_t04_p01.xml" pagetitle = "Variable Argument Methods" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+									
+								</pages>
+							</topic>
+							<topic name="Knowledge Checks">
+								<pages>
+								<page pagename = "./jm_m04/jm_m04_l03/textdata/jm_m04_l03_t02_p04.xml" pagetitle = "Question 01" pagetype = "interactivity" slider = "no" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+								</topic>
+							<topic name="Lesson Review">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l03/textdata/jm_m04_l03_t05_p01.xml" pagetitle = "Lesson Review" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+						</topics>
+					</lesson>
+					<lesson name="Initializer" type ="normal">		
+						<topics>						
+							<topic name="Concept of Initializer ">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l04/textdata/jm_m04_l04_t00_p01.xml" pagetitle = "Lesson Overview" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+									<page pagename = "./jm_m04/jm_m04_l04/textdata/jm_m04_l04_t01_p01.xml" pagetitle = "Concept of Initializer" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Object Field Initializer">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l04/textdata/jm_m04_l04_t02_p01.xml" pagetitle = "Object Field Initializer" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+									
+								</pages>
+							</topic>
+							<topic name="Knowledge Checks">
+								<pages>
+								<page pagename = "./jm_m04/jm_m04_l04/textdata/jm_m04_l04_t02_p02.xml" pagetitle = "Question 01" pagetype = "interactivity" slider = "no" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+								</topic>
+							<topic name="Lesson Review">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l04/textdata/jm_m04_l04_t03_p01.xml" pagetitle = "Lesson Review" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+						</topics>
+					</lesson>
+					<lesson name="Workshop" type ="normal">		
+						<topics>						
+							<topic name="Workshop Overview">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l05/textdata/jm_m04_l05_p01.xml" pagetitle = "Workshop Overview" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Class, Constructor and Instance Variables">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l05/textdata/jm_m04_l05_p02.xml" pagetitle = "Class, Constructor and Instance Variables" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Store, Accept and Display Information Using Methods">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l05/textdata/jm_m04_l05_p03.xml" pagetitle = "Store, Accept and Display Information Using Methods" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="For-each Loop">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l05/textdata/jm_m04_l05_p04.xml" pagetitle = "For-each Loop" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+							<topic name="Workshop Review">
+								<pages>
+									<page pagename = "./jm_m04/jm_m04_l05/textdata/jm_m04_l05_p05.xml" pagetitle = "For-each loop to process the variable arguments accepted by a method" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "yes" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+									<page pagename = "./jm_m04/jm_m04_l06/textdata/jm_m04_l06_t00_p01.xml" pagetitle = "Module Summary" pagetype = "static" slider = "yes" audio = "no" back = "yes" next = "no" >
+									<transcripttext><![CDATA[#]]></transcripttext>
+									<words>page1</words>
+									</page>
+								</pages>
+							</topic>
+						</topics>
+					</lesson>
+				</lessons>
+			</module>
+			
+		</modules>
+</course>		

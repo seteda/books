@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/values/strings.xml -->
+<resources>
+    <string name="app_name">Preferences Demo</string>
+    <string name="prefTitle">My Preferences</string>
+    <string name="prefSummary">Set Flight Option Preferences</string>
+    <string name="flight_sort_option_default_value">1</string>
+    <string name="dialogTitle">Choose Flight Options</string>
+    <string name="listSummary">Set Search Options</string>
+    <string name="listTitle">Flight Options</string>
+    <string name="selected_flight_sort_option">selected_flight_sort_option</string>
+    <string name="menu_prefs_title">Settings</string>
+</resources>

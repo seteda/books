@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- /res/layout/main.xml -->
+<LinearLayout 
+xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="fill"
+    >
+<TextView android:id="@+id/textViewId"  
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:text="Initial Text Message"
+    android:textColor="@android:color/black"
+    android:textSize="25sp"
+    android:scrollbars="vertical"
+    android:scrollbarStyle="insideOverlay"
+    android:scrollbarSize="25dip"
+    android:scrollbarFadeDuration="0"
+    />
+</LinearLayout>

@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+        <item android:id="@+id/menu_clear"
+	     android:title="clear" />
+	     
+        <item android:id="@+id/menu_testlib_1"
+            android:title="Lib Test Menu1" />
+            
+        <item android:id="@+id/menu_testlib_2"
+            android:title="Lib Test Menu2" />
+    </group>
+</menu>

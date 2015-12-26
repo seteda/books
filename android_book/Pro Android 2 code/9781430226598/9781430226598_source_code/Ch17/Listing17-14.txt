@@ -1,0 +1,9 @@
+first
+last
+even
+odd
+eq(index)
+lt(index)
+gt(index)
+header //(h1, h2 etc)
+animated

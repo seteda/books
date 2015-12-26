@@ -1,0 +1,6 @@
+<receiver android:name="MySMSMonitor">
+    <intent-filter>
+        <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+    </intent-filter>
+</receiver>
+

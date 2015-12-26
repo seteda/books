@@ -1,0 +1,3 @@
+keytool -list -alias androiddebugkey -keystore 
+"FULL PATH OF YOUR debug.keystore FILE" -storepass android -keypass android
+

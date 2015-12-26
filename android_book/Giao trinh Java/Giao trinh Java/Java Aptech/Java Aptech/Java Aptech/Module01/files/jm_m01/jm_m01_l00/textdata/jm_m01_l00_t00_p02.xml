@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Module Overview</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>02 of 48</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>Welcome to the module, <b>Introduction to Java</b>. This module introduces object-oriented concepts and the Java programming language. The module begins with a brief explanation of object-oriented concepts. It introduces Java as a platform and as a programming language. It further explains the Java Development Kit (JDK) and demonstrates how to write and execute a Java application program. Finally, it provides an overview on writing comments in Java programs.<br></p>
+		<p class='body'>In this module, you will learn about:<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Classes and Objects<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Getting Started with Java<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Introduction to JDK<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Writing a Java program<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>NetBeans IDE Overview<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Using Comments in Java<br></p>
+		<p class='body'>Towards the end of the module, you will be given a set of workshop activities to practice the theoretical concepts you learnt in the lessons.<br></p>
+
+		]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_m01/jm_m01_l00/imagedata/jm_m01_l00_t00_ p02.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[#]]></knowMore>
+	</Cont>
+ </content>

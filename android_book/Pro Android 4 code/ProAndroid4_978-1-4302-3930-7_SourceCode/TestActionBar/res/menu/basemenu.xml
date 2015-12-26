@@ -1,0 +1,11 @@
+<!-- /res/menu/menu.xml -->
+<menu 
+xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+
+        <item android:id="@+id/menu_da_clear"
+            android:orderInCategory="10"
+            android:title="clear" />
+    </group>
+</menu>

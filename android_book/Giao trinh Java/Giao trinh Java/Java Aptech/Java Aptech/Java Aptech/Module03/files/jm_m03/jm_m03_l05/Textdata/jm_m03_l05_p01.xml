@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Tổng quan về bài tập thực hành</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>31 of 37</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>Trong phần bài tập thực hành này, bạn sẽ được học về:<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Sử dụng các câu lệnh rẽ nhánh.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Sử dụng vòng lặp while.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Sử dụng vòng lặp for.<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'>Sử dụng vòng lặp lồng nhau.<br></p>
+	</span></p>
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m03/jm_m03_l05/imagedata/jm_m03_l05_p01.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[#]]></knowMore>
+	</Cont>
+ </content>

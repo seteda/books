@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView    android:id="@+id/text1"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello"
+    />
+ <Button    android:id="@+id/b1"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello"
+   />
+<TextView android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@color/red"
+    android:text="Sample Text to Show Red Color" android:layout_gravity="center"/>
+    
+<TextView android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center_horizontal"
+          android:text="@string/tagged_string"/>
+           
+<TextView android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/medium_size"
+          android:text="Test Dimension"/>
+          
+<Button
+      android:id="@+id/button1"
+      android:layout_width="fill_parent" 
+      android:layout_height="wrap_content" 
+      android:text="Dial"
+      android:background="@drawable/sample_image"/>
+
+<TextView android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:text="Test Color Drawable"
+      android:background="@drawable/red_rectangle"/>
+      
+</LinearLayout>

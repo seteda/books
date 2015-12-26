@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:id="@+id/feed"
+    android:title="RSS Feed"
+    android:icon="@drawable/ic_menu_friendslist"
+  />
+  <item android:id="@+id/location"
+    android:title="Save Location"
+    android:icon="@drawable/ic_menu_compass"
+  />
+  <item android:id="@+id/map"
+    android:title="Show on Map"
+    android:icon="@drawable/ic_menu_mapmode"
+  />
+  <item android:id="@+id/call"
+    android:title="Call"
+    android:icon="@drawable/ic_menu_call"
+    android:enabled="false"
+  />
+  <item android:id="@+id/help"
+    android:title="Help"
+    android:icon="@drawable/ic_menu_help"
+  />
+</menu>

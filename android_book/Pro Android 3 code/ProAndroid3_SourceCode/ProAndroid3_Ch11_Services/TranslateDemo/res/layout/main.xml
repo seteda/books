@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/layout/main.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_height="fill_parent"
+	android:layout_width="fill_parent">
+
+	<EditText android:id="@+id/input"
+	    android:hint="@string/input"
+	    android:layout_height="wrap_content"
+	    android:layout_width="fill_parent" />
+
+        <Spinner android:id="@+id/from"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input"
+            android:prompt="@string/prompt" />
+
+        <Button android:id="@+id/translateBtn"
+            android:text="@string/translateBtn"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input"
+            android:layout_toRightOf="@id/from"
+            android:enabled="false" />
+
+        <Spinner android:id="@+id/to"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input"
+            android:layout_toRightOf="@id/translateBtn"
+            android:prompt="@string/prompt" />
+
+    <EditText android:id="@+id/translation"
+        android:hint="@string/translation"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:editable="false"
+        android:layout_below="@id/from" />
+
+    <TextView android:id="@+id/poweredBy"
+        android:text="powered by Google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

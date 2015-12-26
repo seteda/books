@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:orientation="vertical" >
+  
+  <Button android:id="@+id/ccbtn1"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:text="Basic Button"
+   />
+
+  <ImageButton android:id="@+id/ccbtn2"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:text="Image Button"
+   android:src="@drawable/imagebuttonselector" 
+   />
+
+  <ToggleButton android:id="@+id/ccbtn3"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:text="Toggle Button"
+   android:textOff="Start"
+   android:textOn="Stop"
+   />
+</LinearLayout>

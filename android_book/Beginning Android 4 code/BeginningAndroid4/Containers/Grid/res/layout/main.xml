@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="vertical"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+>
+  <Button
+    android:text="Defying gravity!"
+    android:layout_gravity="top"
+  />
+  <Button
+    android:text="Floating middle right"
+    android:layout_gravity="right|center_vertical"
+  />
+  <Button
+    android:text="Falling like an apple"
+    android:layout_gravity="bottom"
+  />
+</GridLayout>

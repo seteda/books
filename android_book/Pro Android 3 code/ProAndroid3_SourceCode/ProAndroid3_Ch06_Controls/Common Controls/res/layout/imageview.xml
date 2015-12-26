@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is at /res/layout/list.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"  android:layout_height="fill_parent">
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="wrap_content"  android:layout_height="fill_parent">
+
+  <ImageView android:id="@+id/image1"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content"
+    android:src="@drawable/icon"
+    />
+
+  <ImageView android:id="@+id/image2"
+    android:layout_width="125dip"  android:layout_height="25dip"
+    android:src="#555555"
+    />
+  </LinearLayout>
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="wrap_content"  android:layout_height="fill_parent">
+
+  <ImageView android:id="@+id/image3"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content"
+    />
+
+  <ImageView android:id="@+id/image4"
+    android:layout_width="wrap_content"  android:layout_height="wrap_content"
+    android:src="@drawable/manatee02"
+    android:scaleType="centerInside"
+    android:maxWidth="35dip"  android:maxHeight="50dip"
+    />
+
+  </LinearLayout>
+</LinearLayout>

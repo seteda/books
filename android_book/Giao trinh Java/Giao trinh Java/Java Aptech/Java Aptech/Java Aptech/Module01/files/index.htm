@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<TITLE>Aptech Courses</TITLE>
+  <SCRIPT LANGUAGE=JAVASCRIPT SRC="js/scormAPI.js"></SCRIPT>  
+<script language="javascript">
+var bkmark="";
+function passvar()
+{
+init();
+
+bkmark=fnGetBookMark();
+window.document.act.SetVariable('BookMark1234',bkmark)
+
+
+
+//alert('bkmark:'+bkmark);
+//return temp
+}
+function closecourse() { // this has been added by mumbai team
+	//alert("entering close course");
+	window.opener = self;
+	window.close();
+	//closeme();
+}
+function sopen(sValue)
+{
+window.open(sValue,"newWin1", "fullscreen=no,scrolling=no,HEIGHT=633,WIDTH=1010,left=0,top=0")
+}
+</script>
+</HEAD>
+<BODY bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onUnload="finish()" onLoad="passvar()">
+<table width="100%" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td align="center" valign="middle">
+<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" name="act"
+ WIDTH="1010" HEIGHT="682" ALIGN="absmiddle" id="act">
+<!--        <PARAM NAME=movie  VALUE="microsoft_proto_shell.swf?VarBookMark="+fnGetBookMark()+"">  -->
+	
+	 <PARAM NAME=movie  VALUE="main.swf">
+<!-- 	  <PARAM NAME=FlashVars VALUE=\"varname="+fnGetBookMark()+"\">  -->
+	  
+
+	  <!-- <script type="text/javascript">
+      var sample = new FlashTag("microsoft_proto_shell.swf", 200, 200, "7,0,14,0");
+      sample.setFlashvars("varname=" + "yuvaraj Mohite");
+      sample.write(document);
+    </script> -->
+
+
+	  
+	   <PARAM NAME=loop VALUE=false> <PARAM NAME=menu VALUE=false> <PARAM NAME=quality VALUE=high> <PARAM NAME=bgcolor VALUE=#FFFFFF> <EMBED src="main.swf" loop=false  quality=high bgcolor=#FFFFFF  WIDTH="1010" HEIGHT="682" ALIGN="absmiddle" name="act"
+ TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer"></EMBED>
+</OBJECT>
+</tr>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Module Summary</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>32 of 32</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>In this module, Arrays, you learnt about:<br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'><span class='hyperlink'>Arrays</span></span><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'><span class='hyperlink'>Strings</span></span><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><span class='bullet'><span class='hyperlink'>Other String classes</span></span><br></p>
+		<p class='instruction'><b>Click on each link for a summary of the lesson.</b></p>
+		
+		]]></ost>
+	</Cont>
+	<Cont id ="5">
+		<img>./jm_m05/jm_m05_l03/imagedata/jm_m05_l00_t00_p03.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[#]]></knowMore>
+	</Cont>
+ </content>

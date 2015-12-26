@@ -1,0 +1,6 @@
+<permission
+android:protectionLevel="normal"
+android:name="syh.permission.STARTMYACTIVITY "
+android:label="Start My Activity"
+android:description="@string/startMyActivityDesc"></permission>
+

@@ -1,0 +1,27 @@
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+        android:delay="30%"
+        android:animationOrder="reverse"
+        android:animation="@anim/rotate" 
+        />
+<!--
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+        android:delay="30%"
+        android:animationOrder="reverse"
+        android:animation="@anim/alpha" 
+        />
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+        android:delay="30%"
+        android:animationOrder="reverse"
+        android:animation="@anim/alpha_translate" 
+        />
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+        android:delay="30%"
+        android:animationOrder="reverse"
+        android:animation="@anim/rotate" 
+        />
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+        android:delay="30%"
+        android:animationOrder="reverse"
+        android:animation="@anim/scale" 
+        />
+-->

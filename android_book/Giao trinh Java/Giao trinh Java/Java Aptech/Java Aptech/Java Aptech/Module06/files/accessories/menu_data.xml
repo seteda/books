@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<course>
+<module name ="Introduction to Java">
+	<topic name = "Classes and Objects">2</topic>
+	<topic name = "Getting Started with Java">10</topic>
+	<topic name = "Introduction to JDK">17</topic>
+	<topic name = "Writing a Java program">21</topic>
+	<topic name = "NetBeans IDE Overview">26</topic>
+	<topic name = "Using Comments in Java">37</topic>
+	<topic name = "Workshop">43</topic>
+</module>
+
+<module name ="Variables and Operators">
+	<topic name = "Introduction to Variables">49</topic>
+	<topic name = "Introduction to Data Types">56</topic>
+	<topic name = "Formatted Output and Input">63</topic>
+	<topic name = "Operators">70</topic>
+	<topic name = "Type Casting">83</topic>
+	<topic name = "Workshop">89</topic>
+</module>
+
+<module name ="Decision-Making and Iterations">
+	<topic name = "Decision-Making Statements">96</topic>
+	<topic name = "Introduction to Loops">105</topic>
+	<topic name = "Jump Statements">118</topic>
+	<topic name = "Workshop">126</topic>
+</module>
+
+<module name ="Introducing Classes">
+	<topic name = "Creating Classes and Objects">133</topic>
+	<topic name = "Instance Variables">141</topic>
+	<topic name = "Methods">146</topic>
+	<topic name = "Initializer">154</topic>
+	<topic name = "Workshop">159</topic>
+</module>
+
+
+
+</course>

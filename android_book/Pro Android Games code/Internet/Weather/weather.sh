@@ -1,0 +1,1 @@
+curl "http://www.weather.gov/forecasts/xml/sample_products/browser_interface/ndfdXMLclient.php?&lat=40.601696&lon=-75.477325&product=time-series&begin=2004-01-01T00:00:00&end=2011-12-03T00:00:00&temp=temp&icons=icons"

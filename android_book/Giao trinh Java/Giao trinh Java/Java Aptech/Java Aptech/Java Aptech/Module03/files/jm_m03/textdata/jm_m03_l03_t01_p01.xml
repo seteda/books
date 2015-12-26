@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>v</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle>Purpose</screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>26 of 31</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[
+		<p class='body'>At times, the exact number of times the loop has to be executed is known only during runtime. In such a case, the condition to terminate the loop can be enclosed within the body of the loop. At other times, based on a condition, the remaining statements present in the body of the loop need to be skipped. Java supports jump statements that unconditionally transfer control to locations within a program known as target of jump statements.
+		<b><span class='hyperlink'></span></b><br></p>
+		<p class='body'>Java provides two keywords: break and continue, that serve diverse purposes. However, both are used with loops to change the flow of control based on conditions.<img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='body'><img src='images/bullet.jpg' vspace ='1'><br></p>
+		<p class='instruction'></p>
+				
+				]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_c01_t01/imagedata/jm_c01_t01_p34.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore>
+	<b>Snippet:</b>
+	int cnt, number;
+	for (cnt=1, number=0; cnt <= 100; cnt++) {
+   Scanner input = new Scanner(System.in);
+   System.out.println("Enter a number");
+   number = input.nextInt();
+   if(number==500) 
+    break;
+	}
+	The user is prompted to enter a number, and this is stored in the variable number. This is repeated 100 times. However, if the user enters the number 500, the loop terminates and control is passed to the next statement.
+	
+		</knowMore>
+	</Cont>
+ </content>

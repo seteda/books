@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+        <item android:id="@+id/mid_reset_suggestions"
+            android:title="Reset Suggestions" />
+    </group>
+</menu>

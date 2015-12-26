@@ -1,0 +1,31 @@
+<Assessments>
+
+<Assessment>
+<QuestionText>Can you match the operators in Java against their corresponding description?</QuestionText>
+<Heading>
+<Leftside>Description</Leftside>
+<Rightside>Feature</Rightside>
+</Heading>
+<Options>
+<Option>Works on boolean expressions.</Option>
+<Option>Requires only one operand.</Option>
+<Option>Assigns values to identifiers.</Option>
+<Option>Tests the relationship between two operands.</Option>
+<Option>Requires two operands to operate. </Option>
+
+</Options>
+<Steps>
+<Step>Relational</Step>
+<Step>Arithmetic</Step>
+<Step>Conditional</Step>
+<Step>Assignment</Step>
+<Step>Unary</Step>
+
+</Steps>
+<type>Click&Match</type>
+<CorrectAnswer>3,5,4,1,2</CorrectAnswer>
+<CorrectFeedback>Yes, that's correct. You have identified the correct combination for operators.</CorrectFeedback>
+<incorrectFeedback>No, that's incorrect. The correct combinations are (A)–(3), (B)-(5), (C)-(4), (D)-(1) and (E)-(2).</incorrectFeedback>
+</Assessment>
+
+</Assessments>

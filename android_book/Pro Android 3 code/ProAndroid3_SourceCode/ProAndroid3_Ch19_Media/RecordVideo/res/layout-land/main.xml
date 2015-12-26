@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/layout-land/main.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"  android:layout_height="fill_parent"
+ 	android:orientation="horizontal" >
+  <LinearLayout
+	android:orientation="vertical" android:layout_width="wrap_content"
+	android:layout_height="wrap_content">
+
+	<Button android:id="@+id/initBtn"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:text="Initialize Recorder"  android:onClick="doClick"
+        android:enabled="false" />
+
+	<Button android:id="@+id/beginBtn"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:text="Begin Recording"  android:onClick="doClick"
+        android:enabled="false" />
+
+	<Button android:id="@+id/stopBtn"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:text="Stop Recording"  android:onClick="doClick" />
+
+	<Button android:id="@+id/playRecordingBtn"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:text="Play Recording"  android:onClick="doClick" />
+
+	<Button android:id="@+id/stopPlayingRecordingBtn"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Stop Playing"  android:onClick="doClick" />
+  </LinearLayout>
+  <LinearLayout android:orientation="vertical"
+        android:layout_width="fill_parent" android:layout_height="fill_parent" >
+    <TextView android:id="@+id/recording" android:text=" "
+        android:textColor="#FF0000"
+		android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <VideoView android:id="@+id/videoView"
+        android:layout_width="250dip"  android:layout_height="200dip" />
+  </LinearLayout>
+</LinearLayout>

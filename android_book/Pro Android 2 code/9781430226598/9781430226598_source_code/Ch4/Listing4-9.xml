@@ -1,0 +1,6 @@
+<Button android:id="@+id/ccbtn1"
+    android:text="@+string/basicBtnLabel"
+    android:typeface="serif" android:textStyle="bold" 
+android:layout_width="fill_parent"
+    android:layout_height="wrap_content" />
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<Assessments>
+
+<Assessment>
+<QuestionText>Can you identify the correct parameter specifications for the main method?</QuestionText>
+<Options>
+	<Option>String[] args</Option>
+	<Option>String args</Option>
+	<Option>String args[]</Option>
+	<Option>STRING ARG</Option>
+	<Option>String argument</Option>
+	<Option>String argument()</Option>
+	<Option>String argument{}</Option>
+</Options>
+<type>MCMS</type>
+<CorrectAnswer>1,3</CorrectAnswer>
+<CorrectFeedback>Yes, that's correct! You get one point for your response.</CorrectFeedback>
+<incorrectFeedback>No, that's incorrect. The correct selections are: A and C.</incorrectFeedback>
+</Assessment>
+
+</Assessments>

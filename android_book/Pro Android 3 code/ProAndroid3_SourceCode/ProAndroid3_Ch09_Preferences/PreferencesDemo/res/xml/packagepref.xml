@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is /res/xml/packagepref.xml -->
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+                android:key="package_name_screen"
+                android:title="Package Name"
+                android:summary="Set package name">
+
+        <EditTextPreference
+                android:key="package_name_preference"
+                android:title="Set Package Name"
+                android:summary="Set the package name for generated code"
+                android:dialogTitle="Package Name" />
+
+</PreferenceScreen>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.badlogic.androidgames.gl3d"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="true">
+        <activity android:name=".GL3DBasicsStarter"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".Vertices3Test"
+                  android:configChanges="keyboard|keyboardHidden|orientation"
+                  android:screenOrientation="landscape"/>
+                  
+        <activity android:name=".PerspectiveTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation"
+                  android:screenOrientation="landscape"/>
+                  
+        <activity android:name=".ZBufferTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation"
+                  android:screenOrientation="landscape"/>
+        
+        <activity android:name=".ZBlendingTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation"
+                  android:screenOrientation="landscape"/>
+                  
+        <activity android:name=".CubeTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation"
+                  android:screenOrientation="landscape"/>
+                  
+        <activity android:name=".HierarchyTest"
+                  android:configChanges="keyboard|keyboardHidden|orientation"
+                  android:screenOrientation="landscape"/>                                           
+    </application>
+    <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="8"/>
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+</manifest> 

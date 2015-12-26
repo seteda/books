@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.androidbook.alarms"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+    <application android:icon="@drawable/icon" android:label="Test Alarms">
+        <activity android:name=".TestAlarmsDriverActivity"
+                  android:label="Test Alarms">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+                  
+    <receiver android:name=".TestReceiver">
+	    <intent-filter>
+	    	<action android:name="com.ai.android.intents.testbc"/>
+	    </intent-filter>
+    </receiver>
+    
+    <receiver android:name=".TestReceiver2">
+	    <intent-filter>
+	    	<action android:name="com.ai.android.intents.testbc"/>
+	    </intent-filter>
+    </receiver>
+    
+    
+</application>
+    <uses-sdk android:minSdkVersion="3" />
+</manifest> 

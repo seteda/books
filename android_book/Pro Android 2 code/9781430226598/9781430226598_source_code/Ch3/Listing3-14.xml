@@ -1,0 +1,7 @@
+<resources>
+  <drawable name="red_rectangle">#f00</drawable>
+  <drawable name="blue_rectangle">#0000ff</drawable>
+  <drawable name="green_rectangle">#f0f0</drawable>
+</resources>
+
+

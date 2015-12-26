@@ -1,0 +1,11 @@
+//xml/searchable.xml
+<searchable xmlns:android="http://schemas.android.com/apk/res/android"
+	android:label="@string/search_label"
+	android:hint="@string/search_hint"
+	android:searchMode="showSearchLabelAsBadge"
+	android:searchSettingsDescription="suggests urls"
+	android:includeInGlobalSearch="true"
+	android:searchSuggestAuthority="com.ai.android.search.custom.suggesturlprovider"
+	android:searchSuggestIntentAction="android.intent.action.VIEW"
+	android:searchSuggestSelection=" ? "
+/>

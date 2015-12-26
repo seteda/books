@@ -1,0 +1,7 @@
+<resources>
+  <dimen name="mysize_in_pixels">1px</dimen>
+  <dimen name="mysize_in_dp">5dp</dimen>
+  <dimen name="medium_size">100sp</dimen>
+</resources>
+
+

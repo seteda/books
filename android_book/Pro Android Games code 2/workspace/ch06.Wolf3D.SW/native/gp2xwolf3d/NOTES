@@ -1,0 +1,70 @@
+Just some random facts/thoughts/ideas/musings:
+
+* Wolfenstein 3D for: 
+  - PC [May 5, 1992]
+  - PC (Spear of Destiny) [September 18, 1992]
+  - SNES
+  - Macintosh
+  - Jaguar
+  - Apple IIGS: http://www.sheppyware.com/products/a2/wolf3d/
+  - 3DO
+
+* Rumored/Never Released?
+  - Atari Lynx
+  - Sega Genesis (was cancelled after a month)
+  - Japanese PC Version (referenced in source)
+  - Spanish PC Version (referenced in source)
+  - Japanese Mac Version (referenced in source ??)
+
+* Unofficial ports:
+  - Linux (this, xwolf, wolfgl)
+    XWolf:   http://www.sirius.demon.co.uk/xwolf/
+  - Amiga (port of my first pc wolf3d linux port)
+    http://www.silab.dsi.unimi.it/~cs556770/wolf3d/
+  - Windows
+    WolfGL:  http://www.sourceforge.net/projects/wolfgl/
+    Wolf DX: http://www.phoebe.co.uk/glwolf/
+    NewWolf: http://wolfgl.narod.ru/
+  - Acorn/Archemedes
+ 
+* PC source released Jul 21, 1995 [http://www.3dgamers.com/games/wolfenstein3d/]
+  - ftp://ftp.idsoftware.com/idstuff/source/wolfsrc.zip
+  * now many ports, projects, etc
+    - http://www.abraxis.com/brucel/wolf3d.html
+    - http://www.wolf3dbunker.com
+    - http://www.wolf3dmansion.com/index.phtml
+* Macintosh source released January 21, 2000
+  - http://www.maccentral.com/news/0001/24.wolf3d.shtml
+* TED5 source (map editor used for tons of games including wolf3d)
+  - ftp://ftp.3drealms.com/misc/ted5.zip
+* Games which used the Wolfenstein 3D Engine:
+  - Blake Stone (Aliens of Gold, Planet Strike)
+  - Corridor 7
+  - Operation Body Count
+
+Apogee FAQ (lots of information regarding Wolf3D):
+- http://www.rinkworks.com/apogee/
+
+Wolfenstein 3D FAQ:
+- http://www.wolf3d.co.uk/Wolfenstein-3D.faq
+
+How to get Wolfenstein 3D:
+- Wolfenstein 3D Shareware:
+  ftp://ftp.gamers.org/pub/games/wolf3d/official/1wolf14.zip
+  http://www.3drealms.com/downloads.html
+- Spear of Destiny Demo:
+  ftp://ftp.gamers.org/pub/3daction/00archives/speardestiny/releases/soddemo2.zip
+- Macintosh versions:
+  - Search for the shareware version (First Encounter) on Macintosh Shareware 
+    websites.
+  - The commercial Macintosh version (Second Encounter, not Third) is out of
+    print, but you may find someone selling it on websites such as
+    http://www.ebay.com.
+- Where to Buy:
+  http://www.3drealms.com
+  http://www.idsoftware.com (look for how to order direct, etc)
+  http://www.activison.com
+
+-----
+Steven Fuller
+relnev@icculus.org

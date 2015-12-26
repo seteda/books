@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<content>
+	<Cont id ="1">
+		<type>p</type>
+	</Cont>
+	<Cont id ="2">
+		<screentitle></screentitle>
+	</Cont>
+	<Cont id ="3">
+		<pageNo>19 of 37</pageNo>
+	</Cont>
+	<Cont id ="4">
+		<ost><![CDATA[]]></ost>
+		</Cont>
+	<Cont id ="5">
+		<img>./jm_m03/jm_m03_l02/imagedata/jm_m03_l02_t02_p03.swf</img>
+	</Cont>
+	<Cont id ="6">
+		<audioText></audioText>
+	</Cont>
+	<Cont id ="7">
+		<knowMore><![CDATA[#]]></knowMore>
+	</Cont>
+ </content>

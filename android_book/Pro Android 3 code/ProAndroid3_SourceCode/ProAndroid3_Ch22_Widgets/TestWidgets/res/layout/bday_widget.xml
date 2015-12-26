@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="150dp"
+    android:layout_height="120dp"
+    android:background="@drawable/box1"
+    >
+<TextView  
+	android:id="@+id/bdw_w_name"
+    android:layout_width="fill_parent" 
+    android:layout_height="30dp" 
+    android:text="Anonymous"
+    android:background="@drawable/box1"
+    android:gravity="center"
+    />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    >
+	<TextView  
+		android:id="@+id/bdw_w_days"
+	    android:layout_width="wrap_content" 
+	    android:layout_height="fill_parent" 
+	    android:text="0"
+	    android:gravity="center"
+	    android:textSize="30sp"
+	    android:layout_weight="50" 
+	    />
+	<TextView 
+	   android:id="@+id/bdw_w_button_buy"
+	    android:layout_width="wrap_content" 
+	    android:layout_height="fill_parent" 
+	    android:textSize="20sp"
+	    android:text="Buy"
+	    android:layout_weight="50" 
+	    android:background="#FF6633"
+	    android:gravity="center"
+	/>
+</LinearLayout>
+<TextView  
+	android:id="@+id/bdw_w_date"
+    android:layout_width="fill_parent" 
+    android:layout_height="30dp" 
+    android:text="1/1/2000"
+    android:background="@drawable/box1"
+    android:gravity="center"
+    />
+</LinearLayout>

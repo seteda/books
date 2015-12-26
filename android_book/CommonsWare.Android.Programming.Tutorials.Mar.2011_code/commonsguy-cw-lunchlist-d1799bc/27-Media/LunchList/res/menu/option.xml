@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:id="@+id/add"
+    android:title="Add"
+    android:icon="@drawable/ic_menu_add"
+    android:showAsAction="ifRoom|withText"
+  />
+  <item android:id="@+id/prefs"
+    android:title="Settings"
+    android:icon="@drawable/ic_menu_preferences"
+  />
+  <item android:id="@+id/help"
+    android:title="Help"
+    android:icon="@drawable/ic_menu_help"
+  />
+</menu>

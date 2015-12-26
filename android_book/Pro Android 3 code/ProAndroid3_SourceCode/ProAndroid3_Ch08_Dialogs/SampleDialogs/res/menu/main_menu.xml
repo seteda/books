@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- This group uses the default category. -->
+    <group android:id="@+id/menuGroup_Main">
+    
+        <item android:id="@+id/menu_simple_alert"
+            android:title="alert" />
+            
+        <item android:id="@+id/menu_simple_prompt"
+            android:title="prompt" />
+            
+        <item android:id="@+id/menu_toast"
+            android:title="toast" />
+            
+        <item android:id="@+id/menu_clear"
+            android:title="clear" />
+    </group>
+</menu>
