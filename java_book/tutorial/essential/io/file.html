@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Reading, Writing, and Creating Files (The Java&trade; Tutorials &gt;        
+            Essential Classes &gt; Basic I/O)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Java tutorial describes exceptions, basic input/output, concurrency, regular expressions, and the platform environment" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java exception, java input output, java threads, java regex, regular expressions, path, classpath, environment variable" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Basic I/O</a></div>
+<div class="linkAHEAD"><a href="streams.html">I/O Streams</a></div>
+<div class="linkBHEAD"><a href="bytestreams.html">Byte Streams</a></div>
+<div class="linkBHEAD"><a href="charstreams.html">Character Streams</a></div>
+<div class="linkBHEAD"><a href="buffers.html">Buffered Streams</a></div>
+<div class="linkBHEAD"><a href="scanfor.html">Scanning and Formatting</a></div>
+<div class="linkCHEAD"><a href="scanning.html">Scanning</a></div>
+<div class="linkCHEAD"><a href="formatting.html">Formatting</a></div>
+<div class="linkBHEAD"><a href="cl.html">I/O from the Command Line</a></div>
+<div class="linkBHEAD"><a href="datastreams.html">Data Streams</a></div>
+<div class="linkBHEAD"><a href="objectstreams.html">Object Streams</a></div>
+<div class="linkAHEAD"><a href="fileio.html">File I/O (Featuring NIO.2)</a></div>
+<div class="linkBHEAD"><a href="path.html">What Is a Path? (And Other File System Facts)</a></div>
+<div class="linkBHEAD"><a href="pathClass.html">The Path Class</a></div>
+<div class="linkCHEAD"><a href="pathOps.html">Path Operations</a></div>
+<div class="linkBHEAD"><a href="fileOps.html">File Operations</a></div>
+<div class="linkBHEAD"><a href="check.html">Checking a File or Directory</a></div>
+<div class="linkBHEAD"><a href="delete.html">Deleting a File or Directory</a></div>
+<div class="linkBHEAD"><a href="copy.html">Copying a File or Directory</a></div>
+<div class="linkBHEAD"><a href="move.html">Moving a File or Directory</a></div>
+<div class="linkBHEAD"><a href="fileAttr.html">Managing Metadata (File and File Store Attributes)</a></div>
+<div class="nolinkBHEAD">Reading, Writing, and Creating Files</div>
+<div class="linkBHEAD"><a href="rafs.html">Random Access Files</a></div>
+<div class="linkBHEAD"><a href="dirs.html">Creating and Reading Directories</a></div>
+<div class="linkBHEAD"><a href="links.html">Links, Symbolic or Otherwise</a></div>
+<div class="linkBHEAD"><a href="walk.html">Walking the File Tree</a></div>
+<div class="linkBHEAD"><a href="find.html">Finding Files</a></div>
+<div class="linkBHEAD"><a href="notification.html">Watching a Directory for Changes</a></div>
+<div class="linkBHEAD"><a href="misc.html">Other Useful Methods</a></div>
+<div class="linkBHEAD"><a href="legacy.html">Legacy File I/O Code</a></div>
+<div class="linkAHEAD"><a href="summary.html">Summary</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Essential Classes
+        <br /><b>Lesson:</b> Basic I/O
+        <br /><b>Section:</b> File I/O (Featuring NIO.2)
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Essential Classes</a>
+                &gt;
+                <a href="index.html" target="_top">Basic I/O</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="fileAttr.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="rafs.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Reading, Writing, and Creating Files</h1></div>
+            <div id="PageContent">
+
+<!-- Reading, Writing and Creating Files -->
+<p>This page discusses the details of reading, writing, creating, and opening files. There are a wide array of file I/O methods to choose from. To help make sense of the API, the following diagram arranges the file I/O methods by complexity.</p>
+<center><img src="../../figures/essential/io-fileiomethods.gif" width="455" height="236" align="bottom" alt="Line drawing with file I/O methods arranged from least complex (on the left) to most complex (on the right)." /></p><p class="FigureCaption"><center>File I/O Methods Arranged from Less Complex to More Complex</center></p></center><p>On the far left of the diagram are the utility methods <code>readAllBytes</code>, <code>readAllLines</code>, and the <code>write</code> methods, designed for simple, common cases. To the right of those are the methods used to iterate over a stream or lines of text, such as <code>newBufferedReader</code>, <code>newBufferedWriter</code>, then <code>newInputStream</code> and <code>newOutputStream</code>. These methods are interoperable with the <code>java.io</code> package. To the right of those are the methods for dealing with <code>ByteChannels</code>, <code>SeekableByteChannels</code>, and <code>ByteBuffers</code>, such as the <code>newByteChannel</code> method. Finally, on the far right are the methods that use <code>FileChannel</code> for advanced applications needing file locking or memory-mapped I/O.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;The methods for creating a new file enable you to specify an optional set of initial attributes for the file. For example, on a file system that supports the POSIX set of standards (such as UNIX), you can specify a file owner, group owner, or file permissions at the time the file is created. The 
+<a class="TutorialLink" target="_top" href="fileAttr.html">Managing Metadata</a> page explains file attributes, and how to access and set them.
+<hr /></div>
+<p>This page has the following topics:</p>
+<ul>
+<li><a href="#openOptions">The <code>OpenOptions</code> Parameter</a></li>
+<li><a href="#common">Commonly Used Methods for Small Files</a></li>
+<li><a href="#textfiles">Buffered I/O Methods for Text Files</a></li>
+<li><a href="#streams">Methods for Unbuffered Streams and Interoperable with <code>java.io</code> APIs</a></li>
+<li><a href="#channels">Methods for Channels and <code>ByteBuffers</code></a></li>
+<li><a href="#creating">Methods for Creating Regular and Temporary Files</a></li>
+</ul>
+<hr />
+<h2><a name="openOptions" id="openOptions">The <code>OpenOptions</code> Parameter</a></h2>
+<p>Several of the methods in this section take an optional <code>OpenOptions</code> parameter. This parameter is optional and the API tells you what the default behavior is for the method when none is specified.</p>
+<p>The following <code>StandardOpenOptions</code> enums are supported:</p>
+<ul>
+<li><code>WRITE</code> &ndash; Opens the file for write access.</li>
+<li><code>APPEND</code> &ndash; Appends the new data to the end of the file. This option is used with the <code>WRITE</code> or <code>CREATE</code> options.</li>
+<li><code>TRUNCATE_EXISTING</code> &ndash; Truncates the file to zero bytes. This option is used with the <code>WRITE</code> option.</li>
+<li><code>CREATE_NEW</code> &ndash; Creates a new file and throws an exception if the file already exists.</li>
+<li><code>CREATE</code> &ndash; Opens the file if it exists or creates a new file if it does not.</li>
+<li><code>DELETE_ON_CLOSE</code> &ndash; Deletes the file when the stream is closed. This option is useful for temporary files.</li>
+<li><code>SPARSE</code> &ndash; Hints that a newly created file will be sparse. This advanced option is honored on some file systems, such as NTFS, where large files with data &quot;gaps&quot; can be stored in a more efficient manner where those empty gaps do not consume disk space.</li>
+<li><code>SYNC</code> &ndash; Keeps the file (both content and metadata) synchronized with the underlying storage device.</li>
+<li><code>DSYNC</code> &ndash; Keeps the file content synchronized with the underlying storage device.</li>
+</ul>
+<hr />
+<h2><a name="common" id="common">Commonly Used Methods for Small Files</a></h2>
+<h3><a name="readAllLines" id="readAllLines">Reading All Bytes or Lines from a File</a></h3>
+<p>If you have a small-ish file and you would like to read its entire contents in one pass, you can use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#readAllBytes-java.nio.file.Path-"><code>readAllBytes(Path)</code></a> or 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#readAllLines-java.nio.file.Path-java.nio.charset.Charset-"><code>readAllLines(Path, Charset)</code></a> method. These methods take care of most of the work for you, such as opening and closing the stream, but are not intended for handling large files. The following code shows how to use the <code>readAllBytes</code> method:</p>
+<div class="codeblock"><pre>
+Path file = ...;
+byte[] fileArray;
+fileArray = Files.readAllBytes(file);
+</pre></div>
+<h3><a name="writeAllLines" id="writeAllLines">Writing All Bytes or Lines to a File</a></h3>
+<p>You can use one of the write methods to write bytes, or lines, to a file.</p>
+<ul>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#write-java.nio.file.Path-byte:A-java.nio.file.OpenOption...-"><code>write(Path, byte[], OpenOption...)</code></a></li>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#write-java.nio.file.Path-java.lang.Iterable-java.nio.charset.Charset-java.nio.file.OpenOption...-"><code>write(Path, Iterable&lt; extends CharSequence&gt;, Charset, OpenOption...)</code></a></li>
+</ul>
+<p>The following code snippet shows how to use a <code>write</code> method.</p>
+<div class="codeblock"><pre>
+Path file = ...;
+byte[] buf = ...;
+Files.write(file, buf);
+
+</pre></div>
+<hr />
+<h2><a name="textfiles" id="textfiles">Buffered I/O Methods for Text Files</a></h2>
+<p>The <code>java.nio.file</code> package supports channel I/O, which moves data in buffers, bypassing some of the layers that can bottleneck stream I/O.</p>
+<h3><a name="readBufferedStream" id="readBufferedStream">Reading a File by Using Buffered Stream I/O</a></h3>
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#newBufferedReader-java.nio.file.Path-java.nio.charset.Charset-"><code>newBufferedReader(Path, Charset)</code></a> method opens a file for reading, returning a <code>BufferedReader</code> that can be used to read text from a file in an efficient manner.</p>
+<p>The following code snippet shows how to use the <code>newBufferedReader</code> method to read from a file. The file is encoded in &quot;US-ASCII.&quot;</p>
+<div class="codeblock"><pre>
+Charset charset = Charset.forName("US-ASCII");
+try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
+    String line = null;
+    while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+    }
+} catch (IOException x) {
+    System.err.format("IOException: %s%n", x);
+}
+</pre></div>
+<h3><a name="writeBufferedStream" id="writeBufferedStream">Writing a File by Using Buffered Stream I/O</a></h3>
+<p>You can use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#newBufferedWriter-java.nio.file.Path-java.nio.charset.Charset-java.nio.file.OpenOption...-"><code>newBufferedWriter(Path, Charset, OpenOption...)</code></a> method to write to a file using a <code>BufferedWriter</code>.</p>
+<p>The following code snippet shows how to create a file encoded in &quot;US-ASCII&quot; using this method:</p>
+<div class="codeblock"><pre>
+Charset charset = Charset.forName("US-ASCII");
+String s = ...;
+try (BufferedWriter writer = Files.newBufferedWriter(file, charset)) {
+    writer.write(s, 0, s.length());
+} catch (IOException x) {
+    System.err.format("IOException: %s%n", x);
+}
+</pre></div>
+<hr />
+<h2><a name="streams" id="streams">Methods for Unbuffered Streams and Interoperable with <code>java.io</code> APIs</a></h2>
+<h3><a name="readStream" id="readStream">Reading a File by Using Stream I/O</a></h3>
+<p>To open a file for reading, you can use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#newInputStream-java.nio.file.Path-java.nio.file.OpenOption...-"><code>newInputStream(Path, OpenOption...)</code></a> method. This method returns an unbuffered input stream for reading bytes from the file.</p>
+<div class="codeblock"><pre>
+Path file = ...;
+try (InputStream in = Files.newInputStream(file);
+    BufferedReader reader =
+      new BufferedReader(new InputStreamReader(in))) {
+    String line = null;
+    while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+    }
+} catch (IOException x) {
+    System.err.println(x);
+}
+</pre></div>
+<h3><a name="createStream" id="createStream">Creating and Writing a File by Using Stream I/O</a></h3>
+<p>You can create a file, append to a file, or write to a file by using the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#newOutputStream-java.nio.file.Path-java.nio.file.OpenOption...-"><code>newOutputStream(Path, OpenOption...)</code></a> method. This method opens or creates a file for writing bytes and returns an unbuffered output stream.</p>
+<p>The method takes an optional <code>OpenOption</code> parameter. If no open options are specified, and the file does not exist, a new file is created. If the file exists, it is truncated. This option is equivalent to invoking the method with the <code>CREATE</code> and <code>TRUNCATE_EXISTING</code> options.</p>
+<p>The following example opens a log file. If the file does not exist, it is created. If the file exists, it is opened for appending.</p>
+<div class="codeblock"><pre>
+import static java.nio.file.StandardOpenOption.*;
+import java.nio.file.*;
+import java.io.*;
+
+public class LogFileTest {
+
+  public static void main(String[] args) {
+
+    // Convert the string to a
+    // byte array.
+    String s = "Hello World! ";
+    byte data[] = s.getBytes();
+    Path p = Paths.get("./logfile.txt");
+
+    try (OutputStream out = new BufferedOutputStream(
+      Files.newOutputStream(p, CREATE, APPEND))) {
+      out.write(data, 0, data.length);
+    } catch (IOException x) {
+      System.err.println(x);
+    }
+  }
+}
+</pre></div>
+<hr />
+<h2><a name="channels" id="channels">Methods for Channels and <code>ByteBuffers</code></a></h2>
+<h3><a name="channelio" id="channelio">Reading and Writing Files by Using Channel I/O</a></h3>
+<p>While stream I/O reads a character at a time, channel I/O reads a buffer at a time. The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/channels/ByteChannel.html"><code>ByteChannel</code></a> interface provides basic <code>read</code> and <code>write</code> functionality. A 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/channels/SeekableByteChannel.html"><code>SeekableByteChannel</code></a> is a <code>ByteChannel</code> that has the capability to maintain a position in the channel and to change that position. A <code>SeekableByteChannel</code> also supports truncating the file associated with the channel and querying the file for its size.</p>
+<p>The capability to move to different points in the file and then read from or write to that location makes random access of a file possible. See 
+<a class="TutorialLink" target="_top" href="rafs.html">Random Access Files</a> for more information.</p>
+<p>There are two methods for reading and writing channel I/O.</p>
+<ul>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#newByteChannel-java.nio.file.Path-java.nio.file.OpenOption...-"><code>newByteChannel(Path, OpenOption...)</code></a></li>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#newByteChannel-java.nio.file.Path-java.util.Set-java.nio.file.attribute.FileAttribute...-"><code>newByteChannel(Path, Set&lt;? extends OpenOption&gt;, FileAttribute&lt;?&gt;...)</code></a></li>
+</ul>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;The <code>newByteChannel</code> methods return an instance of a <code>SeekableByteChannel</code>. With a default file system, you can cast this seekable byte channel to a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/channels/FileChannel.html"><code>FileChannel</code></a> providing access to more advanced features such mapping a region of the file directly into memory for faster access, locking a region of the file so other processes cannot access it, or reading and writing bytes from an absolute position without affecting the channel&#39;s current position.
+<hr /></div>
+<p>Both <code>newByteChannel</code> methods enable you to specify a list of <code>OpenOption</code> options. The same <a href="#openOptions">open options</a> used by the <code>newOutputStream</code> methods are supported, in addition to one more option: <code>READ</code> is required because the <code>SeekableByteChannel</code> supports both reading and writing.</p>
+<p>Specifying <code>READ</code> opens the channel for reading. Specifying <code>WRITE</code> or <code>APPEND</code> opens the channel for writing. If none of these options is specified, the channel is opened for reading.</p>
+<p>The following code snippet reads a file and prints it to standard output:</p>
+<div class="codeblock"><pre>
+// Defaults to READ
+try (SeekableByteChannel sbc = Files.newByteChannel(file)) {
+    ByteBuffer buf = ByteBuffer.allocate(10);
+
+    // Read the bytes with the proper encoding for this platform.  If
+    // you skip this step, you might see something that looks like
+    // Chinese characters when you expect Latin-style characters.
+    String encoding = System.getProperty("file.encoding");
+    while (sbc.read(buf) > 0) {
+        buf.rewind();
+        System.out.print(Charset.forName(encoding).decode(buf));
+        buf.flip();
+    }
+} catch (IOException x) {
+    System.out.println("caught exception: " + x);
+</pre></div>
+<p>The following example, written for UNIX and other POSIX file systems, creates a log file with a specific set of file permissions. This code creates a log file or appends to the log file if it already exists. The log file is created with read/write permissions for owner and read only permissions for group.</p>
+<div class="codeblock"><pre>
+import static java.nio.file.StandardOpenOption.*;
+import java.nio.*;
+import java.nio.channels.*;
+import java.nio.file.*;
+import java.nio.file.attribute.*;
+import java.io.*;
+import java.util.*;
+
+public class LogFilePermissionsTest {
+
+  public static void main(String[] args) {
+  
+    // Create the set of options for appending to the file.
+    Set&lt;OpenOption&gt; options = new HashSet&lt;OpenOption&gt;();
+    options.add(APPEND);
+    options.add(CREATE);
+
+    // Create the custom permissions attribute.
+    Set&lt;PosixFilePermission&gt; perms =
+      PosixFilePermissions.fromString("rw-r-----");
+    FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; attr =
+      PosixFilePermissions.asFileAttribute(perms);
+
+    // Convert the string to a ByteBuffer.
+    String s = "Hello World! ";
+    byte data[] = s.getBytes();
+    ByteBuffer bb = ByteBuffer.wrap(data);
+    
+    Path file = Paths.get("./permissions.log");
+
+    try (SeekableByteChannel sbc =
+      Files.newByteChannel(file, options, attr)) {
+      sbc.write(bb);
+    } catch (IOException x) {
+      System.out.println("Exception thrown: " + x);
+    }
+  }
+}
+</pre></div>
+<hr />
+<h2><a name="creating" id="creating">Methods for Creating Regular and Temporary Files</a></h2>
+<h3><a name="createFile" id="createFile">Creating Files</a></h3>
+<p>You can create an empty file with an initial set of attributes by using the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#createFile-java.nio.file.Path-java.nio.file.attribute.FileAttribute...-"><code>createFile(Path, FileAttribute&lt;?&gt;)</code></a> method. For example, if, at the time of creation, you want a file to have a particular set of file permissions, use the <code>createFile</code> method to do so. If you do not specify any attributes, the file is created with default attributes. If the file already exists, <code>createFile</code> throws an exception.</p>
+<p>In a single atomic operation, the <code>createFile</code> method checks for the existence of the file and creates that file with the specified attributes, which makes the process more secure against malicious code.</p>
+<p>The following code snippet creates a file with default attributes:</p>
+<div class="codeblock"><pre>
+Path file = ...;
+try {
+    // Create the empty file with default permissions, etc.
+    Files.createFile(file);
+} catch (FileAlreadyExistsException x) {
+    System.err.format("file named %s" +
+        " already exists%n", file);
+} catch (IOException x) {
+    // Some other sort of failure, such as permissions.
+    System.err.format("createFile error: %s%n", x);
+}
+</pre></div>
+<p>
+<a class="TutorialLink" target="_top" href="fileAttr.html#posix">POSIX File Permissions</a> has an example that uses <code>createFile(Path, FileAttribute&lt;?&gt;)</code> to create a file with pre-set permissions.</p>
+<p>You can also create a new file by using the <code>newOutputStream</code> methods, as described in 
+<a class="TutorialLink" target="_top" href="file.html#createStream">Creating and Writing a File using Stream I/O</a>. If you open a new output stream and close it immediately, an empty file is created.</p>
+<h3><a name="createTempFile" id="createTempFile">Creating Temporary Files</a></h3>
+<p>You can create a temporary file using one of the following <code>createTempFile</code> methods:</p>
+<ul>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#createTempFile-java.nio.file.Path-java.lang.String-java.lang.String-java.nio.file.attribute.FileAttribute...-"><code>createTempFile(Path, String, String, FileAttribute&lt;?&gt;)</code></a></li>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#createTempFile-java.lang.String-java.lang.String-java.nio.file.attribute.FileAttribute...-"><code>createTempFile(String, String, FileAttribute&lt;?&gt;)</code></a></li>
+</ul>
+<p>The first method allows the code to specify a directory for the temporary file and the second method creates a new file in the default temporary-file directory. Both methods allow you to specify a suffix for the filename and the first method allows you to also specify a prefix. The following code snippet gives an example of the second method:</p>
+<div class="codeblock"><pre>
+try {
+    Path tempFile = Files.createTempFile(null, ".myapp");
+    System.out.format("The temporary file" +
+        " has been created: %s%n", tempFile)
+;
+} catch (IOException x) {
+    System.err.format("IOException: %s%n", x);
+}
+</pre></div>
+<p>The result of running this file would be something like the following:</p>
+<div class="codeblock"><pre>
+The temporary file has been created: /tmp/509668702974537184.myapp
+</pre></div>
+<p>The specific format of the temporary file name is platform specific.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="fileAttr.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="rafs.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Managing Metadata (File and File Store Attributes)
+        <br /><b>Next page:</b> Random Access Files
+    </div>
+</body>
+</html> 

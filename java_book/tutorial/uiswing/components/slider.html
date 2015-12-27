@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Use Sliders (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Swing Components)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Swing Components</a></div>
+<div class="linkAHEAD"><a href="toplevel.html">Using Top-Level Containers</a></div>
+<div class="linkAHEAD"><a href="jcomponent.html">The JComponent Class</a></div>
+<div class="linkAHEAD"><a href="text.html">Using Text Components</a></div>
+<div class="linkBHEAD"><a href="generaltext.html">Text Component Features</a></div>
+<div class="linkBHEAD"><a href="textapi.html">The Text Component API</a></div>
+<div class="linkAHEAD"><a href="componentlist.html">How to Use Various Components</a></div>
+<div class="linkBHEAD"><a href="applet.html">How to Make Applets</a></div>
+<div class="linkBHEAD"><a href="button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a></div>
+<div class="linkBHEAD"><a href="buttongroup.html">How to Use the ButtonGroup Component</a></div>
+<div class="linkBHEAD"><a href="colorchooser.html">How to Use Color Choosers</a></div>
+<div class="linkBHEAD"><a href="combobox.html">How to Use Combo Boxes</a></div>
+<div class="linkBHEAD"><a href="dialog.html">How to Make Dialogs</a></div>
+<div class="linkBHEAD"><a href="editorpane.html">How to Use Editor Panes and Text Panes</a></div>
+<div class="linkBHEAD"><a href="filechooser.html">How to Use File Choosers</a></div>
+<div class="linkBHEAD"><a href="formattedtextfield.html">How to Use Formatted Text Fields</a></div>
+<div class="linkBHEAD"><a href="frame.html">How to Make Frames (Main Windows)</a></div>
+<div class="linkBHEAD"><a href="internalframe.html">How to Use Internal Frames</a></div>
+<div class="linkBHEAD"><a href="label.html">How to Use Labels</a></div>
+<div class="linkBHEAD"><a href="layeredpane.html">How to Use Layered Panes</a></div>
+<div class="linkBHEAD"><a href="list.html">How to Use Lists</a></div>
+<div class="linkBHEAD"><a href="menu.html">How to Use Menus</a></div>
+<div class="linkBHEAD"><a href="panel.html">How to Use Panels</a></div>
+<div class="linkBHEAD"><a href="passwordfield.html">How to Use Password Fields</a></div>
+<div class="linkBHEAD"><a href="progress.html">How to Use Progress Bars</a></div>
+<div class="linkBHEAD"><a href="rootpane.html">How to Use Root Panes</a></div>
+<div class="linkBHEAD"><a href="scrollpane.html">How to Use Scroll Panes</a></div>
+<div class="linkBHEAD"><a href="separator.html">How to Use Separators</a></div>
+<div class="nolinkBHEAD">How to Use Sliders</div>
+<div class="linkBHEAD"><a href="spinner.html">How to Use Spinners</a></div>
+<div class="linkBHEAD"><a href="splitpane.html">How to Use Split Panes</a></div>
+<div class="linkBHEAD"><a href="tabbedpane.html">How to Use Tabbed Panes</a></div>
+<div class="linkBHEAD"><a href="table.html">How to Use Tables</a></div>
+<div class="linkBHEAD"><a href="textarea.html">How to Use Text Areas</a></div>
+<div class="linkBHEAD"><a href="textfield.html">How to Use Text Fields</a></div>
+<div class="linkBHEAD"><a href="toolbar.html">How to Use Tool Bars</a></div>
+<div class="linkBHEAD"><a href="tooltip.html">How to Use Tool Tips</a></div>
+<div class="linkBHEAD"><a href="tree.html">How to Use Trees</a></div>
+<div class="linkAHEAD"><a href="html.html">How to Use HTML in Swing Components</a></div>
+<div class="linkAHEAD"><a href="model.html">How to Use Models</a></div>
+<div class="linkAHEAD"><a href="icon.html">How to Use Icons</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use Borders</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Component Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Swing Components
+        <br /><b>Section:</b> How to Use Various Components
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Swing Components</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="separator.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="spinner.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Use Sliders</h1></div>
+            <div id="PageContent">
+
+<p>A 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html"><code>JSlider</code></a> component is intended to let the user easily enter a numeric value bounded by a minimum and maximum value. If space is limited, a <a href="spinner.html">spinner</a> is a possible alternative to a slider.</p>
+<p>The following picture shows an application that uses a slider to control animation speed:</p>
+<center><img src="../../figures/uiswing/components/SliderDemo.png" width="268" height="295" align="bottom" alt="A snapshot of SliderDemo, which uses a slider" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run SliderDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#SliderDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/SliderDemoProject/SliderDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" align="bottom" alt="Launches the SliderDemo application" /></a><br /></li>
+<li>Use the slider to adjust the animation speed.</li>
+<li>Push the slider to 0 to stop the animation.</li>
+</ol>
+<hr /></div>
+<p>Below is the code from the 
+<a class="SourceLink" target="_blank" href="../examples/components/SliderDemoProject/src/components/SliderDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/SliderDemoProject/src/components/SliderDemo.java'); return false;"><code>SliderDemo.java</code></a> file that creates the slider in the previous example.</p>
+<div class="codeblock"><pre>
+static final int FPS_MIN = 0;
+static final int FPS_MAX = 30;
+static final int FPS_INIT = 15;    //initial frames per second
+. . .
+JSlider framesPerSecond = new JSlider(JSlider.HORIZONTAL,
+                                      FPS_MIN, FPS_MAX, FPS_INIT);
+framesPerSecond.addChangeListener(this);
+
+//Turn on labels at major tick marks.
+framesPerSecond.setMajorTickSpacing(10);
+framesPerSecond.setMinorTickSpacing(1);
+framesPerSecond.setPaintTicks(true);
+framesPerSecond.setPaintLabels(true);
+</pre></div>
+<p>By default, spacing for major and minor tick marks is zero. To see tick marks, you must explicitly set the spacing for either major or minor tick marks (or both) to a non-zero value and call the <code>setPaintTicks(true)</code> method. However, you also need labels for your tick marks. To display standard, numeric labels at major tick mark locations, set the major tick spacing, then call the <code>setPaintLabels(true)</code> method. The example program provides labels for its slider in this way. But you are not constrained to using only these labels. <a href="#labels">Customizing Labels on a Slider</a> shows you how to customize slider labels. In addition, a slider feature allows you to set a font for the <code>JSlider</code> component.</p>
+<div class="codeblock"><pre>
+Font font = new Font("Serif", Font.ITALIC, 15);
+framesPerSecond.setFont(font);
+</pre></div>
+<p>When you move the slider&#39;s knob, the <code>stateChanged</code> method of the slider&#39;s <code>ChangeListener</code> is called. For information about change listeners, refer to <a href="../events/changelistener.html">How to Write a Change Listener</a>. Here is the change listener code that reacts to slider value changes:</p>
+<div class="codeblock"><pre>
+public void stateChanged(ChangeEvent e) {
+    JSlider source = (JSlider)e.getSource();
+    if (!source.getValueIsAdjusting()) {
+        int fps = (int)source.getValue();
+        if (fps == 0) {
+            if (!frozen) stopAnimation();
+        } else {
+            delay = 1000 / fps;
+            timer.setDelay(delay);
+            timer.setInitialDelay(delay * 10);
+            if (frozen) startAnimation();
+        }
+    }
+}
+</pre></div>
+<p>Notice that the <code>stateChanged</code> method changes the animation speed only if the <code>getValueIsAdjusting</code> method returns <code>false</code>. Many change events are fired as the user moves the slider knob. This program is interested only in the final result of the user&#39;s action.</p>
+<h2><a name="labels" id="labels">Customizing Labels on a Slider</a></h2>
+<p>The demo below is a modified version of the SliderDemo that uses a slider with custom labels:</p>
+<center><img src="../../figures/uiswing/components/SliderDemo2.png" width="334" height="254" align="bottom" alt="A snapshot of SliderDemo2, which uses a slider with custom labels" /></center><p style="text-align: center"></p>
+<p>The source for this program can be found in 
+<a class="SourceLink" target="_blank" href="../examples/components/SliderDemo2Project/src/components/SliderDemo2.java" onclick="showCode('../../displayCode.html', '../examples/components/SliderDemo2Project/src/components/SliderDemo2.java'); return false;"><code>SliderDemo2.java</code></a>. Click the Launch button to run SliderDemo2 using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#SliderDemo2">example index</a>.</p>
+<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/SliderDemo2Project/SliderDemo2.jnlp"><img src="../../images/jws-launch-button.png" width="88" align="bottom" alt="Launches the SliderDemo2 application" /></a><br />
+<p>The following code creates the slider and customizes its labels:</p>
+<div class="codeblock"><pre>
+//Create the slider
+JSlider framesPerSecond = new JSlider(JSlider.VERTICAL,
+                                      FPS_MIN, FPS_MAX, FPS_INIT);
+framesPerSecond.addChangeListener(this);
+framesPerSecond.setMajorTickSpacing(10);
+framesPerSecond.setPaintTicks(true);
+
+//Create the label table
+Hashtable labelTable = new Hashtable();
+labelTable.put( new Integer( 0 ), new JLabel("Stop") );
+labelTable.put( new Integer( FPS_MAX/10 ), new JLabel("Slow") );
+labelTable.put( new Integer( FPS_MAX ), new JLabel("Fast") );
+framesPerSecond.setLabelTable( labelTable );
+
+framesPerSecond.setPaintLabels(true);
+</pre></div>
+<p>Each key-value pair in the hashtable specified with the <code>setLabelTable</code> method gives the position and the value of one label. The hashtable key must be of an <code>Integer</code> type and must have a value within the slider&#39;s range at which to place the label. The hashtable value associated with each key must be a <code>Component</code> object. This demo uses <code>JLabel</code> instances with text only. An interesting modification would be to use <code>JLabel</code> instances with icons or buttons that move the knob to the label&#39;s position.</p>
+<p>Use the <code>createStandardLabels</code> method of the <code>JSlider</code> class to create a set of numeric labels positioned at a specific interval. You can also modify the table returned by the <code>createStandardLabels</code> method in order to customize it.</p>
+<h2><a name="api" id="api">The Slider API</a></h2>
+<p>The following tables list the commonly used <code>JSlider</code> constructors and methods. See <a href="jcomponent.html">The JComponent Class</a> for tables of commonly used inherited methods.</p>
+<p>The API for using sliders is divided into these categories:</p>
+<ul>
+<li><a href="#creating">Creating the Slider</a></li>
+<li><a href="#looks">Fine Tuning the Slider&#39;s Appearance</a></li>
+<li><a href="#operation">Watching the Slider Operate</a></li>
+<li><a href="#modelapi">Working Directly with the Data Model</a></li>
+</ul>
+<table border="1" summary="methods for creating the slider">
+<caption><a name="creating" id="creating">Creating the Slider</a></caption>
+<tr>
+<th id="h1">Constructor</th>
+<th id="h2">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#JSlider--">JSlider()</a></td>
+<td headers="h2">Creates a horizontal slider with the range 0 to 100 and an initial value of 50.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#JSlider-int-int-">JSlider(int min, int max)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#JSlider-int-int-int-">JSlider(int min, int max, int value)</a></td>
+<td headers="h2">Creates a horizontal slider with the specified minimum and maximum values. The third <code>int</code> argument, when present, specifies the slider&#39;s initial value.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#JSlider-int-">JSlider(int orientation)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#JSlider-int-int-int-int-">JSlider(int orientation, int min, int max, int value)</a></td>
+<td headers="h2">Creates a slider with the specified orientation, which must be either <code>JSlider.HORIZONTAL</code> or <code>JSlider.VERTICAL</code>. The last three <code>int</code> arguments, when present, specify the slider&#39;s minimum, maximum, and initial values, respectively.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#JSlider-javax.swing.BoundedRangeModel-">JSlider(BoundedRangeModel)</a></td>
+<td headers="h2">Creates a horizontal slider with the specified model, which manages the slider&#39;s minimum, maximum, and current values and their relationships.</td>
+</tr>
+</table>
+<table border="1" summary="methods for fine tuning the slider's appearance">
+<caption><a name="looks" id="looks">Fine Tuning the Slider&#39;s Appearance</a></caption>
+<tr>
+<th id="h101">Method</th>
+<th id="h102">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setValue-int-">void setValue(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getValue--">int getValue()</a></td>
+<td headers="h102">Sets or gets the slider&#39;s current value. The set method also positions the slider&#39;s knob.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setOrientation-int-">void setOrientation(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getOrientation--">int getOrientation()</a></td>
+<td headers="h102">Sets or gets the orientation of the slider. Possible values are <code>JSlider.HORIZONTAL</code> or <code>JSlider.VERTICAL</code>.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setInverted-boolean-">void setInverted(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getInverted--">boolean getInverted()</a></td>
+<td headers="h102">Sets or gets whether the maximum is shown at the left of a horizontal slider or at the bottom of a vertical one, thereby inverting the slider&#39;s range.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setMinimum-int-">void setMinimum(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getMinimum--">int getMinimum()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setMaximum-int-">void setMaximum(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getMaximum--">int getMaximum()</a></td>
+<td headers="h102">Sets or gets the minimum or maximum values of the slider. Together, these methods set or get the slider&#39;s range.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setMajorTickSpacing-int-">void setMajorTickSpacing(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getMajorTickSpacing--">int getMajorTickSpacing()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setMinorTickSpacing-int-">void setMinorTickSpacing(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getMinorTickSpacing--">int getMinorTickSpacing()</a></td>
+<td headers="h102">Sets or gets the range between major and minor ticks. You must call <code>setPaintTicks(true)</code> for the tick marks to appear.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setPaintTicks-boolean-">void setPaintTicks(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getPaintTicks--">boolean getPaintTicks()</a></td>
+<td headers="h102">Sets or gets whether tick marks are painted on the slider.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setPaintLabels-boolean-">void setPaintLabels(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getPaintLabels--">boolean getPaintLabels()</a></td>
+<td headers="h102">Sets or gets whether labels are painted on the slider. You can provide custom labels with <code>setLabelTable</code> or get automatic labels by setting the major tick spacing to a non-zero value.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setLabelTable-java.util.Dictionary-">void setLabelTable(Dictionary)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getLabelTable--">Dictionary getLabelTable()</a></td>
+<td headers="h102">Sets or gets the labels for the slider. You must call <code>setPaintLabels(true)</code> for the labels to appear.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#createStandardLabels-int-">Hashtable createStandardLabels(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#createStandardLabels-int-int-">Hashtable createStandardLabels(int, int)</a></td>
+<td headers="h102">Creates a standard set of numeric labels. The first <code>int</code> argument specifies the increment, the second <code>int</code> argument specifies the starting point. When left unspecified, the starting point is set to the slider&#39;s minimum number.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setFont-java.awt.Font-">setFont(java.awt.Font)</a></td>
+<td headers="h102">Sets the font for slider labels .</td>
+</tr>
+</table>
+<table border="1" summary="methods for watching the slider operate">
+<caption><a name="operation" id="operation">Watching the Slider Operate</a></caption>
+<tr>
+<th id="h201">Method</th>
+<th id="h202">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#addChangeListener-javax.swing.event.ChangeListener-">void addChangeListener(ChangeListener)</a></td>
+<td headers="h202">Registers a change listener with the slider.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getValueIsAdjusting--">boolean getValueIsAdjusting()</a></td>
+<td headers="h202">Determines whether the user gesture to move the slider&#39;s knob is complete.</td>
+</tr>
+</table>
+<table border="1" summary="methods for working directly with the data model">
+<caption><a name="modelapi" id="modelapi">Working Directly with the Data Model</a></caption>
+<tr>
+<th id="h301">Class, Interface, or Method</th>
+<th id="h302">Purpose</th>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/BoundedRangeModel.html">BoundedRangeModel</a></td>
+<td headers="h302">The interface required for the slider&#39;s data model.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/DefaultBoundedRangeModel.html">DefaultBoundedRangeModel</a></td>
+<td headers="h302">An implementation of the <code>BoundedRangeModel</code> interface.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#setModel-javax.swing.BoundedRangeModel-">void setModel()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSlider.html#getModel--">getModel()</a><br />
+<em>(in <code>JSlider</code>)</em></td>
+<td headers="h302">Sets or gets the data model used by the slider. You can also set the model by using the constructor that takes a single argument of type <code>BoundedRangeModel</code>.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples that Use Sliders</a></h2>
+<p>This table shows the examples that use <code>JSlider</code> and where those examples are described.</p>
+<table summary="Information about examples">
+<tr>
+<th id="h401" align="left">Example</th>
+<th id="h402" align="left">Where Described</th>
+<th id="h403" align="left">Notes</th>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#SliderDemo"><code>SliderDemo</code></a></td>
+<td headers="h402">This section</td>
+<td headers="h403">Shows a slider with labels at major tick marks.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#SliderDemo2"><code>SliderDemo2</code></a></td>
+<td headers="h402">This section</td>
+<td headers="h403">Shows a vertical slider with custom labels.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#Converter"><code>Converter</code></a></td>
+<td headers="h402"><a href="model.html">Using Models</a>, <a href="panel.html">How to Use Panels</a></td>
+<td headers="h403">A measurement conversion application featuring two sliders that share data and have custom <code>BoundedRangeModel</code>s.</td>
+</tr>
+</table>
+
+<p>If you are programming in JavaFX, see
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/slider.htm">Slider</a>.</p>
+
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="separator.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="spinner.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Use Separators
+        <br /><b>Next page:</b> How to Use Spinners
+    </div>
+</body>
+</html> 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="webstart_ComponentArch_DynamicTreeDemo" default="default" basedir=".">
+    <import file="nbproject/build-impl.xml"/>
+        <target name="-post-jar">        
+            <copy file="${src.dir}/JavaWebStartAppPage.html" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/dynamictree_webstart.jnlp" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/JavaWebStartAppPage_No_Codebase.html" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/dynamictree_webstart_no_codebase.jnlp" todir="${dist.jar.dir}"/>            
+        </target>
+    <target name="-do-jar-with-libraries-without-manifest"/>
+
+</project>

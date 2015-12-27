@@ -1,0 +1,29 @@
+<html lang="en-US">
+<title> Java Security Example: Writing Files</title>
+<h1> Java Security Example: Writing Files </h1>
+<hr>
+
+Here's an applet that tries to write to the file named "writetest".
+
+<p>
+<applet code=WriteFile.class width=500 height=150 alt="WritingFile applet">
+</applet></p>
+<p>
+If you don't see the applet, download and install
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">
+the JDK or JRE.</a>
+</p>
+<p>
+Here's the <a href=WriteFile.java>source</a>. 
+<p>
+
+This applet won't work unless you've configured your policy
+to allow it to write such a file; if not, you
+will see an AccessControlException.
+
+If you've configured your system to 
+allow applets from this applets' location to write the specified file, 
+check your current directory!
+You'll find a file there named "writetest". 
+
+</center>

@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Use Combo Boxes (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Swing Components)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Swing Components</a></div>
+<div class="linkAHEAD"><a href="toplevel.html">Using Top-Level Containers</a></div>
+<div class="linkAHEAD"><a href="jcomponent.html">The JComponent Class</a></div>
+<div class="linkAHEAD"><a href="text.html">Using Text Components</a></div>
+<div class="linkBHEAD"><a href="generaltext.html">Text Component Features</a></div>
+<div class="linkBHEAD"><a href="textapi.html">The Text Component API</a></div>
+<div class="linkAHEAD"><a href="componentlist.html">How to Use Various Components</a></div>
+<div class="linkBHEAD"><a href="applet.html">How to Make Applets</a></div>
+<div class="linkBHEAD"><a href="button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a></div>
+<div class="linkBHEAD"><a href="buttongroup.html">How to Use the ButtonGroup Component</a></div>
+<div class="linkBHEAD"><a href="colorchooser.html">How to Use Color Choosers</a></div>
+<div class="nolinkBHEAD">How to Use Combo Boxes</div>
+<div class="linkBHEAD"><a href="dialog.html">How to Make Dialogs</a></div>
+<div class="linkBHEAD"><a href="editorpane.html">How to Use Editor Panes and Text Panes</a></div>
+<div class="linkBHEAD"><a href="filechooser.html">How to Use File Choosers</a></div>
+<div class="linkBHEAD"><a href="formattedtextfield.html">How to Use Formatted Text Fields</a></div>
+<div class="linkBHEAD"><a href="frame.html">How to Make Frames (Main Windows)</a></div>
+<div class="linkBHEAD"><a href="internalframe.html">How to Use Internal Frames</a></div>
+<div class="linkBHEAD"><a href="label.html">How to Use Labels</a></div>
+<div class="linkBHEAD"><a href="layeredpane.html">How to Use Layered Panes</a></div>
+<div class="linkBHEAD"><a href="list.html">How to Use Lists</a></div>
+<div class="linkBHEAD"><a href="menu.html">How to Use Menus</a></div>
+<div class="linkBHEAD"><a href="panel.html">How to Use Panels</a></div>
+<div class="linkBHEAD"><a href="passwordfield.html">How to Use Password Fields</a></div>
+<div class="linkBHEAD"><a href="progress.html">How to Use Progress Bars</a></div>
+<div class="linkBHEAD"><a href="rootpane.html">How to Use Root Panes</a></div>
+<div class="linkBHEAD"><a href="scrollpane.html">How to Use Scroll Panes</a></div>
+<div class="linkBHEAD"><a href="separator.html">How to Use Separators</a></div>
+<div class="linkBHEAD"><a href="slider.html">How to Use Sliders</a></div>
+<div class="linkBHEAD"><a href="spinner.html">How to Use Spinners</a></div>
+<div class="linkBHEAD"><a href="splitpane.html">How to Use Split Panes</a></div>
+<div class="linkBHEAD"><a href="tabbedpane.html">How to Use Tabbed Panes</a></div>
+<div class="linkBHEAD"><a href="table.html">How to Use Tables</a></div>
+<div class="linkBHEAD"><a href="textarea.html">How to Use Text Areas</a></div>
+<div class="linkBHEAD"><a href="textfield.html">How to Use Text Fields</a></div>
+<div class="linkBHEAD"><a href="toolbar.html">How to Use Tool Bars</a></div>
+<div class="linkBHEAD"><a href="tooltip.html">How to Use Tool Tips</a></div>
+<div class="linkBHEAD"><a href="tree.html">How to Use Trees</a></div>
+<div class="linkAHEAD"><a href="html.html">How to Use HTML in Swing Components</a></div>
+<div class="linkAHEAD"><a href="model.html">How to Use Models</a></div>
+<div class="linkAHEAD"><a href="icon.html">How to Use Icons</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use Borders</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Component Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Swing Components
+        <br /><b>Section:</b> How to Use Various Components
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Swing Components</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="colorchooser.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="dialog.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Use Combo Boxes</h1></div>
+            <div id="PageContent">
+
+<!-- How to Use Combo Boxes -->
+<p>A 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html"><code>JComboBox</code></a>, which lets the user choose one of several choices, can have two very different forms. The default form is the uneditable combo box, which features a button and a drop-down list of values. The second form, called the editable combo box, features a text field with a small button abutting it. The user can type a value in the text field or click the button to display a drop-down list. Here&#39;s what the two forms of combo boxes look like in the Java look and feel:</p>
+<p style="text-align: center"></p>
+<table summary="" datatable="0">
+<tr>
+<td>
+<center><img src="../../figures/uiswing/components/UneditableComboMenuMetal.png" width="177" height="25" align="bottom" alt="An uneditable combo box" /></center></td>
+<td>
+<center><img src="../../figures/uiswing/components/EditableComboBoxMenuMetal.png" width="211" height="25" align="bottom" alt="An editable combo box" /></center></td>
+</tr>
+<tr valign="top">
+<td>
+<center><img src="../../figures/uiswing/components/UneditableComboMenu2Metal.png" width="177" height="117" align="bottom" alt="An uneditable combo box" /></center></td>
+<td>
+<center><img src="../../figures/uiswing/components/EditableComboBoxMenuMetal2.png" width="211" height="171" align="bottom" alt="An editable combo box" /></center></td>
+</tr>
+<tr>
+<td style="font-weight: bold">Uneditable combo box, before (top)<br />
+and after the button is clicked</td>
+<td style="font-weight: bold">Editable combo box, before and after<br />
+the arrow button is clicked</td>
+</tr>
+</table>
+<p>Combo boxes require little screen space, and their editable (text field) form is useful for letting the user quickly choose a value without limiting the user to the displayed values. Other components that can display one-of-many choices are groups of <a href="button.html#radiobutton">radio buttons</a> and <a href="list.html">lists</a>. Groups of radio buttons are generally the easiest for users to understand, but combo boxes can be more appropriate when space is limited or more than a few choices are available. Lists are not terribly attractive, but they&#39;re more appropriate than combo boxes when the number of items is large (say, over 20) or when selecting multiple items might be valid.</p>
+<p>Because editable and uneditable combo boxes are so different, this section treats them separately. This section covers these topics:</p>
+<ul>
+<li><a href="#uneditable">Using an Uneditable Combo Box</a></li>
+<li><a href="#listeners">Handling Events on a Combo Box</a></li>
+<li><a href="#editable">Using an Editable Combo Box</a></li>
+<li><a href="#renderer">Providing a Custom Renderer</a></li>
+<li><a href="#api">The Combo Box API</a></li>
+<li><a href="#eg">Examples that Use Combo Boxes</a></li>
+</ul>
+<p><a name="uneditable" id="uneditable"></a></p>
+<h2><a name="uneditable__1" id="uneditable__1">Using an Uneditable Combo Box</a></h2>
+<p>The application shown here uses an uneditable combo box for choosing a pet picture:</p>
+<center><img src="../../figures/uiswing/components/ComboBoxDemoMetal.png" width="225" height="231" align="bottom" alt="An uneditable combo box" /></center><p><a name="trythis" id="trythis"></a></p>
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol><!-- *******  boilerplate stuff ******* -->
+<li>Click the Launch button to run the ComboBox Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#ComboBoxDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ComboBoxDemoProject/ComboBoxDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ComboBoxDemo example" /></a><br />
+<p><!--  ******* end boilerplate stuff  *******  -->
+ <!-- 
+
+<li> <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ComboBoxDemoProject/ComboBoxDemo.jnlp">Run ComboBoxDemo</a> (
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>).    Or, to compile and run the example yourself,
+     consult the
+     <a href="../examples/components/index.html#ComboBoxDemo">example index</a>.
+--></p>
+</li>
+<li>Choose an animal name from the combo box to view its picture.</li>
+<li>Compare the operation and GUI of this program to one that uses radio buttons: <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/RadioButtonDemoProject/RadioButtonDemo.jnlp">run RadioButtonDemo</a> (it requires release 6). You might want to compare the source code as well: 
+<a class="SourceLink" target="_blank" href="../examples/components/ComboBoxDemoProject/src/components/ComboBoxDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/ComboBoxDemoProject/src/components/ComboBoxDemo.java'); return false;"><code>ComboBoxDemo.java</code></a> vs. 
+<a class="SourceLink" target="_blank" href="../examples/components/RadioButtonDemoProject/src/components/RadioButtonDemo.java " onclick="showCode('../../displayCode.html', '../examples/components/RadioButtonDemoProject/src/components/RadioButtonDemo.java '); return false;"><code>RadioButtonDemo.java</code></a>.</li>
+</ol>
+<hr /></div>
+<p>The following code, taken from 
+<a class="SourceLink" target="_blank" href="../examples/components/ComboBoxDemoProject/src/components/ComboBoxDemo.java " onclick="showCode('../../displayCode.html', '../examples/components/ComboBoxDemoProject/src/components/ComboBoxDemo.java '); return false;"><code>ComboBoxDemo.java</code></a>, creates an uneditable combo box and sets it up:</p>
+<div class="codeblock"><pre>
+String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
+
+//Create the combo box, select item at index 4.
+//Indices start at 0, so 4 specifies the pig.
+JComboBox petList = new JComboBox(petStrings);
+petList.setSelectedIndex(4);
+petList.addActionListener(this);
+</pre></div>
+<p>This combo box contains an array of strings, but you could just as easily use icons instead. To put anything else into a combo box or to customize how the items in a combo box look, you need to write a custom renderer. An editable combo box would also need a custom editor. Refer to <a href="#renderer">Providing a Custom Renderer</a> for information and an example.</p>
+<p>The preceding code registers an action listener on the combo box. To see the action listener implementation and learn about other types of listeners supported by combo box, refer to <a href="#listeners">Handling Events on a Combo Box</a>.</p>
+<p>No matter which constructor you use, a combo box uses a combo box model to contain and manage the items in its menu. When you initialize a combo box with an array or a vector, the combo box creates a default model object for you. As with other Swing components, you can customize a combo box in part by implementing a custom model &#151; an object that implements the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ComboBoxModel.html"><code>ComboBoxModel</code></a> interface. <a name="datsun" id="datsun">&nbsp;</a></p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>Be careful when implementing a custom model for a combo box. The <code>JComboBox</code> methods that change the items in the combo box&#39;s menu, such as <code>insertItemAt</code>, work only if the data model implements the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/MutableComboBoxModel.html"><code>MutableComboBoxModel</code></a> interface (a subinterface of <code>ComboBoxModel</code>). Refer to the <a href="#api">API</a> tables to see which methods are affected.</p>
+<p>Something else to watch out for &#151; even for uneditable combo boxes &#151; is ensuring that your custom model fires 
+<a class="TutorialLink" target="_top" href="../events/listdatalistener.html">list data events</a> when the combo box&#39;s data or state changes. Even immutable combo box models, whose data never changes, must fire a list data event (a <code>CONTENTS_CHANGED</code> event) when the selection changes. One way to get the list data event firing code for free is to make your combo box model a subclass of 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractListModel.html"><code>AbstractListModel</code></a>.</p>
+<hr /></div>
+<h2><a name="listeners" id="listeners">Handling Events on a Combo Box</a></h2>
+<p>Here&#39;s the code from <code>ComboBoxDemo.java</code> that registers and implements an action listener on the combo box:</p>
+<div class="codeblock"><pre>
+public class ComboBoxDemo ... implements ActionListener {
+    . . .
+        petList.addActionListener(this) {
+    . . .
+    public void actionPerformed(ActionEvent e) {
+        JComboBox cb = (JComboBox)e.getSource();
+        String petName = (String)cb.getSelectedItem();
+        updateLabel(petName);
+    }
+    . . .
+}
+</pre></div>
+<p>This action listener gets the newly selected item from the combo box, uses it to compute the name of an image file, and updates a label to display the image. The combo box fires an action event when the user selects an item from the combo box&#39;s menu. See 
+<a class="TutorialLink" target="_top" href="../events/actionlistener.html">How to Write an Action Listener</a>, for general information about implementing action listeners.</p>
+<p>Combo boxes also generate item events, which are fired when any of the items&#39; selection state changes. Only one item at a time can be selected in a combo box, so when the user makes a new selection the previously selected item becomes unselected. Thus two item events are fired each time the user selects a different item from the menu. If the user chooses the same item, no item events are fired. Use <code>addItemListener</code> to register an item listener on a combo box. 
+<a class="TutorialLink" target="_top" href="../events/itemlistener.html">How to Write an Item Listener</a> gives general information about implementing item listeners.</p>
+<p>Although <code>JComboBox</code> inherits methods to register listeners for low-level events &#151; focus, key, and mouse events, for example &#151; we recommend that you don&#39;t listen for low-level events on a combo box. Here&#39;s why: A combo box is a <em>compound component</em> &#151; it is comprised of two or more other components. The combo box itself fires high-level events such as action events. Its subcomponents fire low-level events such as mouse, key, and focus events. The low-level events and the subcomponent that fires them are look-and-feel-dependent. To avoid writing look-and-feel-dependent code, you should listen only for high-level events on a compound component such as a combo box. For information about events, including a discussion about high- and low-level events, refer to 
+<a class="TutorialLink" target="_top" href="../events/index.html">Writing Event Listeners</a>.</p>
+<h2><a name="editable" id="editable">Using an Editable Combo Box</a></h2>
+<p>Here&#39;s a picture of a demo application that uses an editable combo box to enter a pattern with which to format dates.</p>
+<center><img src="../../figures/uiswing/components/ComboBoxDemo2Metal.png" width="239" height="177" align="bottom" alt="An editable combo box" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol><!-- *******  boilerplate stuff ******* -->
+<li>Click the Launch button to run the ComboBox2 Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#ComboBoxDemo2">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ComboBoxDemo2Project/ComboBoxDemo2.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ComboBoxDemo2 example" /></a><br />
+<p><!--  ******* end boilerplate stuff  *******  -->
+ <!-- 
+<li> <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ComboBoxDemo2Project/ComboBoxDemo2.jnlp">Run ComboBoxDemo2</a> (
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>).    Or, to compile and run the example yourself,
+     consult the
+     <a href="../examples/components/index.html#ComboBoxDemo2">example index</a>.
+        
+        --></p>
+</li>
+<li>Enter a new pattern by choosing one from the combo box&#39;s menu. The program reformats the current date and time.</li>
+<li>Enter a new pattern by typing one in and pressing Enter. Again the program reformats the current date and time.</li>
+</ol>
+<hr /></div>
+<p>The following code, taken from 
+<a class="SourceLink" target="_blank" href="../examples/components/ComboBoxDemo2Project/src/components/ComboBoxDemo2.java" onclick="showCode('../../displayCode.html', '../examples/components/ComboBoxDemo2Project/src/components/ComboBoxDemo2.java'); return false;"><code>ComboBoxDemo2.java</code></a>, creates and sets up the combo box:</p>
+<div class="codeblock"><pre>
+String[] patternExamples = {
+         "dd MMMMM yyyy",
+         "dd.MM.yy",
+         "MM/dd/yy",
+         "yyyy.MM.dd G 'at' hh:mm:ss z",
+         "EEE, MMM d, ''yy",
+         "h:mm a",
+         "H:mm:ss:SSS",
+         "K:mm a,z",
+         "yyyy.MMMMM.dd GGG hh:mm aaa"
+};
+. . .
+JComboBox patternList = new JComboBox(patternExamples);
+<strong>patternList.setEditable(true);</strong>
+patternList.addActionListener(this);
+</pre></div>
+<p>This code is very similar to the previous example, but warrants a few words of explanation. The bold line of code explicitly turns on editing to allow the user to type values in. This is necessary because, by default, a combo box is not editable. This particular example allows editing on the combo box because its menu does not provide all possible date formatting patterns, just shortcuts to frequently used patterns.</p>
+<p>An editable combo box fires an action event when the user chooses an item from the menu and when the user types Enter. Note that the menu remains unchanged when the user enters a value into the combo box. If you want, you can easily write an action listener that adds a new item to the combo box&#39;s menu each time the user types in a unique value.</p>
+<p>See 
+<a class="TutorialLink" target="_top" href="../../i18n/index.html">Internationalization</a> to learn more about formatting dates and other types of data.</p>
+<h2><a name="renderer" id="renderer">Providing a Custom Renderer</a></h2>
+<p><a name="renderer__1" id="renderer__1">A combo box uses a <em>renderer</em> to display each item in its menu. If the combo box is uneditable, it also uses the renderer to display the currently selected item. An editable combo box, on the other hand, uses an <em>editor</em> to display the selected item. A renderer for a combo box must implement the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ListCellRenderer.html"><code>ListCellRenderer</code></a> interface. A combo box&#39;s editor must implement 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ComboBoxEditor.html"><code>ComboBoxEditor</code></a>. This section shows how to provide a custom renderer for an uneditable combo box.</a></p>
+<p>The default renderer knows how to render strings and icons. If you put other objects in a combo box, the default renderer calls the <code>toString</code> method to provide a string to display. You can customize the way a combo box renders itself and its items by implementing your own <code>ListCellRenderer</code>.</p>
+<p>Here&#39;s a picture of an application that uses a combo box with a custom renderer:</p>
+<center><img src="../../figures/uiswing/components/CustomComboBoxDemoMetal.png" width="274" height="211" align="bottom" alt="A combo box with a custom renderer" /></center><p>Click the Launch button to run the CustomComboBox Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#CustomComboBoxDemo">example index</a>.</p>
+<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/CustomComboBoxDemoProject/CustomComboBoxDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the CustomComboBoxDemo example" /></a><br />
+<p>The full source code for this example is in 
+<a class="SourceLink" target="_blank" href="../examples/components/CustomComboBoxDemoProject/src/components/CustomComboBoxDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/CustomComboBoxDemoProject/src/components/CustomComboBoxDemo.java'); return false;"><code>CustomComboBoxDemo.java</code></a>. To get the image files it requires, consult the <a href="../examples/components/index.html#CustomComboBoxDemo">example index</a>.</p>
+<p>The following statements from the example create an instance of <code>ComboBoxRenderer</code> (a custom class) and set up the instance as the combo box&#39;s renderer:</p>
+<div class="codeblock"><pre>
+JComboBox petList = new JComboBox(intArray);
+. . .
+ComboBoxRenderer renderer = new ComboBoxRenderer();
+renderer.setPreferredSize(new Dimension(200, 130));
+petList.setRenderer(renderer);
+petList.setMaximumRowCount(3);
+</pre></div>
+<p>The last line sets the combo box&#39;s maximum row count, which determines the number of items visible when the menu is displayed. If the number of items in the combo box is larger than its maximum row count, the menu has a scroll bar. The icons are pretty big for a menu, so our code limits the number of rows to 3. Here&#39;s the implementation of <code>ComboBoxRenderer</code>, a renderer that puts an icon and text side-by-side:</p>
+<div class="codeblock"><pre>
+class ComboBoxRenderer extends JLabel
+                       implements ListCellRenderer {
+    . . .
+    public ComboBoxRenderer() {
+        setOpaque(true);
+        setHorizontalAlignment(CENTER);
+        setVerticalAlignment(CENTER);
+    }
+
+    /*
+     * This method finds the image and text corresponding
+     * to the selected value and returns the label, set up
+     * to display the text and image.
+     */
+    public Component getListCellRendererComponent(
+                                       JList list,
+                                       Object value,
+                                       int index,
+                                       boolean isSelected,
+                                       boolean cellHasFocus) {
+        //Get the selected index. (The index param isn't
+        //always valid, so just use the value.)
+        int selectedIndex = ((Integer)value).intValue();
+
+        if (isSelected) {
+            setBackground(list.getSelectionBackground());
+            setForeground(list.getSelectionForeground());
+        } else {
+            setBackground(list.getBackground());
+            setForeground(list.getForeground());
+        }
+
+        //Set the icon and text.  If icon was null, say so.
+        ImageIcon icon = images[selectedIndex];
+        String pet = petStrings[selectedIndex];
+        setIcon(icon);
+        if (icon != null) {
+            setText(pet);
+            setFont(list.getFont());
+        } else {
+            setUhOhText(pet + " (no image available)",
+                        list.getFont());
+        }
+
+        return this;
+    }
+    . . .
+}
+</pre></div>
+<p>As a <code>ListCellRenderer</code>, <code>ComboBoxRenderer</code> implements a method called <code>getListCellRendererComponent</code>, which returns a component whose <code>paintComponent</code> method is used to display the combo box and each of its items. The easiest way to display an image and an icon is to use a label. So <code>ComboBoxRenderer</code> is a subclass of label and returns itself. The implementation of <code>getListCellRendererComponent</code> configures the renderer to display the currently selected icon and its description.</p>
+<p>These arguments are passed to <code>getListCellRendererComponent</code>:</p>
+<ul>
+<li><code>JList list</code> &#151; a list object used behind the scenes to display the items. The example uses this object&#39;s colors to set up foreground and background colors.</li>
+<li><code>Object value</code> &#151; the object to render. An <code>Integer</code> in this example.</li>
+<li><code>int index</code> &#151; the index of the object to render.</li>
+<li><code>boolean isSelected</code> &#151; indicates whether the object to render is selected. Used by the example to determine which colors to use.</li>
+<li><code>boolean cellHasFocus</code> &#151; indicates whether the object to render has the focus.</li>
+</ul>
+<p>Note that combo boxes and <a href="list.html">lists</a> use the same type of renderer &#151; <code>ListCellRenderer</code>. You can save yourself some time by sharing renderers between combo boxes and lists, if it makes sense for your program.</p>
+<h2><a name="api" id="api">The Combo Box API</a></h2>
+<p>The following tables list the commonly used <code>JComboBox</code> constructors and methods. Other methods you are most likely to invoke on a <code>JComboBox</code> object are those it inherits from its superclasses, such as <code>setPreferredSize</code>. See <a href="jcomponent.html#api">The JComponent API</a> for tables of commonly used inherited methods.</p>
+<p>The API for using combo boxes falls into two categories:</p>
+<ul>
+<li><a href="#list">Setting or Getting the Items in the Combo Box&#39;s Menu</a></li>
+<li><a href="#configuring">Customizing the Combo Box&#39;s Operation</a></li>
+</ul>
+<p>
+</p>
+<table border="1" summary="Setting or Getting the Items in the Combo Boxes&#39;s Menu">
+<caption><a name="list" id="list">Setting or Getting the Items in the Combo Boxes&#39;s Menu</a></caption>
+<tr>
+<th id="h101">Method</th>
+<th id="h102">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#JComboBox--">JComboBox()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#JComboBox-javax.swing.ComboBoxModel-">JComboBox(ComboBoxModel)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#JComboBox-java.lang.Object:A-">JComboBox(Object[])</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#JComboBox-java.util.Vector-">JComboBox(Vector)</a></td>
+<td headers="h102">Create a combo box with the specified items in its menu. A combo box created with the default constructor has no items in the menu initially. Each of the other constructors initializes the menu from its argument: a model object, an array of objects, or a <code>Vector</code> of objects.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#addItem-java.lang.Object-">void addItem(Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#insertItemAt-java.lang.Object-int-">void insertItemAt(Object, int)</a></td>
+<td headers="h102">Add or insert the specified object into the combo box&#39;s menu. The insert method places the specified object <em>at</em> the specified index, thus inserting it before the object currently at that index. These methods require that the combo box&#39;s data model be an instance of <code>MutableComboBoxModel</code>.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#getItemAt-int-">Object getItemAt(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#getSelectedItem--">Object getSelectedItem()</a></td>
+<td headers="h102">Get an item from the combo box&#39;s menu.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#removeAllItems--">void removeAllItems()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#removeItemAt-int-">void removeItemAt(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#removeItem-java.lang.Object-">void removeItem(Object)</a></td>
+<td headers="h102">Remove one or more items from the combo box&#39;s menu. These methods require that the combo box&#39;s data model be an instance of <code>MutableComboBoxModel</code>.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#getItemCount--">int getItemCount()</a></td>
+<td headers="h102">Get the number of items in the combo box&#39;s menu.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#setModel-javax.swing.ComboBoxModel-">void setModel(ComboBoxModel)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#getModel--">ComboBoxModel getModel()</a></td>
+<td headers="h102">Set or get the data model that provides the items in the combo box&#39;s menu.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#setAction-javax.swing.Action-">void setAction(Action)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#getAction--">Action getAction()</a></td>
+<td headers="h102">Set or get the <code>Action</code> associated with the combo box. For further information, see 
+<a class="TutorialLink" target="_top" href="../misc/action.html">How to Use Actions</a>.</td>
+</tr>
+</table>
+<table border="1" summary="Customizing the Combo Box&#39;s Operation">
+<caption><a name="configuring" id="configuring">Customizing the Combo Box&#39;s Operation</a></caption>
+<tr>
+<th id="h201">Method or Constructor</th>
+<th id="h202">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#addActionListener-java.awt.event.ActionListener-">void addActionListener(ActionListener)</a></td>
+<td headers="h202">Add an action listener to the combo box. The listener&#39;s <code>actionPerformed</code> method is called when the user selects an item from the combo box&#39;s menu or, in an editable combo box, when the user presses Enter.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#addItemListener-java.awt.event.ItemListener-">void addItemListener(ItemListener)</a></td>
+<td headers="h202">Add an item listener to the combo box. The listener&#39;s <code>itemStateChanged</code> method is called when the selection state of any of the combo box&#39;s items change.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#setEditable-boolean-">void setEditable(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#isEditable--">boolean isEditable()</a></td>
+<td headers="h202">Set or get whether the user can type in the combo box.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#setRenderer-javax.swing.ListCellRenderer-">void setRenderer(ListCellRenderer)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#getRenderer--">ListCellRenderer getRenderer()</a></td>
+<td headers="h202">Set or get the object responsible for painting the selected item in the combo box. The renderer is used only when the combo box is uneditable. If the combo box is editable, the editor is used to paint the selected item instead.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#setEditor-javax.swing.ComboBoxEditor-">void setEditor(ComboBoxEditor)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html#getEditor--">ComboBoxEditor getEditor()</a></td>
+<td headers="h202">Set or get the object responsible for painting and editing the selected item in the combo box. The editor is used only when the combo box is editable. If the combo box is uneditable, the renderer is used to paint the selected item instead.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples that Use Combo Boxes</a></h2>
+<p>This table shows the examples that use <code>JComboBox</code> and where those examples are described.</p>
+<table summary="Examples that use JComboBox">
+<tr>
+<th id="h301" align="left">Example</th>
+<th id="h302" align="left">Where Described</th>
+<th id="h303" align="left">Notes</th>
+</tr>
+<tr>
+<td headers="h301"><a href="../examples/components/index.html#ComboBoxDemo"><code>ComboBoxDemo</code></a></td>
+<td headers="h302">This section</td>
+<td headers="h303">Uses an uneditable combo box.</td>
+</tr>
+<tr>
+<td headers="h301"><a href="../examples/components/index.html#ComboBoxDemo2"><code>ComboBoxDemo2</code></a></td>
+<td headers="h302">This section</td>
+<td headers="h303">Uses an editable combo box.</td>
+</tr>
+<tr>
+<td headers="h301"><a href="../examples/components/index.html#CustomComboBoxDemo"><code>CustomComboBoxDemo</code></a></td>
+<td headers="h302">This section</td>
+<td headers="h303">Provides a custom renderer for a combo box.</td>
+</tr>
+<tr>
+<td headers="h301"><a href="../examples/components/index.html#TableRenderDemo"><code>TableRenderDemo</code></a></td>
+<td headers="h302">How to Use Tables (<a href="table.html#combobox">Using a Combo Box as an Editor</a>)</td>
+<td headers="h303">Shows how to use a combo box as a table cell editor.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="colorchooser.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="dialog.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Use Color Choosers
+        <br /><b>Next page:</b> How to Make Dialogs
+    </div>
+</body>
+</html> 

@@ -1,0 +1,6 @@
+This is a sample file that can be used as input to the
+GenSig and VerSig programs.
+
+Any file can be used as input to those programs.
+GenSig generates a signature for the file, and VerSig
+subsequently verifies that the signature is authentic.

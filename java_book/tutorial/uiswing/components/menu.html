@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Use Menus (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Swing Components)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Swing Components</a></div>
+<div class="linkAHEAD"><a href="toplevel.html">Using Top-Level Containers</a></div>
+<div class="linkAHEAD"><a href="jcomponent.html">The JComponent Class</a></div>
+<div class="linkAHEAD"><a href="text.html">Using Text Components</a></div>
+<div class="linkBHEAD"><a href="generaltext.html">Text Component Features</a></div>
+<div class="linkBHEAD"><a href="textapi.html">The Text Component API</a></div>
+<div class="linkAHEAD"><a href="componentlist.html">How to Use Various Components</a></div>
+<div class="linkBHEAD"><a href="applet.html">How to Make Applets</a></div>
+<div class="linkBHEAD"><a href="button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a></div>
+<div class="linkBHEAD"><a href="buttongroup.html">How to Use the ButtonGroup Component</a></div>
+<div class="linkBHEAD"><a href="colorchooser.html">How to Use Color Choosers</a></div>
+<div class="linkBHEAD"><a href="combobox.html">How to Use Combo Boxes</a></div>
+<div class="linkBHEAD"><a href="dialog.html">How to Make Dialogs</a></div>
+<div class="linkBHEAD"><a href="editorpane.html">How to Use Editor Panes and Text Panes</a></div>
+<div class="linkBHEAD"><a href="filechooser.html">How to Use File Choosers</a></div>
+<div class="linkBHEAD"><a href="formattedtextfield.html">How to Use Formatted Text Fields</a></div>
+<div class="linkBHEAD"><a href="frame.html">How to Make Frames (Main Windows)</a></div>
+<div class="linkBHEAD"><a href="internalframe.html">How to Use Internal Frames</a></div>
+<div class="linkBHEAD"><a href="label.html">How to Use Labels</a></div>
+<div class="linkBHEAD"><a href="layeredpane.html">How to Use Layered Panes</a></div>
+<div class="linkBHEAD"><a href="list.html">How to Use Lists</a></div>
+<div class="nolinkBHEAD">How to Use Menus</div>
+<div class="linkBHEAD"><a href="panel.html">How to Use Panels</a></div>
+<div class="linkBHEAD"><a href="passwordfield.html">How to Use Password Fields</a></div>
+<div class="linkBHEAD"><a href="progress.html">How to Use Progress Bars</a></div>
+<div class="linkBHEAD"><a href="rootpane.html">How to Use Root Panes</a></div>
+<div class="linkBHEAD"><a href="scrollpane.html">How to Use Scroll Panes</a></div>
+<div class="linkBHEAD"><a href="separator.html">How to Use Separators</a></div>
+<div class="linkBHEAD"><a href="slider.html">How to Use Sliders</a></div>
+<div class="linkBHEAD"><a href="spinner.html">How to Use Spinners</a></div>
+<div class="linkBHEAD"><a href="splitpane.html">How to Use Split Panes</a></div>
+<div class="linkBHEAD"><a href="tabbedpane.html">How to Use Tabbed Panes</a></div>
+<div class="linkBHEAD"><a href="table.html">How to Use Tables</a></div>
+<div class="linkBHEAD"><a href="textarea.html">How to Use Text Areas</a></div>
+<div class="linkBHEAD"><a href="textfield.html">How to Use Text Fields</a></div>
+<div class="linkBHEAD"><a href="toolbar.html">How to Use Tool Bars</a></div>
+<div class="linkBHEAD"><a href="tooltip.html">How to Use Tool Tips</a></div>
+<div class="linkBHEAD"><a href="tree.html">How to Use Trees</a></div>
+<div class="linkAHEAD"><a href="html.html">How to Use HTML in Swing Components</a></div>
+<div class="linkAHEAD"><a href="model.html">How to Use Models</a></div>
+<div class="linkAHEAD"><a href="icon.html">How to Use Icons</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use Borders</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Component Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Swing Components
+        <br /><b>Section:</b> How to Use Various Components
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Swing Components</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="list.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="panel.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Use Menus</h1></div>
+            <div id="PageContent">
+
+<p>A menu provides a space-saving way to let the user choose one of several options. Other components with which the user can make a one-of-many choice include <a href="combobox.html">combo boxes</a>, <a href="list.html">lists</a>, <a href="button.html#radiobutton">radio buttons</a>, <a href="spinner.html">spinners</a>, and <a href="toolbar.html">tool bars</a>. If any of your menu items performs an action that is duplicated by another menu item or by a tool-bar button, then in addition to this section you should read 
+<a class="TutorialLink" target="_top" href="../misc/action.html">How to Use Actions</a>.</p>
+<p>Menus are unique in that, by convention, they aren&#39;t placed with the other components in the UI. Instead, a menu usually appears either in a <em>menu bar</em> or as a <em>popup menu</em>. A menu bar contains one or more menus and has a customary, platform-dependent location &#151; usually along the top of a window. A popup menu is a menu that is invisible until the user makes a platform-specific mouse action, such as pressing the right mouse button, over a popup-enabled component. The popup menu then appears under the cursor.</p>
+<p>The following figure shows many menu-related components: a menu bar, menus, menu items, radio button menu items, check box menu items, and separators. As you can see, a menu item can have either an image or text, or both. You can also specify other properties, such as font and color.</p>
+<center><img src="../../figures/uiswing/components/MenuLookDemo.png" width="474" height="287" align="bottom" alt="MenuLookDemo" /></center><p style="text-align: center"><!--
+<font color=gray>
+[PENDING: This figure will be updated.
+We may also add callouts for each component type.]
+</font>
+</p> 
+
+--></p>
+<p>The rest of this section teaches you about the menu components and tells you how to use various menu features:</p>
+<ul>
+<li><a href="#hierarchy">The menu component hierarchy</a></li>
+<li><a href="#create">Creating menus</a></li>
+<li><a href="#event">Handling events from menu items</a></li>
+<li><a href="#mnemonic">Enabling keyboard operation</a></li>
+<li><a href="#popup">Bringing up a popup menu</a></li>
+<li><a href="#custom">Customizing menu layout</a></li>
+<li><a href="#api">The Menu API</a></li>
+<li><a href="#eg">Examples that use menus</a></li>
+</ul>
+<h2><a name="hierarchy" id="hierarchy">The Menu Component Hierarchy</a></h2>
+<p>Here is a picture of the inheritance hierarchy for the menu-related classes:</p>
+<center><img src="../../figures/uiswing/components/object.gif" width="444" height="239" align="bottom" alt="The inheritance hierarchy for menu classes" /></center><p>As the figure shows, menu items (including menus) are simply <a href="button.html">buttons</a>. You might be wondering how a menu, if it&#39;s only a button, shows its menu items. The answer is that when a menu is activated, it automatically brings up a popup menu that displays the menu items.</p>
+<h2><a name="create" id="create">Creating Menus</a></h2>
+<p>The following code creates the menus shown near the beginning of this menu section. The bold lines of code create and connect the menu objects; the other code sets up or customizes the menu objects. You can find the entire program in 
+<a class="SourceLink" target="_blank" href="../examples/components/MenuLookDemoProject/src/components/MenuLookDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/MenuLookDemoProject/src/components/MenuLookDemo.java'); return false;"><code>MenuLookDemo.java</code></a>. Other required files are listed in the <a href="../examples/components/index.html#MenuLookDemo">example index</a>. <!-- *******  boilerplate stuff ******* --></p>
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ul>
+<li>Click the Launch button to run the MenuLook Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#MenuLookDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/MenuLookDemoProject/MenuLookDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ButtonDemo example" /></a><br /></li>
+</ul>
+<hr /></div>
+<!--  ******* end boilerplate stuff  *******  -->
+<p>Because this code has no event handling, the menus do nothing useful except to look as they should. If you run the example, you&#39;ll notice that despite the lack of custom event handling, menus and submenus appear when they should, and the check boxes and radio buttons respond appropriately when the user chooses them.</p>
+<div class="codeblock"><pre>
+<em>//Where the GUI is created:</em>
+JMenuBar menuBar;
+JMenu menu, submenu;
+JMenuItem menuItem;
+JRadioButtonMenuItem rbMenuItem;
+JCheckBoxMenuItem cbMenuItem;
+
+//Create the menu bar.
+<b>menuBar = new JMenuBar();</b>
+
+//Build the first menu.
+<b>menu = new JMenu("A Menu");</b>
+menu.setMnemonic(KeyEvent.VK_A);
+menu.getAccessibleContext().setAccessibleDescription(
+        "The only menu in this program that has menu items");
+<b>menuBar.add(menu);</b>
+
+//a group of JMenuItems
+<b>menuItem = new JMenuItem("A text-only menu item"</b>,
+                         KeyEvent.VK_T<b>);</b>
+menuItem.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_1, ActionEvent.ALT_MASK));
+menuItem.getAccessibleContext().setAccessibleDescription(
+        "This doesn't really do anything");
+<b>menu.add(menuItem);</b>
+
+<b>menuItem = new JMenuItem("Both text and icon",
+                         new ImageIcon("images/middle.gif"));</b>
+menuItem.setMnemonic(KeyEvent.VK_B);
+<b>menu.add(menuItem);</b>
+
+<b>menuItem = new JMenuItem(new ImageIcon("images/middle.gif"));</b>
+menuItem.setMnemonic(KeyEvent.VK_D);
+<b>menu.add(menuItem);</b>
+
+//a group of radio button menu items
+<b>menu.addSeparator();</b>
+ButtonGroup group = new ButtonGroup();
+<b>rbMenuItem = new JRadioButtonMenuItem("A radio button menu item");</b>
+rbMenuItem.setSelected(true);
+rbMenuItem.setMnemonic(KeyEvent.VK_R);
+group.add(rbMenuItem);
+<b>menu.add(rbMenuItem);</b>
+
+<b>rbMenuItem = new JRadioButtonMenuItem("Another one");</b>
+rbMenuItem.setMnemonic(KeyEvent.VK_O);
+group.add(rbMenuItem);
+<b>menu.add(rbMenuItem);</b>
+
+//a group of check box menu items
+<b>menu.addSeparator();</b>
+<b>cbMenuItem = new JCheckBoxMenuItem("A check box menu item");</b>
+cbMenuItem.setMnemonic(KeyEvent.VK_C);
+<b>menu.add(cbMenuItem);</b>
+
+<b>cbMenuItem = new JCheckBoxMenuItem("Another one");</b>
+cbMenuItem.setMnemonic(KeyEvent.VK_H);
+<b>menu.add(cbMenuItem);</b>
+
+//a submenu
+<b>menu.addSeparator();</b>
+<b>submenu = new JMenu("A submenu");</b>
+submenu.setMnemonic(KeyEvent.VK_S);
+
+<b>menuItem = new JMenuItem("An item in the submenu");</b>
+menuItem.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_2, ActionEvent.ALT_MASK));
+<b>submenu.add(menuItem);</b>
+
+<b>menuItem = new JMenuItem("Another item");</b>
+<b>submenu.add(menuItem);</b>
+<b>menu.add(submenu);</b>
+
+//Build second menu in the menu bar.
+<b>menu = new JMenu("Another Menu");</b>
+menu.setMnemonic(KeyEvent.VK_N);
+menu.getAccessibleContext().setAccessibleDescription(
+        "This menu does nothing");
+<b>menuBar.add(menu);</b>
+
+...
+<b>frame.setJMenuBar(<em>theJMenuBar</em>);</b>
+</pre></div>
+<p>As the code shows, to set the menu bar for a <code>JFrame</code>, you use the <code>setJMenuBar</code> method. To add a <code>JMenu</code> to a <code>JMenuBar</code>, you use the <code>add(JMenu)</code> method. To add menu items and submenus to a <code>JMenu</code>, you use the <code>add(JMenuItem)</code> method.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>Menu items, like other components, can be in at most one container. If you try to add a menu item to a second menu, the menu item will be removed from the first menu before being added to the second. For a way of implementing multiple components that do the same thing, see 
+<a class="TutorialLink" target="_top" href="../misc/action.html">How to Use Actions</a>.</p>
+<hr /></div>
+<p>Other methods in the preceding code include <code>setAccelerator</code> and <code>setMnemonic</code>, which are discussed a little later in <a href="#mnemonic">Enabling Keyboard Operation</a>. The <code>setAccessibleDescription</code> method is discussed in 
+<a class="TutorialLink" target="_top" href="../misc/access.html">How to Support Assistive Technologies</a>.</p>
+<h2><a name="event" id="event">Handling Events from Menu Items</a></h2>
+<p>To detect when the user chooses a <code>JMenuItem</code>, you can listen for action events (just as you would for a <a href="button.html"><code>JButton</code></a>). To detect when the user chooses a <code>JRadioButtonMenuItem</code>, you can listen for either action events or item events, as described in <a href="button.html#radiobutton">How to Use Radio Buttons</a>. For <code>JCheckBoxMenuItem</code>s, you generally listen for item events, as described in <a href="button.html#checkbox">How to Use Check Boxes</a>.</p>
+<p><!-- *******  boilerplate stuff ******* --></p>
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ul>
+<li>Click the Launch button to run the Menu Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#MenuDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/MenuDemoProject/MenuDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ButtonDemo example" /></a><br /></li>
+</ul>
+<hr /></div>
+<!--  ******* end boilerplate stuff  *******  -->
+<!-- 
+The following picture shows a program
+that adds event detection to the preceding example.
+The program's code is in
+
+<a class="SourceLink" target="_blank" href="examples/MenuDemo.java" onclick="showCode('../../displayCode.html', 'examples/MenuDemo.java'); return false;"><code>MenuDemo.java</code></a>.
+Other required files are listed in the
+<a href="../examples/components/index.html#MenuDemo">example index</a>.
+You can use Java Web Start to
+<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/MenuDemoProject/MenuDemo.jnlp"><b><i>run MenuDemo</i></b></a> (it requires release 7).
+
+-->
+<center><img src="../../figures/uiswing/components/MenuDemo.png" width="450" height="260" align="bottom" alt="The text area shows the action and item events our listeners detected." /></center><p style="text-align: center">Here is the code that implements the event handling:</p>
+<div class="codeblock"><pre>
+public class MenuDemo ... implements ActionListener,
+                                     ItemListener {
+    ...
+    public MenuDemo() {
+        <em>//...for each JMenuItem instance:</em>
+        menuItem.addActionListener(this);
+        ...
+        <em>//for each JRadioButtonMenuItem: </em>
+        rbMenuItem.addActionListener(this);
+        ...
+        <em>//for each JCheckBoxMenuItem: </em>
+        cbMenuItem.addItemListener(this);
+        ...
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        <em>//...Get information from the action event...
+        //...Display it in the text area...</em>
+    }
+
+    public void itemStateChanged(ItemEvent e) {
+        <em>//...Get information from the item event...
+        //...Display it in the text area...</em>
+    }
+</pre></div>
+<p>For examples of handling action and item events, see the <a href="button.html">button</a>, <a href="button.html#radiobutton">radio button</a>, and <a href="button.html#checkbox">check box</a> sections, as well as the <a href="#eg">list of examples</a> at the end of this section.</p>
+<h2><a name="mnemonic" id="mnemonic">Enabling Keyboard Operation</a></h2>
+<p>Menus support two kinds of keyboard alternatives: mnemonics and accelerators. <em>Mnemonics</em> offer a way to use the keyboard to navigate the menu hierarchy, increasing the accessibility of programs. <em>Accelerators</em>, on the other hand, offer keyboard shortcuts to <em>bypass</em> navigating the menu hierarchy. Mnemonics are for all users; accelerators are for power users.</p>
+<p>A mnemonic is a key that makes an already visible menu item be chosen. For example, in <code>MenuDemo</code> the first menu has the mnemonic A, and its second menu item has the mnemonic B. This means that, when you run <code>MenuDemo</code> with the Java look and feel, pressing the Alt and A keys makes the first menu appear. While the first menu is visible, pressing the B key (with or without Alt) makes the second menu item be chosen. A menu item generally displays its mnemonic by underlining the first occurrence of the mnemonic character in the menu item&#39;s text, as the following snapshot shows.</p>
+<center><img src="../../figures/uiswing/components/Menu-mnemonic.png" width="217" height="29" align="bottom" alt="B is the mnemonic character for this menu item" /></center><p>An accelerator is a key combination that causes a menu item to be chosen, whether or not it&#39;s visible. For example, pressing the Alt and 2 keys in <code>MenuDemo</code> makes the first item in the first menu&#39;s submenu be chosen, without bringing up any menus. Only leaf menu items &#151; menus that don&#39;t bring up other menus &#151; can have accelerators. The following snapshot shows how the Java look and feel displays a menu item that has an accelerator.</p>
+<center><img src="../../figures/uiswing/components/Menu-accel.png" width="179" height="24" align="bottom" alt="Alt+2 advertises this menu item's accelerator" /></center><p style="text-align: center">You can specify a mnemonic either when constructing the menu item or with the <code>setMnemonic</code> method. To specify an accelerator, use the <code>setAccelerator</code> method. Here are examples of setting mnemonics and accelerators:</p>
+<div class="codeblock"><pre>
+//Setting the mnemonic when constructing a menu item:
+menuItem = new JMenuItem("A text-only menu item",
+                         KeyEvent.VK_T);
+
+//Setting the mnemonic after creation time:
+menuItem.setMnemonic(KeyEvent.VK_T);
+
+//Setting the accelerator:
+menuItem.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_T, ActionEvent.ALT_MASK));
+</pre></div>
+<p>As you can see, you set a mnemonic by specifying the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyEvent.html"><code>KeyEvent</code></a> constant corresponding to the key the user should press. To specify an accelerator you must use a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/KeyStroke.html"><code>KeyStroke</code></a> object, which combines a key (specified by a <code>KeyEvent</code> constant) and a modifier-key mask (specified by an 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/ActionEvent.html"><code>ActionEvent</code></a> constant).</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>Because popup menus, unlike regular menus, aren&#39;t always contained by a component, accelerators in popup menu items don&#39;t work unless the popup menu is visible.</p>
+<hr /></div>
+<h2><a name="popup" id="popup">Bringing Up a Popup Menu</a></h2>
+<p>To bring up a popup menu ( 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPopupMenu.html"><code>JPopupMenu</code></a>), you must register a mouse listener on each component that the popup menu should be associated with. The mouse listener must detect user requests that the popup menu be brought up.</p>
+<p>The exact gesture that should bring up a popup menu varies by look and feel. In Microsoft Windows, the user by convention brings up a popup menu by releasing the right mouse button while the cursor is over a component that is popup-enabled. In the Java look and feel, the customary trigger is either pressing the right mouse button (for a popup that goes away when the button is released) or clicking it (for a popup that stays up). <!-- 
+In a future release,
+a new mechanism for automatically triggering popup menus
+in the appropriate way for the look and feel
+might be added; see
+<a class="OutsideLink" target="_blank" href="http://bugs.java.com/bugdatabase/view_bug.do?bug_id=4634626">bug #4634626</a>--></p>
+<p><!-- *******  boilerplate stuff ******* --></p>
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ul>
+<li>Click the Launch button to run the PopupMenu Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#PopupMenuDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/PopupMenuDemoProject/PopupMenuDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the PopupMenuDemo example" /></a><br /></li>
+</ul>
+<hr /></div>
+<!--  ******* end boilerplate stuff  *******  -->
+<!-- 
+The mouse listener
+brings up the popup menu
+by invoking the <code>show</code> method
+on the appropriate <code>JPopupMenu</code> instance.
+The following code,
+taken from
+<a class="SourceLink" target="_blank" href="examples/PopupMenuDemo.java" onclick="showCode('../../displayCode.html', 'examples/PopupMenuDemo.java'); return false;"><code>PopupMenuDemo.java</code></a>,
+shows how to create and show popup menus.
+You can use Java Web Start to
+<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/PopupMenuDemoProject/PopupMenuDemo.jnlp"><b><i>run PopupMenuDemo</i></b></a> (it requires release 7).
+-->
+<!--
+-->
+<div class="codeblock"><pre>
+<em>//...where instance variables are declared:</em>
+JPopupMenu popup;
+
+    <em>//...where the GUI is constructed:</em>
+    //Create the popup menu.
+    popup = new JPopupMenu();
+    menuItem = new JMenuItem("A popup menu item");
+    menuItem.addActionListener(this);
+    popup.add(menuItem);
+    menuItem = new JMenuItem("Another popup menu item");
+    menuItem.addActionListener(this);
+    popup.add(menuItem);
+
+    //Add listener to components that can bring up popup menus.
+    MouseListener popupListener = new PopupListener();
+    output.addMouseListener(popupListener);
+    menuBar.addMouseListener(popupListener);
+...
+class PopupListener extends MouseAdapter {
+    public void mousePressed(MouseEvent e) {
+        maybeShowPopup(e);
+    }
+
+    public void mouseReleased(MouseEvent e) {
+        maybeShowPopup(e);
+    }
+
+    private void maybeShowPopup(MouseEvent e) {
+        if (e.isPopupTrigger()) {
+            popup.show(e.getComponent(),
+                       e.getX(), e.getY());
+        }
+    }
+}
+</pre></div>
+<p>Popup menus have a few interesting implementation details. One is that every menu has an associated popup menu. When the menu is activated, it uses its associated popup menu to show its menu items.</p>
+<p>Another detail is that a popup menu itself uses another component to implement the window containing the menu items. Depending on the circumstances under which the popup menu is displayed, the popup menu might implement its &quot;window&quot; using a lightweight component (such as a <code>JPanel</code>), a &quot;mediumweight&quot; component (such as a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Panel.html"><code>Panel</code></a>), or a heavyweight window (something that inherits from 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Window.html"><code>Window</code></a>).</p>
+<p>Lightweight popup windows are more efficient than heavyweight windows but, prior to the Java SE Platform 6 Update 12 release, they didn&#39;t work well if you had any heavyweight components inside your GUI. Specifically, when the lightweight popup&#39;s display area intersects the heavyweight component&#39;s display area, the heavyweight component is drawn on top. This is one of the reasons that, prior to the 6u12 release, we recommended against mixing heavyweight and lightweight components. If you are using an older release and absolutely need to use a heavyweight component in your GUI, then you can invoke <code>JPopupMenu.setLightWeightPopupEnabled(false)</code> to disable lightweight popup windows. For information on mixing components in the 6u12 release and later, please see 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/articles/java/mixing-components-433992.html">Mixing Heavyweight and Lightweight Components</a>.</p>
+<h2><a name="custom" id="custom">Customizing Menu Layout</a></h2>
+<p>Because menus are made up of ordinary Swing components, you can easily customize them. For example, you can add any lightweight component to a <code>JMenu</code> or <code>JMenuBar</code>. And because <code>JMenuBar</code> uses <a href="../layout/box.html"><code>BoxLayout</code></a>, you can customize a menu bar&#39;s layout just by adding invisible components to it. Here is an example of adding a <a href="../layout/box.html#filler">glue</a> component to a menu bar, so that the last menu is at the right edge of the menu bar:</p>
+<div class="codeblock"><pre>
+<em>//...create and add some menus...</em>
+menuBar.add(Box.createHorizontalGlue());
+<em>//...create the rightmost menu...</em>
+menuBar.add(rightMenu);
+</pre></div>
+<!-- *******  boilerplate stuff ******* -->
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ul>
+<li>Click the Launch button to run the MenuGlue Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#MenuGlueDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/MenuGlueDemoProject/MenuGlueDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ButtonDemo example" /></a><br /></li>
+</ul>
+<hr /></div>
+<!--  ******* end boilerplate stuff  *******  -->
+<p>Here&#39;s the modified menu layout that MenuGlueDemo displays:</p>
+<!-- 
+The following picture shows the result,
+which you can duplicate by compiling and running
+<a class="SourceLink" target="_blank" href="../examples/components/MenuGlueDemoProject/src/components/MenuGlueDemo.java   " onclick="showCode('../../displayCode.html', '../examples/components/MenuGlueDemoProject/src/components/MenuGlueDemo.java   '); return false;"><code>MenuGlueDemo.java</code></a> or by using Java Web Start to
+<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/MenuGlueDemoProject/MenuGlueDemo.jnlp"><b><i>run MenuGlueDemo</i></b></a> (it requires release 7).
+-->
+<center><img src="../../figures/uiswing/components/MenuGlueDemo.png" width="334" height="65" align="bottom" alt="MenuGlueDemo" /></center><p>Another way of changing the look of menus is to change the layout managers used to control them. For example, you can change a menu bar&#39;s layout manager from the default left-to-right <code>BoxLayout</code> to something such as <code>GridLayout</code>. <!-- *******  boilerplate stuff ******* --></p>
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ul>
+<li>Click the Launch button to run the MenuLayout Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#MenuLayoutDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/MenuLayoutDemoProject/MenuLayoutDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the MenuLayoutDemo example" /></a><br /></li>
+</ul>
+<hr /></div>
+<!--  ******* end boilerplate stuff  *******  -->
+<!-- 
+You can also change how an activated menu or other popup menu
+lays out its items, as
+
+<a class="SourceLink" target="_blank" href="examples/MenuLayoutDemo.java" onclick="showCode('../../displayCode.html', 'examples/MenuLayoutDemo.java'); return false;"><code>MenuLayoutDemo.java</code></a>demonstrates.
+
+
+
+You can use Java Web Start to
+<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/MenuLayoutDemoProject/MenuLayoutDemo.jnlp"><b><i>run MenuLayoutDemo</i></b></a> (it requires release 7).
+
+-->
+<p>Here&#39;s a picture of the menu layout that <code>MenuLayoutDemo</code> creates:</p>
+<center><img src="../../figures/uiswing/components/MenuLayoutDemo.png" width="777" height="150" align="bottom" alt="MenuLayoutDemo" /></center><h2><a name="api" id="api">The Menu API</a></h2>
+<p>The following tables list the commonly used menu constructors and methods. The API for using menus falls into these categories:</p>
+<ul>
+<li><a href="#menubarapi">Creating and Setting Up Menu Bars</a></li>
+<li><a href="#menuapi">Creating and Populating Menus</a></li>
+<li><a href="#popupapi">Creating, Populating, and Controlling Popup Menus</a></li>
+<li><a href="#itemapi">Implementing Menu Items</a></li>
+</ul>
+<table border="1" summary="methos for creating and setting up menu bars">
+<caption><a name="menubarapi" id="menubarapi">Creating and Setting Up Menu Bars</a></caption>
+<tr>
+<th id="h1" align="left">Constructor or Method</th>
+<th id="h2" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuBar.html#JMenuBar--">JMenuBar()</a></td>
+<td headers="h2">Creates a menu bar.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuBar.html#add-javax.swing.JMenu-">JMenu add(JMenu)</a></td>
+<td headers="h2">Adds the menu to the end of the menu bar.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#setJMenuBar-javax.swing.JMenuBar-">void setJMenuBar(JMenuBar)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#getJMenuBar--">JMenuBar getJMenuBar()</a><br />
+<em>(in <code>JApplet</code>, <code>JDialog</code>, <code>JFrame</code>, <code>JInternalFrame</code>, <code>JRootPane</code>)</em></td>
+<td headers="h2">Sets or gets the menu bar of an <a href="applet.html">applet</a>, <a href="dialog.html">dialog</a>, <a href="frame.html">frame</a>, <a href="internalframe.html">internal frame</a>, or <a href="rootpane.html">root pane</a>.</td>
+</tr>
+</table>
+<table border="1" summary="methods for creating and populating menus">
+<caption><a name="menuapi" id="menuapi">Creating and Populating Menus</a></caption>
+<tr>
+<th id="h101" align="left">Constructor or Method</th>
+<th id="h102" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#JMenu--">JMenu()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#JMenu-java.lang.String-">JMenu(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#JMenu-javax.swing.Action-">JMenu(Action)</a></td>
+<td headers="h102">Creates a menu. The string specifies the text to display for the menu. The <code>Action</code> specifies the text and other properties of the menu (see 
+<a class="TutorialLink" target="_top" href="../misc/action.html">How to Use Actions</a>).</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#add-javax.swing.JMenuItem-">JMenuItem add(JMenuItem)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#add-java.lang.String-">JMenuItem add(String)</a></td>
+<td headers="h102">Adds a menu item to the current end of the menu. If the argument is a string, then the menu automatically creates a <code>JMenuItem</code> object that displays the specified text.
+</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#addSeparator--">void addSeparator()</a></td>
+<td headers="h102">Adds a separator to the current end of the menu.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#insert-javax.swing.JMenuItem-int-">JMenuItem insert(JMenuItem, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#insert-java.lang.String-int-">void insert(String, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#insertSeparator-int-">void insertSeparator(int)</a></td>
+<td headers="h102">Inserts a menu item or separator into the menu at the specified position. The first menu item is at position 0, the second at position 1, and so on. The <code>JMenuItem</code> and <code>String</code> arguments are treated the same as in the corresponding <code>add</code> methods.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#remove-javax.swing.JMenuItem-">void remove(JMenuItem)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#remove-int-">void remove(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html#removeAll--">void removeAll()</a></td>
+<td headers="h102">Removes the specified item(s) from the menu. If the argument is an integer, then it specifies the position of the menu item to be removed.</td>
+</tr>
+</table>
+<!--
+-->
+<table border="1" summary="methods for creating, populating, and controlling popup menus">
+<caption><a name="popupapi" id="popupapi">Creating, Populating, and Controlling Popup Menus</a></caption>
+<tr>
+<th id="h201" align="left">Constructor or Method</th>
+<th id="h202" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPopupMenu.html#JPopupMenu--">JPopupMenu()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPopupMenu.html#JPopupMenu-java.lang.String-">JPopupMenu(String)</a></td>
+<td headers="h202">Creates a popup menu. The optional string argument specifies the title that a look and feel might display as part of the popup window.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPopupMenu.html#add-javax.swing.JMenuItem-">JMenuItem add(JMenuItem)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPopupMenu.html#add-java.lang.String-">JMenuItem add(String)</a></td>
+<td headers="h202">Adds a menu item to the current end of the popup menu. If the argument is a string, then the menu automatically creates a <code>JMenuItem</code> object that displays the specified text.
+</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPopupMenu.html#addSeparator--">void addSeparator()</a></td>
+<td headers="h202">Adds a separator to the current end of the popup menu.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPopupMenu.html#insert-java.awt.Component-int-">void insert(Component, int)</a></td>
+<td headers="h202">Inserts a menu item into the menu at the specified position. The first menu item is at position 0, the second at position 1, and so on. The <code>Component</code> argument specifies the menu item to add.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPopupMenu.html#remove-int-">void remove(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#removeAll--">void removeAll()</a></td>
+<td headers="h202">Removes the specified item(s) from the menu. If the argument is an integer, then it specifies the position of the menu item to be removed.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPopupMenu.html#setLightWeightPopupEnabled-boolean-">static void setLightWeightPopupEnabled(boolean)</a></td>
+<td headers="h202">By default, Swing implements a menu&#39;s window using a lightweight component. This can cause problems if you use any heavyweight components in your Swing program, as described in <a href="#popup">Bringing Up a Popup Menu</a>. (This is one of several reasons to avoid using heavyweight components.) As a workaround, invoke <code>JPopupMenu.setLightWeightPopupEnabled(false)</code>.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPopupMenu.html#show-java.awt.Component-int-int-">void show(Component, int, int)</a></td>
+<td headers="h202">Display the popup menu at the specified <i>x,y</i> position (specified in that order by the integer arguments) in the coordinate system of the specified component.</td>
+</tr>
+</table>
+<table border="1" summary="methods for implementing menu items">
+<caption><a name="itemapi" id="itemapi">Implementing Menu Items</a></caption>
+<tr>
+<th id="h301" align="left">Constructor or Method</th>
+<th id="h302" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuItem.html#JMenuItem--">JMenuItem()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuItem.html#JMenuItem-java.lang.String-">JMenuItem(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuItem.html#JMenuItem-javax.swing.Icon-">JMenuItem(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuItem.html#JMenuItem-java.lang.String-javax.swing.Icon-">JMenuItem(String, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuItem.html#JMenuItem-java.lang.String-int-">JMenuItem(String, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuItem.html#JMenuItem-javax.swing.Action-">JMenuItem(Action)</a></td>
+<td headers="h302">Creates an ordinary menu item. The icon argument, if present, specifies the icon that the menu item should display. Similarly, the string argument specifies the text that the menu item should display. The integer argument specifies the keyboard mnemonic to use. You can specify any of the relevant VK constants defined in the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyEvent.html">KeyEvent</a> class. For example, to specify the A key, use <code>KeyEvent.VK_A</code>.
+<p>The constructor with the <code>Action</code> parameter sets the menu item's <code>Action</code>, causing the menu item's properties to be initialized from the <code>Action</code>. See 
+<a class="TutorialLink" target="_top" href="../misc/action.html">How to Use Actions</a> for details.</p>
+</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem--">JCheckBoxMenuItem()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem-java.lang.String-">JCheckBoxMenuItem(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem-javax.swing.Icon-">JCheckBoxMenuItem(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem-java.lang.String-javax.swing.Icon-">JCheckBoxMenuItem(String, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem-java.lang.String-boolean-">JCheckBoxMenuItem(String, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem-java.lang.String-javax.swing.Icon-boolean-">JCheckBoxMenuItem(String, Icon, boolean)</a></td>
+<td headers="h302">Creates a menu item that looks and acts like a check box. The string argument, if any, specifies the text that the menu item should display. If you specify <code>true</code> for the boolean argument, then the menu item is initially selected (checked). Otherwise, the menu item is initially unselected.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem--">JRadioButtonMenuItem()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem-java.lang.String-">JRadioButtonMenuItem(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem-javax.swing.Icon-">JRadioButtonMenuItem(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem-java.lang.String-javax.swing.Icon-">JRadioButtonMenuItem(String, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem-java.lang.String-boolean-">JRadioButtonMenuItem(String, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem-javax.swing.Icon-boolean-">JRadioButtonMenuItem(Icon, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem-java.lang.String-javax.swing.Icon-boolean-">JRadioButtonMenuItem(String, Icon, boolean)</a></td>
+<td headers="h302">Creates a menu item that looks and acts like a radio button. The string argument, if any, specifies the text that the menu item should display. If you specify <code>true</code> for the boolean argument, then the menu item is initially selected. Otherwise, the menu item is initially unselected.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#setState-boolean-">void setState(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#getState--">boolean getState()</a><br />
+<em>(in <code>JCheckBoxMenuItem</code>)</em></td>
+<td headers="h302">Set or get the selection state of a check box menu item.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setEnabled-boolean-">void setEnabled(boolean)</a></td>
+<td headers="h302">If the argument is true, enable the menu item. Otherwise, disable the menu item.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setMnemonic-int-">void setMnemonic(int)</a></td>
+<td headers="h302">Set the mnemonic that enables keyboard navigation to the menu or menu item. Use one of the VK constants defined in the <code>KeyEvent</code> class.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuItem.html#setAccelerator-javax.swing.KeyStroke-">void setAccelerator(KeyStroke)</a></td>
+<td headers="h302">Set the accelerator that activates the menu item.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setActionCommand-java.lang.String-">void setActionCommand(String)</a></td>
+<td headers="h302">Set the name of the action performed by the menu item.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#addActionListener-java.awt.event.ActionListener-">void addActionListener(ActionListener)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#addItemListener-java.awt.event.ItemListener-">void addItemListener(ItemListener)</a></td>
+<td headers="h302">Add an event listener to the menu item. See <a href="#event">Handling Events from Menu Items</a> for details.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setAction-javax.swing.Action-">void setAction(Action)</a></td>
+<td headers="h302">Set the <code>Action</code> associated with the menu item. See 
+<a class="TutorialLink" target="_top" href="../misc/action.html">How to Use Actions</a> for details.</td>
+</tr>
+<tr>
+<td headers="h301"></td>
+<td headers="h302">Many of the preceding methods are inherited from <code>AbstractButton</code>. See <a href="button.html#api">The Button API</a> for information about other useful methods that <code>AbstractButton</code> provides.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples that Use Menus</a></h2>
+<p>Menus are used in a few of our examples.</p>
+<table summary="Information about examples">
+<tr>
+<th id="h401" align="left">Example</th>
+<th id="h402" align="left">Where Described</th>
+<th id="h403" align="left">Notes</th>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#MenuLookDemo"><code>MenuLookDemo</code></a></td>
+<td headers="h402">This section (<a href="#create">Creating Menus</a>)</td>
+<td headers="h403">A simple example that creates all kinds of menus except popup menus, but doesn&#39;t handle events from the menu items.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#MenuDemo"><code>MenuDemo</code></a></td>
+<td headers="h402">This section (<a href="#event">Handling Events from Menu Items</a>)</td>
+<td headers="h403">Adds event handling to <code>MenuLookDemo</code>.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#PopupMenuDemo"><code>PopupMenuDemo</code></a></td>
+<td headers="h402">This section (<a href="#popup">Bringing Up a Popup Menu</a>)</td>
+<td headers="h403">Adds popup menus to <code>MenuDemo</code>.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#MenuGlueDemo"><code>MenuGlueDemo</code></a></td>
+<td headers="h402">This section (<a href="#custom">Customizing Menu Layout</a>)</td>
+<td headers="h403">Demonstrates affecting menu layout by adding an invisible components to the menu bar.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#MenuLayoutDemo"><code>MenuLayoutDemo</code></a></td>
+<td headers="h402">This section (<a href="#custom">Customizing Menu Layout</a>)</td>
+<td headers="h403">Implements sideways-opening menus arranged in a vertical menu bar.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#MenuSelectionManagerDemo"><code>MenuSelectionManagerDemo</code></a></td>
+<td headers="h402">&#151;</td>
+<td headers="h403">Adds highlight detection to MenuDemo. To see this feature, click a menu and then move the mouse over any menu item or submenu. Once per second, the text area will be updated with information about the currently highlighted menu item, not to be confused with the menu item that the user eventually chooses. This demo uses the default 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/MenuSelectionManager.html"><code>MenuSelectionManager</code></a>, which tracks the state of the menu hierarchy.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/misc/index.html#ActionDemo"><code>ActionDemo</code></a></td>
+<td headers="h402"><a href="../misc/action.html">How to Use Actions</a></td>
+<td headers="h403">Uses <code>Action</code> objects to implement menu items that duplicate functionality provided by tool bar buttons.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#Framework"><code>Framework</code></a></td>
+<td headers="h402">&#151;</td>
+<td headers="h403">Brings up multiple identical frames, each with a menu in its menu bar.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#InternalFrameDemo"><code>InternalFrameDemo</code></a></td>
+<td headers="h402"><a href="internalframe.html">How to Use Internal Frames</a></td>
+<td headers="h403">Uses a menu item to create windows.</td>
+</tr>
+</table>
+
+<p>See the
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/menu_controls.htm">Using JavaFX UI Controls: Menu</a> tutorial to learn how to create menus in JavaFX.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="list.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="panel.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Use Lists
+        <br /><b>Next page:</b> How to Use Panels
+    </div>
+</body>
+</html> 

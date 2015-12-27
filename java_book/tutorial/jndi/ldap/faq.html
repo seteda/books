@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Frequently Asked Questions (The Java&trade; Tutorials &gt;        
+            Java Naming and Directory Interface &gt; Advanced Topics for LDAP Users)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JNDI Java tutorial describes Java Naming and Directory Interface (JNDI) technology, naming and directory operations, and LDAP" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jndi, ldap, jndi service provider" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Advanced Topics for LDAP Users</a></div>
+<div class="linkAHEAD"><a href="ldap.html">LDAP v3</a></div>
+<div class="linkAHEAD"><a href="jndi.html">JNDI as an LDAP API</a></div>
+<div class="linkBHEAD"><a href="operations.html">How LDAP Operations Map to JNDI APIs</a></div>
+<div class="linkBHEAD"><a href="exceptions.html">How LDAP Error Codes Map to JNDI Exceptions</a></div>
+<div class="linkAHEAD"><a href="security.html">Security</a></div>
+<div class="linkBHEAD"><a href="authentication.html">Modes of Authenticating to LDAP</a></div>
+<div class="linkBHEAD"><a href="auth_mechs.html">Authentication Mechanisms</a></div>
+<div class="linkBHEAD"><a href="anonymous.html">Anonymous</a></div>
+<div class="linkBHEAD"><a href="simple.html">Simple</a></div>
+<div class="linkBHEAD"><a href="sasl.html">SASL</a></div>
+<div class="linkBHEAD"><a href="digest.html">Digest-MD5</a></div>
+<div class="linkBHEAD"><a href="ssl.html">SSL and Custom Sockets</a></div>
+<div class="linkAHEAD"><a href="rename.html">More LDAP Operations</a></div>
+<div class="linkBHEAD"><a href="compare.html">LDAP Compare</a></div>
+<div class="linkBHEAD"><a href="result.html">Search Results</a></div>
+<div class="linkBHEAD"><a href="unsol.html"> LDAP Unsolicited Notifications</a></div>
+<div class="linkAHEAD"><a href="connect.html">Connection Management</a></div>
+<div class="linkBHEAD"><a href="create.html">Creation</a></div>
+<div class="linkBHEAD"><a href="close.html"> Closing</a></div>
+<div class="linkBHEAD"><a href="pool.html">Pooling</a></div>
+<div class="linkBHEAD"><a href="config.html">Configuration</a></div>
+<div class="nolinkAHEAD">Frequently Asked Questions</div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java Naming and Directory Interface
+        <br /><b>Lesson:</b> Advanced Topics for LDAP Users
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java Naming and Directory Interface</a>
+                &gt;
+                <a href="index.html" target="_top">Advanced Topics for LDAP Users</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="config.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../objects/index.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Frequently Asked Questions</h1></div>
+            <div id="PageContent">
+
+<p>This lesson answers the frequently asked questions users often have when using the JNDI to access LDAP services. Some of the common problems are answered in the 
+<a class="TutorialLink" target="_top" href="../ops/faq.html">Trouble Shooting Tips</a> of the Naming and Directory Operations lesson.</p>
+<hr />
+<ol>
+<li style="list-style: none; display: inline">
+<h2>Contexts:</h2>
+</li>
+<li><a href="#1">Is the context safe for multithreaded access?</a></li>
+<li><a href="#2">Why does the LDAP provider ignore my security environment properties?</a></li>
+<li><a href="#3">Why do I keep getting a CommunicationException?</a></li>
+<li><a href="#4">How can I get a trace of LDAP messages?</a></li>
+<li><a href="#5">How do I use a different authentication mechanism such as Kerberos?</a></li>
+<li><a href="#6">Should I enable ssl when changing the password?</a>
+<h2>Attributes:</h2>
+</li>
+<li><a href="#7">When I ask for one attribute, I get back another. Why?</a></li>
+<li><a href="#8">How do I know the type of an attribute&#39;s value?</a></li>
+<li><a href="#9">How do I get back an attribute&#39;s value in a form other than a String or byte array?</a></li>
+<li><a href="#10">Why does putting an &quot;*&quot; as an attribute value not work as expected in my search?</a>
+<h2>Searches:</h2>
+</li>
+<li><a href="#11">Why don&#39;t wildcards in search filters always work?</a></li>
+<li><a href="#12">Why do I get back only <em>n</em> number of entries when I know there are more in the directory?</a></li>
+<li><a href="#13">How do I pass controls with my search?</a></li>
+<li><a href="#14">How do I find out how many search results I got back?</a>
+<h2>Names:</h2>
+</li>
+<li><a href="#15">Why do I get an empty string as a name in my SearchResult?</a></li>
+<li><a href="#16">Why do I get a URL string as a name in my SearchResult?</a></li>
+<li><a href="#17">What type is the Name argument passed to the context methods?</a></li>
+<li><a href="#18">Can I pass the name I got back from NameParser to the Context methods?</a></li>
+<li><a href="#19">What&#39;s the relationship between the name I use for the <tt>Context.SECURITY_PRINCIPAL</tt> property and the directory?</a></li>
+<li><a href="#20">Why are there strange quotation marks and escapes in the names that I read from the directory?</a></li>
+<li><a href="#21">How do I get an LDAP entry&#39;s full DN?</a></li>
+</ol>
+<hr />
+<p>
+ <a style="font-weight: bold" name="1">1. Is the context safe for multithreaded access, or do I need to lock/synchronize access to a context?</a></p>
+<p>The answer depends on the implementation. This is because the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/Context.html"><tt>Context</tt></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/directory/DirContext.html"><tt>DirContext</tt></a> interfaces do not specify synchronization requirements. The LDAP implementation in the JDK is optimized for single-threaded access. If you have multiple threads accessing the same <tt>Context</tt> instance, then each thread needs to lock the <tt>Context</tt> instance when using it. This also applies to any <tt>NamingEnumeration</tt> that is derived from the same <tt>Context</tt> instance. However, multiple threads can access <em>different</em> <tt>Context</tt> instances (even those derived from the same initial context) concurrently without locks.</p>
+<p><a style="font-weight: bold" name="2">2. Why does the LDAP provider ignore my security environment properties if I do not set the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/Context.html#SECURITY_CREDENTIALS"><tt>Context.SECURITY_CREDENTIALS</tt></a> (<tt>&quot;java.naming.security.credentials&quot;</tt>) property or set it to the empty string?</a></p>
+<p>If you supply an empty string, an empty <tt>byte</tt>/<tt>char</tt> array, or <tt>null</tt> to the <tt>Context.SECURITY_CREDENTIALS</tt> environment property, then an anonymous bind will occur even if the <tt>Context.SECURITY_AUTHENTICATION</tt> property was set to <tt>&quot;simple&quot;</tt>. This is because for simple authentication, the LDAP requires the password to be nonempty. If a password is not supplied, then the protocol automatically converts the authentication to <tt>&quot;none&quot;</tt>.</p>
+<p><a style="font-weight: bold" name="3">3. Why do I keep getting a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/CommunicationException.html"><tt>CommunicationException</tt></a> when I try to create an initial context?</a></p>
+<p>You might be talking to a server that supports only the LDAP v2. See the Miscellaneous lesson of the 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/jndi/tutorial/ldap/misc/version.html">JNDI Tutorial</a> for an example of how to set the version number.</p>
+<p><a style="font-weight: bold" name="4">4. How can I trace the LDAP message?</a></p>
+<p>Try using the <tt>&quot;com.sun.jndi.ldap.trace.ber&quot;</tt> environment property. If the value of this property is an instance of <tt>java.io.OutputStream</tt>, then trace information about BER buffers sent and received by the LDAP provider is written to that stream. If the property&#39;s value is <tt>null</tt>, then no trace output is written.</p>
+<p>For example, the following code will send the trace output to <tt>System.err</tt>.</p>
+<div class="codeblock"><pre>
+env.put("com.sun.jndi.ldap.trace.ber", System.err);
+</pre></div>
+<p><a style="font-weight: bold" name="5">5. How do I use a different authentication mechanism such as Kerberos?</a></p>
+<p>Follow the instructions in the GSS-API/Kerberos v5 Authentication of the 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/jndi/tutorial/ldap/security/gssapi.html">JNDI Tutorial</a> for information on how to use Kerberos authentication. To use other authentication mechanisms, see the Using Arbitrary SASL Mechanisms section of the 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/jndi/tutorial/ldap/security/mechanism.html">JNDI tutorial</a>.</p>
+<p><a style="font-weight: bold" name="6">6. Should I enable SSL when changing the password?</a> /</p>
+<p>It really depends on the directory server you are using. Some directory servers won&#39;t allow you to change the password if SSL is not enabled but some do allow it. It&#39;s good to have SSL enabled to have your password secured in the communication channel.</p>
+<p><a style="font-weight: bold" name="7">7. When I ask for one attribute, I get back another. Why?</a></p>
+<p>The attribute name that you are using might be a synonym for another attribute. In this case, the LDAP server might return the canonical attribute name instead of the one that you supplied. When you look in the <tt>Attributes</tt> returned by the server, you need to use the canonical name instead of the synonym.</p>
+<p>For example, <tt>&quot;fax&quot;</tt> might be a synonym for the canonical attribute name <tt>&quot;facsimiletelephonenumber&quot;</tt>. If you ask for <tt>&quot;fax&quot;</tt>, the server will return the attribute named <tt>&quot;facsimiletelephonenumber&quot;</tt>. See the 
+<a class="TutorialLink" target="_top" href="../ops/attrnames.html">Naming and Directory Operations</a> lesson for details on synonyms and other issues regarding attribute names.</p>
+<p><a style="font-weight: bold" name="8">8. How do I know the type of an attribute&#39;s value?</a></p>
+<p>An attribute&#39;s value can be either <tt>java.lang.String</tt> or <tt>byte[]</tt>. See the Miscellaneous section of the 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/jndi/tutorial/ldap/misc/attrs.html">JNDI Tutorial</a> for information on which attributes&#39; values are returned as <tt>byte[]</tt>. To do this programmatically, you can use the <tt>instanceof</tt> operator to examine the attribute value that you get back from the LDAP provider.</p>
+<p><a style="font-weight: bold" name="9">9. How do I get back an attribute&#39;s value in a form other than a String or byte array?</a></p>
+<p>Currently you can&#39;t. The LDAP provider returns only attribute values that are either <tt>java.lang.String</tt> or <tt>byte[]</tt>. See the Miscellaneous section of the 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/jndi/tutorial/ldap/misc/attrs.html">JNDI Tutorial</a>.</p>
+<p><a style="font-weight: bold" name="10">10. Why does putting an &quot;*&quot; as an attribute value not work as expected in my search?</a></p>
+<p>When you use the following form of <tt>search()</tt>, the attribute values are treated as literals; that is, the attribute in the directory entry is expected to contain exactly that value: 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/directory/DirContext.html#search-javax.naming.Name-javax.naming.directory.Attributes-"><tt>search(Name name, Attributes matchingAttrs)</tt></a> To use wildcards, you should use the string filter forms of <tt>search()</tt>, as follows. 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/directory/DirContext.html#search-javax.naming.Name-java.lang.String-javax.naming.directory.SearchControls-"><tt>search(Name name, String filter, SearchControls ctls)</tt></a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/directory/DirContext.html#search-javax.naming.Name-java.lang.String-java.lang.Object:A-javax.naming.directory.SearchControls-"><tt>search(Name name, String filterExpr, Object[]filterArgs, SearchControls ctls)</tt></a></p>
+<p>For the last form, the wildcard characters must appear in the <tt>filterExpr</tt> argument, and not in <tt>filterArgs</tt>. The values in <tt>filterArgs</tt> are also treated as literals.</p>
+<p><a style="font-weight: bold" name="11">11. Why don&#39;t wildcards in search filters always work?</a></p>
+<p>A wildcard that appears before or after the attribute value (such as in <tt>&quot;attr=*I*&quot;</tt>) indicates that the server is to search for matching attribute values by using the attribute&#39;s substring matching rule. If the attribute&#39;s definition does not have a substring matching rule, then the server cannot find the attribute. You&#39;ll have to search by using an equality or &quot;present&quot; filter instead.</p>
+<p><a style="font-weight: bold" name="12">12. Why do I get back only <em>n</em> number of entries when I know there are more in the directory?</a> Some servers are configured to limit the number of entries that can be returned. Others also limit the number of entries that can be examined during a search. Check your server configuration.</p>
+<p><a style="font-weight: bold" name="13">13. How do I pass controls with my search?</a></p>
+<p>Controls are not explained in this tutorial. Check out the 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/jndi/tutorial/ldap/ext/context.html">JNDI Tutorial</a>.</p>
+<p><a style="font-weight: bold" name="14">14. How do I find out how many search results I got back?</a></p>
+<p>You must keep count as you enumerate through the results. The LDAP does not provide this information.</p>
+<p><a style="font-weight: bold" name="15">15. Why do I get an empty string as a name in my 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/directory/SearchResult.html"><tt>SearchResult</tt></a>?</a></p>
+<p>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/NameClassPair.html#getName--"><tt>getName()</tt></a> always returns a name <em>relative</em> to the <em>target context</em> of the search. So, if the target context satisfies the search filter, then the name returned will be &quot;&quot; (the empty name) because that is the name relative to the target context. See the 
+<a class="TutorialLink" target="_top" href="result.html">Search Results</a> section for details.</p>
+<p><a style="font-weight: bold" name="16">16. Why do I get a URL string as a name in my 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/directory/SearchResult.html"><tt>SearchResult</tt></a>?</a></p>
+<p>The LDAP entry was retrieved by following either an alias or a referral, so its name is a URL. See the 
+<a class="TutorialLink" target="_top" href="result.html">Search Results</a> lesson for details.</p>
+<p><a style="font-weight: bold" name="17">17. What type is the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/Name.html"><tt>Name</tt></a> argument passed to the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/Context.html"><tt>Context</tt></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/directory/DirContext.html"><tt>DirContext</tt></a> methods? - a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/CompoundName.html"><tt>CompoundName</tt></a> or a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/CompositeName.html"><tt>CompositeName</tt></a>?</a></p>
+<p>The string forms accept the string representation of a composite name. That is, using a string name is equivalent to calling <tt>new CompositeName(stringName)</tt> and passing the results to the <tt>Context</tt>/<tt>DirContext</tt> method. The <tt>Name</tt> argument can be any object that implements the <tt>Name</tt> interface. If it is an instance of <tt>CompositeName</tt>, then the name is treated as a composite name; otherwise, it is treated as a compound name.</p>
+<p><a style="font-weight: bold" name="18">18. Can I pass the name I got back from 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/NameParser.html"><tt>NameParser</tt></a> to 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/Context.html"><tt>Context</tt></a> methods?</a></p>
+<p>This is related to the previous question. Yes, you can. 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/NameParser.html#parse-java.lang.String-"><tt>NameParser.parse()</tt></a> returns a compound name that implements the <tt>Name</tt> interface. This name can be passed to the <tt>Context</tt> methods, which will interpret it as a compound name.</p>
+<p><a style="font-weight: bold" name="19">19. What&#39;s the relationship between the name I use for the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/Context.html#SECURITY_PRINCIPAL"><tt>Context.SECURITY_PRINCIPAL</tt></a> property and the directory?</a></p>
+<p>You can think of the principal name as coming from a different namespace than the directory. See 
+<a class="OutsideLink" target="_blank" href="http://www.ietf.org/rfc/rfc2829.txt">RFC 2829</a> and the 
+<a class="TutorialLink" target="_top" href="../ldap/security.html">Security</a> section for details on LDAP authentication mechanisms. The LDAP service provider in the JDK accepts a string principal name, which it passes directly to the LDAP server. Some LDAP servers accept DNs, whereas others support the schemes proposed by 
+<a class="OutsideLink" target="_blank" href="http://www.ietf.org/rfc/rfc2829.txt">RFC 2829</a>.</p>
+<p><a style="font-weight: bold" name="20">20. Why are there strange quotation marks and escapes in the names that I read from the directory?</a></p>
+<p>The LDAP name parser in the JDK is conservative with respect to quoting rules, but it nevertheless produces &quot;correct&quot; names. Also, remember that the names of entries returned by 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/NamingEnumeration.html"><tt>NamingEnumeration</tt>s</a> are composite names that can be passed back to the <tt>Context</tt> and <tt>DirContext</tt> methods. So, if the name contains a character that conflicts with the composite name syntax (such as the forward slash character &quot;/&quot;), then the LDAP provider will provide an encoding to ensure that the slash character will be treated as part of the LDAP name rather than as a composite name separator.</p>
+<p>Start using the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/ldap/LdapName.html"><tt>LdapName</tt></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/ldap/Rdn.html"><tt>Rdn</tt></a> classes that enable easy name manipulation.</p>
+<p><a style="font-weight: bold" name="21">21. How do I get an LDAP entry&#39;s full DN?</a></p>
+<p>You can use 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/NameClassPair.html#getNameInNamespace--"><tt>NameClassPair.getNameInNamespace()</tt></a>.</p>
+<hr />
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="config.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="../objects/index.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Configuration
+        <br /><b>Next page:</b> Java Objects in the Directory
+    </div>
+</body>
+</html> 

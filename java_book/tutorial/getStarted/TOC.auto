@@ -1,0 +1,22 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="intro/index.html">The Java Technology Phenomenon</a>
+<ul>
+<li class="tocli"><a href="intro/definition.html">About the Java Technology</a></li>
+<li class="tocli"><a href="intro/cando.html">What Can Java Technology Do?</a></li>
+<li class="tocli"><a href="intro/changemylife.html">How Will Java Technology Change My Life?</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="cupojava/index.html">The "Hello World!" Application</a>
+<ul>
+<li class="tocli"><a href="cupojava/netbeans.html">"Hello World!" for the NetBeans IDE</a></li>
+<li class="tocli"><a href="cupojava/win32.html">"Hello World!" for Microsoft Windows</a></li>
+<li class="tocli"><a href="cupojava/unix.html">"Hello World!" for Solaris OS and Linux</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="application/index.html">A Closer Look at the "Hello World!" Application</a></li>
+<li class="tocli"><a href="problems/index.html">Common Problems (and Their Solutions)</a></li>
+</ul>

@@ -1,0 +1,124 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="intro/index.html">Introduction</a>
+<ul>
+<li class="tocli"><a href="intro/quick.html">A Quick Example</a>
+<ul>
+<li class="tocli"><a href="intro/before.html">Before Internationalization</a></li>
+<li class="tocli"><a href="intro/after.html">After Internationalization</a></li>
+<li class="tocli"><a href="intro/run.html">Running the Sample Program</a></li>
+<li class="tocli"><a href="intro/steps.html">Internationalizing the Sample Program</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="intro/checklist.html">Checklist</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="locale/index.html">Setting the Locale</a>
+<ul>
+<li class="tocli"><a href="locale/create.html">Creating a Locale</a></li>
+<li class="tocli"><a href="locale/extensions.html">BCP 47 Extensions</a></li>
+<li class="tocli"><a href="locale/identify.html">Identifying Available Locales</a></li>
+<li class="tocli"><a href="locale/matching.html">Language Tag Filtering and Lookup</a></li>
+<li class="tocli"><a href="locale/scope.html">The Scope of a Locale</a></li>
+<li class="tocli"><a href="locale/services.html">Locale-Sensitive Services SPI</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="resbundle/index.html">Isolating Locale-Specific Data</a>
+<ul>
+<li class="tocli"><a href="resbundle/concept.html">About the ResourceBundle Class</a></li>
+<li class="tocli"><a href="resbundle/prepare.html">Preparing to Use a ResourceBundle</a></li>
+<li class="tocli"><a href="resbundle/propfile.html">Backing a ResourceBundle with Properties Files</a></li>
+<li class="tocli"><a href="resbundle/list.html">Using a ListResourceBundle</a></li>
+<li class="tocli"><a href="resbundle/control.html">Customizing Resource Bundle Loading</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="format/index.html">Formatting</a>
+<ul>
+<li class="tocli"><a href="format/numberintro.html">Numbers and Currencies</a>
+<ul>
+<li class="tocli"><a href="format/numberFormat.html">Using Predefined Formats</a></li>
+<li class="tocli"><a href="format/decimalFormat.html">Customizing Formats</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="format/dateintro.html">Dates and Times</a>
+<ul>
+<li class="tocli"><a href="format/dateFormat.html">Using Predefined Formats</a></li>
+<li class="tocli"><a href="format/simpleDateFormat.html">Customizing Formats</a></li>
+<li class="tocli"><a href="format/dateFormatSymbols.html">Changing Date Format Symbols</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="format/messageintro.html">Messages</a>
+<ul>
+<li class="tocli"><a href="format/messageFormat.html">Dealing with Compound Messages</a></li>
+<li class="tocli"><a href="format/choiceFormat.html">Handling Plurals</a>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li class="tocli"><a href="text/index.html">Working with Text</a>
+<ul>
+<li class="tocli"><a href="text/charintro.html">Checking Character Properties</a></li>
+<li class="tocli"><a href="text/collationintro.html">Comparing Strings</a>
+<ul>
+<li class="tocli"><a href="text/locale.html">Performing Locale-Independent Comparisons</a></li>
+<li class="tocli"><a href="text/rule.html">Customizing Collation Rules</a></li>
+<li class="tocli"><a href="text/perform.html">Improving Collation Performance</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="text/unicode.html">Unicode</a>
+<ul>
+<li class="tocli"><a href="text/terminology.html">Terminology</a></li>
+<li class="tocli"><a href="text/supplementaryChars.html">Supplementary Characters as Surrogates</a></li>
+<li class="tocli"><a href="text/characterClass.html">Character and String APIs</a></li>
+<li class="tocli"><a href="text/usage.html">Sample Usage</a></li>
+<li class="tocli"><a href="text/design.html">Design Considerations</a></li>
+<li class="tocli"><a href="text/info.html">More Information</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="text/boundaryintro.html">Detecting Text Boundaries</a>
+<ul>
+<li class="tocli"><a href="text/about.html">About the BreakIterator Class</a></li>
+<li class="tocli"><a href="text/char.html">Character Boundaries</a></li>
+<li class="tocli"><a href="text/word.html">Word Boundaries</a></li>
+<li class="tocli"><a href="text/sentence.html">Sentence Boundaries</a></li>
+<li class="tocli"><a href="text/line.html">Line Boundaries</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="text/shapedDigits.html">Converting Latin Digits to Other Unicode Digits</a></li>
+<li class="tocli"><a href="text/convertintro.html">Converting Non-Unicode Text</a>
+<ul>
+<li class="tocli"><a href="text/string.html">Byte Encodings and Strings</a></li>
+<li class="tocli"><a href="text/stream.html">Character and Byte Streams</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="text/normalizerapi.html">Normalizing Text</a></li>
+<li class="tocli"><a href="text/bidi.html">Working with Bidirectional Text with the JTextComponent Class</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="network/index.html">Internationalization of Network Resources</a>
+<ul>
+<li class="tocli"><a href="network/idn.html">Internationalized Domain Name</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="serviceproviders/index.html">Service Providers for Internationalization</a>
+<ul>
+<li class="tocli"><a href="serviceproviders/resourcebundlecontrolprovider.html">Installing a Custom Resource Bundle as an Extension</a>
+</li>
+</ul>
+</li>
+</ul>

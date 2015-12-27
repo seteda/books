@@ -1,0 +1,10 @@
+
+<p>
+Generics were introduced to the Java language to provide tighter type checks at compile time and to support generic programming. To implement generics, the Java compiler applies type erasure to:</p>
+<ul>
+<li>Replace all type parameters in generic types with their bounds or <tt>Object</tt> if the type parameters are unbounded. The produced bytecode, therefore, contains no parameterized type information, only ordinary classes, interfaces, and methods.</li>
+<li>Insert type casts if necessary to preserve type safety.</li>
+<li>Generate bridge methods to preserve polymorphism in extended generic types.</li>
+</ul>
+<p>
+Type erasure ensures that no new classes are created for parameterized types; consequently, generics incur no runtime overhead.</p>

@@ -1,0 +1,151 @@
+<project default="compile">
+
+    <target name="compile">
+        <mkdir dir="classes"/>
+        <javac srcdir="." destdir="classes" fork="yes" executable="${JAVAC}">
+            <compilerarg value="-Xlint:unchecked"/>
+        </javac>
+    </target>
+
+    <target name="clean">
+        <delete dir="classes"/>
+        <delete dir="lib"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="lib"/> 
+        <copy todir="classes" >  
+            <fileset dir=".">  
+                <include name="images/**"/>
+            </fileset>
+        </copy>
+
+        <!-- Instead, jar all classfiles individually -->
+
+        <echo message="Creating JAR files"/>  
+
+        <!-- <jar destfile="lib/2d_advanced.jar" basedir="classes"/> -->
+
+<!--
+        <apply executable="jar" parallel="false"
+                verbose="true" force="true" relative="yes" dir="classes">
+                
+                <mapper type="regexp" from="(.*)\.class" to="\.\./lib/\1\.jar"/>
+                <arg value="cf"/>
+                <targetfile/>
+                <srcfile/>                
+                <fileset dir="classes">
+                    <include name="*.class"/>
+                    <exclude name="*$*.class"/>
+                </fileset>
+        </apply>
+-->
+        <jar destfile="lib/TransformApplet.jar" manifest="manifest/Transform/manifest.mf">
+            <filelist dir="classes">
+               <file name="Transform.class"/>
+               <file name="TransPanel.class"/> 
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/ClipImageApplet.jar" manifest="manifest/ClipImage/manifest.mf">
+            <filelist dir="classes" files="ClipImage.class"/>
+            <fileset dir="." includes="images/clouds.jpg"/>
+        </jar>
+
+
+        <jar destfile="lib/StarryApplet.jar" manifest="manifest/Starry/manifest.mf">
+            <filelist dir="classes" files="Starry.class,StarPanel.class"/>
+            <fileset dir="." includes="images/Starry.gif"/>
+        </jar>
+
+        <jar destfile="lib/CompositeApplet.jar" manifest="manifest/Composite/manifest.mf">
+            <filelist dir="classes">
+               <file name="Composite.class"/>
+               <file name="CompPanel.class"/> 
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/PearApplet.jar" manifest="manifest/Pear/manifest.mf">
+            <filelist dir="classes" files="Pear.class"/>
+        </jar>
+
+
+        <jar destfile="lib/ShapeMoverApplet.jar" manifest="manifest/ShapeMover/manifest.mf">
+            <filelist dir="classes">
+               <file name="ShapeMover.class"/>
+               <file name="SMCanvas.class"/> 
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/HitTestSampleApplet.jar" manifest="manifest/HitTestSample/manifest.mf">
+            <filelist dir="classes">
+               <file name="HitTestSample.class"/>
+               <file name="HitTestSample$HitPane.class"/>
+               <file name="HitTestSample$HitTestMouseListener.class"/> 
+            </filelist>
+        </jar>
+
+
+        <apply executable="java" parallel="false" verbose="true" force="true">
+                <mapper type="merge" to="lib"/>
+    
+                <arg line="-jar"/>
+                <arg path="${ANTCLIENTJAR}"/>
+                <arg value="-file_to_sign"/>
+                <srcfile/>
+                <arg value="-user jsedteam"/>
+                <arg value="-pass sign2jsedteam"/>
+                <arg value="-signed_location"/>
+                <targetfile/>
+                <arg value="-sign_method java2"/>
+                <fileset dir="lib">
+                    <include name="*.jar"/>
+                </fileset>
+        </apply>
+
+
+
+<!--
+
+        <jar destfile="lib/2d_advanced.jar" basedir="classes"/>
+        <java jvm="${JAVA}" jar="${ANTCLIENTJAR}
+           fork="true"
+           failonerror="true">
+           <arg value="-file_to_sign"/>
+           <arg path="lib/2d_advanced.jar"/>
+           <arg value="-user jsedteam"/>
+           <arg value="-pass sign2jsedteam"/>
+           <arg value="-signed_location"/>
+           <arg path="lib"/>
+           <arg value="-sign_method java2"/>   
+       </java>
+
+-->
+        
+<!--
+
+           <apply executable="java" parallel="false" verbose="true" force="true">
+                
+                <mapper type="regexp" from="^(.*)/([^/]*)$" to="dist/\1"/>
+                <arg line="-jar"/>
+                <arg path="${ANTCLIENTJAR}"/>
+                <arg value="-file_to_sign"/>
+                <srcfile/>
+                <arg value="-user jsedteam"/>
+                <arg value="-pass sign2jsedteam"/>
+                <arg value="-signed_location"/>
+                <targetfile/>
+                <arg value="-sign_method java2"/>
+                <fileset dir="dist">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </apply>
+            
+-->
+        
+        
+        
+    </target>
+
+</project>
+

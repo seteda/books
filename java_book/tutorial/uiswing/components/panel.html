@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Use Panels (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Swing Components)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Swing Components</a></div>
+<div class="linkAHEAD"><a href="toplevel.html">Using Top-Level Containers</a></div>
+<div class="linkAHEAD"><a href="jcomponent.html">The JComponent Class</a></div>
+<div class="linkAHEAD"><a href="text.html">Using Text Components</a></div>
+<div class="linkBHEAD"><a href="generaltext.html">Text Component Features</a></div>
+<div class="linkBHEAD"><a href="textapi.html">The Text Component API</a></div>
+<div class="linkAHEAD"><a href="componentlist.html">How to Use Various Components</a></div>
+<div class="linkBHEAD"><a href="applet.html">How to Make Applets</a></div>
+<div class="linkBHEAD"><a href="button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a></div>
+<div class="linkBHEAD"><a href="buttongroup.html">How to Use the ButtonGroup Component</a></div>
+<div class="linkBHEAD"><a href="colorchooser.html">How to Use Color Choosers</a></div>
+<div class="linkBHEAD"><a href="combobox.html">How to Use Combo Boxes</a></div>
+<div class="linkBHEAD"><a href="dialog.html">How to Make Dialogs</a></div>
+<div class="linkBHEAD"><a href="editorpane.html">How to Use Editor Panes and Text Panes</a></div>
+<div class="linkBHEAD"><a href="filechooser.html">How to Use File Choosers</a></div>
+<div class="linkBHEAD"><a href="formattedtextfield.html">How to Use Formatted Text Fields</a></div>
+<div class="linkBHEAD"><a href="frame.html">How to Make Frames (Main Windows)</a></div>
+<div class="linkBHEAD"><a href="internalframe.html">How to Use Internal Frames</a></div>
+<div class="linkBHEAD"><a href="label.html">How to Use Labels</a></div>
+<div class="linkBHEAD"><a href="layeredpane.html">How to Use Layered Panes</a></div>
+<div class="linkBHEAD"><a href="list.html">How to Use Lists</a></div>
+<div class="linkBHEAD"><a href="menu.html">How to Use Menus</a></div>
+<div class="nolinkBHEAD">How to Use Panels</div>
+<div class="linkBHEAD"><a href="passwordfield.html">How to Use Password Fields</a></div>
+<div class="linkBHEAD"><a href="progress.html">How to Use Progress Bars</a></div>
+<div class="linkBHEAD"><a href="rootpane.html">How to Use Root Panes</a></div>
+<div class="linkBHEAD"><a href="scrollpane.html">How to Use Scroll Panes</a></div>
+<div class="linkBHEAD"><a href="separator.html">How to Use Separators</a></div>
+<div class="linkBHEAD"><a href="slider.html">How to Use Sliders</a></div>
+<div class="linkBHEAD"><a href="spinner.html">How to Use Spinners</a></div>
+<div class="linkBHEAD"><a href="splitpane.html">How to Use Split Panes</a></div>
+<div class="linkBHEAD"><a href="tabbedpane.html">How to Use Tabbed Panes</a></div>
+<div class="linkBHEAD"><a href="table.html">How to Use Tables</a></div>
+<div class="linkBHEAD"><a href="textarea.html">How to Use Text Areas</a></div>
+<div class="linkBHEAD"><a href="textfield.html">How to Use Text Fields</a></div>
+<div class="linkBHEAD"><a href="toolbar.html">How to Use Tool Bars</a></div>
+<div class="linkBHEAD"><a href="tooltip.html">How to Use Tool Tips</a></div>
+<div class="linkBHEAD"><a href="tree.html">How to Use Trees</a></div>
+<div class="linkAHEAD"><a href="html.html">How to Use HTML in Swing Components</a></div>
+<div class="linkAHEAD"><a href="model.html">How to Use Models</a></div>
+<div class="linkAHEAD"><a href="icon.html">How to Use Icons</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use Borders</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Component Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Swing Components
+        <br /><b>Section:</b> How to Use Various Components
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Swing Components</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="menu.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="passwordfield.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Use Panels</h1></div>
+            <div id="PageContent">
+
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPanel.html"><code>JPanel</code></a> class provides general-purpose containers for lightweight components. By default, panels do not add colors to anything except their own background; however, you can easily add borders to them and otherwise customize their painting. Details can be found in 
+<a class="TutorialLink" target="_top" href="../painting/index.html">Performing Custom Painting</a>.</p>
+<p>In many types of look and feel, panels are opaque by default. Opaque panels work well as content panes and can help with painting efficiently, as described in 
+<a class="TutorialLink" target="_top" href="toplevel.html">Using Top-Level Containers</a>. You can change a panel&#39;s transparency by invoking the <code>setOpaque</code> method. A transparent panel draws no background, so that any components underneath show through.</p>
+<h2><a name="anexample" id="anexample">An Example</a></h2>
+<p>The following picture shows a colored version of the <code>Converter</code> application, which is discussed in more detail in <a href="model.html">Using Models</a>.</p>
+<center><img src="../../figures/uiswing/components/ConverterColored.png" width="288" height="198" align="bottom" alt="Colorful Converter" /></center><p>The <code>Converter</code> example uses panels in several ways:</p>
+<ul>
+<li>One <code>JPanel</code> instance &#151; colored red in the preceding snapshot &#151; serves as a content pane for the application&#39;s frame. This content pane uses a top-to-bottom 
+<a class="TutorialLink" target="_top" href="../layout/box.html"><code>BoxLayout</code></a> to lay out its contents, and an empty border to put 5 pixels of space around them. See <a href="toplevel.html">Using Top-Level Containers</a> for information about content panes.</li>
+<li>Two instances of a custom <code>JPanel</code> subclass named <code>ConversionPanel</code> &#151; colored cyan &#151; are used to contain components and coordinate communication between components. These <code>ConversionPanel</code> panels also have titled borders, which describe their contents and enclose the contents with a line. Each <code>ConversionPanel</code> panel uses a left-to-right <code>BoxLayout</code> object to lay out its contents.</li>
+<li>In each <code>ConversionPanel</code>, a <code>JPanel</code> instance &#151; colored magenta &#151; is used to ensure the proper size and position of the combo box. Each of these <code>JPanel</code> instances uses a top-to-bottom <code>BoxLayout</code> object (helped by an invisible space-filling component) to lay out the combo box.</li>
+<li>In each <code>ConversionPanel</code>, an instance of an unnamed <code>JPanel</code> subclass &#151; colored blue &#151; groups two components (a text field and a slider) and restricts their size. Each of these <code>JPanel</code> instances uses a top-to-bottom <code>BoxLayout</code> object to lay out its contents.</li>
+</ul>
+<p>Here is what the <code>Converter</code> application normally looks like.</p>
+<center><img src="../../figures/uiswing/components/ConverterMetal.png" width="288" height="198" align="bottom" alt="Normal Converter" /></center><p>As the <code>Converter</code> example demonstrates, panels are useful for grouping components, simplifying component layout, and putting borders around groups of components. The rest of this section gives hints on grouping and laying out components. For information about using borders, see 
+<a class="TutorialLink" target="_top" href="../components/border.html">How to Use Borders</a>.</p>
+<h2><a name="layout" id="layout">Setting the Layout Manager</a></h2>
+<p>Like other containers, a panel uses a layout manager to position and size its components. By default, a panel&#39;s layout manager is an instance of 
+<a class="TutorialLink" target="_top" href="../layout/flow.html"><code>FlowLayout</code></a>, which places the panel&#39;s contents in a row. You can easily make a panel use any other layout manager by invoking the <code>setLayout</code> method or by specifying a layout manager when creating the panel. The latter approach is preferable for performance reasons, since it avoids the unnecessary creation of a <code>FlowLayout</code> object.</p>
+<p>Here is an example of how to set the layout manager when creating the panel.</p>
+<div class="codeblock"><pre>
+JPanel p = new JPanel(new BorderLayout()); //PREFERRED!
+</pre></div>
+<p>This approach does not work with <code>BoxLayout</code>, since the <code>BoxLayout</code> constructor requires a pre-existing container. Here is an example that uses <code>BoxLayout</code>.</p>
+<div class="codeblock"><pre>
+JPanel p = new JPanel();
+p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
+</pre></div>
+<h2><a name="add" id="add">Adding Components</a></h2>
+<p>When you add components to a panel, you use the <code>add</code> method. Exactly which arguments you specify to the <code>add</code> method depend on which layout manager the panel uses. When the layout manager is <code>FlowLayout</code>, <code>BoxLayout</code>, <code>GridLayout</code>, or <code>SpringLayout</code>, you will typically use the one-argument <code>add</code> method, like this:</p>
+<div class="codeblock"><pre>
+aFlowPanel.add(aComponent);
+aFlowPanel.add(anotherComponent);
+</pre></div>
+<p>When the layout manager is <code>BorderLayout</code>, you need to provide an argument specifying the added component&#39;s position within the panel. For example:</p>
+<div class="codeblock"><pre>
+aBorderPanel.add(aComponent, BorderLayout.CENTER);
+aBorderPanel.add(anotherComponent, BorderLayout.PAGE_END);
+</pre></div>
+<p>With <code>GridBagLayout</code> you can use either <code>add</code> method, but you must somehow specify 
+<a class="TutorialLink" target="_top" href="../layout/gridbag.html#gridbagConstraints">grid bag constraints</a> for each component.</p>
+<p>For information about choosing and using the standard layout managers, see 
+<a class="TutorialLink" target="_top" href="../layout/using.html">Using Layout Managers</a>.</p>
+<h2><a name="api" id="api">The Panel API</a></h2>
+<p>The API in the <code>JPanel</code> class itself is minimal. The methods you are most likely to invoke on a <code>JPanel</code> object are those it inherits from its superclasses &#151; 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.html"><code>JComponent</code></a>, 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html"><code>Container</code></a>, and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html"><code>Component</code></a>. The following tables list the API you are most likely to use, with the exception of methods related to 
+<a class="TutorialLink" target="_top" href="../components/border.html">borders</a> and <a href="jcomponent.html#layoutapi">layout hints</a>. For more information about the API that all <code>JComponent</code> objects can use, see <a href="jcomponent.html">The JComponent Class</a>.</p>
+<p>
+</p>
+<ul>
+<li><a href="#creating">Creating a <code>JPanel</code></a></li>
+<li><a href="#contents">Managing a Container&#39;s Components</a></li>
+<li><a href="#layoutapi">Setting or Getting the Layout Manager</a></li>
+</ul>
+<table border="1" summary="methods for creating a jpanel">
+<caption><a style="font-weight: bold" name="creating" id="creating">Creating a <code>JPanel</code></a></caption>
+<tr>
+<th id="h1" align="left"><a name="creating__1" id="creating__1">Constructor</a></th>
+<th id="h2" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPanel.html#JPanel--">JPanel()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JPanel.html#JPanel-java.awt.LayoutManager-">JPanel(LayoutManager)</a></td>
+<td headers="h2">Creates a panel. The <code>LayoutManager</code> parameter provides a layout manager for the new panel. By default, a panel uses a <code>FlowLayout</code> to lay out its components.</td>
+</tr>
+</table>
+<table border="1" summary="methods for managing a container's components">
+<caption><a style="font-weight: bold" name="contents" id="contents">Managing a Container&#39;s Components</a></caption>
+<tr>
+<th id="h101" align="left">Method</th>
+<th id="h102" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#add-java.awt.Component-">void add(Component)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#add-java.awt.Component-int-">void add(Component, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#add-java.awt.Component-java.lang.Object-">void add(Component, Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#add-java.awt.Component-java.lang.Object-int-">void add(Component, Object, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#add-java.lang.String-java.awt.Component-">void add(String, Component)</a></td>
+<td headers="h102">Adds the specified component to the panel. When present, the <code>int</code> parameter is the index of the component within the container. By default, the first component added is at index 0, the second is at index 1, and so on. The <code>Object</code> parameter is layout manager dependent and typically provides information to the layout manager regarding positioning and other layout constraints for the added component. The <code>String</code> parameter is similar to the <code>Object</code> parameter.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#getComponentCount--">int getComponentCount()</a></td>
+<td headers="h102">Gets the number of components in this panel.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#getComponent-int-">Component getComponent(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#getComponentAt-int-int-">Component getComponentAt(int, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#getComponentAt-java.awt.Point-">Component getComponentAt(Point)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#getComponents--">Component[] getComponents()</a></td>
+<td headers="h102">Gets the specified component or components. You can get a component based on its index or <em>x, y</em> position.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#remove-java.awt.Component-">void remove(Component)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#remove-int-">void remove(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#removeAll--">void removeAll()</a></td>
+<td headers="h102">Removes the specified component(s).</td>
+</tr>
+</table>
+<table border="1" summary="methods for setting or getting the layout manager">
+<caption><a style="font-weight: bold" name="layoutapi" id="layoutapi">Setting or Getting the Layout Manager</a></caption>
+<tr>
+<th id="h201" align="left">Method</th>
+<th id="h202" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#setLayout-java.awt.LayoutManager-">void setLayout(LayoutManager)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#getLayout--">LayoutManager getLayout()</a></td>
+<td headers="h202">Sets or gets the layout manager for this panel. The layout manager is responsible for positioning the panel&#39;s components within the panel&#39;s bounds according to some philosophy.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples That Use Panels</a></h2>
+<p>Many examples contained in this lesson use <code>JPanel</code> objects. The following table lists a few.</p>
+<table summary="Information about examples">
+<tr>
+<th id="h301" align="left">Example</th>
+<th id="h302" align="left">Where Described</th>
+<th id="h303" align="left">Notes</th>
+</tr>
+<tr>
+<td headers="h301"><a href="../examples/components/index.html#Converter"><code>Converter</code></a></td>
+<td headers="h302">This section</td>
+<td headers="h303">Uses five panels, four of which use <code>BoxLayout</code> and one of which uses <code>GridLayout</code>. The panels use borders and, as necessary, size and alignment hints to affect layout.</td>
+</tr>
+<tr>
+<td headers="h301"><a href="../examples/components/index.html#ListDemo"><code>ListDemo</code></a></td>
+<td headers="h302"><a href="list.html">How to Use Lists</a></td>
+<td headers="h303">Uses a panel, with its default <code>FlowLayout</code> manager, to center three components in a row. 
+</td>
+</tr>
+<tr>
+<td headers="h301"><a href="../examples/components/index.html#ToolBarDemo"><code>ToolBarDemo</code></a></td>
+<td headers="h302"><a href="toolbar.html">How to Use Tool Bars</a></td>
+<td headers="h303">Uses a panel as a content pane. The panel contains three components, laid out by <code>BorderLayout</code>.</td>
+</tr>
+<tr>
+<td headers="h301"><a href="../examples/components/index.html#BorderDemo"><code>BorderDemo</code></a></td>
+<td headers="h302"><a href="border.html">How to Use Borders</a></td>
+<td headers="h303">Contains many panels that have various kinds of borders. Several panels use <code>BoxLayout</code>.</td>
+</tr>
+<tr>
+<td headers="h301"><a href="../examples/layout/index.html#BoxLayoutDemo"><code>BoxLayoutDemo</code></a></td>
+<td headers="h302"><a href="../layout/box.html">How to Use BoxLayout</a></td>
+<td headers="h303">Illustrates the use of a panel with Swing&#39;s <code>BoxLayout</code> manager.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="menu.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="passwordfield.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Use Menus
+        <br /><b>Next page:</b> How to Use Password Fields
+    </div>
+</body>
+</html> 

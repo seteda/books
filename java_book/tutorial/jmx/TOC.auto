@@ -1,0 +1,27 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="overview/index.html">Overview of the JMX Technology</a>
+<ul>
+<li class="tocli"><a href="overview/why.html">Why Use the JMX Technology? </a></li>
+<li class="tocli"><a href="overview/architecture.html">Architecture of the JMX Technology</a></li>
+<li class="tocli"><a href="overview/javavm.html">Monitoring and Management of the Java Virtual Machine</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="mbeans/index.html">Introducing MBeans</a>
+<ul>
+<li class="tocli"><a href="mbeans/standard.html">Standard MBeans</a></li>
+<li class="tocli"><a href="mbeans/mxbeans.html">MXBeans</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="notifs/index.html">Notifications</a></li>
+<li class="tocli"><a href="remote/index.html">Remote Management</a>
+<ul>
+<li class="tocli"><a href="remote/jconsole.html">Exposing a Resource for Remote Management By JConsole</a></li>
+<li class="tocli"><a href="remote/custom.html">Creating a Custom JMX Client</a>
+</li>
+</ul>
+</li>
+</ul>

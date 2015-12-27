@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Object Ordering (The Java&trade; Tutorials &gt;        
+            Collections &gt; Interfaces)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This collections Java tutorial describes interfaces, implementations, and algorithms in the Java Collections framework" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java collections, set, list, queue, map, array, arraylist" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Interfaces</a></div>
+<div class="linkAHEAD"><a href="collection.html">The Collection Interface</a></div>
+<div class="linkAHEAD"><a href="set.html">The Set Interface</a></div>
+<div class="linkAHEAD"><a href="list.html">The List Interface</a></div>
+<div class="linkAHEAD"><a href="queue.html">The Queue Interface</a></div>
+<div class="linkAHEAD"><a href="deque.html">The Deque Interface</a></div>
+<div class="linkAHEAD"><a href="map.html">The Map Interface</a></div>
+<div class="nolinkAHEAD">Object Ordering</div>
+<div class="linkAHEAD"><a href="sorted-set.html">The SortedSet Interface</a></div>
+<div class="linkAHEAD"><a href="sorted-map.html">The SortedMap Interface</a></div>
+<div class="linkAHEAD"><a href="summary.html">Summary of Interfaces</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Collections
+        <br /><b>Lesson:</b> Interfaces
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Collections</a>
+                &gt;
+                <a href="index.html" target="_top">Interfaces</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="map.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="sorted-set.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Object Ordering</h1></div>
+            <div id="PageContent">
+
+<p>A <code>List</code> <code>l</code> may be sorted as follows.</p>
+<div class="codeblock"><pre>
+Collections.sort(l);
+</pre></div>
+<p>If the <code>List</code> consists of <code>String</code> elements, it will be sorted into alphabetical order. If it consists of <code>Date</code> elements, it will be sorted into chronological order. How does this happen? <code>String</code> and <code>Date</code> both implement the <code>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html">Comparable</a></code> interface. <code>Comparable</code> implementations provide a <i>natural ordering</i> for a class, which allows objects of that class to be sorted automatically. The 
+<span id="table:comparable-implementations">following table</span> summarizes some of the more important Java platform classes that implement <code>Comparable</code>.</p>
+<table summary="comparable-implementations" border="1">
+<caption id="comparable-implementations"><strong>Classes Implementing Comparable</strong></caption>
+<tr>
+<th id="h1">Class</th>
+<th id="h2">Natural Ordering</th>
+</tr>
+<tr>
+<td headers="h1"><code>Byte</code></td>
+<td headers="h2">Signed numerical</td>
+</tr>
+<tr>
+<td headers="h1"><code>Character</code></td>
+<td headers="h2">Unsigned numerical</td>
+</tr>
+<tr>
+<td headers="h1"><code>Long</code></td>
+<td headers="h2">Signed numerical</td>
+</tr>
+<tr>
+<td headers="h1"><code>Integer</code></td>
+<td headers="h2">Signed numerical</td>
+</tr>
+<tr>
+<td headers="h1"><code>Short</code></td>
+<td headers="h2">Signed numerical</td>
+</tr>
+<tr>
+<td headers="h1"><code>Double</code></td>
+<td headers="h2">Signed numerical</td>
+</tr>
+<tr>
+<td headers="h1"><code>Float</code></td>
+<td headers="h2">Signed numerical</td>
+</tr>
+<tr>
+<td headers="h1"><code>BigInteger</code></td>
+<td headers="h2">Signed numerical</td>
+</tr>
+<tr>
+<td headers="h1"><code>BigDecimal</code></td>
+<td headers="h2">Signed numerical</td>
+</tr>
+<tr>
+<td headers="h1"><code>Boolean</code></td>
+<td headers="h2"><code>Boolean.FALSE &lt; Boolean.TRUE</code></td>
+</tr>
+<tr>
+<td headers="h1"><code>File</code></td>
+<td headers="h2">System-dependent lexicographic on path name</td>
+</tr>
+<tr>
+<td headers="h1"><code>String</code></td>
+<td headers="h2">Lexicographic</td>
+</tr>
+<tr>
+<td headers="h1"><code>Date</code></td>
+<td headers="h2">Chronological</td>
+</tr>
+<tr>
+<td headers="h1"><code>CollationKey</code></td>
+<td headers="h2">Locale-specific lexicographic</td>
+</tr>
+</table>
+<br />
+<p>If you try to sort a list, the elements of which do not implement <code>Comparable</code>, <code>Collections.sort(list)</code> will throw a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/ClassCastException.html"><code>ClassCastException</code></a>. Similarly, <code>Collections.sort(list, comparator)</code> will throw a <code>ClassCastException</code> if you try to sort a list whose elements cannot be compared to one another using the <code>comparator</code>. Elements that can be compared to one another are called <i>mutually comparable</i>. Although elements of different types may be mutually comparable, none of the classes listed here permit interclass comparison.</p>
+<p>This is all you really need to know about the <code>Comparable</code> interface if you just want to sort lists of comparable elements or to create sorted collections of them. The next section will be of interest to you if you want to implement your own <code>Comparable</code> type.</p>
+<h2>Writing Your Own Comparable Types</h2>
+<p>The <code>Comparable</code> interface consists of the following method.</p>
+<div class="codeblock"><pre>
+public interface Comparable&lt;T&gt; {
+    public int compareTo(T o);
+}
+</pre></div>
+<p>The <code>compareTo</code> method compares the receiving object with the specified object and returns a negative integer, 0, or a positive integer depending on whether the receiving object is less than, equal to, or greater than the specified object. If the specified object cannot be compared to the receiving object, the method throws a <code>ClassCastException</code>.</p>
+<p>The 
+<a class="SourceLink" target="_blank" href="examples/Name.java" onclick="showCode('../../displayCode.html', 'examples/Name.java'); return false;"><code>following class representing a person's name</code></a> implements <code>Comparable</code>.</p>
+<div class="codeblock"><pre>
+import java.util.*;
+
+public class Name implements Comparable&lt;Name&gt; {
+    private final String firstName, lastName;
+
+    public Name(String firstName, String lastName) {
+        if (firstName == null || lastName == null)
+            throw new NullPointerException();
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String firstName() { return firstName; }
+    public String lastName()  { return lastName;  }
+
+    public boolean equals(Object o) {
+        if (!(o instanceof Name))
+            return false;
+        Name n = (Name) o;
+        return n.firstName.equals(firstName) &amp;&amp; n.lastName.equals(lastName);
+    }
+
+    public int hashCode() {
+        return 31*firstName.hashCode() + lastName.hashCode();
+    }
+
+    public String toString() {
+	return firstName + &quot; &quot; + lastName;
+    }
+
+    public int compareTo(Name n) {
+        int lastCmp = lastName.compareTo(n.lastName);
+        return (lastCmp != 0 ? lastCmp : firstName.compareTo(n.firstName));
+    }
+}
+</pre></div>
+<p>To keep the preceding example short, the class is somewhat limited: It doesn&#39;t support middle names, it demands both a first and a last name, and it is not internationalized in any way. Nonetheless, it illustrates the following important points:</p>
+<ul>
+<li><code>Name</code> objects are <i>immutable</i>. All other things being equal, immutable types are the way to go, especially for objects that will be used as elements in <code>Set</code>s or as keys in <code>Map</code>s. These collections will break if you modify their elements or keys while they&#39;re in the collection.</li>
+<li>The constructor checks its arguments for <code>null</code>. This ensures that all <code>Name</code> objects are well formed so that none of the other methods will ever throw a <code>NullPointerException</code>.</li>
+<li>The <code>hashCode</code> method is redefined. This is essential for any class that redefines the <code>equals</code> method. (Equal objects must have equal hash codes.)</li>
+<li>The <code>equals</code> method returns <code>false</code> if the specified object is <code>null</code> or of an inappropriate type. The <code>compareTo</code> method throws a runtime exception under these circumstances. Both of these behaviors are required by the general contracts of the respective methods.</li>
+<li>The <code>toString</code> method has been redefined so it prints the <code>Name</code> in human-readable form. This is always a good idea, especially for objects that are going to get put into collections. The various collection types&#39; <code>toString</code> methods depend on the <code>toString</code> methods of their elements, keys, and values.</li>
+</ul>
+<p>Since this section is about element ordering, let&#39;s talk a bit more about <code>Name</code>&#39;s <code>compareTo</code> method. It implements the standard name-ordering algorithm, where last names take precedence over first names. This is exactly what you want in a natural ordering. It would be very confusing indeed if the natural ordering were unnatural!</p>
+<p>Take a look at how <code>compareTo</code> is implemented, because it&#39;s quite typical. First, you compare the most significant part of the object (in this case, the last name). Often, you can just use the natural ordering of the part&#39;s type. In this case, the part is a <code>String</code> and the natural (lexicographic) ordering is exactly what&#39;s called for. If the comparison results in anything other than zero, which represents equality, you&#39;re done: You just return the result. If the most significant parts are equal, you go on to compare the next most-significant parts. In this case, there are only two parts &#151; first name and last name. If there were more parts, you&#39;d proceed in the obvious fashion, comparing parts until you found two that weren&#39;t equal or you were comparing the least-significant parts, at which point you&#39;d return the result of the comparison.</p>
+<p>Just to show that it all works, here&#39;s 
+<a class="SourceLink" target="_blank" href="examples/NameSort.java" onclick="showCode('../../displayCode.html', 'examples/NameSort.java'); return false;"><code>a program that builds a list of names and sorts them</code></a>.</p>
+<div class="codeblock"><pre>
+import java.util.*;
+
+public class NameSort {
+    public static void main(String[] args) {
+        Name nameArray[] = {
+            new Name(&quot;John&quot;, &quot;Smith&quot;),
+            new Name(&quot;Karl&quot;, &quot;Ng&quot;),
+            new Name(&quot;Jeff&quot;, &quot;Smith&quot;),
+            new Name(&quot;Tom&quot;, &quot;Rich&quot;)
+        };
+
+        List&lt;Name&gt; names = Arrays.asList(nameArray);
+        Collections.sort(names);
+        System.out.println(names);
+    }
+}
+</pre></div>
+<p>If you run this program, here&#39;s what it prints.</p>
+<div class="codeblock"><pre>
+[Karl Ng, Tom Rich, Jeff Smith, John Smith]
+</pre></div>
+<p>There are four restrictions on the behavior of the <code>compareTo</code> method, which we won&#39;t go into now because they&#39;re fairly technical and boring and are better left in the API documentation. It&#39;s really important that all classes that implement <code>Comparable</code> obey these restrictions, so read the documentation for <code>Comparable</code> if you&#39;re writing a class that implements it. Attempting to sort a list of objects that violate the restrictions has undefined behavior. Technically speaking, these restrictions ensure that the natural ordering is a <i>total order</i> on the objects of a class that implements it; this is necessary to ensure that sorting is well defined.</p>
+<h2>Comparators</h2>
+<p>What if you want to sort some objects in an order other than their natural ordering? Or what if you want to sort some objects that don&#39;t implement <code>Comparable</code>? To do either of these things, you&#39;ll need to provide a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html"><code>Comparator</code></a> &#151; an object that encapsulates an ordering. Like the <code>Comparable</code> interface, the <code>Comparator</code> interface consists of a single method.</p>
+<div class="codeblock"><pre>
+public interface Comparator&lt;T&gt; {
+    int compare(T o1, T o2);
+}
+</pre></div>
+<p>The <code>compare</code> method compares its two arguments, returning a negative integer, 0, or a positive integer depending on whether the first argument is less than, equal to, or greater than the second. If either of the arguments has an inappropriate type for the <code>Comparator</code>, the <code>compare</code> method throws a <code>ClassCastException</code>.</p>
+<p>Much of what was said about <code>Comparable</code> applies to <code>Comparator</code> as well. Writing a <code>compare</code> method is nearly identical to writing a <code>compareTo</code> method, except that the former gets both objects passed in as arguments. The <code>compare</code> method has to obey the same four technical restrictions as <code>Comparable</code>&#39;s <code>compareTo</code> method for the same reason &#151; a <code>Comparator</code> must induce a total order on the objects it compares.</p>
+<p>Suppose you have a class called <code>Employee</code>, as follows.</p>
+<div class="codeblock"><pre>
+public class Employee implements Comparable&lt;Employee&gt; {
+    public Name name()     { ... }
+    public int number()    { ... }
+    public Date hireDate() { ... }
+       ...
+}
+</pre></div>
+<p>Let&#39;s assume that the natural ordering of <code>Employee</code> instances is <code>Name</code> ordering (as defined in the previous example) on employee name. Unfortunately, the boss has asked for a list of employees in order of seniority. This means we have to do some work, but not much. The following program will produce the required list.</p>
+<div class="codeblock"><pre>
+import java.util.*;
+public class EmpSort {
+    static final Comparator&lt;Employee&gt; SENIORITY_ORDER = 
+                                        new Comparator&lt;Employee&gt;() {
+            public int compare(Employee e1, Employee e2) {
+                return e2.hireDate().compareTo(e1.hireDate());
+            }
+    };
+
+    // Employee database
+    static final Collection&lt;Employee&gt; employees = ... ;
+
+    public static void main(String[] args) {
+        List&lt;Employee&gt; e = new ArrayList&lt;Employee&gt;(employees);
+        Collections.sort(e, SENIORITY_ORDER);
+        System.out.println(e);
+    }
+}
+</pre></div>
+<p>The <code>Comparator</code> in the program is reasonably straightforward. It relies on the natural ordering of <code>Date</code> applied to the values returned by the <code>hireDate</code> accessor method. Note that the <code>Comparator</code> passes the hire date of its second argument to its first rather than vice versa. The reason is that the employee who was hired most recently is the least senior; sorting in the order of hire date would put the list in reverse seniority order. Another technique people sometimes use to achieve this effect is to maintain the argument order but to negate the result of the comparison.</p>
+<div class="codeblock"><pre>
+// Don't do this!!
+return -r1.hireDate().compareTo(r2.hireDate());
+</pre></div>
+<p>You should always use the former technique in favor of the latter because the latter is not guaranteed to work. The reason for this is that the <code>compareTo</code> method can return any negative <code>int</code> if its argument is less than the object on which it is invoked. There is one negative <code>int</code> that remains negative when negated, strange as it may seem.</p>
+<div class="codeblock"><pre>
+-Integer.MIN_VALUE == Integer.MIN_VALUE
+</pre></div>
+<p>The <code>Comparator</code> in the preceding program works fine for sorting a <code>List</code>, but it does have one deficiency: It cannot be used to order a sorted collection, such as <code>TreeSet</code>, because it generates an ordering that is <i>not compatible with</i> equals. This means that this <code>Comparator</code> equates objects that the <code>equals</code> method does not. In particular, any two employees who were hired on the same date will compare as equal. When you&#39;re sorting a <code>List</code>, this doesn&#39;t matter; but when you&#39;re using the <code>Comparator</code> to order a sorted collection, it&#39;s fatal. If you use this <code>Comparator</code> to insert multiple employees hired on the same date into a <code>TreeSet</code>, only the first one will be added to the set; the second will be seen as a duplicate element and will be ignored.</p>
+<p>To fix this problem, simply tweak the <code>Comparator</code> so that it produces an ordering that <i>is compatible with</i> <code>equals</code>. In other words, tweak it so that the only elements seen as equal when using <code>compare</code> are those that are also seen as equal when compared using <code>equals</code>. The way to do this is to perform a two-part comparison (as for <code>Name</code>), where the first part is the one we&#39;re interested in &#151; in this case, the hire date &#151; and the second part is an attribute that uniquely identifies the object. Here the employee number is the obvious attribute. This is the <code>Comparator</code> that results.</p>
+<div class="codeblock"><pre>
+static final Comparator&lt;Employee&gt; SENIORITY_ORDER = 
+                                        new Comparator&lt;Employee&gt;() {
+    public int compare(Employee e1, Employee e2) {
+        int dateCmp = e2.hireDate().compareTo(e1.hireDate());
+        if (dateCmp != 0)
+            return dateCmp;
+
+        return (e1.number() &lt; e2.number() ? -1 :
+               (e1.number() == e2.number() ? 0 : 1));
+    }
+};
+</pre></div>
+<p>One last note: You might be tempted to replace the final <code>return</code> statement in the <code>Comparator</code> with the simpler:</p>
+<div class="codeblock"><pre>
+return e1.number() - e2.number();
+</pre></div>
+<p>Don&#39;t do it unless you&#39;re <i>absolutely sure</i> no one will ever have a negative employee number! This trick does not work in general because the signed integer type is not big enough to represent the difference of two arbitrary signed integers. If <code>i</code> is a large positive integer and <code>j</code> is a large negative integer, <code>i - j</code> will overflow and will return a negative integer. The resulting <code>comparator</code> violates one of the four technical restrictions we keep talking about (transitivity) and produces horrible, subtle bugs. This is not a purely theoretical concern; people get burned by it.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="map.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="sorted-set.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> The Map Interface
+        <br /><b>Next page:</b> The SortedSet Interface
+    </div>
+</body>
+</html> 

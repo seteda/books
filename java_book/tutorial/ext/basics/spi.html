@@ -1,0 +1,1238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Creating Extensible Applications (The Java&trade; Tutorials &gt;        
+            The Extension Mechanism &gt; Creating and Using Extensions)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Java tutorial describes how to create and use extensions or optional packages and make them secure" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java extensions, java optional packages" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Creating and Using Extensions</a></div>
+<div class="linkAHEAD"><a href="install.html">Installed Extensions</a></div>
+<div class="linkAHEAD"><a href="download.html">Download Extensions</a></div>
+<div class="linkAHEAD"><a href="load.html">Understanding Extension Class Loading</a></div>
+<div class="nolinkAHEAD">Creating Extensible Applications</div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> The Extension Mechanism
+        <br /><b>Lesson:</b> Creating and Using Extensions
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">The Extension Mechanism</a>
+                &gt;
+                <a href="index.html" target="_top">Creating and Using Extensions</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="load.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../security/index.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Creating Extensible Applications</h1></div>
+            <div id="PageContent">
+
+
+<p>The following topics are covered:</p>
+
+<ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#dictionary-service-example">Dictionary Service Example</a></li>
+  <li><a href="#running-the-dictionaryservicedemo-sample">Running the DictionaryServiceDemo Sample</a></li>
+  <li><a href="#compiling-and-running-the-dictionaryservicedemo-sample">Compiling and Running the DictionaryServiceDemo Sample</a></li>
+  <li><a href="#understanding-the-dictionaryservicedemo-sample">Understanding the DictionaryServiceDemo Sample</a>
+    <ol>
+      <li><a href="#define-the-service-provider-interface">Define the Service Provider Interface</a></li>
+      <li><a href="#definte-the-service-that-retrieves-service-provider-implementations">Define the Service That Retrieves the Service Provider Implementations</a>
+        <ul>
+          <li><a href="#singleton">The Singleton Design Pattern</a></li>
+        </ul>
+      </li>
+      <li><a href="#implement-the-service-provider">Implement the Service Provider</a></li>
+      <li><a href="#register-service-providers">Register Service Providers</a></li>
+      <li><a href="#create-a-client-that-uses-the-service-and-service-providers">Create a Client That Uses the Service and Service Providers</a></li>
+      <li><a href="#package-in-jar-files">Package the Service Providers, the Service, and the Service Client in JAR Files</a>
+        <ul>
+          <li><a href="#packaging-service-providers-in-jar-files">Packaging Service Providers in JAR Files</a></li>
+          <li><a href="#packaging-the-dictionary-service-in-a-jar-file">Packaging the Dictionary SPI and Dictionary Service in a JAR File</a></li>
+          <li><a href="#packaging-the-client-in-a-jar-file">Packaging the Client in a JAR File</a></li>
+        </ul>
+      </li>
+      <li><a href="#run-the-client">Run the Client</a></li>
+    </ol>
+  </li>
+  <li><a href="#the-serviceloader-class">The ServiceLoader Class</a></li>  
+  <li><a href="#limitations-of-the-service-loader-api">Limitations of the ServiceLoader API</a></li>
+  <li><a href="#summary">Summary</a></li>  
+</ul>
+
+<h2><a name="introduction">Introduction</a></h2>
+
+<p>An <i>extensible</i> application is one that you can extend without modifying its original code base. You can enhance its functionality with new plug-ins or modules. Developers, software vendors, and customers can add new functionality or application programming interfaces (APIs) by adding a new Java Archive (JAR) file onto the application class path or into an application-specific extension directory. </p>
+
+<p>This section describes how to create applications with extensible services, which enable you or others to provide service implementations that require no modifications to the original application. By designing an extensible application, you provide a way to upgrade or enhance specific parts of a product without changing the core application. </p>
+
+<p>One example of an extensible application is a word processor that allows the end user to add a new dictionary or spelling checker. In this example, the word processor provides a dictionary or spelling feature that other developers, or even customers, can extend by providing their own implementation of the feature.</p>
+
+<p>The following are terms and definitions important to understand extensible applications:</p>
+
+<dl>
+
+  <dt>Service</dt>
+  <dd>A set of programming interfaces and classes that provide access to some specific application functionality or feature. The service can define the interfaces for the functionality and a way to retrieve an implementation. In the word-processor example, a dictionary service can define a way to retrieve a dictionary and the definition of a word, but it does not implement the underlying feature set. Instead, it relies on a <i>service provider</i> to implement that functionality.</dd>
+  
+  <dt>Service provider interface (SPI)</dt>
+  <dd>The set of public interfaces and abstract classes that a service defines. The SPI defines the classes and methods available to your application.</dd>
+  
+  <dt>Service Provider</dt>
+  <dd>Implements the SPI. An application with extensible services enable you, vendors, and customers to add service providers without modifying the original application.</dd>
+  
+</dl>
+
+
+<h2><a name="dictionary-service-example">Dictionary Service Example</a></h2>
+
+<p>Consider how you might design a dictionary service in a word processor or editor. One way is to define a service represented by a class named <code>DictionaryService</code> and a service provider interface named <code>Dictionary</code>. The <code>DictionaryService</code> provides a singleton <code>DictionaryService</code> object. (See the section <a href="#singleton">The Singleton Design Pattern</a> for more information.) This object retrieves definitions of words from <code>Dictionary</code> providers. Dictionary service clients &mdash; your application code &mdash; retrieve an instance of this service, and the service will search, instantiate, and use <code>Dictionary</code> service providers.</p>
+
+<p>Although the word-processor developer would most likely provide a basic, general dictionary with the original product, the customer might require a specialized dictionary, perhaps containing legal or technical terms. Ideally, the customer is able to create or purchase new dictionaries and add them to the existing application.</p>
+
+
+
+<p>
+The <code><a href="examples/DictionaryServiceDemo/DictionaryServiceDemo.zip">DictionaryServiceDemo</a></code> sample shows you how to implement a <code>Dictionary</code> service, create <code>Dictionary</code> service providers that add additional dictionaries, and create a simple <code>Dictionary</code> service client that tests the service. This sample, which is packaged in the zip file <code><a href="examples/DictionaryServiceDemo/DictionaryServiceDemo.zip">DictionaryServiceDemo.zip</a></code>, consists of the following files:
+
+</p>
+
+<ul>
+  <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/build.xml" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/build.xml'); return false;"><code><code>build.xml</code></code></a>  </li>
+  
+  <li><code>DictionaryDemo</code>
+    <ul>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/DictionaryDemo/build.xml" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/DictionaryDemo/build.xml'); return false;"><code><code>build.xml</code></code></a>      </li>
+      <li><code>build</code></li>
+      <li><code>dist</code>
+        <ul>
+          <li><code>DictionaryDemo.jar</code></li>
+        </ul>
+      </li>
+      <li><code>src</code>
+        <ul>
+          <li><code>dictionary</code>
+            <ul>
+              <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/DictionaryDemo/src/dictionary/DictionaryDemo.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/DictionaryDemo/src/dictionary/DictionaryDemo.java'); return false;"><code><code>DictionaryDemo.java</code></code></a>              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  
+    <li><code>DictionaryServiceProvider</code>
+    <ul>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/DictionaryDemo/build.xml" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/DictionaryDemo/build.xml'); return false;"><code><code>build.xml</code></code></a>      </li>
+      <li><code>build</code></li>
+      <li><code>dist</code>
+        <ul>
+          <li><code>DictionaryServiceProvider.jar</code></li>
+        </ul>
+      </li>
+      <li><code>src</code>
+        <ul>
+          <li><code>dictionary</code>
+            <ul>
+              <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/DictionaryService.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/DictionaryService.java'); return false;"><code><code>DictionaryService.java</code></code></a>              </li>
+              <li><code>spi</code>
+                <ul>
+                  <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/spi/Dictionary.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/spi/Dictionary.java'); return false;"><code><code>Dictionary.java</code></code></a>                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>ExtendedDictionary</code>
+    <ul>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/ExtendedDictionary/build.xml" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/ExtendedDictionary/build.xml'); return false;"><code><code>build.xml</code></code></a>      </li>
+      <li><code>build</code></li>
+      <li><code>dist</code>
+        <ul>
+          <li><code>ExtendedDictionary.jar</code></li>
+        </ul>
+      </li>
+      <li><code>src</code>
+        <ul>
+          <li><code>dictionary</code>
+            <ul>
+              <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/ExtendedDictionary/src/dictionary/ExtendedDictionary.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/ExtendedDictionary/src/dictionary/ExtendedDictionary.java'); return false;"><code><code>ExtendedDictionary.java</code></code></a>              </li>
+            </ul>
+          </li>
+          <li><code>META-INF</code>
+            <ul>
+              <li><code>services</code>
+                <ul>
+                  <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/ExtendedDictionary/src/META-INF/services/dictionary.spi.Dictionary" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/ExtendedDictionary/src/META-INF/services/dictionary.spi.Dictionary'); return false;"><code><code>dictionary.spi.Dictionary</code></code></a>                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>GeneralDictionary</code>
+    <ul>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/GeneralDictionary/build.xml" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/GeneralDictionary/build.xml'); return false;"><code><code>build.xml</code></code></a>      </li>
+      <li><code>build</code></li>
+      <li><code>dist</code>
+        <ul>
+          <li><code>GeneralDictionary.jar</code></li>
+        </ul>
+      </li>
+      <li><code>src</code>
+        <ul>
+          <li><code>dictionary</code>
+            <ul>
+              <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/GeneralDictionary/src/dictionary/GeneralDictionary.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/GeneralDictionary/src/dictionary/GeneralDictionary.java'); return false;"><code><code>GeneralDictionary.java</code></code></a>              </li>
+            </ul>
+          </li>
+          <li><code>META-INF</code>
+            <ul>
+              <li><code>services</code>
+                <ul>
+                  <li>
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/GeneralDictionary/src/META-INF/services/dictionary.spi.Dictionary" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/GeneralDictionary/src/META-INF/services/dictionary.spi.Dictionary'); return false;"><code><code>dictionary.spi.Dictionary</code></code></a>                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Note</strong>: The <code>build</code> directories contain the compiled class files of the Java source files contained in the <code>src</code> directory in the same level.</p>
+
+<h2><a name="running-the-dictionaryservicedemo-sample">Running the DictionaryServiceDemo Sample</a></h2>
+
+<p>Because the zip file <code><a href="examples/DictionaryServiceDemo/DictionaryServiceDemo.zip">DictionaryServiceDemo.zip</a></code> contains compiled class files, you can unzip this file to your computer and run the sample without compiling it by following these steps:</p>
+
+<ol>
+  <li>                 
+    <p>
+    Download and unzip the sample code: Download and unzip the file <code><a href="examples/DictionaryServiceDemo/DictionaryServiceDemo.zip">DictionaryServiceDemo.zip</a></code> to your computer. It is These steps assume that you unzipped the contents of this file into the directory <code>C:\DictionaryServiceDemo</code>.
+
+    </p>
+  </li>
+  
+  <li>
+    <p>Change the current directory to <code>C:\DictionaryServiceDemo\DictionaryDemo</code> and follow the step <a href="#run-the-client">Run the Client</a>.</p>
+  </li>
+</ol>
+  
+
+
+<h2><a name="compiling-and-running-the-dictionaryservicedemo-sample">Compiling and Running the DictionaryServiceDemo Sample</a></h2>
+
+
+
+<p>The <code>DictionaryServiceDemo</code> sample includes Apache Ant build files, which are all named <code>build.xml</code>. The following steps show you how to use Apache Ant to compile, build, and run the <code>DictionaryServiceDemo</code> sample:</p>
+
+<ol>
+
+  <li><p>Install Apache Ant: Go to the following link to download and install Apache Ant:</p>
+  
+  <p><code><a href="http://ant.apache.org/">http://ant.apache.org/</a></code></p>
+  
+  <p>Ensure that the directory that contains the Apache Ant executable file is in your <code>PATH</code> environment variable so that you can run it from any directory. In addition, ensure that your JDK's <code>bin</code> directory, which contains the <code>java</code> and <code>javac</code> executables (<code>java.exe</code> and <code>javac.exe</code> for Microsoft Windows). is in your <code>PATH</code> environment variable. See
+<a class="TutorialLink" target="_top" href="../../essential/environment/paths.html">PATH and CLASSPATH</a>  for information about setting the <code>PATH</code> environment variable.</p></li>
+  
+  <li>
+    <p>
+    Download and unzip the sample code: Download and unzip the file <code><a href="examples/DictionaryServiceDemo/DictionaryServiceDemo.zip">DictionaryServiceDemo.zip</a></code> to your computer. These steps assume that you unzipped the contents of this file into the directory <code>C:\DictionaryServiceDemo</code>.
+  
+    </p>
+  </li>
+  
+  <li>
+    <p>Compile the code: Change the current directory to <code>C:\DictionaryServiceDemo</code> and run the following command:</p>
+  
+    <pre class="codeblock">ant compile-all</pre>
+  
+    <p>This command compiles the source code in the <code>src</code> directories contained in the directories <code>DictionaryDemo</code>, <code>DictionaryServiceProvider</code>, <code>ExtendedDictionary</code>, and <code>GeneralDictionary</code>, and puts the generated <code>class</code> files in the corresponding <code>build</code> directories.</p>
+  </li>
+  
+  <li>
+    <p>Package the compiled Java files into JAR files: Ensure the current directory is <code>C:\DictionaryServiceDemo</code> and run the following command:</p>
+  
+    <pre class="codeblock">ant jar</pre>
+  
+    <p>This command creates the following JAR files:</p>
+    
+    <ul>
+      <li><code>DictionaryDemo/dist/DictionaryDemo.jar</code></li>
+      <li><code>DictionaryServiceProvider/dist/DictionaryServiceProvider.jar</code></li>
+      <li><code>GeneralDictionary/dist/GeneralDictionary.jar</code></li>
+      <li><code>ExtendedDictionary/dist/ExtendedDictionary.jar</code></li>
+    </ul>
+  </li>
+  
+  <li>
+    <p>Run the sample: Ensure that the directory that contains the <code>java</code> executable is in your <code>PATH</code> environment variable. See
+<a class="TutorialLink" target="_top" href="../../essential/environment/paths.html">PATH and CLASSPATH</a>     for more information.</p>
+     
+    <p>Change the current directory to <code>C:\DictionaryServiceDemo\DictionaryDemo</code> and run the following command:</p>
+    
+    <pre class="codeblock">ant run</pre>
+    
+    <p>The sample prints the following:</p>
+    
+    <p><code>book: a set of written or printed pages, usually bound with a protective cover<br/>editor: a person who edits<br/>xml: a document standard often used in web services, among other things<br/>REST: an architecture style for creating, reading, updating, and deleting data that attempts to use the common vocabulary of the HTTP protocol; Representational State Transfer</code></p>
+    
+  </li>
+</ol>
+
+<h2><a name="understanding-the-dictionaryservicedemo-sample">Understanding the DictionaryServiceDemo Sample</a></h2>
+
+<p>
+    The following steps show you how to re-create the contents of the file <code><a href="examples/DictionaryServiceDemo/DictionaryServiceDemo.zip">DictionaryServiceDemo.zip</a></code>. These steps show you how the sample works and how to run it.
+ 
+</p>
+
+<h3><a name="define-the-service-provider-interface">1. Define the Service Provider Interface</a></h3>
+
+<p>The <code>DictionaryServiceDemo</code> sample defines one SPI, the
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/spi/Dictionary.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/spi/Dictionary.java'); return false;"><code><code>Dictionary.java</code></code></a> interface. It contains only one method:</p>
+
+<pre class="codeblock">
+
+package dictionary.spi;
+
+public interface Dictionary {
+    public String getDefinition(String word);
+}
+</pre>
+
+<p>The sample stores the compiled class file in the directory <code>DictionaryServiceProvider/build</code>.</p>
+
+
+<h3><a name="definte-the-service-that-retrieves-service-provider-implementations">2. Define the Service That Retrieves the Service Provider Implementations</a></h3>
+
+<p>The
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/DictionaryService.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/DictionaryService.java'); return false;"><code><code>DictionaryService.java</code></code></a> class loads and accesses available <code>Dictionary</code> service providers on behalf of dictionary service clients:</p> 
+
+<pre class="codeblock">
+
+package dictionary;
+
+import dictionary.spi.Dictionary;
+import java.util.Iterator;
+import java.util.ServiceConfigurationError;
+import java.util.ServiceLoader;
+
+public class DictionaryService {
+
+    private static DictionaryService service;
+    private ServiceLoader&lt;Dictionary&gt; loader;
+
+    private DictionaryService() {
+        loader = ServiceLoader.load(Dictionary.class);
+    }
+
+    public static synchronized DictionaryService getInstance() {
+        if (service == null) {
+            service = new DictionaryService();
+        }
+        return service;
+    }
+
+
+    public String getDefinition(String word) {
+        String definition = null;
+
+        try {
+            Iterator&lt;Dictionary&gt; dictionaries = loader.iterator();
+            while (definition == null &amp;&amp; dictionaries.hasNext()) {
+                Dictionary d = dictionaries.next();
+                definition = d.getDefinition(word);
+            }
+        } catch (ServiceConfigurationError serviceError) {
+            definition = null;
+            serviceError.printStackTrace();
+
+        }
+        return definition;
+    }
+}
+</pre>
+
+<p>The sample stores the compiled class file in the directory <code>DictionaryServiceProvider/build</code>.</p>
+
+
+<p>The
+<code>DictionaryService</code> class implements the singleton design pattern. This means that only a single instance of the <code>DictionaryService</code> class is ever created. See the section <a href="#singleton">The Singleton Design Pattern</a> for more information.</p>
+
+<p>The <code>DictionaryService</code> class is the dictionary service client's  entry point to using any installed <code>Dictionary</code> service provider. Use the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html#load-java.lang.Class-"><code>ServiceLoader.load</code></a> method to retrieve the private static member <code>DictionaryService.service</code>, the singleton service entry point. Then the application can call the <code>getDefinition</code> method, which iterates through available <code>Dictionary</code> providers until it finds the targeted word. The <code>getDefinition</code> method returns null if no <code>Dictionary</code> instance contains the specified definition of the word.</p>
+
+<p>The dictionary service uses the <code>ServiceLoader.load</code> method to find the target class. The SPI is defined by the interface <code>dictionary.spi.Dictionary</code>, so the example uses this class as the load method's argument. The default load method searches the application class path with the default class loader.</p>
+
+<p>However, an overloaded version of this method enables you to specify 
+custom class loaders if you wish. That enables you to do more 
+sophisticated class searches. A particularly enthusiastic programmer 
+might, for example, create a
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/ClassLoader.html"><code>ClassLoader</code></a> instance that can search in an application-specific subdirectory that contains 
+provider JARs added during runtime. The result is an application 
+that does not require a restart to access new provider classes.</p>
+
+<p>After a loader for this class exists, you can use its iterator method to access and use each provider that it finds. The <code>getDefinition</code> method uses a <code>Dictionary</code> iterator to go through the providers until it finds a definition for the specified word. The iterator method caches <code>Dictionary</code> instances, so successive calls require little additional processing time. If new providers have been placed into service since the last invocation, the iterator method adds them to the list.</p>
+
+<p>The
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/DictionaryDemo/src/dictionary/DictionaryDemo.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/DictionaryDemo/src/dictionary/DictionaryDemo.java'); return false;"><code><code>DictionaryDemo.java</code></code></a> class uses this service. To use the service, the application obtains a <code>DictionaryService</code> instance and calls the <code>getDefinition</code> method. If a definition is available, the application prints it. If a definition is not available, the application prints a message stating that no available dictionary carries the word.</p>
+
+ 
+<h4><a name="singleton">The Singleton Design Pattern</a></h4>
+
+<p>A design pattern is a general solution to a common problem in software design. The idea is that the solution gets translated into code, and that code can be applied in different situations where the problem occurs. The singleton pattern describes a technique to ensure that only a single instance of a class is ever created. In essence, the technique takes the following approach: Do not let anyone outside the class create instances of the object.</p>
+
+<p>For example, the
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/DictionaryService.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/DictionaryService.java'); return false;"><code><code>DictionaryService</code></code></a> class implements the singleton pattern as follows:</p>
+
+<ul>
+  
+  <li>Declares the <code>DictionaryService</code> constructor as <code>private</code>, which prevents all other classes, except <code>DictionaryService</code>, from creating instances of it.</li>
+  
+  <li>Defines the <code>DictionaryService</code> member variable <code>service</code> as <code>static</code>, which ensures only one instance of <code>DictionaryService</code> exists.</li>
+  
+  <li>Defines the method <code>getInstance</code>, which enables other classes controlled access to the <code>DictionaryService</code> member variable <code>service</code>.</li>
+</ul>  
+
+<h3><a name="implement-the-service-provider">3. Implement the Service Provider</a></h3>
+
+<p>To provide this service, you must create a
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/spi/Dictionary.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/DictionaryServiceProvider/src/dictionary/spi/Dictionary.java'); return false;"><code><code>Dictionary.java</code></code></a> implementation. To keep things simple, create a general dictionary that defines just a few words. You can implement the dictionary with a database, a set of property files, or any other technology. The easiest way to demonstrate the provider pattern is to include all the words and definitions within a single file. </p>
+
+<p>The following code shows an implementation of the <code>Dictionary</code> SPI, the
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/GeneralDictionary/src/dictionary/GeneralDictionary.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/GeneralDictionary/src/dictionary/GeneralDictionary.java'); return false;"><code><code>GeneralDictionary.java</code></code></a> class. Notice that it provides a no-argument constructor and implements the <code>getDefinition</code> method defined by the SPI.</p>
+
+<pre class="codeblock">
+
+package dictionary;
+
+import dictionary.spi.Dictionary;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+public class GeneralDictionary implements Dictionary {
+
+    private SortedMap&lt;String, String&gt; map;
+    
+    public GeneralDictionary() {
+        map = new TreeMap&lt;String, String&gt;();
+        map.put(
+            &quot;book&quot;,
+            &quot;a set of written or printed pages, usually bound with &quot; +
+                &quot;a protective cover&quot;);
+        map.put(
+            &quot;editor&quot;,
+            &quot;a person who edits&quot;);
+    }
+
+    @Override
+    public String getDefinition(String word) {
+        return map.get(word);
+    }
+
+}
+</pre>
+
+<p>The sample stores the compiled class file in the directory <code>GeneralDictionary/build</code>. <strong>Note</strong>: You must compile the classes <code>dictionary.DictionaryService</code> and <code>dictionary.spi.Dictionary</code> before the class <code>GeneralDictionary</code>.</p>
+
+<p>The <code>GeneralDictionary</code> provider for this example defines just two words: <i>book</i> and <i>editor</i>. Obviously, a more usable dictionary would provide a more substantial list of generally used vocabulary.</p>
+
+<p>To demonstrate how multiple providers can implement the same SPI, the following code shows yet another possible provider. The
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/ExtendedDictionary/src/dictionary/ExtendedDictionary.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/ExtendedDictionary/src/dictionary/ExtendedDictionary.java'); return false;"><code><code>ExtendedDictionary.java</code></code></a> service provider is an extended dictionary containing technical terms familiar to most software developers. </p>
+
+<pre class="codeblock">
+
+package dictionary;
+
+import dictionary.spi.Dictionary;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+public class ExtendedDictionary implements Dictionary {
+
+        private SortedMap&lt;String, String&gt; map;
+
+    public ExtendedDictionary() {
+        map = new TreeMap&lt;String, String&gt;();
+        map.put(
+            &quot;xml&quot;,
+            &quot;a document standard often used in web services, among other &quot; +
+                &quot;things&quot;);
+        map.put(
+            &quot;REST&quot;,
+            &quot;an architecture style for creating, reading, updating, &quot; +
+                &quot;and deleting data that attempts to use the common &quot; +
+                &quot;vocabulary of the HTTP protocol; Representational State &quot; +
+                &quot;Transfer&quot;);
+    }
+
+    @Override
+    public String getDefinition(String word) {
+        return map.get(word);
+    }
+
+}
+</pre>
+
+<p>The sample stores the compiled class file in the directory <code>ExtendedDictionary/build</code>. <strong>Note</strong>: You must compile the classes <code>dictionary.DictionaryService</code> and <code>dictionary.spi.Dictionary</code> before the class <code>ExtendedDictionary</code>.</p>
+
+<p>It is easy to imagine customers using a complete set of <code>Dictionary</code> providers for their own special needs. The service loader API enables them to add new dictionaries to their application as their needs or preferences change. Because the underlying word-processor 
+application is extensible, no additional coding is required for customers to use the new providers.</p>
+
+<h3><a name="register-service-providers">4. Register Service Providers</a></h3>
+
+<p>To register your service provider, you create a provider configuration file, which is stored in the <code>META-INF/services</code> directory of the service provider's JAR file. The name of the configuration file is the fully qualified class name of the service provider, in which each component of the name is separated by a period (<code>.</code>), and nested classes are separated by a dollar sign (<code>$</code>).</p>
+
+<p>The provider configuration file contains the fully qualified class names of your service providers, one name per line. The file must be UTF-8 encoded. Additionally, you can include comments in the file by beginning the comment line with the number sign (<code>#</code>).</p> 
+
+<p>For example, to register the service provider <code>GeneralDictionary</code> create a text file named
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/GeneralDictionary/src/META-INF/services/dictionary.spi.Dictionary" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/GeneralDictionary/src/META-INF/services/dictionary.spi.Dictionary'); return false;"><code><code>dictionary.spi.Dictionary</code></code></a> . This file contains one line:</p>
+
+<pre class="codeblock">
+dictionary.GeneralDictionary
+</pre>
+
+<p>Similarly, to register the service provider <code>ExtendedDictionary</code>  create a text file named 
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/ExtendedDictionary/src/META-INF/services/dictionary.spi.Dictionary" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/ExtendedDictionary/src/META-INF/services/dictionary.spi.Dictionary'); return false;"><code><code>dictionary.spi.Dictionary</code></code></a> . This file contains one line:</p>
+
+<pre class="codeblock">
+dictionary.ExtendedDictionary
+</pre>
+
+<h3><a name="create-a-client-that-uses-the-service-and-service-providers">5. Create a Client That Uses the Service and Service Providers</a></h3>
+
+<p>Because developing a full word-processor application is a 
+significant undertaking, this tutorial provides a simpler application that uses the <code>DictionaryService</code> and <code>Dictionary</code> SPI. The <code>DictionaryDemo</code> sample searches for the words <em>book</em>, <em>editor</em>, <em>xml</em>, and <em>REST</em> words from any <code>Dictionary</code> providers on the class path and retrieves their definitions.</p>
+
+<p>The following is the
+<a class="SourceLink" target="_blank" href="examples/DictionaryServiceDemo/DictionaryDemo/src/dictionary/DictionaryDemo.java" onclick="showCode('../../displayCode.html', 'examples/DictionaryServiceDemo/DictionaryDemo/src/dictionary/DictionaryDemo.java'); return false;"><code><code>DictionaryDemo</code></code></a> sample. It requests a definition of the target word from the <code>DictionaryService</code> instance, which passes the request to its known <code>Dictionary</code> providers.</p>
+
+<pre class="codeblock">
+
+package dictionary;
+
+import dictionary.DictionaryService;
+
+public class DictionaryDemo {
+
+  public static void main(String[] args) {
+
+    DictionaryService dictionary = DictionaryService.getInstance();
+    System.out.println(DictionaryDemo.lookup(dictionary, &quot;book&quot;));
+    System.out.println(DictionaryDemo.lookup(dictionary, &quot;editor&quot;));
+    System.out.println(DictionaryDemo.lookup(dictionary, &quot;xml&quot;));
+    System.out.println(DictionaryDemo.lookup(dictionary, &quot;REST&quot;));
+  }
+
+  public static String lookup(DictionaryService dictionary, String word) {
+    String outputString = word + &quot;: &quot;;
+    String definition = dictionary.getDefinition(word);
+    if (definition == null) {
+      return outputString + &quot;Cannot find definition for this word.&quot;;
+    } else {
+      return outputString + definition;
+    }
+  }
+}
+</pre>
+
+<p>The sample stores the compiled class file in the directory <code>DictionaryDemo/build</code>. <strong>Note</strong>: You must compile the classes <code>dictionary.DictionaryService</code> and <code>dictionary.spi.Dictionary</code> before the class <code>DictionaryDemo</code>.</p>
+
+<h3><a name="package-in-jar-files">6. Package the Service Providers, the Service, and the Service Client in JAR Files</a></h3>
+
+<p>See the lesson
+<a class="TutorialLink" target="_top" href="../../deployment/jar/index.html">Packaging Programs in JAR Files</a> for information about how to create JAR files.</p>
+ 
+<h4><a name="packaging-service-providers-in-jar-files">Packaging Service Providers in JAR Files</a></h4>
+
+<p>To package the <code>GeneralDictionary</code> service provider, create a JAR file named <code>GeneralDictionary/dist/GeneralDictionary.jar</code> that contains the compiled class file of this service provider and the configuration file in the following directory structure:</p>
+
+<ul>
+  <li><code>META-INF</code>
+    <ul>
+      <li><code>services</code>
+        <ul>
+          <li><code>dictionary.spi.Dictionary</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>dictionary</code>
+    <ul>
+      <li><code>GeneralDictionary.class</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Similarly, to package the <code>ExtendedDictionary</code> service provider, create a JAR file named <code>ExtendedDictionary/dist/ExtendedDictionary.jar</code> that contains the compiled class file of this service provider and the configuration file in the following directory structure:</p>
+
+<ul>
+  <li><code>META-INF</code>
+    <ul>
+      <li><code>services</code>
+        <ul>
+          <li><code>dictionary.spi.Dictionary</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>dictionary</code>
+    <ul>
+      <li><code>ExtendedDictionary.class</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Note that the provider configuration file must be in the directory <code>META-INF/services</code> in the JAR file.</p>
+
+<h4><a name="packaging-the-dictionary-service-in-a-jar-file">Packaging the Dictionary SPI and Dictionary Service in a JAR File</a></h4>
+
+<p>Create a JAR file named <code>DictionaryServiceProvider/dist/DictionaryServiceProvider.jar</code> that contains the following files:</p>
+
+<ul>
+  <li><code>dictionary</code>
+    <ul>
+      <li><code>DictionaryService.class</code></li>
+      <li><code>spi</code>
+        <ul>
+          <li><code>Dictionary.class</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+        
+<h4><a name="packaging-the-client-in-a-jar-file">Packaging the Client in a JAR File</a></h4>
+
+<p>Create a JAR file named <code>DictionaryDemo/dist/DictionaryDemo.jar</code> that contains the following file:</p>
+
+<ul>
+  <li><code>dictionary</code>
+    <ul>
+      <li><code>DictionaryDemo.class</code></li>
+    </ul>
+  </li>
+</ul>
+ 
+<h3><a name="run-the-client">7. Run the Client</a></h3>
+
+<p>The following command runs the <code>DictionaryDemo</code> sample with the <code>GeneralDictionary</code> service provider:</p>
+
+<p><strong>Linux and Solaris:</strong></p>
+<p><code>java -Djava.ext.dirs=../DictionaryServiceProvider/dist:../GeneralDictionary/dist -cp dist/DictionaryDemo.jar dictionary.DictionaryDemo</code></p>
+
+<p><strong>Windows:</strong></p>
+<p><code>java -Djava.ext.dirs=..\DictionaryServiceProvider\dist;..\GeneralDictionary\dist -cp dist\DictionaryDemo.jar dictionary.DictionaryDemo</code></p>
+
+<p>When using this command, the following is assumed:</p>
+
+<ul>
+  <li>The current directory is <code>DictionaryDemo</code>.</li>
+  <li>The following JAR files exist:
+    <ul>
+      <li><code>DictionaryDemo/dist/DictionaryDemo.jar</code>: Contains the <code>DictionaryDemo</code> class</li>
+      <li><code>DictionaryServiceProvider/dist/DictionaryServiceProvider.jar</code>: Contains the <code>Dictionary</code> SPI and the <code>DictionaryService</code> class</li>
+      <li><code>GeneralDictionary/dist/GeneralDictionary.jar</code>: Contains the <code>GeneralDictionary</code> service provider and configuration file</li>
+    </ul>
+  </li>
+</ul>
+
+
+<p>The command prints the following:</p>
+
+<pre class="codeblock">
+book: a set of written or printed pages, usually bound with a protective cover
+editor: a person who edits
+xml: Cannot find definition for this word.
+REST: Cannot find definition for this word.
+</pre>
+
+<p>Suppose you run the following command and <code>ExtendedDictionary/dist/ExtendedDictionary.jar</code> exists:</p> 
+
+<p><strong>Linux and Solaris:</strong></p>
+<p><code>java -Djava.ext.dirs=../DictionaryServiceProvider/dist:../ExtendedDictionary/dist -cp dist/DictionaryDemo.jar dictionary.DictionaryDemo</code></p>
+
+<p><strong>Windows:</strong></p>
+<p><code>java -Djava.ext.dirs=..\DictionaryServiceProvider\dist;..\ExtendedDictionary\dist -cp dist\DictionaryDemo.jar dictionary.DictionaryDemo</code></p>
+
+<p>The command prints the following:</p>
+
+<pre class="codeblock">
+book: Cannot find definition for this word.
+editor: Cannot find definition for this word.
+xml: a document standard often used in web services, among other things
+REST: an architecture style for creating, reading, updating, and deleting data that attempts to use the common vocabulary of the HTTP protocol; Representational State Transfer
+</pre>
+
+<h2><a name="the-serviceloader-class">The ServiceLoader Class</a></h2>
+
+<p>The <code>java.util.ServiceLoader</code> class helps you find, load, and use service providers. It searches for service providers on your application's class path or in your runtime environment's extensions directory. It loads them and enables your application to use the provider's APIs. If you add new providers to the class path or runtime extension directory, the <code>ServiceLoader</code> class finds them. If your application knows the provider interface, it can find and use different implementations of that interface. You can use the first loadable instance of the interface or iterate through all the available interfaces.</p>
+
+<p>The <code>ServiceLoader</code> class is final, which means that you cannot make it a subclass or override its loading algorithms. You cannot, for example, change its algorithm to search for services from a different location.</p>
+
+<p>From the perspective of the <code>ServiceLoader</code> class, all services have a single type, which is usually a single interface or abstract class. The provider itself contains one or more concrete classes that extend the service type with an implementation specific to its purpose. The <code>ServiceLoader</code> class requires that the single exposed provider type has a default constructor, which requires no arguments. This enables the <code>ServiceLoader</code> class to easily instantiate the service providers that it finds.</p>
+
+<p>Providers are located and instantiated on demand. A service loader maintains a cache of the providers that were loaded. Each invocation of the loader's <code>iterator</code> method returns an iterator that first yields all of the elements of the cache, in instantiation order. The service loader then locates and instantiates any new providers, adding each one to the cache in turn. You can clear the provider cache with the <code>reload</code> method.</p>
+
+<p>To create a loader for a specific class, provide the class itself to the <code>load</code> or <code>loadInstalled</code> method. You can use default class loaders or provide your own <code>ClassLoader</code> subclass.</p>
+
+<p>The <code>loadInstalled</code> method searches the runtime environment's extension directory of installed runtime providers. The default extension location is your runtime environment's <code>jre/lib/ext</code> directory. You should use the extension location only for well-known, trusted providers because this location becomes part of the class path for all applications. In this article, providers do not use the extension directory but will instead depend on an application-specific class path.</p>
+
+<h2><a name="limitations-of-the-service-loader-api">Limitations of the ServiceLoader API</a></h2>
+
+<p>The <code>ServiceLoader</code> API is useful, but it has limitations. For example, it is impossible to derive a class from the <code>ServiceLoader</code> class, so you cannot modify its behavior. You can use custom <code>ClassLoader</code> subclasses to change how classes are found, but <code>ServiceLoader</code> itself cannot be extended. Also, the current <code>ServiceLoader</code>
+ class cannot tell your application when new providers are available at 
+runtime. Additionally, you cannot add change-listeners to the loader to 
+find out whether a new provider was placed into an 
+application-specific extension directory. </p>
+
+
+<p>The public <code>ServiceLoader</code> API is available in Java SE 6. 
+Although the loader service existed as early as JDK 1.3, the API was 
+private and only available to internal Java runtime code. </p>
+
+
+<h2><a name="summary">Summary</a></h2>
+
+<p>Extensible applications provide service points that can be extended 
+by service providers. The easiest way to create an extensible 
+application is to use the <code>ServiceLoader</code>, which is available for Java SE 6 and later. Using this class, you can add provider 
+implementations to the application class path to make new functionality 
+available. The <code>ServiceLoader</code> class is final, so you cannot modify its abilities.</p>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="load.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="../security/index.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Understanding Extension Class Loading
+        <br /><b>Next page:</b> Making Extensions Secure
+    </div>
+</body>
+</html> 

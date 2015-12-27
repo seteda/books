@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Implementing SAX Validation (The Java&trade; Tutorials &gt;        
+            Java API for XML Processing (JAXP) &gt; Simple API for XML)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JAXP Java tutorial describes Java API for XML Processing (jaxp), XSLT, SAX, and related XML topics" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jaxp, xml, xslt, sax" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Simple API for XML</a></div>
+<div class="linkAHEAD"><a href="when.html">When to Use SAX</a></div>
+<div class="linkAHEAD"><a href="parsing.html">Parsing an XML File Using SAX</a></div>
+<div class="nolinkAHEAD">Implementing SAX Validation</div>
+<div class="linkAHEAD"><a href="events.html">Handling Lexical Events</a></div>
+<div class="linkAHEAD"><a href="using.html">Using the <tt>DTDHandler</tt> and <tt>EntityResolver</tt></a></div>
+<div class="linkAHEAD"><a href="info.html">Further Information</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java API for XML Processing (JAXP)
+        <br /><b>Lesson:</b> Simple API for XML
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java API for XML Processing (JAXP)</a>
+                &gt;
+                <a href="index.html" target="_top">Simple API for XML</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="parsing.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="events.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Implementing SAX Validation</h1></div>
+            <div id="PageContent">
+
+<!-- Implementing SAX Validation -->
+<p>The sample program <tt>SAXLocalNameCount</tt> uses the non-validating parser by default, but it can also activate validation. Activating validation allows the application to tell whether the XML document contains the right tags or whether those tags are in the right sequence. In other words, it can tell you whether the document is <i>valid</i>. If validation is not activated, however, it can only tell whether or not the document is well-formed, as was shown in the previous section when you deleted the closing tag from an XML element. For validation to be possible, the XML document needs to be associated to a DTD or an XML schema. Both options are possible with the <tt>SAXLocalNameCount</tt> program.</p>
+<p><a name="gcwuk" id="gcwuk"></a></p>
+<h2>Choosing the Parser Implementation</h2>
+<p>If no other factory class is specified, the default <tt>SAXParserFactory</tt> class is used. To use a parser from a different manufacturer, you can change the value of the environment variable that points to it. You can do that from the command line:</p>
+<p><code>java -Djavax.xml.parsers.SAXParserFactory=<i>yourFactoryHere</i> [...]</code></p>
+<p>The factory name you specify must be a fully qualified class name (all package prefixes included). For more information, see the documentation in the <tt>newInstance()</tt> method of the <tt>SAXParserFactory</tt> class.</p>
+<p><a name="gcwub" id="gcwub"></a></p>
+<h2>Using the Validating Parser</h2>
+<p>Up until this point, this lesson has concentrated on the non-validating parser. This section examines the validating parser to find out what happens when you use it to parse the sample program.</p>
+<p>Two things must be understood about the validating parser:</p>
+<ul>
+<li>
+<p>A schema or DTD is required.</p>
+</li>
+<li>
+<p>Because the schema or DTD is present, the <tt>ContentHandler.</tt><tt>ignorableWhitespace()</tt> method is invoked whenever possible.</p>
+</li>
+</ul>
+<p><a name="gcwth" id="gcwth"></a></p>
+<h2>Ignorable White Space</h2>
+<p>When a DTD is present, the parser will no longer call the <tt>characters()</tt> method on white space that it knows to be irrelevant. From the standpoint of an application that is interested in processing only the XML data, that is a good thing because the application is never bothered with white space that exists purely to make the XML file readable.</p>
+<p>On the other hand, if you are writing an application that filters an XML data file and if you want to output an equally readable version of the file, then that white space would no longer be irrelevant: it would be essential. To get those characters, you would add the <tt>ignorableWhitespace</tt> method to your application. To process any (generally) ignorable white space that the parser sees, you would need to add something like the following code to implement the <tt>ignorableWhitespace</tt> event handler.</p>
+<p><code>public void ignorableWhitespace (char buf[], int start, int length) throws SAXException { emit(&quot;IGNORABLE&quot;); }</code></p>
+<p>This code simply generates a message to let you know that ignorable white space was seen. However, not all parsers are created equal. The SAX specification does not require that this method be invoked. The Java XML implementation does so whenever the DTD makes it possible.</p>
+<p><a name="gcwtg" id="gcwtg"></a></p>
+<h2>Configuring the Factory</h2>
+<p>The <tt>SAXParserFactory</tt> needs to be set up such that it uses a validating parser instead of the default non-validating parser. The following code from the <tt>SAXLocalNameCount</tt> example&#39;s <tt>main()</tt> method shows how to configure the factory so that it implements the validating parser.</p>
+<div class="codeblock"><pre>
+static public void main(String[] args) throws Exception {
+
+    String filename = null;
+    boolean dtdValidate = false;
+    boolean xsdValidate = false;
+    String schemaSource = null;
+
+    for (int i = 0; i &lt; args.length; i++) {
+
+        if (args[i].equals("-dtd")) {
+            dtdValidate = true;
+        }
+        else if (args[i].equals("-xsd")) {
+            xsdValidate = true;
+        } 
+        else if (args[i].equals("-xsdss")) {
+            if (i == args.length - 1) {
+               usage();
+            }
+            xsdValidate = true;
+            schemaSource = args[++i];
+        } 
+        else if (args[i].equals("-usage")) {
+            usage();
+        }
+        else if (args[i].equals("-help")) {
+            usage();
+        }
+        else {
+            filename = args[i];
+            if (i != args.length - 1) {
+                usage();
+            }
+        }
+    }
+
+    if (filename == null) {
+        usage();
+    }
+
+    SAXParserFactory spf = SAXParserFactory.newInstance();
+    spf.setNamespaceAware(true);
+    spf.setValidating(dtdValidate || xsdValidate);
+    SAXParser saxParser = spf.newSAXParser();
+
+    // ... 
+}
+</pre></div>
+<p>Here, the <tt>SAXLocalNameCount</tt> program is configured to take additional arguments when it is started, which tell it to implement no validation, DTD validation, XML Schema Definition (XSD) validation, or XSD validation against a specific schema source file. (Descriptions of these options, <tt>-dtd</tt>, <tt>-xsd</tt>, and <tt>-xsdss</tt> are also added to the <tt>usage()</tt> method, but are not shown here.) Then, the factory is configured so that it will produce the appropriate validating parser when <tt>newSAXParser</tt> is invoked. As seen in 
+<a class="TutorialLink" target="_top" href="parsing.html#gclmt">Setting up the Parser</a>, you can also use <tt>setNamespaceAware(true)</tt> to configure the factory to return a namespace-aware parser. Sun&#39;s implementation supports any combination of configuration options. (If a combination is not supported by a particular implementation, it is required to generate a factory configuration error).</p>
+<p><a name="gcwtl" id="gcwtl"></a></p>
+<h2>Validating with XML Schema</h2>
+<p>Although a full treatment of XML Schema is beyond the scope of this tutorial, this section shows you the steps you take to validate an XML document using an existing schema written in the XML Schema language. To learn more about XML Schema, you can review the online tutorial, <i>XML Schema Part 0: Primer</i>, at 
+<a class="OutsideLink" target="_blank" href="http://www.w3.org/TR/xmlschema-0/">http://www.w3.org/TR/xmlschema-0/</a>.</p>
+<hr />
+<p><b>Note -</b> There are multiple schema-definition languages, including RELAX NG, Schematron, and the W3C &quot;XML Schema&quot; standard. (Even a DTD qualifies as a &quot;schema,&quot; although it is the only one that does not use XML syntax to describe schema constraints.) However, &quot;XML Schema&quot; presents us with a terminology challenge. Although the phrase &quot;XML Schema schema&quot; would be precise, we will use the phrase &quot;XML Schema definition&quot; to avoid the appearance of redundancy.</p>
+<hr />
+<p>To be notified of validation errors in an XML document, the parser factory must be configured to create a validating parser, as shown in the preceding section. In addition, the following must be true:</p>
+<ul>
+<li>
+The appropriate properties must be set on the SAX parser.
+</li>
+<li>
+The appropriate error handler must be set.
+</li>
+<li>
+The document must be associated with a schema.
+</li>
+</ul>
+<p><a name="gcwtd" id="gcwtd"></a></p>
+<h2>Setting the SAX Parser Properties</h2>
+<p>It is helpful to start by defining the constants you will use when setting the properties. The <tt>SAXLocalNameCount</tt> example sets the following constants.</p>
+<div class="codeblock"><pre>
+public class SAXLocalNameCount extends DefaultHandler {
+
+    static final String JAXP_SCHEMA_LANGUAGE =
+        "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
+    
+    static final String W3C_XML_SCHEMA =
+        "http://www.w3.org/2001/XMLSchema";
+
+    static final String JAXP_SCHEMA_SOURCE =
+        "http://java.sun.com/xml/jaxp/properties/schemaSource";
+}
+</pre></div>
+<hr />
+<p><b>Note -</b> The parser factory must be configured to generate a parser that is namespace-aware as well as validating. This was shown in <a href="#gcwtg">Configuring the Factory</a>. More information about namespaces is provided in 
+<a class="TutorialLink" target="_top" href="../dom/index.html">Document Object Model</a> but for now, understand that schema validation is a namespace-oriented process. Because JAXP-compliant parsers are not namespace-aware by default, it is necessary to set the property for schema validation to work.</p>
+<hr />
+<p>Then you must configure the parser to tell it which schema language to use. In <tt>SAXLocalNameCount</tt>, validation can be performed either against a DTD or against an XML Schema. The following code uses the constants defined above to specify the W3C&#39;s XML Schema language as the one to use if the <tt>-xsd</tt> option is specified when the program is started.</p>
+<div class="codeblock"><pre>
+// ...
+if (xsdValidate) {
+    saxParser.setProperty(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
+    // ...
+}
+</pre></div>
+<p>In addition to the error handling described in 
+<a class="TutorialLink" target="_top" href="parsing.html#gcnsr">Setting up Error Handling</a>, there is one error that can occur when configuring the parser for schema-based validation. If the parser is not compliant with the JAXP spec, and therefore does not support XML Schema, it can throw a <tt>SAXNotRecognizedException</tt>. To handle that case, the <tt>setProperty()</tt> statement is wrapped in a try/catch block, as shown in the code below.</p>
+<div class="codeblock"><pre>
+// ...
+if (xsdValidate) {
+    try {
+        saxParser.setProperty(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
+    }
+    catch (SAXNotRecognizedException x){
+        System.err.println("Error: JAXP SAXParser property not recognized: "
+                           + JAXP_SCHEMA_LANGUAGE);
+
+        System.err.println( "Check to see if parser conforms to the JAXP spec.");
+        System.exit(1);
+    }
+}
+// ...
+</pre></div>
+<p><a name="gcwus" id="gcwus"></a></p>
+<h2>Associating a Document with a Schema</h2>
+<p>To validate the data using an XML Schema definition, it is necessary to ensure that the XML document is associated with one. There are two ways to do that.</p>
+<ul>
+<li>By including a schema declaration in the XML document.</li>
+<li>By specifying the schema to use in the application.</li>
+</ul>
+<hr />
+<p><b>Note -</b> When the application specifies the schema to use, it overrides any schema declaration in the document.</p>
+<hr />
+<p>To specify the schema definition in the document, you would create XML such as this:</p>
+<div class="codeblock"><pre>
+&lt;<i>documentRoot</i>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation='<i>YourSchemaDefinition</i>.xsd'>
+</pre></div>
+<p>The first attribute defines the XML namespace (<tt>xmlns</tt>) prefix, <tt>xsi</tt>, which stands for XML Schema instance. The second line specifies the schema to use for elements in the document that do not have a namespace prefix, namely for the elements that are typically defined in any simple, uncomplicated XML document.</p>
+<hr />
+<p><b>Note -</b> More information about namespaces is included in Validating with XML Schema in 
+<a class="TutorialLink" target="_top" href="../dom/index.html">Document Object Model</a>. For now, think of these attributes as the &quot;magic incantation&quot; you use to validate a simple XML file that does not use them. After you have learned more about namespaces, you will see how to use XML Schema to validate complex documents that do use them. Those ideas are discussed in Validating with Multiple Namespaces in 
+<a class="TutorialLink" target="_top" href="../dom/index.html">Document Object Model</a>.</p>
+<hr />
+<p>You can also specify the schema file in the application, as is the case in <tt>SAXLocalNameCount</tt>.</p>
+<div class="codeblock"><pre>
+// ...
+if (schemaSource != null) {
+    saxParser.setProperty(JAXP_SCHEMA_SOURCE, new File(schemaSource));
+}
+
+// ...
+</pre></div>
+<p>In the code above, the variable <tt>schemaSource</tt> relates to a schema source file that you can point the <tt>SAXLocalNameCount</tt> application to by starting it with the <tt>-xsdss</tt> option and providing the name of the schema source file to be used.</p>
+<p><a name="gcxhv" id="gcxhv"></a></p>
+<h2>Error Handling in the Validating Parser</h2>
+<p>It is important to recognize that the only reason an exception is thrown when a file fails validation is as a result of the error-handling code shown in 
+<a class="TutorialLink" target="_top" href="parsing.html#gcnsr">Setting up Error Handling</a>. That code is reproduced here as a reminder:</p>
+<div class="codeblock"><pre>
+// ...
+
+public void warning(SAXParseException spe) throws SAXException {
+    out.println("Warning: " + getParseExceptionInfo(spe));
+}
+        
+public void error(SAXParseException spe) throws SAXException {
+    String message = "Error: " + getParseExceptionInfo(spe);
+    throw new SAXException(message);
+}
+
+public void fatalError(SAXParseException spe) throws SAXException {
+    String message = "Fatal Error: " + getParseExceptionInfo(spe);
+    throw new SAXException(message);
+}
+
+// ...
+</pre></div>
+<p>If these exceptions are not thrown, the validation errors are simply ignored. In general, a SAX parsing error is a validation error, although it can also be generated if the file specifies a version of XML that the parser is not prepared to handle. Remember that your application will not generate a validation exception unless you supply an error handler such as the one here.</p>
+<p><a name="gcxhr" id="gcxhr"></a></p>
+<h2>DTD Warnings</h2>
+<p>As mentioned earlier, warnings are generated only when the SAX parser is processing a DTD. Some warnings are generated only by the validating parser. The non-validating parser&#39;s main goal is to operate as rapidly as possible, but it too generates some warnings.</p>
+<p>The XML specification suggests that warnings should be generated as a result of the following:</p>
+<ul>
+<li>
+<p>Providing additional declarations for entities, attributes, or notations. (Such declarations are ignored. Only the first is used. Also, note that duplicate definitions of elements always produce a fatal error when validating, as you saw earlier.)</p>
+</li>
+<li>
+<p>Referencing an undeclared element type. (A validity error occurs only if the undeclared type is actually used in the XML document. A warning results when the undeclared element is referenced in the DTD.)</p>
+</li>
+<li>
+<p>Declaring attributes for undeclared element types.</p>
+</li>
+</ul>
+<p>The Java XML SAX parser also emits warnings in other cases:</p>
+<ul>
+<li>
+<p>No <tt>&lt;!DOCTYPE ...&gt;</tt> when validating.</p>
+</li>
+<li>
+<p>References to an undefined parameter entity when not validating. (When validating, an error results. Although nonvalidating parsers are not required to read parameter entities, the Java XML parser does so. Because it is not a requirement, the Java XML parser generates a warning, rather than an error.)</p>
+</li>
+<li>
+<p>Certain cases where the character-encoding declaration does not look right.</p>
+</li>
+</ul>
+<p><a name="gcwvc" id="gcwvc"></a></p>
+<h2>Running the SAX Parser Examples with Validation</h2>
+<p>In this section, the <tt>SAXLocalNameCount</tt> sample program used previously will be used again, except this time it will be run with validation against an XML Schema or a DTD. The best way to demonstrate the different types of validation is to modify the code of the XML file being parsed, as well as the associated schema and DTDs, to break the processing and get the application to generate exceptions.</p>
+<p><a name="gcxic" id="gcxic"></a></p>
+<h2>Experimenting with DTD Validation Errors</h2>
+<p>As stated above, these examples reuse the <tt>SAXLocalNameCount</tt> program. The locations where you will find the sample and its associated files are given in 
+<a class="TutorialLink" target="_top" href="parsing.html#gcnrx">Running the SAX Parser Example without Validation</a>.</p>
+<ol>
+<li><b>If you have not already done so, navigate to the <tt>samples</tt> directory.</b> <code>% cd <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt></code></li>
+<li><b>If you have not already done so, compile the example class.</b><code>% javac sax/*</code></li>
+<li><b>Open the file <tt>data/rich_iii.xml</tt> in a text editor.</b>
+<p>This is the same XML file that was processed without validation in 
+<a class="TutorialLink" target="_top" href="parsing.html#gcvwx">To Run the <tt>SAXLocalNameCount</tt> Example without Validation</a>. At the beginning of <tt>data/rich_iii.xml</tt>, you will see that the <tt>DOCTYPE</tt> declaration points a validating parser to a DTD file called <tt>play.dtd</tt>. If DTD validation is activated, the structure of the XML file being parsed will be checked against the structure provided in <tt>play.dtd</tt>.</p>
+</li>
+<li><b>Delete the declaration <tt>&lt;!DOCTYPE PLAY SYSTEM &quot;play.dtd&quot;&gt;</tt> from the beginning of the file.</b>
+<p>Do not forget to save the modification, but leave the file open, as it will be needed again later.</p>
+</li>
+<li><b>Run the <tt>SAXLocalNameCount</tt> program, with DTD validation activated.</b>
+<p>To do this, you must specify the <tt>-dtd</tt> option when you run the program.</p>
+<code>% java sax/SAXLocalNameCount -dtd data/rich_iii.xml</code>
+<p>The result you see will look something like this:</p>
+<div class="codeblock"><pre>
+Exception in thread "main" org.xml.sax.SAXException:
+Error: URI=file:<i>install-dir</i>/JAXP_sources/jaxp-1_4_2-<i>release-date</i>
+/samples/data/rich_iii.xml 
+Line=12: Document is invalid: no grammar found.
+</pre></div>
+<hr />
+<p><b>Note -</b> This message was generated by the JAXP 1.4.2 libraries. If you are using a different parser, the error message is likely to be somewhat different.</p>
+<hr />
+<p>This message says that there is no grammar against which the document <tt>rich_iii.txt</tt> can be validated, so therefore it is automatically invalid. In other words, the message is saying that you are trying to validate the document, but no DTD has been declared, because no <tt>DOCTYPE</tt> declaration is present. So now you know that a DTD is a requirement for a valid document. That makes sense.</p>
+</li>
+<li><b>Restore the <tt>&lt;!DOCTYPE PLAY SYSTEM &quot;play.dtd&quot;&gt;</tt> declaration to <tt>data/rich_iii.xml</tt>.</b>
+<p>Again, do not forget to save the file, but leave it open.</p>
+</li>
+<li><b>Return to <tt>data/rich_iii.xml</tt> and modify the tags for the character &quot;KING EDWARD The Fourth&quot; in line 26.</b>
+<p>Change the start and end tags from <tt>&lt;PERSONA&gt;</tt> and <tt>&lt;/PERSONA&gt;</tt> to <tt>&lt;PERSON&gt;</tt> and <tt>&lt;/PERSON&gt;</tt>. Line 26 should now look like this:</p>
+<code>26:&lt;PERSON&gt;KING EDWARD The Fourth&lt;/PERSON&gt;</code>
+<p>Again, do not forget to save the modification, and leave the file open.</p>
+</li>
+<li><b>Run the <tt>SAXLocalNameCount</tt> program, with DTD validation activated.</b>
+<p>This time, you will see a different error when you run the program:</p>
+<div class="codeblock"><pre>
+% java sax/SAXLocalNameCount -dtd data/rich_iii.xml
+Exception in thread "main" org.xml.sax.SAXException: 
+Error: URI=file:<i>install-dir</i>/JAXP_sources/jaxp-1_4_2-<i>release-date</i>
+/samples/data/rich_iii.xml 
+Line=26: Element type "PERSON" must be declared.
+</pre></div>
+<p>Here you can see that the parser has objected to an element that is not included in the DTD <tt>data/play.dtd</tt>.</p>
+</li>
+<li><b>In <tt>data/rich_iii.xml</tt> correct the tags for &quot;KING EDWARD The Fourth&quot;.</b>
+<p>Return the start and end tags to their original versions, <tt>&lt;PERSONA&gt;</tt> and <tt>&lt;/PERSONA&gt;</tt>.</p>
+</li>
+<li><b>In <tt>data/rich_iii.xml</tt>, delete <tt>&lt;TITLE&gt;Dramatis Personae&lt;/TITLE&gt;</tt> from line 24.</b>
+<p>Once more, do not forget to save the modification.</p>
+</li>
+<li><b>Run the <tt>SAXLocalNameCount</tt> program, with DTD validation activated.</b>
+<p>As before, you will see another validation error:</p>
+<div class="codeblock"><pre>
+java sax/SAXLocalNameCount -dtd data/rich_iii.xml
+Exception in thread "main" org.xml.sax.SAXException: 
+Error: URI=file:<i>install-dir</i>/JAXP_sources/jaxp-1_4_2-<i>release-date</i>
+/samples/data/rich_iii.xml 
+Line=85: The content of element type "PERSONAE" must match "(TITLE,(PERSONA|PGROUP)+)".
+</pre></div>
+<p>By deleting the <tt>&lt;TITLE&gt;</tt> element from line 24, the <tt>&lt;PERSONAE&gt;</tt> element is rendered invalid because it does not contain the sub-elements that the DTD expects of a <tt>&lt;PERSONAE&gt;</tt> element. Note that the error message states that the error is in line 85 of <tt>data/rich_iii.xml</tt>, even though you deleted the <tt>&lt;TITLE&gt;</tt> element from line 24. This is because the closing tag of the <tt>&lt;PERSONAE&gt;</tt> element is located at line 85 and the parser only throws the exception when it reaches the end of the element it parsing.</p>
+</li>
+<li><b>Open the DTD file, <tt>data/play.dtd</tt> in a text editor.</b>
+<p>In the DTD file, you can see the declaration of the <tt>&lt;PERSONAE&gt;</tt> element, as well as all the other elements that can be used in XML documents that conform to the play DTD. The declaration of <tt>&lt;PERSONAE&gt;</tt> looks like this.</p>
+<div class="codeblock"><pre>
+&lt;!ELEMENT PERSONAE (TITLE, (PERSONA | PGROUP)+)>
+</pre></div>
+<p>As you can see, the <tt>&lt;PERSONAE&gt;</tt> element requires a <tt>&lt;TITLE&gt;</tt> sub-element. The pipe (<tt>|</tt>) key means that either <tt>&lt;PERSONA&gt;</tt> or <tt>&lt;PGROUP&gt;</tt> sub-elements can be included in a <tt>&lt;PERSONAE&gt;</tt> element, and the plus (<tt>+</tt>) key after the <tt>(PERSONA | PGROUP)</tt> grouping means that at least one or more of either of these sub-elements must be included.</p>
+</li>
+<li><b>Add a question mark (<tt>?</tt>) key after <tt>TITLE</tt> in the declaration of <tt>&lt;PERSONAE&gt;</tt>.</b>
+<p>Adding a question mark to a sub-element&#39;s declaration in a DTD makes the presence of one instance of that sub-element optional.</p>
+<div class="codeblock"><pre>
+&lt;!ELEMENT PERSONAE (TITLE?, (PERSONA | PGROUP)+)>
+</pre></div>
+<p>If you were add an asterisk (<tt>*</tt>) after the element, you could include either zero or multiple instances of that sub-element. However, in this case it does not make sense to have more than one title in a section of a document.</p>
+<p>Do not forget to save the modification you have made to <tt>data/play.dtd</tt>.</p>
+</li>
+<li><b>Run the <tt>SAXLocalNameCount</tt> program, with DTD validation activated.</b><code>% java sax/SAXLocalNameCount -dtd data/rich_iii.xml</code>
+<p>This time, you should see the proper output of <tt>SAXLocalNameCount</tt>, with no errors.</p>
+</li>
+</ol>
+<p><a name="gcxhp" id="gcxhp"></a></p>
+<h2>Experimenting with Schema Validation Errors</h2>
+<p>The previous exercise demonstrated using <tt>SAXLocalNameCount</tt> to validate an XML file against a DTD. In this exercise you will use <tt>SAXLocalNameCount</tt> to validate a different XML file against both the standard XML Schema definition and a custom schema source file. Again, this type of validation will be demonstrated by breaking the parsing process by modifying the XML file and the schema, so that the parser throws errors.</p>
+<p>As stated above, these examples reuse the <tt>SAXLocalNameCount</tt> program. The locations where you will find the sample and its associated files are given in 
+<a class="TutorialLink" target="_top" href="parsing.html#gcnrx">Running the SAX Parser Example without Validation</a>.</p>
+<ol>
+<li><b>If you have not already done so, navigate to the <tt>samples</tt> directory.</b><code>% cd <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt></code></li>
+<li><b>If you have not already done so, compile the example class.</b><code>% javac sax/*</code></li>
+<li><b>Open the file <tt>data/personal-schema.xml</tt> in a text editor.</b>
+<p>This is a simple XML file that provides the names and contact details for the employees of a small company. In this XML file, you will see that it has been associated with a schema definition file <tt>personal.xsd</tt>.</p>
+<code>&lt;personnel xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&#39;personal.xsd&#39;&gt;</code></li>
+<li><b>Open the file <tt>data/personal.xsd</tt> in a text editor.</b>
+<p>This schema defines what kinds of information are required about each employee in order for an XML document associated with the schema to be considered valid. For example, by examining the schema definition, you can see that each <tt>person</tt> element requires a <tt>name</tt>, and that each person&#39;s name must comprise a <tt>family</tt> name and a <tt>given</tt> name. Employees can also optionally have email addresses and URLs.</p>
+</li>
+<li><b>In <tt>data/personal.xsd</tt>, change the minimum number of email addresses required for a <tt>person</tt> element from <tt>0</tt> to <tt>1</tt>.</b>
+<p>The declaration of the <tt>email</tt> element is now as follows.</p>
+<code>&lt;xs:element ref=&quot;email&quot; minOccurs=&#39;1&#39; maxOccurs=&#39;unbounded&#39;/&gt;</code></li>
+<li><b>In <tt>data/personal-schema.xml</tt>, delete the <tt>email</tt> element from the <tt>person</tt> element <tt>one.worker</tt>.</b>
+<p>Worker One now looks like this:</p>
+<div class="codeblock"><pre>
+&lt;person id="one.worker">
+  &lt;name>&lt;family>Worker&lt;/family> &lt;given>One&lt;/given>&lt;/name>
+  &lt;link manager="Big.Boss"/>
+&lt;/person>
+</pre></div>
+</li>
+<li><b>Run <tt>SAXLocalNameCount</tt> against <tt>personal-schema.xml</tt>, with no schema validation.</b><code>% java sax/SAXLocalNameCount data/personal-schema.xml</code>
+<p><tt>SAXLocalNameCount</tt> informs you of the number of times each element occurs in <tt>personal-schema.xml</tt>.</p>
+<div class="codeblock"><pre>
+Local Name "email" occurs 5 times
+Local Name "name" occurs 6 times
+Local Name "person" occurs 6 times
+Local Name "family" occurs 6 times
+Local Name "link" occurs 6 times
+Local Name "personnel" occurs 1 times
+Local Name "given" occurs 6 times
+</pre></div>
+<p>You see that <tt>email</tt> only occurs five times, whereas there are six <tt>person</tt> elements in <tt>personal-schema.xml</tt>. So, because we set the minimum occurrences of the <tt>email</tt> element to 1 per <tt>person</tt> element, we know that this document is invalid. However, because <tt>SAXLocalNameCount</tt> was not told to validate against a schema, no error is reported.</p>
+</li>
+<li><b>Run <tt>SAXLocalNameCount</tt> again, this time specifying that the <tt>personal&mdash;schema.xml</tt> document should be validated against a the <tt>personal.xsd</tt> schema definition.</b>
+<p>As you saw in <a href="#gcwtl">Validating with XML Schema</a> above, <tt>SAXLocalNameCount</tt> has an option to enable schema validation. Run <tt>SAXLocalNameCount</tt> with the following command.</p>
+<code>% java sax/SAXLocalNameCount -xsd data/personal-schema.xml</code>
+<p>This time, you will see the following error message.</p>
+<div class="codeblock"><pre>
+Exception in thread "main" org.xml.sax.SAXException: Error: 
+URI=file:<i>install_dir</i>/samples/data/personal-schema.xml 
+Line=19: cvc-complex-type.2.4.a: Invalid content was found starting with 
+element 'link'. 
+One of '{email}' is expected.
+</pre></div>
+</li>
+<li><b>Restore the <tt>email</tt> element to the <tt>person</tt> element <tt>one.worker</tt>.</b></li>
+<li><b>Run <tt>SAXLocalNameCount</tt> a third time, again specifying that the <tt>personal&mdash;schema.xml</tt> document should be validated against a the <tt>personal.xsd</tt> schema definition.</b><code>% java sax/SAXLocalNameCount -xsd data/personal-schema.xml</code>
+<p>This time you will see the correct output, with no errors.</p>
+</li>
+<li><b>Open <tt>personal-schema.xml</tt> in a text editor again.</b></li>
+<li><b>Delete the declaration of the schema definition <tt>personal.xsd</tt> from the <tt>personnel</tt> element.</b>
+<p>Remove the italicized code from the <tt>personnel</tt> element.</p>
+<code>&lt;personnel <i>xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&#39;personal.xsd&#39;/</i>&gt;</code></li>
+<li><b>Run <tt>SAXLocalNameCount</tt>, again specifying schema validation.</b><code>% java sax/SAXLocalNameCount -xsd data/personal-schema.xml</code>
+<p>Obviously, this will not work, as the schema definition against which to validate the XML file has not been declared. You will see the following error.</p>
+<div class="codeblock"><pre>
+Exception in thread "main" org.xml.sax.SAXException: 
+Error: URI=file:<i>install_dir</i>/samples/data/personal-schema.xml 
+Line=8: cvc-elt.1: Cannot find the declaration of element 'personnel'.
+</pre></div>
+</li>
+<li><b>Run <tt>SAXLocalNameCount</tt> again, this time passing it the schema definition file at the command line.</b><code>% java sax/SAXLocalNameCount -xsdss data/personal.xsd data/personal-schema.xml</code>
+<p>This time you use the <tt>SAXLocalNameCount</tt> option that allows you to specify a schema definition that is not hard-coded into the application. You should see the correct output.</p>
+</li>
+</ol>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="parsing.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="events.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Parsing an XML File Using SAX
+        <br /><b>Next page:</b> Handling Lexical Events
+    </div>
+</body>
+</html> 

@@ -1,0 +1,1609 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--NewPage-->
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xml:lang=
+"en-US">
+<head>
+<title>What's New and What's Old? The History of the Tutorial</title>
+</head>
+<body>
+<noscript>A browser with JavaScript enabled is required for this
+page to operate properly.</noscript><!--    HEADER    -->
+<h1>What's <img src="../figures/information/whatsnew-bang.gif"
+width="30" height="30" align="top" alt="new" /> and What's Old? The
+History of the Tutorial</h1>
+<p><img alt="Footprints" src="../images/shoeline2.GIF" align=
+"bottom" border="0" width="202" height="25" /> <img alt=
+"Footprints" src="../images/shoeline2.GIF" align="bottom" border=
+"0" width="202" height="25" /></p>
+
+<p><a name="d_03_03_15" id="d_03_03_15"><strong>3 March 2015 -</strong></a></p> 
+
+<p>This release of the tutorial corresponds to the JDK 8u40 release.</p>
+<p>This release includes a new lesson in the Deployment trail that describes how to use the Java packaging tools to generate self-contained applications. Self-contained applications are Java applications that are bundled with the JRE that is needed to run. These applications are installed on a user's local drive and launched in the same way as native applications. See <a href="../deployment/selfContainedApps/index.html">Deploying Self-Contained Applications</a> for more information.</p>
+
+<p><a name="d_08_19_14" id="d_08_19_14"><strong>19 August 2014 -</strong></a></p> 
+<p>This release of the tutorial corresponds to the JDK 8u20 release. This release includes the following changes:</p>
+
+<ul>
+
+  <li><p>The Medium security level is no longer available in the Java Control Panel. To run applets locally, add them to the exception site list in the Java Control Panel. See <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/deploy/exception_site_list.html">Exception Site List</a> for information.</p></li>
+  
+  <li><p>A new processing limit property, <code>maxElementDepth</code>, has been added to JAXP. See <a href="../jaxp/limits/index.html">Processing Limits</a> for more information.</p></li>
+
+  <li><p>Entry-Point attribute is a new attribute for the JAR file manifest. See <a href="../deployment/jar/secman.html"> Enhancing Security with Manifest Attributes</a> for information. </p></li>
+
+</ul>
+
+
+<p><a name="d_03_18_14" id="d_03_18_14"><strong>18 March 2014 -</strong></a></p>
+<p>This release of the tutorial corresponds to the JDK 8 release. See <a href="http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html">What's New in JDK 8</a> for more information about new features in this release, which includes the following:</p>
+
+<ul>
+
+  <li><p><a href="../java/javaOO/lambdaexpressions.html">Lambda Expressions</a> enable you to treat functionality as a method argument, or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly.</p></li>
+
+  <li><p><a href="../java/IandI/defaultmethods.html">Default methods</a> are methods in an interface that have an implementation. They enable new functionality to be added to the interfaces of libraries and ensure binary compatibility with code written for older versions of those interfaces.</p></li>
+
+  <li><p><a href="../collections/streams/index.html">Aggregate operations</a> enable you to perform functional-style operations on streams of elements, in particular, bulk operations on collections, such as sequential or parallel map-reduce transformations.</p></li>
+
+  <li><p><a href="../datetime/index.html">Date-Time</a> APIs enable you to represent dates and times and manipulate date and time values. They support the International Organization for Standardization (ISO) calendar system as well as other commonly used global calendars.</p></li>
+
+  <li><p><a href="../java/annotations/type_annotations.html">Type annotations</a> can be used in conjunction with pluggable type systems for improved type checking, and <a href="../java/annotations/repeating.html">repeating annotations</a> enable to apply the same annotation to a declaration or type use.</p></li>
+
+</ul>
+
+<p>Apart from fixing typos and errors, this update includes also includes the following:</p>
+
+<ul>
+  <li><p>The <a href="../security/index.html">Security</a> trail has been restructured; find security information about applets and Java Web Start applications in the <a href="../deployment/applet/index.html">Java Applets</a> lesson.</p></li>
+  <li><p>The <code>Permissions</code> JAR file manifest attribute is required regardless of security level setting. See <a href="../deployment/jar/secman.html">Enhancing Security with Manifest Attributes</a>.</p></li>
+  <li><p>The <a href="../jdbc/basics/index.html">JDBC Basics</a> lesson has been updated so that it is compatible with Java DB 10.10, the latest version that JDK 8 currently supports. This includes adding that <code>DERBY</code> is a valid option for the <code>PARAMETER STYLE</code> procedure element for passing parameters to a stored procedure. See <a href="../jdbc/basics/storedprocedures.html#creating_javadb_sql_jdbc">Creating Stored Procedures in Java DB with SQL Scripts or JDBC API</a>.</p></li>
+</ul>
+
+<p><a name="d_01_14_14" id="d_01_14_14"><strong>14 January 2014 -</strong></a></p>
+<p>This release of the tutorial corresponds to the JDK 7u51 release. This release includes the following:</p>
+<ul>
+<li><p>When signing a JAR file, time stamping the signature is recommended. A warning is shown if the signature is not time stamped. See <a href="../deployment/jar/signing.html">Signing JAR Files</a> for information.</p></li>
+<li><p>The <a href="../java/generics/genTypeInference.html">Type Inference</a> section in the <a href="../java/generics/index.html">Generics</a> trail has been updated with the section Target Types, which describes how the Java compiler takes advantage of target typing to infer the type parameters of a generic method invocation in JDK 8.</p></li>
+<li><p>You can obtain the names of the formal parameters of any method or constructor in JDK 8 with the method <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Executable.html#getParameters--">java.lang.reflect.Executable.getParameters</a>. See the section <a href="../reflect/member/methodparameterreflection.html">Obtaining Names of Method Parameters</a>.</p></li>
+<li><p>The <a href="../java/IandI/index.html">Interfaces and Inheritance</a> trail has been enhanced with information about <a href="../java/IandI/defaultmethods.html">Default Methods</a> in JDK 8, which are methods in an interface that have an implementation. In addition, you can define static methods in interfaces.</p></li>
+<li><p>The <a href="../collections/index.html">Collections</a> trail has been updated with new Questions and Exercises for <a href="../collections/interfaces/QandE/questions.html">Interfaces</a> and <a href="../collections/streams/QandE/questions.html">Aggregate Operations</a> in JDK 8. These updates help you focus on some important points when working with lambda expressions, streams, and aggregate operations.</p></li>
+</ul>
+
+<p><a name="d_10_15_13" id="d_10_15_13"><strong>15 October 2013 -</strong></a></p>
+<p>This release of the tutorial corresponds to the JDK 7u45 release. This release includes the following:</p>
+<ul>
+<li>The <a href="../collections/" target="_blank">Collections</a> trail has been updated to recommend the preferred method of traversing collections with JDK 8: obtaining a stream and invoking its aggregate operations. Aggregate operations are often used in conjunction with lambda expressions to make programming more expressive, using less lines of code. The <a href="../collections/interfaces/collection.html" target="_blank">Collection</a>, <a href="../collections/interfaces/set.html" target="_blank">Set</a>, <a href="../collections/interfaces/list.html" target="_blank">List</a>, and <a href="../collections/interfaces/map.html" target="_blank">Map</a> interface pages now contain examples that demonstrate this new language feature.</li>
+<li>Additional manifest entries are described in <a href="../deployment/jar/secman.html" target="_blank">Enhancing Security with Manifest Attributes</a>. The launchable examples in the Java Tutorial have been updated to use these new attributes.</li>
+<li>The <a href="../jaxp/index.html" target="_blank">JAXP</a> trail has been updated with a new <a href="../jaxp/limits/index.html" target="_blank">Processing Limits</a> lesson.</li>
+</ul>
+
+<p><a name="d_09_10_13" id="d_09_10_13"><strong>10 September 2013 -</strong></a></p>
+
+<p>
+This release of the tutorial corresponds to the JDK 7u40 release. This release includes the following:</p>
+<ul>
+<li>We are pleased to announce the release of the new <a href="../datetime/index.html">Date-Time</a> trail as part of the early access JDK 8 tutorial updates. The Date-Time APIs, coming in JDK 8, are a result of the work from <a href="http://jcp.org/en/jsr/detail?id=310" target="_blank">JSR 310</a> and provide a comprehensive model for date and time. The new trail covers the classes based on the standard ISO calendar system and includes info on <a href="../datetime/iso/nonIso.html" target="_blank">converting date and time values to other calendar systems</a>. There is also a <a href="../datetime/iso/legacy.html">Legacy Date-Time</a> page on migrating from the <tt>java.util</tt> date classes to the new <tt>java.time</tt> APIs. You can <a href="http://jdk8.java.net/download.html" target="_blank">download an early access release of JDK 8</a> from <tt>java.net</tt>.</li>
+<li>The <a href="../collections/streams/index.html">Aggregate Data Operations</a> lesson has been added to the <a href="../collections/index.html">Collections</a> trail. Aggregate operations, a new feature coming in JDK 8, iterate over collections on your behalf, which enables you to write more concise and efficient code that processes elements stored in collections.</li>
+<li>Running rich Internet applications (RIAs) through a browser can be risky for users due to the malicious intent of others looking for vulnerabilities through which to access a user's system. <a href="../deployment/doingMoreWithRIA/devGuidelines.html" target="_blank">Guidelines for Securing Rich Internet Applications</a>, in the Deployment trail, provide suggestions for making your RIAs less vulnerable to attack.</li>
+<li>A new page, <a href="../i18n/locale/matching.html" target="_blank">Language Tag Filtering and Lookup</a>, has been added to the <a href="../i18n/index.html" target="_blank">Setting the Locale</a> lesson in the <a href="../i18n/index.html" target="_blank">Internationalization</a> trail. This page discusses language tags, languages ranges, and language priority lists. It also includes sections about language tag filtering and language tag lookup, with plenty of examples that you can compile and run.</li>
+<li>The <a href="../jaxp/index.html">JAXP</a> trail has been updated with a new <a href="../jaxp/properties/index.html">JAXP 1.5 and New Properties</a> lesson.</li>
+</ul>
+<p>The download tutorial bundle, and the ebooks, available from the <a href="http://www.oracle.com/technetwork/java/javase/java-tutorial-downloads-2005894.html">Java SE Tutorial download page</a>, have been updated for this release.</p>
+
+<p><a name="d_06_18_13" id="d_06_18_13"><strong>18 June 2013 -</strong></a></p>
+
+<p>The <a href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">downloadable tutorial bundle</a> has been updated for this release.</p>
+
+<ul>
+<li>This release of the tutorial corresponds to the JDK 7u25 release. The JDK 7u25 release introduces new JAR file manifest attributes that are used to defend Rich Internet Applications (RIAs) against unauthorized code repurposing. The <tt>Permissions</tt> and <tt>Codebase</tt> attributes are described in <a href="../deployment/jar/secman.html">Enhancing the Security of the JAR File</a>. The <a href="../deployment/applet/deployingApplet.html">Deploying an Applet</a> and <a href="../deployment/webstart/deploying.html">Deploying a Java Web Start Application</a> sections describe how to include these attributes in the manifest.</li>
+
+<li>
+Additional tips for deploying RIAs have been added to <a href="../deployment/deploymentInDepth/bestPractices.html">Deployment Best Practices</a> and <a href="../deployment/doingMoreWithRIA/security.html">Security in Rich Internet Applications</a>.</li>
+
+<li>Information on time stamping the signature of a JAR file has been added to <a href="../deployment/jar/signing.html">Signing JAR Files</a>. Depending on the security level set in the Java Control Panel, RIAs that have an expired certificate might not be allowed to run. However, if the signature is time stamped and the time stamp shows that the certificate was valid when the RIA was signed, the RIA is allowed to run.</li>
+</ul>
+
+<p><a name="d_04_16_13" id="d_04_16_13"><strong>16 April 2013 -</strong></a></p>
+
+<p>The Deployment ebook (both mobi and epub formats) has been updated for this release.</p>
+
+<ul>
+<li><p>This release of the tutorial corresponds to the JDK 7u21 release. The JDK 7u21 release enables users to make more informed decisions before running Rich Internet Applications (RIAs) by prompting users for permission before an RIA is run. The prompt contains information about the certificate used to sign the app and the level of access requested by the app. Depending on the security setting in the Java Control Panel, some apps might be blocked from running.</p>
+<p>
+The tutorials were updated to reflect the recommendation that all RIAs be run from signed JAR files. A new page has been added to the <a href="../deployment/index.html">Deployment</a> trail on <a href="../deployment/deploymentInDepth/userAcceptance.html" target="_blank">User Acceptance of RIAs</a>. You may also want to refer to the lesson on <a href="../deployment/jar/signindex.html" target="_blank">Signing and Verifying JAR Files</a>. Finally, all Java Web Start examples launched from within the tutorial are now signed and all applets run within the sandbox.</p>
+
+<li><p>As part of the ongoing Project Lambda work for Java SE 8, there is a new page on <a href="../java/javaOO/methodreferences.html" target="_blank">Method References</a> and includes a new <a href="../java/javaOO/examples/MethodReferencesTest.java" target="_blank">MethodReferencesTest.java</a> example (which requires the <a href="http://jdk8.java.net/lambda/" target="_blank">early access release of JDK 8 with Lambda support</a> to compile).</p></li>
+
+<li><p>Another feature coming to Java SE 8 is the ability to invoke methods that use the fork/join framework to sort arrays in parallel. The <a href="../java/nutsandbolts/arrays.html">Arrays</a> and <a href="../essential/concurrency/forkjoin.html">Fork/Join</a> pages have been updated with information on manipulating arrays.</p></li>
+</ul>
+
+
+<p><a name="d_03_01_13" id="d_03_01_13"><strong>1 March 2013 -</strong></a></p>
+
+<p>This online-only release of the Java Tutorial includes early access information on several upcoming features in the JDK 8 release:</p>
+
+<ul>
+<li><p>Lambda expressions, a result of the work of <a href="http://openjdk.java.net/projects/lambda/" target="_blank">Project Lambda</a>, are a feature being added to the JDK 8 release of the Java platform. Lambda expressions support programming in a multicore environment by adding closures and related features to the Java language. An early access page on <a href="../java/javaOO/lambdaexpressions.html">Lambda Expressions</a> is part of this tutorial release. As part of this work, the information on <a href="../java/javaOO/nested.html">Nested Classes</a>, <a href="../java/javaOO/anonymousclasses.html">Anonymous Classes</a>, and <a href="../java/javaOO/localclasses.html">Local Classes</a> have been updated and a new page on <a href="../java/javaOO/whentouse.html">When to Use Nested Classes, Local Classes, Anonymous Classes, and Lambda Expressions</a> has been added. All of this new material is available online only.</li>
+
+<li><p>The Annotations page has been moved and expanded to be a full <a href="../java/annotations/">Annotations lesson</a>. The new lesson includes information on Java SE 8 features: <a href="../java/annotations/type_annotations.html">Type Annotations</a>, which can be used in conjunction with pluggable type systems for improved type checking, and <a href="../java/annotations/repeating.html">Repeating Annotations</a>. This early access lesson is available online only.</p></li>
+
+<li><p>The lesson <a href="../i18n/serviceproviders/index.html">Service Providers for Internationalization</a> includes the new section <a href="../i18n/serviceproviders/resourcebundlecontrolprovider.html">Installing a Custom Resource Bundle as an Extension</a>, which shows you how to load resource bundles with service provider interfaces (SPIs). These interfaces enable you to create applications that you can extend, through plug-ins or modules, without modifying their original code base. See the new section <a href="../ext/basics/spi.html">Creating Extensible Applications</a> for more information. These new pages are currently available online only.</p></li>
+</ul>
+
+<p><a name="d_06_14_12" id="d_06_14_12"><strong>14 June 2012 -</strong></a></p>
+<p>
+This release includes a complete reworking of the <a href="../java/generics/">Generics</a> lesson. The new lesson has more comprehensive information on programming with generics, including <a href="../java/generics/wildcardGuidelines.html">Guidelines for Wildcard Use</a>, <a href="../java/generics/restrictions.html">Restrictions on Generics</a>, and <a href="../java/generics/capture.html">Wildcard Capture and Helper Methods</a>.</p>
+<p>
+This release also includes a new page on <a href="../java/data/autoboxing.html">Autoboxing and Unboxing</a>.</p>
+
+<p><a name="d_03_2_12" id="d_03_2_12"><strong>2 March 2012 -</strong></a></p>
+<ul>
+<li>This update heralds the release of the Java Tutorials in two ebook formats:
+<ul>
+<li><tt>mobi</tt> ebook files for Kindle.  For best results we recommend viewing on the Kindle Fire or Kindle DX.</li>
+<li><tt>ePub</tt> ebook files for iPad, Nook, and other eReaders that support the <tt>ePub</tt> format.</li>
+</ul>
+Each ebook contains a single trail. You can download trails via the link in the "In Book Form" box on the <a href="../index.html">Java Tutorials</a> home page.
+For best results when viewing preformatted code blocks, adjust the landscape/portrait orientation and font size of your device to enable the maximum possible viewing area.
+</li>
+<li>We are pleased to announce that the <a href="../extra/certification/index.html">Preparation for Java Programmer Language Certification</a> lesson has been completely reworked. The objectives for each Java SE 7 certification exam are listed and links are provided to relevant tutorial pages.
+</li>
+<li>The <a href="../i18n/network/index.html">Internationalization of Network Resources</a> lesson has been updated.</li>
+</ul>
+<p><strong id="d_12_12_11">12 December 2011 -</strong></p>
+<p>This update coincides with the release of JDK 7 update 2. This
+release includes the following updates.</p>
+<ul>
+<li>In the <a href="../2d/">2D</a> and <a href=
+"../i18n/">Internationalization</a> trails, more detailed
+information about font and text layout concepts have been added. In
+particular, these trails have new pages about bidirectional text,
+including <a href="../i18n/text/bidi.html">Working with
+Bidirectional Text with the JComponent Class</a>.</li>
+<li><a href="../i18n/format/numberFormat.html">Using Predefined
+Formats</a> has been updated to demonstrate new features added to
+the Currency class for JDK 7.</li>
+<li>The <a href="../jaxb/">Java Architecture for XML Binding
+(JAXB)</a> tutorial (formerly part of the Java EE tutorial) has
+been migrated to the Java SE tutorial.</li>
+<li>Links to the <a href=
+"http://docs.oracle.com/javafx/index.html">JavaFX documentation</a>
+have been added to various pages in the tutorial.</li>
+</ul>
+<p>For detailed information about the 7u2 release, see <a href=
+"http://www.oracle.com/technetwork/java/javase/7u2-relnotes-1394228.html"
+target="_blank">JDK 7 Update 2 Release Notes</a>.</p>
+<p><strong><a name="d_07_20_11" id="d_07_20_11">20 July 2011
+-</a></strong></p>
+<p>This update coincides with the release of JDK 7. Most of the JDK
+7 features have already been added to the tutorial. This release
+includes the new deployment page, <a href=
+"../deployment/deploymentInDepth/deployingWithoutCodebase.html">Deploying
+without Codebase</a>.</p>
+<p>A summary of what has been added for the JDK 7 release:</p>
+<ul>
+<li>The <a href="http://openjdk.java.net/projects/coin/">Project
+Coin</a> updates have affected several sections in the <a href=
+"../java/index.html">Java Language</a> and the <a href=
+"../essential/index.html">Essential Classes</a> trails. For a
+complete list, see the <a href="#d_2_21_11">21 Feb 2011</a>
+entry.</li>
+<li>The <a href="../essential/io/fileio.html">File I/O</a> lesson,
+part of the <a href="../essential/index.html">Essential Classes</a>
+trail, has been updated to correspond to the new file I/O API.</li>
+<li>Several sections have been added to the <a href=
+"../uiswing/index.html">Swing</a> tutorial, including the <a href=
+"../uiswing/misc/jlayer.html">JLayer</a> component, the <a href=
+"../uiswing/lookandfeel/nimbus.html">Nimbus</a> look and feel, and
+information on <a href=
+"../uiswing/misc/trans_shaped_windows.html">Translucent and Shaped
+Windows</a>.</li>
+<li>The <a href="../deployment">Deployment</a> trail has many
+updated and new lessons, including the following &ndash; <a href=
+"../deployment/deploymentInDepth/deployingWithoutCodebase.html">Deploying
+Without Codebase</a>, <a href=
+"../deployment/deploymentInDepth/embeddingJNLPFileInWebPage.html">Embedding
+JNLP File in Applet Tag</a>, <a href=
+"../deployment/applet/appletStatus.html">Handling Initialization
+Status With Event Handlers</a>, and <a href=
+"../deployment/doingMoreWithRIA/customizeRIALoadingExperience.html">
+Customizing the Loading Experience</a>.</li>
+<li>The <a href=
+"../essential/concurrency/forkjoin.html">Fork/Join</a> section has
+been added to the <a href=
+"../essential/concurrency/index.html">Concurrency</a> lesson.</li>
+<li>The <a href="../i18n/index.html">Internationalization</a> trail
+has been updated to reflect the updates as a result of the <a href=
+"http://www.unicode.org/versions/Unicode6.0.0/">Unicode 6.0</a>
+work. For a list of the affected sections, see the <a href=
+"#d_2_21_11">21 Feb 2011</a> entry.</li>
+<li>The <a href="../jdbc/basics/index.html">JDBC Basics</a> lesson
+of the <a href="../jdbc/index.html">JDBC</a> trail has been
+completely reworked and updated.</li>
+<li>A trail introducing <a href="../jaxp/index.html">Java API for
+XML Processing (JAXP) 1.4 technology</a> has been incorporated into
+the Java Tutorials.</li>
+</ul>
+<p>You can find detailed information about the JDK 7 release in
+<a href=
+"http://www.oracle.com/technetwork/java/javase/jdk7-relnotes-418459.html">
+Java SE 7 Features and Enhancements</a>.</p>
+<p><strong id="d_03_17_11">17 March 2011 -</strong></p>
+<p>This update features:</p>
+<ul>
+<li>The <code>JLayer</code> component, introduced in Java SE 7, is
+explained in <a href="../uiswing/misc/jlayer.html">How to Decorate
+Components with JLayer</a>. If you only have four minutes, watch a
+<a href="http://www.youtube.com/watch?v=6mQYsWCkx4g">short
+video</a> that introduces JLayer.</li>
+<li>As of JDK 7 build 130, the NIO.2 File I/O package has been
+updated, with new and simplified API. The <a href=
+"../essential/io/fileio.html">File I/O (Featuring NIO.2)</a>
+section has been modified to reflect these changes.</li>
+<li>Samples that demonstrates how to use <code>RowSet</code>
+objects have been added to the <a href="../jdbc">JDBC trail</a>.
+Please see <a href="../jdbc/basics/rowset.html">Using RowSet
+Objects</a> for more information. In addition, a sample that shows
+you how to integrate JDBC with a GUI API, in particular the Swing
+API, has been added. Please see <a href=
+"../jdbc/basics/jdbcswing.html">Using JDBC with GUI API</a> for
+more information.</li>
+</ul>
+<p><strong>21 Feb 2011 - JDK 7 Developer Preview
+Release</strong><a name="d_2_21_11" id="d_2_21_11"></a></p>
+<p>This update features:</p>
+<ul>
+<li>The latest version of the <a href="http://unicode.org/">Unicode
+Standard</a> is <a href=
+"http://www.unicode.org/versions/Unicode6.0.0/">Unicode 6.0</a>.
+The Java tutorial has new coverage for Unicode:
+<ul>
+<li><a href="../i18n/text/unicode.html">Unicode</a>, a lesson in
+the <a href="../i18n">Internationalization</a> trail.</li>
+<li><a href="../i18n/text/shapedDigits.html">Converting Latin
+Digits to Other Unicode Digits</a></li>
+<li><a href="../essential/regex/unicode.html">Unicode Support</a>,
+a page in the <a href="../essential/regex/">Regular Expressions</a>
+lesson.</li>
+</ul>
+</li>
+<li>As a result of <a href=
+"http://openjdk.java.net/projects/coin/">Project Coin</a>, several
+changes were introduced to the Java language:
+<ul>
+<li>The <a href="../java/nutsandbolts/datatypes.html">Primitive
+Data Types</a> page has been updated to discuss binary literals and
+to mention that underscore characters can appear anywhere between
+digits in a numerical literal.</li>
+<li><a href="../java/nutsandbolts/switch.html">The switch
+Statement</a> page has been updated to reflect the ability to
+switch on a <code>String</code> object.</li>
+<li>The Diamond Operator has been added to generics. See the 
+Type Inference section for more information.</li>
+<li>Using non-reifiable parameters with varags methods is also new.
+See Using Non-Reifiable Parameters with Varargs Methods for more
+information.</li>
+<li>The ability to catch more than one type of exception with a
+single exception handler has been added. See <a href=
+"../essential/exceptions/catch.html">The <code>catch</code>
+Blocks</a> for more information.</li>
+<li>The <code>try</code>-with-resources statement ensures that a
+resource (such as a <code>BufferedReader</code>) is closed when the
+program is finished with it. See <a href=
+"../essential/exceptions/tryResourceClose.html">The
+try-with-resources Statement</a> for more information.</li>
+</ul>
+</li>
+</ul>
+<p><strong id="d_10_18_10">18 Oct 2010 -</strong></p>
+<p>This update features:</p>
+<ul>
+<li>For several months the Java SE Tutorials were not available as
+a download. We are happy to report that the very popular bundle is
+back and available through on the <a href="../index.html">front
+page</a> through the link under the "Tutorial Resources" box to the
+right.</li>
+<li>Do the Java Tutorials seem overwhelming to you? We have added a
+new <a href="../tutorialLearningPaths.html">Learning Paths</a>
+page.</li>
+<li>The new <a href=
+"../essential/concurrency/forkjoin.html">Fork/Join</a> page, part
+of the <a href="../essential/concurrency/index.html">Concurrency
+lesson</a>, describes how you can use the Fork/Join framework to
+take advantage of multiple processors. This feature is available
+now in the Java SE 7 release available on java.net.</li>
+<li>The <a href="../jdbc/basics">JDBC Basics</a> lesson has been
+completely revamped, including updated sample code that you can
+download, compile, and run &ndash; the code has been configured for
+Java DB and MySQL. See <a href=
+"../jdbc/basics/gettingstarted.html">Getting Started</a> for more
+information.</li>
+<li>Finally, a small, but notable, change is that the standalone
+JNDI tutorial, previously available on java.sun.com, has been moved
+to the Java SE documentation archive on <a href=
+"http://docs.oracle.com/javase/jndi/tutorial/">docs.oracle.com</a>
+and many broken links in the tutorial have been fixed. The <a href=
+"../jndi/">front page of the JNDI tutorial</a> has been modified
+accordingly, and redirects are in place ensuring a seamless
+transition.</li>
+</ul>
+<p><strong id="d_07_07_10">7 July 2010 -</strong></p>
+<p>This tutorial update represents the first release under its new
+home at <code>docs.oracle.com</code>. Redirects are in place, so
+any attempt to access the tutorials at
+<code>java.sun.com/docs/books/tutorial</code> will be redirected to
+the new location. We hope this will be a seamless transition for
+our many tutorial readers, but please let us know if you encounter
+any problems.</p>
+<p>Also included in this release:</p>
+<ul>
+<li><a href=
+"../deployment/doingMoreWithRIA/customizeRIALoadingExperience.html">
+Customizing the Loading Experience</a> explains how to provide a
+customized loading progress indicator for a rich Internet
+application, a feature first introduced in the JDK 6 Update 18
+release and enhanced in the Java SE 6 Update 21 release.</li>
+<li>A new trail introducing <a href="../jaxp">Java API for XML
+Processing (JAXP) 1.4 technology</a>. (This was previously released
+on <code>java.sun.com/webservices/references</code>.)</li>
+</ul>
+<p><strong id="d_01_12_10">12 January 2010 -</strong></p>
+<p>This update features:</p>
+<ul>
+<li><a href="../deployment/applet/draggableApplet.html">Developing
+Draggable Applets</a> &ndash; a new topic describing how to create
+an applet that can be dragged outside of a browser and dynamically
+converted into a Java Web Start application.</li>
+<li><a href="../deployment/applet/iac.html">Sending Messages to
+Other Applets</a> has been rewritten.</li>
+<li>Previously, a number of the <a href=
+"../uiswing/examples/components/index.html">Swing examples</a>,
+which are distributed as NetBeans projects, were missing a tag that
+prevented them from being opened in NetBeans 6.5 or later. The
+missing tag has been added to all <code>project.xml</code>
+files.</li>
+<li>Various minor errors, typos, and broken links have been
+fixed.</li>
+</ul>
+<p><strong id="d_09_23_09">23 September 2009 -</strong></p>
+<p>This update features:</p>
+<ul>
+<li>A Deployment tutorial that covers a wide range of topics about
+the development and deployment of rich Internet applications. The
+Deployment tutorial contains the following lessons:
+<ul>
+<li><a href="../deployment/applet/index.html">Applets</a></li>
+<li><a href="../deployment/webstart/index.html">Java Web
+Start</a></li>
+<li><a href="../deployment/doingMoreWithRIA/index.html">Doing More
+With Rich Internet Applications</a></li>
+<li><a href="../deployment/deploymentInDepth/index.html">Deployment
+In-Depth</a></li>
+</ul>
+</li>
+<li>A new section in the Swing look and feel lesson showing how to
+use the new <a href="../uiswing/lookandfeel/nimbus.html">Nimbus</a>
+look and feel.</li>
+<li>A new Swing page describing <a href=
+"../uiswing/misc/trans_shaped_windows.html">How to Create
+Translucent and Shaped Windows</a>.</li>
+<li>A new Interfaces and Inheritance page discussing <a href=
+"../java/IandI/polymorphism.html">Polymorphism</a>.</li>
+<li>As always, we have fixed numerous bugs, typos and broken
+links.</li>
+</ul>
+<p><strong id="d_03_27_09">27 May 2009 -</strong></p>
+<p>This update features:</p>
+<ul>
+<li>An entirely reworked <a href="../essential/io/fileio.html">File
+I/O</a> lesson, featuring NIO.2. This functionality is part of
+JDK 7.</li>
+<li>A new facility for gathering feedback about the tutorial. At
+the bottom of each content page, you can leave a publicly viewable
+comment. Leaving a comment using the JS-Kit mechanism is similar to leaving a
+blog comment. Let us know what you think!</li>
+<li>A new specialized trail covering <a href="../sdp">Sockets
+Direct Protocol</a>, also new in JDK7.</li>
+<li>Fixed typos and broken links.</li>
+</ul>
+<p><strong id="d_03_14_08">14 March 2008 -</strong></p>
+<p>This update features:</p>
+<ul>
+<li>The <a href="../uiswing/dnd/">Drag and Drop</a> lesson has been
+completely rewritten and updated to JDK 6.</li>
+<li>An updated Copyright page.</li>
+<li>A new License page that allows our users to modify tutorial
+content for limited non-commercial purposes.</li>
+<li>We are moving our downloads to the Sun Download Center. You are
+required to accept the license in order to download the Java
+Tutorials.</li>
+<li>We are retiring the feature where we name the releases and will
+be using dates from now on.</li>
+<li>Besides the work listed here, there are many fixed broken
+links, typos and other miscellaneous errata.</li>
+</ul>
+<p><strong id="d_08_01_07">Antediluvian Chili Pepper Day*, 1 August
+2007 -</strong></p>
+<p>This push completes the tutorial update to JDK 6, with the
+exception of the Swing drag and drop lesson, which is marked as
+such. There are many updated pages, but the more notable changes
+are:</p>
+<ul>
+<li><a href="../uiswing/painting">Performing Custom Painting</a>, a
+new lesson.</li>
+<li><a href="../uiswing/misc/printtext.html">How to Print Text</a>,
+a new page.</li>
+<li><a href="../uiswing/layout">Laying Out Components Within a
+Container</a>, an updated lesson.</li>
+<li><a href="../uiswing/components/icon.html">How to Use Icons</a>,
+with an updated demo by reader Collin Fagan.</li>
+</ul>
+<p>*OK, we made this up, or rather Collin did. :-)</p>
+<p><strong>National Honesty Day, 30 April 2007 -</strong></p>
+<p>This update focuses on the Swing tutorial - we have updated 80%
+of the material in the Swing tutorial to the JDK 6 release.</p>
+<p>A significant part of this effort makes our examples easier than
+ever to use! The Swing examples are now packaged ready to use in
+NetBeans IDE. Check out the <a href=
+"../uiswing/examples/components/index.html">examples index</a> for
+any of the Swing lessons (this link takes you to the Components
+lesson, there is a separate index for each Swing lesson) and you
+can download a zip file for any demo. Or you can visit the Check
+out the <a href="examples.html">Running Tutorial Examples in
+NetBeans IDE</a> page for more information on how to use the
+examples with NetBeans. Visit the NetBeans IDE download page
+to obtain release 5.5 of NetBeans IDE (it's free).</p>
+<p>Some of our brand new and significantly updated sections
+include:</p>
+<ul>
+<li><a href="../uiswing/learn">Learning Swing with NetBeans
+IDE</a>, a new lesson!</li>
+<li><a href="../uiswing/lookandfeel/synth.html">The Synth Look and
+Feel</a></li>
+<li><a href="../uiswing/misc/desktop.html">How to Integrate with
+the Desktop Class</a></li>
+<li><a href="../uiswing/misc/modality.html">How to Use Modality in
+Dialogs</a></li>
+<li><a href="../uiswing/misc/printtable.html">How to Print
+Tables</a></li>
+<li><a href="../uiswing/misc/splashscreen.html">How to Create a
+Splash Screen</a></li>
+<li><a href="../uiswing/misc/systemtray.html">How to Use the System
+Tray</a></li>
+<li><a href="../uiswing/components/table.html">How to Use
+Tables</a></li>
+</ul>
+<p><strong>Area Code Day, 10 November 2006 -</strong></p>
+<p>Check out the new <font size="+1"><a href=
+"http://blogs.oracle.com/thejavatutorials/">Java Tutorials'
+Blog</a>!</font></p>
+<p><a href="http://www.amazon.com/gp/product/0321334205/">The
+Java&trade; Tutorial (4th edition)</a> is now available in print.
+This update of the tutorial includes an <a href=
+"errata.html">Errata</a> page for the first printing. Our
+publisher, Addison Wesley, informs us that several translations of
+this book are already in progress.</p>
+<p>For this update, all of the specialized trails, except for
+Reflection, have been updated to release 6. The newly updated
+sections include:</p>
+<ul>
+<li><a href="../i18n">Internationalization</a></li>
+<li><a href="../javabeans">JavaBeans</a></li>
+<li><a href="../jdbc">JDBC Database Access</a></li>
+<li><a href="../rmi">RMI</a></li>
+<li><a href="../security">Security</a></li>
+<li><a href="../sound">Sound</a></li>
+<li><a href="../2d">2D Graphics</a></li>
+</ul>
+Plus, there are two all-new specialized trails:
+<ul>
+<li><a href="../jndi">Java Naming and Directory Interface
+(JNDI)</a></li>
+<li><a href="../jmx">Java Management Extensions (JMX)</a></li>
+</ul>
+<p>Also, the update of the Swing trail to release 6 is in progress
+and includes these sections:</p>
+<ul>
+<li><a href="../uiswing/concurrency">Swing Concurrency</a> is a new
+lesson that replaces the old "How to Use Threads" section. It
+covers the new class <code>javax.swing.SwingWorker</code>.</li>
+<li><a href="../uiswing/components/tabbedpane.html">How to Use
+Tabbed Panes</a></li>
+<li><a href="../uiswing/lookandfeel">Modifying the Look and
+Feel</a> is a new lesson that includes the previous <a href=
+"../uiswing/lookandfeel/plaf.html">How to Set the Look and Feel</a>
+page. Note that this section is still in progress.</li>
+</ul>
+The new look and feel of the tutorial has been further refined.
+Many of you have sent us feedback and we have been listening. The
+TOC on the left-side of the page can now be toggled. See the "Hide
+the TOC" button in the banner at the top of the page.
+<p>Also, there is a new <a href="run-examples.html">Compiling and
+Running the Examples FAQ</a> available at the bottom of most every
+page in the tutorial.</p>
+<p><strong>National Watermelon Day, 3 August 2006 -</strong></p>
+<p>The core tutorial is now updated to release JDK 6. This is in
+preparation for a new printed edition of <a href=
+"http://www.amazon.com/gp/product/0321334205/">The Java&trade;
+Tutorial (4th edition)</a> that you can pre-order on <a href=
+"http://www.amazon.com">Amazon</a> or through many other
+booksellers. This online update includes the following
+sections:</p>
+<ul>
+<li><a href="../getStarted">Getting Started</a> (with a new
+NetBeans section)</li>
+<li><a href="../java/concepts">Object-Oriented Programming
+Concepts</a></li>
+<li><a href="../java/nutsandbolts">Language Basics</a></li>
+<li><a href="../java/javaOO">Classes and Objects</a></li>
+<li><a href="../java/IandI">Interfaces and Inheritance</a></li>
+<li><a href="../java/data">Numbers and Strings</a></li>
+<li><a href="../java/generics">Generics</a></li>
+<li><a href="../java/package">Packages</a></li>
+<li><a href="../essential/exceptions">Exceptions</a></li>
+<li><a href="../essential/io/">Basic I/O</a></li>
+<li><a href="../essential/concurrency">Concurrency</a></li>
+<li><a href="../essential/regex">Regular Expressions</a></li>
+<li><a href="../essential/environment">The Platform
+Environment</a></li>
+<li>Swing, a new trail that shows the many
+capabilities of Swing and features a sophisticated PasswordStore
+demo by Swing engineer, Scott Violet (source included)</li>
+<li><a href="../deployment">Deployment</a></li>
+<li><a href="../extra/certification/index.html">Preparation for
+Java Programming Language Certification</a></li>
+</ul>
+The following update is also complete, though not part of the
+published tutorial:
+<ul>
+<li><a href="../networking">Custom Networking</a></li>
+<li><a href="../ext">The Extension Mechanism</a></li>
+</ul>
+All examples in the basic tutorial and in the Swing tutorial have
+been updated to compile against the 6.0 release. Applets and Java
+web start applications require 6.0 to run. (The one exception are
+the applets in the deployment/applet section that will run under
+1.4 and 1.5.)
+<p>You may notice that some very old parts of the tutorial have
+been removed. The previous version of the tutorial is now available
+via download. See the download page.</p>
+<p>Finally, the tutorial itself has gotten a facelift, with a new
+look and feel. Let us know what you think about these changes and
+please let us know if you find any problems. Send feedback via our
+feedback form.</p>
+<p><strong>Nutcracker Release, 23 December 2005 -</strong></p>
+<p>The Java Tutorial update to JDK 5.0 is now complete. This
+includes these sections of the tutorial:</p>
+<ul>
+<li><a href="../getStarted/index.html">Getting Started</a></li>
+<li><a href="../java/concepts/index.html">Object-Oriented
+Programming Concepts</a></li>
+<li><a href="../java/nutsandbolts/index.html">Language
+Basics</a></li>
+<li><a href="../java/data/index.html">Objects Basics and Simple
+Data Objects</a></li>
+<li><a href="../java/javaOO/index.html">Classes and
+Inheritance</a></li>
+<li><a href="../java/package/index.html">Interfaces and
+Packages</a></li>
+<li><a href="../essential/exceptions/index.html">Handling Errors
+Using Exceptions</a></li>
+<li><a href="../essential/concurrency/index.html">Threads: Doing
+Two or More Tasks at Once</a></li>
+<li><a href="../collections/index.html">Collections</a></li>
+<li><a href="../essential/io/index.html">I/O</a></li>
+<li><a href="../deployment/index.html">Deployment</a>, a new trail
+that includes:
+<ul>
+<li><a href="../deployment/applet/index.html">Applets</a></li>
+<li><a href="../deployment/webstart/index.html">Java Web
+Start</a></li>
+<li><a href="../deployment/jar/index.html">Packaging Programs in
+JAR Files</a></li>
+</ul>
+</li>
+</ul>
+Other changes include:
+<ul>
+<li>Several of the very old, out-of-date sections have been
+archived and are now available via download. See the download page
+for a complete list of available bundles.</li>
+<li>You'll notice that the old applet and JAR sections have been
+updated and moved to the new Deployment trail. You may notice
+redirects if you have absolute links to the old pages.</li>
+<li>We fixed the broken <a href="../search.html">search</a>
+feature: it wasn't limiting its search to the tutorial. This is now
+working correctly.</li>
+<li>Across the tutorial, 1.0 and 1.1 examples have been removed.
+The release 5 examples are located in "ex5" directories.</li>
+<li>We have a new feedback form. It looks different,
+but your feedback goes to the same
+place. Although our workload prevents us from responding to each
+email, rest assured we do read it.</li>
+<li>Finally, we fixed the usual broken links, typos, and other
+errata.</li>
+</ul>
+<p><strong>Dorothy's Birthday Release, 15 April 2005 -</strong></p>
+<p>The following sections have been updated to 5.0:</p>
+<ul>
+<li><a href="../java/nutsandbolts/index.html">Language
+Basics</a></li>
+<li><a href="../java/javaOO/index.html">Classes and
+Inheritance</a></li>
+<li><a href="../java/data/index.html">Object Basics and Simple Data
+Objects</a></li>
+<li><a href="../collections/index.html">Collections</a></li>
+</ul>
+<p>The following sections were updated to 5.0 in our last release,
+but have since been updated to reflect reader or reviewer
+feedback:</p>
+<ul>
+<li><a href="../java/concepts/index.html">Object-Oriented
+Programming Concepts</a></li>
+<li><a href="../java/package/index.html">Interfaces and
+Packages</a></li>
+<li><a href="../essential/concurrency/index.html">Threads: Doing
+Two or More Tasks At Once</a></li>
+<li><a href="../essential/exceptions/index.html">Handling Errors
+with Exceptions</a></li>
+</ul>
+Other changes include:
+<ul>
+<li>At readers' request, we changed the Feedback Form link at the
+top of each window to bring up a new window so you don't lose the
+page you're giving feedback about.</li>
+<li>We started adding ZIP files so you can easily download all the
+examples for a particular chapter.</li>
+<li>We added 5.0 versions (including web start links) of the
+examples in two Swing lessons: Getting Started with Swing and
+Learning Swing by Example.</li>
+<li>We moved several applets back to the pages where they're
+referred to. Please let us know how you feel about this.
+Another alternative for some of
+these that aren't truly integrated with their page is to make them
+web started applications.</li>
+<li>We made many small changes - which you probably won't notice -
+to clean up our HTML, reduce code sample line length where
+necessary, and generally enable better generation of book files
+from the HTML files.</li>
+<li>Finally, we fixed the usual broken links, typos, and other
+errata.</li>
+</ul>
+<p><strong>Anya's Birthday Release, 14 Feb 2005 -</strong></p>
+<p>The following sections have been updated to 5.0 (though most are
+still pending engineering review):</p>
+<ul>
+<li><a href="../java/concepts/index.html">Object-Oriented
+Programming Concepts</a></li>
+<li><a href="../java/package/index.html">Interfaces and
+Packages</a></li>
+<li><a href="../essential/exceptions/index.html">Handling Errors
+Using Exceptions</a></li>
+<li><a href="../essential/concurrency/index.html">Threads: Doing
+Two or More Tasks at Once</a></li>
+<li>JAR Files</li>
+</ul>
+Other, minor changes that you might notice include:
+<ul>
+<li>In the chapters where the content hasn't yet been updated, we
+have updated some of the images. In some cases, this might lead to
+a mismatch between the text (or code) and the image.</li>
+<li>We have modified the page headers and the copyright notices.
+This will cause each page to be updated, even if the content hasn't
+yet changed.</li>
+<li>Our <a href="../search.html">search page</a> has been fixed.
+Thanks to those of you who reported that it was broken.</li>
+<li>Finally, we fixed the usual broken links, typos, and other
+errata.</li>
+</ul>
+<p><strong>Swing Book Release #2, 11 March 2004 -</strong></p>
+<ul>
+<li>Added an information page for our just-published book, <em>The
+JFC Swing Tutorial, Second Edition</em>. It includes pointers to
+other pages describing and book and CD contents, as well as
+errata.</li>
+<li>Added questions and exercises, along with answers, to the Swing
+trail. These reflect the Questions and Exercises section at the end
+of every non-reference chapter in the new book.</li>
+<li>Updated the <a href=
+"../uiswing/components/table.html#sorting">table sorting</a>
+example to use a much more recent, functional, and robust version
+of <code>TableSorter</code>.</li>
+<li>The usual miscellaneous fixes.</li>
+</ul>
+<p><strong>Swing Book Release, 20 February 2004 -</strong></p>
+<ul>
+<li>Updated the first two lessons of the <a href=
+"../uiswing/index.html">Swing trail</a> to 1.4 (with notes about
+what's expected in 1.5): <a href=
+"../uiswing/start/index.html">Getting Started with Swing</a> and
+<a href="../uiswing/learn/index.html">Learning Swing by
+Example</a>.</li>
+<li>Throughout the tutorial, made the usual fixes to broken links,
+typos, and other errata.</li>
+</ul>
+<p><strong>Maya's Birthday Release, 3 November 03 -</strong></p>
+<ul>
+<li>With the exception of the first two lessons, the <a href=
+"../uiswing/index.html">Swing trail</a> has now been updated to 1.4
+(with notes about what's expected in 1.5) and reflects what will be
+published in the upcoming book. We'll note the biggest changes
+here, but with so many changes, we can't mention them all.</li>
+<li>After consulting with the Swing engineers, we changed our
+thread safety recommendations and updated all but a few straggling
+1.4 Swing examples to be thread safe. The newest recommendation is
+this: <b>Build the GUI on the event-dispatching thread.</b> See How
+to Use Threads for details.</li>
+<li>Updated all pages in the Swing <a href=
+"../uiswing/layout/index.html">layout</a> and <a href=
+"../uiswing/events/index.html">events</a> lessons to 1.4.</li>
+<li>Updated the accessibility, actions, threads, and timer pages in
+the <a href="../uiswing/misc/index.html">Using Other Swing
+Features</a> lesson to 1.4.</li>
+<li>In the <a href="../uiswing/components/index.html">Using Swing
+Components</a> lesson, updated the applet, root pane, spinner,
+split pane, tabbed pane, table, tool bar, tool tip, tree, and all
+text component pages to 1.4. Created pages for separators and
+formatted text fields.</li>
+<li>Completely rewrote the <a href=
+"../uiswing/painting/index.html">painting</a> lesson. Instead of
+featuring only the API in the <code>Graphics</code> class, it now
+simply tells you what's special about painting Swing components and
+refers you to the 2D trail for details.</li>
+<li>Throughout the tutorial, made the usual fixes to broken links,
+typos, and other errata.</li>
+</ul>
+<p><strong>Victoria Day (Canada), 19 May 03 -</strong></p>
+<ul>
+<li>Added two completely new and much-requested pages to the Swing
+part of the tutorial: How to Use Data Transfer (which covers drag
+and drop and cut/copy/paste) and <a href=
+"../uiswing/misc/focus.html">How to Use the Focus Subsystem</a>.
+Many thanks to Shannon Hickey and Scott Violet for their reviews of
+these rather long and technically complex sections.</li>
+<li>Drastically changed the text and examples for <a href=
+"../uiswing/layout/spring.html">How to Use SpringLayout</a>. It's
+still unfinished, but should now be more useful. Many of the
+<a href="../uiswing/layout/spring.html#eg">examples</a> use a
+<code>SpringUtilities</code> class that makes it easy to build
+grids of cells, including columns of label-text field pairs.</li>
+<li>Updated the following Swing component reference pages to 1.4:
+<a href="../uiswing/components/list.html">lists</a>, <a href=
+"../uiswing/components/panel.html">panels</a>, <a href=
+"../uiswing/components/progress.html">progress bars</a>, <a href=
+"../uiswing/components/menu.html">menus</a>, <a href=
+"../uiswing/components/scrollpane.html">scroll panes</a>, and
+<a href="../uiswing/components/slider.html">sliders</a>. Added a
+list of examples to the <a href=
+"../uiswing/components/formattedtextfield.html#eg">formatted text
+field</a> section.</li>
+<li>Updated a couple of other Swing reference pages to 1.4:
+borders, icons.</li>
+<li>Updated applet tags throughout the tutorial to use
+<code>APPLET</code> instead of
+<code>OBJECT</code>/<code>EMBED</code>. This should make them
+execute successfully in recent versions of Java Plug-in. Changed a
+couple of applets to use <code>getResourceAsStream</code> instead
+of <code>getResource</code> to load their images; this is more
+efficient for applets using Java Plug-in.</li>
+<li>Throughout the Swing examples, invoked
+<code>setOpaque(true)</code> on <code>JPanel</code>s used as
+content panes, to account for the fact that panels are no longer
+opaque by default in every look and feel we distribute. (GTK+,
+added in 1.4.2, has transparent panels.) Where possible, changed
+examples that use <code>p = new JPanel(); p.setLayout(l)</code> to
+use <code>p = new JPanel(l)</code>, to avoid the unnecessary
+creation of <code>FlowLayout</code> objects.</li>
+<li>Rewrote and reorganized much of the early part of the <a href=
+"../uiswing/components/index.html">Swing components</a> lesson.
+This included adding two new pages, with some new material and some
+extracted from other pages: Using HTML in Swing Components and
+<a href="../uiswing/components/model.html">Using Models</a>.</li>
+<li>Miscellaneous fixes to broken links, typos, and the like.</li>
+</ul>
+<p><strong>Year of the Black Sheep (China), 3 February 03
+-</strong></p>
+<ul>
+<li>Reorganized and updated Setting the Look and Feel. It even has
+information on the GTK and Windows XP look and feels, which will be
+introduced in 1.4.2.</li>
+<li>Added source code for the 1.4 events demos. We had released the
+demos in runnable form soon after our last update, but without the
+source code.</li>
+<li>Updated the following pages in the components lesson to reflect
+1.4 (and make any other improvements we could): <a href=
+"../uiswing/components/jcomponent.html">JComponent</a>, <a href=
+"../uiswing/components/button.html">button</a>, <a href=
+"../uiswing/components/combobox.html">combo box</a>, <a href=
+"../uiswing/components/colorchooser.html">color chooser</a>, and
+<a href="../uiswing/components/frame.html">frame</a>.</li>
+<li>Updated/added examples in the components lesson. New demo:
+FrameDemo2. Added PNG support to FileChooserDemo2. Changed ListDemo
+to not add a person if they already exist. Added a text input
+dialog to DialogDemo.</li>
+<li>Fixed the <a href=
+"../java/javaOO/QandE/creating-answers.html">Creating Classes
+answer page</a> to actually contain answers.</li>
+<li>Updated our standard headers and footers to be more usable by
+people with disabilities. These changes should be invisible to our
+other readers.</li>
+<li>Miscellaneous fixes to broken links, typos, and the like.</li>
+</ul>
+<p><strong>Onion Market Day (Switzerland), 25 November 02
+-</strong></p>
+<ul>
+<li>We changed our external links to bring up new, blank windows
+instead of named windows. Although this might result in an excess
+of windows, it should solve the problem of people losing the named
+windows.</li>
+<li>We added many 1.4 examples to two of the Swing trail's lessons:
+Using Swing Components and Using Other Swing Features. These
+examples can be launched using Java<sup><font size=
+"-2">TM</font></sup> Web Start, and the source files now list what
+other files they need. The overall Swing example index now points
+to all versions of the examples for each lesson.</li>
+<li>We added a page on <a href=
+"../uiswing/misc/keybinding.html">key bindings</a> to the Using
+Other Swing Features lesson. We also updated the <a href=
+"../uiswing/misc/action.html">action</a> and <a href=
+"../uiswing/misc/access.html">accessibility</a> pages.</li>
+<li>In the <a href="../uiswing/components/index.html">Swing
+components</a> lesson, we changed the order of the pages and
+updated all the pages up through and including buttons.</li>
+<li>We're still in the process of updating the <a href=
+"../uiswing/index.html">Creating a GUI with JFC/Swing</a> trail to
+1.4. You might notice some changes or notes about changes we plan
+to make.</li>
+<li>We added a Java Web Start page to help people install and use
+that software.</li>
+<li>Miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Robinson Crusoe's Birthday, 30 September 02
+-</strong></p>
+<ul>
+<li>We added a <b>new lesson!</b> <a href=
+"../essential/regex/index.html">Regular Expressions</a> covers the
+<code>java.util.regex</code> API introduced in the 1.4 release of
+the Java&trade; 2 Platform Standard Edition. Regular expressions
+can be used as a tool to search, edit, or manipulate text or data.
+This package uses Perl-like syntax, but our lesson doesn't assume
+that you've had previous experience with regular expressions.</li>
+<li>The Tutorial <b>front page has completely changed</b>, and the
+java.sun.com one now looks different from the downloaded one. The
+content of the two pages remains nearly identical.</li>
+<li>We added a <b>search box</b> to the <a href=
+"../index.html">Tutorial front page.</a></li>
+<li>We retired the <b>Servlets</b> trail, since it's out of date
+and other tutorials have updated servlet coverage. For links to the
+newer coverage and to a downloadable form of the old trail, see the
+old trailhead.</li>
+<li>We added a page of <b>printing tips</b>: Improving Printing
+Performance. It includes strategies that you can use starting in
+both 1.3 and 1.4.1.</li>
+<li>We added a file describing the <b>license for our code
+examples</b>. Unless otherwise licensed, all our code is available
+under this license.</li>
+<li>Notice is hereby given: We plan to <b>retire the Trail
+Map</b>.</li>
+<li>We're in the process of updating the <a href=
+"../uiswing/index.html">Creating a GUI with JFC/Swing</a> trail to
+1.4. You might notice some changes or notes about changes we plan
+to make.</li>
+<li>Lots of miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Magha Puja Day (Thailand), 4 March 02 -</strong></p>
+<ul>
+<li>The 1.4 version of the Java 2 Platform Standard Edition was
+released recently. We're in the process of updating the <a href=
+"../uiswing/index.html">Creating a GUI with JFC/Swing</a> trail to
+1.4. The <a href="../extra/fullscreen/index.html">Full-Screen
+Exclusive Mode API</a> covers a brand new API in the 1.4 release;
+programmers who write games or other graphic-intensive applications
+should read this trail.</li>
+<li>Lots of miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Underdog Day (World), 19 December 01 -</strong>
+Maintenance Release</p>
+<ul>
+<li>We removed our survey from the Web site. We want to thank
+everyone for their thoughtful responses. Your feedback will help us
+improve the Tutorial and plan for the future.</li>
+<li>Lots of miscellaneous fixes to broken links and typos,
+including updates in the <a href="../uiswing/index.html">Creating a
+GUI with JFC/Swing</a> trail.</li>
+</ul>
+<p><strong>Chulalongkorn Day (Thailand), 23 October 01
+-</strong></p>
+<ul>
+<li>New survey! Please spend a few minutes filling out our survey.
+Your feedback will help us improve the Tutorial and plan for the
+future. We've also included some localization questions to help us
+learn what languages you'd like us to provide translations in.</li>
+<li>Lots of miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Golden Week (Japan), 3 May 01 -</strong></p>
+<ul>
+<li>New lesson! User Interfaces that Swing: A Quick Start Guide. is
+a quick start guide to using Swing components to build user
+interfaces. It is built around several progressively complicated
+examples. (This lesson started life as a chapter in our latest
+book, <i>The Java Tutorial, Third Edition</i>.)</li>
+<li>Another new lesson! For programmers who write games or other
+graphic-intensive apps, check out the new <a href=
+"../extra/fullscreen/index.html">Full-Screen Exclusive Mode API</a>
+lesson. This API will be included in the 1.4 release of the Java 2
+Standard Edition.</li>
+<li>Miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Glarius Festival (Switzerland), 1 April 01
+-</strong></p>
+<ul>
+<li>Completely updated the <a href=
+"../essential/io/index.html">I/O: Reading and Writing (but no
+'rithmetic)</a> lesson.</li>
+<li>Reorganized the order of lessons in the <a href=
+"../essential/index.html">Essential</a> trail.</li>
+<li>Miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Minor Update, 28 Feb 01 -</strong></p>
+<ul>
+<li>Miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Rolling Blackouts Release, 3 Feb 01 -</strong></p>
+<ul>
+<li>Added Questions and Exercises for all trails included in the
+new book, The Java Tutorial Third Edition.</li>
+<li>Added new book pages to support the new book, The Java Tutorial
+Third Edition. (The TOC includes a handy set of links to all the
+answers for the Questions &amp; Exercises.)</li>
+<li>Updated the <a href="../getStarted/index.html">Getting
+Started</a> trail. We updated the material for 1.3 and added
+Questions and Exercises.</li>
+<li>Updated the <a href="../java/package/index.html">Interfaces and
+Packages</a> lesson. We updated the material for 1.3 and added
+Questions and Exercises.</li>
+<li>Miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Edvard Munch's Birthday, 12 Dec 00 -</strong></p>
+<ul>
+<li>Updated the <a href="../java/index.html">Learning the Java
+Language trail</a>. We updated the material for 1.3 and added
+Questions and Exercises to the Language Basics section.</li>
+<li>Updated the servlets trail to refer to the Tomcat 3.x and 4.0
+implementations. These releases support the 2.2 and 2.3 versions of
+Java Servlet technology.</li>
+<li>The Tomcat version of the Servlets Bookstore Example can now be
+downloaded as a zip file.</li>
+<li>Miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Friday the 13th, 13 Oct 00 -</strong></p>
+<ul>
+<li>Added information to the IDL trail about the idlj compiler,
+which is part of the 1.3 release. Updated links to the idlj
+compiler, its documentation, and the OMG site.</li>
+<li>Updated the servlets trail to refer to Java Servlet 2.2 API
+Docs.</li>
+<li>Updated the Bingo example to fix some thread safety
+issues.</li>
+<li>Updated the API links in most of the basic trails to point to
+the 1.3 versions (instead of 1.2).</li>
+<li>Miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Tutorial Fifth Anniversary, 31 May 00 -</strong></p>
+<ul>
+<li>Added Werner van Mook's Mac adaptation of the instructions for
+writing and compiling your first programs: First Cup of Java (Mac
+OS).</li>
+<li>Added questions and exercises to the end of the <a href=
+"../getStarted/index.html">Getting Started</a> trail and to the
+first three lessons in the <a href="../java/index.html">Learning
+the Java Language</a> trail.</li>
+<li>Rewrote portions of the first lessons in the Learning the Java
+Language trail.</li>
+<li>Miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Zeppo Marx's Birthday (1901), 25 February 00
+-</strong></p>
+<ul>
+<li>Did reconstructive work on the Learning the Java Language
+trail. Lots of new examples added. Cleaned up.</li>
+<li>Fixed a subtle bug in SwingWorker source code. See How to Use
+Threads in the Swing trail.</li>
+<li>Adjusted JTable page, examples to reflect 1.3. See <a href=
+"../uiswing/components/table.html">How to Use Tables</a> in the
+Swing trail.</li>
+<li>Miscellaneous fixes to broken links and typos.</li>
+</ul>
+<p><strong>Thanksgiving (USA), 24 November 99 -</strong></p>
+<ul>
+<li>Added a new lesson to the JavaBeans(tm) trail, Using the
+BeanContext API, that covers The Extensible Runtime Containment and
+Services Protocol.</li>
+<li>Added some information about JTable in 1.3 in the Swing trail.
+Also, added a new 1.3 JTable example.</li>
+<li>Began updating and rewriting the Learning the Java Language
+trail. This work includes adding exercises and questions to each
+section.</li>
+<li>Added the <a href="glossary.html">glossary</a> from the
+java.sun.com website and began linking terms to it.</li>
+<li>Did a partial conversion to our new icon scheme for identifying
+the target of our links.
+<ul>
+<li><img alt="Glossary" src="../images/glossaryIcon.gif" width="11"
+height="11" border="0" /> looks up a glossary term</li>
+<li><img alt="Source" src="../images/sourceIcon.gif" width="11"
+height="11" border="0" /> links to a <code>.java</code> file</li>
+<li><img alt="API" src="../images/apiIcon.gif" width="11" height=
+"11" border="0" /> link to a page within the javadocs hosted at
+java.sun.com</li>
+<li><img alt="Other" src="../images/otherIcon.gif" width="11"
+height="11" border="0" /> links to a page outside of the
+tutorial</li>
+<li><img alt="Tutorial" src="../images/tutorialIcon.gif" width="11"
+height="11" border="0" /> links to a page in a different lesson
+within the tutorial</li>
+</ul>
+Intra-tutorial links (black) update the page in the current browser
+window, while extra-tutorial links (colored links) bring up a new
+browser window.</li>
+</ul>
+<p><strong>Vegetarian Day (World), 1 October 99 -</strong></p>
+<ul>
+<li>Removed the survey. Thank you for your responses.</li>
+<li>Added a <a href="../reallybigindex.html">really big index</a>
+that lists every content page in the tutorial in order.</li>
+<li>Added a resources page that lists Java programming resources
+outside of the tutorial.</li>
+<li>Added <a href="../getStarted/cupojava/unix.html">Your First Cup
+of Java (for UNIX)</a>.</li>
+<li>Added feedback form. Please use this form to contact us instead of sending
+mail directly. It will help direct your mail to the right
+person.</li>
+<li>Modified our tools to provide automatic next and previous
+links, automatic page titles, and automatic page headers and
+footers. This change should be largely unnoticeable to readers
+except that these page elements should contain fewer errors and
+inconsistencies.</li>
+<li>Created a tool that automatically generated trail-level TOC
+pages. This change should be largely unnoticeable to readers except
+that these pages should contain fewer errors and
+inconsistencies.</li>
+<li>Fixed various broken links, typographical, and other
+errors.</li>
+<li>Put all of the images on the Swing Components Visual
+Index.</li>
+<li>Updated API links to point to Java 2 SDK docs.</li>
+<li>Thanks to our two delightful summer interns, Ray and Indra, we
+were able to do a lot of clean up including fixing omissions,
+making clarifications, adding examples, and so on.</li>
+<li>We did a pass and cleaned up most of the pending issues. The
+only remaining pendings are in the BINGO lesson, which has not been
+completed, and in one of the book pages for the Second Edition. We
+hope, but do not promise, to clean up the remaining ones for the
+next tutorial update.</li>
+</ul>
+<p><strong>National Smile Week :), 3 August 99 -</strong></p>
+<ul>
+<li>Added the 2D applets to the list of applets page, for a total
+of 77 applets in the Tutorial. Also, provided Java Plug-in tags for
+running the 2D applets.</li>
+<li>Added <a href="../getStarted/cupojava/index.html">detailed
+instructions</a> for compiling and running a Java program in
+Windows.</li>
+<li>Posted a survey.</li>
+<li>Created a tutorial announcements mailing list to which tutorial
+readers can subscribe.</li>
+<li>Added common problems pages to some trails that didn't have
+them.</li>
+<li>Clarified and fixed various errors reported by readers.</li>
+</ul>
+<p><strong>Fiesta de San Fermin (Spain), 7 July 99 -</strong></p>
+<ul>
+<li>Fixed most of the pending issues in the Swing trail. Fixed a
+few pending issues in other trails.</li>
+<li>Fixed some problems with one example in the security
+trail.</li>
+<li>Made some minor modifications to the page format and did some
+clean up on our tools. This has minor repercussions for API
+links.</li>
+<li>Cleaned up the image directories and removed unused images.
+This reduced the size of the tutorial by about 1.5 Meg.</li>
+<li>Added coverage of JSDK 2.1 in the servlets trail.</li>
+<li>Modified our coverage of finalization in the Java language
+trail and in effected examples.</li>
+<li>Fixed typos, broken links, a couple of broken applets, and
+other reader reported problems.</li>
+<li>Updated the instructions for running the BINGO program.</li>
+<li>Became a mirror for WinHelp version of tutorial.</li>
+</ul>
+<p><strong>Memorial Day (USA), 28 May 99 -</strong></p>
+<ul>
+<li>Announced the Swing book.</li>
+<li>Due to overwhelming reader feedback, we changed our format
+again. We removed the left-hand border and modified the headers and
+footers to include a link to the search page.</li>
+<li>Fixed typos and other errors in the Learning Java, Essential
+Classes, and Custom Networking trails in response to reader
+e-mail.</li>
+</ul>
+<p><strong>Lei Day (Hawaii) update, 5 May 99 -</strong></p>
+<p>We made some changes to our new page format in resonse to reader
+feedback.</p>
+<ul>
+<li>Because of reader feedback, we added a navigation area to the
+bottom of each page.</li>
+<li>Implemented a max width of 460 for images to prevent large
+images from creating a page that is too wide.</li>
+</ul>
+<p><strong>Lei Day (Hawaii), 1 May 99 -</strong></p>
+<ul>
+<li>Modified our page format. It now includes search on every
+content page.</li>
+<li>Created examples indexes for all examples in the Swing trail.
+If readers like it, we plan to do this for all trails.</li>
+<li>Reviewed the code for all example programs in the Swing
+trail.</li>
+<li>Did a final pass in preparation for converting from HTML to
+book format. This included everything from fixing typos to tweaking
+comments in source files to adding a few paragraphs of new
+information.</li>
+<li>Added a second custom layout manager example:
+GraphPaperLayout.</li>
+<li>Added new examples and content to the 2d trail.</li>
+</ul>
+<p><strong>World Culture Day, 12 March 99 -</strong></p>
+<p>We marched through the Swing trail preparing for copyedit.
+Here's what we did:</p>
+<ul>
+<li>Internally reviewed and edited all .html pages in the Swing
+trail in the first 7 lessons. In some cases, this amounted to a
+major rewrite.</li>
+<li>Added *a lot* of material to the component how-to pages that
+covers aspects of the components that had previously been omitted.
+Typically, the additional material covers more advanced component
+features.</li>
+<li>Reviewed example code, ran all examples, and modified as
+appropriate.</li>
+<li>Researched and resolved many pending issues. (Some still
+remain.)</li>
+<li>Performed "example audits" and updated the tables of
+examples.</li>
+<li>Reviewed and updated API tables everywhere.</li>
+<li>Fixed various bugs and clarity issues reported by readers.</li>
+<li>Filled in "glue" pages.</li>
+<li>Added information about common problems in many places.</li>
+<li>Tied sections together better by adding links.</li>
+<li>Made the layout and events sections similar to how-to pages by
+adding API and examples tables.</li>
+</ul>
+<p><strong>Joe's 40th Birthday, 21 Jan 99 -</strong></p>
+<ul>
+<li>Updated the drawing lesson to Swing.</li>
+<li>Made various improvements to the Swing trail.</li>
+<li>Some front page cleanup.</li>
+</ul>
+<p><strong>Winter Solstice, 21 Dec 98</strong></p>
+<ul>
+<li><strong>Added Search Capability</strong>!</li>
+<li>Added preliminary draft of Converting to Swing lesson.</li>
+<li>Added links to resources and examples for Drag 'n Drop.</li>
+<li>Some image clean up, which shrunk the tutorial by about .75
+Megs.</li>
+<li>Made various improvements to the Swing trail,</li>
+<li>Fixed various broken link and typos.</li>
+</ul>
+<p><strong>Enlightenment of the Buddha (Japan), 8 Dec
+98</strong></p>
+<ul>
+<li>Minor typo and broken link fixes.</li>
+<li>Getting first two lessons in Swing trail ready for
+copyedit.</li>
+<li>Removed all .class files from tutorial except those necessary
+for running applets. This shrank the tutorial by 1.5 Megs.</li>
+</ul>
+<p><strong>Day of the Artisans (Mexico), 4 Dec 98</strong></p>
+<ul>
+<li><strong>Note</strong>: CD-ROM build. This is the version of the
+tutorial that appears on the CD-ROM for <strong>The Java Tutorial
+<em>Continued</em></strong>.</li>
+<li>Integrated all copyedits and other changes from the continued
+book into 5 trails: overview, internationalization, sound, 2D, and
+RMI.</li>
+<li>Made lots of little improvements to the Swing trail, especially
+in swingOverview and swingStart. Reorganized material about
+text.</li>
+<li>Updated programs to use Swing 1.1 (from Swing 1.0.3 and Swing
+1.1 Beta 3) and JDK 1.2.</li>
+</ul>
+<p><strong>Aron's Birthday, 6 Nov 98 -</strong></p>
+<ul>
+<li>Substantially reorganized the <b>Creating a GUI with
+JFC/Swing</b> trail. The Swing-based User Interface trail replaces
+the old AWT-based User Interface trail, which is available only by
+download. We still have some work to do to complete the transition.
+Please bear with us during construction!</li>
+<li>Miscellaneous fixes to typos, broken links, and program
+bugs.</li>
+</ul>
+<p><strong>Universal Children's Day, 5 Oct 98 -</strong></p>
+<ul>
+<li>Converted the examples and text in <b>Laying Out Components
+within a Container</b> to use Swing.</li>
+<li>Several updates to the <b>Using Swing Components</b>
+lesson.</li>
+<li>Converted many applets to use Java Plug-in.</li>
+<li>Updated to JDK 1.1.7 and Swing 1.1 Beta 3.</li>
+<li>Converted old UI trail to a downloadable archive.</li>
+<li>Removed reference objects trail.</li>
+<li>Miscellaneous fixes to typos, broken links, and program
+bugs.</li>
+</ul>
+<p><strong>Labor Day Release, 7 Sept 98 -</strong></p>
+<ul>
+<li>Added <b>Overview of the JDK</b>.</li>
+<li>Added <b>Java Sound</b> trail.</li>
+<li>Added <b>Working with Java 2D Graphics</b> trail.</li>
+<li>Added <b>JDBC Database Access</b> trail.</li>
+<li>Added <b>Using Java RMI</b> trail.</li>
+<li>Reviewed and edited <b>Programming with Java IDL</b>
+trail.</li>
+<li>Added new material and examples to the <b>Using Swing
+Components</b> lesson.</li>
+</ul>
+<p><strong>Laine's Birthday Release, An Update, 14 Aug 98
+-</strong></p>
+<ul>
+<li>Added <strong>Programming with Java IDL</strong> trail.</li>
+<li>Added <strong>Security in JDK 1.2</strong> trail.</li>
+<li>Reviewed and edited various trails and lesson.</li>
+<li>Added new material and examples to the <strong>Using Swing
+Components</strong> lesson.</li>
+<li>Fixed miscellaneous typos and broken links. Made minor
+improvements to text and examples all over the place.</li>
+</ul>
+<p><strong>Laine's Birthday Release, 3 Aug 98 -</strong></p>
+<ul>
+<li>Added <strong>Collections</strong> trail.</li>
+<li>Added <strong>Servlets</strong> trail.</li>
+<li>Added <strong>The Java Extensions Mechanism</strong>
+trail.</li>
+<li>Added Reference Objects trail.</li>
+<li>Added new material and examples to the <strong>Using Swing
+Components</strong> lesson. Completed technical reviews for many
+pages and integrated engineering feedback.</li>
+<li>Reviewed and edited <strong>javabeans</strong> and
+<strong>jar</strong> trails.</li>
+<li>Fixed miscellaneous typos and broken links. Made minor
+improvements to text and examples all over the place.</li>
+</ul>
+<p><strong>The Summer Solstice Release, 26 June 98 -</strong></p>
+<ul>
+<li>Added a lot of new material and examples to the <strong>Using
+Swing Components</strong> lesson.</li>
+<li>Updated information about <strong><code>hashCode</code> and
+<code>equals</code></strong>.</li>
+<li>Added a <strong>bios</strong> page that contains information
+about our contributing authors.</li>
+<li>Reviewed and edited <strong>internationalization</strong>,
+<strong>reflection</strong>, and <strong>native</strong>
+trails.</li>
+<li>Fixed miscellaneous typos and broken links. Improved some text
+and some examples.</li>
+</ul>
+<p><strong>Nettle Day (UK), 29 May 98 -</strong></p>
+<ul>
+<li>Added <strong>JAR</strong> trail.</li>
+<li>Added 4 new topics to the internationalization trail:
+<strong>comparing strings</strong>, <strong>text
+boundaries</strong>, <strong>conversions</strong>, and a
+<strong>checklist for internationalizing existing
+programs</strong>.</li>
+<li>Added demo programs to the date and number formatting
+lessons.</li>
+<li>Reorganized <strong>JavaBeans</strong> trail.</li>
+<li>Added a lot of new material and examples to the <strong>Using
+Swing Components</strong> lesson.</li>
+<li>Reviewed <strong>native methods</strong> trail and made
+associated changes and fixes.</li>
+<li>Fixed miscellaneous typos and broken links. Improved some text
+and some examples.</li>
+</ul>
+<p><strong>Arbor Day, 24 April 98</strong></p>
+<ul>
+<li>WooHoo! New <strong>front page</strong>! New <strong>Trail
+map</strong>!</li>
+<li>New look for trail-level TOC.html files. Also, removed
+lesson-level TOC.html files. Instead we now provide a link to the
+appropriate place within the trail-level TOC.html files.</li>
+<li>Continued to add new pages to the <strong>Using Swing
+Components</strong> lesson.</li>
+<li>Added a new lesson to the internationalizaton trail covering
+<strong>formatting</strong>.</li>
+<li>Added trail on <strong>reflection</strong>.</li>
+<li>Added some information to the <strong>native methods</strong>
+trail for Mac programmers.</li>
+<li>Fixed typos, broken links, and various other minor problems
+with content</li>
+<li>Removed the old internationalization trail.</li>
+<li>Removed old native methods trail...provide a
+<strong>downloadable archive</strong> instead.</li>
+<li>Updated <strong>errata page</strong> for second edition of the
+book.</li>
+</ul>
+<p><strong>The Vernal Equinox, 20 March 98</strong></p>
+<ul>
+<li>Changed the background color to white.</li>
+<li>Finished integrating figures from the new, second, edition of
+the book. Figures and images are now kept together at the top-level
+instead of sprinkled throughout the lesson directories.</li>
+<li>Added <strong>book.html</strong> and related pages for the
+second editon of the book. Changed the page design of the
+<strong>book.html</strong> and related pages for the first edition
+to match the second edition.</li>
+<li>Did a bunch of work behind the scenes on our tools and
+processes. This is the first update of the tutorial from our new
+workspace with our new makefiles and build process.</li>
+<li>Because of our lovely new tools, we can now easily provide a
+downloadable archive of all of the examples in the book. See
+<strong>Download the Tutorial</strong> for the <code>ftp</code>
+links.</li>
+<li>Fixed various typos and other minor problems with content.</li>
+<li>Updated the <strong>Swing</strong> material relating to the JDK
+1.2.</li>
+</ul>
+<p><strong>Saturnalia, 22 December 97 - <em>The long awaited
+update!</em></strong></p>
+<p>This is a <em>major</em> update of the tutorial. Almost every
+file has been touched in some way.</p>
+<p>This release of the online tutorial corresponds with the release
+of the 2nd edition of <em>The Java Tutorial</em> book and is the
+version of the online tutorial that appears on the CD-ROM that
+accompanies that book.</p>
+<p>The changes are in progress, but to a large extent we have
+integrated 1.1 information into the existing trails, lessons, and
+examples. This is in sharp contrast to the 1.1 notes that were
+littered throughout the previous version of the tutorial and were,
+admittedly, somewhat confusing.</p>
+<p>Also, we are in the process of integrating copyedit and other
+changes made to the book version, into the online version. This has
+been completed thoroughly in some areas of the online tutorial, and
+spottily in other areas. We will continue with this process
+throughout the coming months.</p>
+<p>New lessons in this tutorial that first appeared in print in the
+2nd edition of <em>The Java Tutorial</em> book:</p>
+<ul>
+<li><strong>The Java Phenomenon</strong></li>
+<li><strong>Migrating to 1.1</strong></li>
+<li><strong>A Preview of Things to Come</strong></li>
+</ul>
+New trails for this version of the tutorial that haven't yet made
+it to print:
+<ul>
+<li>Added a <strong>Putting It All Together</strong> trail that
+provides a large, real-world, client/server example and analyzes
+it.</li>
+<li>Got a totally new <strong>JavaBeans Tutorial</strong> by Andy
+Quinn!</li>
+</ul>
+<p><strong>8 July 97 -</strong></p>
+<ul>
+<li>One of the goals of the tutorial is to document the latest and
+greatest from JavaSoft <em>as it is released</em>. To this end,
+we've added a lesson about <strong>Using Swing Components</strong>.
+The Swing release is an early release of part of the JFC. This
+information is only available from the Java Tutorial.</li>
+<li>Added a trail, <strong>Java Security 1.1</strong>, covering the
+new 1.1 security APIs.</li>
+<li>Updated the The JavaBeans(tm) Tutorial by Greg Voss.</li>
+<li>Promoted <strong>Writing Global Programs</strong> to a trail.
+This trail is still in progress, but it contains new material
+including several excellent demos from
+<strong>Taligent</strong>.</li>
+<li>Added information about the 1.1 release in our <strong>To 1.1 -
+And Beyond!</strong> trail.</li>
+<li>Made the usual fixes to broken links, typos, and other
+errata.</li>
+</ul>
+<p><strong>14 May 97 -</strong></p>
+<p>We improved and added more 1.1 information in existing sections.
+We added more examples of and information about the various types
+of event listeners to <strong>Handling Events</strong>. We also
+fixed the AroundTheWorld applet used in <strong>Writing Global
+Programs.</strong></p>
+<p><strong>28 April 97 -</strong></p>
+<p>We added a new trail, <strong>To 1.1 - And Beyond!</strong>,
+which is the headquarters for features added to the JDK after 1.0.
+Also, the <strong>Learning the Java Language</strong> and
+<strong>Essential Java Classes</strong> trails now have notes that
+point out material that is affected by 1.1. And finally, we
+reorganized our top-level files to make them more accessible.</p>
+<p><strong>3 March 97 -</strong></p>
+<p>Added a brand new trail introducing JavaBeans! This trail,
+JavaBeans Tutorial, written by Greg Voss, shows you the ins and
+outs of developing programs using the JavaBeans technology.</p>
+<p><strong>19 February 97 -</strong></p>
+<ul>
+<li>Our new "guest author" program debuts in this release of the
+tutorial with a completely new trail about writing native methods
+by Beth Stearns. Check it out: <strong>Using the Java Native
+Interface (JNI)</strong>.</li>
+<li>Merged copyediting changes from the book into the on-line
+version in these two trails: <strong>Getting Started</strong> and
+<strong>Writing Applets</strong>.</li>
+<li>Updated <strong>Writing Global Programs</strong> to work with
+the FCS JDK 1.1 release.</li>
+<li>The usual miscellaneous fixes.</li>
+</ul>
+<p><strong>24 December 96 -</strong></p>
+<p>Miscellaneous fixes. Also, added a new lesson describing new
+features of the JDK for <strong>Writing Global
+Programs</strong>.</p>
+<p><strong>6 June 96 -</strong></p>
+<p>Released the Sixth DRAFT. This draft is the version on which the
+book version is based. The book and online versions aren't exactly
+the same - for example, none of the copyeditor's changes have made
+it into the online tutorial yet. Also, the online tutorial's
+figures haven't been updated to be the same as those in the book.
+Notable content changes since the fifth draft include:</p>
+<ul>
+<li>Finished the Common Problems pages.</li>
+<li>Added information on the Macintosh JDK.</li>
+<li>Added an applet anatomy section to Getting Started.</li>
+<li>Improved the talk server example in the applet communication
+lesson.</li>
+</ul>
+<p><strong>28 Mar 96 -</strong></p>
+<p>Released the Fifth DRAFT. Many pages in this draft have been
+rewritten or expanded upon. (If you've sent us comments and don't
+see them reflected in this draft, please don't be insulted - we
+haven't finished incorporating reviewer comments.) Some of the
+notable changes include:</p>
+<ul>
+<li>Revised Application Anatomy lesson and moved it to the Getting
+Started trail: <strong>The Anatomy of a Java Application</strong>.
+We plan to write an equivalent section for applets.</li>
+<li>Did major rewrites of the following lessons in the Java trail:
+<strong>The Nuts and Bolts of the Java Language</strong> and
+<strong>Objects and Classes in Java</strong>.</li>
+<li>Added new pages to the applet overview: Adding an Applet to an
+HTML Page and <strong>Summary</strong>.</li>
+<li>Beefed up the applet threads pages: <strong>Threads in
+Applets</strong>.</li>
+<li>Added a discussion of peers to the UI trail: <strong>Details of
+the Component Architecture</strong>.</li>
+<li>Added material to the native methods trail, <strong>Integrating
+Native Methods into Java Programs</strong>, including passing data
+into and out of native methods and accessing Java objects.</li>
+<li>Removed some trails: comparison to C/C++, troubleshooting, and
+tools. This information has been (or will be) incorporated into
+other trails/lessons.</li>
+</ul>
+<p><strong>4 Mar 96 -</strong></p>
+<p>Released the Fourth DRAFT Among the normal bug, typo and broken
+link fixes, this draft includes revisions to many of our old trails
+and lessons, plus this new material:</p>
+<ul>
+<li>Added a new lesson to <strong>Integrating Native Methods into
+Java Programs</strong> trail.</li>
+<li>Added new material to and/or wrote from scratch 4 lessons in
+the <strong>Writing Applets</strong> trail. Including:
+<strong>Creating an Applet User Interface</strong>,
+<strong>Communicating with Other Programs</strong>,
+<strong>Understanding Applet Capabilities and
+Restrictions</strong>, and <strong>Finishing an Applet</strong>.
+(The first three have since been reorganized into two trails:
+<strong>Taking Advantage of the Applet API</strong> and
+<strong>Practical Considerations when Writing
+Applets</strong>.</li>
+</ul>
+<p><strong>24 Feb 96 -</strong></p>
+<p>Released the Third DRAFT Among the normal bug, typo and broken
+link fixes, this draft includes revisions to many of our old trails
+and lessons, plus this new material:</p>
+<ul>
+<li>Added a lot of new material to Creating an Applet User
+Interface.</li>
+<li>Added new lessons to the <strong>Creating a User
+Interface</strong> trail. Including:
+<ul>
+<li><strong>Laying Out Components within a Container</strong>
+Please note that 3 pages are still under construction.</li>
+<li><strong>Using Components, the GUI Building Blocks</strong> Each
+component now has a page describing how to use it.</li>
+<li><strong>Working with Graphics</strong> There's now information
+on how to draw primitive graphics (including text) and images, plus
+information on performing animation. The animation pages include
+information on how to eliminate flashing, using update() and double
+buffering. They also have information on using MediaTracker.</li>
+</ul>
+</li>
+<li>Added a new trail: <strong>Custom Networking</strong></li>
+<li>Added a new lesson, <strong>Input and Output Streams</strong>
+to the <strong>Essential Java Classes</strong> trail.</li>
+</ul>
+<p><strong>23 Jan 96 -</strong></p>
+<p>Updated the Second DRAFT</p>
+<ul>
+<li>Updated links to point to new FCS1.0 JDK release.</li>
+<li>Fixed bugs where some applets and sources files were
+missing.</li>
+<li>Miscellaneous fixes of typos, bugs, and broken links.</li>
+</ul>
+<p><strong>18 Jan 96 -</strong></p>
+<p>Updated the Second DRAFT</p>
+<ul>
+<li>Changed the <strong>Creating a User Interface</strong> trail to
+reflect the event changes introduced in Beta2. Specifically,
+keyboard event handlers now have to return false, unless they want
+the event to be dropped. The Conversion example program and the
+overview were affected.</li>
+<li>Revised the structure of the tutorial to reflect what we're
+going to be able to finish by the time the book version is due to
+the printer.</li>
+<li>Added a very preliminary lesson on Java's object features -
+<strong>Java Objects</strong>.</li>
+<li>Fixed various typos, bugs and broken links.</li>
+</ul>
+<p><strong>12 Dec 95 -</strong></p>
+<p>Updated the Second DRAFT</p>
+<ul>
+<li>Made the few changes necessary to reflect Beta2 instead of
+Beta.</li>
+<li>Fixed various typos, bugs and broken links.</li>
+<li>Added a new lesson, <strong>Handling Errors using
+Exceptions</strong>, in the <strong>Essential Java Classes</strong>
+trail.</li>
+</ul>
+<p><strong>13 Nov 95 -</strong></p>
+<p>Updated the Second DRAFT</p>
+<ul>
+<li>Made the few changes necessary to reflect Beta instead of
+Pre-Beta.</li>
+<li>Changed the name of this document from "The Java Programmer's
+Guide" to "The Java Language Tutorial: Object-Oriented Programming
+for the Internet." Why the long name? This document is going to be
+published as a book, and we wanted to make sure the title was as
+descriptive as possible, without requiring much prior knowledge of
+the potential buyer.</li>
+<li>Added ALT text to our link graphics, so that people using
+non-graphical browsers can understand the information the graphic
+was conveying.</li>
+<li>Added a new lesson, <strong>Laying Out Components Within a
+Container</strong>, in the <strong>Creating a User
+Interface</strong> trail.</li>
+</ul>
+<p><strong>2 Oct 95 -</strong></p>
+<p>Released the Second DRAFT</p>
+<ul>
+<li>Everything was updated to reflect the new APIs (except for
+<i>The "run:" Protocol Handler</i> and <i>The "text/plain" Content
+Handler</i> in the <strong>Getting Started</strong> trail).</li>
+<li>We fixed many typos, clarified many obfuscations, fixed broken
+links and miscommunications.</li>
+<li>We got a face-lift with new icons and a new page design.</li>
+<li>And, we added these trails and lessons:
+<ul>
+<li>The <strong>Writing Applets</strong> trail has a new lesson:
+<strong>Overview of Applets</strong> which describes how applets
+work and how you use the Applet class to create an applet.</li>
+<li>The new <strong>Creating a User Interface</strong> trail has
+two new lessons: <strong>Overview of UI Elements</strong> which
+introduces you to the objects that the Java development environment
+provides for building UIs, and <strong>Laying Out Components within
+a Container</strong> which tells you how to use each of the
+Components provided in the AWT.</li>
+<li>We've also added the <strong>Integrating Native Methods into
+Java Programs</strong> trail that shows you how to integrate native
+methods into your Java programs.</li>
+<li>And finally, we've added two new lessons: <strong>Threads of
+Control</strong> and <strong>Object-Oriented Programming
+Concepts</strong>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>18 May 95 -</strong></p>
+<p>Released the First DRAFT</p>
+</body>
+</html>

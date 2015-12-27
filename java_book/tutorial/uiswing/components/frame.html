@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Make Frames (Main Windows) (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Swing Components)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Swing Components</a></div>
+<div class="linkAHEAD"><a href="toplevel.html">Using Top-Level Containers</a></div>
+<div class="linkAHEAD"><a href="jcomponent.html">The JComponent Class</a></div>
+<div class="linkAHEAD"><a href="text.html">Using Text Components</a></div>
+<div class="linkBHEAD"><a href="generaltext.html">Text Component Features</a></div>
+<div class="linkBHEAD"><a href="textapi.html">The Text Component API</a></div>
+<div class="linkAHEAD"><a href="componentlist.html">How to Use Various Components</a></div>
+<div class="linkBHEAD"><a href="applet.html">How to Make Applets</a></div>
+<div class="linkBHEAD"><a href="button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a></div>
+<div class="linkBHEAD"><a href="buttongroup.html">How to Use the ButtonGroup Component</a></div>
+<div class="linkBHEAD"><a href="colorchooser.html">How to Use Color Choosers</a></div>
+<div class="linkBHEAD"><a href="combobox.html">How to Use Combo Boxes</a></div>
+<div class="linkBHEAD"><a href="dialog.html">How to Make Dialogs</a></div>
+<div class="linkBHEAD"><a href="editorpane.html">How to Use Editor Panes and Text Panes</a></div>
+<div class="linkBHEAD"><a href="filechooser.html">How to Use File Choosers</a></div>
+<div class="linkBHEAD"><a href="formattedtextfield.html">How to Use Formatted Text Fields</a></div>
+<div class="nolinkBHEAD">How to Make Frames (Main Windows)</div>
+<div class="linkBHEAD"><a href="internalframe.html">How to Use Internal Frames</a></div>
+<div class="linkBHEAD"><a href="label.html">How to Use Labels</a></div>
+<div class="linkBHEAD"><a href="layeredpane.html">How to Use Layered Panes</a></div>
+<div class="linkBHEAD"><a href="list.html">How to Use Lists</a></div>
+<div class="linkBHEAD"><a href="menu.html">How to Use Menus</a></div>
+<div class="linkBHEAD"><a href="panel.html">How to Use Panels</a></div>
+<div class="linkBHEAD"><a href="passwordfield.html">How to Use Password Fields</a></div>
+<div class="linkBHEAD"><a href="progress.html">How to Use Progress Bars</a></div>
+<div class="linkBHEAD"><a href="rootpane.html">How to Use Root Panes</a></div>
+<div class="linkBHEAD"><a href="scrollpane.html">How to Use Scroll Panes</a></div>
+<div class="linkBHEAD"><a href="separator.html">How to Use Separators</a></div>
+<div class="linkBHEAD"><a href="slider.html">How to Use Sliders</a></div>
+<div class="linkBHEAD"><a href="spinner.html">How to Use Spinners</a></div>
+<div class="linkBHEAD"><a href="splitpane.html">How to Use Split Panes</a></div>
+<div class="linkBHEAD"><a href="tabbedpane.html">How to Use Tabbed Panes</a></div>
+<div class="linkBHEAD"><a href="table.html">How to Use Tables</a></div>
+<div class="linkBHEAD"><a href="textarea.html">How to Use Text Areas</a></div>
+<div class="linkBHEAD"><a href="textfield.html">How to Use Text Fields</a></div>
+<div class="linkBHEAD"><a href="toolbar.html">How to Use Tool Bars</a></div>
+<div class="linkBHEAD"><a href="tooltip.html">How to Use Tool Tips</a></div>
+<div class="linkBHEAD"><a href="tree.html">How to Use Trees</a></div>
+<div class="linkAHEAD"><a href="html.html">How to Use HTML in Swing Components</a></div>
+<div class="linkAHEAD"><a href="model.html">How to Use Models</a></div>
+<div class="linkAHEAD"><a href="icon.html">How to Use Icons</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use Borders</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Component Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Swing Components
+        <br /><b>Section:</b> How to Use Various Components
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Swing Components</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="formattedtextfield.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="internalframe.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Make Frames (Main Windows)</h1></div>
+            <div id="PageContent">
+
+<p>A Frame is a top-level window with a title and a border. The size of the frame includes any area designated for the border. The dimensions of the border area may be obtained using the <code>getInsets</code> method. Since the border area is included in the overall size of the frame, the border effectively obscures a portion of the frame, constraining the area available for rendering and/or displaying subcomponents to the rectangle which has an upper-left corner location of <code>(insets.left</code>, <code>insets.top)</code>, and has a size of <code>width - (insets.left + insets.right)</code> by <code>height - (insets.top + insets.bottom)</code>.</p>
+<p>A frame, implemented as an instance of the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html"><code>JFrame</code></a> class, is a window that has decorations such as a border, a title, and supports button components that close or iconify the window. Applications with a GUI usually include at least one frame. Applets sometimes use frames, as well.</p>
+<p>To make a window that is dependent on another window &#151; disappearing when the other window is iconified, for example &#151; use a <a href="dialog.html"><code>dialog</code></a> instead of <code>frame.</code>. To make a window that appears within another window, use an <a href="internalframe.html">internal frame</a>. <a name="anexample" id="anexample"></a></p>
+<h2><a name="anexample__1" id="anexample__1">Creating and Showing Frames</a></h2>
+<p>Here is a picture of the extremely plain window created by the <code>FrameDemo</code> demonstration application. You can find the source code in 
+<a class="SourceLink" target="_blank" href="../examples/components/FrameDemoProject/src/components/FrameDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/FrameDemoProject/src/components/FrameDemo.java'); return false;"><code>FrameDemo.java</code></a>. You can <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/FrameDemoProject/FrameDemo.jnlp">run FrameDemo</a> ( 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>).</p>
+<center><img src="../../figures/uiswing/components/FrameDemoMetal.png" width="183" height="134" align="bottom" alt="A very boring frame" /></center><p>The following <code>FrameDemo</code> code shows how to create and set up a frame.</p>
+<div class="codeblock"><pre>
+<!-- removed as per Shannon's notes. dsd
+//1. Optional: Specify who draws the window decorations. 
+JFrame.setDefaultLookAndFeelDecorated(true);
+-->
+//1. Create the frame.
+JFrame frame = new JFrame("FrameDemo");
+
+//2. Optional: What happens when the frame closes?
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+//3. Create components and put them in the frame.
+<em>//...create emptyLabel...</em>
+frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
+
+//4. Size the frame.
+frame.pack();
+
+//5. Show it.
+frame.setVisible(true);
+</pre></div>
+<p>Here are some details about the code:</p>
+<ol><!-- commented out as per Shannon's notes.dsd
+<li>
+Calling <code>setDefaultLookAndFeelDecorated(true)</code> 
+requests that 
+any subsequently created frames
+have window decorations provided
+by the look and feel,
+and not by the window system.
+For details, see
+<a href="#setDefaultLookAndFeelDecorated">Specifying Window Decorations</a>.
+<p>
+-->
+<li>The first line of code creates a frame using a constructor that lets you set the frame title. The other frequently used <code>JFrame</code> constructor is the no-argument constructor.</li>
+<li>Next the code specifies what happens when your user closes the frame. The <code>EXIT_ON_CLOSE</code> operation exits the program when your user closes the frame. This behavior is appropriate for this program because the program has only one frame, and closing the frame makes the program useless.
+<p>See <a href="#windowevents">Responding to Window-Closing Events</a> for more information.</p>
+</li>
+<li>The next bit of code adds a blank label to the frame content pane. If you&#39;re not already familiar with content panes and how to add components to them, please read <a href="toplevel.html#contentpane">Adding Components to the Content Pane</a>.
+<p>For frames that have menus, you&#39;d typically add the menu bar to the frame here using the <code>setJMenuBar</code> method. See <a href="menu.html">How to Use Menus</a> for details.</p>
+</li>
+<li>The <code>pack</code> method sizes the frame so that all its contents are at or above their preferred sizes. An alternative to <code>pack</code> is to establish a frame size explicitly by calling <code>setSize</code> or <code>setBounds</code> (which also sets the frame location). In general, using <code>pack</code> is preferable to calling <code>setSize</code>, since <code>pack</code> leaves the frame layout manager in charge of the frame size, and layout managers are good at adjusting to platform dependencies and other factors that affect component size.
+<p>This example does not set the frame location, but it is easy to do so using either the <code>setLocationRelativeTo</code> or <code>setLocation</code> method. For example, the following code centers a frame onscreen:</p>
+<div class="codeblock"><pre>
+frame.setLocationRelativeTo(null);
+</pre></div>
+</li>
+<li>Calling <code>setVisible(true)</code> makes the frame appear onscreen. Sometimes you might see the <code>show</code> method used instead. The two usages are equivalent, but we use <code>setVisible(true)</code> for consistency&#39;s sake.</li>
+</ol>
+<!-- commented out as per Shannon's notes. dsd
+
+<div class="note"><hr /><strong>Note:</strong>&nbsp;The <code>pack</code> and <code>setVisible</code> methods
+<em>realize</em> the frame and the components it contains.
+Once a component has been realized,
+any code that modifies or inspects it
+should be executed on the event-dispatching thread.
+For more information, refer to
+<a class="TutorialLink" target="_top" href="../concurrency/index.html">Concurrency in Swing</a>.
+<hr /></div>
+-->
+<p>
+</p>
+<h2><a name="setDefaultLookAndFeelDecorated" id="setDefaultLookAndFeelDecorated">Specifying Window Decorations</a></h2>
+<p>By default, window decorations are supplied by the native window system. However, you can request that the look-and-feel provide the decorations for a frame. You can also specify that the frame have no window decorations at all, a feature that can be used on its own, or to provide your own decorations, or with 
+<a class="TutorialLink" target="_top" href="../../extra/fullscreen/index.html">full-screen exclusive mode</a>.</p>
+<p>Besides specifying who provides the window decorations, you can also specify which icon is used to represent the window. Exactly how this icon is used depends on the window system or look and feel that provides the window decorations. If the window system supports minimization, then the icon is used to represent the minimized window. Most window systems or look and feels also display the icon in the window decorations. A typical icon size is 16x16 pixels, but some window systems use other sizes.</p>
+<p>The following snapshots show three frames that are identical except for their window decorations. As you can tell by the appearance of the button in each frame, all three use the Java look and feel. The first uses decorations provided by the window system, which happen to be Microsoft Windows, but could as easily be any other system running the Java platform.The second and third use window decorations provided by the Java look and feel. The third frame uses Java look and feel window decorations, but has a custom icon. <!-- changed the order of screen shots as per Shannon's notes.dsd --></p>
+<table summary="" datatable="0">
+<tr>
+<td>
+<img src="../../figures/uiswing/components/FrameDemo2_2.png" width="170" height="100" alt="A frame with decorations provided by the window system" /></td>
+<td>
+<img src="../../figures/uiswing/components/FrameDemo2_1.png" width="170" height="100" alt="A frame with decorations provided by the look and feel" /></td>
+<td>
+<img src="../../figures/uiswing/components/FrameDemo2_3.png" width="170" height="100" alt="A frame with a custom icon" /></td>
+</tr>
+<tr>
+<td>Window decorations provided by the look and feel</td>
+<td>Window decorations provided by the window system</td>
+<td>Custom icon; window decorations provided by the look and feel</td>
+</tr>
+</table>
+<p>Here is an example of creating a frame with a custom icon and with window decorations provided by the look and feel:</p>
+<div class="codeblock"><pre>
+//Ask for window decorations provided by the look and feel.
+JFrame.setDefaultLookAndFeelDecorated(true);
+
+//Create the frame.
+JFrame frame = new JFrame("A window");
+
+//Set the frame icon to an image loaded from a file.
+frame.setIconImage(new ImageIcon(imgURL).getImage());
+</pre></div>
+<p>As the preceding code snippet implies, you must invoke the <code>setDefaultLookAndFeelDecorated</code> method <em>before</em> creating the frame whose decorations you wish to affect. The value you set with <code>setDefaultLookAndFeelDecorated</code> is used for all subsequently created <code>JFrame</code>s. You can switch back to using window system decorations by invoking <code>JFrame.setDefaultLookAndFeelDecorated(false)</code>. Some look and feels might not support window decorations; in this case, the window system decorations are used.</p>
+<p>The full source code for the application that creates the frames pictured above is in 
+<a class="SourceLink" target="_blank" href="../examples/components/FrameDemo2Project/src/components/FrameDemo2.java" onclick="showCode('../../displayCode.html', '../examples/components/FrameDemo2Project/src/components/FrameDemo2.java'); return false;"><code>FrameDemo2.java</code></a>. Besides showing how to choose window decorations, FrameDemo2 also shows how to disable all window decorations and gives an example of positioning windows. It includes two methods that create the <code>Image</code> objects used as icons &#151; one is loaded from a file, and the other is painted from scratch. <!-- ***************** boilerplate stuff **************** --></p>
+<div class="note"><hr /><strong>Try this::</strong>&nbsp;<ol>
+<li>Click the Launch button to run the Frame Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#FrameDemo2">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/FrameDemo2Project/FrameDemo2.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the FrameDemo2 example" /></a><br />
+<p><!--  ******* end boilerplate stuff  *******  -->
+ <!--
+
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li> <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/FrameDemo2Project/FrameDemo2.jnlp">Run FrameDemo2</a> (
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>).    Or, to compile and run the example yourself,
+     consult the
+     <a href="../examples/components/index.html#FrameDemo2">example index</a>.
+
+        --></p>
+</li>
+<li>Bring up two windows, both with look-and-feel-provided decorations, but with different icons.<br />
+The Java look and feel displays the icons in its window decorations. Depending on your window system, the icon may be used elsewhere to represent the window, especially when the window is minimized.</li>
+<li>Bring up one or more windows with window system decorations.<br />
+See if your window system treats these icons differently.</li>
+<li>Bring up one or more windows with no window decorations.<br />
+Play with the various types of windows to see how the window decorations, window system, and frame icons interact.</li>
+</ol>
+<hr /></div>
+<h2><a name="windowevents" id="windowevents">Responding to Window-Closing Events</a></h2>
+<p>By default, when the user closes a frame onscreen, the frame is hidden. Although invisible, the frame still exists and the program can make it visible again. If you want different behavior, then you need to either register a window listener that handles window-closing events, or you need to specify default close behavior using the <code>setDefaultCloseOperation</code> method. You can even do both.</p>
+<p>The argument to <code>setDefaultCloseOperation</code> must be one of the following values, the first three of which are defined in the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/WindowConstants.html"><code>WindowConstants</code></a> interface (implemented by <code>JFrame</code>, <code>JInternalPane</code>, and <code>JDialog</code>):</p>
+<dl>
+<dt><code>DO_NOTHING_ON_CLOSE</code></dt>
+<dd>Do not do anything when the user requests that the window close. Instead, the program should probably use a window listener that performs some other action in its <code>windowClosing</code> method.</dd>
+<dt><code>HIDE_ON_CLOSE</code> (the default for <code>JDialog</code> and <code>JFrame</code>)</dt>
+<dd>Hide the window when the user closes it. This removes the window from the screen but leaves it displayable.</dd>
+<dt><code>DISPOSE_ON_CLOSE</code> (the default for <code>JInternalFrame</code>)</dt>
+<dd>Hide and dispose of the window when the user closes it. This removes the window from the screen and frees up any resources used by it.</dd>
+<dt><code>EXIT_ON_CLOSE</code> (defined in the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html"><code>JFrame</code></a> class)</dt>
+<dd>Exit the application, using <code>System.exit(0)</code>. This is recommended for applications only. If used within an applet, a <code>SecurityException</code> may be thrown.</dd>
+</dl>
+<p><a name="4030718"></a></p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p><code>DISPOSE_ON_CLOSE</code> can have results similar to <code>EXIT_ON_CLOSE</code> if only one window is onscreen. More precisely, when the last displayable window within the Java virtual machine (VM) is disposed of, the VM may terminate. See 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/doc-files/AWTThreadIssues.html">AWT Threading Issues</a> for details.</p>
+<hr /></div>
+<p>The default close operation is executed after any window listeners handle the window-closing event. So, for example, assume that you specify that the default close operation is to dispose of a frame. You also implement a window listener that tests whether the frame is the last one visible and, if so, saves some data and exits the application. Under these conditions, when the user closes a frame, the window listener will be called first. If it does not exit the application, then the default close operation &#151; disposing of the frame &#151; will then be performed.</p>
+<p>For more information about handling window-closing events, see 
+<a class="TutorialLink" target="_top" href="../events/windowlistener.html">How to Write Window Listeners</a>. Besides handling window-closing events, window listeners can also react to other window state changes, such as iconification and activation.</p>
+<h2><a name="api" id="api">The Frame API</a></h2>
+<p>The following tables list the commonly used <code>JFrame</code> constructors and methods. Other methods you might want to call are defined by the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Frame.html"><code>java.awt.Frame</code></a>, 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Window.html"><code>java.awt.Window</code></a>, and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html"><code>java.awt.Component</code></a> classes, from which <code>JFrame</code> descends.</p>
+<p>Because each <code>JFrame</code> object has a root pane, frames have support for interposing input and painting behavior in front of the frame children, placing children on different &quot;layers&quot;, and for Swing menu bars. These topics are introduced in <a href="toplevel.html">Using Top-Level Containers</a> and explained in detail in <a href="rootpane.html">How to Use Root Panes</a>.</p>
+<p>The API for using frames falls into these categories:</p>
+<ul>
+<li><a href="#creating">Creating and Setting Up a Frame</a></li>
+<li><a href="#sizeplace">Setting the Window Size and Location</a></li>
+<li><a href="#rootpane">Methods Related to the Root Pane</a></li>
+</ul>
+<table border="1" summary="Creating and Setting Up a Frame">
+<caption><a name="creating" id="creating">Creating and Setting Up a Frame</a></caption>
+<tr>
+<th id="h101" align="left">Method or Constructor</th>
+<th id="h102" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#JFrame--">JFrame()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#JFrame-java.lang.String-">JFrame(String)</a></td>
+<td headers="h102">Create a frame that is initially invisible. The <code>String</code> argument provides a title for the frame. To make the frame visible, invoke <code>setVisible(true)</code> on it.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#setDefaultCloseOperation-int-">void setDefaultCloseOperation(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#getDefaultCloseOperation--">int getDefaultCloseOperation()</a></td>
+<td headers="h102">Set or get the operation that occurs when the user pushes the close button on this frame. Possible choices are:
+<ul>
+<li><code>DO_NOTHING_ON_CLOSE</code></li>
+<li><code>HIDE_ON_CLOSE</code></li>
+<li><code>DISPOSE_ON_CLOSE</code></li>
+<li><code>EXIT_ON_CLOSE</code></li>
+</ul>
+The first three constants are defined in the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/WindowConstants.html"><code>WindowConstants</code></a> interface, which <code>JFrame</code> implements. The <code>EXIT_ON_CLOSE</code> constant is defined in the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html"><code>JFrame</code></a> class.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Frame.html#setIconImage-java.awt.Image-">void setIconImage(Image)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Frame.html#getIconImage--">Image getIconImage()</a><br />
+<em>(in <code>Frame</code>)</em></td>
+<td headers="h102">Set or get the icon that represents the frame. Note that the argument is a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Image.html">java.awt.Image</a> object, not a <code>javax.swing.ImageIcon</code> (or any other <code>javax.swing.Icon</code> implementation).</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Frame.html#setTitle-java.lang.String-">void setTitle(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Frame.html#getTitle--">String getTitle()</a><br />
+<em>(in <code>Frame</code>)</em></td>
+<td headers="h102">Set or get the frame title.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Frame.html#setUndecorated-boolean-">void setUndecorated(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Frame.html#isUndecorated--">boolean isUndecorated()</a><br />
+<em>(in <code>Frame</code>)</em></td>
+<td headers="h102">Set or get whether this frame should be decorated. Works only if the frame is not yet displayable (has not been packed or shown). Typically used with 
+<a class="TutorialLink" target="_top" href="../../extra/fullscreen/index.html">full-screen exclusive mode</a> or to enable custom window decorations.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#setDefaultLookAndFeelDecorated-boolean-">static void setDefaultLookAndFeelDecorated(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#isDefaultLookAndFeelDecorated--">static boolean isDefaultLookAndFeelDecorated()</a></td>
+<td headers="h102">Determine whether subsequently created <code>JFrame</code>s should have their Window decorations (such as borders, and widgets for closing the window) provided by the current look-and-feel. Note that this is only a hint, as some look and feels may not support this feature.</td>
+</tr>
+</table>
+<table border="1" summary="Setting the Window Size and Location">
+<caption><a name="sizeplace" id="sizeplace">Setting the Window Size and Location</a></caption>
+<tr>
+<th id="h201" align="left">Method</th>
+<th id="h202" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Window.html#pack--">void pack()</a><br />
+<em>(in <code>Window</code>)</em></td>
+<td headers="h202">Size the window so that all its contents are at or above their preferred sizes.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setSize-int-int-">void setSize(int, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setSize-java.awt.Dimension-">void setSize(Dimension)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#getSize--">Dimension getSize()</a><br />
+<em>(in <code>Component</code>)</em></td>
+<td headers="h202">Set or get the total size of the window. The integer arguments to <code>setSize</code> specify the width and height, respectively.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setBounds-int-int-int-int-">void setBounds(int, int, int, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setBounds-java.awt.Rectangle-">void setBounds(Rectangle)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#getBounds--">Rectangle getBounds()</a><br />
+<em>(in <code>Component</code>)</em></td>
+<td headers="h202">Set or get the size and position of the window. For the integer version of <code>setBounds</code>, the window upper left corner is at the <em>x, y</em> location specified by the first two arguments, and has the width and height specified by the last two arguments.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setLocation-int-int-">void setLocation(int, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#getLocation--">Point getLocation()</a><br />
+<em>(in <code>Component</code>)</em></td>
+<td headers="h202">Set or get the location of the upper left corner of the window. The parameters are the <em>x</em> and <em>y</em> values, respectively.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Window.html#setLocationRelativeTo-java.awt.Component-">void setLocationRelativeTo(Component)</a><br />
+<em>(in <code>Window</code>)</em></td>
+<td headers="h202">Position the window so that it is centered over the specified component. If the argument is <code>null</code>, the window is centered onscreen. To properly center the window, you should invoke this method after the window size has been set.</td>
+</tr>
+</table>
+<table border="1" summary="Methods Related to the Root Pane">
+<caption><a name="rootpane" id="rootpane">Methods Related to the Root Pane</a></caption>
+<tr>
+<th id="h301" align="left">Method</th>
+<th id="h302" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#setContentPane-java.awt.Container-">void setContentPane(Container)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#getContentPane--">Container getContentPane()</a></td>
+<td headers="h302">Set or get the frame content pane. The content pane contains the visible GUI components within the frame. 
+</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#createRootPane--">JRootPane createRootPane()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#setRootPane-javax.swing.JRootPane-">void setRootPane(JRootPane)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#getRootPane--">JRootPane getRootPane()</a></td>
+<td headers="h302">Create, set, or get the frame root pane. The root pane manages the interior of the frame including the content pane, the glass pane, and so on.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#setJMenuBar-javax.swing.JMenuBar-">void setJMenuBar(JMenuBar)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#getJMenuBar--">JMenuBar getJMenuBar()</a></td>
+<td headers="h302">Set or get the frame menu bar to manage a set of menus for the frame. 
+</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#setGlassPane-java.awt.Component-">void setGlassPane(Component)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#getGlassPane--">Component getGlassPane()</a></td>
+<td headers="h302">Set or get the frame glass pane. You can use the glass pane to intercept mouse events or paint on top of your program GUI.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#setLayeredPane-javax.swing.JLayeredPane-">void setLayeredPane(JLayeredPane)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#getLayeredPane--">JLayeredPane getLayeredPane()</a></td>
+<td headers="h302">Set or get the frame layered pane. You can use the frame layered pane to put components on top of or behind other components. 
+</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples that Use Frames</a></h2>
+<p>All of the standalone applications in this trail use <code>JFrame</code>. The following table lists a few and tells you where each is discussed.</p>
+<table summary="Examples that Use Frames">
+<tr>
+<th id="h401" align="left">Example</th>
+<th id="h402" align="left">Where Described</th>
+<th id="h403" align="left">Notes</th>
+</tr>
+<tr>
+<td headers="h401"><a href="../examples/components/index.html#FrameDemo"><code>FrameDemo</code></a></td>
+<td headers="h402"><a href="#anexample">The Example Explained</a></td>
+<td headers="h403">Displays a basic frame with one component.</td>
+</tr>
+<tr>
+<td headers="h401"><a href="../examples/components/index.html#FrameDemo2"><code>FrameDemo2</code></a></td>
+<td headers="h402"><a href="#setDefaultLookAndFeelDecorated">Specifying Window Decorations</a></td>
+<td headers="h403">Lets you create frames with various window decorations.</td>
+</tr>
+<tr>
+<td headers="h401"><a href="../examples/components/index.html#Framework"><code>Framework</code></a></td>
+<td headers="h402">&#151;</td>
+<td headers="h403">A study in creating and destroying windows, in implementing a menu bar, and in exiting an application.</td>
+</tr>
+<tr>
+<td headers="h401"><a href="../examples/components/index.html#LayeredPaneDemo"><code>LayeredPaneDemo</code></a></td>
+<td headers="h402"><a href="layeredpane.html">How to Use Layered Panes</a></td>
+<td headers="h403">Illustrates how to use a layered pane (but not the frame layered pane).</td>
+</tr>
+<tr>
+<td headers="h401"><a href="../examples/components/index.html#GlassPaneDemo"><code>GlassPaneDemo</code></a></td>
+<td headers="h402"><a href="rootpane.html#glasspane">The Glass Pane</a></td>
+<td headers="h403">Illustrates the use of a frame glass pane.</td>
+</tr>
+<tr>
+<td headers="h401"><a href="../examples/components/index.html#MenuDemo"><code>MenuDemo</code></a></td>
+<td headers="h402"><a href="menu.html">How to Use Menus</a></td>
+<td headers="h403">Shows how to put a <code>JMenuBar</code> in a <code>JFrame</code>.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="formattedtextfield.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="internalframe.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Use Formatted Text Fields
+        <br /><b>Next page:</b> How to Use Internal Frames
+    </div>
+</body>
+</html> 

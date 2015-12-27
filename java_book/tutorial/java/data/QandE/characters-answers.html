@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Answers to Questions and Exercises: Characters and Strings (The Java&trade; Tutorials &gt; Learning the Java Language &gt;
+            Numbers and Strings)</title>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+    </head>
+<body>
+    <noscript> 
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- altheader -->
+     <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+        <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../../search.html" target="_blank">Search Java Tutorials</a>
+                        </div>
+                            <div class="PrintHeaders">
+                                <b>Trail:</b> Learning the Java Language
+                                <br /><b>Lesson:</b> Numbers and Strings
+                            </div>
+                    </div> </div> </div> </div> </div>
+
+    <div class="MainFlow_wide">
+        <span id="BreadCrumbs">
+            <a href="../../../index.html" target="_top">Home Page</a>
+            &gt;
+            <a href="../../index.html" target="_top">Learning the Java Language</a>
+            &gt;
+            <a href="../index.html" target="_top">Numbers and Strings</a>
+        </span>
+        <div class="NavBit">
+            <a href="../QandE/characters-questions.html">&laquo; Previous</a>&nbsp;&bull;&nbsp;<a href="../../TOC.html">TOC</a>
+        </div>
+        <div id="PageTitle"><h1>Answers to Questions and Exercises: Characters and Strings</h1></div>
+        <div id="PageContent">
+
+<h2>Questions</h2>
+<ol>
+<li>
+<p><strong>Question:</strong> What is the initial capacity of the following string builder?</p>
+<div class="codeblock"><pre>
+StringBuilder sb = new StringBuilder("Able was I ere I saw Elba.");
+</pre></div>
+<p><strong>Answer:</strong> It&#39;s the length of the initial string + 16: 26 + 16 = 42.</p>
+</li>
+<li>
+<p>Consider the following string:</p>
+<div class="codeblock"><pre>
+String hannah = "Did Hannah see bees? Hannah did.";
+</pre></div>
+<ol type="a">
+<li>
+<p><strong>Question:</strong> What is the value displayed by the expression <code>hannah.length()</code>?</p>
+<p><strong>Answer:</strong> 32.</p>
+</li>
+<li>
+<p><strong>Question:</strong> What is the value returned by the method call <code>hannah.charAt(12)</code>?</p>
+<p><strong>Answer:</strong> <code>e</code>.</p>
+</li>
+<li>
+<p><strong>Question:</strong> Write an expression that refers to the letter <code>b</code> in the string referred to by <code>hannah</code>.</p>
+<p><strong>Answer:</strong> <code>hannah.charAt(15)</code>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Question:</strong> How long is the string returned by the following expression? What is the string?</p>
+<div class="codeblock"><pre>
+"Was it a car or a cat I saw?".substring(9, 12)
+</pre></div>
+<p><strong>Answer:</strong> It&#39;s 3 characters in length: <code>car</code>. It does not include the space after car.</p>
+</li>
+<li>
+<p><strong>Question:</strong> In the following program, called 
+<a class="SourceLink" target="_blank" href="ComputeResult.java" onclick="showCode('../../../displayCode.html', 'ComputeResult.java'); return false;"><code>ComputeResult</code></a>, what is the value of <code>result</code> after each numbered line executes?</p>
+<div class="codeblock"><pre>
+public class ComputeResult {
+    public static void main(String[] args) {
+        String original = "software";
+        StringBuilder result = new StringBuilder("hi");
+        int index = original.indexOf('a');
+
+/*1*/   result.setCharAt(0, original.charAt(0));
+/*2*/   result.setCharAt(1, original.charAt(original.length()-1));
+/*3*/   result.insert(1, original.charAt(4));
+/*4*/   result.append(original.substring(1,4));
+/*5*/   result.insert(3, (original.substring(index, index+2) + " ")); 
+
+        System.out.println(result);
+    }
+}
+</pre></div>
+<p><strong>Answer:</strong></p>
+<ol>
+<li>si</li>
+<li>se</li>
+<li>swe</li>
+<li>sweoft</li>
+<li>swear oft</li>
+</ol>
+</li>
+</ol>
+<h2>Exercises</h2>
+<ol>
+<li>
+<p><strong>Exercise:</strong> Show two ways to concatenate the following two strings together to get the string <code>&quot;Hi, mom.&quot;</code>:</p>
+<div class="codeblock"><pre>
+String hi = "Hi, ";
+String mom = "mom.";
+</pre></div>
+<p><strong>Answer:</strong> <code>hi.concat(mom)</code> and <code>hi + mom</code>.</p>
+</li>
+<li>
+<p><strong>Exercise:</strong> Write a program that computes your initials from your full name and displays them.</p>
+<p><strong>Answer:</strong> 
+<a class="SourceLink" target="_blank" href="ComputeInitials.java" onclick="showCode('../../../displayCode.html', 'ComputeInitials.java'); return false;"><code>ComputeInitials</code></a></p>
+<div class="codeblock"><pre>
+
+public class ComputeInitials {
+    public static void main(String[] args) {
+        String myName = &quot;Fred F. Flintstone&quot;;
+        StringBuffer myInitials = new StringBuffer();
+        int length = myName.length();
+
+        for (int i = 0; i &lt; length; i++) {
+            if (Character.isUpperCase(myName.charAt(i))) {
+                myInitials.append(myName.charAt(i));
+            }
+        }
+        System.out.println(&quot;My initials are: &quot; + myInitials);
+    }
+}
+</pre></div>
+</li>
+<li>
+<p><strong>Exercise:</strong> An anagram is a word or a phrase made by transposing the letters of another word or phrase; for example, &quot;parliament&quot; is an anagram of &quot;partial men,&quot; and &quot;software&quot; is an anagram of &quot;swear oft.&quot; Write a program that figures out whether one string is an anagram of another string. The program should ignore white space and punctuation.</p>
+<p><strong>Answer:</strong> 
+<a class="SourceLink" target="_blank" href="Anagram.java" onclick="showCode('../../../displayCode.html', 'Anagram.java'); return false;"><code>Anagram</code></a></p>
+<div class="codeblock"><pre> 
+
+public class Anagram {
+
+    public static boolean areAnagrams(String string1,
+                                      String string2) {
+
+        String workingCopy1 = removeJunk(string1);
+        String workingCopy2 = removeJunk(string2);
+
+	    workingCopy1 = workingCopy1.toLowerCase();
+	    workingCopy2 = workingCopy2.toLowerCase();
+
+	    workingCopy1 = sort(workingCopy1);
+	    workingCopy2 = sort(workingCopy2);
+
+        return workingCopy1.equals(workingCopy2);
+    }
+
+    protected static String removeJunk(String string) {
+        int i, len = string.length();
+        StringBuilder dest = new StringBuilder(len);
+  		char c;
+
+	    for (i = (len - 1); i &gt;= 0; i--) {
+	        c = string.charAt(i);
+	        if (Character.isLetter(c)) {
+		        dest.append(c);
+	        }
+	    }
+
+        return dest.toString();
+    }
+
+    protected static String sort(String string) {
+	    char[] charArray = string.toCharArray();
+
+	    java.util.Arrays.sort(charArray);
+
+        return new String(charArray);
+    }
+
+    public static void main(String[] args) {
+        String string1 = &quot;Cosmo and Laine:&quot;;
+        String string2 = &quot;Maid, clean soon!&quot;;
+
+        System.out.println();
+        System.out.println(&quot;Testing whether the following &quot;
+                         + &quot;strings are anagrams:&quot;);
+        System.out.println(&quot;    String 1: &quot; + string1);
+        System.out.println(&quot;    String 2: &quot; + string2);
+        System.out.println();
+
+        if (areAnagrams(string1, string2)) {
+            System.out.println(&quot;They ARE anagrams!&quot;);
+        } else {
+            System.out.println(&quot;They are NOT anagrams!&quot;);
+        }
+        System.out.println();
+    }
+}
+</pre></div>
+</li>
+</ol>
+
+        </div>
+    </div>
+    <div class="NavBit">
+        <a href="../QandE/characters-questions.html">&laquo; Previous</a>
+        &bull;
+        <a href="../../TOC.html">TOC</a>
+    </div>
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Questions and Exercises: Characters and Strings
+    </div>
+</body>
+</html> 
+
+
+

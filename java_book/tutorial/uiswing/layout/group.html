@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Use GroupLayout (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Laying Out Components Within a Container)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Laying Out Components Within a Container</a></div>
+<div class="linkAHEAD"><a href="visual.html">A Visual Guide to Layout Managers</a></div>
+<div class="linkAHEAD"><a href="using.html">Using Layout Managers</a></div>
+<div class="linkAHEAD"><a href="howLayoutWorks.html">How Layout Management Works</a></div>
+<div class="linkAHEAD"><a href="layoutlist.html">How to Use Various Layout Managers</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use BorderLayout</a></div>
+<div class="linkAHEAD"><a href="box.html">How to Use BoxLayout</a></div>
+<div class="linkAHEAD"><a href="card.html">How to Use CardLayout</a></div>
+<div class="linkAHEAD"><a href="flow.html">How to Use FlowLayout</a></div>
+<div class="linkAHEAD"><a href="gridbag.html">How to Use GridBagLayout</a></div>
+<div class="linkAHEAD"><a href="grid.html">How to Use GridLayout</a></div>
+<div class="nolinkAHEAD">How to Use GroupLayout</div>
+<div class="linkBHEAD"><a href="groupExample.html">A GroupLayout Example</a></div>
+<div class="linkAHEAD"><a href="spring.html">How to Use SpringLayout</a></div>
+<div class="linkAHEAD"><a href="custom.html">Creating a Custom Layout Manager</a></div>
+<div class="linkAHEAD"><a href="none.html">Doing Without a Layout Manager (Absolute Positioning)</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Layout Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Laying Out Components Within a Container
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Laying Out Components Within a Container</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="grid.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="groupExample.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Use GroupLayout</h1></div>
+            <div id="PageContent">
+
+<p><code>GroupLayout</code> is a layout manager that was developed for GUI builders such as Matisse, the GUI builder provided with the NetBeans IDE. Although the layout manager was originally designed to suit the GUI builder needs, it also works well for manual coding. This discussion will teach you how <code>GroupLayout</code> works and show you how you can use <code>GroupLayout</code> to build GUIs, whether you choose to use a GUI builder like Matisse or write your own code.</p>
+
+<div class="note"><hr /><strong>Note:</strong>&nbsp;This lesson covers writing layout code by hand, which can be challenging. If you are not interested in learning all the details of layout management, you might prefer to use the <code>GroupLayout</code> layout manager combined with a builder tool to lay out your GUI. One such builder tool is the 
+<a class="TutorialLink" target="_top" href="../learn/index.html">NetBeans IDE</a>. Otherwise, if you want to code by hand and do not want to use <code>GroupLayout</code>, then <code>GridBagLayout</code> is recommended as the next most flexible and powerful layout manager.
+<hr /></div> 
+
+<p>If you are interested in using JavaFX to create your GUI, see
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/javafx/layout-tutorial/index.html">Working With Layouts in JavaFX</a>.</p>
+
+
+<h2>Design Principle: Independent Dimensions</h2>
+<p><code>GroupLayout</code> works with the horizontal and vertical layouts separately. The layout is defined for each dimension independently. You do not need to worry about the <i>vertical</i> dimension when defining the <i>horizontal</i> layout, and vice versa, as the layout along each axis is totally independent of the layout along the other axis.</p>
+<p>When focusing on just one dimension, you only have to solve half the problem at one time. This is easier than handling both dimensions at once. This means, of course, that each component needs to be defined twice in the layout. If you forget to do this, <code>GroupLayout</code> will generate an exception.</p>
+<h2>Layout Organization: Hierarchical Groups</h2>
+<p><code>GroupLayout</code> uses two types of arrangements -- sequential and parallel, combined with hierarchical composition.</p>
+<ol>
+<li>With <b>sequential</b> arrangement, the components are simply placed one after another, just like <code>BoxLayout</code> or <code>FlowLayout</code> would do along one axis. The position of each component is defined as being relative to the preceding component.</li>
+<li>The second way places the components in <b>parallel</b>&mdash;on top of each other in the same space. They can be baseline-, top-, or bottom-aligned along the vertical axis. Along the horizontal axis, they can be left-, right-, or center-aligned if the components are not all the same size.</li>
+</ol>
+<p>Usually, components placed in parallel in one dimension are in a sequence in the other, so that they do not overlap.</p>
+<p>What makes these two arrangements powerful is that they can be nested hierarchically. For this purpose <code>GroupLayout</code> defines <b>layout groups</b>. A group is either sequential or parallel and may contain components, other groups, and gaps (discussed below).</p>
+<p>The size of a sequential group is the sum of the sizes of the contained elements, and the size of a parallel group corresponds to the size of the largest element (although, depending on the elements and where the baseline lands, the size of a baseline-aligned group may be a bit larger than the largest element).</p>
+<p>Defining a layout means defining how the components should be grouped by combining the sequential and parallel arrangements.</p>
+<p>Let us use a simple example to see how it works in practice.</p>
+<h2>An Example</h2>
+<p>Let us start with something simple, just three components in a row:</p>
+<center><img src="../../figures/uiswing/layout/example1a.PNG" width="151" height="31" align="bottom" alt="Three components in a row." /></center><p>We will express this layout using groups. Starting with the horizontal axis it is easy to see there is a <i>sequential group</i> of 3 components arranged from left to right. Along the vertical axis there is a <i>parallel group</i> of the same 3 components with the same location, size, and baseline:</p>
+<center><img src="../../figures/uiswing/layout/groups1a.PNG" width="397" height="69" align="bottom" alt="groups1a." /></center><p>In pseudo code, the layout specification might look like this (the real code is in the <i>Writing Code</i> section below):</p>
+<div class="codeblock"><pre>
+horizontal layout = sequential group { c1, c2, c3 }
+vertical layout = parallel group (BASELINE) { c1, c2, c3 }
+</pre></div>
+<p>This illustrates a principle mentioned earlier: components grouped sequentially in one dimension usually form a parallel group in the other dimension.</p>
+<p>Now let us add one more component, C4, left-aligned with C3:</p>
+<center><img src="../../figures/uiswing/layout/example1b.PNG" width="160" height="62" align="bottom" alt="example1b." /></center><p>Along the horizontal axis the new component occupies the same horizontal space as C3 so that it forms a parallel group with C3. Along the vertical axis C4 forms a sequential group with the original parallel group of the three components.</p>
+<center><img src="../../figures/uiswing/layout/groups1b.PNG" width="413" height="112" align="bottom" alt="groups1b." /></center><p>In pseudo code, the layout specification now looks like this:</p>
+<div class="codeblock"><pre>
+horizontal layout = sequential group { c1, c2, <b>parallel group (LEFT) { </b>c3,<b> c4 }</b> }
+vertical layout = <b>sequential group {</b> parallel group (BASELINE) { c1, c2, c3 }, <b>c4 }</b>
+</pre></div>
+<p>Now you understand the most important aspects of designing layouts with <code>GroupLayout</code>. There are just a few more details to explain: how to add gaps, how to define size and resize behavior, how to define justified layout, and how to write real code.</p>
+<h2>Gaps</h2>
+<p>A gap can be thought of as an invisible component of a certain size. Gaps of arbitrary size can be added to groups just like components or other groups. Using gaps you can precisely control the distance between components or from the container border.</p>
+<p><code>GroupLayout</code> also defines <i>automatic</i> gaps that correspond to <i>preferred distances</i> between neighboring components (or between a component and container border). The size of such a gap is computed dynamically based on the look and feel the application is using (the <code>LayoutStyle</code> class is used for this). There are two advantages to using automatic (preferred) gaps: you do not have to specify the pixel sizes of the gaps, and they automatically adjust to the look and feel the UI runs with, reflecting the actual look and feel guidelines.</p>
+<p><code>GroupLayout</code> distinguishes between (a) the preferred gap between two components and (b) the preferred gap between a component and the container border. There are corresponding methods in the <code>GroupLayout</code> API for adding these gaps (<code>addPreferredGap</code> and <code>addContainerGap</code>). There are three types of component gaps: <b>related</b>, <b>unrelated</b> and <b>indented</b>. The <code>LayoutStyle.ComponentPlacement</code> enum defines corresponding constants to be used as parameters of the <code>addPreferredGap</code> method: <code>RELATED</code>, <code>UNRELATED</code> and <code>INDENT</code>. The difference between related and unrelated gaps is just in size&mdash;the distance between unrelated components is a bit bigger. <i>Indented</i> represents a preferred horizontal distance of two components when one of them is positioned underneath the second with an indent.</p>
+<center><img src="../../figures/uiswing/layout/gaps.PNG" width="340" height="77" align="bottom" alt="gaps." /></center><p>As mentioned above, <code>GroupLayout</code> can insert gaps automatically&mdash;if you do not add your own gaps explicitly, it adds the <i>related</i> preferred gaps for you. This is not the default behavior, however. You have to turn this feature on by invoking <code>setAutoCreateGaps(true)</code> and <code>setAutoCreateContainerGaps(true)</code> on the <code>GroupLayout</code>. Then you will get correct spacing automatically.</p>
+<h2>Writing Code</h2>
+<p>Now, let us take a look at the actual code to create the layout described above.</p>
+<p>Let us assume we have a container named <code>panel</code> and the same four components already presented (<code>c1</code>, <code>c2</code>, <code>c3</code>, and <code>c4</code>). First, we create a new <code>GroupLayout</code> object and associate it with the panel:</p>
+<div class="codeblock"><pre>
+GroupLayout layout = new GroupLayout(panel);
+ panel.setLayout(layout);
+</pre></div>
+<p>We specify automatic gap insertion:</p>
+<div class="codeblock"><pre>
+layout.setAutoCreateGaps(true);
+layout.setAutoCreateContainerGaps(true);
+</pre></div>
+<p>Then, we define the groups and add the components. We establish a root group for each dimension using the <code>setHorizontalGroup</code> and <code>setVerticalGroup</code> methods. Groups are created via <code>createSequentialGroup</code> and <code>createParallelGroup</code> methods. Components are added to groups by using the <code>addComponent</code> method.</p>
+<div class="codeblock"><pre>
+layout.setHorizontalGroup(
+   layout.createSequentialGroup()
+      .addComponent(c1)
+      .addComponent(c2)
+      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+           .addComponent(c3)
+           .addComponent(c4))
+);
+layout.setVerticalGroup(
+   layout.createSequentialGroup()
+      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+           .addComponent(c1)
+           .addComponent(c2)
+           .addComponent(c3))
+      .addComponent(c4)
+);
+</pre></div>
+<p>You can specify the alignment for parallel groups. It can be one of the following constants defined in the <code>GroupLayout.Alignment</code> enum: <code>LEADING</code>, <code>TRAILING</code>, <code>CENTER</code>, and <code>BASELINE</code>. These constants are used for both dimensions and depend on whether the component orientation is left-to-right or right-to-left (top-to-bottom or bottom-to-top). For example, if the horizontal (vertical) component orientation is left-to-right (top-to-bottom) <code>LEADING</code> means left (top) while <code>TRAILING</code> means right (bottom). <code>CENTER</code> means &quot;centered&quot; in both dimensions. If you do not specify the alignment, <code>LEADING</code> will be used. The <code>BASELINE</code> alignment is valid only in the vertical dimension.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>Alignment in the layout of a group only has meaning for components of different sizes. Components of the same size will be automatically aligned for each of the <code>GroupLayout.Alignment</code> constants.</p>
+<hr /></div>
+<p>Some comments about the code:</p>
+<ul>
+<li>You do not need to add the component directly to the container&mdash;that is done for you implicitly when using one of the addComponent methods.</li>
+<li>Note the chained calls of the <code>addComponent</code> methods used to fill the groups. The <code>addComponent</code> method always returns the group on which it is called. Thanks to this you do not need to use local variables to hold the groups.</li>
+<li>It is a good idea to indent the code so it is easy to see the hierarchical structure of the groups. Give each component a new line, add one level of indent for each new group in the hierarchy. A good source editor will help you with pairing the parenthesis to close the <code>createXXXGroup</code> methods. By following these simple rules, it is easier to add a new component or remove an existing one.</li>
+</ul>
+<h2>Component Size and Resizability</h2>
+<p>There is no limit on the number of resizable components in a layout.</p>
+<p>The size of each component in a <code>GroupLayout</code> is constrained by three values; minimum size, preferred size and maximum size. These sizes control how the component resizes within the layout. The <code>GroupLayout.addComponent(...)</code> method allows the size constraints to be specified.</p>
+<p>If not specified explicitly, the layout asks the component for its default sizes (by using the component&#39;s <code>getMinimumSize()</code>, <code>getPreferredSize()</code> and <code>getMaximumSize()</code> methods). You do not need to specify anything for most of the components, like making <code>JTextField</code> resizable or <code>JButton</code> fixed, because the components themselves have the desired resizing behavior as default. On the other hand you can override the default behavior. For example you can make a <code>JTextField</code> fixed or <code>JButton</code> resizable.</p>
+<p><code>GroupLayout</code> defines constants that provide precise control over resize behavior. They can be used as parameters in the <code>addComponent(Component comp, int min, int pref, int max)</code>&nbsp; method. Here are two examples:</p>
+<ol>
+<li>To force a component to be resizable (allow shrinking and growing):
+<div class="codeblock"><pre>
+<i>group</i>.addComponent(component, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE) ...
+</pre></div>
+<p>This allows the component to resize between zero size (minimum) to any size (<code>Short.MAX_VALUE</code> as maximum size means &quot;infinite&quot;). If we wanted the component not to shrink below its default minimum size, we would use <code>GroupLayout.DEFAULT_SIZE</code> instead of <code>0</code> in the second parameter.</p>
+</li>
+<li>To make a component fixed size (suppress resizing):
+<div class="codeblock"><pre>
+group.addComponent(component, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+          GroupLayout.PREFERRED_SIZE) ...
+</pre></div>
+</li>
+</ol>
+<p>In these examples the initial size of the component is not altered, its default size is the component&#39;s preferred size. If we wanted a specific size for the component, we would specify it in the second parameter instead of using <code>GroupLayout.DEFAULT_SIZE</code>.</p>
+<p style="font-weight: bold">Resizable gaps</p>
+<p>Specifying size and resizability applies to gaps as well, including the preferred ones. For example, you can specify a preferred gap between two components that acts like a <i>spring</i> pushing the components away from each other (to the opposite sides of the container). The preferred distance of the two components is only used as the minimum size of the gap. See the following snippet:</p>
+<div class="codeblock"><pre>
+layout.createSequentialGroup()
+    .addComponent(c1)
+    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,
+                     GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+    .addComponent(c2);
+</pre></div>
+<h2>Sizing in Parallel Groups</h2>
+<p>Resizable elements placed in a parallel group are stretched to fill the space of the group determined by the largest element in the group, so they end up aligned with the same size. <code>GroupLayout</code> also provides control over whether the enclosing parallel group itself should resize. If group resizing is suppressed, it prevents the contained elements from growing over the preferred size of the group. This way you can make a block of components align on both sides, or constrain individual components to have the same size.</p>
+<p>Let us try to achieve the same size for two components from our example (<code>c3</code> and <code>c4</code> in the horizontal dimension):</p>
+<div class="codeblock"><pre>
+layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+  .addComponent(c3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+  .addComponent(c4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
+</pre></div>
+<p>The underlying mechanism works as follows:</p>
+<ol>
+<li>The size of the parallel group is set to the preferred size of the largest element; so to the preferred size of <code>c4</code> in our example.</li>
+<li>Resizable elements are stretched to the size of the group. In our example, only <code>c3</code> is effectively stretched, the size of <code>c4</code> already corresponds to the size of the group.</li>
+</ol>
+<p>As a result, <code>c3</code> and <code>c4</code> would have the same width. The components would not resize further because the parallel group itself is not resizable (the second parameter of the <code>createParallelGroup</code> method, above, is <code>false</code>).</p>
+<center><img src="../../figures/uiswing/layout/same_size_stretched.PNG" width="160" height="62" align="bottom" alt="stretched." /></center><p>Question for attentive readers: Why do we define both components in the parallel group as resizable in this example? It seems enough to have just <code>c3</code> resizable since <code>c4</code> is not stretched anyway...</p>
+<p>The answer is: because of platform and localization independence. Otherwise we would have to rely on that <code>c4</code> component always being bigger than <code>c3</code>. But this may change when the application runs on different platform or is translated to another language. By having both components resizeable they adjust to each other, no matter which one is bigger at a given moment.</p>
+<h2>Making Components the Same Size</h2>
+<p>The previous case is special because the components are in the same parallel group. But what if we wanted unrelated components to have the same size? Clearly, the same size cannot always be ensured by grouping. The OK and Cancel buttons in a row at the bottom of a dialog are a good example. For this purpose <code>GroupLayout</code> provides a <code>linkSize</code> method. This method allows the size of arbitrary components to be linked regardless of where they are placed. The resulting size of the linked components is set according to the largest component. For example:</p>
+<div class="codeblock"><pre>
+layout.linkSize(SwingConstants.HORIZONTAL, c3, c4);
+</pre></div>
+<p>In this example, the size is linked selectively for the horizontal dimension.</p>
+<h2>Runtime Changes to Your GUI</h2>
+<p>There are two important methods that you can use to make changes to your GUI at runtime, <code>replace()</code> and <code>setHonorsVisibility()</code>. Using these two methods, you can exchange components or change the visibility of components at runtime and have the GUI rearrange itself accordingly.</p>
+<p><code>replace(Component existingComponent, Component newComponent)</code> replaces an existing component with a new one. One of the common operations needed for dynamic layouts is the ability to replace components like this. For example, perhaps a check box toggles between a component displaying a graph or a tree. <code>GroupLayout</code> makes this scenario simple with the <code>replace()</code> method. You can swap components without recreating all the groups.</p>
+<p>Another common operation in user interfaces is to dynamically change the visibility of components. Perhaps components are shown only as a user completes earlier portions of a form. To avoid components shuffling around in such a scenario, space should be taken up regardless of the visibility of the components. <code>GroupLayout</code> offers two ways to configure how invisible components are treated. The <code>setHonorsVisibility(boolean)</code> method globally sets how invisible components are handled. A value of true, the default, indicates invisible components are treated as if they are not there. On the other hand, a value of false provides space for invisible components, treating them as though they were visible. The <code>setHonorsVisibility(Component,Boolean)</code> method can be used to configure the behavior at the level of a specific component. To determine how visibility is handled, <code>GroupLayout</code> first checks if a value has been specified for the Component, if not, it checks the setting of the global property.</p>
+<div class="note"><hr /><strong>Some history:</strong>&nbsp;<p><code>GroupLayout</code> in the Java Standard Edition 6 consists of three distinct bodies of work: the ability to get the baseline for a component, the ability to get the preferred gap between components (<code>LayoutStyle</code>), and <code>GroupLayout</code>. This work was originally done as an open source project at 
+<a class="OutsideLink" target="_blank" href="http://java.net/projects/swing-layout/">http://java.net/projects/swing-layout/</a></p>
+<p>NetBeans 5.0 supports <code>GroupLayout</code> by way of the swing-layout project. Because of the success of this work, all three portions have been rolled into <code>GroupLayout</code> in Java Standard Edition version 6. The main difference between the <code>GroupLayout</code> in Java SE 6 and swing-layout is in the package name and method names. NetBeans 5.5 provides the ability to target either the <code>GroupLayout</code> in Java SE 6, or the <code>GroupLayout</code> in swing-layout. Which version NetBeans targets is determined by the version of the Java platform your project targets. A project targeting Java SE 6 uses the <code>GroupLayout</code> in Java SE, otherwise <code>GroupLayout</code> in swing-layout is used.</p>
+<hr /></div>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="grid.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="groupExample.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Use GridLayout
+        <br /><b>Next page:</b> A GroupLayout Example
+    </div>
+</body>
+</html> 

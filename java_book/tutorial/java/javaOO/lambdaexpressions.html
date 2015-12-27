@@ -1,0 +1,1362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Lambda Expressions (The Java&trade; Tutorials &gt;        
+            Learning the Java Language &gt; Classes and Objects)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This beginner Java tutorial describes fundamentals of programming in the Java programming language" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java objects, java classes, java inheritance, interfaces, variables, arrays, data types, operators, control flow, number, string" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Classes and Objects</a></div>
+<div class="linkAHEAD"><a href="classes.html">Classes</a></div>
+<div class="linkBHEAD"><a href="classdecl.html">Declaring Classes</a></div>
+<div class="linkBHEAD"><a href="variables.html">Declaring Member Variables</a></div>
+<div class="linkBHEAD"><a href="methods.html">Defining Methods</a></div>
+<div class="linkBHEAD"><a href="constructors.html">Providing Constructors for Your Classes</a></div>
+<div class="linkBHEAD"><a href="arguments.html">Passing Information to a Method or a Constructor</a></div>
+<div class="linkAHEAD"><a href="objects.html">Objects</a></div>
+<div class="linkBHEAD"><a href="objectcreation.html">Creating Objects</a></div>
+<div class="linkBHEAD"><a href="usingobject.html">Using Objects</a></div>
+<div class="linkAHEAD"><a href="more.html">More on Classes</a></div>
+<div class="linkBHEAD"><a href="returnvalue.html">Returning a Value from a Method</a></div>
+<div class="linkBHEAD"><a href="thiskey.html">Using the this Keyword</a></div>
+<div class="linkBHEAD"><a href="accesscontrol.html">Controlling Access to Members of a Class</a></div>
+<div class="linkBHEAD"><a href="classvars.html">Understanding Class Members</a></div>
+<div class="linkBHEAD"><a href="initial.html">Initializing Fields</a></div>
+<div class="linkBHEAD"><a href="summaryclasses.html">Summary of Creating and Using Classes and Objects</a></div>
+<div class="linkQUESTIONS"><a href="QandE/creating-questions.html">Questions and Exercises</a></div>
+<div class="linkQUESTIONS"><a href="QandE/objects-questions.html">Questions and Exercises</a></div>
+<div class="linkAHEAD"><a href="nested.html">Nested Classes</a></div>
+<div class="linkBHEAD"><a href="innerclasses.html">Inner Class Example</a></div>
+<div class="linkBHEAD"><a href="localclasses.html">Local Classes</a></div>
+<div class="linkBHEAD"><a href="anonymousclasses.html">Anonymous Classes</a></div>
+<div class="nolinkBHEAD">Lambda Expressions</div>
+<div class="linkCHEAD"><a href="methodreferences.html">Method References</a></div>
+<div class="linkBHEAD"><a href="whentouse.html">When to Use Nested Classes, Local Classes, Anonymous Classes, and Lambda Expressions </a></div>
+<div class="linkQUESTIONS"><a href="QandE/nested-questions.html">Questions and Exercises</a></div>
+<div class="linkAHEAD"><a href="enum.html">Enum Types</a></div>
+<div class="linkQUESTIONS"><a href="QandE/enum-questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Learning the Java Language
+        <br /><b>Lesson:</b> Classes and Objects
+        <br /><b>Section:</b> Nested Classes
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Learning the Java Language</a>
+                &gt;
+                <a href="index.html" target="_top">Classes and Objects</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="anonymousclasses.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="methodreferences.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Lambda Expressions</h1></div>
+            <div id="PageContent">
+
+<p>One issue with anonymous classes is that if the implementation of your anonymous class is very simple, such as an interface that contains only one method, then the syntax of anonymous classes may seem unwieldy and unclear. In these cases, you're usually trying to pass functionality as an argument to another method, such as what action should be taken when someone clicks a button. Lambda expressions enable you to do this, to treat functionality as method argument, or code as data.</p>
+
+<p>The previous section,
+<a class="TutorialLink" target="_top" href="anonymousclasses.html">Anonymous Classes</a>, shows you how to implement a base class without giving it a name.
+Although this is often more concise than a named class, for classes
+with only one method, even an anonymous class seems a bit
+excessive and cumbersome. Lambda expressions let you express instances of
+single-method classes more compactly.</p>
+
+<p>This section covers the following topics:</p>
+
+<ul>
+  <li><a href="#use-case">Ideal Use Case for Lambda Expressions</a>
+    <ul>
+      <li><a href="#approach1">Approach 1: Create Methods That Search for Members That Match One Characteristic</a></li>
+      <li><a href="#approach2">Approach 2: Create More Generalized Search Methods</a></li>
+      <li><a href="#approach3">Approach 3: Specify Search Criteria Code in a Local Class</a></li>
+      <li><a href="#approach4">Approach 4: Specify Search Criteria Code in an Anonymous Class</a></li>
+      <li><a href="#approach5">Approach 5: Specify Search Criteria Code with a Lambda Expression</a></li>
+      <li><a href="#approach6">Approach 6: Use Standard Functional Interfaces with Lambda Expressions</a></li>
+      <li><a href="#approach7">Approach 7: Use Lambda Expressions Throughout Your Application</a></li>
+      <li><a href="#approach8">Approach 8: Use Generics More Extensively</a></li>
+      <li><a href="#approach9">Approach 9: Use Aggregate Operations That Accept Lambda Expressions as Parameters</a></li>
+    </ul>
+  </li>
+  <li><a href="#lambda-expressions-in-gui-applications">Lambda Expressions in GUI Applications</a></li>
+  <li><a href="#syntax">Syntax of Lambda Expressions</a></li>
+  <li><a href="#accessing-local-variables">Accessing Local Variables of the Enclosing Scope</a></li>
+  <li><a href="#target-typing">Target Typing</a>
+    <ul>
+      <li><a href="#target-types-and-method-arguments">Target Types and Method Arguments</a></li>
+    </ul>
+  </li>
+  <li><a href="#serialization">Serialization</a></li>
+</ul>
+
+<h2><a name="use-case">Ideal Use Case for Lambda Expressions</a></h2>
+
+<p>Suppose that you are creating a social networking application. You
+want to create a feature that enables an administrator to perform
+any kind of action, such as sending a message, on members of the
+social networking application that satisfy certain criteria. The following table describes this use case in detail:</p>
+
+<table border="1" summary="Use case for social networking application">
+  <tr>
+    <th id="h1">Field</th>
+    <th id="h2">Description</th>
+  </tr>
+
+  <tr>
+    <td headers="h1">Name</td>
+    <td headers="h2">Perform action on selected members</td>
+  </tr>
+
+  <tr>
+    <td headers="h1">Primary Actor</td>
+    <td headers="h2">Administrator</td>
+  </tr>
+
+  <tr>
+     <td headers="h1">Preconditions</td>
+     <td headers="h2">Administrator is logged in to the system.</td>
+  </tr>
+
+  <tr>
+    <td headers="h1">Postconditions</td>
+    <td headers="h2">Action is performed only on members that fit the specified criteria.</td>
+  </tr>
+
+  <tr>
+    <td headers="h1">Main Success Scenario</td>
+    <td headers="h2">
+      <ol>
+        <li>Administrator specifies criteria of members on which to perform a certain action.</li>
+        <li>Administrator specifies an action to perform on those selected members.</li>
+        <li>Administrator selects the <strong>Submit</strong> button.</li>
+        <li>The system finds all members that match the specified criteria.</li>
+        <li>The system performs the specified action on all matching members.</li>
+      </ol>
+    </td>
+  </tr>
+
+  <tr>
+    <td headers="h1">Extensions</td>
+    <td headers="h2">
+      <p>1a. Administrator has an option to preview those members who match the specified criteria before he or she specifies the action to be performed or before selecting the <strong>Submit</strong> button.</p>
+    </td>
+  </tr>
+
+  <tr>
+    <td headers="h1">Frequency of Occurrence</td>
+    <td headers="h2">Many times during the day.</td>
+  </tr>
+</table>
+
+<p>Suppose that members of this social networking application are
+represented by the following
+<a class="SourceLink" target="_blank" href="examples/Person.java" onclick="showCode('../../displayCode.html', 'examples/Person.java'); return false;"><code>Person</code></a> class:</p>
+
+<pre class="codeblock">public class Person {
+
+    public enum Sex {
+        MALE, FEMALE
+    }
+
+    String name;
+    LocalDate birthday;
+    Sex gender;
+    String emailAddress;
+
+    public int getAge() {
+        // ...
+    }
+
+    public void printPerson() {
+        // ...
+    }
+}</pre>
+
+<p>Suppose that the members of your social networking application
+are stored in a <code>List&lt;Person&gt;</code> instance.</p>
+
+<p>This section begins with a naive approach to this use case. It improves upon this approach with local and anonymous classes, and then finishes with an efficient and concise approach using lambda expressions. Find the code excerpts described in this section in the example
+<a class="SourceLink" target="_blank" href="examples/RosterTest.java" onclick="showCode('../../displayCode.html', 'examples/RosterTest.java'); return false;"><code>RosterTest</code></a>.
+</p>
+
+<h3><a name="approach1">Approach 1: Create Methods That Search for Members That Match One Characteristic</a></h3>
+
+<p>One simplistic approach is to create several methods; each method searches for members that match one characteristic, such as gender or age. The following method prints members that are older than a specified
+age:</p>
+
+
+<pre class="codeblock">public static void printPersonsOlderThan(List&lt;Person&gt; roster, int age) {
+    for (Person p : roster) {
+        if (p.getAge() &gt;= age) {
+            p.printPerson();
+        }
+    }
+}</pre>
+
+<p><b>Note</b>: A
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html"><code>List</code></a> is an ordered
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html"><code>Collection</code></a>. A <em>collection</em> is an object
+that groups multiple elements into a single unit. Collections are
+used to store, retrieve, manipulate, and communicate aggregate
+data. For more information about collections, see the
+<a class="TutorialLink" target="_top" href="../../collections/index.html">Collections</a> trail.</p>
+
+<p>This approach can potentially make your application <em>brittle</em>, which is the likelihood of an application not working because of the introduction of updates (such as newer data types). Suppose that you upgrade your application and change the structure of the <code>Person</code> class such that it contains different member variables; perhaps the class records and measures ages with a different data type or algorithm. You would have to rewrite a lot of your API to accommodate this change. In addition, this approach is unnecessarily restrictive; what if you
+wanted to print members younger than a certain age, for example?</p>
+
+<!-- ********************************************************************** -->
+<h3><a name="approach2">Approach 2: Create More Generalized Search Methods</a></h3>
+
+<p>The following method is more generic than <code>printPersonsOlderThan</code>; it prints members within a specified range of ages:</p>
+
+<pre class="codeblock">public static void printPersonsWithinAgeRange(
+    List&lt;Person&gt; roster, int low, int high) {
+    for (Person p : roster) {
+        if (low &lt;= p.getAge() &amp;&amp; p.getAge() &lt; high) {
+            p.printPerson();
+        }
+    }
+}</pre>
+
+
+<p>What if you want to print members of a specified sex, or a combination of a specified gender and age range? What if you decide to change the <code>Person</code> class and add other attributes such as relationship status or geographical location? Although this method is more generic than <code>printPersonsOlderThan</code>, trying to create a separate method for each possible search query can still lead to brittle code. You can instead separate the code that specifies the criteria for which you want to search in a different class.</p>
+
+<!-- ********************************************************************** -->
+<h3><a name="approach3">Approach 3: Specify Search Criteria Code in a Local Class</a></h3>
+
+<p>The following method prints members that match search criteria that you specify:</p>
+
+<pre class="codeblock">public static void printPersons(
+    List&lt;Person&gt; roster, CheckPerson tester) {
+    for (Person p : roster) {
+        if (tester.test(p)) {
+            p.printPerson();
+        }
+    }
+}</pre>
+
+<p>This method checks each <code>Person</code> instance contained in the <code>List</code> parameter <code>roster</code> whether it satisfies the search criteria specified in the <code>CheckPerson</code> parameter <code>tester</code> by invoking the method <code>tester.test</code>. If the method <code>tester.test</code> returns a <code>true</code> value, then the method <code>printPersons</code> is invoked on the <code>Person</code> instance.</p>
+
+<p>To specify the search criteria, you implement the
+<code>CheckPerson</code> interface:</p>
+
+<pre class="codeblock">interface CheckPerson {
+    boolean test(Person p);
+}</pre>
+
+<p>The following class implements the <code>CheckPerson</code> interface by specifying an implementation for the method <code>test</code>. This method filters members that are eligible for Selective Service in the United States: it returns a <code>true</code> value if its <code>Person</code> parameter is male and between the ages of 18 and 25:</p>
+
+<pre class="codeblock">class CheckPersonEligibleForSelectiveService implements CheckPerson {
+    public boolean test(Person p) {
+        return p.gender == Person.Sex.MALE &amp;&amp;
+            p.getAge() &gt;= 18 &amp;&amp;
+            p.getAge() &lt;= 25;
+    }
+}</pre>
+
+<p>To use this class, you create a new
+instance of it and invoke the <code>printPersons</code> method:</p>
+
+<pre class="codeblock">printPersons(
+    roster, new CheckPersonEligibleForSelectiveService());</pre>
+
+<p>Although this approach is less brittle&mdash;you don't have to rewrite methods if you change the structure of the <code>Person</code>&mdash;you still have additional code: a new interface and a local class for each search you plan to perform in your application. Because <code>CheckPersonEligibleForSelectiveService</code>
+implements an interface, you can use an anonymous class
+instead of a local class and bypass the need to declare a new class for each search.</p>
+
+<!-- ********************************************************************** -->
+<h3><a name="approach4">Approach 4: Specify Search Criteria Code in an Anonymous Class</a></h3>
+
+<p>One of the arguments of the following invocation of the method <code>printPersons</code> is an anonymous class that filters members that are eligible for Selective Service in the United States: those who are male and between the ages of 18 and 25:</p>
+
+<pre class="codeblock">printPersons(
+    roster,
+    new CheckPerson() {
+        public boolean test(Person p) {
+            return p.getGender() == Person.Sex.MALE
+                &amp;&amp; p.getAge() &gt;= 18
+                &amp;&amp; p.getAge() &lt;= 25;
+        }
+    }
+);</pre>
+
+<p>This approach reduces the amount of code required because you don't have to create a new class for each search that you want to perform. However, the syntax of anonymous classes is bulky considering that the <code>CheckPerson</code> interface contains only one method. In this
+case, you can use a lambda expression instead of an anonymous class, as
+described in the next section.</p>
+
+<!-- ********************************************************************** -->
+<h3><a name="approach5">Approach 5: Specify Search Criteria Code with a Lambda Expression</a></h3>
+
+<p>The <code>CheckPerson</code>
+interface is a <i>functional interface</i>. A functional
+interface is any interface that contains only one
+<a class="TutorialLink" target="_top" href="../../java/IandI/abstract.html">abstract method</a>. (A functional interface may contain one or more 
+<a class="TutorialLink" target="_top" href="../../java/IandI/defaultmethods.html">default methods</a> or
+<a class="TutorialLink" target="_top" href="../../java/IandI/defaultmethods.html#static">static methods</a>.) Because
+a functional interface contains only one abstract method, you can
+omit the name of that method
+when you implement it. To do this, instead of using an anonymous
+class expression, you use a <i>lambda
+expression</i>, which is
+highlighted in the following method invocation:</p>
+
+<pre class="codeblock">printPersons(
+    roster,
+    <strong>(Person p) -&gt; p.getGender() == Person.Sex.MALE
+        &amp;&amp; p.getAge() &gt;= 18
+        &amp;&amp; p.getAge() &lt;= 25</strong>
+);</pre>
+
+<p>See <a href="#syntax">Syntax of Lambda Expressions</a> for information about how to define lambda expressions.</p>
+
+<p>You can use a standard functional interface in place of the interface <code>CheckPerson</code>, which reduces even further the amount of code required.</p>
+
+<!-- ********************************************************************** -->
+<h3><a name="approach6">Approach 6: Use Standard Functional Interfaces with Lambda Expressions</a></h3>
+
+<p>Reconsider the <code>CheckPerson</code> interface:</p>
+
+<pre class="codeblock">interface CheckPerson {
+    boolean test(Person p);
+}</pre>
+
+<p>This is a very
+simple interface. It's a functional interface because it contains
+only one abstract method. This method takes one parameter and returns a
+<code>boolean</code> value. The method is so simple that it might not be worth
+it to define one in your application. Consequently, the JDK
+defines several standard functional interfaces, which you can
+find in the package <code>java.util.function</code>.</p>
+
+<p>For example, you can use the
+<code>Predicate&lt;T&gt;</code>
+
+ interface in place of <code>CheckPerson</code>. This
+interface contains the method <code>boolean
+test(T t)</code>:</p>
+
+
+<pre class="codeblock">interface Predicate&lt;T&gt; {
+    boolean test(T t);
+}</pre>
+
+<p>The interface <code>Predicate&lt;T&gt;</code> is an example of a generic interface. (For more information about generics, see the
+<a class="TutorialLink" target="_top" href="../../java/generics/index.html">Generics (Updated)</a> lesson.) Generic types (such as generic interfaces) specify one or more type parameters within angle brackets (<code>&lt;&gt;</code>). This interface contains only one type parameter, <code>T</code>. When you declare or instantiate a generic type with actual type arguments, you have a parameterized type. For example, the parameterized type <code>Predicate&lt;Person&gt;</code> is the following:</p>
+
+<pre class="codeblock">interface Predicate&lt;<code>Person</code>&gt; {
+    boolean test(<code>Person</code> t);
+}</pre>
+
+<p>This parameterized type contains a method that has the same return type and parameters as <code>CheckPerson.boolean test(Person p)</code>. Consequently, you can use <code>Predicate&lt;T&gt;</code> in place of <code>CheckPerson</code> as the following method demonstrates:</p>
+
+<pre class="codeblock">public static void printPersonsWithPredicate(
+    List&lt;Person&gt; roster, Predicate&lt;Person&gt; tester) {
+    for (Person p : roster) {
+        if (tester.test(p)) {
+            p.printPerson();
+        }
+    }
+}</pre>
+
+<p>As a result,
+the following method invocation is the same as when you invoked
+<code>printPersons</code> in <a href="#approach3">Approach 3: Specify Search Criteria Code in a Local Class</a> to obtain members who are eligible for Selective Service:</p>
+
+<pre class="codeblock">printPersonsWithPredicate(
+    roster,
+    p -&gt; p.getGender() == Person.Sex.MALE
+        &amp;&amp; p.getAge() &gt;= 18
+        &amp;&amp; p.getAge() &lt;= 25
+);</pre>
+
+<p>This is not the only possible place in this method to use a lambda expression. The following approach suggests other ways to use lambda expressions.</p>
+
+<!-- ********************************************************************** -->
+<h3><a name="approach7">Approach 7: Use Lambda Expressions Throughout Your Application</a></h3>
+
+<p>Reconsider the method <code>printPersonsWithPredicate</code>
+to see where else you could use lambda expressions:</p>
+
+<pre class="codeblock">public static void printPersonsWithPredicate(
+    List&lt;Person&gt; roster, Predicate&lt;Person&gt; tester) {
+    for (Person p : roster) {
+        if (tester.test(p)) {
+            p.printPerson();
+        }
+    }
+}</pre>
+
+<p>This method checks each <code>Person</code> instance contained in the <code>List</code> parameter <code>roster</code> whether it satisfies the criteria specified in the <code>Predicate</code> parameter <code>tester</code>. If the <code>Person</code> instance does satisfy the criteria specified by <code>tester</code>, the method <code>printPersron</code> is invoked on the <code>Person</code> instance.</p>
+
+<p>Instead of invoking the method <code>printPerson</code>, you can specify a different action to perform on those <code>Person</code> instances that satisfy the criteria specified by <code>tester</code>. You can specify this action with a lambda expression. Suppose you want a lambda expression similar to <code>printPerson</code>, one that takes one argument (an object of type <code>Person</code>) and returns void. Remember, to use a lambda expression, you need to implement a functional interface. In this case, you need a functional interface that contains an abstract method that can take one argument of type <code>Person</code> and returns void. The
+<code>Consumer&lt;T&gt;</code>
+ interface contains the method
+<code>void accept(T t)</code>, which has these characteristics. The
+following method replaces the invocation
+<code>p.printPerson()</code> with an
+instance of <code>Consumer&lt;Person&gt;</code> that invokes the method <code>accept</code>:</p>
+
+<pre class="codeblock">public static void processPersons(
+    List&lt;Person&gt; roster,
+    Predicate&lt;Person&gt; tester,
+    <strong>Consumer&lt;Person&gt; block</strong>) {
+        for (Person p : roster) {
+            if (tester.test(p)) {
+                <strong>block.accept(p);</strong>
+            }
+        }
+}</pre>
+
+<p>As a
+result, the following method invocation is the same as when you invoked <code>printPersons</code> in <a href="#approach3">Approach 3: Specify Search Criteria Code in a Local Class</a> to obtain members who are eligible for Selective Service. The lambda expression used to
+print members is highlighted:</p>
+
+<pre class="codeblock">processPersons(
+     roster,
+     p -&gt; p.getGender() == Person.Sex.MALE
+         &amp;&amp; p.getAge() &gt;= 18
+         &amp;&amp; p.getAge() &lt;= 25,
+     <strong>p -&gt; p.printPerson()</strong>
+);</pre>
+
+<p>What if you want to do more with your members' profiles than printing them out. Suppose that you want to validate the members' profiles or retrieve
+their contact information? In this case, you need a functional
+interface that contains an abstract method that returns a value.
+The
+<code>Function&lt;T,R&gt;</code>
+ interface contains the
+method <code>R apply(T
+t)</code>. The following method retrieves the data
+specified by the parameter <code>mapper</code>, and
+then performs an action on it specified by the
+parameter <code>block</code>:</p>
+
+<pre class="codeblock">public static void processPersonsWithFunction(
+    List&lt;Person&gt; roster,
+    Predicate&lt;Person&gt; tester,
+    Function&lt;Person, String&gt; mapper,
+    Consumer&lt;String&gt; block) {
+    for (Person p : roster) {
+        if (tester.test(p)) {
+            String data = mapper.apply(p);
+            block.accept(data);
+        }
+    }
+}</pre>
+
+<p>The following method retrieves the email address from each member
+contained in <code>roster</code> who is eligible for Selective Service and
+then prints it:</p>
+
+<pre class="codeblock">processPersonsWithFunction(
+    roster,
+    p -&gt; p.getGender() == Person.Sex.MALE
+        &amp;&amp; p.getAge() &gt;= 18
+        &amp;&amp; p.getAge() &lt;= 25,
+    p -&gt; p.getEmailAddress(),
+    email -&gt; System.out.println(email)
+);</pre>
+
+<!-- ********************************************************************** -->
+<h3><a name="approach8">Approach 8: Use Generics More Extensively</a></h3>
+
+<p>Reconsider the method <code>processPersonsWithFunction</code>. The following is a generic version of it that accepts, as a parameter, a collection that contains elements of any data type:</p>
+
+<pre class="codeblock">public static &lt;X, Y&gt; void processElements(
+    Iterable&lt;X&gt; source,
+    Predicate&lt;X&gt; tester,
+    Function &lt;X, Y&gt; mapper,
+    Consumer&lt;Y&gt; block) {
+    for (X p : source) {
+        if (tester.test(p)) {
+            Y data = mapper.apply(p);
+            block.accept(data);
+        }
+    }
+}</pre>
+
+<p>To print the e-mail address of members who are eligible for Selective Service, invoke the <code>processElements</code> method as follows:</p>
+
+<pre class="codeblock">processElements(
+    roster,
+    p -&gt; p.getGender() == Person.Sex.MALE
+        &amp;&amp; p.getAge() &gt;= 18
+        &amp;&amp; p.getAge() &lt;= 25,
+    p -&gt; p.getEmailAddress(),
+    email -&gt; System.out.println(email)
+);</pre>
+
+<p>This method invocation performs the following actions:</p>
+
+<ol>
+  <li>Obtains a source of objects from the collection <code>source</code>. In this example, it obtains a source of <code>Person</code> objects from the collection <code>roster</code>. Notice that the collection <code>roster</code>, which is a collection of type <code>List</code>, is also an object of type <code>Iterable</code>.</li>
+  
+  <li>Filters objects that match the <code>Predicate</code> object <code>tester</code>. In this example, the <code>Predicate</code> object is a lambda expression that specifies which members would be eligible for Selective Service.</li>
+  
+  <li>Maps each filtered object to a value as specified by the <code>Function</code> object <code>mapper</code>. In this example, the <code>Function</code> object is a lambda expression that returns the e-mail address of a member.</li>
+  
+  <li>Performs an action on each mapped object as specified by the <code>Consumer</code> object <code>block</code>. In this example, the <code>Consumer</code> object is a lambda expression that prints a string, which is the e-mail address returned by the <code>Function</code> object.</li>
+  
+</ol>
+
+<p>You can replace each of these actions with an aggregate operation.</p>
+
+<!-- ********************************************************************** -->
+<h3><a name="approach9">Approach 9: Use Aggregate Operations That Accept Lambda Expressions as Parameters</a></h3>
+
+<p>The following example uses aggregate operations to print the e-mail addresses of those members contained in the collection <code>roster</code> who are eligible for Selective Service:</p>
+
+<pre class="codeblock">roster
+    .stream()
+    .filter(
+        p -&gt; p.getGender() == Person.Sex.MALE
+            &amp;&amp; p.getAge() &gt;= 18
+            &amp;&amp; p.getAge() &lt;= 25)
+    .map(p -&gt; p.getEmailAddress())
+    .forEach(email -&gt; System.out.println(email));</pre>
+
+<p>The following table maps each of the operations the method <code>processElements</code> performs with the corresponding aggregate operation:</p>
+
+<table border="1" summary="Mapping of each of the actions the method processElements performs with the corresponding aggregate operation">
+<tr>
+  <th id="h101"><code>processElements</code> Action</th>
+  <th id="h102">Aggregate Operation</th>
+</tr>
+
+<tr>
+  <td headers="h101">Obtain a source of objects</td>
+  
+  <td headers="h102"><code>Stream&lt;E&gt; <strong>stream</strong>()</code></td>
+</tr>
+
+<tr>
+  <td headers="h101">Filter objects that match a <code>Predicate</code> object</td>
+  <td headers="h102"><code>Stream&lt;T&gt; <strong>filter</strong>(Predicate&lt;? super T&gt; predicate)</code></td>
+</tr>
+
+<tr>
+
+  <td headers="h101">Map objects to another value as specified by a <code>Function</code> object</td>
+  
+  <td headers="h102"><code>&lt;R&gt; Stream&lt;R&gt; <strong>map</strong>(Function&lt;? super T,? extends R&gt; mapper)</code></td>
+  
+</tr>
+
+<tr>
+  <td headers="h101">Perform an action as specified by a <code>Consumer</code> object</td>
+  <td headers="h102"><code>void <strong>forEach</strong>(Consumer&lt;? super T&gt; action)</code></td>
+</tr>
+
+</table>
+
+<p>The operations <code>filter</code>, <code>map</code>, and <code>forEach</code> are <em>aggregate operations</em>. Aggregate operations process elements from a stream, not directly from a collection (which is the reason why the first method invoked in this example is <code>stream</code>). A <em>stream</em> is a sequence of elements. Unlike a collection, it is not a data structure that stores elements. Instead, a stream carries values from a source, such as collection, through a pipeline. A <em>pipeline</em> is a sequence of stream operations, which in this example is <code>filter</code>- <code>map</code>-<code>forEach</code>. In addition, aggregate operations typically accept lambda expressions as parameters, enabling you to customize how they behave.</p>
+
+<p>For a more thorough discussion of aggregate operations, see the
+<a class="TutorialLink" target="_top" href="../../collections/streams/index.html">Aggregate Operations</a> lesson.</p>
+
+
+<h2><a name="lambda-expressions-in-gui-applications">Lambda Expressions in GUI Applications</a></h2>
+
+<p>To process events in a graphical user interface (GUI) application, such as keyboard
+actions, mouse actions, and scroll actions, you typically create
+event handlers, which usually involves implementing a particular
+interface. Often, event handler interfaces are functional
+interfaces; they tend to have only one method.</p>
+
+<p>In the JavaFX example <a href=
+"https://docs.oracle.com/javase/8/javafx/get-started-tutorial/hello_world.htm">
+<code>HelloWorld.java</code></a> (discussed in the previous section
+<a class="TutorialLink" target="_top" href="anonymousclasses.html">Anonymous Classes</a>), you can
+replace the highlighted anonymous class with a lambda expression in this
+statement:</p>
+
+<pre class="codeblock">        btn.setOnAction(<b>new EventHandler&lt;ActionEvent&gt;() {</b>
+
+            <b>@Override</b>
+            <b>public void handle(ActionEvent event) {</b>
+                <b>System.out.println("Hello World!");</b>
+            <b>}</b>
+        <b>}</b>);</pre>
+
+<p>The method invocation <code>btn.setOnAction</code> specifies what
+happens when you select the button represented by the <code>btn</code> object. This method requires
+an object of type <code>EventHandler&lt;ActionEvent&gt;</code>. The <code>EventHandler&lt;ActionEvent&gt;</code>
+interface contains only one method, <code>void handle(T event)</code>.
+This interface is a functional interface, so you could use the following highlighted lambda expression to replace it:</p>
+
+<pre class="codeblock">        btn.setOnAction(
+          <b>event -&gt; System.out.println("Hello World!")</b>
+        );</pre>
+
+<h2><a name="syntax">Syntax of Lambda Expressions</a></h2>
+
+<p>A lambda expression consists of the following:</p>
+
+<ul>
+  <li><p>A
+comma-separated list of formal parameters enclosed in
+parentheses. The <code>CheckPerson.test</code> method contains one parameter,
+<code>p</code>, which represents an instance of the
+<code>Person</code> class.</p>
+  <p><b>Note</b>: You can
+omit the data type of the parameters in a lambda expression. In
+addition, you can omit the parentheses if there is only one
+parameter. For example, the following lambda expression is also
+valid:</p>
+
+<pre class="codeblock">p -&gt; p.getGender() == Person.Sex.MALE 
+    &amp;&amp; p.getAge() &gt;= 18
+    &amp;&amp; p.getAge() &lt;= 25</pre></li>
+
+  <li><p>The arrow token, <code>-&gt;</code></p></li>
+  <li><p>A
+body, which consists of a single expression or a statement block. This example uses the following expression:</p>
+
+<pre class="codeblock">p.getGender() == Person.Sex.MALE 
+    &amp;&amp; p.getAge() &gt;= 18
+    &amp;&amp; p.getAge() &lt;= 25</pre>
+
+<p>If you
+specify a single expression, then the Java runtime evaluates the
+expression and then returns its value. Alternatively, you can use
+a return statement:</p>
+
+<pre class="codeblock">p -&gt; {
+    return p.getGender() == Person.Sex.MALE
+        &amp;&amp; p.getAge() &gt;= 18
+        &amp;&amp; p.getAge() &lt;= 25;
+}</pre>
+
+  <p>A return statement is not an expression; in a lambda expression,
+you must enclose statements in braces (<code>{}</code>). However, you do not have to enclose a void method invocation in braces. For example, the following is a valid lambda expression:</p>
+
+<pre class="codeblock">email -&gt; System.out.println(email)</pre>
+</li>
+
+</ul>
+
+<p>Note that a lambda expression looks a lot like a method
+declaration; you can consider lambda expressions as anonymous
+methods&mdash;methods without a name.</p>
+
+<p>The following example,
+<a class="SourceLink" target="_blank" href="examples/Calculator.java" onclick="showCode('../../displayCode.html', 'examples/Calculator.java'); return false;"><code>Calculator</code></a>, is an example of lambda expressions that take
+more than one formal parameter:</p>
+
+<pre class="codeblock">
+
+public class Calculator {
+  
+    interface IntegerMath {
+        int operation(int a, int b);   
+    }
+  
+    public int operateBinary(int a, int b, IntegerMath op) {
+        return op.operation(a, b);
+    }
+ 
+    public static void main(String... args) {
+    
+        Calculator myApp = new Calculator();
+        IntegerMath addition = (a, b) -&gt; a + b;
+        IntegerMath subtraction = (a, b) -&gt; a - b;
+        System.out.println(&quot;40 + 2 = &quot; +
+            myApp.operateBinary(40, 2, addition));
+        System.out.println(&quot;20 - 10 = &quot; +
+            myApp.operateBinary(20, 10, subtraction));    
+    }
+}
+
+</pre>
+
+<p>The method <code>operateBinary</code> performs a
+mathematical operation on two integer operands. The operation
+itself is specified by an instance of <code>IntegerMath</code>. The example defines two operations with lambda expressions, <code>addition</code> and <code>subtraction</code>. The example prints
+the following:</p>
+
+<pre class="codeblock">40 + 2 = 42
+20 - 10 = 10</pre>
+
+
+<h2><a name="accessing-local-variables">Accessing Local Variables of the Enclosing Scope</a></h2>
+
+<p>Like local and anonymous classes, lambda expressions can
+<a class="TutorialLink" target="_top" href="localclasses.html#accessing-members-of-an-enclosing-class">capture variables</a>; they have the same access to local variables of the enclosing scope. However, unlike local and anonymous classes, lambda expressions do not have any shadowing issues (see
+<a class="TutorialLink" target="_top" href="../../java/javaOO/nested.html#shadowing">Shadowing</a> for more information). Lambda expressions are lexically scoped. This means that they do not inherit any names from a supertype or introduce a new level of scoping. Declarations in a lambda expression are interpreted just as they are in the enclosing environment. The following example,
+<a class="SourceLink" target="_blank" href="examples/LambdaScopeTest.java" onclick="showCode('../../displayCode.html', 'examples/LambdaScopeTest.java'); return false;"><code>LambdaScopeTest</code></a>, demonstrates this:</p>
+
+<pre class="codeblock">
+
+import java.util.function.Consumer;
+
+public class LambdaScopeTest {
+
+    public int x = 0;
+
+    class FirstLevel {
+
+        public int x = 1;
+
+        void methodInFirstLevel(int x) {
+            
+            // The following statement causes the compiler to generate
+            // the error &quot;local variables referenced from a lambda expression
+            // must be final or effectively final&quot; in statement A:
+            //
+            // x = 99;
+            
+            Consumer&lt;Integer&gt; myConsumer = (y) -&gt; 
+            {
+                System.out.println(&quot;x = &quot; + x); // Statement A
+                System.out.println(&quot;y = &quot; + y);
+                System.out.println(&quot;this.x = &quot; + this.x);
+                System.out.println(&quot;LambdaScopeTest.this.x = &quot; +
+                    LambdaScopeTest.this.x);
+            };
+
+            myConsumer.accept(x);
+
+        }
+    }
+
+    public static void main(String... args) {
+        LambdaScopeTest st = new LambdaScopeTest();
+        LambdaScopeTest.FirstLevel fl = st.new FirstLevel();
+        fl.methodInFirstLevel(23);
+    }
+}
+</pre>
+
+<p>This example generates the following output:</p>
+
+<pre class="codeblock">
+x = 23
+y = 23
+this.x = 1
+LambdaScopeTest.this.x = 0</pre>
+
+<p>If you substitute the parameter <code>x</code> in place of <code>y</code> in the declaration of the lambda expression <code>myConsumer</code>, then the compiler generates an error:</p>
+
+<pre class="codeblock">Consumer&lt;Integer&gt; myConsumer = (x) -> {
+    // ...
+}</pre>
+
+<p>The compiler generates the error "variable x is already defined in method methodInFirstLevel(int)" because the lambda expression does not introduce a new level of scoping. Consequently, you can directly access fields, methods, and local variables of the enclosing scope. For example, the lambda expression directly accesses the parameter <code>x</code> of the method <code>methodInFirstLevel</code>. To access variables in the enclosing class, use the keyword <code>this</code>. In this example, <code>this.x</code> refers to the member variable <code>FirstLevel.x</code>.</p>
+
+<p>However, like local and anonymous classes, a lambda expression can only access local variables and parameters of the enclosing block that are final or
+effectively final. For example, suppose that you add
+the following assignment statement immediately after the <code>methodInFirstLevel</code> definition statement:</p>
+
+<pre class="codeblock">void methodInFirstLevel(int x) {
+    <strong>x = 99;</strong>
+    // ...
+}</pre>
+
+<p>Because of this assignment
+statement, the variable <code>FirstLevel.x</code> is not effectively final anymore. As a result, the Java compiler generates an error message similar to
+"local variables referenced from a lambda expression must be final or effectively final" where the lambda expression <code>myConsumer</code> tries to access the <code>FirstLevel.x</code> variable:</p>
+
+<pre class="codeblock">System.out.println("x = " + x);</pre>
+
+<h2><a name="target-typing">Target Typing</a></h2>
+
+<p>How do you determine the type of a lambda expression? Recall
+the lambda expression that selected members who are male and
+between the ages 18 and 25 years:</p>
+
+<pre class="codeblock">p -&gt; p.getGender() == Person.Sex.MALE
+    &amp;&amp; p.getAge() &gt;= 18
+    &amp;&amp; p.getAge() &lt;= 25</pre>
+
+<p>This lambda expression was used in the following two methods:</p>
+
+<ul>
+
+<li><p><code>public static void printPersons(List&lt;Person&gt; roster, CheckPerson tester)</code> in <a href="#approach3">Approach 3: Specify Search Criteria Code in a Local Class</a></p></li>
+
+<li><p><code>public void printPersonsWithPredicate(List&lt;Person&gt; roster, Predicate&lt;Person&gt; tester)</code> in <a href="#approach6">Approach 6: Use Standard Functional Interfaces with Lambda Expressions</a></p></li>
+
+</ul>
+
+<p>When the Java runtime invokes the method <code>printPersons</code>, it's expecting a data type of <code>CheckPerson</code>, so the
+lambda expression is of this type. However,
+when the Java runtime invokes the method <code>printPersonsWithPredicate</code>,
+it's expecting a data type of <code>Predicate&lt;Person&gt;</code>,
+so the lambda expression is of this type. The data type that
+these methods expect is called the <em>target type</em>. To determine the type of a lambda
+expression, the Java compiler uses the target type of the context
+or situation in which the lambda expression was found. It follows
+that you can only use lambda expressions in situations in which
+the Java compiler can determine a target type:</p>
+
+<ul>
+  <li><p>Variable declarations</p></li>
+  <li><p>Assignments</p></li>
+  <li><p>Return statements</p></li>
+  <li><p>Array initializers</p></li>
+  <li><p>Method or constructor arguments</p></li>
+  <li><p>Lambda expression bodies</p></li>
+  <li><p>Conditional expressions, <code>?:</code></p></li>
+  <li><p>Cast expressions</p></li>
+</ul>
+
+<h3><a name="target-types-and-method-arguments">Target Types and Method Arguments</a></h3>
+
+<p>For method arguments, the Java compiler determines the target
+type with two other language features: overload resolution and
+type argument inference.</p>
+
+<p>Consider the following two functional interfaces (
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html"><code>java.lang.Runnable</code></a> and
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html"><code>java.util.concurrent.Callable&lt;V&gt;</code></a>):</p>
+
+<pre class="codeblock">public interface Runnable {
+    void run();
+}
+
+public interface Callable&lt;V&gt; {
+    V call();
+}</pre>
+
+<p>The method <code>Runnable.run</code> does not return a value, whereas <code>Callable&lt;V&gt;.call</code> does.</p>
+
+<p>Suppose that you have overloaded the method <code>invoke</code> as follows
+(see
+<a class="TutorialLink" target="_top" href="methods.html">Defining Methods</a> for more information about overloading methods):</p>
+
+<pre class="codeblock">void invoke(Runnable r) {
+    r.run();
+}
+
+&lt;T&gt; T invoke(Callable&lt;T&gt; c) {
+    return c.call();
+}</pre>
+
+<p>Which method will be invoked in the following statement?</p>
+
+<pre class="codeblock">String s = invoke(() -&gt; "done");</pre>
+
+<p>The method <code>invoke(Callable&lt;T&gt;)</code> will be
+invoked because that method returns a value; the method
+<code>invoke(Runnable)</code> does not. In this case, the type of the lambda expression <code>() -&gt; "done"</code> is <code>Callable&lt;T&gt;</code>.</p>
+
+<h2><a name="serialization">Serialization</a></h2>
+
+<p>You can 
+<a class="TutorialLink" target="_top" href="../../jndi/objects/serial.html">serialize</a> a lambda expression if its target type and its captured arguments are serializable. However, like
+<a class="TutorialLink" target="_top" href="nested.html#serialization">inner classes</a>, the serialization of lambda expressions is strongly discouraged.</p>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="anonymousclasses.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="methodreferences.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Anonymous Classes
+        <br /><b>Next page:</b> Method References
+    </div>
+</body>
+</html> 

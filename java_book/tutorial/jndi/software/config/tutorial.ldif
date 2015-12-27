@@ -1,0 +1,496 @@
+dn: o=JNDITutorial
+o: JNDITutorial
+objectclass: top
+objectclass: organization
+
+dn: ou=Groups, o=JNDITutorial
+ou: Groups
+objectclass: top
+objectclass: organizationalunit
+
+dn: cn=Directory Administrators, ou=Groups, o=JNDITutorial
+cn: Directory Administrators
+objectclass: top
+objectclass: groupofuniquenames
+ou: Groups
+uniquemember: cn=Rosanna Lee, ou=People, o=JNDITutorial
+uniquemember: cn=Scott Seligman, ou=People, o=JNDITutorial
+uniquemember: cn=Jon Ruiz, ou=People, o=JNDITutorial
+uniquemember: cn=Vinnie Ryan, ou=People, o=JNDITutorial
+
+dn: cn=Accounting Managers,ou=groups,o=JNDITutorial
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: Accounting Managers
+ou: groups
+uniquemember: cn=Niels Bohr, ou=People, o=JNDITutorial
+uniquemember: cn=Spuds Mackenzie, ou=People, o=JNDITutorial
+description: People who can manage accounting entries
+
+dn: cn=HR Managers,ou=groups,o=JNDITutorial
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: HR Managers
+ou: groups
+uniquemember: cn=Ted Geisel, ou=People, o=JNDITutorial
+uniquemember: cn=Lao Tzu, ou=People, o=JNDITutorial
+description: People who can manage HR entries
+
+dn: cn=Engineering Managers,ou=groups,o=JNDITutorial
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: Engineering Managers
+ou: groups
+uniquemember: cn=John Fowler, ou=People, o=JNDITutorial
+uniquemember: cn=Maxine Erlund, ou=People, o=JNDITutorial
+description: People who can manage the unmanageable
+
+dn: cn=QA Managers,ou=groups,o=JNDITutorial
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: QA Managers
+ou: groups
+uniquemember: cn=Jonathan Wood, ou=People, o=JNDITutorial
+uniquemember: cn=Aravindan Ranganathan, ou=People, o=JNDITutorial
+description: People who can manage engineer entries
+
+dn: ou=People, o=JNDITutorial
+ou: People
+objectclass: top
+objectclass: organizationalunit
+
+dn: cn=Ted Geisel, ou=People, o=JNDITutorial
+cn: Ted Geisel
+sn: Geisel
+mail: Ted.Geisel@JNDITutorial.example.com
+telephonenumber: +1 408 555 0152
+facsimiletelephonenumber: +1 408 555 0129
+jpegphoto:: /9j/4AAQSkZJRgABAQAAAQABAAD/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGB
+ wgJCgv/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAA
+ X0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4O
+ TpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanq
+ KmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAC1EQACA
+ QIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxF
+ xgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk
+ 5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19
+ vf4+fr/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV
+ 19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY
+ 2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCABKAEoDABEAAREBAhEB/9oADAMAAAERA
+ hEAPwDvqCQoAKAKk2qWNvcpbzXUSSvnCFhnjr9KB2HNf2iozm5jKrydrbiPwFAEguITIsYlTewyF
+ 3DJ/CgRJQAtABQAfjX0WBnTVCKljpU3r7qU2lr5O2u/zP1rhv8A5FdL/t7/ANKYV86fkoUAULyd2
+ v7WyicoZA0rsO6rgYHuSw/AGgYsOk6fDJI6WcO+Q5cldxJ/GgCzHbwQktFDGjHjKoBQBHc2lrOrN
+ cRRtxyx4IA96QFXSpGW5vLRnlkSBlKPIeSGB4+nHFMDToEFABX3GUV8VDBwjTcra7J23f8A05n/A
+ OlP5bL9b4a/5FdL/t7/ANKYV8OfkgUAc5q7XRn1ZbAt9sFtCYQh+b77bsfp+lIZnWesa1FbiTzYL
+ lQxiEdwvlSDAzuP6j3pjHW2ua3Ppz30WlAyxNiYkkCVQD0B5yM5oEVWvbrxBC0V/qH2SGT/AJdoY
+ yJd3ZeeoIBOfagDo/D8F1aWqWt3uJiDIH2Y3qCNpJ9cE0gNmmIKACvrctw/PhYy5L768t+r6+wn/
+ wClP5bL9a4b/wCRXS/7e/8ASmFfJH5KFAGPLEo8VQz/AGdwfszJ5gGQ2SD+GMf+PCgYut6bYTqLy
+ 5WOO4jK+XMwJIw24D+f5mgBk00cemxpJqkytNl/OCHJ9hxwAcflQBNo1nDHAkzzC7uyoLzsPmI5x
+ 16CkBXvdTTS9bC3TzvFcRjy1RSypggEkD6jmmBsQTxXEQkhcOh7igRJQAlevhvq3slz+zv/AHva3
+ +fL7v3dN9T9a4b/AORXS/7e/wDSmLXkH5KZviGQw6LPKCw2FGO3rgOCf0oAx9DvIm1cM9xcRLMHj
+ gtpzu5BVmOe2QVwPrSGdDLaCa7hndyRCCVTtuPG76gZH4mmBOzKq5YgDpkmgRV8mO6nhvIXaMqSC
+ QMeYvIwfbPP4UDMy+sJm1uW5kuYRZyQqrRSNjow79R+HfFAFrRLEWb3ZilZraWXfEh/h9cHuD60A
+ zVoEJ+FfW5bQ58LGXs7768t+r6+wn/6U/lsv0TI6NGWApuWF53r71qeur/mknptqLXyR+dkVzGJr
+ aWJm2iRSmfTIxQBxN54dfS1hKajEwjuI32MMSMMhRg/8COfoPSgZ2sFxHcGUR5/dOY2z6jB/rSAk
+ ZVcYYAjrg0xAzBBlmCjgZJxQBh6xNpl3aqJjGt3dQvHbCYEEluAMfXFAzagjEUEcYAUKoGAOBQIk
+ oAT8a9bDfV/ZLn9nf8Ave1v8+X3fu6b6n6fw/h6k8upyjWlFa6JRt8T7xb/ABFryT8wCgDC1vw4u
+ rXK3JnKPGv7tQAMMM4O7rjJH5UDuY01/JpF/ayazB9mkd94NvLuWUgbSXHbAbP4UDOzjkSWNZI2D
+ owyGByDQSY2v6mlvc2losLXUsjb/syrkuF5HPYg4b8KBotWVq800t3fW6LJIRsjOH2AdCD68/pQB
+ pUCCgAr7jKJ5msHBUIScdbWlTS3fSUG9+7/AAP1vhr/AJFdL/t7/wBKYV8OfkgUAQXV3b2UDT3Uq
+ xRL1ZjgUAcdqV5pniTXtKgWOaSPMituTarAqeQe/IFBQ6TwlbyKzadql55WCIxG25FOcYzn1Ofpm
+ gRQs9Mbw/4q0qe/1COdJvMAkyfl+UgZJ92oA9DR1dQ6MGU8gg5BoEOoAKACvosDOKoRThF77yop7
+ 9pwcvvfppY/WuG/+RXS/wC3v/SmFfOn5KU9Q1Sy02IyXlwkQ7Ank/h+FAFW20/7e0d9qO2VuWhjB
+ JRFOMcHq3v70DKN3oV1aav/AGppLRO2wqbab7vOPun+HpQBlX3mrqMoX7VY71X7RFEQqSNyCRwfz
+ FAzH17WIdTvbCP+z3hhtQVkWXurEDPt9fWgRq+HNei0WP7HeiVbSQCW3kI3bVJxyaAO3t547mBJo
+ HDxOMqw6EUCJaACvosDlmKr0I1KeGjNO+rk03r2516bH61w3/yK6X/b3/pTCvnT8lOJsUSfV7+WZ
+ VkkEpUM4yQNycZPakUdqAAAAMAdqZIDvQNi0COR1EA+K5MgfMsKt7jPQ+3FDKOhe2ga/jRoYyohY
+ BSoxjctAin4WAGmyqBhVuJFUDoBnoKSBmzTEFfp/D+AwtXLqc6lKLbvq4pv4n5H63w1/wAiul/29
+ /6Uz//Z
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Jon Ruiz, ou=People, o=JNDITutorial
+cn: Jon Ruiz
+sn: Ruiz
+mail: Jon.Ruiz@JNDITutorial.example.com
+telephonenumber: +1 408 555 0152
+facsimiletelephonenumber: +1 408 555 0129
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Scott Seligman, ou=People, o=JNDITutorial
+cn: Scott Seligman
+sn: Seligman
+mail: Scott.Seligman@JNDITutorial.example.com
+telephonenumber: +1 408 555 0152
+facsimiletelephonenumber: +1 408 555 0128
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Samuel Clemens, ou=People, o=JNDITutorial
+cn: Samuel Clemens
+sn: Clemens
+sn: Twain
+mail: Mark.Twain@JNDITutorial.example.com
+telephonenumber: +1 408 555 0186
+facsimiletelephonenumber: +1 408 555 0115
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Rosanna Lee, ou=People, o=JNDITutorial
+cn: Rosanna Lee
+sn: Lee
+mail: Rosanna.Lee@JNDITutorial.example.com
+telephonenumber: +1 408 555 0156
+facsimiletelephonenumber: +1 408 555 0171
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Maxine Erlund, ou=People, o=JNDITutorial
+cn: Maxine Erlund
+sn: Erlund
+mail: Maxine.Erlund@JNDITutorial.example.com
+telephonenumber: +1 408 555 0176
+facsimiletelephonenumber: +1 408 555 0152
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Niels Bohr, ou=People, o=JNDITutorial
+cn: Niels Bohr
+sn: Bohr
+mail: Niels.Bohr@JNDITutorial.example.com
+telephonenumber: +1 408 555 0162
+facsimiletelephonenumber: +1 408 555 0173
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Uri Geller, ou=People, o=JNDITutorial
+cn: Uri Geller
+sn: Geller
+mail: Uri.Geller@JNDITutorial.example.com
+telephonenumber: +1 408 555 0164
+facsimiletelephonenumber: +1 408 555 0160
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Colleen Sullivan, ou=People, o=JNDITutorial
+cn: Colleen Sullivan
+sn: Sullivan
+mail: Colleen.Sullivan@JNDITutorial.example.com
+telephonenumber: +1 408 555 0128
+facsimiletelephonenumber: +1 408 555 0159
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Vinnie Ryan, ou=People, o=JNDITutorial
+cn: Vinnie Ryan
+sn: Ryan
+mail: Vincent.Ryan@JNDITutorial.example.com
+telephonenumber: +1 408 555 0113
+facsimiletelephonenumber: +1 408 555 0191
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Rod Serling, ou=People, o=JNDITutorial
+cn: Rod Serling
+sn: Serling
+mail: Rod.Serling@JNDITutorial.example.com
+telephonenumber: +1 408 555 0177
+facsimiletelephonenumber: +1 408 555 0168
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Jonathan Wood, ou=People, o=JNDITutorial
+cn: Jonathan Wood
+sn: Wood
+mail: Jonathan.Wood@JNDITutorial.example.com
+telephonenumber: +1 408 555 0114
+facsimiletelephonenumber: +1 408 555 0161
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Aravindan Ranganathan, ou=People, o=JNDITutorial
+cn: Aravindan Ranganathan
+sn: Ranganathan
+mail: Aravindan.Ranganathan@JNDITutorial.example.com
+telephonenumber: +1 408 555 0156
+facsimiletelephonenumber: +1 408 555 0184
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Ian Anderson, ou=People, o=JNDITutorial
+cn: Ian Anderson
+sn: Anderson
+mail: Ian.Anderson@JNDITutorial.example.com
+telephonenumber: +1 408 555 0149
+facsimiletelephonenumber: +1 408 555 0173
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Lao Tzu, ou=People, o=JNDITutorial
+cn: Lao Tzu
+sn: Lao
+mail: Lao.Tzu@JNDITutorial.example.com
+telephonenumber: +1 408 555 0187
+facsimiletelephonenumber: +1 408 555 0155
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Don Knuth, ou=People, o=JNDITutorial
+cn: Don Knuth
+sn: Knuth
+mail: Don.Knuth@JNDITutorial.example.com
+telephonenumber: +1 408 555 0191
+facsimiletelephonenumber: +1 408 555 0107
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Roger Waters, ou=People, o=JNDITutorial
+cn: Roger Waters
+sn: Waters
+mail: Roger.Waters@JNDITutorial.example.com
+telephonenumber: +1 408 555 0187
+facsimiletelephonenumber: +1 408 555 0136
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Ben Dubin, ou=People, o=JNDITutorial
+cn: Ben Dubin
+sn: Dubin
+mail: Ben.Dubin@JNDITutorial.example.com
+telephonenumber: +1 408 555 0125
+facsimiletelephonenumber: +1 408 555 0170
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Spuds Mackenzie, ou=People, o=JNDITutorial
+cn: Spuds Mackenzie
+sn: Mackenzie
+mail: Spuds.Mackenzie@JNDITutorial.example.com
+telephonenumber: +1 408 555 0120
+facsimiletelephonenumber: +1 408 555 0112
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=John Fowler, ou=People, o=JNDITutorial
+cn: John Fowler
+sn: Fowler
+mail: John.Fowler@JNDITutorial.example.com
+telephonenumber: +1 408 555 0185
+facsimiletelephonenumber: +1 408 555 0177
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=Londo Mollari, ou=People, o=JNDITutorial
+cn: Londo Mollari
+sn: Mollari
+mail: Londo.Mollari@JNDITutorial.example.com
+telephonenumber: +1 408 555 0184
+facsimiletelephonenumber: +1 408 555 0128
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+
+dn: cn=homedir,cn=Jon Ruiz,ou=people,o=JNDITutorial
+javaclassname: com.sun.jndi.fscontext.RefFSContext
+objectclass: top
+objectclass: javaObject
+objectclass: javaNamingReference
+objectclass: javaContainer
+javafactory: com.sun.jndi.fscontext.RefFSContextFactory
+javaReferenceAddress: #0#URL#file:/tmp
+cn: homedir
+
+dn: ou=Objects, cn=Rosanna Lee, ou=People, o=JNDITutorial
+ou: Objects
+objectclass: top
+objectclass: organizationalunit
+
+dn: cn=Hashtable,ou=objects,cn=Rosanna Lee,ou=People,o=JNDITutorial
+javaserializeddata:: rO0ABXNyABNqYXZhLnV0aWwuSGFzaHRhYmxlE7sPJSFK5LgDAAJGAAps
+ b2FkRmFjdG9ySQAJdGhyZXNob2xkeHA/QAAAAAAACHcIAAAACwAAAAJ0ABhqYXZhLm5hbWluZy5w
+ cm92aWRlci51cmx0ABRsZGFwOi8vYWx0b28uZW5nOjU4OXQAG2phdmEubmFtaW5nLmZhY3Rvcnku
+ aW5pdGlhbHQAIGNvbS5zdW4uam5kaS5sZGFwLkxkYXBDdHhGYWN0b3J5eA==
+javaclassname: java.util.Hashtable
+objectclass: top
+objectclass: javaObject
+objectclass: javaSerializedObject
+objectclass: javaContainer
+cn: Hashtable
+
+dn: cn=Integer,ou=Objects,cn=Rosanna Lee,ou=People,o=JNDITutorial
+javaserializeddata:: rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFs
+ dWV4cgAQamF2YS5sYW5nLk51bWJlcoaslR0LlOCLAgAAeHAAAAAK
+javaclassname: java.lang.Integer
+objectclass: top
+objectclass: javaObject
+objectclass: javaSerializedObject
+objectclass: javaContainer
+cn: Integer
+
+dn: cn=Button,ou=Objects,cn=Rosanna Lee,ou=People,o=JNDITutorial
+javaserializeddata:: rO0ABXNyAA9qYXZhLmF3dC5CdXR0b26GOg+meMJTngMAA0kAG2J1dHRv
+ blNlcmlhbGl6ZWREYXRhVmVyc2lvbkwADWFjdGlvbkNvbW1hbmR0ABJMamF2YS9sYW5nL1N0cmlu
+ ZztMAAVsYWJlbHQAEkxqYXZhL2xhbmcvU3RyaW5nO3hyABJqYXZhLmF3dC5Db21wb25lbnSV6qZZ
+ 1zykmgMAE0kAHmNvbXBvbmVudFNlcmlhbGl6ZWREYXRhVmVyc2lvbloAB2VuYWJsZWRKAAlldmVu
+ dE1hc2tJAAZoZWlnaHRaAA1uZXdFdmVudHNPbmx5WgAFdmFsaWRaAAd2aXNpYmxlSQAFd2lkdGhJ
+ AAF4SQABeUwACmJhY2tncm91bmR0ABBMamF2YS9hd3QvQ29sb3I7TAAGY3Vyc29ydAARTGphdmEv
+ YXd0L0N1cnNvcjtMAARmb250dAAPTGphdmEvYXd0L0ZvbnQ7TAAKZm9yZWdyb3VuZHQAEExqYXZh
+ L2F3dC9Db2xvcjtMAAZsb2NhbGV0ABJMamF2YS91dGlsL0xvY2FsZTtMAAdtaW5TaXpldAAUTGph
+ dmEvYXd0L0RpbWVuc2lvbjtMAARuYW1ldAASTGphdmEvbGFuZy9TdHJpbmc7TAAGcG9wdXBzdAAS
+ TGphdmEvdXRpbC9WZWN0b3I7TAAIcHJlZlNpemV0ABRMamF2YS9hd3QvRGltZW5zaW9uO3hwAAAA
+ AQEAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABwc3IAD2phdmEuYXd0LkN1cnNvcm9qB3f3EgGg
+ AgABSQAEdHlwZXhwAAAAAHBwcHB0AAdidXR0b24wcHBweAAAAAFwdAAFSGVsbG9weA==
+javaclassname: java.awt.Button
+objectclass: top
+objectclass: javaObject
+objectclass: javaSerializedObject
+objectclass: javaContainer
+cn: Button
+
+dn: cn=Choice,ou=Objects,cn=Rosanna Lee,ou=People,o=JNDITutorial
+javaserializeddata:: rO0ABXNyAA9qYXZhLmF3dC5DaG9pY2XHcZaIgbud0QMAA0kAG2Nob2lj
+ ZVNlcmlhbGl6ZWREYXRhVmVyc2lvbkkADXNlbGVjdGVkSW5kZXhMAAZwSXRlbXN0ABJMamF2YS91
+ dGlsL1ZlY3Rvcjt4cgASamF2YS5hd3QuQ29tcG9uZW50leqmWdc8pJoDABNJAB5jb21wb25lbnRT
+ ZXJpYWxpemVkRGF0YVZlcnNpb25aAAdlbmFibGVkSgAJZXZlbnRNYXNrSQAGaGVpZ2h0WgANbmV3
+ RXZlbnRzT25seVoABXZhbGlkWgAHdmlzaWJsZUkABXdpZHRoSQABeEkAAXlMAApiYWNrZ3JvdW5k
+ dAAQTGphdmEvYXd0L0NvbG9yO0wABmN1cnNvcnQAEUxqYXZhL2F3dC9DdXJzb3I7TAAEZm9udHQA
+ D0xqYXZhL2F3dC9Gb250O0wACmZvcmVncm91bmR0ABBMamF2YS9hd3QvQ29sb3I7TAAGbG9jYWxl
+ dAASTGphdmEvdXRpbC9Mb2NhbGU7TAAHbWluU2l6ZXQAFExqYXZhL2F3dC9EaW1lbnNpb247TAAE
+ bmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO0wABnBvcHVwc3QAEkxqYXZhL3V0aWwvVmVjdG9yO0wA
+ CHByZWZTaXpldAAUTGphdmEvYXd0L0RpbWVuc2lvbjt4cAAAAAEBAAAAAAAAAAAAAAAAAAABAAAA
+ AAAAAAAAAAAAcHNyAA9qYXZhLmF3dC5DdXJzb3Jvagd39xIBoAIAAUkABHR5cGV4cAAAAABwcHBw
+ dAAHY2hvaWNlMHBwcHgAAAABAAAAAHNyABBqYXZhLnV0aWwuVmVjdG9y2Zd9W4A7rwECAANJABFj
+ YXBhY2l0eUluY3JlbWVudEkADGVsZW1lbnRDb3VudFsAC2VsZW1lbnREYXRhdAATW0xqYXZhL2xh
+ bmcvT2JqZWN0O3hwAAAAAAAAAAJ1cgATW0xqYXZhLmxhbmcuT2JqZWN0O5DOWJ8QcylsAgAAeHAA
+ AAAKdAAIY2hvaWNlIDF0AAhjaG9pY2UgMnBwcHBwcHBwcHg=
+javaclassname: java.awt.Choice
+objectclass: top
+objectclass: javaObject
+objectclass: javaSerializedObject
+objectclass: javaContainer
+cn: Choice
+
+dn: cn=CheckboxGroup,ou=Objects,cn=Rosanna Lee,ou=People,o=JNDITutorial
+javaserializeddata:: rO0ABXNyAA5qYXZhLmF3dC5QYW5lbNokKjEQ5hPeAgAAeHIAEmphdmEu
+ YXd0LkNvbnRhaW5lckAHgHP9FAwnAwAGSQAeY29udGFpbmVyU2VyaWFsaXplZERhdGFWZXJzaW9u
+ SQALbmNvbXBvbmVudHNbAAljb21wb25lbnR0ABVbTGphdmEvYXd0L0NvbXBvbmVudDtMAApkaXNw
+ YXRjaGVydAAgTGphdmEvYXd0L0xpZ2h0d2VpZ2h0RGlzcGF0Y2hlcjtMAAlsYXlvdXRNZ3J0ABhM
+ amF2YS9hd3QvTGF5b3V0TWFuYWdlcjtMAAdtYXhTaXpldAAUTGphdmEvYXd0L0RpbWVuc2lvbjt4
+ cgASamF2YS5hd3QuQ29tcG9uZW50leqmWdc8pJoDABNJAB5jb21wb25lbnRTZXJpYWxpemVkRGF0
+ YVZlcnNpb25aAAdlbmFibGVkSgAJZXZlbnRNYXNrSQAGaGVpZ2h0WgANbmV3RXZlbnRzT25seVoA
+ BXZhbGlkWgAHdmlzaWJsZUkABXdpZHRoSQABeEkAAXlMAApiYWNrZ3JvdW5kdAAQTGphdmEvYXd0
+ L0NvbG9yO0wABmN1cnNvcnQAEUxqYXZhL2F3dC9DdXJzb3I7TAAEZm9udHQAD0xqYXZhL2F3dC9G
+ b250O0wACmZvcmVncm91bmR0ABBMamF2YS9hd3QvQ29sb3I7TAAGbG9jYWxldAASTGphdmEvdXRp
+ bC9Mb2NhbGU7TAAHbWluU2l6ZXQAFExqYXZhL2F3dC9EaW1lbnNpb247TAAEbmFtZXQAEkxqYXZh
+ L2xhbmcvU3RyaW5nO0wABnBvcHVwc3QAEkxqYXZhL3V0aWwvVmVjdG9yO0wACHByZWZTaXpldAAU
+ TGphdmEvYXd0L0RpbWVuc2lvbjt4cAAAAAEBAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAcHNy
+ AA9qYXZhLmF3dC5DdXJzb3Jvagd39xIBoAIAAUkABHR5cGV4cAAAAABwcHBwdAAGcGFuZWwwcHBw
+ eAAAAAEAAAADdXIAFVtMamF2YS5hd3QuQ29tcG9uZW50OxUPiQ0W5qp1AgAAeHAAAAAEc3IAEWph
+ dmEuYXd0LkNoZWNrYm94ZObEJlsAwIMDAARJAB1jaGVja2JveFNlcmlhbGl6ZWREYXRhVmVyc2lv
+ bloABXN0YXRlTAAFZ3JvdXB0ABhMamF2YS9hd3QvQ2hlY2tib3hHcm91cDtMAAVsYWJlbHQAEkxq
+ YXZhL2xhbmcvU3RyaW5nO3hxAH4ABgAAAAEBAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAcHEA
+ fgAScHBwcHQACWNoZWNrYm94MHBwcHgAAAABAXNyABZqYXZhLmF3dC5DaGVja2JveEdyb3VwM8LX
+ O2C16hcCAAFMABBzZWxlY3RlZENoZWNrYm94dAATTGphdmEvYXd0L0NoZWNrYm94O3hwcQB+ABl0
+ AAhTZW5kIG5vd3B4c3EAfgAWAAAAAQEAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABwcQB+ABJw
+ cHBwdAAJY2hlY2tib3gxcHBweAAAAAEAcQB+AB10AApTZW5kIGxhdGVycHhzcQB+ABYAAAABAQAA
+ AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAHBxAH4AEnBwcHB0AAljaGVja2JveDJwcHB4AAAAAQBx
+ AH4AHXQACkRvbid0IHNlbmRweHBwc3IAE2phdmEuYXd0LkdyaWRMYXlvdXSZI/rrS9wW6wIABEkA
+ BGNvbHNJAARoZ2FwSQAEcm93c0kABHZnYXB4cAAAAAEAAAAAAAAAAAAAAABwcHg=
+javaclassname: java.awt.Panel
+objectclass: top
+objectclass: javaObject
+objectclass: javaSerializedObject
+objectclass: javaContainer
+cn: CheckboxGroup
+
+dn: ou=Staff,o=JNDITutorial
+objectclass: top
+objectclass: alias
+objectclass: organizationalUnit
+aliasedObjectName: ou=People,o=JNDITutorial
+ou: Staff
+
+dn: ou=NewHires,o=JNDITutorial
+objectclass: top
+objectclass: organizationalUnit
+ou: NewHires
+
+dn: cn=S. User,ou=NewHires,o=JNDITutorial
+sn: User
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: extensibleObject
+mail: suser@JNDITutorial.example.com
+userpassword: {SHA}6f5R+U6tq/VNvy+71XGIuavuQ24=
+mySpecialKey: abcdefg
+cn: S. User
+
+dn: cn=C. User,ou=NewHires,o=JNDITutorial
+sn: User
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+mail: cuser@JNDITutorial.example.com
+userpassword: mysecret
+cn: C. User
+
+dn: cn=J. Duke,ou=NewHires,o=JNDITutorial
+sn: Duke
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+mail: newbie@JNDITutorial.example.com
+cn: J. Duke
+
+dn: cn=Newbie,ou=People,o=JNDITutorial
+objectclass: top
+objectclass: alias
+objectclass: Person
+aliasedObjectName: cn=J.Duke,ou=NewHires,o=JNDITutorial
+cn: Newbie
+sn: Newbie

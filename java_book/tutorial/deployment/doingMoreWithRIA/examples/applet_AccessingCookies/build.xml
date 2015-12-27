@@ -1,0 +1,8 @@
+<project name="applet_AccessingCookies" default="default" basedir=".">
+    <description>Builds, tests, and runs the project applet_AccessingCookies.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <target name="-post-jar">
+        <copy file="${src.dir}/AppletPage.html" todir="${dist.jar.dir}"/>
+        <copy file="${src.dir}/cookie_applet.jnlp" todir="${dist.jar.dir}"/>
+    </target>
+</project>

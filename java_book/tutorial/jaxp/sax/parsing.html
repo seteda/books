@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Parsing an XML File Using SAX (The Java&trade; Tutorials &gt;        
+            Java API for XML Processing (JAXP) &gt; Simple API for XML)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JAXP Java tutorial describes Java API for XML Processing (jaxp), XSLT, SAX, and related XML topics" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jaxp, xml, xslt, sax" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Simple API for XML</a></div>
+<div class="linkAHEAD"><a href="when.html">When to Use SAX</a></div>
+<div class="nolinkAHEAD">Parsing an XML File Using SAX</div>
+<div class="linkAHEAD"><a href="validation.html">Implementing SAX Validation</a></div>
+<div class="linkAHEAD"><a href="events.html">Handling Lexical Events</a></div>
+<div class="linkAHEAD"><a href="using.html">Using the <tt>DTDHandler</tt> and <tt>EntityResolver</tt></a></div>
+<div class="linkAHEAD"><a href="info.html">Further Information</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java API for XML Processing (JAXP)
+        <br /><b>Lesson:</b> Simple API for XML
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java API for XML Processing (JAXP)</a>
+                &gt;
+                <a href="index.html" target="_top">Simple API for XML</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="when.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="validation.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Parsing an XML File Using SAX</h1></div>
+            <div id="PageContent">
+
+<!-- Parsing an XML File Using SAX -->
+<p>In real-life applications, you will want to use the SAX parser to process XML data and do something useful with it. This section examines an example JAXP program, <tt>SAXLocalNameCount</tt>, that counts the number of elements using only the <tt>localName</tt> component of the element, in an XML document. Namespace names are ignored for simplicity. This example also shows how to use a SAX <tt>ErrorHandler</tt>.</p>
+<hr />
+<p><b>Note -</b> After you have downloaded and installed the sources of the JAXP API from the 
+<a class="OutsideLink" target="_blank" href="http://jaxp.java.net/downloads.html">JAXP download area</a>, the sample program for this example is found in the directory <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples/sax</tt>. The XML files it interacts with are found in <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples/data</tt>.</p>
+<hr />
+<p><a name="gcljn" id="gcljn"></a></p>
+<h2>Creating the Skeleton</h2>
+<p>The <tt>SAXLocalNameCount</tt> program is created in a file named <tt>SAXLocalNameCount.java</tt>.</p>
+<div class="codeblock"><pre>
+public class SAXLocalNameCount {
+    static public void main(String[] args) {
+        // ...
+    }
+}
+</pre></div>
+<p>Because you will run it standalone, you need a <tt>main()</tt> method. And you need command-line arguments so that you can tell the application which file to process.</p>
+<p><a name="gcljh" id="gcljh"></a></p>
+<h2>Importing Classes</h2>
+<p>The import statements for the classes the application will use are the following.</p>
+<div class="codeblock"><pre>
+package sax;
+import javax.xml.parsers.*;
+import org.xml.sax.*;
+import org.xml.sax.helpers.*;
+
+import java.util.*;
+import java.io.*;
+
+public class SAXLocalNameCount {
+    // ...
+}
+</pre></div>
+<p>The <tt>javax.xml.parsers</tt> package contains the <tt>SAXParserFactory</tt> class that creates the parser instance used. It throws a <tt>ParserConfigurationException</tt> if it cannot produce a parser that matches the specified configuration of options. (Later, you will see more about the configuration options). The <tt>javax.xml.parsers</tt> package also contains the <tt>SAXParser</tt> class, which is what the factory returns for parsing. The <tt>org.xml.sax</tt> package defines all the interfaces used for the SAX parser. The <tt>org.xml.sax.helpers</tt> package contains <tt>DefaultHandler</tt>, which defines the class that will handle the SAX events that the parser generates. The classes in <tt>java.util</tt> and <tt>java.io</tt>, are needed to provide hash tables and output.</p>
+<p><a name="gcnsk" id="gcnsk"></a></p>
+<h2>Setting Up I/O</h2>
+<p>The first order of business is to process the command-line arguments, which at this stage only serve to get the name of the file to process. The following code in the <tt>main</tt> method tells the application what file you want <tt>SAXLocalNameCountMethod</tt> to process.</p>
+<div class="codeblock"><pre>
+static public void main(String[] args) throws Exception {
+    String filename = null;
+
+    for (int i = 0; i &lt; args.length; i++) {
+        filename = args[i];
+        if (i != args.length - 1) {
+            usage();
+        }
+    }
+
+    if (filename == null) {
+        usage();
+    } 
+}
+</pre></div>
+<p>This code sets the main method to throw an <tt>Exception</tt> when it encounters problems, and defines the command-line options which are required to tell the application the name of the XML file to be processed. Other command line arguments in this part of the code will be examined later in this lesson, when we start looking at validation.</p>
+<p>The <tt>filename</tt> String that you give when you run the application will be converted to a <tt>java.io.File</tt> URL by an internal method, <tt>convertToFileURL()</tt>. This is done by the following code in <tt>SAXLocalNameCountMethod</tt>.</p>
+<div class="codeblock"><pre>
+public class SAXLocalNameCount {
+    private static String convertToFileURL(String filename) {
+        String path = new File(filename).getAbsolutePath();
+        if (File.separatorChar != '/') {
+            path = path.replace(File.separatorChar, '/');
+        }
+
+        if (!path.startsWith("/")) {
+            path = "/" + path;
+        }
+        return "file:" + path;
+    }
+
+    // ...
+}
+</pre></div>
+<p>If the incorrect command-line arguments are specified when the program is run, then the <tt>SAXLocalNameCount</tt> application&#39;s <tt>usage()</tt> method is invoked, to print out the correct options onscreen.</p>
+<div class="codeblock"><pre>
+private static void usage() {
+    System.err.println("Usage: SAXLocalNameCount &lt;file.xml>");
+    System.err.println("       -usage or -help = this message");
+    System.exit(1);
+}
+</pre></div>
+<p>Further <tt>usage()</tt> options will be examined later in this lesson, when validation is addressed.</p>
+<p><a name="gclmw" id="gclmw"></a></p>
+<h2>Implementing the <tt>ContentHandler</tt> Interface</h2>
+<p>The most important interface in <tt>SAXLocalNameCount</tt> is <tt>ContentHandler</tt>. This interface requires a number of methods that the SAX parser invokes in response to various parsing events. The major event-handling methods are: <tt>startDocument</tt>, <tt>endDocument</tt>, <tt>startElement</tt>, and <tt>endElement</tt>.</p>
+<p>The easiest way to implement this interface is to extend the <tt>DefaultHandler</tt> class, defined in the <tt>org.xml.sax.helpers</tt> package. That class provides do-nothing methods for all the <tt>ContentHandler</tt> events. The example program extends that class.</p>
+<div class="codeblock"><pre>
+public class SAXLocalNameCount <b>extends DefaultHandler</b> {
+    // ...
+} 
+</pre></div>
+<hr />
+<p><b>Note -</b> <tt>DefaultHandler</tt> also defines do-nothing methods for the other major events, defined in the <tt>DTDHandler</tt>, <tt>EntityResolver</tt>, and <tt>ErrorHandler</tt> interfaces. You will learn more about those methods later in this lesson.</p>
+<hr />
+<p>Each of these methods is required by the interface to throw a <tt>SAXException</tt>. An exception thrown here is sent back to the parser, which sends it on to the code that invoked the parser.</p>
+<p><a name="gclnc" id="gclnc"></a></p>
+<h2>Handling Content Events</h2>
+<p>This section shows the code that processes the <tt>ContentHandler</tt> events.</p>
+<p>When a start tag or end tag is encountered, the name of the tag is passed as a String to the <tt>startElement</tt> or the <tt>endElement</tt> method, as appropriate. When a start tag is encountered, any attributes it defines are also passed in an <tt>Attributes</tt> list. Characters found within the element are passed as an array of characters, along with the number of characters (length) and an offset into the array that points to the first character.</p>
+<p><a name="gclmb" id="gclmb"></a></p>
+<h3>Document Events</h3>
+<p>The following code handles the start-document and end-document events:</p>
+<div class="codeblock"><pre>
+public class SAXLocalNameCount extends DefaultHandler {
+    
+    private Hashtable tags;
+
+    public void startDocument() throws SAXException {
+        tags = new Hashtable();
+    }
+
+    public void endDocument() throws SAXException {
+        Enumeration e = tags.keys();
+        while (e.hasMoreElements()) {
+            String tag = (String)e.nextElement();
+            int count = ((Integer)tags.get(tag)).intValue();
+            System.out.println("Local Name \"" + tag + "\" occurs " 
+                               + count + " times");
+        }    
+    }
+ 
+    private static String convertToFileURL(String filename) {
+        // ...
+    }
+
+    // ...
+}
+</pre></div>
+<p>This code defines what the application does when the parser encounters the start and end points of the document being parsed. The <tt>ContentHandler</tt> interface&#39;s <tt>startDocument()</tt> method creates a <tt>java.util.Hashtable</tt> instance, which in <a href="#gclmm">Element Events</a> will be populated with the XML elements the parser finds in the document. When the parser reaches the end of the document, the <tt>endDocument()</tt> method is invoked, to get the names and counts of the elements contained in the hash table, and print out a message onscreen to tell the user how many incidences of each element were found.</p>
+<p>Both of these <tt>ContentHandler</tt> methods throw <tt>SAXException</tt>s. You will learn more about SAX exceptions in <a href="#gcnsr">Setting up Error Handling</a>.</p>
+<p><a name="gclmm" id="gclmm"></a></p>
+<h3>Element Events</h3>
+<p>As mentioned in <a href="#gclmb">Document Events</a>, the hash table created by the <tt>startDocument</tt> method needs to be populated with the various elements that the parser finds in the document. The following code processes the start-element and end-element events:</p>
+<div class="codeblock"><pre>
+public void startDocument() throws SAXException {
+    tags = new Hashtable();
+}
+
+public void startElement(String namespaceURI,
+                         String localName,
+                         String qName, 
+                         Attributes atts)
+    throws SAXException {
+
+    String key = localName;
+    Object value = tags.get(key);
+
+    if (value == null) {
+        tags.put(key, new Integer(1));
+    } 
+    else {
+        int count = ((Integer)value).intValue();
+        count++;
+        tags.put(key, new Integer(count));
+    }
+}
+ 
+public void endDocument() throws SAXException {
+    // ...
+}
+</pre></div>
+<p>This code processes the element tags, including any attributes defined in the start tag, to obtain the namespace universal resource identifier (URI), the local name and the qualified name of that element. The <tt>startElement()</tt> method then populates the hash map created by <tt>startDocument()</tt> with the local names and the counts thereof, for each type of element. Note that when the <tt>startElement()</tt> method is invoked, if namespace processing is not enabled, then the local name for elements and attributes could turn out to be an empty string. The code handles that case by using the qualified name whenever the simple name is an empty string.</p>
+<p><a name="gclmx" id="gclmx"></a></p>
+<h3>Character Events</h3>
+<p>The JAXP SAX API also allows you to handle the characters that the parser delivers to your application, using the <tt>ContentHandler.characters()</tt> method.</p>
+<hr />
+<p><b>Note -</b> Character events are not demonstrated in the <tt>SAXLocalNameCount</tt> example, but a brief description is included in this section, for completeness.</p>
+<hr />
+<p>Parsers are not required to return any particular number of characters at one time. A parser can return anything from a single character at a time up to several thousand and still be a standard-conforming implementation. So if your application needs to process the characters it sees, it is wise to have the <tt>characters()</tt> method accumulate the characters in a <tt>java.lang.StringBuffer</tt> and operate on them only when you are sure that all of them have been found.</p>
+<p>You finish parsing text when an element ends, so you normally perform your character processing at that point. But you might also want to process text when an element starts. This is necessary for document-style data, which can contain XML elements that are intermixed with text. For example, consider this document fragment:</p>
+<p><code><b>&lt;para&gt;</b>This paragraph contains <b>&lt;bold&gt;</b>important<b>&lt;/bold&gt;</b> ideas.<b>&lt;/para&gt;</b></code></p>
+<p>The initial text, <tt>This paragraph contains</tt>, is terminated by the start of the <tt>&lt;bold&gt;</tt> element. The text <tt>important</tt> is terminated by the end tag, <tt>&lt;/bold&gt;</tt>, and the final text, <tt>ideas.</tt>, is terminated by the end tag, <tt>&lt;/para&gt;</tt>.</p>
+<p>To be strictly accurate, the character handler should scan for ampersand characters (&amp;) and left-angle bracket characters (&lt;) and replace them with the strings <tt>&amp;amp;</tt> or <tt>&amp;lt;</tt>, as appropriate. This is explained in the next section.</p>
+<p><a name="gcwqt" id="gcwqt"></a></p>
+<h3>Handling Special Characters</h3>
+<p>In XML, an entity is an XML structure (or plain text) that has a name. Referencing the entity by name causes it to be inserted into the document in place of the entity reference. To create an entity reference, you surround the entity name with an ampersand and a semicolon:</p>
+<p><code>&amp;entityName;</code></p>
+<p>When you are handling large blocks of XML or HTML that include many special characters, you can use a CDATA section. A CDATA section works like <tt>&lt;code&gt;...&lt;/code&gt;</tt> in HTML, only more so: all white space in a CDATA section is significant, and characters in it are not interpreted as XML. A CDATA section starts with <tt>&lt;![[CDATA[</tt> and ends with <tt>]]&gt;</tt>.</p>
+<p>An example of a CDATA section, taken from the sample XML file <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples/data/REC-xml-19980210.xml</tt>, is shown below.</p>
+<p><code>&lt;p&gt;&lt;termdef id=&quot;dt-cdsection&quot; term=&quot;CDATA Section&quot;&lt;&lt;term&gt;CDATA sections&lt;/term&gt; may occur anywhere character data may occur; they are used to escape blocks of text containing characters which would otherwise be recognized as markup. CDATA sections begin with the string &quot;&lt;code&gt;&amp;lt;![CDATA[&lt;/code&gt;&quot; and end with the string &quot;&lt;code&gt;]]&amp;gt;&lt;/code&gt;&quot;</code></p>
+<p>Once parsed, this text would be displayed as follows:</p>
+<p>CDATA sections may occur anywhere character data may occur; they are used to escape blocks of text containing characters which would otherwise be recognized as markup. CDATA sections begin with the string &quot;<tt>&lt;![CDATA[</tt>&quot; and end with the string &quot;<tt>]]&gt;</tt>&quot;.</p>
+<p>The existence of CDATA makes the proper echoing of XML a bit tricky. If the text to be output is not in a CDATA section, then any angle brackets, ampersands, and other special characters in the text should be replaced with the appropriate entity reference. (Replacing left angle brackets and ampersands is most important, other characters will be interpreted properly without misleading the parser.) But if the output text is in a CDATA section, then the substitutions should not occur, resulting in text like that in the earlier example. In a simple program such as our <tt>SAXLocalNameCount</tt> application, this is not particularly serious. But many XML-filtering applications will want to keep track of whether the text appears in a CDATA section, so that they can treat special characters properly.</p>
+<p><a name="gclmt" id="gclmt"></a></p>
+<h2>Setting up the Parser</h2>
+<p>The following code sets up the parser and gets it started:</p>
+<div class="codeblock"><pre>
+static public void main(String[] args) throws Exception {
+
+    // Code to parse command-line arguments 
+    //(shown above)
+    // ...
+
+    SAXParserFactory spf = SAXParserFactory.newInstance();
+    spf.setNamespaceAware(true);
+    SAXParser saxParser = spf.newSAXParser();
+}
+</pre></div>
+<p>These lines of code create a <tt>SAXParserFactory</tt> instance, as determined by the setting of the <tt>javax.xml.parsers.SAXParserFactory</tt> system property. The factory to be created is set up to support XML namespaces by setting <tt>setNamespaceAware</tt> to true, and then a <tt>SAXParser</tt> instance is obtained from the factory by invoking its <tt>newSAXParser()</tt> method.</p>
+<hr />
+<p><b>Note -</b> The <tt>javax.xml.parsers.SAXParser</tt> class is a wrapper that defines a number of convenience methods. It wraps the (somewhat less friendly) <tt>org.xml.sax.Parser</tt> object. If needed, you can obtain that parser using the <tt>getParser()</tt> method of the <tt>SAXParser</tt> class.</p>
+<hr />
+<p>You now need to implement the <tt>XMLReader</tt> that all parsers must implement. The <tt>XMLReader</tt> is used by the application to tell the SAX parser what processing it is to perform on the document in question. The <tt>XMLReader</tt> is implemented by the following code in the <tt>main</tt> method.</p>
+<div class="codeblock"><pre>
+// ...
+SAXParser saxParser = spf.newSAXParser();
+XMLReader xmlReader = saxParser.getXMLReader();
+xmlReader.setContentHandler(new SAXLocalNameCount());
+xmlReader.parse(convertToFileURL(filename));
+</pre></div>
+<p>Here, you obtain an <tt>XMLReader</tt> instance for your parser by invoking your <tt>SAXParser</tt> instance&#39;s <tt>getXMLReader()</tt> method. The <tt>XMLReader</tt> then registers the <tt>SAXLocalNameCount</tt> class as its content handler, so that the actions performed by the parser will be those of the <tt>startDocument()</tt>, <tt>startElement()</tt>, and <tt>endDocument()</tt> methods shown in <a href="#gclnc">Handling Content Events</a>. Finally, the <tt>XMLReader</tt> tells the parser which document to parse by passing it the location of the XML file in question, in the form of the <tt>File</tt> URL generated by the <tt>convertToFileURL()</tt> method defined in <a href="#gcnsk">Setting Up I/O</a>.</p>
+<p><a name="gcnsr" id="gcnsr"></a></p>
+<h2>Setting up Error Handling</h2>
+<p>You could start using your parser now, but it is safer to implement some error handling. The parser can generate three kinds of errors: a fatal error, an error, and a warning. When a fatal error occurs, the parser cannot continue. So if the application does not generate an exception, then the default error-event handler generates one. But for nonfatal errors and warnings, exceptions are never generated by the default error handler, and no messages are displayed.</p>
+<p>As shown in <a href="#gclmb">Document Events</a>, the application&#39;s event handling methods throw <tt>SAXException</tt>. For example, the signature of the <tt>startDocument()</tt> method in the <tt>ContentHandler</tt> interface is defined as returning a <tt>SAXException</tt>.</p>
+<p><code>public void startDocument() throws SAXException { /* ... */ }</code></p>
+<p>A <tt>SAXException</tt> can be constructed using a message, another exception, or both.</p>
+<p>Because the default parser only generates exceptions for fatal errors, and because the information about the errors provided by the default parser is somewhat limited, the <tt>SAXLocalNameCount</tt> program defines its own error handling, through the <tt>MyErrorHandler</tt> class.</p>
+<div class="codeblock"><pre>
+xmlReader.setErrorHandler(new MyErrorHandler(System.err));
+
+// ...
+
+private static class MyErrorHandler implements ErrorHandler {
+    private PrintStream out;
+
+    MyErrorHandler(PrintStream out) {
+        this.out = out;
+    }
+
+    private String getParseExceptionInfo(SAXParseException spe) {
+        String systemId = spe.getSystemId();
+
+        if (systemId == null) {
+            systemId = "null";
+        }
+
+        String info = "URI=" + systemId + " Line=" 
+            + spe.getLineNumber() + ": " + spe.getMessage();
+
+        return info;
+    }
+
+    public void warning(SAXParseException spe) throws SAXException {
+        out.println("Warning: " + getParseExceptionInfo(spe));
+    }
+        
+    public void error(SAXParseException spe) throws SAXException {
+        String message = "Error: " + getParseExceptionInfo(spe);
+        throw new SAXException(message);
+    }
+
+    public void fatalError(SAXParseException spe) throws SAXException {
+        String message = "Fatal Error: " + getParseExceptionInfo(spe);
+        throw new SAXException(message);
+    }
+}
+</pre></div>
+<p>In the same way as in <a href="#gclmt">Setting up the Parser</a>, which showed the <tt>XMLReader</tt> being pointed to the correct content handler, here the <tt>XMLReader</tt> is pointed to the new error handler by calling its <tt>setErrorHandler()</tt> method.</p>
+<p>The <tt>MyErrorHandler</tt> class implements the standard <tt>org.xml.sax.ErrorHandler</tt> interface, and defines a method to obtain the exception information that is provided by any <tt>SAXParseException</tt> instances generated by the parser. This method, <tt>getParseExceptionInfo()</tt>, simply obtains the line number at which the error occurs in the XML document and the identifier of the system on which it is running by calling the standard <tt>SAXParseException</tt> methods <tt>getLineNumber()</tt> and <tt>getSystemId()</tt>. This exception information is then fed into implementations of the basic SAX error handling methods <tt>error()</tt>, <tt>warning()</tt>, and <tt>fatalError()</tt>, which are updated to send the appropriate messages about the nature and location of the errors in the document.</p>
+<p><a name="gcvww" id="gcvww"></a></p>
+<h3>Handling NonFatal Errors</h3>
+<p>A nonfatal error occurs when an XML document fails a validity constraint. If the parser finds that the document is not valid, then an error event is generated. Such errors are generated by a validating parser, given a document type definition (DTD) or schema, when a document has an invalid tag, when a tag is found where it is not allowed, or (in the case of a schema) when the element contains invalid data.</p>
+<p>The most important principle to understand about nonfatal errors is that they are ignored by default. But if a validation error occurs in a document, you probably do not want to continue processing it. You probably want to treat such errors as fatal.</p>
+<p>To take over error handling, you override the <tt>DefaultHandler</tt> methods that handle fatal errors, nonfatal errors, and warnings as part of the <tt>ErrorHandler</tt> interface. As shown in the code extract in the previous section, the SAX parser delivers a <tt>SAXParseException</tt> to each of these methods, so generating an exception when an error occurs is as simple as throwing it back.</p>
+<hr />
+<p><b>Note -</b> It can be instructive to examine the error-handling methods defined in <tt>org.xml.sax.helpers.DefaultHandler</tt>. You will see that the <tt>error()</tt> and <tt>warning()</tt> methods do nothing, whereas <tt>fatalError()</tt> throws an exception. Of course, you could always override the <tt>fatalError()</tt> method to throw a different exception. But if your code does not throw an exception when a fatal error occurs, then the SAX parser will. The XML specification requires it.</p>
+<hr />
+<p><a name="gcvwp" id="gcvwp"></a></p>
+<h3>Handling Warnings</h3>
+<p>Warnings, too, are ignored by default. Warnings are informative and can only be generated in the presence of a DTD or schema. For example, if an element is defined twice in a DTD, a warning is generated. It is not illegal, and it does not cause problems, but it is something you might like to know about because it might not have been intentional. Validating an XML document against a DTD will be shown in the section 
+.</p>
+<p><a name="gcnrx" id="gcnrx"></a></p>
+<h2>Running the SAX Parser Example without Validation</h2>
+<p>As stated at the beginning of this lesson, after you have downloaded and installed the sources of the JAXP API from the <a href="http://jaxp.java.net/downloads.html">JAXP sources download area</a>, the sample program and the associated files needed to run it are found in the following locations.</p>
+<ul>
+<li>
+<p>The different Java archive (JAR) files for the example are located in the directory <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/lib</tt>.</p>
+</li>
+<li>
+<p>The <tt>SAXLocalNameCount.java</tt> file is found in <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples/sax</tt>.</p>
+</li>
+<li>
+<p>The XML files that <tt>SAXLocalNameCount</tt> interacts with are found in <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples/data</tt>.</p>
+</li>
+</ul>
+<p>The following steps explain how to run the SAX parser example without validation.</p>
+<p><a name="gcvwx" id="gcvwx"></a></p>
+<h3>To Run the <tt>SAXLocalNameCount</tt> Example without Validation</h3>
+<ol>
+<li><b>Navigate to the <tt>samples</tt> directory.</b><code>% cd <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt>.</code></li>
+<li><b>Compile the example class.</b><code>% javac sax/*</code></li>
+<li><b>Run the <tt>SAXLocalNameCount</tt> program on an XML file.</b>
+<p>Choose one of the XML files in the <tt>data</tt> directory and run the <tt>SAXLocalNameCount</tt> program on it. Here, we have chosen to run the program on the file <tt>rich_iii.xml</tt>.</p>
+<code>% java sax/SAXLocalNameCount data/rich_iii.xml</code>
+<p>The XML file <tt>rich_iii.xml</tt> contains an XML version of William Shakespeare&#39;s play <i>Richard III</i>. When you run the <tt>SAXLocalNameCount</tt> on it, you should see the following output.</p>
+<div class="codeblock"><pre>
+Local Name "STAGEDIR" occurs 230 times
+Local Name "PERSONA" occurs 39 times
+Local Name "SPEECH" occurs 1089 times
+Local Name "SCENE" occurs 25 times
+Local Name "ACT" occurs 5 times
+Local Name "PGROUP" occurs 4 times
+Local Name "PLAY" occurs 1 times
+Local Name "PLAYSUBT" occurs 1 times
+Local Name "FM" occurs 1 times
+Local Name "SPEAKER" occurs 1091 times
+Local Name "TITLE" occurs 32 times
+Local Name "GRPDESCR" occurs 4 times
+Local Name "P" occurs 4 times
+Local Name "SCNDESCR" occurs 1 times
+Local Name "PERSONAE" occurs 1 times
+Local Name "LINE" occurs 3696 times
+</pre></div>
+<p>The <tt>SAXLocalNameCount</tt> program parses the XML file, and provides a count of the number of instances of each type of XML tag that it contains.</p>
+</li>
+<li><b>Open the file <tt>data/rich_iii.xml</tt> in a text editor.</b>
+<p>To check that the error handling is working, delete the closing tag from an entry in the XML file, for example the closing tag <tt>&lt;/PERSONA&gt;</tt>, from line 30, shown below.</p>
+<code>30 &lt;PERSONA&gt;EDWARD, Prince of Wales, afterwards King Edward V.&lt;/PERSONA&gt;</code></li>
+<li><b>Run <tt>SAXLocalNameCount</tt> again.</b>
+<p>This time, you should see the following fatal error message.</p>
+<code>% java sax/SAXLocalNameCount data/rich_iii.xml Exception in thread &quot;main&quot; org.xml.sax.SAXException: Fatal Error: URI=file:<i>install-dir</i> /JAXP_sources/jaxp-1_4_2-<i>release-date</i>/samples/data/rich_iii.xml Line=30: The element type &quot;PERSONA&quot; must be terminated by the matching end-tag &quot;&lt;/PERSONA&gt;&quot;.</code>
+<p>As you can see, when the error was encountered, the parser generated a <tt>SAXParseException</tt>, a subclass of <tt>SAXException</tt> that identifies the file and the location where the error occurred.</p>
+</li>
+</ol>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="when.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="validation.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> When to Use SAX
+        <br /><b>Next page:</b> Implementing SAX Validation
+    </div>
+</body>
+</html> 

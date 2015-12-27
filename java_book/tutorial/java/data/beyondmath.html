@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Beyond Basic Arithmetic (The Java&trade; Tutorials &gt;        
+            Learning the Java Language &gt; Numbers and Strings)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This beginner Java tutorial describes fundamentals of programming in the Java programming language" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java objects, java classes, java inheritance, interfaces, variables, arrays, data types, operators, control flow, number, string" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Numbers and Strings</a></div>
+<div class="linkAHEAD"><a href="numbers.html">Numbers</a></div>
+<div class="linkBHEAD"><a href="numberclasses.html">The Numbers Classes</a></div>
+<div class="linkBHEAD"><a href="numberformat.html">Formatting Numeric Print Output</a></div>
+<div class="nolinkBHEAD">Beyond Basic Arithmetic</div>
+<div class="linkBHEAD"><a href="numbersummary.html">Summary of Numbers</a></div>
+<div class="linkQUESTIONS"><a href="QandE/numbers-questions.html">Questions and Exercises</a></div>
+<div class="linkAHEAD"><a href="characters.html">Characters</a></div>
+<div class="linkAHEAD"><a href="strings.html">Strings</a></div>
+<div class="linkBHEAD"><a href="converting.html">Converting Between Numbers and Strings</a></div>
+<div class="linkBHEAD"><a href="manipstrings.html">Manipulating Characters in a String</a></div>
+<div class="linkBHEAD"><a href="comparestrings.html">Comparing Strings and Portions of Strings</a></div>
+<div class="linkBHEAD"><a href="buffers.html">The StringBuilder Class</a></div>
+<div class="linkBHEAD"><a href="stringsummary.html">Summary of Characters and Strings</a></div>
+<div class="linkAHEAD"><a href="autoboxing.html">Autoboxing and Unboxing</a></div>
+<div class="linkQUESTIONS"><a href="QandE/characters-questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Learning the Java Language
+        <br /><b>Lesson:</b> Numbers and Strings
+        <br /><b>Section:</b> Numbers
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Learning the Java Language</a>
+                &gt;
+                <a href="index.html" target="_top">Numbers and Strings</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="numberformat.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="numbersummary.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Beyond Basic Arithmetic</h1></div>
+            <div id="PageContent">
+
+<!-- Beyond Basic Arithmetic -->
+<p>The Java programming language supports basic arithmetic with its arithmetic operators: +, -, *, /, and %. The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html"><code>Math</code> </a>class in the <code>java.lang</code> package provides methods and constants for doing more advanced mathematical computation.</p>
+<p>The methods in the <code>Math</code> class are all static, so you call them directly from the class, like this:</p>
+<div class="codeblock"><pre>
+Math.cos(angle);
+</pre></div>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;Using the 
+<a class="TutorialLink" target="_top" href="../package/usepkgs.html#staticimport"><code>static import</code> </a>language feature, you don&#39;t have to write <code>Math</code> in front of every math function:
+<div class="codeblock"><pre>
+import static java.lang.Math.*;
+</pre></div>
+<p>This allows you to invoke the <code>Math</code> class methods by their simple names. For example:</p>
+<div class="codeblock"><pre>
+cos(angle);
+</pre></div>
+<hr /></div>
+<h2>Constants and Basic Methods</h2>
+<p>The <code>Math</code> class includes two constants:</p>
+<ul>
+<li><code>Math.E</code>, which is the base of natural logarithms, and</li>
+<li><code>Math.PI</code>, which is the ratio of the circumference of a circle to its diameter.</li>
+</ul>
+<p>The <code>Math</code> class also includes more than 40 static methods. The following table lists a number of the basic methods.</p>
+<table width="100%" border="1" cellpadding="4" cellspacing="3" summary="This table lists the basic math methods">
+<caption style="font-weight: bold">Basic Math Methods</caption>
+<thead>
+<tr>
+<th id="h1">Method</th>
+<th id="h2" width="50%">Description</th>
+</tr>
+</thead>
+<tr>
+<td headers="h1"><code>double abs(double d)<br />
+float abs(float f)<br />
+int abs(int i)<br />
+long abs(long lng)</code></td>
+<td headers="h2">Returns the absolute value of the argument.</td>
+</tr>
+<tr>
+<td headers="h1"><code>double ceil(double d)</code></td>
+<td headers="h2">Returns the smallest integer that is greater than or equal to the argument. Returned as a double.</td>
+</tr>
+<tr>
+<td headers="h1"><code>double floor(double d)</code></td>
+<td headers="h2">Returns the largest integer that is less than or equal to the argument. Returned as a double.</td>
+</tr>
+<tr>
+<td headers="h1"><code>double rint(double d)</code></td>
+<td headers="h2">Returns the integer that is closest in value to the argument. Returned as a double.</td>
+</tr>
+<tr>
+<td headers="h1"><code>long round(double d)<br />
+int round(float f)</code></td>
+<td headers="h2">Returns the closest long or int, as indicated by the method&#39;s return type, to the argument.</td>
+</tr>
+<tr>
+<td headers="h1"><code>double min(double arg1, double arg2)<br />
+float min(float arg1, float arg2)<br />
+int min(int arg1, int arg2)<br />
+long min(long arg1, long arg2)</code></td>
+<td headers="h2">Returns the smaller of the two arguments.</td>
+</tr>
+<tr>
+<td headers="h1"><code>double max(double arg1, double arg2)<br />
+float max(float arg1, float arg2)<br />
+int max(int arg1, int arg2)<br />
+long max(long arg1, long arg2)</code></td>
+<td headers="h2">Returns the larger of the two arguments.</td>
+</tr>
+</table>
+<p>The following program, 
+<a class="SourceLink" target="_blank" href="examples/BasicMathDemo.java" onclick="showCode('../../displayCode.html', 'examples/BasicMathDemo.java'); return false;"><code>BasicMathDemo</code></a> , illustrates how to use some of these methods:</p>
+<div class="codeblock"><pre>
+
+public class BasicMathDemo {
+    public static void main(String[] args) {
+        double a = -191.635;
+        double b = 43.74;
+        int c = 16, d = 45;
+
+        System.out.printf(&quot;The absolute value &quot; + &quot;of %.3f is %.3f%n&quot;, 
+                          a, Math.abs(a));
+
+        System.out.printf(&quot;The ceiling of &quot; + &quot;%.2f is %.0f%n&quot;, 
+                          b, Math.ceil(b));
+
+        System.out.printf(&quot;The floor of &quot; + &quot;%.2f is %.0f%n&quot;, 
+                          b, Math.floor(b));
+
+        System.out.printf(&quot;The rint of %.2f &quot; + &quot;is %.0f%n&quot;, 
+                          b, Math.rint(b));
+
+        System.out.printf(&quot;The max of %d and &quot; + &quot;%d is %d%n&quot;,
+                          c, d, Math.max(c, d));
+
+        System.out.printf(&quot;The min of of %d &quot; + &quot;and %d is %d%n&quot;,
+                          c, d, Math.min(c, d));
+    }
+}
+</pre></div>
+<p>Here&#39;s the output from this program:</p>
+<div class="codeblock"><pre>
+The absolute value of -191.635 is 191.635
+The ceiling of 43.74 is 44
+The floor of 43.74 is 43
+The rint of 43.74 is 44
+The max of 16 and 45 is 45
+The min of 16 and 45 is 16
+</pre></div>
+<h2>Exponential and Logarithmic Methods</h2>
+<p>The next table lists exponential and logarithmic methods of the <code>Math</code> class.</p>
+<table width="100%" border="1" cellpadding="4" cellspacing="3" summary="This table lists the exponential and logarithmic math methods">
+<caption style="font-weight: bold">Exponential and Logarithmic Methods</caption>
+<tr>
+<th id="h101">Method</th>
+<th id="h102" width="50%">Description</th>
+</tr>
+<tr>
+<td headers="h101"><code>double exp(double d)</code></td>
+<td headers="h102">Returns the base of the natural logarithms, e, to the power of the argument.</td>
+</tr>
+<tr>
+<td headers="h101"><code>double log(double d)</code></td>
+<td headers="h102">Returns the natural logarithm of the argument.</td>
+</tr>
+<tr>
+<td headers="h101"><code>double pow(double base, double exponent)</code></td>
+<td headers="h102">Returns the value of the first argument raised to the power of the second argument.</td>
+</tr>
+<tr>
+<td headers="h101"><code>double sqrt(double d)</code></td>
+<td headers="h102">Returns the square root of the argument.</td>
+</tr>
+</table>
+<p>The following program, 
+<a class="SourceLink" target="_blank" href="examples/ExponentialDemo.java" onclick="showCode('../../displayCode.html', 'examples/ExponentialDemo.java'); return false;"><code>ExponentialDemo</code></a>, displays the value of <code>e</code>, then calls each of the methods listed in the previous table on arbitrarily chosen numbers:</p>
+<div class="codeblock"><pre>
+
+public class ExponentialDemo {
+    public static void main(String[] args) {
+        double x = 11.635;
+        double y = 2.76;
+
+        System.out.printf(&quot;The value of &quot; + &quot;e is %.4f%n&quot;,
+                          Math.E);
+
+        System.out.printf(&quot;exp(%.3f) &quot; + &quot;is %.3f%n&quot;,
+                          x, Math.exp(x));
+
+        System.out.printf(&quot;log(%.3f) is &quot; + &quot;%.3f%n&quot;,
+                          x, Math.log(x));
+
+        System.out.printf(&quot;pow(%.3f, %.3f) &quot; + &quot;is %.3f%n&quot;,
+                          x, y, Math.pow(x, y));
+
+        System.out.printf(&quot;sqrt(%.3f) is &quot; + &quot;%.3f%n&quot;,
+                          x, Math.sqrt(x));
+    }
+}
+</pre></div>
+<p>Here&#39;s the output you&#39;ll see when you run <code>ExponentialDemo</code>:</p>
+<div class="codeblock"><pre>
+The value of e is 2.7183
+exp(11.635) is 112983.831
+log(11.635) is 2.454
+pow(11.635, 2.760) is 874.008
+sqrt(11.635) is 3.411
+</pre></div>
+<h2>Trigonometric Methods</h2>
+<p>The <code>Math</code> class also provides a collection of trigonometric functions, which are summarized in the following table. The value passed into each of these methods is an angle expressed in radians. You can use the <code>toRadians</code> method to convert from degrees to radians.</p>
+<table width="100%" border="1" cellpadding="4" cellspacing="3" summary="This table lists trigonometric math methods">
+<caption style="font-weight: bold">Trigonometric Methods</caption>
+<tr>
+<th id="h201">Method</th>
+<th id="h202" width="50%">Description</th>
+</tr>
+<tr>
+<td headers="h201"><code>double sin(double d)</code></td>
+<td headers="h202">Returns the sine of the specified double value.</td>
+</tr>
+<tr>
+<td headers="h201"><code>double cos(double d)</code></td>
+<td headers="h202">Returns the cosine of the specified double value.</td>
+</tr>
+<tr>
+<td headers="h201"><code>double tan(double d)</code></td>
+<td headers="h202">Returns the tangent of the specified double value.</td>
+</tr>
+<tr>
+<td headers="h201"><code>double asin(double d)</code></td>
+<td headers="h202">Returns the arcsine of the specified double value.</td>
+</tr>
+<tr>
+<td headers="h201"><code>double acos(double d)</code></td>
+<td headers="h202">Returns the arccosine of the specified double value.</td>
+</tr>
+<tr>
+<td headers="h201"><code>double atan(double d)</code></td>
+<td headers="h202">Returns the arctangent of the specified double value.</td>
+</tr>
+<tr>
+<td headers="h201"><code>double atan2(double y, double x)</code></td>
+<td headers="h202">Converts rectangular coordinates <code>(x, y)</code> to polar coordinate <code>(r, theta)</code> and returns <code>theta</code>.</td>
+</tr>
+<tr>
+<td headers="h201"><code>double toDegrees(double d)<br />
+double toRadians(double d)</code></td>
+<td headers="h202">Converts the argument to degrees or radians.</td>
+</tr>
+</table>
+<p>Here&#39;s a program, 
+<a class="SourceLink" target="_blank" href="examples/TrigonometricDemo.java" onclick="showCode('../../displayCode.html', 'examples/TrigonometricDemo.java'); return false;"><code>TrigonometricDemo</code></a>, that uses each of these methods to compute various trigonometric values for a 45-degree angle:</p>
+<div class="codeblock"><pre>
+
+public class TrigonometricDemo {
+    public static void main(String[] args) {
+        double degrees = 45.0;
+        double radians = Math.toRadians(degrees);
+        
+        System.out.format(&quot;The value of pi &quot; + &quot;is %.4f%n&quot;,
+                           Math.PI);
+
+        System.out.format(&quot;The sine of %.1f &quot; + &quot;degrees is %.4f%n&quot;,
+                          degrees, Math.sin(radians));
+
+        System.out.format(&quot;The cosine of %.1f &quot; + &quot;degrees is %.4f%n&quot;,
+                          degrees, Math.cos(radians));
+
+        System.out.format(&quot;The tangent of %.1f &quot; + &quot;degrees is %.4f%n&quot;,
+                          degrees, Math.tan(radians));
+
+        System.out.format(&quot;The arcsine of %.4f &quot; + &quot;is %.4f degrees %n&quot;, 
+                          Math.sin(radians), 
+                          Math.toDegrees(Math.asin(Math.sin(radians))));
+
+        System.out.format(&quot;The arccosine of %.4f &quot; + &quot;is %.4f degrees %n&quot;, 
+                          Math.cos(radians),  
+                          Math.toDegrees(Math.acos(Math.cos(radians))));
+
+        System.out.format(&quot;The arctangent of %.4f &quot; + &quot;is %.4f degrees %n&quot;, 
+                          Math.tan(radians), 
+                          Math.toDegrees(Math.atan(Math.tan(radians))));
+    }
+}
+</pre></div>
+<p>The output of this program is as follows:</p>
+<div class="codeblock"><pre>
+The value of pi is 3.1416
+The sine of 45.0 degrees is 0.7071
+The cosine of 45.0 degrees is 0.7071
+The tangent of 45.0 degrees is 1.0000
+The arcsine of 0.7071 is 45.0000 degrees
+The arccosine of 0.7071 is 45.0000 degrees
+The arctangent of 1.0000 is 45.0000 degrees
+</pre></div>
+<h2>Random Numbers</h2>
+<p>The <code>random()</code> method returns a pseudo-randomly selected number between 0.0 and 1.0. The range includes 0.0 but not 1.0. In other words: <code>0.0 &lt;= Math.random() &lt; 1.0</code>. To get a number in a different range, you can perform arithmetic on the value returned by the random method. For example, to generate an integer between 0 and 9, you would write:</p>
+<div class="codeblock"><pre>
+int number = (int)(Math.random() * 10);
+</pre></div>
+<p>By multiplying the value by 10, the range of possible values becomes <code>0.0 &lt;= number &lt; 10.0</code>.</p>
+<p>Using <code>Math.random</code> works well when you need to generate a single random number. If you need to generate a series of random numbers, you should create an instance of <code>java.util.Random</code> and invoke methods on that object to generate numbers.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="numberformat.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="numbersummary.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Formatting Numeric Print Output
+        <br /><b>Next page:</b> Summary of Numbers
+    </div>
+</body>
+</html> 

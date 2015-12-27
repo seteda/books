@@ -1,0 +1,18 @@
+#!/opt/internet/bin/perl
+read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
+@pairs = split(/&/, $buffer);
+foreach $pair (@pairs)
+{
+    ($name, $value) = split(/=/, $pair);
+    $value =~ tr/+/ /;
+    $value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+    # Stop people from using subshells to execute commands
+    $value =~ s/~!/ ~!/g; 
+    $FORM{$name} = $value;
+}
+
+print "Content-type: text/plain\n\n";
+print "$FORM{'string'} reversed is: ";
+$foo=reverse($FORM{'string'});
+print "$foo\n";
+exit 0;

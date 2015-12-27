@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="packager_MultipleLaunchers" default="default" basedir=".">
+    <description>Builds, tests, and runs the project packager_MultipleLaunchers.</description>
+    <import file="nbproject/build-impl.xml"/>
+
+    <target name="-pre-init">
+        <!-- download and copy groovy library -->
+        <copy toFile="lib/groovy-all-2.3.8.jar">
+            <resources>
+                <url url="http://central.maven.org/maven2/org/codehaus/groovy/groovy-all/2.3.8/groovy-all-2.3.8.jar"/>
+            </resources>
+        </copy>
+        <condition property="excludes" value="**/*Mac.java">
+            <not>
+                <os family="mac"/>
+            </not>
+        </condition>
+        <condition property="main.class" value="sample.fa.ScriptRunnerApplication" else="sample.fa.ScriptRunnerApplicationMac">
+            <not>
+                <os family="mac"/>
+            </not>
+        </condition>
+        <property name="javac.compilerargs" value="-XDignore.symbol.file=true"/>
+    </target>
+
+
+    <target name="-post-jar">
+        <copy todir="dist" includeemptydirs="false">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+                <exclude name="package/**"/>
+            </fileset>
+            <fileset dir="." includes="lib/*"/>
+        </copy>
+    </target>
+
+
+    <target name="package" depends="jar" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+        <taskdef resource="com/sun/javafx/tools/ant/antlib.xml"
+                 uri="javafx:com.sun.javafx.tools.ant"
+                 classpath="${java.home}/../lib/ant-javafx.jar;src"/>
+
+        <fx:deploy outdir="${basedir}/build/packager"
+                   outfile="MultipleLaunchersDemo"
+                   nativeBundles="all"
+                   verbose="false">
+
+             <fx:application id="multiplelaunchersdemo"
+                             name="Multiple Launchers Demo"
+                             mainClass="${main.class}"
+                             version="1.0"
+             >
+                 <fx:argument>sample.js</fx:argument>
+             </fx:application>
+
+            <fx:resources>
+                <fx:fileset dir="dist" includes="**/*"/>
+            </fx:resources>
+
+            <fx:info title="Multiple Launchers Demo"
+                     vendor="My Company"
+                     description="A Demo of Multiple Launchers for JavaPackager"
+                     category="Demos"
+                     copyright="(c) 2014 My Company"
+                     license="3 Clause BSD"
+            >
+                <fx:association extension="js" mimetype="text/javascript" description="JavaScript Source"/>
+                <fx:association extension="groovy" mimetype="text/x-groovy" description="Groovy Source"/>
+            </fx:info>
+
+            <fx:bundleArgument arg="classpath" value="MultipleLaunchersDemo.jar lib/groovy-all-2.3.8.jar"/>
+            <fx:bundleArgument arg="mac.CFBundleName" value="JSR-223 Demo"/>
+
+
+            <fx:bundleArgument arg="linux.bundleName" value="multiple-launchers-demo"/>
+            <fx:bundleArgument arg="win.menuGroup" value="Java Demos"/>
+            <fx:bundleArgument arg="win.exe.systemWide" value="true"/>
+
+            <fx:secondaryLauncher name="Dynamic Tree Demo"
+                mainClass="webstartComponentArch.DynamicTreeApplication"
+                version="1.0"
+                title="Dynamic Tree Demo"
+                vendor="My Company"
+                description="A Demo of Multiple Launchers for JavaPackager"
+                copyright="(c) 2014 My Company"
+                menu="true"
+                shortcut="false"
+            >
+                <fx:argument>Sample CLI Argument</fx:argument>
+                <fx:jvmarg value="-Xms64M"/>
+                <fx:jvmuserarg name="-Xmx" value="256m"/>
+                <fx:property name="swing.defaultlaf" value="javax.swing.plaf.nimbus.NimbusLookAndFeel"/>
+            </fx:secondaryLauncher>
+
+        </fx:deploy>
+    </target>
+
+</project>

@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Playing Back Audio (The Java&trade; Tutorials &gt;        
+            Sound)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="" />
+     <meta name="keywords" content="java programming, learn java, java sample code, " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkAHEAD"><a href="sampled-overview.html">Overview of the Sampled Package</a></div>
+<div class="linkAHEAD"><a href="accessing.html">Accessing Audio System Resources</a></div>
+<div class="nolinkAHEAD">Playing Back Audio</div>
+<div class="linkAHEAD"><a href="capturing.html">Capturing Audio</a></div>
+<div class="linkAHEAD"><a href="controls.html">Processing Audio with Controls</a></div>
+<div class="linkAHEAD"><a href="converters.html">Using Files and Format Converters</a></div>
+<div class="linkAHEAD"><a href="overview-MIDI.html">Overview of the MIDI Package</a></div>
+<div class="linkAHEAD"><a href="accessing-MIDI.html">Accessing MIDI System Resources</a></div>
+<div class="linkAHEAD"><a href="MIDI-messages.html">Transmitting and Receiving MIDI Messages</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-intro.html">Introduction to Sequencers</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-methods.html">Using Sequencer Methods</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-adv.html">Using Advanced Sequencer Features</a></div>
+<div class="linkAHEAD"><a href="MIDI-synth.html">Synthesizing Sound</a></div>
+<div class="linkAHEAD"><a href="SPI-intro.html">Introduction to the Service Provider Interfaces</a></div>
+<div class="linkAHEAD"><a href="SPI-providing-sampled.html">Providing Sampled-Audio Services</a></div>
+<div class="linkAHEAD"><a href="SPI-providing-MIDI.html">Providing MIDI Services</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Sound
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="./index.html" target="_top">Sound</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="accessing.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="./TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="capturing.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Playing Back Audio</h1></div>
+            <div id="PageContent">
+
+<p>Playback is sometimes referred to as <em>presentation</em> or <em>rendering</em>. These are general terms that are applicable to other kinds of media besides sound. The essential feature is that a sequence of data is delivered somewhere for eventual perception by a user. If the data is time-based, as sound is, it must be delivered at the correct rate. With sound even more than video, it&#39;s important that the rate of data flow be maintained, because interruptions to sound playback often produce loud clicks or irritating distortion. The Java Sound API is designed to help application programs play sounds smoothly and continuously, even very long sounds.</p>
+<p><a name="113599"></a> Earlier you saw how to obtain a line from the audio system or from a mixer. Here you will learn how to play sound through a line.</p>
+<p><a name="113601"></a> As you know, there are two kinds of line that you can use for playing sound: a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/Clip.html"><code>Clip</code></a> and a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/SourceDataLine.html"><code>SourceDataLine</code></a>. The primary difference between the two is that with a <code>Clip</code> you specify all the sound data at one time, before playback, whereas with a <code>SourceDataLine</code> you keep writing new buffers of data continuously during playback. Although there are many situations in which you could use either a <code>Clip</code> or a <code>SourceDataLine</code>, the following criteria help identify which kind of line is better suited for a particular situation:</p>
+<ul>
+<li><a name="113603"></a>Use a <code>Clip</code> when you have non-real-time sound data that can be preloaded into memory. <a name="115889"></a>
+<p>For example, you might read a short sound file into a clip. If you want the sound to play back more than once, a <code>Clip</code> is more convenient than a <code>SourceDataLine</code>, especially if you want the playback to loop (cycle repeatedly through all or part of the sound). If you need to start the playback at an arbitrary position in the sound, the <code>Clip</code> interface provides a method to do that easily. Finally, playback from a <code>Clip</code> generally has less latency than buffered playback from a <code>SourceDataLine</code>. In other words, because the sound is preloaded into a clip, playback can start immediately instead of having to wait for the buffer to be filled.</p>
+</li>
+<li><a name="113605"></a>Use a <code>SourceDataLine</code> for streaming data, such as a long sound file that won&#39;t all fit in memory at once, or a sound whose data can&#39;t be known in advance of playback. <a name="115858"></a>
+<p>As an example of the latter case, suppose you&#39;re monitoring sound input???that is, playing sound back as it&#39;s being captured. If you don&#39;t have a mixer that can send input audio right back out an output port, your application program will have to take the captured data and send it to an audio-output mixer. In this case, a <code>SourceDataLine</code> is more appropriate than a <code>Clip</code>. Another example of sound that can&#39;t be known in advance occurs when you synthesize or manipulate the sound data interactively in response to the user&#39;s input. For example, imagine a game that gives aural feedback by &quot;morphing&quot; from one sound to another as the user moves the mouse. The dynamic nature of the sound transformation requires the application program to update the sound data continuously during playback, instead of supplying it all before playback starts.</p>
+</li>
+</ul>
+<p><a name="113609"></a></p>
+<h2>Using a Clip</h2>
+<p><a name="117625"></a> You obtain a <code>Clip</code> as described earlier under 
+<a class="TutorialLink" target="_top" href="accessing.html#113154">Getting a Line of a Desired Type</a>; Construct a <code>DataLine.Info</code> object with <code>Clip.class</code> for the first argument, and pass this <code>DataLine.Info</code> as an argument to the <code>getLine</code> method of <code>AudioSystem</code> or <code>Mixer</code>.</p>
+<p><a name="113615"></a> Obtaining a line just means you&#39;ve gotten a way to refer to it; <code>getLine</code> doesn&#39;t actually reserve the line for you. Because a mixer might have a limited number of lines of the desired type available, it can happen that after you invoke <code>getLine</code> to obtain the clip, another application program jumps in and grabs the clip before you&#39;re ready to start playback. To actually use the clip, you need to reserve it for your program&#39;s exclusive use by invoking one of the following <code>Clip</code> methods:</p>
+<div class="codeblock"><pre>
+void open(AudioInputStream stream)
+void open(AudioFormat format, byte[] data, int offset, int bufferSize)
+</pre></div>
+<p>Despite the <code>bufferSize</code> argument in the second <code>open</code> method above, <code>Clip</code> (unlike <code>SourceDataLine</code>) includes no methods for writing new data to the buffer. The <code>bufferSize</code> argument here just specifies how much of the byte array to load into the clip. It&#39;s not a buffer into which you can subsequently load more data, as you can with a <code>SourceDataLine&#39;s</code> buffer.</p>
+<p><a name="113623"></a> After opening the clip, you can specify at what point in the data it should start playback, using <code>Clip&#39;s</code> <code>setFramePosition</code> or <code>setMicroSecondPosition</code> methods. Otherwise, it will start at the beginning. You can also configure the playback to cycle repeatedly, using the <code>setLoopPoints</code> method.</p>
+<p><a name="113628"></a> When you&#39;re ready to start playback, simply invoke the <code>start</code> method. To stop or pause the clip, invoke the <code>stop</code> method, and to resume playback, invoke <code>start</code> again. The clip remembers the media position where it stopped playback, so there&#39;s no need for explicit pause and resume methods. If you don&#39;t want it to resume where it left off, you can &quot;rewind&quot; the clip to the beginning (or to any other position, for that matter) using the frame- or microsecond-positioning methods mentioned above.</p>
+<p><a name="113630"></a> A <code>Clip&#39;s</code> volume level and activity status (active versus inactive) can be monitored by invoking the <code>DataLine</code> methods <code>getLevel</code> and <code>isActive</code>, respectively. An active <code>Clip</code> is one that is currently playing sound.</p>
+<p><a name="113634"></a></p>
+<h2>Using a SourceDataLine</h2>
+<p><a name="116360"></a> Obtaining a <code>SourceDataLine</code> is similar to obtaining a <code>Clip</code>. <a name="116365"></a> Opening the <code>SourceDataLine</code> is also similar to opening a <code>Clip</code>, in that the purpose is once again to reserve the line. However, you use a different method, inherited from <code>DataLine</code>:</p>
+<div class="codeblock"><pre>
+void open(AudioFormat format)
+</pre></div>
+<p>Notice that when you open a <code>SourceDataLine</code>, you don&#39;t associate any sound data with the line yet, unlike opening a <code>Clip</code>. Instead, you just specify the format of the audio data you want to play. The system chooses a default buffer length.</p>
+<p><a name="113646"></a> You can also stipulate a certain buffer length in bytes, using this variant:</p>
+<p><a name="113648"></a></p>
+<div class="codeblock"><pre>
+void open(AudioFormat format, int bufferSize)
+</pre></div>
+<p>For consistency with similar methods, the <code>bufferSize</code> argument is expressed in bytes, but it must correspond to an integral number of frames.</p>
+<p><a name="113660"></a> Instead of using the open method described above, it&#39;s also possible to open a <code>SourceDataLine</code> using <code>Line&#39;s</code> <code>open()</code> method, without arguments. In this case, the line is opened with its default audio format and buffer size. However, you can&#39;t change these later. If you want to know the line&#39;s default audio format and buffer size, you can invoke <code>DataLine&#39;s</code> <code>getFormat</code> and <code>getBufferSize</code> methods, even before the line has ever been opened.</p>
+<p><a name="113663"></a> Once the <code>SourceDataLine</code> is open, you can start playing sound. You do this by invoking <code>DataLine&#39;s</code> start method, and then writing data repeatedly to the line&#39;s playback buffer.</p>
+<p><a name="113667"></a> The start method permits the line to begin playing sound as soon as there&#39;s any data in its buffer. You place data in the buffer by the following method:</p>
+<div class="codeblock"><pre>
+int write(byte[] b, int offset, int length)
+</pre></div>
+<p>The offset into the array is expressed in bytes, as is the array&#39;s length.</p>
+<p><a name="113673"></a> The line begins sending data as soon as possible to its mixer. When the mixer itself delivers the data to its target, the <code>SourceDataLine</code> generates a <code>START</code> event. (In a typical implementation of the Java Sound API, the delay between the moment that the source line delivers data to the mixer and the moment that the mixer delivers the data to its target is negligible, that is, much less than the time of one sample.) This <code>START</code> event gets sent to the line&#39;s listeners, as explained below under <a href="#113711">Monitoring a Line&#39;s Status</a>. The line is now considered active, so the <code>isActive</code> method of <code>DataLine</code> will return <code>true</code>. Notice that all this happens only once the buffer contains data to play, not necessarily right when the start method is invoked. If you invoked <code>start</code> on a new <code>SourceDataLine</code> but never wrote data to the buffer, the line would never be active and a <code>START</code> event would never be sent. (However, in this case, the <code>isRunning</code> method of <code>DataLine</code> would return <code>true</code>.)</p>
+<p><a name="113675"></a> So how do you know how much data to write to the buffer, and when to send the second batch of data? Fortunately, you don&#39;t need to time the second invocation of write to synchronize with the end of the first buffer! Instead, you can take advantage of the <code>write</code> method&#39;s blocking behavior:</p>
+<ul>
+<li><a name="113676"></a>The method returns as soon as the data has been written to the buffer. It doesn&#39;t wait until all the data in the buffer has finished playing. (If it did, you might not have time to write the next buffer without creating a discontinuity in the audio.)</li>
+<li><a name="113677"></a>It&#39;s all right to try to write more data than the buffer will hold. In this case, the method blocks (doesn&#39;t return) until all the data you requested has actually been placed in the buffer. In other words, one buffer&#39;s worth of your data at a time will be written to the buffer and played, until the remaining data all fits in the buffer, at which point the method returns. Whether or not the method blocks, it returns as soon as the last buffer&#39;s worth of data from this invocation can be written. Again, this means that your code will in all likelihood regain control before playback of the last buffer&#39;s worth of data has finished.</li>
+<li><a name="113678"></a>While in many contexts it is fine to write more data than the buffer will hold, if you want to be certain that the next write issued does not block, you can limit the number of bytes you write to the number that <code>DataLine&#39;s</code> <code>available</code> method returns.</li>
+</ul>
+<p><a name="113680"></a> Here&#39;s an example of iterating through chunks of data that are read from a stream, writing one chunk at a time to the <code>SourceDataLine</code> for playback:</p>
+<div class="codeblock"><pre>
+// read chunks from a stream and write them to a source data 
+line 
+line.start();
+while (total &lt; totalToRead &amp;&amp; !stopped)}
+    numBytesRead = stream.read(myData, 0, numBytesToRead);
+    if (numBytesRead == -1) break;
+    total += numBytesRead; 
+    line.write(myData, 0, numBytesRead);
+
+}
+</pre></div>
+<p>If you don&#39;t want the <code>write</code> method to block, you can first invoke the <code>available</code> method (inside the loop) to find out how many bytes can be written without blocking, and then limit the <code>numBytesToRead</code> variable to this number, before reading from the stream. In the example given, though, blocking won&#39;t matter much, since the write method is invoked inside a loop that won&#39;t complete until the last buffer is written in the final loop iteration. Whether or not you use the blocking technique, you&#39;ll probably want to invoke this playback loop in a separate thread from the rest of the application program, so that your program doesn&#39;t appear to freeze when playing a long sound. On each iteration of the loop, you can test whether the user has requested playback to stop. Such a request needs to set the <code>stopped</code> boolean, used in the code above, to <code>true</code>.</p>
+<p><a name="113696"></a> Since <code>write</code> returns before all the data has finished playing, how do you learn when the playback has actually completed? One way is to invoke the <code>drain</code> method of <code>DataLine</code> after writing the last buffer&#39;s worth of data. This method blocks until all the data has been played. When control returns to your program, you can free up the line, if desired, without fear of prematurely cutting off the playback of any audio samples:</p>
+<div class="codeblock"><pre>
+line.write(b, offset, numBytesToWrite); 
+//this is the final invocation of write
+line.drain();
+line.stop();
+line.close();
+line = null;
+</pre></div>
+<p>You can intentionally stop playback prematurely, of course. For example, the application program might provide the user with a Stop button. Invoke <code>DataLine&#39;s stop</code> method to stop playback immediately, even in the middle of a buffer. This leaves any unplayed data in the buffer, so that if you subsequently invoke <code>start</code>, the playback resumes where it left off. If that&#39;s not what you want to happen, you can discard the data left in the buffer by invoking <code>flush</code>.</p>
+<p><a name="113708"></a> A <code>SourceDataLine</code> generates a <code>STOP</code> event whenever the flow of data has been stopped, whether this stoppage was initiated by the drain method, the stop method, or the flush method, or because the end of a playback buffer was reached before the application program invoked <code>write</code> again to provide new data. A <code>STOP</code> event doesn&#39;t necessarily mean that the <code>stop</code> method was invoked, and it doesn&#39;t necessarily mean that a subsequent invocation of <code>isRunning</code> will return <code>false</code>. It does, however, mean that <code>isActive</code> will return <code>false</code>. (When the <code>start</code> method has been invoked, the <code>isRunning</code> method will return <code>true</code>, even if a <code>STOP</code> event is generated, and it will begin to return <code>false</code> only once the <code>stop</code> method is invoked.) It&#39;s important to realize that <code>START</code> and <code>STOP</code> events correspond to <code>isActive</code>, not to <code>isRunning</code>.</p>
+<p><a name="113711"></a></p>
+<h2>Monitoring a Line&#39;s Status</h2>
+<p><a name="113713"></a> Once you have started a sound playing, how do you find when it&#39;s finished? We saw one solution above, invoking the <code>drain</code> method after writing the last buffer of data, but that approach is applicable only to a <code>SourceDataLine</code>. Another approach, which works for both <code>SourceDataLines</code> and <code>Clips</code>, is to register to receive notifications from the line whenever the line changes its state. These notifications are generated in the form of <code>LineEvent</code> objects, of which there are four types: <code>OPEN</code>, <code>CLOSE</code>, <code>START</code>, and <code>STOP</code>.</p>
+<p><a name="113715"></a> Any object in your program that implements the <code>LineListener</code> interface can register to receive such notifications. To implement the <code>LineListener</code> interface, the object simply needs an update method that takes a <code>LineEvent</code> argument. To register this object as one of the line&#39;s listeners, you invoke the following <code>Line</code> method:</p>
+<p><a name="113717"></a></p>
+<div class="codeblock"><pre>
+public void addLineListener(LineListener listener)
+</pre></div>
+<p>Whenever the line opens, closes, starts, or stops, it sends an <code>update</code> message to all its listeners. Your object can query the <code>LineEvent</code> that it receives. First you might invoke <code>LineEvent.getLine</code> to make sure the line that stopped is the one you care about. In the case we&#39;re discussing here, you want to know if the sound is finished, so you see whether the <code>LineEvent</code> is of type <code>STOP</code>. If it is, you might check the sound&#39;s current position, which is also stored in the <code>LineEvent</code> object, and compare it to the sound&#39;s length (if known) to see whether it reached the end and wasn&#39;t stopped by some other means (such as the user&#39;s clicking a Stop button, although you&#39;d probably be able to determine that cause elsewhere in your code).</p>
+<p><a name="113721"></a> Along the same lines, if you need to know when the line is opened, closed, or started, you use the same mechanism. <code>LineEvents</code> are generated by different kinds of lines, not just <code>Clips</code> and <code>SourceDataLines</code>. However, in the case of a <code>Port</code> you can&#39;t count on getting an event to learn about a line&#39;s open or closed state. For example, a <code>Port</code> might be initially open when it&#39;s created, so you don&#39;t invoke the <code>open</code> method and the <code>Port</code> doesn&#39;t ever generate an <code>OPEN</code> event. (See the previous discussion of 
+<a class="TutorialLink" target="_top" href="accessing.html#113216">Selecting Input and Output Ports</a>.)</p>
+<p><a name="113725"></a></p>
+<h2>Synchronizing Playback on Multiple Lines</h2>
+<p><a name="113727"></a> If you&#39;re playing back multiple tracks of audio simultaneously, you probably want to have them all start and stop at exactly the same time. Some mixers facilitate this behavior with their <code>synchronize</code> method, which lets you apply operations such as <code>open</code>, <code>close</code>, <code>start</code>, and <code>stop</code> to a group of data lines using a single command, instead of having to control each line individually. Furthermore, the degree of accuracy with which operations are applied to the lines is controllable.</p>
+<p><a name="113729"></a> To find out whether a particular mixer offers this feature for a specified group of data lines, invoke the <code>Mixer</code> interface&#39;s <code>isSynchronizationSupported</code> method:</p>
+<p><a name="113731"></a></p>
+<div class="codeblock"><pre>
+boolean isSynchronizationSupported(Line[] lines, boolean  maintainSync)
+</pre></div>
+<p>The first parameter specifies a group of specific data lines, and the second parameter indicates the accuracy with which synchronization must be maintained. If the second parameter is <code>true</code>, the query is asking whether the mixer is capable of maintaining sample-accurate precision in controlling the specified lines <em>at all times</em>; otherwise, precise synchronization is required only during start and stop operations, not throughout playback.</p>
+<p><a name="113736"></a></p>
+<h2>Processing the Outgoing Audio</h2>
+<p><a name="113738"></a> Some source data lines have signal-processing controls, such as gain, pan, reverb, and sample-rate controls. Similar controls, especially gain controls, might be present on the output ports as well. For more information on how to determine whether a line has such controls, and how to use them if it does, see 
+<a class="TutorialLink" target="_top" href="controls.html">Processing Audio with Controls</a>.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="accessing.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="./TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="capturing.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Accessing Audio System Resources
+        <br /><b>Next page:</b> Capturing Audio
+    </div>
+</body>
+</html> 

@@ -1,0 +1,145 @@
+<!--
+/*
+ * Copyright (c) 2011 Oracle and/or its affiliates. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *   - Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *   - Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ *   - Neither the name of Oracle or the names of its
+ *     contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en-US">
+  <head>
+    <title>Applet Status and Callback</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+    <script>
+        var dotStr=".";
+
+        var READY = 2;
+        function registerAppletStateHandler() {
+            // register onLoad handler if applet has not loaded yet
+            if (drawApplet.status < READY)  {
+                drawApplet.onLoad = onLoadHandler;
+                updateStatusString();
+            } else if (drawApplet.status >= READY) {
+                // applet has already loaded or there was an error
+                document.getElementById("mydiv").innerHTML =
+                    "Applet event handler not registered because applet status is: " +
+                        drawApplet.status;
+            }
+        }
+
+        function onLoadHandler() {
+            // event handler for ready state
+            document.getElementById("mydiv").innerHTML ="Applet has loaded";
+            draw();
+        }
+
+        function updateStatusString() {
+            if (drawApplet.status < READY)  {
+                document.getElementById("mydiv").innerHTML ="Applet not ready yet " + dotStr;
+                dotStr = dotStr + ".";
+                setTimeout("updateStatusString()", 1000);
+            }
+        }
+
+
+        // Draw a pie chart using the Java Canvas applet
+        function drawPieChart(data, cx, cy, r, colors, labels, lx, ly) {
+            // All lines are 2 units thick.  All text is 16pt bold sans-serif.
+            drawApplet.setLineWidth(2);
+            drawApplet.setFont("SansSerif", 16);
+
+            // Add up the data
+            var total = 0;
+            for(var i = 0; i < data.length; i++) total += data[i];
+
+            // Compute wedge angles in degrees
+            var angles = []
+            for(var i = 0; i < data.length; i++) angles[i] = data[i]/total*360;
+
+            startangle = 90;  // Start at 12 o'clock instead of 3 o'clock
+            // Loop through the wedges
+            for(var i = 0; i < data.length; i++) {
+                // This object describes one wedge of the pie
+                var arc = drawApplet.createWedge(cx-r, cy-r, r*2, r*2,
+                                             startangle, -angles[i]);
+                drawApplet.setColor(colors[i]);             // Set this color
+                drawApplet.fill(arc);                       // Fill the wedge
+                drawApplet.setColor(0x000000);              // Switch to black
+                drawApplet.draw(arc);                       // Outline the wedge
+
+                startangle -= angles[i]; // for next time
+
+                // Now draw the box in the legend
+                drawApplet.setColor(colors[i]);             // Back to wedge color
+                drawApplet.fillRect(lx, ly+30*i, 20, 20);   // Fill the box
+                drawApplet.setColor(0x000000);              // Back to black again
+                drawApplet.drawRect(lx, ly+30*i, 20, 20);   // Outline the box
+
+                // And draw the label for each wedge
+                // Remember that we set the font earlier
+                drawApplet.drawString(labels[i], lx+30, ly+30*i+18);
+            }
+            // Tell the applet to display itself
+            drawApplet.repaint();  // Don't forget to call this
+        }
+
+        // This function is invoked when the Draw! button is clicked
+        function draw() {
+            drawPieChart([12, 23, 34, 45], 200, 200, 150,
+                     [0xff0000, 0x0000ff, 0xffff00, 0x00ff00], // Colors are integers
+                     ["Red", "Blue", "Yellow", "Green"],
+                     400, 100);
+        }
+
+    </script>
+</head>
+<body onload="registerAppletStateHandler()">
+<h1>Applet Status and Callback</h1>
+<div ID="mydiv">
+</div>
+<div>
+    <script src="https://www.java.com/js/deployJava.js"></script>
+    <script>
+        // set java_status_events parameter to true
+        var attributes = { id:'drawApplet', code:'DrawingApplet.class',
+                            archive: 'applet_StatusAndCallback.jar',
+                            width:600, height:400};
+        var parameters = {java_status_events: 'true', permissions:'sandbox'};
+        deployJava.runApplet(attributes, parameters, '1.7');
+    </script>
+    <noscript>
+    A browser with JavaScript enabled is required for this page to operate prope
+rly.
+    </noscript>
+</div>
+
+
+  </body>
+</html>

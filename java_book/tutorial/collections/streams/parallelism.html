@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Parallelism (The Java&trade; Tutorials &gt;        
+            Collections &gt; Aggregate Operations)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This collections Java tutorial describes interfaces, implementations, and algorithms in the Java Collections framework" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java collections, set, list, queue, map, array, arraylist" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Aggregate Operations</a></div>
+<div class="linkAHEAD"><a href="reduction.html">Reduction</a></div>
+<div class="nolinkAHEAD">Parallelism</div>
+<div class="linkQUESTIONS"><a href="QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Collections
+        <br /><b>Lesson:</b> Aggregate Operations
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Collections</a>
+                &gt;
+                <a href="index.html" target="_top">Aggregate Operations</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="reduction.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="QandE/questions.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Parallelism</h1></div>
+            <div id="PageContent">
+
+
+<p>Parallel computing involves dividing a problem into subproblems, solving those problems simultaneously (in parallel, with each subproblem running in a separate thread), and then combining the results of the solutions to the subproblems. Java SE provides the
+<a class="TutorialLink" target="_top" href="../../essential/concurrency/forkjoin.html">fork/join framework</a>, which enables you to more easily implement parallel computing in your applications. However, with this framework, you must specify how the problems are subdivided (partitioned). With aggregate operations, the Java runtime performs this partitioning and combining of solutions for you.</p>
+
+<p>One difficulty in implementing parallelism in applications that use collections is that collections are not thread-safe, which means that multiple threads cannot manipulate a collection without introducing
+<a class="TutorialLink" target="_top" href="../../essential/concurrency/interfere.html">thread interference</a> or
+<a class="TutorialLink" target="_top" href="../../essential/concurrency/memconsist.html">memory consistency errors</a>. The Collections Framework provides 
+<a class="TutorialLink" target="_top" href="../../collections/implementations/wrapper.html">synchronization wrappers</a>, which add automatic synchronization to an arbitrary collection, making it thread-safe. However, synchronization introduces
+<a class="TutorialLink" target="_top" href="../../essential/concurrency/sync.html#thread_contention">thread contention</a>. You want to avoid thread contention because it prevents threads from running in parallel. Aggregate operations and parallel streams enable you to implement parallelism with non-thread-safe collections provided that you do not modify the collection while you are operating on it.</p>
+
+<p>Note that parallelism is not automatically faster than performing operations serially, although it can be if you have enough data and processor cores. While aggregate operations enable you to more easily implement parallelism, it is still your responsibility to determine if your application is suitable for parallelism.</p> 
+
+<p>This section covers the following topics:</p>
+
+<ul>
+  <li><a href="#executing_streams_in_parallel">Executing Streams in Parallel</a></li>
+  <li><a href="#concurrent_reduction">Concurrent Reduction</a></li>  
+  <li><a href="#ordering">Ordering</a></li>
+  <li><a href="#side_effects">Side Effects</a>
+    <ul>
+      <li><a href="#laziness">Laziness</a></li>
+      <li><a href="#interference">Interference</a></li>
+      <li><a href="#stateful_lambda_expressions">Stateful Lambda Expressions</a></li>
+    </ul>
+  </li>
+</ul>
+  
+<p>You can find the code excerpts described in this section in the example
+<a class="SourceLink" target="_blank" href="examples/ParallelismExamples.java" onclick="showCode('../../displayCode.html', 'examples/ParallelismExamples.java'); return false;"><code>ParallelismExamples</code></a>.</p>
+
+<!-- *********************************************************************** -->
+
+<h2><a name="executing_streams_in_parallel">Executing Streams in Parallel</a></h2>
+
+<p>You can execute streams in serial or in parallel. When a stream executes in parallel, the Java runtime partitions the stream into multiple substreams. Aggregate operations iterate over and process these substreams in parallel and then combine the results.</p>
+
+<p>When you create a stream, it is always a serial stream unless otherwise specified. To create a parallel stream, invoke the operation
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#parallelStream--"><code>Collection.parallelStream</code></a>. Alternatively, invoke the operation
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/BaseStream.html#parallel--"><code>BaseStream.parallel</code></a>. For example, the following statement calculates the average age of all male members in parallel:</p>
+
+<pre class="codeblock">double average = roster
+    .parallelStream()
+    .filter(p -> p.getGender() == Person.Sex.MALE)
+    .mapToInt(Person::getAge)
+    .average()
+    .getAsDouble();</pre>
+
+<!-- *********************************************************************** -->
+
+<h2><a name="concurrent_reduction">Concurrent Reduction</a></h2>
+
+<p>Consider again the following example (which is described in the section
+<a class="TutorialLink" target="_top" href="../../collections/streams/reduction.html">Reduction</a>) that groups members by gender. This example invokes the <code>collect</code> operation, which reduces the collection <code>roster</code> into a <code>Map</code>:</p>
+
+<pre class="codeblock">Map&lt;Person.Sex, List&lt;Person&gt;&gt; byGender =
+    roster
+        .stream()
+        .collect(
+            Collectors.groupingBy(Person::getGender));</pre>
+
+<p>The following is the parallel equivalent:</p>
+
+<pre class="codeblock">ConcurrentMap&lt;Person.Sex, List&lt;Person&gt;&gt; byGender =
+    roster
+        .parallelStream()
+        .collect(
+            Collectors.groupingByConcurrent(Person::getGender));</pre>
+            
+<p>This is called a <em>concurrent reduction</em>. The Java runtime performs a concurrent reduction if all of the the following are true for a particular pipeline that contains the <code>collect</code> operation:</p>
+
+<ul>
+
+  <li>The stream is parallel.</li>
+  
+  <li>The parameter of the <code>collect</code> operation, the collector, has the characteristic
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collector.Characteristics.html#CONCURRENT"><code>Collector.Characteristics.CONCURRENT</code></a>. To determine the characteristics of a collector, invoke the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collector.Characteristics.html"><code>Collector.characteristics</code></a> method.</li>
+  
+  <li>Either the stream is unordered, or the collector has the characteristic
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collector.Characteristics.html#UNORDERED"><code>Collector.Characteristics.UNORDERED</code></a>. To ensure that the stream is unordered, invoke the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/BaseStream.html#unordered--"><code>BaseStream.unordered</code></a> operation.</li>
+  
+</ul>
+
+<p><strong>Note</strong>: This example returns an instance of
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentMap.html"><code>ConcurrentMap</code></a> instead of <code>Map</code> and invokes the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#groupingByConcurrent-java.util.function.Function-"><code>groupingByConcurrent</code></a>  operation instead of <code>groupingBy</code>. (See the section
+<a class="TutorialLink" target="_top" href="../../essential/concurrency/collections.html">Concurrent Collections</a> for more information about <code>ConcurrentMap</code>.) Unlike the operation <code>groupingByConcurrent</code>, the operation <code>groupingBy</code> performs poorly with parallel streams. (This is because it operates by merging two maps by key, which is computationally expensive.) Similarly, the operation
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#toConcurrentMap-java.util.function.Function-java.util.function.Function-"><code>Collectors.toConcurrentMap</code></a> performs better with parallel streams than the operation
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#toMap-java.util.function.Function-java.util.function.Function-"><code>Collectors.toMap</code></a>.</p>
+
+<!-- *********************************************************************** -->
+
+<h2><a name="ordering">Ordering</a></h2>
+
+<p>The order in which a pipeline processes the elements of a stream depends on whether the stream is executed in serial or in parallel, the source of the stream, and intermediate operations. For example, consider the following example that prints the elements of an instance of <code>ArrayList</code> with the <code>forEach</code> operation several times:</p>
+
+<pre class="codeblock">Integer[] intArray = {1, 2, 3, 4, 5, 6, 7, 8 };
+List&lt;Integer&gt; listOfIntegers =
+    new ArrayList&lt;&gt;(Arrays.asList(intArray));
+
+System.out.println("listOfIntegers:");
+listOfIntegers
+    .stream()
+    .forEach(e -&gt; System.out.print(e + " "));
+System.out.println("");
+
+System.out.println("listOfIntegers sorted in reverse order:");
+Comparator&lt;Integer&gt; normal = Integer::compare;
+Comparator&lt;Integer&gt; reversed = normal.reversed(); 
+Collections.sort(listOfIntegers, reversed);  
+listOfIntegers
+    .stream()
+    .forEach(e -&gt; System.out.print(e + " "));
+System.out.println("");
+     
+System.out.println("Parallel stream");
+listOfIntegers
+    .parallelStream()
+    .forEach(e -&gt; System.out.print(e + " "));
+System.out.println("");
+    
+System.out.println("Another parallel stream:");
+listOfIntegers
+    .parallelStream()
+    .forEach(e -&gt; System.out.print(e + " "));
+System.out.println("");
+     
+System.out.println("With forEachOrdered:");
+listOfIntegers
+    .parallelStream()
+    .forEachOrdered(e -> System.out.print(e + " "));
+System.out.println("");</pre>
+     
+<p>This example consists of five pipelines. It prints output similar to the following:</p>
+
+<pre class="codeblock">listOfIntegers:
+1 2 3 4 5 6 7 8
+listOfIntegers sorted in reverse order:
+8 7 6 5 4 3 2 1
+Parallel stream:
+3 4 1 6 2 5 7 8
+Another parallel stream:
+6 3 1 5 7 8 4 2
+With forEachOrdered:
+8 7 6 5 4 3 2 1</pre>
+
+<p>This example does the following:</p>
+
+<ul>
+
+  <li>The first pipeline prints the elements of the list <code>listOfIntegers</code> in the order that they were added to the list.</li>
+  
+  <li>The second pipeline prints the elements of <code>listOfIntegers</code> after it was sorted by the method
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#sort-java.util.List-"><code>Collections.sort</code></a>.</li>
+  
+  <li>The third and fourth pipelines print the elements of the list in an apparently random order. Remember that stream operations use internal iteration when processing elements of a stream. Consequently, when you execute a stream in parallel, the Java compiler and runtime determine the order in which to process the stream's elements to maximize the benefits of parallel computing unless otherwise specified by the stream operation.</li>
+  
+  <li>The fifth pipeline uses the method
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#forEachOrdered-java.util.function.Consumer-"><code>forEachOrdered</code></a>, which processes the elements of the stream in the order specified by its source, regardless of whether you executed the stream in serial or parallel. Note that you may lose the benefits of parallelism if you use operations like <code>forEachOrdered</code> with parallel streams.</li>
+</ul>
+
+<!-- *********************************************************************** -->
+
+<h2><a name="side_effects">Side Effects</a></h2>
+
+<p>A method or an expression has a side effect if, in addition to returning or producing a value, it also modifies the state of the computer. Examples include  mutable reductions (operations that use the <code>collect</code> operation; see the section
+<a class="TutorialLink" target="_top" href="../../collections/streams/reduction.html">Reduction</a> for more information) as well as invoking the <code>System.out.println</code> method for debugging. The JDK handles certain side effects in pipelines well. In particular, the <code>collect</code> method is designed to perform the most common stream operations that have side effects in a parallel-safe manner. Operations like <code>forEach</code> and <code>peek</code> are designed for side effects; a lambda expression that returns void, such as one that invokes <code>System.out.println</code>, can do nothing but have side effects. Even so, you should use the <code>forEach</code> and <code>peek</code> operations with care; if you use one of these operations with a parallel stream, then the Java runtime may invoke the lambda expression that you specified as its parameter concurrently from multiple threads. In addition, never pass as parameters lambda expressions that have side effects in operations such as <code>filter</code> and <code>map</code>. The following sections discuss <a href="#interference">interference</a> and <a href="#stateful_lambda_expressions">stateful lambda expressions</a>, both of which can be sources of side effects and can return inconsistent or unpredictable results, especially in parallel streams. However, the concept of <a href="#laziness">laziness</a> is discussed first, because it has a direct effect on interference.</p>
+
+<!-- *********************************************************************** -->
+
+<h3><a name="laziness">Laziness</a></h3>
+ 
+<p>All intermediate operations are <em>lazy</em>. An expression, method, or algorithm is lazy if its value is evaluated only when it is required. (An algorithm is <em>eager</em> if it is evaluated or processed immediately.) Intermediate operations are lazy because they do not start processing the contents of the stream until the terminal operation commences. Processing streams lazily enables the Java compiler and runtime to optimize how they process streams. For example, in a pipeline such as the <code>filter</code>-<code>mapToInt</code>-<code>average</code> example described in the section
+<a class="TutorialLink" target="_top" href="../../collections/streams/index.html">Aggregate Operations</a>, the <code>average</code> operation could obtain the first several integers from the stream created by the <code>mapToInt</code> operation, which obtains elements from the <code>filter</code> operation. The <code>average</code> operation would repeat this process until it had obtained all required elements from the stream, and then it would calculate the average.</p>
+
+<!-- *********************************************************************** -->
+
+<h3><a name="interference">Interference</a></h3>
+
+<p>Lambda expressions in stream operations should not <em>interfere</em>. Interference occurs when the source of a stream is modified while a pipeline processes the stream.  For example, the following code attempts to concatenate the strings contained in the <code>List</code> <code>listOfStrings</code>. However, it throws a <code>ConcurrentModificationException</code>:</p>
+
+<pre class="codeblock">try {
+    List&lt;String&gt; listOfStrings =
+        new ArrayList&lt;&gt;(Arrays.asList("one", "two"));
+         
+    // This will fail as the peek operation will attempt to add the
+    // string "three" to the source after the terminal operation has
+    // commenced. 
+             
+    String concatenatedString = listOfStrings
+        .stream()
+        
+        // Don't do this! Interference occurs here.
+        .peek(s -&gt; listOfStrings.add("three"))
+        
+        .reduce((a, b) -&gt; a + " " + b)
+        .get();
+                 
+    System.out.println("Concatenated string: " + concatenatedString);
+         
+} catch (Exception e) {
+    System.out.println("Exception caught: " + e.toString());
+}</pre>
+
+<p>This example concatenates the strings contained in <code>listOfStrings</code> into an <code>Optional&lt;String&gt;</code> value with the <code>reduce</code> operation, which is a terminal operation. However, the pipeline here invokes the intermediate operation <code>peek</code>, which attempts to add a new element to <code>listOfStrings</code>. Remember, all intermediate operations are lazy. This means that the pipeline in this example begins execution when the operation <code>get</code> is invoked, and ends execution when the <code>get</code> operation completes. The argument of the <code>peek</code> operation attempts to modify the stream source during the execution of the pipeline, which causes the Java runtime to throw a <code>ConcurrentModificationException</code>.</p>
+
+<!-- *********************************************************************** -->
+
+<h3><a name="stateful_lambda_expressions">Stateful Lambda Expressions</a></h3>
+
+<p>Avoid using <em>stateful lambda expressions</em> as parameters in stream operations. A stateful lambda expression is one whose result depends on any state that might change during the execution of a pipeline. The following example adds elements from the <code>List</code> <code>listOfIntegers</code> to a new <code>List</code> instance with the <code>map</code> intermediate operation. It does this twice, first with a serial stream and then with a parallel stream:</p>
+
+<pre class="codeblock">List&lt;Integer&gt; serialStorage = new ArrayList&lt;&gt;();
+     
+System.out.println("Serial stream:");
+listOfIntegers
+    .stream()
+    
+    // Don't do this! It uses a stateful lambda expression.
+    .map(e -&gt; { serialStorage.add(e); return e; })
+    
+    .forEachOrdered(e -&gt; System.out.print(e + " "));
+System.out.println("");
+     
+serialStorage
+    .stream()
+    .forEachOrdered(e -&gt; System.out.print(e + " "));
+System.out.println("");
+
+System.out.println("Parallel stream:");
+List&lt;Integer&gt; parallelStorage = Collections.synchronizedList(
+    new ArrayList&lt;&gt;());
+listOfIntegers
+    .parallelStream()
+    
+    // Don't do this! It uses a stateful lambda expression.
+    .map(e -&gt; { parallelStorage.add(e); return e; })
+    
+    .forEachOrdered(e -&gt; System.out.print(e + " "));
+System.out.println("");
+     
+parallelStorage
+    .stream()
+    .forEachOrdered(e -&gt; System.out.print(e + " "));
+System.out.println("");</pre>
+
+<p>The lambda expression <code>e -&gt; { parallelStorage.add(e); return e; }</code> is a stateful lambda expression. Its result can vary every time the code is run. This example prints the following:</p>
+
+<pre class="codeblock">Serial stream:
+8 7 6 5 4 3 2 1
+8 7 6 5 4 3 2 1
+Parallel stream:
+8 7 6 5 4 3 2 1
+1 3 6 2 4 5 8 7</pre>
+
+<p>The operation <code>forEachOrdered</code> processes elements in the order specified by the stream, regardless of whether the stream is executed in serial or parallel. However, when a stream is executed in parallel, the <code>map</code> operation processes elements of the stream specified by the Java runtime and compiler. Consequently, the order in which the lambda expression <code>e -&gt; { parallelStorage.add(e); return e; }</code> adds elements to the <code>List</code> <code>parallelStorage</code> can vary every time the code is run. For deterministic and predictable results, ensure that lambda expression parameters in stream operations are not stateful.</p>
+
+<p><strong>Note</strong>: This example invokes the method
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#synchronizedList-java.util.List-"><code>synchronizedList</code></a> so that the <code>List</code> <code>parallelStorage</code> is thread-safe. Remember that collections are not thread-safe. This means that multiple threads should not access a particular collection at the same time. Suppose that you do not invoke the method <code>synchronizedList</code> when creating <code>parallelStorage</code>:</p> 
+
+<pre class="codeblock">List&lt;Integer&gt; parallelStorage = new ArrayList&lt;&gt;();</pre>
+
+<p>The example behaves erratically because multiple threads access and modify <code>parallelStorage</code> without a mechanism like synchronization to schedule when a particular thread may access the <code>List</code> instance. Consequently, the example could print output similar to the following:</p>
+
+<pre class="codeblock">Parallel stream:
+8 7 6 5 4 3 2 1
+null 3 5 4 7 8 1 2</pre>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="reduction.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="QandE/questions.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Reduction
+        <br /><b>Next page:</b> Questions and Exercises: Aggregate Operations
+    </div>
+</body>
+</html> 

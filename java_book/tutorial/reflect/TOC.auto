@@ -1,0 +1,68 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="class/index.html">Classes</a>
+<ul>
+<li class="tocli"><a href="class/classNew.html">Retrieving Class Objects</a></li>
+<li class="tocli"><a href="class/classModifiers.html">Examining Class Modifiers and Types</a></li>
+<li class="tocli"><a href="class/classMembers.html">Discovering Class Members</a></li>
+<li class="tocli"><a href="class/classTrouble.html">Troubleshooting</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="member/index.html">Members</a>
+<ul>
+<li class="tocli"><a href="member/field.html">Fields</a>
+<ul>
+<li class="tocli"><a href="member/fieldTypes.html">Obtaining Field Types</a></li>
+<li class="tocli"><a href="member/fieldModifiers.html">Retrieving and Parsing Field Modifiers</a></li>
+<li class="tocli"><a href="member/fieldValues.html">Getting and Setting Field Values</a></li>
+<li class="tocli"><a href="member/fieldTrouble.html">Troubleshooting</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="member/method.html">Methods</a>
+<ul>
+<li class="tocli"><a href="member/methodType.html">Obtaining Method Type Information</a></li>
+<li class="tocli"><a href="member/methodparameterreflection.html">Obtaining Names of Method Parameters</a></li>
+<li class="tocli"><a href="member/methodModifiers.html">Retrieving and Parsing Method Modifiers</a></li>
+<li class="tocli"><a href="member/methodInvocation.html">Invoking Methods</a></li>
+<li class="tocli"><a href="member/methodTrouble.html">Troubleshooting</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="member/ctor.html">Constructors</a>
+<ul>
+<li class="tocli"><a href="member/ctorLocation.html">Finding Constructors</a></li>
+<li class="tocli"><a href="member/ctorModifiers.html">Retrieving and Parsing Constructor Modifiers</a></li>
+<li class="tocli"><a href="member/ctorInstance.html">Creating New Class Instances</a></li>
+<li class="tocli"><a href="member/ctorTrouble.html">Troubleshooting</a>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li class="tocli"><a href="special/index.html">Arrays and Enumerated Types</a>
+<ul>
+<li class="tocli"><a href="special/array.html">Arrays</a>
+<ul>
+<li class="tocli"><a href="special/arrayComponents.html">Identifying Array Types</a></li>
+<li class="tocli"><a href="special/arrayInstance.html">Creating New Arrays</a></li>
+<li class="tocli"><a href="special/arraySetGet.html">Getting and Setting Arrays and Their Components</a></li>
+<li class="tocli"><a href="special/arrayTrouble.html">Troubleshooting</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="special/enum.html">Enumerated Types</a>
+<ul>
+<li class="tocli"><a href="special/enumMembers.html">Examining Enums</a></li>
+<li class="tocli"><a href="special/enumSetGet.html">Getting and Setting Fields with Enum Types</a></li>
+<li class="tocli"><a href="special/enumTrouble.html">Troubleshooting</a>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+</ul>

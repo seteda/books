@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="depltoolkit_CustomizingSplashScreen" default="default" basedir=".">
+    <description>Builds, tests, and runs the project applet_CustomizingSplashScreen.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <target name="-post-jar">
+            <copy file="${src.dir}/AppletPage.html" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/dukeanimated.gif" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/SwingSet2.jnlp" todir="${dist.jar.dir}"/>            
+            <copy file="${src.dir}/SwingSet2.jar" todir="${dist.jar.dir}"/>            
+    </target>
+    <target name="-do-jar-with-libraries-without-manifest"/>
+
+    
+</project>

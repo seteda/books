@@ -1,0 +1,1511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Customizing JAXB Bindings (The Java&trade; Tutorials &gt;        
+            Java Architecture for XML Binding (JAXB) &gt; Introduction to JAXB)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JAXB tutorial describes Java Architecture for XML Binding (jaxb), and related XML topics" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jaxb, xml" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Introduction to JAXB</a></div>
+<div class="linkAHEAD"><a href="arch.html">JAXB Architecture</a></div>
+<div class="linkAHEAD"><a href="repcon.html">Representing XML Content</a></div>
+<div class="linkAHEAD"><a href="bind.html">Binding XML Schemas </a></div>
+<div class="linkAHEAD"><a href="customize.html">Customizing Generated Classes and Java Program Elements</a></div>
+<div class="linkAHEAD"><a href="examples.html">JAXB Examples</a></div>
+<div class="linkAHEAD"><a href="basic.html">Basic Examples</a></div>
+<div class="nolinkAHEAD">Customizing JAXB Bindings</div>
+<div class="linkAHEAD"><a href="j2schema.html">Java-to-Schema Examples</a></div>
+<div class="linkAHEAD"><a href="info.html">For More Information</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java Architecture for XML Binding (JAXB)
+        <br /><b>Lesson:</b> Introduction to JAXB
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java Architecture for XML Binding (JAXB)</a>
+                &gt;
+                <a href="index.html" target="_top">Introduction to JAXB</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="basic.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="j2schema.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Customizing JAXB Bindings</h1></div>
+            <div id="PageContent">
+
+<p>The following section describes several examples that build on the concepts demonstrated in the Basic examples.</p>
+
+<p>The goal of this section is to illustrate how to customize JAXB bindings using custom binding declarations, made in one of the following two ways:</p>
+<ul>
+<li>As annotations made inline in an XML schema</li>
+<li>As statements in an external file passed to the JAXB binding 	compiler</li>
+</ul>
+<p>Unlike the examples in 
+<a class="TutorialLink" target="_top" href="basic.html">Basic JAXB Examples</a>, which focus on the Java code in the respective <tt>Main.java</tt> class files, the examples here focus on customizations made to the XML schema <b>before</b> generating the schema-derived Java binding classes.</p>
+
+<div class="note"><hr /><strong>Note:</strong>&nbsp;JAXB binding customizations currently must be made by hand. One of the goals of the JAXB technology is to standardize the format of binding declarations, thereby making it possible to create customization tools and to provide a standard interchange format between JAXB implementations.
+<hr /></div>
+
+<p>This section introduces customizations that can be made to JAXB bindings and validation methods. For more information, see  
+<a class="OutsideLink" target="_blank" href="http://jaxb.java.net">JAXB Specification</a>.</p>
+
+<h2><a name="bnbbg">Why Customize?</a></h2>
+
+<p>In most cases, the default bindings generated by the JAXB binding
+compiler are sufficient. There are cases, however, in which you might want to modify the default bindings. Some of these include:</p>
+<ul>
+<li>Creating API documentation for the schema-derived JAXB packages, classes, methods and constants: By adding custom Javadoc tool annotations to your schemas, you can explain concepts, guidelines, and rules specific to your implementation.</li>
+<li>Providing semantically meaningful customized names for cases that the default XML name-to-Java identifier mapping cannot handle automatically; for example:
+	<ul>
+	<li>To resolve name collisions (as described in Appendix D.2.1 of the <i>JAXB Specification</i>). Note that the JAXB binding compiler detects and reports all name conflicts.</li>
+	<li>To provide names for typesafe enumeration constants that are not valid Java identifiers; for example, enumeration over integer values.</li>
+	<li>To provide better names for the Java representation of unnamed model groups when they are bound to a Java property or class.</li>
+	<li>To provide more meaningful package names than can be derived by default from the target namespace URI.</li>
+	</ul>
+</li>
+<li>Overriding default bindings; for example:
+	<ul>
+	<li>Specify that a model group must be bound to a class rather than 		a list.</li>
+	<li>Specify that a fixed attribute can be bound to a Java 		constant.</li>
+	<li>Override the specified default binding of XML Schema built-in 		data types to Java data types. In some cases, you might want to 	introduce an alternative Java class that can represent additional 		characteristics of the built-in XML Schema data type.</li>
+	</ul>
+</li>
+</ul>
+
+<h2><a name="bnbbh"></a>Customization Overview</h2>
+<p>This section explains some core JAXB customization concepts:</p>
+<ul>
+	<li>Inline and external customizations</li>
+	<li>Scope, inheritance, and precedence</li>
+	<li>Customization syntax</li>
+	<li>Customization namespace prefix</li>
+</ul>
+
+<h2><a name="bnbbi"></a>Inline and External Customizations</h2>
+<p>Customizations to the default JAXB bindings are made in the form of <b>binding declarations</b> passed to the JAXB binding compiler. These binding declarations can be made in either of two ways:</p>
+<ul>
+<li>As inline annotations in a source XML schema</li>
+<li>As declarations in an external binding customizations file</li>
+</ul>
+<p>For some, using inline customizations is easier because you can see your customizations in the context of the schema to which they apply. Conversely, using an external binding customization file enables you to customize JAXB bindings without modifying the source schema, and enables you to easily apply customizations to several schema files at once.</p>
+
+<div class="note"><hr /><strong>Note:</strong>&nbsp;You can combine the two types of customizations. For example, you could include a reference to an external binding customizations file in an inline annotation. However, you cannot declare both an inline and external customization on the same schema element.
+<hr /></div>
+
+<p>Each of these types of customization is described in more detail in the following sections:</p>
+
+<h3><a name="bnbbj"></a>Inline Customizations</h3>
+
+<p>Customizations to JAXB bindings made by means of inline <b>binding
+declarations</b> in an XML schema file take the form of <tt>&lt;xsd:appinfo&gt;</tt> elements embedded in schema  <tt>&lt;xsd:annotation&gt;</tt> elements (<tt>xsd:</tt> is the XML schema namespace prefix, as defined in W3C <i>XML Schema Part 1: Structures</i>). The general form for inline customizations is shown in the following example:</p>
+
+<div class="codeblock"><pre>
+&lt;xs:annotation&gt;
+    &lt;xs:appinfo&gt;
+        &lt;!--
+        ...
+        binding declarations     .
+        ...
+        --&gt;
+    &lt;/xs:appinfo&gt;
+&lt;/xs:annotation&gt;
+</pre></div>
+
+<p>
+Customizations are applied at the location at which they are declared
+in the schema. For example, a declaration at the level of a particular element applies to that element only. Note that the XML schema namespace prefix must be used with the <tt>&lt;annotation&gt;</tt> and <tt>&lt;appinfo&gt;</tt> declaration tags. In the previous example, <tt>xs:</tt> is used as the namespace prefix, so the declarations are tagged <tt>&lt;xs:annotation&gt;</tt> and <tt>&lt;xs:appinfo&gt;</tt>.</p>
+
+<h3><a name="bnbbk"></a>External Binding Customization Files</h3>
+<p>Customizations to JAXB bindings made by using an external file
+containing binding declarations, take the general form shown in the following example:</p>
+
+<div class="codeblock"><pre>
+&lt;jxb:bindings schemaLocation = &quot;xs:anyURI&quot;&gt;
+    &lt;jxb:bindings node = &quot;xs:string&quot;&gt;*
+        &lt;!-- binding declaration --&gt;
+    &lt;jxb:bindings&gt;
+&lt;/jxb:bindings&gt;
+</pre></div>
+<ul>
+	<li><tt>schemaLocation</tt> is a URI reference to the remote schema.</li>
+	<li><tt>node</tt> is an XPath 1.0 expression that identifies the schema node within <tt>schemaLocation</tt> to which the given binding declaration is associated.</li>
+</ul>
+<p>For example, the first <tt>schemaLocation</tt>/<tt>node</tt>
+declaration in a JAXB binding declarations file specifies the schema
+name and the root schema node:</p>
+
+<div class="codeblock"><pre>
+&lt;jxb:bindings schemaLocation=&quot;po.xsd&quot; node=&quot;/xs:schema&quot;&gt;
+&lt;/jxb:bindings&gt;
+</pre></div>
+
+<p>A subsequent <tt>schemaLocation</tt>/<tt>node</tt> declaration, such as  a <tt>simpleType</tt> element named <tt>ZipCodeType</tt> in the previous schema example, takes the following form:</p>
+
+<div class="codeblock"><pre>
+&lt;jxb:bindings node=&quot;//xs:simpleType [@name=&rsquo;ZipCodeType&rsquo;]&quot;&gt;
+</pre></div>
+
+<h3><a name="bnbbl"></a>Binding Customization File Format</h3>
+<p>Binding customization files must be in ASCII text. The name or extension does not matter; although a typical extension, used in this chapter, is <tt>.xjb</tt>.</p>
+
+<h3><a name="bnbbm"></a>Passing Customization Files to the JAXB Binding Compiler</h3>
+<p>Customization files containing binding declarations are passed to
+the JAXB Binding compiler, <tt>xjc</tt>, using the following syntax:</p>
+
+<div class="codeblock"><pre>
+xjc -b file schema
+</pre></div>
+<p> where <i>file</i> is the name of binding customization file, and
+<i>schema</i> is the name of the schemas you want to pass to the binding compiler.</p>
+
+<p>You can have a single binding file that contains customizations
+for multiple schemas, or you can seperate the customizations into
+multiple bindings files; for example:</p>
+
+<div class="codeblock"><pre>
+xjc schema1.xsd schema2.xsd schema3.xsd \
+    -b bindings123.xjb
+xjc schema1.xsd schema2.xsd schema3.xsd \
+    -b bindings1.xjb \
+    -b bindings2.xjb \
+    -b bindings3.xjb
+</pre></div>
+
+<p>Note that the ordering of schema files and binding files on the
+command-line does not matter; although each binding customization file must be preceded by its own <tt>-b</tt> switch on the command line.</p>
+
+<p>For more information about the <tt>xjc</tt> compiler options in general, see 
+<a class="TutorialLink" target="_top" href="examples.html#bnbal">JAXB Compiler Options</a>.</p>
+
+<h3><a name="bnbbn"></a>Restrictions for External Binding Customizations</h3>
+<p>There are several rules that apply to binding declarations made in
+an external binding customization file that do not apply to similar
+declarations made inline in a source schema:</p>
+<ul>
+	<li>The binding customization file must begin with the
+	<tt>jxb:bindings version</tt> attribute, plus attributes for the 		JAXB and XMLSchema namespaces:
+<div class="codeblock"><pre>
+&lt;jxb:bindings version=&quot;1.0&quot; 
+    xmlns:jxb=&quot;http://java.sun.com/xml/ns/jaxb&quot; 
+    xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+</pre></div>
+</li>
+	<li>The remote schema to which the binding declaration applies
+	must be identified explicitly in XPath notation by using a
+	<tt>jxb:bindings</tt> declaration specifying 
+	<tt>schemaLocation</tt> and <tt>node</tt> attributes:
+	<ul>
+	<li><tt>schemaLocation</tt> specifies a URI reference to the remote 		schema.</li>
+	<li><tt>node</tt> specifies an XPath 1.0 expression that identifies 		the schema node within <tt>schemaLocation</tt> to which the given 		binding declaration is associated; in the case of the initial 		<tt>jxb:bindings</tt> declaration in the binding customization 		file, this node is typically <tt>&quot;/xs:schema&quot;</tt>.</li>
+	</ul>
+</li>
+</ul>
+
+<p>Similarly, individual nodes within the schema to which customizations are to be applied must be specified using XPath notation; for example:</p>
+<div class="codeblock"><pre>
+&lt;jxb:bindings node=&quot;//xs:complexType [@name=&rsquo;USAddress&rsquo;]&quot;&gt;
+</pre></div>
+
+<p>In such cases, the customization is applied to the node by the binding compiler as if the declaration was embedded inline in the node&rsquo;s <tt>&lt;xs:appinfo&gt;</tt> element.</p>
+
+<p>To summarize these rules, the external binding element
+<tt>&lt;jxb:bindings&gt;</tt> is only recognized for processing by a JAXB binding compiler in three cases:</p>
+<ul>
+<li>When its parent is an <tt>&lt;xs:appinfo&gt;</tt> element.</li>
+<li>When it is an ancestor of another <tt>&lt;jxb:bindings&gt;</tt>	element.</li>
+<li>When it is the root element of a document. An XML document that has a <tt>&lt;jxb:bindings&gt;</tt> element as its root is referred to as an external binding declaration file.</li>
+</ul>
+
+<h3><a name="bnbbo"></a>Scope, Inheritance, and Precedence</h3>
+<p>Default JAXB bindings can be customized or overridden at four
+different levels, or <b>scopes</b>.</p>
+
+<p>The following figure illustrates the inheritance and precedence of customization declarations. Specifically, declarations towards the top of the pyramid inherit and supersede declarations below them.</p>
+
+<p>Component declarations inherit from and supersede Definition declarations; Definition declarations inherit and supersede Schema declarations; and Schema declarations inherit and supersede Global declarations.</p>
+
+<p><a name="bnbbp"></a>Figure:&nbsp;Customization Scope Inheritance and Precedence</p>
+<center><img src="../../figures/jaxb/jaxb-customInheritance.gif" width="400" height="340" align="bottom" alt="Customization Scope Inheritance and Precedence" /></center><br></br>
+<h3>Customization Syntax</h3>
+<p>The syntax for the four types of JAXB binding declarations, the syntax for the XML-to-Java data type binding declarations, and the customization namespace prefix are described in the following section.</p>
+<ul>
+   <li><a href="#bnbbr">Global Binding Declarations</a></li>
+   <li><a href="#bnbbs">Schema Binding Declarations</a></li>
+   <li><a href="#bnbbt">Class Binding Declarations</a></li>
+   <li><a href="#bnbbu">Property Binding Declarations</a></li>
+   <li><a href="#bnbbv">javaType Binding Declarations</a></li>
+   <li><a href="#bnbbw">Typesafe Enumeration Binding Declarations</a></li>
+   <li><a href="#bnbbx">javadoc Binding Declarations</a></li>
+</ul>
+
+<h3><a name="bnbbr"></a>Global Binding Declarations</h3>
+<p>Global scope customizations are declared with <tt>&lt;globalBindings&gt;</tt>. The syntax for global scope customizations is as follows:</p>
+
+<div class="codeblock"><pre>
+&lt;globalBindings&gt;
+    [ collectionType = &quot;collectionType&quot; ]
+    [ fixedAttributeAsConstantProperty = &quot;true&quot; | &quot;false&quot; | &quot;1&quot; | &quot;0&quot; ]
+    [ generateIsSetMethod = &quot;true&quot; | &quot;false&quot; | &quot;1&quot; | &quot;0&quot; ]
+    [ enableFailFastCheck = &quot;true&quot; | &quot;false&quot; | &quot;1&quot; | &quot;0&quot; ]
+    [ choiceContentProperty = &quot;true&quot; | &quot;false&quot; | &quot;1&quot; | &quot;0&quot; ]
+    [ underscoreBinding = &quot;asWordSeparator&quot; | &quot;asCharInWord&quot; ]
+    [ typesafeEnumBase = &quot;typesafeEnumBase&quot; ]
+    [ typesafeEnumMemberName = &quot;generateName&quot; | &quot;generateError&quot; ]
+    [ enableJavaNamingConventions = &quot;true&quot; | &quot;false&quot; 
+    | &quot;1&quot; | &quot;0&quot; ]
+    [ bindingStyle = &quot;elementBinding&quot; | &quot;modelGroupBinding&quot; ]
+    [ &lt;javaType&gt; ... &lt;/javaType&gt; ]*
+&lt;/globalBindings&gt;
+</pre></div>
+
+<ul>
+	<li><tt>collectionType</tt> can be either <tt>indexed</tt>
+	or any fully qualified class name that implements		  		<tt>java.util.List</tt>.</li>
+	<li><tt>fixedAttributeAsConstantProperty</tt> can
+	be either <tt>true</tt>, <tt>false</tt>, <tt>1</tt>, or <tt>0</tt>. 		The default value is <tt>false</tt>.</li> 
+	<li><tt>generateIsSetMethod</tt> can be either
+	<tt>true</tt>, <tt>false</tt>, <tt>1</tt>,
+	or <tt>0</tt>. The default value is <tt>false</tt>.</li>
+	<li><tt>enableFailFastCheck</tt> can be either
+	<tt>true</tt>, <tt>false</tt>, <tt>1</tt>,
+	or <tt>0</tt>. If <tt>enableFailFastCheck</tt>
+	is <tt>true</tt> or <tt>1</tt> and the JAXB implementation 		supports this optional checking, type constraint checking is 		performed when setting a property. The default value is 
+	<tt>false</tt>. Please note that the JAXB implementation does not 		support failfast validation.</li>
+	<li><tt>choiceContentProperty</tt> can be either <tt>true</tt>, 	<tt>false</tt>, <tt>1</tt>, or <tt>0</tt>. The default value is 	<tt>false</tt>. <tt>choiceContentProperty</tt> is not relevant when
+	the <tt>bindingStyle</tt> is <tt>elementBinding</tt>.
+	Therefore, if <tt>bindingStyle</tt> is specified as
+	<tt>elementBinding</tt>, then the <tt>choiceContentProperty</tt> 		must result in an invalid customization.</li>
+	<li><tt>underscoreBinding</tt> can be either
+	<tt>asWordSeparator</tt> or <tt>asCharInWord</tt>.
+	The default value is <tt>asWordSeparator</tt>.</li>
+	<li><tt>typesafeEnumBase</tt> can be a list of
+	QNames, each of which must resolve to a simple type definition. The
+	default value is <tt>xs:NCName</tt>. See <a href="#bnbbw">Typesafe
+	Enumeration Binding Declarations</a> for information about the 		localized mapping of <tt>simpleType</tt> definitions to Java
+	<tt>typesafe enum</tt> classes.</li>
+	<li><tt>typesafeEnumMemberName</tt> can be either
+	<tt>generateError</tt> or <tt>generateName</tt>.
+	The default value is <tt>generateError</tt>.</li>
+	<li><tt>enableJavaNamingConventions</tt> can be either
+	<tt>true</tt>, <tt>false</tt>, <tt>1</tt>, or <tt>0</tt>. The
+	default value is <tt>true</tt>.</li>
+	<li><tt>bindingStyle</tt> can be either
+	<tt>elementBinding</tt>, or <tt>modelGroupBinding</tt>.
+	The default value is <tt>elementBinding</tt>.</li>
+	<li><tt>&lt;javaType&gt;</tt> can be zero or more javaType 		binding declarations. For more information, see
+	<a  href="#bnbbv">javaType Binding Declarations</a>.</li>
+</ul>
+<p><tt>&lt;globalBindings&gt;</tt> declarations are only valid in the <tt>annotation</tt> element of the top-level <tt>schema</tt> element. There can only be a single instance of a <tt>&lt;globalBindings&gt;</tt>
+declaration in any given schema or binding declarations file. If one
+source schema includes or imports a second source schema, the  <tt>&lt;globalBindings&gt;</tt> declaration must be declared in the first source schema.</p>
+
+<h3><a name="bnbbs"></a>Schema Binding Declarations</h3>
+<p>Schema scope customizations are declared with <tt>&lt;schemaBindings&gt;</tt>. The syntax for schema scope customizations is:</p>
+
+<div class="codeblock"><pre>
+&lt;schemaBindings&gt;
+[ &lt;package&gt; package &lt;/package&gt; ]
+[ &lt;nameXmlTransform&gt; ... &lt;/nameXmlTransform&gt; ]*
+&lt;/schemaBindings&gt;
+    
+&lt;package 
+    [ name = &quot;packageName&quot; ]
+    [ &lt;javadoc&gt; ... &lt;/javadoc&gt; ]
+&lt;/package&gt;
+
+&lt;nameXmlTransform&gt;
+[ &lt;typeName 
+    [ suffix=&quot;suffix&quot; ]
+    [ prefix=&quot;prefix&quot; ] /&gt; ]
+[ &lt;elementName 
+    [ suffix=&quot;suffix&quot; ]
+    [ prefix=&quot;prefix&quot; ] /&gt; ]
+[ &lt;modelGroupName 
+    [ suffix=&quot;suffix&quot; ]
+    [ prefix=&quot;prefix&quot; ] /&gt; ]
+[ &lt;anonymousTypeName 
+    [ suffix=&quot;suffix&quot; ]
+    [ prefix=&quot;prefix&quot; ] /&gt; ]
+&lt;/nameXmlTransform&gt;
+</pre></div>
+
+<p>As shown above, <tt>&lt;schemaBinding&gt;</tt> declarations include two subcomponents:</p>
+<ul>
+	<li><tt>&lt;package&gt;...&lt;/package&gt;</tt>
+	specifies the name of the package and, if desired, the location of
+	the API documentation for the schema-derived classes.</li>
+	<li><tt>&lt;nameXmlTransform&gt;...&lt;/nameXmlTransform&gt;</tt>
+	specifies customizations to be applied.</li>
+</ul>
+
+<h3><a name="bnbbt"></a>Class Binding Declarations</h3>
+<p>The <tt>&lt;class&gt;</tt> binding declaration enables you to customize the binding of a schema element to a Java content interface or a Java <tt>Element</tt> interface. <tt>&lt;class&gt;</tt> declarations can be
+used to customize:</p>
+<ul>
+<li>A name for a schema-derived Java interface</li>
+<li>An implementation class for a schema-derived Java content interface</li>
+</ul>
+
+<p>The syntax for <tt>&lt;class&gt;</tt> customizations is:</p>
+
+<div class="codeblock"><pre>
+&lt;class 
+    [ name = &quot;className&quot;]
+    [ implClass= &quot;implClass&quot; ] &gt;
+    [ &lt;javadoc&gt; ... &lt;/javadoc&gt; ]
+&lt;/class&gt;
+</pre></div>
+
+<ul>
+	<li><tt>name</tt> is the name of the derived Java
+	interface. It must be a valid Java interface name and must not
+	contain a package prefix. The package prefix is inherited from the
+	current value of the package.</li>
+	<li><tt>implClass</tt> is the name of the implementation class for 		<i>className</i> and must include the complete package name.</li>
+	<li>The <tt>&lt;javadoc&gt;</tt> element specifies the Javadoc tool 		annotations for the schema-derived Java interface. The string 		entered here must use <tt>CDATA</tt> or <tt>&lt;</tt> to escape 	embedded HTML tags.</li>
+</ul>
+
+<h3><a name="bnbbu"></a>Property Binding Declarations</h3>
+<p>The <tt>&lt;property&gt;</tt> binding declaration enables you to customize the binding of an XML schema element to its Java representation as a property. The scope of customization can either be at the definition level or component level depending upon where the <tt>&lt;property&gt;</tt> binding declaration is specified.</p>
+<p>The syntax for <tt>&lt;property&gt;</tt> customizations is:</p>
+
+<div class="codeblock"><pre>
+&lt;property
+    [ name = &quot;propertyName&quot;]
+    [ collectionType = &quot;propertyCollectionType&quot; ]
+    [ fixedAttributeAsConstantProperty = &quot;true&quot; |
+    &quot;false&quot; | &quot;1&quot; | &quot;0&quot; ]
+    [ generateIsSetMethod = &quot;true&quot; | 
+    &quot;false&quot; | &quot;1&quot; | &quot;0&quot; ]
+    [ enableFailFastCheck =&quot;true&quot; | 
+    &quot;false&quot; | &quot;1&quot; | &quot;0&quot; ]
+    [ &lt;baseType&gt; ... &lt;/baseType&gt; ]
+    [ &lt;javadoc&gt; ... &lt;/javadoc&gt; ]
+&lt;/property&gt;
+
+&lt;baseType&gt;
+    &lt;javaType&gt; ... &lt;/javaType&gt;
+&lt;/baseType&gt;
+</pre></div>
+<ul>
+	<li><tt>name</tt> defines the customization value
+	<tt>propertyName</tt>; it must be a valid Java identifier.</li>
+	<li><tt>collectionType</tt> defines the customization value 		<tt>propertyCollectionType</tt>, which is the collection type for 		the property, <tt>propertyCollectionType</tt>. If specified, the 		property can be either <tt>indexed</tt> or any fully-qualified 		class name that implements <tt>java.util.List</tt>.</li>
+	<li><tt>fixedAttributeAsConstantProperty</tt> defines the 		customization value <tt>fixedAttributeAsConstantProperty</tt>. The 		value can be either <tt>true</tt>, <tt>false</tt>, <tt>1</tt>, or 		<tt>0</tt>.</li>
+	<li><tt>generateIsSetMethod</tt> defines the
+	customization value of <tt>generateIsSetMethod</tt>.
+	The value can be either <tt>true</tt>, <tt>false</tt>,
+	<tt>1</tt>, or <tt>0</tt>.</li>
+	<li><tt>enableFailFastCheck</tt> defines the
+	customization value <tt>enableFailFastCheck</tt>.
+	The value can be either <tt>true</tt>, <tt>false</tt>,
+	<tt>1</tt>, or <tt>0</tt>. Please
+	note that the JAXB implementation does not support failfast
+	validation.</li>
+	<li><tt>&lt;javadoc&gt;</tt> customizes the Javadoc tool 		annotations for the property&rsquo;s getter method. </li>
+</ul>
+<h3><a name="bnbbv"></a>javaType Binding Declarations</h3>
+
+<p>The <tt>&lt;javaType&gt;</tt> declaration provides a way to customize the translation of XML data types to and from Java data types. XML provides more data types than Java, so the <tt>&lt;javaType&gt;</tt> declaration enables you to specify custom data type bindings when the default JAXB binding cannot sufficiently represent your schema.</p>
+<p>The target Java data type can be a Java built-in data type or an
+application-specific Java data type. If an application-specific Java data type is used as the target, your implementation must also provide parse and print methods for unmarshalling and marshalling data. To this end, the JAXB specification supports a <tt>parseMethod</tt> and <tt>printMethod</tt>:</p>
+<ul>
+<li>The <tt>parseMethod</tt> is called during unmarshalling to convert a string from the input document into a value of the target Java data type.</li>
+<li>The <tt>printMethod</tt> is called during marshalling to convert a value of the target type into a lexical representation.</li>
+</ul>
+<p>If you prefer to define your own data type conversions, JAXB
+defines a static class, <tt>DatatypeConverter</tt>, to assist in the parsing and printing of valid lexical representations of the XML Schema built-in data types.</p>
+
+<p>The syntax for the <tt>&lt;javaType&gt;</tt> customization is:</p>
+<div class="codeblock"><pre>
+&lt;javaType name= &quot;<i>javaType</i>&quot;
+    [ xmlType= &quot;<i>xmlType</i>&quot; ]
+    [ hasNsContext = &quot;true&quot; | &quot;false&quot; ]
+    [ parseMethod= &quot;<i>parseMethod</i>&quot; ]
+    [ printMethod= &quot;<i>printMethod</i>&quot; ]&gt;
+</pre></div>
+
+<ul>
+	<li><tt>name</tt> is the Java data type to which <tt>xmlType</tt> 		is to be bound.</li>
+	<li><tt>xmlType</tt> is the name of the XML Schema data type to 	which <tt>javaType</tt> is to be bound; this attribute is required 		when the parent of the <tt>&lt;javaType&gt;</tt> declaration is   		<tt>&lt;globalBindings&gt;</tt>.</li>
+	<li><tt>hasNsContext</tt> allows a namespace context to be 		specified as a second parameter to a print or a parse method; 
+	can be either <tt>true</tt>, <tt>false</tt>, <tt>1</tt>, or 
+	<tt>0</tt>. By default, this attribute is <tt>false</tt>, and in 		most cases, there is no need to change it.</li>
+	<li><tt>parseMethod</tt> is the name of the parse method to be 		called during unmarshalling.</li>
+	<li><tt>printMethod</tt> is the name of the print method to be 		called during marshalling.</li>
+</ul>
+<p>The <tt>&lt;javaType&gt;</tt> declaration can be
+used in:</p>
+<ul>
+	<li>A <tt>&lt;globalBindings&gt;</tt> declaration</li>
+	<li>An annotation element for simple type definitions,
+	<tt>GlobalBindings</tt>, and <tt>&lt;basetype&gt;</tt>
+	declarations</li>
+	<li>A <tt>&lt;property&gt;</tt> declaration</li>
+</ul>
+
+<p>See <a href="#bnbch"><tt>MyDatatypeConverter</tt> Class</a> for an example of how <tt>&lt;javaType&gt;</tt> declarations and the <tt>DatatypeConverterInterface</tt> interface are implemented in a custom data type converter class.</p>
+
+<h3><a name="bnbbw"></a>Typesafe Enumeration Binding Declarations</h3>
+<p>The typesafe enumeration declarations provide a localized way to
+map XML <tt>simpleType</tt> elements to Java <tt>typesafe enum</tt> classes. There are two types of typesafe enumeration declarations you can make:</p>
+<ul>
+<li><tt>&lt;typesafeEnumClass&gt;</tt> lets you map an entire <tt>simpleType</tt> class to <tt>typesafe enum</tt> classes.</li>
+<li><tt>&lt;typesafeEnumMember&gt;</tt> lets you map just selected members of a <tt>simpleType</tt> class to <tt>typesafe enum</tt> classes.</li>
+</ul>
+
+<p>In both cases, there are two primary limitations on this type of
+customization:</p>
+<ul>
+<li>Only <tt>simpleType</tt> definitions with enumeration facets can be customized using this binding declaration.</li>
+<li>This customization only applies to a single <tt>simpleType</tt> 	definition at a time. To map sets of similar <tt>simpleType</tt> 	definitions on a global level, use the <tt>typesafeEnumBase</tt> 	attribute in a <tt>&lt;globalBindings&gt;</tt> declaration, as described in <a href="#bnbbr">Global Binding Declarations</a>.</li>
+</ul>
+
+<p>The syntax for the <tt>&lt;typesafeEnumClass&gt;</tt> customization is:
+</p>
+
+<div class="codeblock"><pre>
+&lt;typesafeEnumClass 
+    [ name = &quot;enumClassName&quot; ]
+    [ &lt;typesafeEnumMember&gt; ... &lt;/typesafeEnumMember&gt; ]*
+    [ &lt;javadoc&gt; enumClassJavadoc &lt;/javadoc&gt; ]
+&lt;/typesafeEnumClass&gt;
+</pre></div>
+<ul>
+	<li><tt>name</tt> must be a valid Java Identifier, and must not 	have a package prefix.</li>
+	<li>You can have zero or more <tt>&lt;typesafeEnumMember&gt;</tt>
+	declarations embedded in a <tt>&lt;typesafeEnumClass&gt;</tt>
+	declaration.</li>
+	<li><tt>&lt;javadoc&gt;</tt> customizes the Javadoc tool 		annotations for the enumeration class.</li>
+</ul>
+
+<p>The syntax for the <tt>&lt;typesafeEnumMember&gt;</tt>
+customization is:</p>
+
+<div class="codeblock"><pre>
+&lt;typesafeEnumMember 
+    name = &quot;enumMemberName&quot;&gt;
+    [ value = &quot;enumMemberValue&quot; ]
+    [ &lt;javadoc&gt; enumMemberJavadoc &lt;/javadoc&gt; ]
+&lt;/typesafeEnumMember&gt;
+</pre></div>
+<ul>
+	<li><tt>name</tt> must always be specified and must be a valid Java 		identifier.</li>
+	<li><tt>value</tt> must be the enumeration value specified in the 		ource schema.</li>
+	<li><tt>&lt;javadoc&gt;</tt> customizes the Javadoc tool 		annotations for the enumeration constant.</li>
+</ul>
+<p>For inline annotations, the <tt>&lt;typesafeEnumClass&gt;</tt>
+declaration must be specified in the annotation element of the
+<tt>&lt;simpleType&gt;</tt> element. The <tt>&lt;typesafeEnumMember&gt;</tt> must be specified in the annotation element of the enumeration member. This enables the enumeration member to be customized independently from the
+enumeration class.</p>
+
+<p>For information about typesafe enum design patterns, see the
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/page1-139488.html">sample chapter of Joshua Bloch&rsquo;s <i>Effective Java Programming</i> on the Oracle Technology Network.</a>.</p>
+
+
+<h3><a name="bnbbx"></a>javadoc Binding Declarations</h3>
+<p>The <tt>&lt;javadoc&gt;</tt> declaration lets you add custom Javadoc tool annotations to schema-derived JAXB packages, classes, interfaces, methods, and fields. Note that <tt>&lt;javadoc&gt;</tt> declarations cannot be applied globally; they are only valid as sub-elements of other binding customizations.</p>
+
+<p>The syntax for the <tt>&lt;javadoc&gt;</tt> customization is:</p>
+
+<div class="codeblock"><pre>
+&lt;javadoc&gt;
+    Contents in &lt;b&gt;Javadoc&lt;\b&gt; format.
+&lt;/javadoc&gt;
+</pre></div>
+
+<p>or</p>
+<div class="codeblock"><pre>
+&lt;javadoc&gt;
+    &lt;&lt;![CDATA[Contents in &lt;b&gt;Javadoc&lt;\b&gt; format ]]&gt;
+&lt;/javadoc&gt;
+</pre></div>
+<p>Note that documentation strings in <tt>&lt;javadoc&gt;</tt>
+declarations applied at the package level must contain <tt>&lt;body&gt;</tt> open and close tags; for example:</p>
+
+<div class="codeblock"><pre>
+&lt;jxb:package 
+    name=&quot;primer.myPo&quot;&gt;
+    &lt;jxb:javadoc&gt;
+        &lt;![CDATA[&lt;body&gt;
+            Package level documentation for generated package primer.myPo.
+        &lt;/body&gt;]]&gt;
+    &lt;/jxb:javadoc&gt;
+&lt;/jxb:package&gt;
+</pre></div>
+
+<h3><a name="bnbby"></a>Customization Namespace Prefix</h3>
+<p>All standard JAXB binding declarations must be preceded by a
+namespace prefix that maps to the JAXB namespace URI 
+<a class="OutsideLink" target="_blank" href="http://java.sun.com/xml/ns/jaxb">http://java.sun.com/xml/ns/jaxb</a>. For example, in this sample, <tt>jxb:</tt> is used. To this end, any schema you want to customize with standard JAXB binding declarations <b>must</b> include the JAXB namespace declaration and JAXB version number at the top of the schema file. For example, in <tt>po.xsd</tt> for the Customize Inline example, the namespace declaration is as follows:</p>
+
+<div class="codeblock"><pre>
+&lt;xsd:schema 
+    xmlns:xsd= &quot;http://www.w3.org/2001/XMLSchema&quot;
+    xmlns:jxb= &quot;http://java.sun.com/xml/ns/jaxb&quot;
+    jxb:version=&quot;1.0&quot;&gt;
+</pre></div>
+
+<p>A binding declaration with the <tt>jxb</tt> namespace prefix takes the following form:</p>
+<div class="codeblock"><pre>
+&lt;xsd:annotation&gt;
+    &lt;xsd:appinfo&gt;
+    &lt;jxb:globalBindings 
+        <i>binding declarations</i> /&gt;
+    &lt;jxb:schemaBindings&gt;
+        ...
+        <i>binding declarations</i>         .
+        ...
+    &lt;/jxb:schemaBindings&gt;
+    &lt;/xsd:appinfo&gt;
+&lt;/xsd:annotation&gt;
+</pre></div>
+<p>Note that in this example, the <tt>globalBindings</tt> and  <tt>schemaBindings</tt> declarations are used to specify, respectively, global scope and schema scope customizations. These customization scopes are described in more detail in <a href="#bnbbo">Scope, Inheritance, and Precedence</a>.</p>
+
+<h4><a name="bnbbz"></a>Customize Inline Example</h4>
+<p>The Customize Inline example illustrates some basic customizations made by means of inline annotations to an XML schema named <tt>po.xsd</tt>.
+In addition, this example implements a custom data type converter class, <tt>MyDatatypeConverter.java</tt>, which illustrates print and parse methods in the <tt>&lt;javaType&gt;</tt> customization for handling custom data type conversions.</p>
+<p>To summarize this example:</p>
+<ol>
+	<li><tt>po.xsd</tt> is an XML schema containing
+	inline binding customizations.</li>
+	<li><tt>MyDatatypeConverter.java</tt> is a Java
+	class file that implements print and parse methods specified by
+	<tt>&lt;javaType&gt;</tt> customizations in <tt>po.xsd</tt>.</li>
+	<li><tt>Main.java</tt> is the primary class file
+	in the Customize Inline example, which uses the schema-derived
+	classes generated by the JAXB compiler.</li>
+</ol>
+<h3><a name="bnbcb"></a>Building and Running the Customize Inline Example Using Ant</h3>
+<p>To compile and run the Customize Inline example using Ant, in a
+terminal window, go to the 
+<i>jaxb-ri-install</i><tt>/samples/inline-customize/</tt>
+directory and type the following:</p>
+<div class="codeblock"><pre>
+ant 
+</pre></div>
+<p>
+Key customizations in this sample and the custom <tt>MyDatatypeConverter.java</tt> class are described in more detail in the following section.</p>
+
+<h3><a name="bnbcc"></a>Customized Schema</h3>
+<p>The customized schema used in the Customize Inline example is in
+the file <i>jaxb-ri-install</i><tt>/samples/inline-customize/po.xsd</tt>. The customizations are in the <tt>&lt;xsd:annotation&gt;</tt> tags.</p>
+
+<h3><a name="bnbcd"></a>Global Binding Declarations</h3>
+<p>The following code example shows the <tt>globalBindings</tt> declarations in <tt>po.xsd</tt>:</p>
+
+<div class="codeblock"><pre>
+&lt;jxb:globalBindings
+    fixedAttributeAsConstantProperty=&quot;true&quot;
+    collectionType=&quot;java.util.Vector&quot;
+    typesafeEnumBase=&quot;xsd:NCName&quot;
+    choiceContentProperty=&quot;false&quot;
+    typesafeEnumMemberName=&quot;generateError&quot;
+    bindingStyle=&quot;elementBinding&quot;
+    enableFailFastCheck=&quot;false&quot;
+    generateIsSetMethod=&quot;false&quot;
+    underscoreBinding=&quot;asCharInWord&quot;/&gt;
+</pre></div>
+<p>In this example, all values are set to the defaults except for
+<tt>collectionType</tt>.</p>
+<ul>
+	<li>Setting <tt>fixedAttributeAsConstantProperty</tt> to true
+	indicates that all fixed attributes should be bound to Java 
+	constants. By default, fixed attributes are mapped to either a
+	simple or a collection property, whichever is more appropriate.</li>
+	<li>Setting <tt>collectionType</tt> to <tt>java.util.Vector</tt>
+        specifies that all lists in the generated implementation classes  		are represented internally as vectors. Note that the class name you 		specify for <tt>collectionType</tt> must implement 
+	<tt>java.util.List</tt> and be callable by <tt>newInstance</tt>. 	 </li>
+	<li>If <tt>typesafeEnumBase</tt> is set to <tt>xsd:string</tt>, it 		is a global way to specify that all <tt>simple</tt> type 		definitions derived directly or indirectly from <tt>xsd:string</tt>
+	and having enumeration facets, must be bound by default to a
+	<tt>typesafe enum</tt>. If <tt>typesafeEnumBase</tt> is set to an 		empty string (<tt>&quot;&quot;</tt>), no <tt>simple</tt> type 		definitions are bound to a <tt>typesafe enum</tt> class by default. 		The value of <tt>typesafeEnumBase</tt> can be any atomic simple 	type definition except <tt>xsd:boolean</tt> and both binary types.
+	</li>
+	<li>The JAXB implementation does not support the
+	<tt>enableFailFastCheck</tt> attribute.
+	
+<div class="note"><hr /><strong>Note:</strong>&nbsp;Using typesafe enum classes enables you to map schema enumeration values to Java constants, which makes it possible to do comparisons on Java constants rather than on string values.
+<hr /></div>
+</li>
+</ul>
+
+<h3><a name="bnbce"></a>Schema Binding Declarations</h3>
+<p>The following code shows the schema binding declarations in
+<tt>po.xsd</tt>:</p>
+
+<div class="codeblock"><pre>
+&lt;jxb:schemaBindings&gt;
+&lt;jxb:package name=&quot;primer.myPo&quot;&gt;
+    &lt;jxb:javadoc&gt;
+        &lt;![CDATA[&lt;body&gt;
+            Package level documentation for generated package primer.myPo.
+        &lt;/body&gt;]]&gt;
+    &lt;/jxb:javadoc&gt;
+&lt;/jxb:package&gt;
+    &lt;jxb:nameXmlTransform&gt;
+        &lt;jxb:elementName suffix=&quot;Element&quot;/&gt;
+    &lt;/jxb:nameXmlTransform&gt;
+&lt;/jxb:schemaBindings&gt;
+</pre></div>
+<ul>
+	<li><tt>&lt;jxb:package name=&quot;primer.myPo&quot;/&gt;</tt>
+	specifies the <tt>primer.myPo</tt> as the package in which the 		schema-derived classes are generated.</li>
+	<li><tt>&lt;jxb:nameXmlTransform&gt;</tt>
+	specifies that all generated Java element interfaces have
+	<tt>Element</tt> appended to the generated names by default. 
+	For example, when the JAXB compiler is run against this schema, 
+	the element interfaces <tt>CommentElement</tt> 	and
+	<tt>PurchaseOrderElement</tt> are generated. By contrast, without 		this customization, the default binding generates <tt>Comment</tt> 		and <tt>PurchaseOrder</tt>.
+	This customization is useful if a schema uses the same name in
+	different symbol spaces; for example, in the global element and 
+	type definitions. In such cases, this customization enables you to
+	resolve the collision with one declaration rather than having to
+	individually resolve each collision with a separate binding
+	declaration.</li>
+	<li><tt>&lt;jxb:javadoc&gt;</tt> specifies
+	customized Javadoc tool annotations for the <tt>primer.myPo</tt>
+	package. Note that, unlike the <tt>&lt;javadoc&gt;</tt>
+	declarations at the class level, as shown in the following example, 		the opening and closing <tt>&lt;body&gt;</tt> tags must be included 		when the <tt>&lt;javadoc&gt;</tt> declaration is made at the
+	package level.</li>
+</ul>
+<h3><a name="bnbcf"></a>Class Binding Declarations</h3>
+<p>The following code shows the class binding declarations in <tt>po.xsd</tt>:</p>
+<div class="codeblock"><pre>
+&lt;xsd:complexType name=&quot;PurchaseOrderType&quot;&gt;
+    &lt;xsd:annotation&gt;
+        &lt;xsd:appinfo&gt;
+            &lt;jxb:class name=&quot;POType&quot;&gt;
+                &lt;jxb:javadoc&gt;
+                    A &amp;lt;b&gt;Purchase Order&amp;lt;/b&gt;
+                    consists of addresses and items.
+                &lt;/jxb:javadoc&gt;
+            &lt;/jxb:class&gt;
+        &lt;/xsd:appinfo&gt;
+    &lt;/xsd:annotation&gt;
+    &lt;!-- ... --&gt;
+&lt;/xsd:complexType&gt;
+</pre></div>
+<p>
+The Javadoc tool annotations for the schema-derived <tt>POType</tt>
+class will contain the description <tt>&quot;A
+&amp;lt;b&gt;Purchase Order&amp;lt;/b&gt; consists of addresses and
+items.&quot;</tt> The <tt>&amp;lt;</tt> is used to escape the opening bracket on the <tt>&lt;b&gt;</tt> HTML tags.</p>
+
+<div class="note"><hr /><strong>Note:</strong>&nbsp;When a <tt>&lt;class&gt;</tt> customization is specified in the <tt>appinfo</tt> element of a <tt>complexType</tt> definition, as shown in the previous example, the <tt>complexType</tt> definition is bound to a Java content interface.
+<hr /></div>
+
+<p>Later in <tt>po.xsd</tt>, another <tt>&lt;javadoc&gt;</tt>
+customization is declared at this class level, but this time the HTML
+string is escaped with <tt>CDATA</tt>:</p>
+
+<div class="codeblock"><pre>
+&lt;xsd:annotation&gt;
+    &lt;xsd:appinfo&gt;
+        &lt;jxb:class&gt;
+            &lt;jxb:javadoc&gt;
+                &lt;![CDATA[
+                    First line of documentation for a
+                    &lt;b&gt;USAddress&lt;/b&gt;.]]&gt;
+            &lt;/jxb:javadoc&gt;
+        &lt;/jxb:class&gt;
+    &lt;/xsd:appinfo&gt;
+&lt;/xsd:annotation&gt;
+</pre></div>
+
+<div class="note"><hr /><strong>Note:</strong>&nbsp;If you want to include HTML tags in a <tt>&lt;jaxb:javadoc&gt;</tt> customization, you must enclose the data within a <tt>CDATA</tt> section or
+escape all left angle brackets using <tt>&amp;lt;</tt>. See 
+<a class="OutsideLink" target="_blank" href="http://www.w3.org/TR/2000/REC-xml-20001006#sec-cdata-sect">XML 1.0 2nd Edition</a> for more information.
+<hr /></div>
+
+<h3><a name="bnbcg"></a>Property Binding Declarations</h3>
+<p>Of particular interest here is the <tt>generateIsSetMethod</tt>
+customization, which causes two additional property methods,
+<tt>isSetQuantity</tt> and <tt>unsetQuantity</tt>, to be generated. These methods enable a client application to distinguish between schema default values and values occurring explicitly within an instance document.</p>
+
+<p>For example, in <tt>po.xsd</tt>:</p>
+<div class="codeblock"><pre>
+&lt;xsd:complexType name=&quot;Items&quot;&gt;
+    &lt;xsd:sequence&gt;
+        &lt;xsd:element name=&quot;item&quot; 
+            minOccurs=&quot;1&quot;  
+            maxOccurs=&quot;unbounded&quot;&gt;
+            &lt;xsd:complexType&gt;
+                &lt;xsd:sequence&gt;
+                    &lt;xsd:element 
+                        name=&quot;productName&quot; 
+                        type=&quot;xsd:string&quot;/&gt;
+                    &lt;xsd:element 
+                        name=&quot;quantity&quot; 
+                        default=&quot;10&quot;&gt;
+                        &lt;xsd:annotation&gt;
+                            &lt;xsd:appinfo&gt;
+                                &lt;jxb:property 
+                                    generateIsSetMethod=&quot;true&quot;/&gt;
+                            &lt;/xsd:appinfo&gt;
+                        &lt;/xsd:annotation&gt;
+                        &lt;!-- ... --&gt;
+                    &lt;/xsd:complexType&gt;
+            &lt;/xsd:element&gt;
+    &lt;/xsd:sequence&gt;
+&lt;/xsd:complexType&gt;
+</pre></div>
+<p>The <tt>@generateIsSetMethod</tt> applies to the <tt>quantity</tt> element, which is bound to a property within the <tt>Items.ItemType</tt> interface. <tt>unsetQuantity</tt> and <tt>isSetQuantity</tt> methods are generated in the <tt>Items.ItemType</tt> interface.</p>
+
+<h3><a name="bnbch"></a><tt>MyDatatypeConverter</tt> Class</h3>
+<p>The class <i>jaxb-ri-install</i><tt>/samples/inline-customize/src/inlinecustomize/primer/MyDatatypeConverter</tt>, shown in the following example, provides a way to customize the translation of XML data types to and from Java data types using a <tt>&lt;javaType&gt;</tt> customization.
+</p>
+
+<div class="codeblock"><pre>
+package primer;
+import java.math.BigInteger;
+import javax.xml.bind.DatatypeConverter;
+
+public class MyDatatypeConverter {
+
+    public static short parseIntegerToShort(String value) {
+        BigInteger result = DatatypeConverter.parseInteger(value);
+        return (short)(result.intValue());
+    }
+
+    public static String printShortToInteger(short value) {
+        BigInteger result = BigInteger.valueOf(value);
+        return DatatypeConverter.printInteger(result);
+    }
+
+    public static int parseIntegerToInt(String value) {
+        BigInteger result = DatatypeConverter.parseInteger(value);
+        return result.intValue();
+    }
+
+    public static String printIntToInteger(int value) {
+        BigInteger result = BigInteger.valueOf(value);
+        return DatatypeConverter.printInteger(result);
+    }
+};
+</pre></div>
+<p>The following code shows how the <tt>MyDatatypeConverter</tt>
+class is referenced in a <tt>&lt;javaType&gt;</tt> declaration in <tt>po.xsd</tt>:</p>
+
+<div class="codeblock"><pre>
+&lt;xsd:simpleType name=&quot;ZipCodeType&quot;&gt;
+<b>&lt;xsd:annotation&gt;</b>
+    <b>&lt;xsd:appinfo&gt;</b>
+    <b>&lt;jxb:javaType name=&quot;int&quot;</b>
+        <b>parseMethod=&quot;primer.MyDatatypeConverter.parseIntegerToInt&quot;</b>
+        <b>printMethod=&quot;primer.MyDatatypeConverter.printIntTo Integer&quot; /&gt;</b>
+    <b>&lt;/xsd:appinfo&gt;</b>
+<b>&lt;/xsd:annotation&gt;</b>
+    &lt;xsd:restriction base=&quot;xsd:integer&quot;&gt;
+    &lt;xsd:minInclusive value=&quot;10000&quot;/&gt;
+    &lt;xsd:maxInclusive value=&quot;99999&quot;/&gt;
+    &lt;/xsd:restriction&gt;
+&lt;/xsd:simpleType&gt;
+</pre></div>
+<p>In this example, the <tt>jxb:javaType</tt> binding declaration overrides the default JAXB binding of this type to <tt>java.math.BigInteger</tt>. For the purposes of the Customize Inline example, the restrictions on <tt>ZipCodeType</tt> (specifically, that valid United States ZIP codes are limited to five digits) make it possible that all valid values can fit within the Java primitive data type <tt>int</tt>. Note also that, because <tt>&lt;jxb:javaType name=&quot;int&quot;/&gt;</tt> is declared within <tt>ZipCodeType</tt>, the customization applies to all JAXB properties that reference this <tt>simpleType</tt> definition, including the <tt>getZip</tt> and <tt>setZip</tt> methods.</p>
+
+<h4><a name="bnbci"></a>DataType Converter Example</h4>
+<p>The DataType Converter example is similar to the Customize Inline example. As with the Customize Inline example, the customizations in the Datatype Converter example are made by using inline binding declarations in the XML schema for the application, <tt>po.xsd</tt>.</p>
+
+<p>The global, schema, and package, and most of the class customizations for the Customize Inline and DataType Converter examples are identical. Where the Datatype Converter example differs from the Customize Inline example is in the <tt>parseMethod</tt> and <tt>printMethod</tt> used for converting XML data to the Java <tt>int</tt> data type.</p>
+
+<p>Specifically, rather than using methods in the custom <tt>MyDataTypeConverter</tt> class to perform these data type conversions, the Datatype Converter example uses the built-in methods provided by <tt>javax.xml.bind.DatatypeConverter</tt>:</p>
+
+<div class="codeblock"><pre>
+&lt;xsd:simpleType name=&quot;ZipCodeType&quot;&gt;
+    &lt;xsd:annotation&gt;
+        &lt;xsd:appinfo&gt;
+            &lt;jxb:javaType 
+                name=&quot;int&quot;
+                parseMethod=&quot;javax.xml.bind.DatatypeConverter.parseInt&quot;
+                printMethod=&quot;javax.xml.bind.DatatypeConverter.printInt&quot;/&gt;
+        &lt;/xsd:appinfo&gt;
+    &lt;/xsd:annotation&gt;
+    &lt;xsd:restriction base=&quot;xsd:integer&quot;&gt;
+        &lt;xsd:minInclusive value=&quot;10000&quot;/&gt;
+        &lt;xsd:maxInclusive value=&quot;99999&quot;/&gt;
+    &lt;/xsd:restriction&gt;
+&lt;/xsd:simpleType&gt;
+</pre></div>
+<h3><a name="bnbck"></a>Building and Running the Datatype Converter Example Using Ant</h3>
+
+<p>To compile and run the DataType Converter example using Ant, in a
+terminal window, go to the <i>jaxb-ri-install</i><tt>/samples/datatypeconverter/</tt> directory and type the following:</p>
+<div class="codeblock"><pre>
+ant
+</pre></div>
+
+<h4><a name="bnbcl"></a>Binding Declaration Files</h4>
+<p>The following sections provide information about binding declaration files:</p>
+<ul>
+<li><a href="#bnbcm">JAXB Version, Namespace, and Schema Attributes</a>
+</li>
+<li><a href="#bnbcq">Global and Schema Binding Declarations</a></li>
+<li><a href="#bnbcr">Class Declarations</a></li>
+</ul>
+
+<h3><a name="bnbcm"></a>JAXB Version, Namespace, and Schema Attributes</h3>
+<p>All JAXB binding declaration files must begin with:</p>
+<ul>
+	<li>JAXB version number</li>
+	<li>Namespace declarations</li>
+	<li>Schema name and node</li>
+</ul>
+<p>The version, namespace, and schema declarations in <tt>bindings.xjb</tt>
+are as follows:</p>
+<div class="codeblock"><pre>
+&lt;jxb:bindings 
+    version=&quot;1.0&quot;
+    xmlns:jxb=&quot;http://java.sun.com/xml/ns/jaxb&quot;
+    xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+    &lt;jxb:bindings 
+        schemaLocation=&quot;po.xsd&quot; 
+        node=&quot;/xs:schema&quot;&gt;
+            &lt;!-- ...
+            <i>binding-declarations</i> 
+            ... --&gt;
+    &lt;/jxb:bindings&gt;
+    &lt;!-- 
+    schemaLocation=&quot;po.xsd&quot; 
+    node=&quot;/xs:schema&quot; --&gt;
+&lt;/jxb:bindings&gt;
+</pre></div>
+
+<h3><a name="bnbcn"></a>JAXB Version Number</h3>
+<p>An XML file with a root element of <tt>&lt;jaxb:bindings&gt;</tt>
+is considered an external binding file. The root element must specify
+the JAXB version attribute with which its binding declarations must
+comply; specifically the root <tt>&lt;jxb:bindings&gt;</tt> element must contain either a &lt;<tt>jxb:version&gt;</tt> declaration or a <tt>version</tt> attribute. By contrast, when making binding declarations inline, the JAXB version number is made as an attribute of the <tt>&lt;xsd:schema&gt;</tt> declaration:</p>
+<div class="codeblock"><pre>
+&lt;xsd:schema 
+    xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+    xmlns:jxb=&quot;http://java.sun.com/xml/ns/jaxb&quot;
+    jxb:version=&quot;1.0&quot;&gt;
+</pre></div>
+
+<h3><a name="bnbco"></a>Namespace Declarations</h3>
+<p>As shown in <a href="#bnbcm">JAXB Version, Namespace, and Schema
+Attributes</a>, the namespace declarations in the external binding
+declarations file include both the JAXB namespace and the XMLSchema
+namespace. Note that the prefixes used in this example could in fact
+be anything you want; the important thing is to consistently use
+whatever prefixes you define here in subsequent declarations in the
+file.</p>
+
+<h3><a name="bnbcp"></a>Schema Name and Schema Node</h3>
+<p>The fourth line of the code in <a href="#bnbcm">JAXB Version, Namespace, and Schema Attributes</a> specifies the name of the schema to which this binding declarations file applies, and the schema node at which the customizations will first take effect. Subsequent binding declarations in this file can reference specific nodes within the schema, but this first declaration should encompass the schema as a whole; for example, in <tt>bindings.xjb</tt>:</p>
+
+<div class="codeblock"><pre>
+&lt;jxb:bindings schemaLocation=&quot;po.xsd&quot; node=&quot;/xs:schema&quot;&gt;
+</pre></div>
+
+<h3><a name="bnbcq"></a>Global and Schema Binding Declarations</h3>
+<p>The global schema binding declarations in <tt>bindings.xjb</tt>
+are the same as those in <tt>po.xsd</tt> for the DataType Converter example. The only difference is that because the declarations in <tt>po.xsd</tt> are made inline, you must embed them in <tt>&lt;xs:appinfo&gt;</tt> elements, which are in turn embedded in <tt>&lt;xs:annotation&gt;</tt> elements. Embedding declarations in this way is unnecessary in the external bindings file.</p>
+
+<div class="codeblock"><pre>
+&lt;jxb:globalBindings
+    fixedAttributeAsConstantProperty=&quot;true&quot;
+    collectionType=&quot;java.util.Vector&quot;
+    typesafeEnumBase=&quot;xs:NCName&quot;
+    choiceContentProperty=&quot;false&quot;
+    typesafeEnumMemberName=&quot;generateError&quot;
+    bindingStyle=&quot;elementBinding&quot;
+    enableFailFastCheck=&quot;false&quot;
+    generateIsSetMethod=&quot;false&quot;
+    underscoreBinding=&quot;asCharInWord&quot;/&gt;
+    &lt;jxb:schemaBindings&gt;
+        &lt;jxb:package name=&quot;primer.myPo&quot;&gt;
+            &lt;jxb:javadoc&gt;
+                &lt;![CDATA[&lt;body&gt;
+                    Package level documentation for generated package
+                    primer.myPo.&lt;/body&gt;]]&gt;
+                &lt;/jxb:javadoc&gt;
+        &lt;/jxb:package&gt;
+        &lt;jxb:nameXmlTransform&gt;
+            &lt;jxb:elementName suffix=&quot;Element&quot;/&gt;
+        &lt;/jxb:nameXmlTransform&gt;
+    &lt;/jxb:schemaBindings&gt;
+</pre></div>
+<p>
+By comparison, the syntax used in <tt>po.xsd</tt> for the DataType Converter example is:</p>
+<div class="codeblock"><pre>
+&lt;xsd:annotation&gt;
+    &lt;xsd:appinfo&gt;
+        &lt;jxb:globalBindings
+            ...
+            <i>binding-declarations</i>
+            ...
+        &lt;jxb:schemaBindings&gt;
+            ...
+            <i>binding-declarations</i>
+            ...
+        &lt;/jxb:schemaBindings&gt;
+    &lt;/xsd:appinfo&gt;
+&lt;/xsd:annotation&gt;
+</pre></div>
+
+<h3><a name="bnbcr"></a>Class Declarations</h3>
+
+<p>The class-level binding declarations in <tt>bindings.xjb</tt>
+differ from the analogous declarations in <tt>po.xsd</tt> for the Datatype Converter example in two ways:</p>
+<ul>
+<li>As with all other binding declarations in <tt>bindings.xjb</tt>, you do not need to embed your customizations in schema  <tt>&lt;xsd:appinfo&gt;</tt> elements.</li>
+<li>You must specify the schema node to which the customization is applied. The general syntax for this type of declaration is:
+<div class="codeblock"><pre>
+&lt;jxb:bindings node=&quot;//<i>node-type</i>[@name=&rsquo;<i>node-name</i>&rsquo;]&quot;&gt;
+</pre></div>
+</li>
+</ul>
+<p>For example, the following code shows binding declarations for the
+<tt>complexType</tt> named <tt>USAddress</tt>.</p>
+
+<div class="codeblock"><pre>
+&lt;jxb:bindings node=&quot;//xs:complexType [@name=&rsquo;USAddress&rsquo;]&quot;&gt;
+    &lt;jxb:class&gt;
+        &lt;jxb:javadoc&gt;
+            &lt;![CDATA[
+                First line of documentation for a &lt;b&gt;USAddress&lt;/b&gt;.
+            ]]&gt;
+        &lt;/jxb:javadoc&gt;
+    &lt;/jxb:class&gt;
+
+&lt;jxb:bindings node=&quot;.//xs:element [@name=&rsquo;name&rsquo;]&quot;&gt;
+    &lt;jxb:property name=&quot;toName&quot;/&gt;
+&lt;/jxb:bindings&gt;
+
+&lt;jxb:bindings node=&quot;.//xs:element [@name=&rsquo;zip&rsquo;]&quot;&gt;
+    &lt;jxb:property name=&quot;zipCode&quot;/&gt;
+&lt;/jxb:bindings&gt;
+&lt;/jxb:bindings&gt;
+&lt;!-- 
+    node=&quot;//xs:complexType
+    [@name=&rsquo;USAddress&rsquo;]&quot; --&gt;
+</pre></div>
+<p>Note in this example that <tt>USAddress</tt> is the parent of the child elements <tt>name</tt> and <tt>zip</tt>, and therefore a 
+<tt>&lt;/jxb:bindings&gt;</tt> tag encloses the <tt>bindings</tt> declarations for the child elements and the class-level <tt>javadoc</tt> declaration.</p>
+
+<h4><a name="bnbcs"></a>External Customize Example</h4>
+<p>The External Customize example is identical to the DataType Converter example, except that the binding declarations in the External Customize example are made by using an external binding declarations file rather than inline in the source XML schema.</p>
+<p>The binding customization file used in the External Customize
+example is <i>jaxb-ri-install</i><tt>/samples/external-customize/binding.xjb</tt>.</p> 
+<p>This section compares the customization declarations in <tt>bindings.xjb</tt> with the analogous declarations used in the XML schema, <tt>po.xsd</tt>, in the DataType Converter example. The two sets of declarations achieve precisely the same results.</p>
+<h3><a name="bnbcu"></a>Building and Running the External Customize Example Using Ant</h3>
+<p>To compile and run the External Customize example using Ant, in a
+terminal window, go to the <i>jaxb-ri-install</i><tt>/samples/external-customize/</tt> directory and type the following:</p>
+<div class="codeblock"><pre>
+ant
+</pre></div>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="basic.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="j2schema.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Basic Examples
+        <br /><b>Next page:</b> Java-to-Schema Examples
+    </div>
+</body>
+</html> 

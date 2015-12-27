@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Assignment, Arithmetic, and Unary Operators (The Java&trade; Tutorials &gt;        
+            Learning the Java Language &gt; Language Basics)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This beginner Java tutorial describes fundamentals of programming in the Java programming language" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java objects, java classes, java inheritance, interfaces, variables, arrays, data types, operators, control flow, number, string" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Language Basics</a></div>
+<div class="linkAHEAD"><a href="variables.html">Variables</a></div>
+<div class="linkBHEAD"><a href="datatypes.html">Primitive Data Types</a></div>
+<div class="linkBHEAD"><a href="arrays.html">Arrays</a></div>
+<div class="linkBHEAD"><a href="variablesummary.html">Summary of Variables</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions_variables.html">Questions and Exercises</a></div>
+<div class="linkAHEAD"><a href="operators.html">Operators</a></div>
+<div class="nolinkBHEAD">Assignment, Arithmetic, and Unary Operators</div>
+<div class="linkBHEAD"><a href="op2.html">Equality, Relational, and Conditional Operators </a></div>
+<div class="linkBHEAD"><a href="op3.html">Bitwise and Bit Shift Operators</a></div>
+<div class="linkBHEAD"><a href="opsummary.html">Summary of Operators</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions_operators.html">Questions and Exercises</a></div>
+<div class="linkAHEAD"><a href="expressions.html">Expressions, Statements, and Blocks</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions_expressions.html">Questions and Exercises</a></div>
+<div class="linkAHEAD"><a href="flow.html">Control Flow Statements</a></div>
+<div class="linkBHEAD"><a href="if.html">The if-then and if-then-else Statements</a></div>
+<div class="linkBHEAD"><a href="switch.html">The switch Statement</a></div>
+<div class="linkBHEAD"><a href="while.html">The while and do-while Statements</a></div>
+<div class="linkBHEAD"><a href="for.html">The for Statement</a></div>
+<div class="linkBHEAD"><a href="branch.html">Branching Statements</a></div>
+<div class="linkBHEAD"><a href="flowsummary.html">Summary of Control Flow Statements</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions_flow.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Learning the Java Language
+        <br /><b>Lesson:</b> Language Basics
+        <br /><b>Section:</b> Operators
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Learning the Java Language</a>
+                &gt;
+                <a href="index.html" target="_top">Language Basics</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="operators.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="op2.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Assignment, Arithmetic, and Unary Operators</h1></div>
+            <div id="PageContent">
+
+<h2>The Simple Assignment Operator</h2>
+<p>One of the most common operators that you&#39;ll encounter is the simple assignment operator &quot;<code>=</code>&quot;. You saw this operator in the Bicycle class; it assigns the value on its right to the operand on its left:</p>
+<div class="codeblock"><pre>
+ int cadence = 0;
+ int speed = 0;
+ int gear = 1;
+</pre></div>
+<p>This operator can also be used on objects to assign <i>object references</i>, as discussed in 
+<a class="TutorialLink" target="_top" href="../javaOO/objectcreation.html">Creating Objects</a>.</p>
+<h2>The Arithmetic Operators</h2>
+<p>The Java programming language provides operators that perform addition, subtraction, multiplication, and division. There&#39;s a good chance you&#39;ll recognize them by their counterparts in basic mathematics. The only symbol that might look new to you is &quot;<code>%</code>&quot;, which divides one operand by another and returns the remainder as its result.</p>
+
+<table border="1" summary="Arithmetic operators">
+  <tr>
+    <th id="h1">Operator</th>
+    <th id="h2">Description</th>
+  </tr>
+  <tr>
+    <td headers="h1"><code>+</code></td><td>Additive operator (also used for String concatenation)</td>
+  </tr>
+  <tr>
+    <td headers="h1"><code>-</code></td><td>Subtraction operator</td>
+  </tr>
+  <tr>
+    <td headers="h1"><code>*</code></td><td>Multiplication operator</td>
+  </tr>
+  <tr>
+    <td headers="h1"><code>/</code></td><td>Division operator</td>
+  </tr>
+  <tr>
+    <td headers="h1"><code>%</code></td><td>Remainder operator</td>
+  </tr>  
+</table>
+
+<p>The following program, 
+<a class="SourceLink" target="_blank" href="examples/ArithmeticDemo.java" onclick="showCode('../../displayCode.html', 'examples/ArithmeticDemo.java'); return false;"><code>ArithmeticDemo</code></a>, tests the arithmetic operators.</p>
+<div class="codeblock"><pre>
+
+class ArithmeticDemo {
+
+    public static void main (String[] args) {
+
+        int result = 1 + 2;
+        // result is now 3
+        System.out.println(&quot;1 + 2 = &quot; + result);
+        int original_result = result;
+
+        result = result - 1;
+        // result is now 2
+        System.out.println(original_result + &quot; - 1 = &quot; + result);
+        original_result = result;
+
+        result = result * 2;
+        // result is now 4
+        System.out.println(original_result + &quot; * 2 = &quot; + result);
+        original_result = result;
+
+        result = result / 2;
+        // result is now 2
+        System.out.println(original_result + &quot; / 2 = &quot; + result);
+        original_result = result;
+
+        result = result + 8;
+        // result is now 10
+        System.out.println(original_result + &quot; + 8 = &quot; + result);
+        original_result = result;
+
+        result = result % 7;
+        // result is now 3
+        System.out.println(original_result + &quot; % 7 = &quot; + result);
+    }
+}
+
+</pre></div>
+
+<p>This program prints the following:</p>
+<div class="codeblock"><pre>
+1 + 2 = 3
+3 - 1 = 2
+2 * 2 = 4
+4 / 2 = 2
+2 + 8 = 10
+10 % 7 = 3
+</pre></div>
+
+
+<p>You can also combine the arithmetic operators with the simple assignment operator to create <i>compound assignments</i>. For example, <code>x+=1;</code> and <code>x=x+1;</code> both increment the value of <code>x</code> by 1.</p>
+<p>The <code>+</code> operator can also be used for concatenating (joining) two strings together, as shown in the following 
+<a class="SourceLink" target="_blank" href="examples/ConcatDemo.java" onclick="showCode('../../displayCode.html', 'examples/ConcatDemo.java'); return false;"><code>ConcatDemo</code></a> program:</p>
+<div class="codeblock"><pre>
+
+class ConcatDemo {
+    public static void main(String[] args){
+        String firstString = &quot;This is&quot;;
+        String secondString = &quot; a concatenated string.&quot;;
+        String thirdString = firstString+secondString;
+        System.out.println(thirdString);
+    }
+}
+</pre></div>
+<p>By the end of this program, the variable <code>thirdString</code> contains &quot;This is a concatenated string.&quot;, which gets printed to standard output.</p>
+<h2>The Unary Operators</h2>
+<p>The unary operators require only one operand; they perform various operations such as incrementing/decrementing a value by one, negating an expression, or inverting the value of a boolean.</p>
+
+<table border="1" summary="Unary operators">
+  <tr>
+    <th id="h101">Operator</th>
+    <th id="h102">Description</th>
+  </tr>
+  <tr>
+    <td headers="h101"><code>+</code></td><td>Unary plus operator; indicates 
+        positive value (numbers are 
+        positive without this, however)</td>
+  </tr>
+  <tr>
+    <td headers="h101"><code>-</code></td><td>Unary minus operator; negates
+        an expression</td>
+  </tr>
+  <tr>
+    <td headers="h101"><code>++</code></td><td>Increment operator; increments
+        a value by 1</td>
+  </tr>
+  <tr>
+    <td headers="h101"><code>--</code></td><td>Decrement operator; decrements
+        a value by 1</td>
+  </tr>
+  <tr>
+    <td headers="h101"><code>!</code></td><td>Logical complement operator; 
+        inverts the value of a boolean</td>
+  </tr>
+</table>
+
+<p>The following program, 
+<a class="SourceLink" target="_blank" href="examples/UnaryDemo.java" onclick="showCode('../../displayCode.html', 'examples/UnaryDemo.java'); return false;"><code>UnaryDemo</code></a>, tests the unary operators:</p>
+<div class="codeblock"><pre>
+
+class UnaryDemo {
+
+    public static void main(String[] args) {
+
+        int result = +1;
+        // result is now 1
+        System.out.println(result);
+
+        result--;
+        // result is now 0
+        System.out.println(result);
+
+        result++;
+        // result is now 1
+        System.out.println(result);
+
+        result = -result;
+        // result is now -1
+        System.out.println(result);
+
+        boolean success = false;
+        // false
+        System.out.println(success);
+        // true
+        System.out.println(!success);
+    }
+}
+</pre></div>
+<p>The increment/decrement operators can be applied before (prefix) or after (postfix) the operand. The code <code>result++;</code> and <code>++result;</code> will both end in <code>result</code> being incremented by one. The only difference is that the prefix version (<code>++result</code>) evaluates to the incremented value, whereas the postfix version (<code>result++</code>) evaluates to the original value. If you are just performing a simple increment/decrement, it doesn&#39;t really matter which version you choose. But if you use this operator in part of a larger expression, the one that you choose may make a significant difference.</p>
+<p>The following program, 
+<a class="SourceLink" target="_blank" href="examples/PrePostDemo.java" onclick="showCode('../../displayCode.html', 'examples/PrePostDemo.java'); return false;"><code>PrePostDemo</code></a>, illustrates the prefix/postfix unary increment operator:</p>
+<div class="codeblock"><pre>
+
+class PrePostDemo {
+    public static void main(String[] args){
+        int i = 3;
+        i++;
+        // prints 4
+        System.out.println(i);
+        ++i;			   
+        // prints 5
+        System.out.println(i);
+        // prints 6
+        System.out.println(++i);
+        // prints 6
+        System.out.println(i++);
+        // prints 7
+        System.out.println(i);
+    }
+}
+</pre></div>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="operators.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="op2.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Operators
+        <br /><b>Next page:</b> Equality, Relational, and Conditional Operators 
+    </div>
+</body>
+</html> 

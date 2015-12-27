@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Invoking Applet Methods From JavaScript Code (The Java&trade; Tutorials &gt;        
+            Deployment &gt; Java Applets)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This deployment Java tutorial describes development and deployment of applets, Java Web Start applications, rich Internet applications, and JAR related tools" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java applet, java web start, rich internet application, RIA, jar, plugin, plug-in" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Java Applets</a></div>
+<div class="linkAHEAD"><a href="getStarted.html">Getting Started With Applets</a></div>
+<div class="linkBHEAD"><a href="subclass.html">Defining an Applet Subclass</a></div>
+<div class="linkBHEAD"><a href="appletMethods.html">Methods for Milestones</a></div>
+<div class="linkBHEAD"><a href="lifeCycle.html">Life Cycle of an Applet</a></div>
+<div class="linkBHEAD"><a href="appletExecutionEnv.html">Applet's Execution Environment</a></div>
+<div class="linkBHEAD"><a href="developingApplet.html">Developing an Applet</a></div>
+<div class="linkBHEAD"><a href="deployingApplet.html">Deploying an Applet</a></div>
+<div class="linkCHEAD"><a href="html.html">Deploying With the Applet Tag</a></div>
+<div class="linkAHEAD"><a href="doingMoreWithApplets.html">Doing More With Applets</a></div>
+<div class="linkBHEAD"><a href="data.html">Finding and Loading Data Files</a></div>
+<div class="linkBHEAD"><a href="param.html">Defining and Using Applet Parameters</a></div>
+<div class="linkBHEAD"><a href="showStatus.html">Displaying Short Status Strings</a></div>
+<div class="linkBHEAD"><a href="browser.html">Displaying Documents in the Browser</a></div>
+<div class="linkBHEAD"><a href="invokingJavaScriptFromApplet.html">Invoking JavaScript Code From an Applet</a></div>
+<div class="nolinkBHEAD">Invoking Applet Methods From JavaScript Code</div>
+<div class="linkBHEAD"><a href="appletStatus.html">Handling Initialization Status With Event Handlers </a></div>
+<div class="linkBHEAD"><a href="manipulatingDOMFromApplet.html">Manipulating DOM of Applet's Web Page</a></div>
+<div class="linkBHEAD"><a href="customProgressIndicatorForApplet.html">Displaying a Customized Loading Progress Indicator</a></div>
+<div class="linkBHEAD"><a href="stdout.html">Writing Diagnostics to Standard Output and Error Streams</a></div>
+<div class="linkBHEAD"><a href="draggableApplet.html">Developing Draggable Applets</a></div>
+<div class="linkBHEAD"><a href="iac.html">Communicating With Other Applets</a></div>
+<div class="linkBHEAD"><a href="server.html">Working With a Server-Side Application </a></div>
+<div class="linkCHEAD"><a href="clientExample.html">Network Client Applet Example</a></div>
+<div class="linkBHEAD"><a href="security.html">What Applets Can and Cannot Do</a></div>
+<div class="linkAHEAD"><a href="problemsindex.html">Solving Common Applet Problems</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Deployment
+        <br /><b>Lesson:</b> Java Applets
+        <br /><b>Section:</b> Doing More With Applets
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Deployment</a>
+                &gt;
+                <a href="index.html" target="_top">Java Applets</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="invokingJavaScriptFromApplet.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="appletStatus.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Invoking Applet Methods From JavaScript Code</h1></div>
+            <div id="PageContent">
+
+<p>JavaScript code on a web page can interact with Java applets embedded on the page. JavaScript code can perform operations such as the following:</p>
+<ul>
+<li>Invoke methods on Java objects</li>
+<li>Get and set fields in Java objects</li>
+<li>Get and set Java array elements</li>
+</ul>
+<p>The 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/plugin2-142482.html#LIVECONNECT">LiveConnect Specification</a> describes details about how JavaScript code communicates with Java code.</p>
+<p>Security warnings are shown when JavaScript code makes calls to a Java applet. To suppress these warnings, add the <code>Caller-Allowable-Codebase</code> attribute to the JAR file manifest. Specify the location of the JavaScript code that is allowed to make calls to the applet. See
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/docs/technotes/guides/deploy/manifest.html">JAR File Manifest Attributes for Security</a> for information about the <code>Caller-Allowable-Codebase</code> attribute.</p> 
+<p>This topic explores JavaScript code to Java applet communication using the Math applet example. The <code>MathApplet</code> class and supporting <code>Calculator</code> class provide a set of public methods and variables. The JavaScript code on the web page invokes and evaluates these public members to pass data and retrieve calculated results.</p>
+<h2>Math Applet and Related Classes</h2>
+<p>Here is the source code for the 
+<a class="SourceLink" target="_blank" href="examples/applet_InvokingAppletMethodsFromJavaScript/src/jstojava/MathApplet.java" onclick="showCode('../../displayCode.html', 'examples/applet_InvokingAppletMethodsFromJavaScript/src/jstojava/MathApplet.java'); return false;"><code><code>MathApplet</code></code></a> class. The <code>getCalculator</code> method returns a reference to the <code>Calculator</code> helper class.</p>
+<div class="codeblock"><pre>
+ 
+package jstojava;
+import java.applet.Applet;
+
+public class MathApplet extends Applet{
+
+    public String userName = null;
+         
+    public String getGreeting() {
+        return &quot;Hello &quot; + userName;
+    }
+    
+    public Calculator getCalculator() {
+        return new Calculator();
+    } 
+    
+    public DateHelper getDateHelper() {
+        return new DateHelper();
+    }
+    
+    public void printOut(String text) {
+        System.out.println(text);
+    }
+}
+</pre></div>
+<p>The methods in the 
+<a class="SourceLink" target="_blank" href="examples/applet_InvokingAppletMethodsFromJavaScript/src/jstojava/Calculator.java" onclick="showCode('../../displayCode.html', 'examples/applet_InvokingAppletMethodsFromJavaScript/src/jstojava/Calculator.java'); return false;"><code><code>Calculator</code></code></a> class let the user set two values, add numbers, and retrieve the numbers in a range.</p>
+<div class="codeblock"><pre>
+
+package jstojava;
+
+public class Calculator {
+    private int a = 0;
+    private int b = 0; // assume b &gt; a
+    
+    public void setNums(int numA, int numB) {
+        a = numA;
+        b = numB;
+    }
+    
+    public int add() {
+        return a + b;
+    }
+    
+    public int [] getNumInRange() {    
+        int x = a;
+        int len = (b - a) + 1;
+        int [] range = new int [len];
+        for (int i = 0; i &lt; len; i++) {
+            range[i]= x++;
+            System.out.println(&quot;i: &quot; + i + &quot; ; range[i]: &quot; + range[i]);
+        }
+        return range;
+    }
+}
+</pre></div>
+<p>The <code>getDate</code> method of the 
+<a class="SourceLink" target="_blank" href="examples/applet_InvokingAppletMethodsFromJavaScript/src/jstojava/DateHelper.java" onclick="showCode('../../displayCode.html', 'examples/applet_InvokingAppletMethodsFromJavaScript/src/jstojava/DateHelper.java'); return false;"><code><code>DateHelper</code></code></a> class returns the current date.</p>
+<div class="codeblock"><pre>
+
+package jstojava;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+public class DateHelper {
+    
+    public static String label = null;
+        
+    public String getDate() {
+        return label + &quot; &quot; + new SimpleDateFormat().format(new Date());
+    }
+
+}
+</pre></div>
+<h2>Deploying the Applet</h2>
+<p>Deploy the applet in a web page, 
+<a class="SourceLink" target="_blank" href="examples/dist/applet_InvokingAppletMethodsFromJavaScript/AppletPage.html" onclick="showCode('../../displayCode.html', 'examples/dist/applet_InvokingAppletMethodsFromJavaScript/AppletPage.html'); return false;"><code><code>AppletPage.html</code></code></a> When deploying the applet, make sure that you specify an id for the applet. The applet id is used later to obtain a reference to the applet object.</p>
+<div class="codeblock"><pre>
+&lt;script src=
+  "https://www.java.com/js/deployJava.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    &lt;!-- applet id can be used to get a reference to
+    the applet object --&gt;
+    var attributes = { <b>id:'mathApplet'</b>,
+        code:'jstojava.MathApplet',  width:1, height:1} ;
+    var parameters = { jnlp_href: 'math_applet.jnlp'} ;
+    deployJava.runApplet(attributes, parameters, '1.6');
+&lt;/script&gt;
+</pre></div>
+<p>Next, add some JavaScript code to the 
+<a class="SourceLink" target="_blank" href="examples/dist/applet_InvokingAppletMethodsFromJavaScript/AppletPage.html" onclick="showCode('../../displayCode.html', 'examples/dist/applet_InvokingAppletMethodsFromJavaScript/AppletPage.html'); return false;"><code><code>AppletPage.html</code></code></a> web page. The JavaScript code can use the applet id as a reference to the applet object and invoke the applet&#39;s methods. In the example shown next, the JavaScript code sets the applet&#39;s public member variables, invokes public methods, and retrieves a reference to another object referenced by the applet (<code>Calculator</code>). The JavaScript code is able to handle primitive, array, and object return types.</p>
+<div class="codeblock"><pre>
+&lt;script language="javascript"&gt;
+    function enterNums(){
+        var numA = prompt('Enter number \'a\'?','0');
+        var numB = prompt(
+            'Enter number \'b\' (should be greater than number \'a\' ?','1');
+        // set applet's public variable
+        mathApplet.userName = "John Doe";
+
+        // invoke public applet method
+        var greeting = mathApplet.getGreeting();
+
+        // get another class referenced by applet and
+        // invoke its methods
+        var calculator = mathApplet.getCalculator();
+        calculator.setNums(numA, numB);
+
+        // primitive datatype returned by applet
+        var sum = calculator.add();
+
+        // array returned by applet
+        var numRange = calculator.getNumInRange();
+
+        // check Java console log for this message
+        mathApplet.printOut("Testing printing to System.out");
+
+        // get another class, set static field and invoke its methods
+        var dateHelper = mathApplet.getDateHelper();
+        dateHelper.label = "Today\'s date is: ";
+        var dateStr = dateHelper.getDate();
+        &lt;!-- ... --&gt;
+&lt;/script&gt;
+</pre></div>
+<p>The Math applet displays the following results on the web page when the number a = 0 and b = 5:</p>
+<div class="codeblock"><pre>
+Results of JavaScript to Java Communication
+
+Hello John Doe
+
+a = 0 ; b = 5
+
+Sum: 5
+
+Numbers in range array: [ 0, 1, 2, 3, 4, 5 ]
+
+Today's date is: 5/28/13 4:12 PM //<i>shows current date</i>
+</pre></div>
+<p>Open 
+<a class="SourceLink" target="_blank" href="examples/dist/applet_InvokingAppletMethodsFromJavaScript/AppletPage.html" onclick="showCode('../../displayCode.html', 'examples/dist/applet_InvokingAppletMethodsFromJavaScript/AppletPage.html'); return false;"><code><code>AppletPage.html</code></code></a> in a browser to view the Math applet.</p>
+<div class="note"><hr /><strong>Note:</strong> &nbsp;If you don't see the applet running, you need to install at least the <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java SE Development Kit (JDK) 6 update 10</a> release.<hr /></div><div class="note"><hr /><strong>Note:</strong> &nbsp;If you don't see the example running, you might need to enable the JavaScript interpreter in your browser so that the Deployment Toolkit script can function properly.<hr /></div><p>Check 
+<a class="TutorialLink" target="_top" href="security.html#jsNote">security restrictions</a> placed on applets invoked by JavaScript code.</p>
+
+<p>
+<a class="TutorialLink" target="_top" href="examplesIndex.html#InvokingAppletMethodsFromJavaScript">Download source code</a> for the <em>Invoking Applet Methods From JavaScript Code</em> example to experiment further.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="invokingJavaScriptFromApplet.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="appletStatus.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Invoking JavaScript Code From an Applet
+        <br /><b>Next page:</b> Handling Initialization Status With Event Handlers 
+    </div>
+</body>
+</html> 

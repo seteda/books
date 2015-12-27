@@ -1,0 +1,42 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="overview/index.html">JDBC Introduction</a>
+<ul>
+<li class="tocli"><a href="overview/architecture.html">JDBC Architecture</a></li>
+<li class="tocli"><a href="overview/database.html">A Relational Database Overview</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="basics/index.html">JDBC Basics</a>
+<ul>
+<li class="tocli"><a href="basics/gettingstarted.html">Getting Started</a></li>
+<li class="tocli"><a href="basics/processingsqlstatements.html">Processing SQL Statements with JDBC</a></li>
+<li class="tocli"><a href="basics/connecting.html">Establishing a Connection</a></li>
+<li class="tocli"><a href="basics/sqldatasources.html">Connecting with DataSource Objects</a></li>
+<li class="tocli"><a href="basics/sqlexception.html">Handling SQLExceptions</a></li>
+<li class="tocli"><a href="basics/tables.html">Setting Up Tables</a></li>
+<li class="tocli"><a href="basics/retrieving.html">Retrieving and Modifying Values from Result Sets</a></li>
+<li class="tocli"><a href="basics/prepared.html">Using Prepared Statements</a></li>
+<li class="tocli"><a href="basics/transactions.html">Using Transactions</a></li>
+<li class="tocli"><a href="basics/rowset.html">Using RowSet Objects</a></li>
+<li class="tocli"><a href="basics/jdbcrowset.html">Using JdbcRowSet Objects</a></li>
+<li class="tocli"><a href="basics/cachedrowset.html">Using CachedRowSetObjects</a></li>
+<li class="tocli"><a href="basics/joinrowset.html">Using JoinRowSet Objects</a></li>
+<li class="tocli"><a href="basics/filteredrowset.html">Using FilteredRowSet Objects</a></li>
+<li class="tocli"><a href="basics/webrowset.html">Using WebRowSet Objects</a></li>
+<li class="tocli"><a href="basics/sqltypes.html">Using Advanced Data Types</a></li>
+<li class="tocli"><a href="basics/blob.html">Using Large Objects</a></li>
+<li class="tocli"><a href="basics/sqlxml.html">Using SQLXML Objects</a></li>
+<li class="tocli"><a href="basics/array.html">Using Array Objects</a></li>
+<li class="tocli"><a href="basics/distinct.html">Using DISTINCT Data Type</a></li>
+<li class="tocli"><a href="basics/sqlstructured.html">Using Structured Objects</a></li>
+<li class="tocli"><a href="basics/sqlcustommapping.html">Using Customized Type Mappings</a></li>
+<li class="tocli"><a href="basics/sqldatalink.html">Using Datalink Objects</a></li>
+<li class="tocli"><a href="basics/sqlrowid.html">Using RowId Objects</a></li>
+<li class="tocli"><a href="basics/storedprocedures.html">Using Stored Procedures</a></li>
+<li class="tocli"><a href="basics/jdbcswing.html">Using JDBC with GUI API</a>
+</li>
+</ul>
+</li>
+</ul>

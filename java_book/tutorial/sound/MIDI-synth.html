@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Synthesizing Sound (The Java&trade; Tutorials &gt;        
+            Sound)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="" />
+     <meta name="keywords" content="java programming, learn java, java sample code, " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkAHEAD"><a href="sampled-overview.html">Overview of the Sampled Package</a></div>
+<div class="linkAHEAD"><a href="accessing.html">Accessing Audio System Resources</a></div>
+<div class="linkAHEAD"><a href="playing.html">Playing Back Audio</a></div>
+<div class="linkAHEAD"><a href="capturing.html">Capturing Audio</a></div>
+<div class="linkAHEAD"><a href="controls.html">Processing Audio with Controls</a></div>
+<div class="linkAHEAD"><a href="converters.html">Using Files and Format Converters</a></div>
+<div class="linkAHEAD"><a href="overview-MIDI.html">Overview of the MIDI Package</a></div>
+<div class="linkAHEAD"><a href="accessing-MIDI.html">Accessing MIDI System Resources</a></div>
+<div class="linkAHEAD"><a href="MIDI-messages.html">Transmitting and Receiving MIDI Messages</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-intro.html">Introduction to Sequencers</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-methods.html">Using Sequencer Methods</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-adv.html">Using Advanced Sequencer Features</a></div>
+<div class="nolinkAHEAD">Synthesizing Sound</div>
+<div class="linkAHEAD"><a href="SPI-intro.html">Introduction to the Service Provider Interfaces</a></div>
+<div class="linkAHEAD"><a href="SPI-providing-sampled.html">Providing Sampled-Audio Services</a></div>
+<div class="linkAHEAD"><a href="SPI-providing-MIDI.html">Providing MIDI Services</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Sound
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="./index.html" target="_top">Sound</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="MIDI-seq-adv.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="./TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="SPI-intro.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Synthesizing Sound</h1></div>
+            <div id="PageContent">
+
+<p><a name="121725"></a> Most programs that avail themselves of the Java Sound API&#39;s MIDI package do so to synthesize sound. The entire apparatus of MIDI files, events, sequences, and sequencers, which was previously discussed, nearly always has the goal of eventually sending musical data to a synthesizer to convert into audio. (Possible exceptions include programs that convert MIDI into musical notation that can be read by a musician, and programs that send messages to external MIDI-controlled devices such as mixing consoles.)</p>
+<p><a name="121727"></a> The <code>Synthesizer</code> interface is therefore fundamental to the MIDI package. This page shows how to manipulate a synthesizer to play sound. Many programs will simply use a sequencer to send MIDI file data to the synthesizer, and won&#39;t need to invoke many <code>Synthesizer</code> methods directly. However, it&#39;s possible to control a synthesizer directly, without using sequencers or even <code>MidiMessage</code> objects, as explained near the end of this page.</p>
+<p><a name="121729"></a> The synthesis architecture might seem complex for readers who are unfamiliar with MIDI. Its API includes three interfaces:</p>
+<ul>
+<li><a name="121730"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/Synthesizer.html"><code>Synthesizer</code></a></li>
+<li><a name="121731"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/MidiChannel.html"><code>MidiChannel</code></a></li>
+<li><a name="121732"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/Soundbank.html"><code>Soundbank</code></a></li>
+</ul>
+<p><a name="121733"></a> and four classes:</p>
+<ul>
+<li><a name="121734"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/Instrument.html"><code>Instrument</code></a></li>
+<li><a name="121735"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/Patch.html"><code>Patch</code></a></li>
+<li><a name="121736"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/SoundbankResource.html"><code>SoundbankResource</code></a></li>
+<li><a name="121737"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/VoiceStatus.html"><code>VoiceStatus</code></a></li>
+</ul>
+<p><a name="121739"></a>As orientation for all this API, the next section explains some of the basics of MIDI synthesis and how they&#39;re reflected in the Java Sound API. Subsequent sections give a more detailed look at the API.</p>
+<p><a name="121742"></a></p>
+<h2>Understanding MIDI Synthesis</h2>
+<p><a name="121745"></a> How does a synthesizer generate sound? Depending on its implementation, it may use one or more sound-synthesis techniques. For example, many synthesizers use wavetable synthesis. A wavetable synthesizer reads stored snippets of audio from memory, playing them at different sample rates and looping them to create notes of different pitches and durations. For example, to synthesize the sound of a saxophone playing the note C#4 (MIDI note number 61), the synthesizer might access a very short snippet from a recording of a saxophone playing the note Middle C (MIDI note number 60), and then cycle repeatedly through this snippet at a slightly faster sample rate than it was recorded at, which creates a long note of a slightly higher pitch. Other synthesizers use techniques such as frequency modulation (FM), additive synthesis, or physical modeling, which don&#39;t make use of stored audio but instead generate audio from scratch using different algorithms.</p>
+<p><a name="121747"></a></p>
+<h3>Instruments</h3>
+<p><a name="123181"></a> What all synthesis techniques have in common is the ability to create many sorts of sounds. Different algorithms, or different settings of parameters within the same algorithm, create different-sounding results. An <em>instrument</em> is a specification for synthesizing a certain type of sound. That sound may emulate a traditional musical instrument, such as a piano or violin; it may emulate some other kind of sound source, for instance, a telephone or helicopter; or it may emulate no &quot;real-world&quot; sound at all. A specification called General MIDI defines a standard list of 128 instruments, but most synthesizers allow other instruments as well. Many synthesizers provide a collection of built-in instruments that are always available for use; some synthesizers also support mechanisms for loading additional instruments.</p>
+<p><a name="123190"></a> An instrument may be vendor-specific???in other words, applicable to only one synthesizer or several models from the same vendor. This incompatibility results when two different synthesizers use different sound-synthesis techniques, or different internal algorithms and parameters even if the fundamental technique is the same. Because the details of the synthesis technique are often proprietary, incompatibility is common. The Java Sound API includes ways to detect whether a given synthesizer supports a given instrument.</p>
+<p><a name="121753"></a> An instrument can usually be considered a preset; you don&#39;t have to know anything about the details of the synthesis technique that produces its sound. However, you can still vary aspects of its sound. Each Note On message specifies the pitch and volume of an individual note. You can also alter the sound through other MIDI commands such as controller messages or system-exclusive messages.</p>
+<p><a name="121755"></a></p>
+<h3>Channels</h3>
+<p><a name="121759"></a> Many synthesizers are <em>multimbral</em> (sometimes called <em>polytimbral</em>), meaning that they can play the notes of different instruments simultaneously. (<em>Timbre</em> is the characteristic sound quality that enables a listener to distinguish one kind of musical instrument from other kinds.) Multimbral synthesizers can emulate an entire ensemble of real-world instruments, instead of only one instrument at a time. MIDI synthesizers normally implement this feature by taking advantage of the different MIDI channels on which the MIDI specification allows data to be transmitted. In this case, the synthesizer is actually a collection of sound-generating units, each emulating a different instrument and responding independently to messages that are received on a different MIDI channel. Since the MIDI specification provides only 16 channels, a typical MIDI synthesizer can play up to 16 different instruments at once. The synthesizer receives a stream of MIDI commands, many of which are channel commands. (Channel commands are targeted to a particular MIDI channel; for more information, see the MIDI specification.) If the synthesizer is multitimbral, it routes each channel command to the correct sound-generating unit, according to the channel number indicated in the command.</p>
+<p><a name="121761"></a> In the Java Sound API, these sound-generating units are instances of classes that implement the <code>MidiChannel</code> interface. A <code>synthesizer</code> object has at least one <code>MidiChannel</code> object. If the synthesizer is multimbral, it has more than one, normally 16. Each <code>MidiChannel</code> represents an independent sound-generating unit.</p>
+<p><a name="121763"></a> Because a synthesizer&#39;s <code>MidiChannel</code> objects are more or less independent, the assignment of instruments to channels doesn&#39;t have to be unique. For example, all 16 channels could be playing a piano timbre, as though there were an ensemble of 16 pianos. Any grouping is possible???for instance, channels 1, 5, and 8 could be playing guitar sounds, while channels 2 and 3 play percussion and channel 12 has a bass timbre. The instrument being played on a given MIDI channel can be changed dynamically; this is known as a <em>program change</em>.</p>
+<p><a name="121765"></a> Even though most synthesizers allow only 16 or fewer instruments to be active at a given time, these instruments can generally be chosen from a much larger selection and assigned to particular channels as required.</p>
+<p><a name="121767"></a></p>
+<h3>Soundbanks and Patches</h3>
+<p><a name="121769"></a> Instruments are organized hierarchically in a synthesizer, by bank number and program number. Banks and programs can be thought of as rows and columns in a two-dimensional table of instruments. A bank is a collection of programs. The MIDI specification allows up to 128 programs in a bank, and up to 128 banks. However, a particular synthesizer might support only one bank, or a few banks, and might support fewer than 128 programs per bank.</p>
+<p><a name="121771"></a> In the Java Sound API, there&#39;s a higher level to the hierarchy: a soundbank. Soundbanks can contain up to 128 banks, each containing up to 128 instruments. Some synthesizers can load an entire soundbank into memory.</p>
+<p><a name="121773"></a> To select an instrument from the current soundbank, you specify a bank number and a program number. The MIDI specification accomplishes this with two MIDI commands: bank select and program change. In the Java Sound API, the combination of a bank number and program number is encapsulated in a <code>Patch</code> object. You change a MIDI channel&#39;s current instrument by specifying a new patch. The patch can be considered the two-dimensional index of the instruments in the current soundbank.</p>
+<p><a name="121775"></a> You might be wondering if soundbanks, too, are indexed numerically. The answer is no; the MIDI specification does not provide for this. In the Java Sound API, a <code>Soundbank</code> object can be obtained by reading a soundbank file. If the soundbank is supported by the synthesizer, its instruments can be loaded into the synthesizer individually as desired, or all at once. Many synthesizers have a built-in or default soundbank; the instruments contained in this soundbank are always available to the synthesizer.</p>
+<p><a name="121777"></a></p>
+<h3>Voices</h3>
+<p><a name="121779"></a> It&#39;s important to distinguish between the number of <em>timbres</em> a synthesizer can play simultaneously and the number of <em>notes</em> it can play simultaneously. The former was described above under &quot;Channels.&quot; The ability to play multiple notes at once is referred to as <em>polyphony</em>. Even a synthesizer that isn&#39;t multitimbral can generally play more than one note at a time (all having the same timbre, but different pitches). For example, playing any chord, such as a G major triad or a B minor seventh chord, requires polyphony. Any synthesizer that generates sound in real time has a limitation on the number of notes it can synthesize at once. In the Java Sound API, the synthesizer reports this limitation through the <code>getMaxPolyphony</code> method.</p>
+<p><a name="121783"></a> A <em>voice</em> is a succession of single notes, such as a melody that a person can sing. Polyphony consists of multiple voices, such as the parts sung by a choir. A 32-voice synthesizer, for example, can play 32 notes simultaneously. (However, some MIDI literature uses the word &quot;voice&quot; in a different sense, similar to the meaning of &quot;instrument&quot; or &quot;timbre.&quot;)</p>
+<p><a name="121785"></a> The process of assigning incoming MIDI notes to specific voices is known as <em>voice allocation</em>. A synthesizer maintains a list of voices, keeping track of which ones are active (meaning that they currently have notes sounding). When a note stops sounding, the voice becomes inactive, meaning that it&#39;s now free to accept the next note-on request that the synthesizer receives. An incoming stream of MIDI commands can easily request more simultaneous notes than the synthesizer is capable of generating. When all the synthesizer&#39;s voices are active, how should the next Note On request be handled? Synthesizers can implement different strategies: the most recently requested note can be ignored; or it can be played by discontinuing another note, such as the least recently started one.</p>
+<p><a name="121787"></a> Although the MIDI specification does not require it, a synthesizer can make public the contents of each of its voices. The Java Sound API includes a <code>VoiceStatus</code> class for this purpose.</p>
+<p><a name="121788"></a> A <code>VoiceStatus</code> reports on the voice&#39;s current active or inactive status, MIDI channel, bank and program number, MIDI note number, and MIDI volume.</p>
+<p><a name="121790"></a> With this background, let&#39;s examine the specifics of the Java Sound API for synthesis.</p>
+<p><a name="121793"></a></p>
+<h2>Managing Instruments and Soundbanks</h2>
+<p><a name="121795"></a> In many cases, a program can make use of a <code>Synthesizer</code> object without explicitly invoking almost any of the synthesis API. For example, suppose you&#39;re playing a standard MIDI file. You load it into a <code>Sequence</code> object, which you play by having a sequencer send the data to the default synthesizer. The data in the sequence controls the synthesizer as intended, playing all the right notes at the right times.</p>
+<p><a name="121797"></a> However, there are cases when this simple scenario is inadequate. The sequence contains the right music, but the instruments sound all wrong! This unfortunate situation probably arose because the creator of the MIDI file had different instruments in mind than the ones that are currently loaded into the synthesizer.</p>
+<p><a name="123339"></a> The MIDI 1.0 Specification provides for bank-select and program-change commands, which affect which instrument is currently playing on each MIDI channel. However, the specification does not define what instrument should reside in each patch location (bank and program number). The more recent General MIDI specification addresses this problem by defining a bank containing 128 programs that correspond to specific instrument sounds. A General MIDI synthesizer uses 128 instruments that match this specified set. Different General MIDI synthesizers can sound quite different, even when playing what&#39;s supposed to be the same instrument. However, a MIDI file should for the most part sound similar (even if not identical), no matter which General MIDI synthesizer is playing it.</p>
+<p><a name="123341"></a> Nonetheless, not all creators of MIDI files want to be limited to the set of 128 timbres defined by General MIDI. This section shows how to change the instruments from the default set that the synthesizer comes with. (If there is no default, meaning that no instruments are loaded when you access the synthesizer, you&#39;ll have to use this API to start with in any case.)</p>
+<p><a name="121803"></a></p>
+<h3>Learning What Instruments Are Loaded</h3>
+<p><a name="121805"></a> To learn whether the instruments currently loaded into the synthesizer are the ones you want, you can invoke this <code>Synthesizer</code> method:</p>
+<div class="codeblock"><pre>
+Instrument[] getLoadedInstruments() 
+</pre></div>
+<p>and iterate over the returned array to see exactly which instruments are currently loaded. Most likely, you would display the instruments&#39; names in the user interface (using the <code>getName</code> method of <code>Instrument</code>), and let the user decide whether to use those instruments or load others. The <code>Instrument</code> API includes a method that reports which soundbank the instrument belongs to. The soundbank&#39;s name might help your program or the user ascertain exactly what the instrument is.</p>
+<p><a name="123382"></a> This <code>Synthesizer</code> method:</p>
+<div class="codeblock"><pre>
+Soundbank getDefaultSoundbank() 
+</pre></div>
+<p>gives you the default soundbank. The <code>Soundbank</code> API includes methods to retrieve the soundbank&#39;s name, vendor, and version number, by which the program or the user can verify the bank&#39;s identity. However, you can&#39;t assume when you first get a synthesizer that the instruments from the default soundbank have been loaded into the synthesizer. For example, a synthesizer might have a large assortment of built-in instruments available for use, but because of its limited memory it might not load them automatically. <a name="121824"></a></p>
+<h3>Loading Different Instruments</h3>
+<p><a name="122802"></a> The user might decide to load instruments that are different from the current ones (or you might make that decision programmatically). The following method tells you which instruments come with the synthesizer (versus having to be loaded from soundbank files):</p>
+<div class="codeblock"><pre>
+Instrument[] getAvailableInstruments()
+</pre></div>
+<p>You can load any of these instruments by invoking:</p>
+<div class="codeblock"><pre>
+boolean loadInstrument(Instrument instrument) 
+</pre></div>
+<p>The instrument gets loaded into the synthesizer in the location specified by the instrument&#39;s <code>Patch</code> object (which can be retrieved using the <code>getPatch</code> method of <code>Instrument</code>).</p>
+<p><a name="121836"></a> To load instruments from other soundbanks, first invoke <code>Synthesizer&#39;s</code> <code>isSupportedSoundbank</code> method to make sure that the soundbank is compatible with this synthesizer (if it isn&#39;t, you can iterate over the system&#39;s synthesizers to try to find one that supports the soundbank). You can then invoke one of these methods to load instruments from the soundbank:</p>
+<div class="codeblock"><pre>
+boolean loadAllInstruments(Soundbank soundbank) 
+boolean loadInstruments(Soundbank soundbank, 
+  Patch[] patchList) 
+</pre></div>
+<p>As the names suggest, the first of these loads the entire set of instruments from a given soundbank, and the second loads selected instruments from the soundbank. You could also use <code>Soundbank&#39;s</code> <code>getInstruments</code> method to access all the instruments, then iterate over them and load selected instruments one at a time using <code>loadInstrument</code>.</p>
+<p><a name="121843"></a> It&#39;s not necessary for all the instruments you load to be from the same soundbank. You could use <code>loadInstrument</code> or <code>loadInstruments</code> to load certain instruments from one soundbank, another set from a different soundbank, and so on.</p>
+<p><a name="121846"></a> Each instrument has its own <code>Patch</code> object that specifies the location on the synthesizer where the instrument should be loaded. The location is defined by a bank number and a program number. There&#39;s no API to change the location by changing the patch&#39;s bank or program number.</p>
+<p><a name="121852"></a> However, it is possible to load an instrument into a location other than the one specified by its patch, using the following method of <code>Synthesizer</code>:</p>
+<div class="codeblock"><pre>
+boolean remapInstrument(Instrument from, Instrument to) 
+</pre></div>
+<p>This method unloads its first argument from the synthesizer, and places its second argument in whatever synthesizer patch location had been occupied by the first argument. <a name="121858"></a></p>
+<h3>Unloading Instruments</h3>
+<p><a name="123434"></a> Loading an instrument into a program location automatically unloads whatever instrument was already at that location, if any. You can also explicitly unload instruments without necessarily replacing them with new ones. <code>Synthesizer</code> includes three unloading methods that correspond to the three loading methods. If the synthesizer receives a program-change message that selects a program location where no instrument is currently loaded, there won&#39;t be any sound from the MIDI channel on which the program-change message was sent.</p>
+<p><a name="123435"></a></p>
+<h3>Accessing Soundbank Resources</h3>
+<p><a name="123439"></a> Some synthesizers store other information besides instruments in their soundbanks. For example, a wavetable synthesizer stores audio samples that one or more instruments can access. Because the samples might be shared by multiple instruments, they&#39;re stored in the soundbank independently of any instrument. Both the <code>Soundbank</code> interface and the <code>Instrument</code> class provide a method call <code>getSoundbankResources</code>, which returns a list of <code>SoundbankResource</code> objects. The details of these objects are specific to the synthesizer for which the soundbank is designed. In the case of wavetable synthesis, a resource might be an object that encapsulates a series of audio samples, taken from one snippet of a sound recording. Synthesizers that use other synthesis techniques might store other kinds of objects in the synthesizer&#39;s <code>SoundbankResources</code> array.</p>
+<p><a name="123441"></a></p>
+<h2>Querying the Synthesizer&#39;s Capabilities and Current State</h2>
+<p><a name="121873"></a> The <code>Synthesizer</code> interface includes methods that return information about the synthesizer&#39;s capabilities:</p>
+<div class="codeblock"><pre>
+    public long getLatency()
+    public int getMaxPolyphony()
+</pre></div>
+<p>The latency measures the worst-case delay between the time a MIDI message is delivered to the synthesizer and the time that the synthesizer actually produces the corresponding result. For example, it might take a synthesizer a few milliseconds to begin generating audio after receiving a note-on event.</p>
+<p><a name="121880"></a> The <code>getMaxPolyphony</code> method indicates how many notes the synthesizer can sound simultaneously, as discussed earlier under <a href="#121777">Voices</a>. As mentioned in the same discussion, a synthesizer can provide information about its voices. This is accomplished through the following method:</p>
+<div class="codeblock"><pre>
+public VoiceStatus[] getVoiceStatus()
+</pre></div>
+<p>Each <code>VoiceStatus</code> in the returned array reports the voice&#39;s current active or inactive status, MIDI channel, bank and program number, MIDI note number, and MIDI volume. The array&#39;s length should normally be the same number returned by <code>getMaxPolyphony</code>. If the synthesizer isn&#39;t playing, all its <code>VoiceStatus</code> objects have their active field set to <code>false</code>.</p>
+<p><a name="121886"></a> You can learn additional information about the current status of a synthesizer by retrieving its <code>MidiChannel</code> objects and querying their state. This is discussed more in the next section.</p>
+<p><a name="121890"></a></p>
+<h2>Using Channels</h2>
+<p><a name="121892"></a> Sometimes it&#39;s useful or necessary to access a synthesizer&#39;s <code>MidiChannel</code> objects directly. This section discusses such situations.</p>
+<p><a name="121894"></a></p>
+<h3>Controlling the Synthesizer without Using a Sequencer</h3>
+<p><a name="121896"></a> When using a sequence, such as one read from a MIDI file, you don&#39;t need to send MIDI commands to the synthesizer yourself. Instead, you just load the sequence into a sequencer, connect the sequencer to the synthesizer, and let it run. The sequencer takes care of scheduling the events, and the result is a predictable musical performance. This scenario works fine when the desired music is known in advance, which is true when it&#39;s read from a file.</p>
+<p><a name="121898"></a> In some situations, however, the music is generated on the fly as it&#39;s playing. For example, the user interface might display a musical keyboard or a guitar fretboard and let the user play notes at will by clicking with the mouse. As another example, an application might use a synthesizer not to play music per se, but to generate sound effects in response to the user&#39;s actions. This scenario is typical of games. As a final example, the application might indeed be playing music that&#39;s read from a file, but the user interface allows the user to interact with the music, altering it dynamically. In all these cases, the application sends commands directly to the synthesizer, since the MIDI messages need to be delivered immediately, instead of being scheduled for some determinate point in the future.</p>
+<p><a name="121900"></a> There are at least two ways of sending a MIDI message to the synthesizer without using a sequencer. The first is to construct a <code>MidiMessage</code> and pass it to the synthesizer using the send method of <code>Receiver</code>. For example, to produce a Middle C (MIDI note number 60) on MIDI channel 5 (one-based) immediately, you could do the following:</p>
+<div class="codeblock"><pre>
+    ShortMessage myMsg = new ShortMessage();
+    // Play the note Middle C (60) moderately loud
+    // (velocity = 93)on channel 4 (zero-based).
+    myMsg.setMessage(ShortMessage.NOTE_ON, 4, 60, 93); 
+    Synthesizer synth = MidiSystem.getSynthesizer();
+    Receiver synthRcvr = synth.getReceiver();
+    synthRcvr.send(myMsg, -1); // -1 means no time stamp
+</pre></div>
+<p>The second way is to bypass the message-passing layer (that is, the <code>MidiMessage</code> and <code>Receiver</code> API) altogether, and interact with the synthesizer&#39;s <code>MidiChannel</code> objects directly. You first need to retrieve the synthesizer&#39;s <code>MidiChannel</code> objects, using the following <code>Synthesizer</code> method:</p>
+<div class="codeblock"><pre>
+public MidiChannel[] getChannels()
+</pre></div>
+<p>after which you can invoke the desired <code>MidiChannel</code> methods directly. This is a more immediate route than sending the corresponding <code>MidiMessages</code> to the synthesizer&#39;s <code>Receiver</code> and letting the synthesizer handle the communication with its own <code>MidiChannels</code>. For example, the code corresponding to the preceding example would be:</p>
+<div class="codeblock"><pre>
+    Synthesizer synth = MidiSystem.getSynthesizer();
+    MidiChannel chan[] = synth.getChannels(); 
+    // Check for null; maybe not all 16 channels exist.
+    if (chan[4] != null) {
+         chan[4].noteOn(60, 93); 
+    }
+</pre></div>
+<h3>Getting a Channel&#39;s Current State</h3>
+<p><a name="121939"></a> The <code>MidiChannel</code> interface provides methods that correspond one-to-one to each of the &quot;channel voice&quot; or &quot;channel mode&quot; messages defined by the MIDI specification. We saw one case with the use of the noteOn method in the previous example. However, in addition to these canonical methods, the Java Sound API&#39;s <code>MidiChannel</code> interface adds some &quot;get&quot; methods to retrieve the value most recently set by corresponding voice or mode &quot;set&quot; methods:</p>
+<div class="codeblock"><pre>
+    int       getChannelPressure()
+    int       getController(int controller)
+    boolean   getMono()
+    boolean   getOmni() 
+    int       getPitchBend() 
+    int       getPolyPressure(int noteNumber)
+    int       getProgram()
+</pre></div>
+<p>These methods might be useful for displaying channel state to the user, or for deciding what values to send subsequently to the channel. <a name="121953"></a></p>
+<h3>Muting and Soloing a Channel</h3>
+<p><a name="123492"></a> The Java Sound API adds the notions of per-channel solo and mute, which are not required by the MIDI specification. These are similar to the solo and mute on the tracks of a MIDI sequence.</p>
+<p><a name="123493"></a> If mute is on, this channel will not sound, but other channels are unaffected. If solo is on, this channel, and any other soloed channel, will sound (if it isn&#39;t muted), but no other channels will sound. A channel that is both soloed and muted will not sound. The <code>MidiChannel</code> API includes four methods:</p>
+<div class="codeblock"><pre>
+    boolean      getMute() 
+    boolean      getSolo()
+    void         setMute(boolean muteState) 
+    void         setSolo(boolean soloState)
+</pre></div>
+<h2>Permission to Play Synthesized Sound</h2>
+<p><a name="123505"></a> The audio produced by any installed MIDI synthesizer is typically routed through the sampled-audio system. If your program doesn&#39;t have permission to play audio, the synthesizer&#39;s sound won&#39;t be heard, and a security exception will be thrown. For more information on audio permissions, see the previous discussion of Permission to Use Audio Resources 
+<a class="TutorialLink" target="_top" href="accessing.html#113223">Permission to Use Audio Resources</a>.</p>
+<p><a name="121968"></a></p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="MIDI-seq-adv.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="./TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="SPI-intro.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Using Advanced Sequencer Features
+        <br /><b>Next page:</b> Introduction to the Service Provider Interfaces
+    </div>
+</body>
+</html> 

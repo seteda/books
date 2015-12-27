@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Integrate with the Desktop Class (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Other Swing Features)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Other Swing Features</a></div>
+<div class="nolinkAHEAD">How to Integrate with the Desktop Class</div>
+<div class="linkAHEAD"><a href="trans_shaped_windows.html">How to Create Translucent and Shaped Windows</a></div>
+<div class="linkAHEAD"><a href="jlayer.html">How to Decorate Components with the JLayer Class</a></div>
+<div class="linkAHEAD"><a href="action.html">How to Use Actions</a></div>
+<div class="linkAHEAD"><a href="timer.html">How to Use Swing Timers</a></div>
+<div class="linkAHEAD"><a href="access.html">How to Support Assistive Technologies</a></div>
+<div class="linkAHEAD"><a href="focus.html">How to Use the Focus Subsystem</a></div>
+<div class="linkAHEAD"><a href="keybinding.html">How to Use Key Bindings</a></div>
+<div class="linkAHEAD"><a href="modality.html">How to Use Modality in Dialogs</a></div>
+<div class="linkAHEAD"><a href="printtable.html">How to Print Tables</a></div>
+<div class="linkAHEAD"><a href="printtext.html">How to Print Text</a></div>
+<div class="linkAHEAD"><a href="splashscreen.html">How to Create a Splash Screen</a></div>
+<div class="linkAHEAD"><a href="systemtray.html">How to Use the System Tray</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Problems Using Other Swing Features</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Other Swing Features
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Other Swing Features</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="index.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="trans_shaped_windows.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Integrate with the Desktop Class</h1></div>
+            <div id="PageContent">
+
+<p>Java&trade; Standard Edition version 6 narrows the gap between performance and integration of native applications and Java applications. Along with the new 
+<a class="TutorialLink" target="_top" href="../../uiswing/misc/systemtray.html">system tray</a> functionality, 
+<a class="TutorialLink" target="_top" href="../../uiswing/misc/splashscreen.html">splash screen</a> support, and enhanced 
+<a class="TutorialLink" target="_top" href="../../uiswing/misc/printtable.html">printing for JTables</a>, Java SE version 6 provides the Desktop API (<code>java.awt.Desktop</code>) API, which allows Java applications to interact with default applications associated with specific file types on the host platform.</p>
+<p>New functionality is provided by the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html"><code>Desktop</code></a> class. The API arises from the JDesktop Integration Components (JDIC) project. The goal of the JDIC project is to make &quot;Java technology-based applications first-class citizens&quot; of the desktop, enabling seamless integration. JDIC provides Java applications with access to functionalities and facilities provided by the native desktop. Regarding the new Desktop API, this means that a Java application can perform the following operations:</p>
+<ul>
+<li>Launch the host system&#39;s default browser with a specific Uniform Resource Identifier (URI)</li>
+<li>Launch the host system&#39;s default email client</li>
+<li>Launch applications to open, edit, or print files associated with those applications</li>
+</ul>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>The Desktop API uses the host operating system&#39;s file associations to launch applications associated with specific file types. For example, if OpenDocument text (.odt) file extensions are associated with the OpenOffice Writer application, a Java application could launch OpenOffice Writer to open, edit, or even print files with that association. Depending on the host system, different applications may be associated with different actions. For example, if a particular file cannot be printed, check first whether its extension has a printing association on the given operating system.</p>
+<hr /></div>
+<p>Use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#isDesktopSupported--"><code>isDesktopSupported()</code></a> method to determine whether the Desktop API is available. On the Solaris Operating System and the Linux platform, this API is dependent on Gnome libraries. If those libraries are unavailable, this method will return false. After determining that the Desktop API is supported, that is, the <code>isDesktopSupported()</code> returns true, the application can retrieve a <code>Desktop</code> instance using the static method 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#getDesktop--"><code>getDesktop()</code></a>.</p>
+<p>If an application runs in an environment without a keyboard, mouse, or monitor (a &quot;headless&quot; environment), the <code>getDesktop()</code> method throws a <code>java.awt.HeadlessException</code>.</p>
+<p>Once retrieved, the <code>Desktop</code> instance allows an application to browse, mail, open, edit, or even print a file or URI, but only if the retrieved <code>Desktop</code> instance supports these activities. Each of these activities is called an action, and each is represented as a <code>Desktop.Action</code> enumeration instance:</p>
+<ul>
+<li><code>BROWSE</code> &mdash; Represents a browse action performed by the host&#39;s default browser.</li>
+<li><code>MAIL</code> &mdash; Represents a mail action performed by the host&#39;s default email client.</li>
+<li><code>OPEN</code> &mdash; Represents an open action performed by an application associated with opening a specific file type.</li>
+<li><code>EDIT</code> &mdash; Represents an edit action performed by an application associated with editing a specific file type</li>
+<li><code>PRINT</code> &mdash; Represents a print action performed by an application associated with printing a specific file type.</li>
+</ul>
+<p>Different applications may be registered for these different actions even on the same file type. For example, the Firefox browser may be launched for the OPEN action, Emacs for the EDIT action, and yet a different application for the PRINT action. Your host desktop&#39;s associations are used to determine which application should be invoked. The ability to manipulate desktop file associations is not possible with the current version of the Desktop API in JDK 6, and those associations can be created or changed only with platform-dependent tools at this time.</p>
+<p>The following example shows the capabilities mentioned above.</p>
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Compile and run the example, consult the <a href="../examples/misc/index.html#DesktopDemo">example index</a>.</li>
+<li>The DesktopDemo dialog box will appear.
+<center><img src="../../figures/uiswing/misc/desktopdemo.png" width="378" height="168" align="bottom" alt="DesktopDemo application." /></center></li>
+<li>Enter an URI value into the URI text field, for example &ndash; <code>https://docs.oracle.com/javase/tutorial</code>.</li>
+<li>Press the Launch Browser button.</li>
+<li>Ensure that the default browser window opens and the Tutorial main page is loaded.</li>
+<li>Change URI to an arbitrary value, press the Launch Browser button, and ensure that the web page you requested is loaded successfully.</li>
+<li>Switch back to the DesktopDemo dialog box and enter a mail recipient name in the E-mail text field. You can also use the <code>mailto</code> scheme supporting CC, BCC, SUBJECT, and BODY fields, for example &ndash; <code>duke@example.com?SUBJECT=Hello Duke!</code>.</li>
+<li>Press the Launch Mail button.</li>
+<li>The compositing dialog box of the default email client will appear. Be sure that the To and Subject fields are as follows.
+<center><img src="../../figures/uiswing/misc/desktopdemo-mail.png" width="413" height="254" align="bottom" alt="DesktopDemo application." /></center></li>
+<li>You can continue to compose a message or try to enter different combinations of the mail schema in the E-mail field.</li>
+<li>Switch back to the DesktopDemo dialog box and press the ellipsis button to choose any text file.</li>
+<li>Select either Open, Edit, or Print to set the type of operation, then press the Launch Application button.</li>
+<li>Be sure that operation completes correctly. Try other file formats, for example <code>.odt</code>, <code>.html</code>, <code>.pdf</code>. Note: If you try to edit <code>.pdf</code> file, the DesktopDemo returns the following message: <code>Cannot perform the given operation to the &lt;file name&gt; file</code></li>
+</ol>
+<p>The following code snippets provide more details on the DeskDemo application implementation. The DesktopDemo constructor disables the few components right after instantiating the UI and checks whether the Desktop API is available.</p>
+<div class="codeblock"><pre>
+ public DesktopDemo() {
+        // init all gui components
+        initComponents();
+        // disable buttons that launch browser, email client,
+        // disable buttons that open, edit, print files
+        disableActions();
+        // before any Desktop APIs are used, first check whether the API is
+        // supported by this particular VM on this particular host
+        if (Desktop.isDesktopSupported()) {
+            desktop = Desktop.getDesktop();
+            // now enable buttons for actions that are supported.
+            enableSupportedActions();
+        }
+        ...
+
+    /**
+     * Disable all graphical components until we know
+     * whether their functionality is supported.
+     */
+    private void disableActions() {
+        txtBrowserURI.setEnabled(false);
+        btnLaunchBrowser.setEnabled(false);
+        
+        txtMailTo.setEnabled(false);
+        btnLaunchEmail.setEnabled(false);
+        
+        rbEdit.setEnabled(false);
+        rbOpen.setEnabled(false);
+        rbPrint.setEnabled(false);
+
+        txtFile.setEnabled(false);
+        btnLaunchApplication.setEnabled(false);        
+    }
+    
+
+   ...
+</pre></div>
+<p>Once a Desktop object is acquired, you can query the object to find out which specific actions are supported. If the Desktop object does not support specific actions, or if the Desktop API itself is unsupported, DesktopDemo simply keeps the affected graphical components disabled.</p>
+<div class="codeblock"><pre>
+/**
+     * Enable actions that are supported on this host.
+     * The actions are the following: open browser, 
+     * open email client, and open, edit, and print
+     * files using their associated application.
+     */
+    private void enableSupportedActions() {
+        if (desktop.isSupported(Desktop.Action.BROWSE)) {
+            txtBrowserURI.setEnabled(true);
+            btnLaunchBrowser.setEnabled(true);
+        }
+        
+        if (desktop.isSupported(Desktop.Action.MAIL)) {
+            txtMailTo.setEnabled(true);
+            btnLaunchEmail.setEnabled(true);
+        }
+
+        if (desktop.isSupported(Desktop.Action.OPEN)) {
+            rbOpen.setEnabled(true);
+        }
+        if (desktop.isSupported(Desktop.Action.EDIT)) {
+            rbEdit.setEnabled(true);
+        }
+        if (desktop.isSupported(Desktop.Action.PRINT)) {
+            rbPrint.setEnabled(true);
+        }
+        
+        if (rbEdit.isEnabled() || rbOpen.isEnabled() || rbPrint.isEnabled()) {
+            txtFile.setEnabled(true);
+            btnLaunchApplication.setEnabled(true);
+        }
+    }
+</pre></div>
+<p>The <code>browse(uri)</code> method can throw a variety of exceptions, including a NullPointerException if the URI is null, and an UnsupportedOperationException if the BROWSE action is unsupported. This method can throw an IOException if the default browser or application cannot be found or launched, and a SecurityException if a security manager denies the invocation.</p>
+<div class="codeblock"><pre>
+private void onLaunchBrowser(ActionEvent evt) {
+        URI uri = null;
+        try {
+            uri = new URI(txtBrowserURI.getText());
+            desktop.browse(uri);
+        } catch(IOException ioe) {
+            System.out.println("The system cannot find the " + uri + 
+                " file specified");
+            //ioe.printStackTrace();
+        } catch(URISyntaxException use) {
+            System.out.println("Illegal character in path");
+            //use.printStackTrace();
+        }
+    }
+</pre></div>
+<p>Applications can launch the host&#39;s default email client, if that action is supported, by calling the <code>mail(uriMailTo)</code> method of this Desktop instance.</p>
+<div class="codeblock"><pre>
+private void onLaunchMail(ActionEvent evt) {
+        String mailTo = txtMailTo.getText();
+        URI uriMailTo = null;
+        try {
+            if (mailTo.length() > 0) {
+                uriMailTo = new URI("mailto", mailTo, null);
+                desktop.mail(uriMailTo);
+            } else {
+                desktop.mail();
+            }
+        } catch(IOException ioe) {
+            ioe.printStackTrace();
+        } catch(URISyntaxException use) {
+            use.printStackTrace();
+        }
+    }
+</pre></div>
+<p>Java applications can open, edit, and print files from their associated application using the <code>open()</code>, <code>edit()</code>, and <code>print()</code> methods of the <code>Desktop</code> class, respectively.</p>
+<div class="codeblock"><pre>
+private void onLaunchDefaultApplication(ActionEvent evt) {
+        String fileName = txtFile.getText();
+        File file = new File(fileName);
+        
+        try {
+            switch(action) {
+                case OPEN:
+                    desktop.open(file);
+                    break;
+                case EDIT:
+                    desktop.edit(file);
+                    break;
+                case PRINT:
+                    desktop.print(file);
+                    break;
+            }
+        } catch (IOException ioe) {
+            //ioe.printStackTrace();
+            System.out.println("Cannot perform the given operation 
+                to the " + file + " file");
+        }
+    }
+</pre></div>
+<p>The complete code for this demo is available in the 
+<a class="SourceLink" target="_blank" href="../examples/misc/DesktopDemoProject/src/misc/DesktopDemo.java" onclick="showCode('../../displayCode.html', '../examples/misc/DesktopDemoProject/src/misc/DesktopDemo.java'); return false;"><code>DesktopDemo.java</code></a> file.</p>
+<h2><a name="api" id="api">The Desktop API</a></h2>
+<p style="text-align: center">The <code>Desktop</code> class allows Java applications to launch the native desktop applications that handle URIs or files.</p>
+<table border="1" summary="the Desktop API">
+<tr>
+<th id="h1" align="left">Method</th>
+<th id="h2" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#isDesktopSupported--">isDesktopSupported()</a></td>
+<td headers="h2">Tests whether this class is supported on the current platform. If it is supported, use <code>getDesktop()</code> to retrieve an instance.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#getDesktop--">getDesktop()</a></td>
+<td headers="h2">Returns the <code>Desktop</code> instance of the current browser context. On some platforms the Desktop API may not be supported. Use the <code>isDesktopSupported()</code> method to determine if the current desktop is supported.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#isSupported-java.awt.Desktop.Action-">isSupported(Desktop.Action)</a></td>
+<td headers="h2">Tests whether an action is supported on the current platform. Use the following constans of the <code>Desktop.Action</code> enum: <code>BROWSE</code>, <code>EDIT</code>, <code>MAIL</code>, <code>OPEN</code>, <code>PRINT</code>.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#browse-java.net.URI-">browse(URI)</a></td>
+<td headers="h2">Launches the default browser to display a URI. If the default browser is not able to handle the specified URI, the application registered for handling URIs of the specified type is invoked. The application is determined from the protocol and path of the URI, as defined by the <code>URI</code> class.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#mail-java.net.URI-">mail(URI)</a></td>
+<td headers="h2">Launches the mail composing window of the user default mail client, filling the message fields specified by a <code>mailto: URI</code>.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#open-java.io.File-">open(File)</a></td>
+<td headers="h2">Launches the associated application to open a file.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#edit-java.io.File-">edit(File)</a></td>
+<td headers="h2">Launches the associated editor application and opens a file for editing.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#print-java.io.File-">print(File)</a></td>
+<td headers="h2">Prints a file with the native desktop printing facility, using the associated application&#39;s print command.</td>
+</tr>
+</table>
+<h2>Examples That Use Desktop API</h2>
+<p>The following table lists the example that uses the Desktop class integration.</p>
+<table summary="list of examples that use the Desktop class">
+<tr>
+<th id="h101" align="left">Example</th>
+<th id="h102" align="left">Where Described</th>
+<th id="h103" align="left">Notes</th>
+</tr>
+<tr valign="top">
+<td headers="h101"><a href="../examples/misc/index.html#DesktopDemo"><code>DesktopDemo</code></a></td>
+<td headers="h102">This section</td>
+<td headers="h103">Launches the host system&#39;s default browser with the specified URI and default email client; launches an application to open, edit, or print a file.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="index.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="trans_shaped_windows.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Using Other Swing Features
+        <br /><b>Next page:</b> How to Create Translucent and Shaped Windows
+    </div>
+</body>
+</html> 

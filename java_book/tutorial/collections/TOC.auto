@@ -1,0 +1,52 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="intro/index.html">Introduction to Collections</a></li>
+<li class="tocli"><a href="interfaces/index.html">Interfaces</a>
+<ul>
+<li class="tocli"><a href="interfaces/collection.html">The Collection Interface</a></li>
+<li class="tocli"><a href="interfaces/set.html">The Set Interface</a></li>
+<li class="tocli"><a href="interfaces/list.html">The List Interface</a></li>
+<li class="tocli"><a href="interfaces/queue.html">The Queue Interface</a></li>
+<li class="tocli"><a href="interfaces/deque.html">The Deque Interface</a></li>
+<li class="tocli"><a href="interfaces/map.html">The Map Interface</a></li>
+<li class="tocli"><a href="interfaces/order.html">Object Ordering</a></li>
+<li class="tocli"><a href="interfaces/sorted-set.html">The SortedSet Interface</a></li>
+<li class="tocli"><a href="interfaces/sorted-map.html">The SortedMap Interface</a></li>
+<li class="tocli"><a href="interfaces/summary.html">Summary of Interfaces</a></li>
+<li class="tocli"><a href="interfaces/QandE/questions.html">Questions and Exercises: Interfaces</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="streams/index.html">Aggregate Operations</a>
+<ul>
+<li class="tocli"><a href="streams/reduction.html">Reduction</a></li>
+<li class="tocli"><a href="streams/parallelism.html">Parallelism</a></li>
+<li class="tocli"><a href="streams/QandE/questions.html">Questions and Exercises: Aggregate Operations</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="implementations/index.html">Implementations</a>
+<ul>
+<li class="tocli"><a href="implementations/set.html">Set Implementations</a></li>
+<li class="tocli"><a href="implementations/list.html">List Implementations</a></li>
+<li class="tocli"><a href="implementations/map.html">Map Implementations</a></li>
+<li class="tocli"><a href="implementations/queue.html">Queue Implementations</a></li>
+<li class="tocli"><a href="implementations/deque.html">Deque Implementations</a></li>
+<li class="tocli"><a href="implementations/wrapper.html">Wrapper Implementations</a></li>
+<li class="tocli"><a href="implementations/convenience.html">Convenience Implementations</a></li>
+<li class="tocli"><a href="implementations/summary.html">Summary of Implementations</a></li>
+<li class="tocli"><a href="implementations/QandE/questions.html">Questions and Exercises: Implementations</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="algorithms/index.html">Algorithms</a></li>
+<li class="tocli"><a href="custom-implementations/index.html">Custom Collection Implementations</a></li>
+<li class="tocli"><a href="interoperability/index.html">Interoperability</a>
+<ul>
+<li class="tocli"><a href="interoperability/compatibility.html">Compatibility</a></li>
+<li class="tocli"><a href="interoperability/api-design.html">API Design</a>
+</li>
+</ul>
+</li>
+</ul>

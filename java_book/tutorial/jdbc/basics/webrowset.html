@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Using WebRowSet Objects (The Java&trade; Tutorials &gt;        
+            JDBC(TM) Database Access &gt; JDBC Basics)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JDBC Java tutorial describes how to use JDBC API to create, insert into, update, and query tables. You will also learn how to use simple and prepared statements, stored procedures and perform transactions" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jdbc, prepared statement, result set" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">JDBC Basics</a></div>
+<div class="linkAHEAD"><a href="gettingstarted.html">Getting Started</a></div>
+<div class="linkAHEAD"><a href="processingsqlstatements.html">Processing SQL Statements with JDBC</a></div>
+<div class="linkAHEAD"><a href="connecting.html">Establishing a Connection</a></div>
+<div class="linkAHEAD"><a href="sqldatasources.html">Connecting with DataSource Objects</a></div>
+<div class="linkAHEAD"><a href="sqlexception.html">Handling SQLExceptions</a></div>
+<div class="linkAHEAD"><a href="tables.html">Setting Up Tables</a></div>
+<div class="linkAHEAD"><a href="retrieving.html">Retrieving and Modifying Values from Result Sets</a></div>
+<div class="linkAHEAD"><a href="prepared.html">Using Prepared Statements</a></div>
+<div class="linkAHEAD"><a href="transactions.html">Using Transactions</a></div>
+<div class="linkAHEAD"><a href="rowset.html">Using RowSet Objects</a></div>
+<div class="linkAHEAD"><a href="jdbcrowset.html">Using JdbcRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="cachedrowset.html">Using CachedRowSetObjects</a></div>
+<div class="linkAHEAD"><a href="joinrowset.html">Using JoinRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="filteredrowset.html">Using FilteredRowSet Objects</a></div>
+<div class="nolinkAHEAD">Using WebRowSet Objects</div>
+<div class="linkAHEAD"><a href="sqltypes.html">Using Advanced Data Types</a></div>
+<div class="linkAHEAD"><a href="blob.html">Using Large Objects</a></div>
+<div class="linkAHEAD"><a href="sqlxml.html">Using SQLXML Objects</a></div>
+<div class="linkAHEAD"><a href="array.html">Using Array Objects</a></div>
+<div class="linkAHEAD"><a href="distinct.html">Using DISTINCT Data Type</a></div>
+<div class="linkAHEAD"><a href="sqlstructured.html">Using Structured Objects</a></div>
+<div class="linkAHEAD"><a href="sqlcustommapping.html">Using Customized Type Mappings</a></div>
+<div class="linkAHEAD"><a href="sqldatalink.html">Using Datalink Objects</a></div>
+<div class="linkAHEAD"><a href="sqlrowid.html">Using RowId Objects</a></div>
+<div class="linkAHEAD"><a href="storedprocedures.html">Using Stored Procedures</a></div>
+<div class="linkAHEAD"><a href="jdbcswing.html">Using JDBC with GUI API</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> JDBC(TM) Database Access
+        <br /><b>Lesson:</b> JDBC Basics
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">JDBC(TM) Database Access</a>
+                &gt;
+                <a href="index.html" target="_top">JDBC Basics</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="filteredrowset.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="sqltypes.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Using WebRowSet Objects</h1></div>
+            <div id="PageContent">
+
+<p>A <code>WebRowSet</code> object is very special because in addition to offering all of the capabilities of a <code>CachedRowSet</code> object, it can write itself as an XML document and can also read that XML document to convert itself back to a <code>WebRowSet</code> object. Because XML is the language through which disparate enterprises can communicate with each other, it has become the standard for Web Services communication. As a consequence, a <code>WebRowSet</code> object fills a real need by enabling Web Services to send and receive data from a database in the form of an XML document.</p>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#creating-and-populating-webrowset-object">Creating and Populating WebRowSet Objects</a></li>
+<li><a href="#writing-and-reading-webrowset-object-to-xml">Writing and Reading WebRowSet Objects to XML</a></li>
+<li><a href="#what-is-in-xml-document">What Is in XML Documents</a></li>
+<li><a href="#making-changes-to-webrowset-object">Making Changes to WebRowSet Objects</a></li>
+</ul>
+<p>The Coffee Break company has expanded to selling coffee online. Users order coffee by the pound from the Coffee Break Web site. The price list is regularly updated by getting the latest information from the company&#39;s database. This section demonstrates how to send the price data as an XML document with a <code>WebRowSet</code> object and a single method call.</p>
+<!-- ************************************************************* -->
+<h2><a name="creating-and-populating-webrowset-object" id="creating-and-populating-webrowset-object">Creating and Populating WebRowSet Objects</a></h2>
+<p>You create a new <code>WebRowSet</code> object with the default constructor defined in the reference implementation, <code>WebRowSetImpl</code>, as shown in the following line of code:</p>
+<div class="codeblock"><pre>
+<code>WebRowSet</code> priceList = new WebRowSetImpl();
+</pre></div>
+<p>Although the <code>priceList</code> object has no data yet, it has the default properties of a <code>BaseRowSet</code> object. Its <code>SyncProvider</code> object is at first set to the <code>RIOptimisticProvider</code> implementation, which is the default for all disconnected <code>RowSet</code> objects. However, the <code>WebRowSet</code> implementation resets the <code>SyncProvider</code> object to be the <code>RIXMLProvider</code> implementation.</p>
+<p>You can use an instance of <code>RowSetFactory</code>, which is created from the <code>RowSetProvider</code> class, to create a <code>WebRowSet</code> object. See <a href="jdbcrowset.html#rowsetfactory">Using the RowSetFactory Interface</a> in <a href="jdbcrowset.html">Using JdbcRowSet Objects</a> for more information.</p>
+<p>The Coffee Break headquarters regularly sends price list updates to its web site. This information on <code>WebRowSet</code> objects will show one way you can send the latest price list in an XML document.</p>
+<p>The price list consists of the data in the columns <code>COF_NAME</code> and <code>PRICE</code> from the table <code>COFFEES</code>. The following code fragment sets the properties needed and populates the <code>priceList</code> object with the price list data:</p>
+<div class="codeblock"><pre>
+public void getPriceList(String username, String password) {
+    priceList.setCommand("SELECT COF_NAME, PRICE FROM COFFEES");
+    priceList.setURL("jdbc:mySubprotocol:myDatabase");
+    priceList.setUsername(username);
+    priceList.setPassword(password);
+    priceList.execute();
+    // ...
+}
+</pre></div>
+<p>At this point, in addition to the default properties, the <code>priceList</code> object contains the data in the <code>COF_NAME</code> and <code>PRICE</code> columns from the <code>COFFEES</code> table and also the metadata about these two columns.</p>
+<h2><a name="writing-and-reading-webrowset-object-to-xml" id="writing-and-reading-webrowset-object-to-xml">Writing and Reading WebRowSet Object to XML</a></h2>
+<p>To write a <code>WebRowSet</code> object as an XML document, call the method <code>writeXml</code>. To read that XML document&#39;s contents into a <code>WebRowSet</code> object, call the method <code>readXml</code>. Both of these methods do their work in the background, meaning that everything, except the results, is invisible to you.</p>
+<h3>Using the writeXml Method</h3>
+<p>The method <code>writeXml</code> writes the <code>WebRowSet</code> object that invoked it as an XML document that represents its current state. It writes this XML document to the stream that you pass to it. The stream can be an <code>OutputStream</code> object, such as a <code>FileOutputStream</code> object, or a <code>Writer</code> object, such as a <code>FileWriter</code> object. If you pass the method <code>writeXml</code> an <code>OutputStream</code> object, you will write in bytes, which can handle all types of data; if you pass it a <code>Writer</code> object, you will write in characters. The following code demonstrates writing the <code>WebRowSet</code> object <code>priceList</code> as an XML document to the <code>FileOutputStream</code> object <code>oStream</code>:</p>
+<div class="codeblock"><pre>
+java.io.FileOutputStream oStream =
+    new java.io.FileOutputStream("priceList.xml");
+priceList.writeXml(oStream);
+</pre></div>
+<p>The following code writes the XML document representing <code>priceList</code> to the <code>FileWriter</code> object <code>writer</code> instead of to an <code>OutputStream</code> object. The <code>FileWriter</code> class is a convenience class for writing characters to a file.</p>
+<div class="codeblock"><pre>
+java.io.FileWriter writer =
+    new java.io.FileWriter("priceList.xml");
+priceList.writeXml(writer);
+</pre></div>
+<p>The other two versions of the method <code>writeXml</code> let you populate a <code>WebRowSet</code> object with the contents of a <code>ResultSet</code> object before writing it to a stream. In the following line of code, the method <code>writeXml</code> reads the contents of the <code>ResultSet</code> object <code>rs</code> into the <code>priceList</code> object and then writes <code>priceList</code> to the <code>FileOutputStream</code> object <code>oStream</code> as an XML document.</p>
+<div class="codeblock"><pre>
+priceList.writeXml(rs, oStream);
+</pre></div>
+<p>In the next line of code, the <code>writeXml</code> methodpopulates <code>priceList</code> with the contents of <code>rs</code>, but it writes the XML document to a <code>FileWriter</code> object instead of to an <code>OutputStream</code> object:</p>
+<div class="codeblock"><pre>
+priceList.writeXml(rs, writer);
+</pre></div>
+<h3>Using the readXml Method</h3>
+<p>The method <code>readXml</code> parses an XML document in order to construct the <code>WebRowSet</code> object the XML document describes. Similar to the method <code>writeXml</code>, you can pass <code>readXml</code> an <code>InputStream</code> object or a <code>Reader</code> object from which to read the XML document.</p>
+<div class="codeblock"><pre>
+java.io.FileInputStream iStream =
+    new java.io.FileInputStream("priceList.xml");
+priceList.readXml(iStream);
+
+java.io.FileReader reader = new
+    java.io.FileReader("priceList.xml");
+priceList.readXml(reader);
+</pre></div>
+<p>Note that you can read the XML description into a new <code>WebRowSet</code> object or into the same <code>WebRowSet</code> object that called the <code>writeXml</code> method. In the scenario, where the price list information is being sent from headquarters to the Web site, you would use a new <code>WebRowSet</code> object, as shown in the following lines of code:</p>
+<div class="codeblock"><pre>
+WebRowSet recipient = new WebRowSetImpl();
+java.io.FileReader reader =
+    new java.io.FileReader("priceList.xml");
+recipient.readXml(reader);
+</pre></div>
+<!-- *********************************************** -->
+<h2><a name="what-is-in-xml-document" id="what-is-in-xml-document">What Is in XML Documents</a></h2>
+<p><code>RowSet</code> objects are more than just the data they contain. They have properties and metadata about their columns as well. Therefore, an XML document representing a <code>WebRowSet</code> object includes this other information in addition to its data. Further, the data in an XML document includes both current values and original values. (Recall that original values are the values that existed immediately before the most recent changes to data were made. These values are necessary for checking if the corresponding value in the database has been changed, thus creating a conflict over which value should be persistent: the new value you put in the <code>RowSet</code> object or the new value someone else put in the database.)</p>
+<p>The WebRowSet XML Schema, itself an XML document, defines what an XML document representing a <code>WebRowSet</code> object will contain and also the format in which it must be presented. Both the sender and the recipient use this schema because it tells the sender how to write the XML document (which represents the <code>WebRowSet</code> object) and the recipient how to parse the XML document. Because the actual writing and reading is done internally by the implementations of the methods <code>writeXml</code> and <code>readXml</code>, you, as a user, do not need to understand what is in the WebRowSet XML Schema document.</p>
+<p>XML documents contain elements and subelements in a hierarchical structure. The following are the three main elements in an XML document describing a <code>WebRowSet</code> object:</p>
+<ul>
+<li><a href="#properties-webrowset">Properties</a></li>
+<li><a href="#metadata-webrowset">Metadata</a></li>
+<li><a href="#data-webrowset">Data</a></li>
+</ul>
+<p>Element tags signal the beginning and end of an element. For example, the <code>&lt;properties&gt;</code> tag signals the beginning of the properties element, and the <code>&lt;/properties&gt;</code> tag signals its end. The <code>&lt;map/&gt;</code> tag is a shorthand way of saying that the map subelement (one of the subelements in the properties element) has not been assigned a value. The following sample XML documents uses spacing and indentation to make it easier to read, but those are not used in an actual XML document, where spacing does not mean anything.</p>
+<p>The next three sections show you what the three main elements contain for the <code>WebRowSet</code> <code>priceList</code> object, created in the sample <a href="gettingstarted.html"><code>WebRowSetSample.java</code></a>.</p>
+<h3><a name="properties-webrowset" id="properties-webrowset">Properties</a></h3>
+<p>Calling the method <code>writeXml</code> on the <code>priceList</code> object would produce an XML document describing <code>priceList</code>. The properties section of this XML document would look like the following:</p>
+<div class="codeblock"><pre>
+&lt;properties&gt;
+  &lt;command&gt;
+    select COF_NAME, PRICE from COFFEES
+  &lt;/command&gt;
+  &lt;concurrency&gt;1008&lt;/concurrency&gt;
+  &lt;datasource&gt;&lt;null/&gt;&lt;/datasource&gt;
+  &lt;escape-processing&gt;true&lt;/escape-processing&gt;
+  &lt;fetch-direction&gt;1000&lt;/fetch-direction&gt;
+  &lt;fetch-size&gt;0&lt;/fetch-size&gt;
+  &lt;isolation-level&gt;2&lt;/isolation-level&gt;
+  &lt;key-columns&gt;
+    &lt;column&gt;1&lt;/column&gt;
+  &lt;/key-columns&gt;
+  &lt;map&gt;
+  &lt;/map&gt;
+  &lt;max-field-size&gt;0&lt;/max-field-size&gt;
+  &lt;max-rows&gt;0&lt;/max-rows&gt;
+  &lt;query-timeout&gt;0&lt;/query-timeout&gt;
+  &lt;read-only&gt;true&lt;/read-only&gt;
+  &lt;rowset-type&gt;
+    ResultSet.TYPE_SCROLL_INSENSITIVE
+  &lt;/rowset-type&gt;
+  &lt;show-deleted&gt;false&lt;/show-deleted&gt;
+  &lt;table-name&gt;COFFEES&lt;/table-name&gt;
+  &lt;url&gt;jdbc:mysql://localhost:3306/testdb&lt;/url&gt;
+  &lt;sync-provider&gt;
+    &lt;sync-provider-name&gt;
+      com.sun.rowset.providers.RIOptimisticProvider
+    &lt;/sync-provider-name&gt;
+    &lt;sync-provider-vendor&gt;
+      Sun Microsystems Inc.
+    &lt;/sync-provider-vendor&gt;
+    &lt;sync-provider-version&gt;
+      1.0
+    &lt;/sync-provider-version&gt;
+    &lt;sync-provider-grade&gt;
+      2
+    &lt;/sync-provider-grade&gt;
+    &lt;data-source-lock&gt;1&lt;/data-source-lock&gt;
+  &lt;/sync-provider&gt;
+&lt;/properties&gt;
+</pre></div>
+<p>Notice that some properties have no value. For example, the <code>datasource</code> property is indicated with the <code>&lt;datasource/&gt;</code> tag, which is a shorthand way of saying <code>&lt;datasource&gt;&lt;/datasource&gt;</code>. No value is given because the <code>url</code> property is set. Any connections that are established will be done using this JDBC URL, so no <code>DataSource</code> object needs to be set. Also, the <code>username</code> and <code>password</code> properties are not listed because they must remain secret.</p>
+<h3><a name="metadata-webrowset" id="metadata-webrowset">Metadata</a></h3>
+<p>The metadata section of the XML document describing a <code>WebRowSet</code> object contains information about the columns in that <code>WebRowSet</code> object. The following shows what this section looks like for the <code>WebRowSet</code> object <code>priceList</code>. Because the <code>priceList</code> object has two columns, the XML document describing it has two <code>&lt;column-definition&gt;</code> elements. Each <code>&lt;column-definition&gt;</code> element has subelements giving information about the column being described.</p>
+<div class="codeblock"><pre>
+&lt;metadata&gt;
+  &lt;column-count&gt;2&lt;/column-count&gt;
+  &lt;column-definition&gt;
+    &lt;column-index&gt;1&lt;/column-index&gt;
+    &lt;auto-increment&gt;false&lt;/auto-increment&gt;
+    &lt;case-sensitive&gt;false&lt;/case-sensitive&gt;
+    &lt;currency&gt;false&lt;/currency&gt;
+    &lt;nullable&gt;0&lt;/nullable&gt;
+    &lt;signed&gt;false&lt;/signed&gt;
+    &lt;searchable&gt;true&lt;/searchable&gt;
+    &lt;column-display-size&gt;
+      32
+    &lt;/column-display-size&gt;
+    &lt;column-label&gt;COF_NAME&lt;/column-label&gt;
+    &lt;column-name&gt;COF_NAME&lt;/column-name&gt;
+    &lt;schema-name&gt;&lt;/schema-name&gt;
+    &lt;column-precision&gt;32&lt;/column-precision&gt;
+    &lt;column-scale&gt;0&lt;/column-scale&gt;
+    &lt;table-name&gt;coffees&lt;/table-name&gt;
+    &lt;catalog-name&gt;testdb&lt;/catalog-name&gt;
+    &lt;column-type&gt;12&lt;/column-type&gt;
+    &lt;column-type-name&gt;
+      VARCHAR
+    &lt;/column-type-name&gt;
+  &lt;/column-definition&gt;
+  &lt;column-definition&gt;
+    &lt;column-index&gt;2&lt;/column-index&gt;
+    &lt;auto-increment&gt;false&lt;/auto-increment&gt;
+    &lt;case-sensitive&gt;true&lt;/case-sensitive&gt;
+    &lt;currency&gt;false&lt;/currency&gt;
+    &lt;nullable&gt;0&lt;/nullable&gt;
+    &lt;signed&gt;true&lt;/signed&gt;
+    &lt;searchable&gt;true&lt;/searchable&gt;
+    &lt;column-display-size&gt;
+      12
+    &lt;/column-display-size&gt;
+    &lt;column-label&gt;PRICE&lt;/column-label&gt;
+    &lt;column-name&gt;PRICE&lt;/column-name&gt;
+    &lt;schema-name&gt;&lt;/schema-name&gt;
+    &lt;column-precision&gt;10&lt;/column-precision&gt;
+    &lt;column-scale&gt;2&lt;/column-scale&gt;
+    &lt;table-name&gt;coffees&lt;/table-name&gt;
+    &lt;catalog-name&gt;testdb&lt;/catalog-name&gt;
+    &lt;column-type&gt;3&lt;/column-type&gt;
+    &lt;column-type-name&gt;
+      DECIMAL
+    &lt;/column-type-name&gt;
+  &lt;/column-definition&gt;
+&lt;/metadata&gt;
+</pre></div>
+<p>From this metadata section, you can see that there are two columns in each row. The first column is <code>COF_NAME</code>, which holds values of type <code>VARCHAR</code>. The second column is <code>PRICE</code>, which holds values of type <code>REAL</code>, and so on. Note that the column types are the data types used in the data source, not types in the Java programming language. To get or update values in the <code>COF_NAME</code> column, you use the methods <code>getString</code> or <code>updateString</code>, and the driver makes the conversion to the <code>VARCHAR</code> type, as it usually does.</p>
+<h3><a name="data-webrowset" id="data-webrowset">Data</a></h3>
+<p>The data section gives the values for each column in each row of a <code>WebRowSet</code> object. If you have populated the <code>priceList</code> object and not made any changes to it, the data element of the XML document will look like the following. In the next section you will see how the XML document changes when you modify the data in the <code>priceList</code> object.</p>
+<p>For each row there is a <code>&lt;currentRow&gt;</code> element, and because <code>priceList</code> has two columns, each <code>&lt;currentRow&gt;</code> element contains two <code>&lt;columnValue&gt;</code> elements.</p>
+<div class="codeblock"><pre>
+&lt;data&gt;
+  &lt;currentRow&gt;
+    &lt;columnValue&gt;Colombian&lt;/columnValue&gt;
+    &lt;columnValue&gt;7.99&lt;/columnValue&gt;
+  &lt;/currentRow&gt;
+  &lt;currentRow&gt;
+    &lt;columnValue&gt;
+      Colombian_Decaf
+    &lt;/columnValue&gt;
+    &lt;columnValue&gt;8.99&lt;/columnValue&gt;
+  &lt;/currentRow&gt;
+  &lt;currentRow&gt;
+    &lt;columnValue&gt;Espresso&lt;/columnValue&gt;
+    &lt;columnValue&gt;9.99&lt;/columnValue&gt;
+  &lt;/currentRow&gt;
+  &lt;currentRow&gt;
+    &lt;columnValue&gt;French_Roast&lt;/columnValue&gt;
+    &lt;columnValue&gt;8.99&lt;/columnValue&gt;
+  &lt;/currentRow&gt;
+  &lt;currentRow&gt;
+    &lt;columnValue&gt;French_Roast_Decaf&lt;/columnValue&gt;
+    &lt;columnValue&gt;9.99&lt;/columnValue&gt;
+  &lt;/currentRow&gt;
+&lt;/data&gt;
+</pre></div>
+<!-- ****************************************** -->
+<h2><a name="making-changes-to-webrowset-object" id="making-changes-to-webrowset-object">Making Changes to WebRowSet Objects</a></h2>
+<p>You make changes to a <code>WebRowSet</code> object the same way you do to a <code>CachedRowSet</code> object. Unlike a <code>CachedRowSet</code> object, however, a <code>WebRowSet</code> object keeps track of updates, insertions, and deletions so that the <code>writeXml</code> method can write both the current values and the original values. The three sections that follow demonstrate making changes to the data and show what the XML document describing the <code>WebRowSet</code> object looks like after each change. You do not have to do anything at all regarding the XML document; any change to it is made automatically, just as with writing and reading the XML document.</p>
+<h3>Inserting Rows</h3>
+<p>If the owner of the Coffee Break chain wants to add a new coffee to the price list, the code might look like this:</p>
+<div class="codeblock"><pre>
+priceList.absolute(3);
+priceList.moveToInsertRow();
+priceList.updateString(COF_NAME, "Kona");
+priceList.updateFloat(PRICE, 8.99f);
+priceList.insertRow();
+priceList.moveToCurrentRow();
+</pre></div>
+<p>In the reference implementation, an insertion is made immediately following the current row. In the preceding code fragment, the current row is the third row, so the new row would be added after the third row and become the new fourth row. To reflect this insertion, the XML document would have the following <code>&lt;insertRow&gt;</code> element added to it after the third <code>&lt;currentRow&gt;</code> element in the <code>&lt;data&gt;</code> element.</p>
+<p>The <code>&lt;insertRow&gt;</code> element will look similar to the following.</p>
+<div class="codeblock"><pre>
+&lt;insertRow&gt;
+  &lt;columnValue&gt;Kona&lt;/columnValue&gt;
+  &lt;columnValue&gt;8.99&lt;/columnValue&gt;
+&lt;/insertRow&gt;
+</pre></div>
+<h2>Deleting Rows</h2>
+<p>The owner decides that Espresso is not selling enough and should be removed from the coffees sold at The Coffee Break shops. The owner therefore wants to delete Espresso from the price list. Espresso is in the third row of the <code>priceList</code> object, so the following lines of code delete it:</p>
+<div class="codeblock"><pre>
+priceList.absolute(3); priceList.deleteRow();
+</pre></div>
+<p>The following <code>&lt;deleteRow&gt;</code> element will appear after the second row in the data section of the XML document, indicating that the third row has been deleted.</p>
+<div class="codeblock"><pre>
+&lt;deleteRow&gt;
+  &lt;columnValue&gt;Espresso&lt;/columnValue&gt;
+  &lt;columnValue&gt;9.99&lt;/columnValue&gt;
+&lt;/deleteRow&gt;
+
+</pre></div>
+<h2>Modifying Rows</h2>
+<p>The owner further decides that the price of Colombian coffee is too expensive and wants to lower it to &#36;6.99 a pound. The following code sets the new price for Colombian coffee, which is in the first row, to &#36;6.99 a pound:</p>
+<div class="codeblock"><pre>
+priceList.first();
+priceList.updateFloat(PRICE, 6.99);
+</pre></div>
+<p>The XML document will reflect this change in an <code>&lt;updateRow&gt;</code> element that gives the new value. The value for the first column did not change, so there is an <code>&lt;updateValue&gt;</code> element only for the second column:</p>
+<div class="codeblock"><pre>
+&lt;currentRow&gt;
+  &lt;columnValue&gt;Colombian&lt;/columnValue&gt;
+  &lt;columnValue&gt;7.99&lt;/columnValue&gt;
+  &lt;updateRow&gt;6.99&lt;/updateRow&gt;
+&lt;/currentRow&gt;
+
+</pre></div>
+<p>At this point, with the insertion of a row, the deletion of a row, and the modification of a row, the XML document for the <code>priceList</code> object would look like the following:</p>
+<div class="codeblock"><pre>
+&lt;data&gt;
+  &lt;insertRow&gt;
+    &lt;columnValue&gt;Kona&lt;/columnValue&gt;
+    &lt;columnValue&gt;8.99&lt;/columnValue&gt;
+  &lt;/insertRow&gt;
+  &lt;currentRow&gt;
+    &lt;columnValue&gt;Colombian&lt;/columnValue&gt;
+    &lt;columnValue&gt;7.99&lt;/columnValue&gt;
+    &lt;updateRow&gt;6.99&lt;/updateRow&gt;
+  &lt;/currentRow&gt;
+  &lt;currentRow&gt;
+    &lt;columnValue&gt;
+      Colombian_Decaf
+    &lt;/columnValue&gt;
+    &lt;columnValue&gt;8.99&lt;/columnValue&gt;
+  &lt;/currentRow&gt;
+  &lt;deleteRow&gt;
+    &lt;columnValue&gt;Espresso&lt;/columnValue&gt;
+    &lt;columnValue&gt;9.99&lt;/columnValue&gt;
+  &lt;/deleteRow&gt;
+  &lt;currentRow&gt;
+    &lt;columnValue&gt;French_Roast&lt;/columnValue&gt;
+    &lt;columnValue&gt;8.99&lt;/columnValue&gt;
+  &lt;/currentRow&gt;
+  &lt;currentRow&gt;
+    &lt;columnValue&gt;
+      French_Roast_Decaf
+    &lt;/columnValue&gt;
+    &lt;columnValue&gt;9.99&lt;/columnValue&gt;
+  &lt;/currentRow&gt;
+&lt;/data&gt;
+</pre></div>
+<h2>WebRowSet Code Example</h2>
+<p>The sample <code><a href="gettingstarted.html">WebRowSetSample.java</a></code> demonstrates all the features described on this page.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="filteredrowset.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="sqltypes.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Using FilteredRowSet Objects
+        <br /><b>Next page:</b> Using Advanced Data Types
+    </div>
+</body>
+</html> 

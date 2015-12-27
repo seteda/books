@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="applet_AppletWithIntegratedProgressIndicator" default="default" basedir=".">
+    <description>Builds, tests, and runs the project applet_AppletWithIntegratedProgressIndicator.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <!-- redefine this target; modify classpath attribute. javaws.jar required for IntegratedProgressIndicator -->
+    <target name="-init-macrodef-javac">
+
+        <macrodef name="javac" uri="http://www.netbeans.org/ns/j2se-project/3">
+            <attribute default="${src.dir}" name="srcdir"/>
+            <attribute default="${build.classes.dir}" name="destdir"/>
+            <attribute default="${jarpath}/plugin.jar;${jarpath}/javaws.jar" name="classpath"/>
+            <attribute default="${includes}" name="includes"/>
+            <attribute default="${excludes}" name="excludes"/>
+            <attribute default="${javac.debug}" name="debug"/>
+            <attribute default="/does/not/exist" name="sourcepath"/>
+            <element name="customize" optional="true"/>
+            <sequential>
+                <javac debug="@{debug}" deprecation="${javac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" includeantruntime="false" includes="@{includes}" source="${javac.source}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="${javac.target}">
+                    <classpath>
+                        <path path="@{classpath}"/>
+                    </classpath>
+                    <compilerarg line="${javac.compilerargs} ${javac.compilerargs.jaxws}"/>
+                    <customize/>
+                </javac>
+            </sequential>
+        </macrodef>
+        <macrodef name="depend" uri="http://www.netbeans.org/ns/j2se-project/3">
+            <attribute default="${src.dir}" name="srcdir"/>
+            <attribute default="${build.classes.dir}" name="destdir"/>
+            <attribute default="${jarpath}/javaws.jar" name="classpath"/>
+            <sequential>
+                <depend cache="${build.dir}/depcache" destdir="@{destdir}" excludes="${excludes}" includes="${includes}" srcdir="@{srcdir}">
+                    <classpath>
+                        <path path="@{classpath}"/>
+                    </classpath>
+                </depend>
+            </sequential>
+        </macrodef>
+        <macrodef name="force-recompile" uri="http://www.netbeans.org/ns/j2se-project/3">
+            <attribute default="${build.classes.dir}" name="destdir"/>
+            <sequential>
+                <fail unless="javac.includes">Must set javac.includes</fail>
+                <pathconvert pathsep="," property="javac.includes.binary">
+                    <path>
+                        <filelist dir="@{destdir}" files="${javac.includes}"/>
+                    </path>
+                    <globmapper from="*.java" to="*.class"/>
+                </pathconvert>
+                <delete>
+                    <files includes="${javac.includes.binary}"/>
+                </delete>
+            </sequential>
+        </macrodef>
+    </target>
+
+    <target name="-post-jar">
+        <copy file="${src.dir}/AppletPage.html" todir="${dist.jar.dir}"/>
+        <copy file="${src.dir}/integratedprogress_applet.jnlp" todir="${dist.jar.dir}"/>        
+    </target>
+    <target name="-do-jar-with-libraries-without-manifest"/>
+
+</project>

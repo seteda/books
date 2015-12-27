@@ -1,0 +1,146 @@
+<project default="compile">
+
+    <target name="compile">
+        <mkdir dir="classes"/>
+        <echo message="Using ${JAVAC} as the compiler ..."/>
+        <javac srcdir="." destdir="classes" fork="yes" executable="${JAVAC}">
+            <compilerarg value="-Xlint:unchecked"/>
+        </javac>
+    </target>
+
+    <target name="clean">
+        <delete dir="classes"/>
+        <delete dir="lib"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="lib"/> 
+        <copy todir="classes" >  
+            <fileset dir=".">  
+                <include name="images/**"/>
+            </fileset>
+        </copy>
+        <!-- <jar destfile="lib/i18n_text.jar" manifest="manifest.mf" basedir="classes"/> -->
+
+        <jar destfile="lib/ArabicDigits.jar" manifest="manifest/ArabicDigits/manifest.mf">
+            <filelist dir="classes">
+               <file name="ArabicDigits.class"/>
+               <file name="ArabicDigits$1.class"/>
+               <file name="ArabicDigits$ArabicDigitsPanel.class"/>
+
+            </filelist>
+        </jar>
+        
+        <jar destfile="lib/ArabicDigitsEnum.jar" manifest="manifest/ArabicDigitsEnum/manifest.mf">
+            <filelist dir="classes">
+               <file name="ArabicDigitsEnum.class"/>
+               <file name="ArabicDigitsEnum$1.class"/>
+               <file name="ArabicDigitsEnum$ArabicDigitsEnumPanel.class"/>
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/BidiTextComponentDemo.jar" manifest="manifest/BidiTextComponentDemo/manifest.mf">
+            <filelist dir="classes">
+               <file name="BidiTextComponentDemo.class"/>
+               <file name="BidiTextComponentDemo$1.class"/>
+               <file name="BidiTextComponentDemo$CaretListenerLabel.class"/>
+               <file name="BidiTextComponentDemo$CaretListenerLabel$1.class"/>
+               <file name="BidiTextComponentDemo$MyDocumentListener.class"/>
+               <file name="BidiTextComponentDemo$MyUndoableEditListener.class"/>
+               <file name="BidiTextComponentDemo$RedoAction.class"/>
+               <file name="BidiTextComponentDemo$UndoAction.class"/>
+               <file name="DocumentSizeFilter.class"/>
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/BreakIteratorDemo.jar" manifest="manifest/BreakIteratorDemo/manifest.mf">
+            <filelist dir="classes">
+               <file name="BreakIteratorDemo.class"/>
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/CollatorDemo.jar" manifest="manifest/CollatorDemo/manifest.mf">
+            <filelist dir="classes">
+               <file name="CollatorDemo.class"/>
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/KeysDemo.jar" manifest="manifest/KeysDemo/manifest.mf">
+            <filelist dir="classes">
+               <file name="KeysDemo.class"/>
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/NormSample.jar" manifest="manifest/NormSample/manifest.mf">
+            <filelist dir="classes">
+               <file name="NormSample.class"/>
+               <file name="NormSample$1.class"/>
+               <file name="NormSample$2.class"/>
+               <file name="NormSample$3.class"/>
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/RulesDemo.jar" manifest="manifest/RulesDemo/manifest.mf">
+            <filelist dir="classes">
+               <file name="RulesDemo.class"/>
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/ShapedDigits.jar" manifest="manifest/ShapedDigits/manifest.mf">
+            <filelist dir="classes">
+               <file name="ShapedDigits.class"/>
+               <file name="ShapedDigits$1.class"/>
+               <file name="ShapedDigits$ShaperPanel.class"/>
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/StreamConverter.jar" manifest="manifest/StreamConverter/manifest.mf">
+            <filelist dir="classes">
+               <file name="StreamConverter.class"/>
+               <file name="ShowString.class"/>
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/StringConverter.jar" manifest="manifest/StringConverter/manifest.mf">
+            <filelist dir="classes">
+               <file name="StringConverter.class"/>
+               <file name="UnicodeFormatter.class"/>
+            </filelist>
+        </jar>
+
+        <apply executable="java" parallel="false" verbose="true" force="true">
+                <mapper type="merge" to="lib"/>
+    
+                <arg line="-jar"/>
+                <arg path="${ANTCLIENTJAR}"/>
+                <arg value="-file_to_sign"/>
+                <srcfile/>
+                <arg value="-user jsedteam"/>
+                <arg value="-pass sign2jsedteam"/>
+                <arg value="-signed_location"/>
+                <targetfile/>
+                <arg value="-sign_method java2"/>
+                <fileset dir="lib">
+                    <include name="*.jar"/>
+                </fileset>
+        </apply>
+
+
+<!--
+        <java jvm="${JAVA}" jar="${ANTCLIENTJAR}"
+           fork="true"
+           failonerror="true">
+           <arg value="-file_to_sign"/>
+           <arg path="lib/i18n_text.jar"/>
+           <arg value="-user jsedteam"/>
+           <arg value="-pass sign2jsedteam"/>
+           <arg value="-signed_location"/>
+           <arg path="lib"/>
+           <arg value="-sign_method java2"/>   
+       </java>
+-->
+
+    </target>
+
+</project>
+

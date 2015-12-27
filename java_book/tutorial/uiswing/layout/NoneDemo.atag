@@ -1,0 +1,21 @@
+<applet code="AppletButton.class"
+        archive="example-swing/layout.jar"
+        width="350" height="60"
+        alt="absolute positioning applet">
+<param name="windowClass" value="NoneWindow">
+<param name="windowTitle" value="Absolute Positioning">
+<param name="buttonText" value="Click here to see absolute positioning">
+<param name="windowWidth" value="260">
+<param name="windowHeight" value="130">
+
+Since you can't run the applet,
+here's a picture of it:
+
+#usemacro UI_FIGURE (
+    NAME 13absolpos32.gif
+    W 258
+    H 85
+    ALT Three buttons laid out using absolute positioning. 
+)
+
+</applet>

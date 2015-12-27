@@ -1,0 +1,25 @@
+<project default="compile-all" name="Service Providers Examples">
+
+    <target name="compile-all">
+        <echo message="Using ${JAVAC} as the Java compiler"/>
+        <ant target="compile" antfile="build.xml" dir="rbcpsample"/>
+    </target>
+
+    <target name="compile-abort">
+        <ant target="compile" antfile="build.xml" dir="rbcpsample"/>
+    </target>
+
+    <target name="clean">
+        <ant target="clean" antfile="build.xml" dir="rbcpsample"/>
+    </target>
+
+    <target name="jar">
+        <ant target="jar" antfile="build.xml" dir="rbcpsample"/>
+    </target>
+
+    <target name="zip">
+        <ant target="zip" antfile="build.xml" dir="rbcpsample"/>
+    </target>
+
+</project>
+

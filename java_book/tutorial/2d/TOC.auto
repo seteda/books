@@ -1,0 +1,73 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="overview/index.html">Overview of the Java 2D API Concepts</a>
+<ul>
+<li class="tocli"><a href="overview/coordinate.html">Coordinates</a></li>
+<li class="tocli"><a href="overview/rendering.html">Java 2D Rendering</a></li>
+<li class="tocli"><a href="overview/primitives.html">Geometric Primitives</a></li>
+<li class="tocli"><a href="overview/text.html">Text</a></li>
+<li class="tocli"><a href="overview/images.html">Images</a></li>
+<li class="tocli"><a href="overview/printing.html">Printing</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="basic2d/index.html">Getting Started with Graphics</a></li>
+<li class="tocli"><a href="geometry/index.html">Working with Geometry</a>
+<ul>
+<li class="tocli"><a href="geometry/primitives.html">Drawing Geometric Primitives</a></li>
+<li class="tocli"><a href="geometry/arbitrary.html">Drawing Arbitrary Shapes</a></li>
+<li class="tocli"><a href="geometry/strokeandfill.html">Stroking and Filling Graphics Primitives</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="text/index.html">Working with Text APIs</a>
+<ul>
+<li class="tocli"><a href="text/fontconcepts.html">Font Concepts</a></li>
+<li class="tocli"><a href="text/textlayoutconcepts.html">Text Layout Concepts</a></li>
+<li class="tocli"><a href="text/fonts.html">Physical and Logical Fonts</a></li>
+<li class="tocli"><a href="text/measuringtext.html">Measuring Text</a></li>
+<li class="tocli"><a href="text/advanced.html">Advanced Text Display</a>
+<ul>
+<li class="tocli"><a href="text/renderinghints.html">Displaying Antialiased Text by Using Rendering Hints</a></li>
+<li class="tocli"><a href="text/textattributes.html">Using Text Attributes to Style Text</a></li>
+<li class="tocli"><a href="text/drawmulstring.html">Drawing Multiple Lines of Text</a></li>
+<li class="tocli"><a href="text/textlayoutbidirectionaltext.html">Working with Bidirectional Text</a>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li class="tocli"><a href="images/index.html">Working with Images</a>
+<ul>
+<li class="tocli"><a href="images/loadimage.html">Reading/Loading an Image</a></li>
+<li class="tocli"><a href="images/drawimage.html">Drawing an Image</a></li>
+<li class="tocli"><a href="images/drawonimage.html">Creating and Drawing to an Image</a></li>
+<li class="tocli"><a href="images/saveimage.html">Writing/Saving an Image</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="printing/index.html">Printing</a>
+<ul>
+<li class="tocli"><a href="printing/printable.html">A Basic Printing Program</a></li>
+<li class="tocli"><a href="printing/dialog.html">Using Print Setup Dialogs</a></li>
+<li class="tocli"><a href="printing/set.html">Printing a Multiple Page Document</a></li>
+<li class="tocli"><a href="printing/services.html">Working with Print Services and Attributes</a></li>
+<li class="tocli"><a href="printing/gui.html">Printing the Contents of a User Interface</a></li>
+<li class="tocli"><a href="printing/swing.html">Printing Support in Swing Components</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="advanced/index.html">Advanced Topics in Java2D</a>
+<ul>
+<li class="tocli"><a href="advanced/transforming.html">Transforming Shapes, Text, and Images</a></li>
+<li class="tocli"><a href="advanced/clipping.html">Clipping the Drawing Region</a></li>
+<li class="tocli"><a href="advanced/compositing.html">Compositing Graphics</a></li>
+<li class="tocli"><a href="advanced/quality.html">Controlling Rendering Quality</a></li>
+<li class="tocli"><a href="advanced/complexshapes.html">Constructing Complex Shapes from Geometry Primitives</a></li>
+<li class="tocli"><a href="advanced/user.html">Supporting User Interaction</a>
+</li>
+</ul>
+</li>
+</ul>

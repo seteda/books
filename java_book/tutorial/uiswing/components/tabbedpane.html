@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Use Tabbed Panes (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Swing Components)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Swing Components</a></div>
+<div class="linkAHEAD"><a href="toplevel.html">Using Top-Level Containers</a></div>
+<div class="linkAHEAD"><a href="jcomponent.html">The JComponent Class</a></div>
+<div class="linkAHEAD"><a href="text.html">Using Text Components</a></div>
+<div class="linkBHEAD"><a href="generaltext.html">Text Component Features</a></div>
+<div class="linkBHEAD"><a href="textapi.html">The Text Component API</a></div>
+<div class="linkAHEAD"><a href="componentlist.html">How to Use Various Components</a></div>
+<div class="linkBHEAD"><a href="applet.html">How to Make Applets</a></div>
+<div class="linkBHEAD"><a href="button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a></div>
+<div class="linkBHEAD"><a href="buttongroup.html">How to Use the ButtonGroup Component</a></div>
+<div class="linkBHEAD"><a href="colorchooser.html">How to Use Color Choosers</a></div>
+<div class="linkBHEAD"><a href="combobox.html">How to Use Combo Boxes</a></div>
+<div class="linkBHEAD"><a href="dialog.html">How to Make Dialogs</a></div>
+<div class="linkBHEAD"><a href="editorpane.html">How to Use Editor Panes and Text Panes</a></div>
+<div class="linkBHEAD"><a href="filechooser.html">How to Use File Choosers</a></div>
+<div class="linkBHEAD"><a href="formattedtextfield.html">How to Use Formatted Text Fields</a></div>
+<div class="linkBHEAD"><a href="frame.html">How to Make Frames (Main Windows)</a></div>
+<div class="linkBHEAD"><a href="internalframe.html">How to Use Internal Frames</a></div>
+<div class="linkBHEAD"><a href="label.html">How to Use Labels</a></div>
+<div class="linkBHEAD"><a href="layeredpane.html">How to Use Layered Panes</a></div>
+<div class="linkBHEAD"><a href="list.html">How to Use Lists</a></div>
+<div class="linkBHEAD"><a href="menu.html">How to Use Menus</a></div>
+<div class="linkBHEAD"><a href="panel.html">How to Use Panels</a></div>
+<div class="linkBHEAD"><a href="passwordfield.html">How to Use Password Fields</a></div>
+<div class="linkBHEAD"><a href="progress.html">How to Use Progress Bars</a></div>
+<div class="linkBHEAD"><a href="rootpane.html">How to Use Root Panes</a></div>
+<div class="linkBHEAD"><a href="scrollpane.html">How to Use Scroll Panes</a></div>
+<div class="linkBHEAD"><a href="separator.html">How to Use Separators</a></div>
+<div class="linkBHEAD"><a href="slider.html">How to Use Sliders</a></div>
+<div class="linkBHEAD"><a href="spinner.html">How to Use Spinners</a></div>
+<div class="linkBHEAD"><a href="splitpane.html">How to Use Split Panes</a></div>
+<div class="nolinkBHEAD">How to Use Tabbed Panes</div>
+<div class="linkBHEAD"><a href="table.html">How to Use Tables</a></div>
+<div class="linkBHEAD"><a href="textarea.html">How to Use Text Areas</a></div>
+<div class="linkBHEAD"><a href="textfield.html">How to Use Text Fields</a></div>
+<div class="linkBHEAD"><a href="toolbar.html">How to Use Tool Bars</a></div>
+<div class="linkBHEAD"><a href="tooltip.html">How to Use Tool Tips</a></div>
+<div class="linkBHEAD"><a href="tree.html">How to Use Trees</a></div>
+<div class="linkAHEAD"><a href="html.html">How to Use HTML in Swing Components</a></div>
+<div class="linkAHEAD"><a href="model.html">How to Use Models</a></div>
+<div class="linkAHEAD"><a href="icon.html">How to Use Icons</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use Borders</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Component Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Swing Components
+        <br /><b>Section:</b> How to Use Various Components
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Swing Components</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="splitpane.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="table.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Use Tabbed Panes</h1></div>
+            <div id="PageContent">
+
+<p>With the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html"><code>JTabbedPane</code></a> class, you can have several components, such as <a href="panel.html">panels</a>, share the same space. The user chooses which component to view by selecting the tab corresponding to the desired component. If you want similar functionality without the tab interface, you can use a 
+<a class="TutorialLink" target="_top" href="../layout/card.html">card layout</a> instead of a tabbed pane.</p>
+<h2>To Create Tabbed Panes</h2>
+<p>To create a tabbed pane, instantiate <code>JTabbedPane</code>, create the components you wish it to display, and then add the components to the tabbed pane using the <code>addTab</code> method.</p>
+<p>The following picture introduces an application called <code>TabbedPaneDemo</code> that has a tabbed pane with four tabs.</p>
+<center><img src="../../figures/uiswing/components/TabbedPaneDemo.png" width="423" height="117" align="bottom" alt="A screenshot of TabbedPaneDemo" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run TabbedPaneDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#TabbedPaneDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/TabbedPaneDemoProject/TabbedPaneDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the TabbedPaneDemo Application" /></a><br /></li>
+<li>Put the cursor over a tab.<br />
+The tool tip associated with the tab appears. As a convenience, you can specify tool tip text when you add a component to the tabbed pane.</li>
+<li>Select a tab by clicking it.<br />
+The tabbed pane displays the component corresponding to the tab.</li>
+<li>Select a tab by entering its mnemonic.<br />
+For example, in the Java look and feel you can select the tab labeled &quot;Tab 3&quot; by typing Alt-3.</li>
+<li>Navigate between scrollable tabs.<br />
+This example provides scrollable tabs. Resize the dialog box by moving its left or right boundary so that tabs do not fit within the dialog. Scroll arrows appear next to the tabs.<br />
+Click the arrow to view one of the hidden tabs.<br />
+Note that clicking the arrow only reveals hidden tabs. It does not select a new tab.</li>
+</ol>
+<hr /></div>
+<p>As the <code>TabbedPaneDemo</code> example shows, a tab can have a tool tip and a mnemonic, and it can display both text and an image.</p>
+<h3>Tab Placement</h3>
+<p>The default tab placement is set to the <code>TOP</code> location, as shown above. You can change the tab placement to <code>LEFT</code>, <code>RIGHT</code>, <code>TOP</code> or <code>BOTTOM</code> by using the <code>setTabPlacement</code> method.</p>
+<h3>Code for Tabbed Panes</h3>
+<p>The following code from 
+<a class="SourceLink" target="_blank" href="../examples/components/TabbedPaneDemoProject/src/components/TabbedPaneDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/TabbedPaneDemoProject/src/components/TabbedPaneDemo.java'); return false;"><code>TabbedPaneDemo.java</code></a> creates the tabbed pane in the previous example. Note that no event-handling code is necessary. The <code>JTabbedPane</code> object takes care of mouse and keyboard events for you.</p>
+<div class="codeblock"><pre>
+JTabbedPane tabbedPane = new JTabbedPane();
+ImageIcon icon = createImageIcon("images/middle.gif");
+
+JComponent panel1 = makeTextPanel("Panel #1");
+<b>tabbedPane.addTab("Tab 1", icon, panel1,
+                  "Does nothing");</b>
+tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+
+JComponent panel2 = makeTextPanel("Panel #2");
+<b>tabbedPane.addTab("Tab 2", icon, panel2,
+                  "Does twice as much nothing");</b>
+tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+
+JComponent panel3 = makeTextPanel("Panel #3");
+<b>tabbedPane.addTab("Tab 3", icon, panel3,
+                  "Still does nothing");</b>
+tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
+
+JComponent panel4 = makeTextPanel(
+        "Panel #4 (has a preferred size of 410 x 50).");
+panel4.setPreferredSize(new Dimension(410, 50));
+<b>tabbedPane.addTab("Tab 4", icon, panel4,
+                      "Does nothing at all");</b>
+tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
+</pre></div>
+<p>As the previous code shows, the <code>addTab</code> method handles the bulk of the work in setting up a tab in a tabbed pane. The <code>addTab</code> method has several forms, but they all use both a string title and the component to be displayed by the tab. Optionally, you can specify an icon and <a href="tooltip.html">tool tip</a> string. The text or icon (or both) can be null. Another way to create a tab is to use the <code>insertTab</code> method, which lets you specify the index of the tab you&#39;re adding. Note that the <code>addTab</code> method does not allow index specification in this step.</p>
+<h2>To Switch to Specific Tabs</h2>
+<p>There are three ways to switch to specific tabs using GUI.</p>
+<ol>
+<li><strong>Using a mouse.</strong> To switch to a specific tab, the user clicks it with the mouse.</li>
+<li><strong>Using keyboard arrows.</strong> When the <code>JTabbedPane</code> object has the focus, the keyboard arrows can be used to switch from tab to tab.</li>
+<li><strong>Using key mnemonics.</strong> The <code>setMnemonicAt</code> method allows the user to switch to a specific tab using the keyboard. For example, <code>setMnemonicAt(3, KeyEvent.VK_4)</code> makes &#39;4&#39; the mnemonic for the fourth tab (which is at index 3, since the indices start with 0); pressing Alt-4 makes the fourth tab&#39;s component appear. Often, a mnemonic uses a character in the tab&#39;s title that is then automatically underlined.</li>
+</ol>
+<p>To switch to a specific tab programmatically, use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setSelectedIndex-int-"><code>setSelectedIndex</code></a> or the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setSelectedComponent-java.awt.Component-"><code>setSelectedComponent</code></a> methods.</p>
+<h3>Preferred Size in Tabs</h3>
+<p>When building components to add to a tabbed pane, keep in mind that no matter which child of a tabbed pane is visible, each child gets the same amount of space in which to display itself. The preferred size of the tabbed pane is just big enough to display its tallest child at its preferred height, and its widest child at its preferred width. Similarly, the minimum size of the tabbed pane depends on the biggest minimum width and height of all its children.</p>
+<p>In the <code>TabbedPaneDemo</code> example, the fourth panel has a preferred width and height that are larger than those of the other panels. Thus, the preferred size of the tabbed pane is just big enough to display the fourth panel at its preferred size. Every panel gets exactly the same amount of space &#151; 410 pixels wide and 50 high, assuming the tabbed pane is at its preferred size. If you do not understand how preferred size is used, please refer to 
+<a class="TutorialLink" target="_top" href="../layout/howLayoutWorks.html">How Layout Management Works</a>.</p>
+<h3>Tabs With Custom Components</h3>
+<p>The <code>TabComponentsDemo</code> example introduces a tabbed pane whose tabs contain real components. The use of custom components brings new features such as buttons, combo boxes, labels and other components to tabs, and allows more complex user interaction.</p>
+<p>Here is a tabbed pane with close buttons on its tabs.</p>
+<center><img src="../../figures/uiswing/components/TabComponentsDemo.png" width="400" height="200" align="bottom" alt="A screenshot of TabComponentsDemo" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run TabComponentsDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#TabComponentsDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/TabComponentsDemoProject/TabComponentsDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the TabComponentsDemo Application" /></a><br /></li>
+<li>Put the cursor over a tab.</li>
+<li>Select a tab by clicking it (make sure not to hit the little cross).</li>
+<li>Put the cursor over one of the widgets with a little cross.<br />
+The cross turns magenta and gets enclosed in a square. A tool tip associated with the close button appears.<br />
+Click the cross with the left mouse button to close the tab.</li>
+<li>Restore the tabs that have been removed by choosing the Reset JTabbedPane item from the Options menu.</li>
+<li>Note that tabs with custom components are displayed on top of original tabbed pane tabs.<br />
+To view the tabs underneath, open the Options menu and clear the Use TabComponents checkbox.</li>
+<li>Display the tabs with components by selecting the Use TabComponents checkbox again.</li>
+<li>Close all tabs. Now the tabbed pane is empty.</li>
+</ol>
+<hr /></div>
+<h2>To Remove Tabs</h2>
+<p>The following code from 
+<a class="SourceLink" target="_blank" href="../examples/components/TabComponentsDemoProject/src/components/ButtonTabComponent.java" onclick="showCode('../../displayCode.html', '../examples/components/TabComponentsDemoProject/src/components/ButtonTabComponent.java'); return false;"><code>ButtonTabComponent.java</code></a> removes a tab from the tabbed pane. Note that event-handling code is necessary. Since each tab contains a real <code>JButton</code> object, you must attach an <code>ActionListener</code> to the close button. As the user clicks the button, the <code>actionPerformed</code> method determines the index of the tab it belongs to and removes the corresponding tab.</p>
+<div class="codeblock"><pre>
+public void actionPerformed(ActionEvent e) {
+    <b>int i = pane.indexOfTabComponent(ButtonTabComponent.this);</b>
+    if (i != -1) {
+    pane.remove(i);
+    }
+}
+</pre></div>
+<h2>To Give Titles to Customized Tabs</h2>
+<p>The code below, taken from 
+<a class="SourceLink" target="_blank" href="../examples/components/TabComponentsDemoProject/src/components/ButtonTabComponent.java" onclick="showCode('../../displayCode.html', '../examples/components/TabComponentsDemoProject/src/components/ButtonTabComponent.java'); return false;"><code>ButtonTabComponent.java</code></a>, shows how a customized tab component gets a title from an original tabbed pane tab.</p>
+<div class="codeblock"><pre>
+JLabel label = new JLabel(title) {
+    public String getText() {
+        int i = pane.indexOfTabComponent(ButtonTabComponent.this);
+        if (i != -1) {
+            return pane.getTitleAt(i);
+        }
+        return null;
+    }
+};
+</pre></div>
+<h2><a name="api" id="api">The Tabbed Pane API</a></h2>
+<p>The following tables list the commonly used <code>JTabbedPane</code> constructors and methods. The API for using tabbed panes falls into the following categories:</p>
+<ul>
+<li><a href="#creating">Creating and Setting Up a Tabbed Pane</a></li>
+<li><a href="#tabapi">Inserting, Removing, Finding, and Selecting Tabs</a></li>
+<li><a href="#appearanceapi">Changing Tab Appearance</a></li>
+<li><a href="#tabscomponents">Setting Up Custom Components on Tabs&lt;/&gt;</a></li>
+</ul>
+<p><a href="#tabscomponents"></a></p>
+<table border="1" summary="methods for creating and setting up a tabbed pane">
+<caption><a style="font-weight: bold" name="creating" id="creating">Creating and Setting Up a Tabbed Pane</a></caption>
+<tr>
+<th id="h1" align="left">Method or Constructor</th>
+<th id="h2" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#JTabbedPane--">JTabbedPane()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#JTabbedPane-int-">JTabbedPane(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#JTabbedPane-int-int-">JTabbedPane(int, int)</a></td>
+<td headers="h2">Creates a tabbed pane. The first optional argument specifies where the tabs should appear. By default, the tabs appear at the top of the tabbed pane. You can specify these positions (defined in the <code>SwingConstants</code> interface, which <code>JTabbedPane</code> implements): <code>TOP</code>, <code>BOTTOM</code>, <code>LEFT</code>, <code>RIGHT</code>. The second optional argument specifies the tab layout policy. You can specify one of these policies (defined in <code>JTabbedPane</code>): 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#WRAP_TAB_LAYOUT"><code>WRAP_TAB_LAYOUT</code></a> or 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#SCROLL_TAB_LAYOUT"><code>SCROLL_TAB_LAYOUT</code></a>.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#addTab-java.lang.String-javax.swing.Icon-java.awt.Component-java.lang.String-">addTab(String, Icon, Component, String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#addTab-java.lang.String-javax.swing.Icon-java.awt.Component-">addTab(String, Icon, Component)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#addTab-java.lang.String-java.awt.Component-">addTab(String, Component)</a></td>
+<td headers="h2">Adds a new tab to the tabbed pane. The first argument specifies the text on the tab. The optional icon argument specifies the tab&#39;s icon. The component argument specifies the component that the tabbed pane should show when the tab is selected. The fourth argument, if present, specifies the tool tip text for the tab.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setTabLayoutPolicy-int-">void setTabLayoutPolicy(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getTabLayoutPolicy--">int getTabLayoutPolicy()</a></td>
+<td headers="h2">Sets or gets the policy that the tabbed pane uses in laying out tabs when all tabs do not fit within a single run. Possible values are <code>WRAP_TAB_LAYOUT</code> and <code>SCROLL_TAB_LAYOUT</code>. The default policy is <code>WRAP_TAB_LAYOUT</code>.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setTabPlacement-int-">void setTabPlacement(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getTabPlacement--">int getTabPlacement()</a></td>
+<td headers="h2">Sets or gets the location where the tabs appear relative to the content. Possible values (defined in <code>SwingConstants</code>, which is implemented by <code>JTabbedPane</code>) are <code>TOP</code>, <code>BOTTOM</code>, <code>LEFT</code>, and <code>RIGHT</code>.</td>
+</tr>
+</table>
+<table border="1" summary="methods for inserting, removing, finding, and selecting tabs">
+<caption><a style="font-weight: bold" name="tabapi" id="tabapi">Inserting, Removing, Finding, and Selecting Tabs</a></caption>
+<tr>
+<th id="h101" align="left">Method</th>
+<th id="h102" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#insertTab-java.lang.String-javax.swing.Icon-java.awt.Component-java.lang.String-int-">insertTab(String, Icon, Component, String, int)</a></td>
+<td headers="h102">Inserts a tab at the specified index, where the first tab is at index 0. The arguments are the same as for <code>addTab</code>.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#remove-java.awt.Component-">remove(Component)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#removeTabAt-int-">removeTabAt(int)</a></td>
+<td headers="h102">Removes the tab corresponding to the specified component or index.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#removeAll--">removeAll()</a></td>
+<td headers="h102">Removes all tabs.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#indexOfComponent-java.awt.Component-">int indexOfComponent(Component)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#indexOfTab-java.lang.String-">int indexOfTab(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#indexOfTab-javax.swing.Icon-">int indexOfTab(Icon)</a></td>
+<td headers="h102">Returns the index of the tab that has the specified component, title, or icon.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setSelectedIndex-int-">void setSelectedIndex(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setSelectedComponent-java.awt.Component-">void setSelectedComponent(Component)</a></td>
+<td headers="h102">Selects the tab that has the specified component or index. Selecting a tab has the effect of displaying its associated component.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getSelectedIndex--">int getSelectedIndex()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getSelectedComponent--">Component getSelectedComponent()</a></td>
+<td headers="h102">Returns the index or component for the selected tab.</td>
+</tr>
+</table>
+<table border="1" summary="methods for changing tab appearance">
+<caption><a style="font-weight: bold" name="appearanceapi" id="appearanceapi">Changing Tab Appearance</a></caption>
+<tr>
+<th id="h201" align="left">Method</th>
+<th id="h202" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setComponentAt-int-java.awt.Component-">void setComponentAt(int, Component)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getComponentAt-int-">Component getComponentAt(int)</a></td>
+<td headers="h202">Sets or gets which component is associated with the tab at the specified index. The first tab is at index 0.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setTitleAt-int-java.lang.String-">void setTitleAt(int, String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getTitleAt-int-">String getTitleAt(int)</a></td>
+<td headers="h202">Sets or gets the title of the tab at the specified index.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setIconAt-int-javax.swing.Icon-">void setIconAt(int, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getIconAt-int-">Icon getIconAt(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setDisabledIconAt-int-javax.swing.Icon-">void setDisabledIconAt(int, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getDisabledIconAt-int-">Icon getDisabledIconAt(int)</a></td>
+<td headers="h202">Sets or gets the icon displayed by the tab at the specified index.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setBackgroundAt-int-java.awt.Color-">void setBackgroundAt(int, Color)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getBackgroundAt-int-">Color getBackgroundAt(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setForegroundAt-int-java.awt.Color-">void setForegroundAt(int, Color)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getForegroundAt-int-">Color getForegroundAt(int)</a></td>
+<td headers="h202">Sets or gets the background or foreground color used by the tab at the specified index. By default, a tab uses the tabbed pane&#39;s background and foreground colors. For example, if the tabbed pane&#39;s foreground is black, then each tab&#39;s title is black except for any tabs for which you specify another color using <code>setForegroundAt</code>.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setEnabledAt-int-boolean-">void setEnabledAt(int, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#isEnabledAt-int-">boolean isEnabledAt(int)</a></td>
+<td headers="h202">Sets or gets the enabled state of the tab at the specified index.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setMnemonicAt-int-int-">void setMnemonicAt(int, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getMnemonicAt-int-">int getMnemonicAt(int)</a></td>
+<td headers="h202">Sets or gets the keyboard mnemonic for accessing the specified tab.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setDisplayedMnemonicIndexAt-int-int-">void setDisplayedMnemonicIndexAt(int, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getDisplayedMnemonicIndexAt-int-">int getDisplayedMnemonicIndexAt(int)</a></td>
+<td headers="h202">Sets or gets which character should be decorated to represent the mnemonic. This is useful when the mnemonic character appears multiple times in the tab&#39;s title and you don&#39;t want the first occurrence underlined.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setToolTipTextAt-int-java.lang.String-">void setToolTipTextAt(int, String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getToolTipTextAt-int-">String getToolTipTextAt(int)</a></td>
+<td headers="h202">Sets or gets the text displayed on tool tips for the specified tab.</td>
+</tr>
+</table>
+<table border="1" summary="methods for setting up custom components on tabs">
+<caption><a style="font-weight: bold" name="tabscomponents" id="tabscomponents">Setting Up Custom Components on Tabs</a></caption>
+<tr>
+<th id="h301" align="left">Method</th>
+<th id="h302" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#setTabComponentAt-int-java.awt.Component-">void setTabComponentAt(int, Component)</a></td>
+<td headers="h302">Sets the component that is responsible for rendering the title or icon (or both) for the tab specified by the first argument. When a null value is specified, <code>JTabbedPane</code> renders the title or icon. The same component cannot be used for several tabs.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#getTabComponentAt-int-">Component getTabComponentAt(int)</a></td>
+<td headers="h302">Gets the tab component for the tab at the index specified by the argument. If there is no tab component for the specified tab, a null value is returned.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html#indexOfTabComponent-java.awt.Component-">int indexOfTabComponent(Component)</a></td>
+<td headers="h302">Checks if the specified component belongs to one of the tabs. Return the index of the corresponding tab or -1 if there is no such a tab.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples That Use Tabbed Panes</a></h2>
+<p>This table lists examples that use <code>JTabbedPane</code> and points to where those examples are described.</p>
+<table summary="Information about examples">
+<tr>
+<th id="h401" align="left">Example</th>
+<th id="h402" align="left">Where Described</th>
+<th id="h403" align="left">Notes</th>
+</tr>
+<tr>
+<td headers="h401"><a href="../examples/components/index.html#TabbedPaneDemo"><code>TabbedPaneDemo</code></a></td>
+<td headers="h402">This page</td>
+<td headers="h403">Demonstrates a few tabbed pane features, such as tool tips, icons, scrollable layout, and mnemonics.</td>
+</tr>
+<tr>
+<td headers="h401"><a href="../examples/components/index.html#TabComponentsDemo"><code>TabComponentsDemo</code></a></td>
+<td headers="h402">This page</td>
+<td headers="h403">Demonstrates custom components on tabs. Uses a tabbed pane with close buttons.</td>
+</tr>
+<tr>
+<td headers="h401"><a href="../examples/layout/index.html#BoxAlignmentDemo"><code>BoxAlignmentDemo</code></a></td>
+<td headers="h402">
+<a class="TutorialLink" target="_top" href="../layout/box.html">How to Use BoxLayout</a></td>
+<td headers="h403">Uses a <code>JTabbedPane</code> as the only child of a frame&#39;s content pane.</td>
+</tr>
+<tr>
+<td headers="h401"><a href="../examples/components/index.html#BorderDemo"><code>BorderDemo</code></a></td>
+<td headers="h402">
+<a class="TutorialLink" target="_top" href="../components/border.html">How to Use Borders</a></td>
+<td headers="h403">Uses its tabbed pane in a manner similar to <code>BoxAlignmentDemo</code>.</td>
+</tr>
+<tr>
+<td headers="h401"><a href="../examples/components/index.html#DialogDemo"><code>DialogDemo</code></a></td>
+<td headers="h402"><a href="dialog.html">How to Use Dialogs</a></td>
+<td headers="h403">Has a tabbed pane in the center of a frame&#39;s content pane, with a label below it.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="splitpane.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="table.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Use Split Panes
+        <br /><b>Next page:</b> How to Use Tables
+    </div>
+</body>
+</html> 

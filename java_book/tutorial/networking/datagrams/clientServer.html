@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Writing a Datagram Client and Server (The Java&trade; Tutorials &gt;        
+            Custom Networking &gt; All About Datagrams)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This networking Java tutorial describes networking capabilities of the Java platform, working with URLs, sockets, datagrams, and cookies" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java networking, java url, java socket, datagram, java cookie" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">All About Datagrams</a></div>
+<div class="linkAHEAD"><a href="definition.html">What Is a Datagram?</a></div>
+<div class="nolinkAHEAD">Writing a Datagram Client and Server</div>
+<div class="linkAHEAD"><a href="broadcasting.html">Broadcasting to Multiple Recipients</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Custom Networking
+        <br /><b>Lesson:</b> All About Datagrams
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Custom Networking</a>
+                &gt;
+                <a href="index.html" target="_top">All About Datagrams</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="definition.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="broadcasting.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Writing a Datagram Client and Server</h1></div>
+            <div id="PageContent">
+
+<p>The example featured in this section consists of two applications: a client and a server. The server continuously receives datagram packets over a datagram socket. Each datagram packet received by the server indicates a client request for a quotation. When the server receives a datagram, it replies by sending a datagram packet that contains a one-line &quot;quote of the moment&quot; back to the client.</p>
+<p>The client application in this example is fairly simple. It sends a single datagram packet to the server indicating that the client would like to receive a quote of the moment. The client then waits for the server to send a datagram packet in response.</p>
+<p>Two classes implement the server application: <code>QuoteServer</code> and <code>QuoteServerThread</code>. A single class implements the client application: <code>QuoteClient</code>.</p>
+<p>Let&#39;s investigate these classes, starting with the class that contains the <code>main</code> method for the server application. 
+
+<a class="TutorialLink" target="_top" href="../../deployment/applet/server.html">Working With a Server-Side Application </a>
+ contains an applet version of the <code>QuoteClient</code> class.</p>
+<h2><a name="mainprogram" id="mainprogram">The QuoteServer Class</a></h2>
+<p>The 
+<a class="SourceLink" target="_blank" href="examples/QuoteServer.java" onclick="showCode('../../displayCode.html', 'examples/QuoteServer.java'); return false;"><code>QuoteServer</code></a> class, shown here in its entirety, contains a single method: the <code>main</code> method for the quote server application. The <code>main</code> method simply creates a new <code>QuoteServerThread</code> object and starts it:</p>
+<div class="codeblock"><pre>
+import java.io.*;
+
+public class QuoteServer {
+    public static void main(String[] args) throws IOException {
+        new QuoteServerThread().start();
+    }
+}
+</pre></div>
+<p>The <code>QuoteServerThread</code> class implements the main logic of the quote server.</p>
+<h2>The <code>QuoteServerThread</code> Class</h2>
+<p>When created, the 
+<a class="SourceLink" target="_blank" href="examples/QuoteServerThread.java" onclick="showCode('../../displayCode.html', 'examples/QuoteServerThread.java'); return false;"><code>QuoteServerThread</code></a> creates a <code>DatagramSocket</code> on port 4445 (arbitrarily chosen). This is the <code>DatagramSocket</code> through which the server communicates with all of its clients.</p>
+<div class="codeblock"><pre>
+public QuoteServerThread() throws IOException {
+    this("QuoteServer");
+}
+
+public QuoteServerThread(String name) throws IOException {
+    super(name);
+    socket = new DatagramSocket(4445);
+
+    try {
+        in = new BufferedReader(new FileReader("one-liners.txt"));
+    }   
+    catch (FileNotFoundException e){
+        System.err.println("Couldn't open quote file.  Serving time instead.");
+    }
+}  
+</pre></div>
+<p>Remember that certain ports are dedicated to well-known services and you cannot use them. If you specify a port that is in use, the creation of the <code>DatagramSocket</code> will fail.</p>
+<p>The constructor also opens a <code>BufferedReader</code> on a file named 
+<a class="SourceLink" target="_blank" href="examples/one-liners.txt" onclick="showCode('../../displayCode.html', 'examples/one-liners.txt'); return false;"><code>one-liners.txt</code></a><!--
+<a href="examples/one-liners.txt">one-liners.txt</a> 
+-->
+which contains a list of quotes. Each quote in the file is on a line by itself.</p>
+<p>Now for the interesting part of the <code>QuoteServerThread</code>: its <code>run</code> method. The <code>run</code> method overrides <code>run</code> in the <code>Thread</code> class and provides the implementation for the thread. For information about threads, see 
+<a class="TutorialLink" target="_top" href="../../essential/concurrency/runthread.html">Defining and Starting a Thread</a>.</p>
+<p>The <code>run</code> method contains a <code>while</code> loop that continues as long as there are more quotes in the file. During each iteration of the loop, the thread waits for a <code>DatagramPacket</code> to arrive over the <code>DatagramSocket</code>. The packet indicates a request from a client. In response to the client&#39;s request, the <code>QuoteServerThread</code> gets a quote from the file, puts it in a <code>DatagramPacket</code> and sends it over the <code>DatagramSocket</code> to the client that asked for it.</p>
+<p>Let&#39;s look first at the section that receives the requests from clients:</p>
+<div class="codeblock"><pre>
+byte[] buf = new byte[256];
+DatagramPacket packet = new DatagramPacket(buf, buf.length);
+socket.receive(packet);
+</pre></div>
+<p>The first statement creates an array of bytes which is then used to create a <code>DatagramPacket</code>. The <code>DatagramPacket</code> will be used to receive a datagram from the socket because of the constructor used to create it. This constructor requires only two arguments: a byte array that contains client-specific data and the length of the byte array. When constructing a <code>DatagramPacket</code> to send over the <code>DatagramSocket</code>, you also must supply the Internet address and port number of the packet&#39;s destination. You&#39;ll see this later when we discuss how the server responds to a client request.</p>
+<p>The last statement in the previous code snippet receives a datagram from the socket (the information received from the client gets copied into the packet). The receive method waits forever until a packet is received. If no packet is received, the server makes no further progress and just waits.</p>
+<p>Now assume that, the server has received a request from a client for a quote. Now the server must respond. This section of code in the run method constructs the response:</p>
+<div class="codeblock"><pre>
+String dString = null;
+if (in == null)
+    dString = new Date().toString();
+else
+    dString = getNextQuote();
+buf = dString.getBytes();
+</pre></div>
+<p>If the quote file did not get opened for some reason, then <code>in</code> equals null. If this is the case, the quote server serves up the time of day instead. Otherwise, the quote server gets the next quote from the already opened file. Finally, the code converts the string to an array of bytes.</p>
+<p>Now, the <code>run</code> method sends the response to the client over the <code>DatagramSocket</code> with this code:</p>
+<div class="codeblock"><pre>
+InetAddress address = packet.getAddress();
+int port = packet.getPort();
+packet = new DatagramPacket(buf, buf.length, address, port);
+socket.send(packet);
+</pre></div>
+<p>The first two statements in this code segment get the Internet address and the port number, respectively, from the datagram packet received from the client. The Internet address and port number indicate where the datagram packet came from. This is where the server must send its response. In this example, the byte array of the datagram packet contains no relevant information. The arrival of the packet itself indicates a request from a client that can be found at the Internet address and port number indicated in the datagram packet.</p>
+<p>The third statement creates a new <code>DatagramPacket</code> object intended for sending a datagram message over the datagram socket. You can tell that the new <code>DatagramPacket</code> is intended to send data over the socket because of the constructor used to create it. This constructor requires four arguments. The first two arguments are the same required by the constructor used to create receiving datagrams: a byte array containing the message from the sender to the receiver and the length of this array. The next two arguments are different: an Internet address and a port number. These two arguments are the complete address of the destination of the datagram packet and must be supplied by the sender of the datagram. The last line of code sends the <code>DatagramPacket</code> on its way.</p>
+<p>When the server has read all the quotes from the quote file, the <code>while</code> loop terminates and the <code>run</code> method cleans up:</p>
+<div class="codeblock"><pre>
+socket.close();
+</pre></div>
+<h2>The QuoteClient Class</h2>
+<p>The 
+<a class="SourceLink" target="_blank" href="examples/QuoteClient.java" onclick="showCode('../../displayCode.html', 'examples/QuoteClient.java'); return false;"><code>QuoteClient</code></a> class implements a client application for the <code>QuoteServer</code>. This application sends a request to the <code>QuoteServer</code>, waits for the response, and, when the response is received, displays it to the standard output. Let&#39;s look at the code in detail.</p>
+<p>The <code>QuoteClient</code> class contains one method, the <code>main</code> method for the client application. The top of the <code>main</code> method declares several local variables for its use:</p>
+<div class="codeblock"><pre>
+int port;
+InetAddress address;
+DatagramSocket socket = null;
+DatagramPacket packet;
+byte[] sendBuf = new byte[256];
+</pre></div>
+<p>First, the <code>main</code> method processes the command-line arguments used to invoke the <code>QuoteClient</code> application:</p>
+<div class="codeblock"><pre>
+if (args.length != 1) {
+    System.out.println("Usage: java QuoteClient &lt;hostname&gt;");
+    return;
+}
+</pre></div>
+<p>The <code>QuoteClient</code> application requires one command-line arguments: the name of the machine on which the <code>QuoteServer</code> is running.</p>
+<p>Next, the <code>main</code> method creates a <code>DatagramSocket</code>:</p>
+<div class="codeblock"><pre>
+DatagramSocket socket = new DatagramSocket();
+</pre></div>
+<p>The client uses a constructor that does not require a port number. This constructor just binds the <code>DatagramSocket</code> to any available local port. It doesn&#39;t matter what port the client is bound to because the <code>DatagramPacket</code>s contain the addressing information. The server gets the port number from the <code>DatagramPacket</code>s and send its response to that port.</p>
+<p>Next, the <code>QuoteClient</code> program sends a request to the server:</p>
+<div class="codeblock"><pre>
+byte[] buf = new byte[256];
+InetAddress address = InetAddress.getByName(args[0]);
+DatagramPacket packet = new DatagramPacket(buf, buf.length, 
+                                address, 4445);
+socket.send(packet);
+</pre></div>
+<p>The code segment gets the Internet address for the host named on the command line (presumably the name of the machine on which the server is running). This <code>InetAddress</code> and the port number 4445 (the port number that the server used to create its <code>DatagramSocket</code>) are then used to create <code>DatagramPacket</code> destined for that Internet address and port number. Therefore the <code>DatagramPacket</code> will be delivered to the quote server.</p>
+<p>Note that the code creates a <code>DatagramPacket</code> with an empty byte array. The byte array is empty because this datagram packet is simply a request to the server for information. All the server needs to know to send a response--the address and port number to which reply--is automatically part of the packet.</p>
+<p>Next, the client gets a response from the server and displays it:</p>
+<div class="codeblock"><pre>
+packet = new DatagramPacket(buf, buf.length);
+socket.receive(packet);
+String received = new String(packet.getData(), 0, packet.getLength());
+System.out.println("Quote of the Moment: " + received);
+</pre></div>
+<p>To get a response from the server, the client creates a &quot;receive&quot; packet and uses the <code>DatagramSocket</code> receive method to receive the reply from the server. The receive method waits until a datagram packet destined for the client comes through the socket. Note that if the server&#39;s reply is somehow lost, the client will wait forever because of the no-guarantee policy of the datagram model. Normally, a client sets a timer so that it doesn&#39;t wait forever for a reply; if no reply arrives, the timer goes off and the client retransmits.</p>
+<p>When the client receives a reply from the server, the client uses the getData method to retrieve that data from the packet. The client then converts the data to a string and displays it.</p>
+<h2>Running the Server and Client</h2>
+<p>After you&#39;ve successfully compiled the server and the client programs, you run them. You have to run the server program first. Just use the Java interpreter and specify the <code>QuoteServer</code> class name.</p>
+<p>Once the server has started, you can run the client program. Remember to run the client program with one command-line argument: the name of the host on which the <code>QuoteServer</code> is running.</p>
+<p>After the client sends a request and receives a response from the server, you should see output similar to this:</p>
+<div class="codeblock"><pre>
+Quote of the Moment:
+Good programming is 99% sweat and 1% coffee.
+</pre></div>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="definition.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="broadcasting.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> What Is a Datagram?
+        <br /><b>Next page:</b> Broadcasting to Multiple Recipients
+    </div>
+</body>
+</html> 

@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Make Dialogs (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Swing Components)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Swing Components</a></div>
+<div class="linkAHEAD"><a href="toplevel.html">Using Top-Level Containers</a></div>
+<div class="linkAHEAD"><a href="jcomponent.html">The JComponent Class</a></div>
+<div class="linkAHEAD"><a href="text.html">Using Text Components</a></div>
+<div class="linkBHEAD"><a href="generaltext.html">Text Component Features</a></div>
+<div class="linkBHEAD"><a href="textapi.html">The Text Component API</a></div>
+<div class="linkAHEAD"><a href="componentlist.html">How to Use Various Components</a></div>
+<div class="linkBHEAD"><a href="applet.html">How to Make Applets</a></div>
+<div class="linkBHEAD"><a href="button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a></div>
+<div class="linkBHEAD"><a href="buttongroup.html">How to Use the ButtonGroup Component</a></div>
+<div class="linkBHEAD"><a href="colorchooser.html">How to Use Color Choosers</a></div>
+<div class="linkBHEAD"><a href="combobox.html">How to Use Combo Boxes</a></div>
+<div class="nolinkBHEAD">How to Make Dialogs</div>
+<div class="linkBHEAD"><a href="editorpane.html">How to Use Editor Panes and Text Panes</a></div>
+<div class="linkBHEAD"><a href="filechooser.html">How to Use File Choosers</a></div>
+<div class="linkBHEAD"><a href="formattedtextfield.html">How to Use Formatted Text Fields</a></div>
+<div class="linkBHEAD"><a href="frame.html">How to Make Frames (Main Windows)</a></div>
+<div class="linkBHEAD"><a href="internalframe.html">How to Use Internal Frames</a></div>
+<div class="linkBHEAD"><a href="label.html">How to Use Labels</a></div>
+<div class="linkBHEAD"><a href="layeredpane.html">How to Use Layered Panes</a></div>
+<div class="linkBHEAD"><a href="list.html">How to Use Lists</a></div>
+<div class="linkBHEAD"><a href="menu.html">How to Use Menus</a></div>
+<div class="linkBHEAD"><a href="panel.html">How to Use Panels</a></div>
+<div class="linkBHEAD"><a href="passwordfield.html">How to Use Password Fields</a></div>
+<div class="linkBHEAD"><a href="progress.html">How to Use Progress Bars</a></div>
+<div class="linkBHEAD"><a href="rootpane.html">How to Use Root Panes</a></div>
+<div class="linkBHEAD"><a href="scrollpane.html">How to Use Scroll Panes</a></div>
+<div class="linkBHEAD"><a href="separator.html">How to Use Separators</a></div>
+<div class="linkBHEAD"><a href="slider.html">How to Use Sliders</a></div>
+<div class="linkBHEAD"><a href="spinner.html">How to Use Spinners</a></div>
+<div class="linkBHEAD"><a href="splitpane.html">How to Use Split Panes</a></div>
+<div class="linkBHEAD"><a href="tabbedpane.html">How to Use Tabbed Panes</a></div>
+<div class="linkBHEAD"><a href="table.html">How to Use Tables</a></div>
+<div class="linkBHEAD"><a href="textarea.html">How to Use Text Areas</a></div>
+<div class="linkBHEAD"><a href="textfield.html">How to Use Text Fields</a></div>
+<div class="linkBHEAD"><a href="toolbar.html">How to Use Tool Bars</a></div>
+<div class="linkBHEAD"><a href="tooltip.html">How to Use Tool Tips</a></div>
+<div class="linkBHEAD"><a href="tree.html">How to Use Trees</a></div>
+<div class="linkAHEAD"><a href="html.html">How to Use HTML in Swing Components</a></div>
+<div class="linkAHEAD"><a href="model.html">How to Use Models</a></div>
+<div class="linkAHEAD"><a href="icon.html">How to Use Icons</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use Borders</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Component Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Swing Components
+        <br /><b>Section:</b> How to Use Various Components
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Swing Components</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="combobox.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="editorpane.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Make Dialogs</h1></div>
+            <div id="PageContent">
+
+<p>A Dialog window is an independent subwindow meant to carry temporary notice apart from the main Swing Application Window. Most Dialogs present an error message or warning to a user, but Dialogs can present images, directory trees, or just about anything compatible with the main Swing Application that manages them.</p>
+<p>For convenience, several Swing component classes can directly instantiate and display <em>dialogs</em>. To create simple, standard dialogs, you use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html"><code>JOptionPane</code></a> class. The <a href="progress.html"><code>ProgressMonitor</code></a> class can put up a dialog that shows the progress of an operation. Two other classes, <a href="colorchooser.html"><code>JColorChooser</code></a> and <a href="filechooser.html"><code>JFileChooser</code></a>, also supply standard dialogs. To bring up a print dialog, you can use the 
+<a class="TutorialLink" target="_top" href="../../2d/printing/index.html">Printing</a> API. To create a custom dialog, use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html"><code>JDialog</code></a> class directly.</p>
+<p>The code for simple dialogs can be minimal. For example, here is an informational dialog:</p>
+<center><img src="../../figures/uiswing/components/InformationalDialogMetal.png" width="268" height="122" align="bottom" alt="An informational dialog requires minimal code" /></center><p>Here is the code that creates and shows it:</p>
+<div class="codeblock"><pre>
+JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be green.");
+</pre></div>
+<p>The rest of this section covers the following topics:</p>
+<ul>
+<li><a href="#overview">An Overview of Dialogs</a></li>
+<li><a href="#dialogdemo">The DialogDemo Example</a></li>
+<li><a href="#features">JOptionPane Features</a></li>
+<li><a href="#create">Creating and Showing Simple Dialogs</a></li>
+<li><a href="#button">Customizing Button Text</a></li>
+<li><a href="#input">Getting the User&#39;s Input from a Dialog</a></li>
+<li><a href="#stayup">Stopping Automatic Dialog Closing</a></li>
+<li><a href="#api">The Dialog API</a></li>
+<li><a href="#eg">Examples that Use Dialogs</a></li>
+</ul>
+<h2><a name="overview" id="overview">An Overview of Dialogs</a></h2>
+<p>Every dialog is dependent on a Frame component. When that Frame is destroyed, so are its dependent Dialogs. When the frame is iconified, its dependent Dialogs also disappear from the screen. When the frame is deiconified, its dependent Dialogs return to the screen. A swing JDialog class inherits this behavior from the AWT <code>Dialog</code> class.</p>
+<p>A Dialog can be <em>modal</em>. When a modal Dialog is visible, it blocks user input to all other windows in the program. JOptionPane creates <code>JDialog</code>s that are modal. To create a non-modal Dialog, you must use the <code>JDialog</code> class directly.</p>
+<p>Starting with JDK 7, you can modify dialog window modality behavior using the new Modality API. See <a href="http://www.oracle.com/technetwork/articles/javase/modality-137604.html">The New Modality API</a> for details.</p>
+<p>The <code>JDialog</code> class is a subclass of the AWT 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Dialog.html"><code>java.awt.Dialog</code></a> class. It adds a <a href="rootpane.html">root pane</a> container and support for a default close operation to the <code>Dialog</code> object . These are the same features that <code>JFrame</code> has, and using <code>JDialog</code> directly is very similar to using <code>JFrame</code>. If you&#39;re going to use <code>JDialog</code> directly, then you should understand the material in <a href="toplevel.html">Using Top-Level Containers</a> and <a href="frame.html">How to Make Frames</a>, especially <a href="frame.html#windowevents">Responding to Window-Closing Events</a>.</p>
+<p>Even when you use <code>JOptionPane</code> to implement a dialog, you&#39;re still using a <code>JDialog</code> behind the scenes. The reason is that <code>JOptionPane</code> is simply a container that can automatically create a <code>JDialog</code> and add itself to the <code>JDialog</code>&#39;s content pane.</p>
+<h2><a name="dialogdemo" id="dialogdemo">The DialogDemo Example</a></h2>
+<p>Here is a picture of an application that displays dialogs.</p>
+<center><img src="../../figures/uiswing/components/DialogDemoMetal.png" width="359" height="285" align="bottom" alt="DialogDemo lets you bring up many kinds of dialogs" /></center><!-- ***************** boilerplate stuff **************** -->
+<div class="note"><hr /><strong>Try this::</strong>&nbsp;<ol>
+<li>Click the Launch button to run the Dialog Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#DialogDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/DialogDemoProject/DialogDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the DialogDemo example" /></a><br />
+<p><!--  ******* end boilerplate stuff  *******  -->
+ <!--
+
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li> <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/DialogDemoProject/DialogDemo.jnlp">Run DialogDemo</a> (
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>).    Or, to compile and run the example yourself,
+     consult the
+     <a href="../examples/components/index.html#DialogDemo">example index</a>.
+--></p>
+</li>
+<li>Click the Show it! button.<br />
+A modal dialog will appear. Until you close it, the application will be unresponsive, although it will repaint itself if necessary. You can close the dialog either by clicking a button in the dialog or explicitly, such as by using the dialog window decorations.</li>
+<li>In the More Dialogs pane, click the bottom radio button and then the Show it! button.<br />
+A non-modal dialog will appear. Note that the DialogDemo window remains fully functional while the non-modal dialog is up.</li>
+<li>While the non-modal dialog is showing, iconify the DialogDemo window.<br />
+The dialog will disappear from the screen until you deiconify the DialogDemo window.</li>
+</ol>
+<hr /></div>
+<h2><a name="features" id="features">JOptionPane Features</a></h2>
+<p>Using <code>JOptionPane</code>, you can quickly create and customize several different kinds of dialogs. <code>JOptionPane</code> provides support for laying out standard dialogs, providing icons, specifying the dialog title and text, and customizing the button text. Other features allow you to customize the components the dialog displays and specify where the dialog should appear onscreen. You can even specify that an option pane put itself into an <a href="internalframe.html">internal frame</a> (<code>JInternalFrame</code>) instead of a <code>JDialog</code>.</p>
+<p>When you create a <code>JOptionPane</code>, look-and-feel-specific code adds components to the <code>JOptionPane</code> and determines the layout of those components.</p>
+<p><code>JOptionPane</code>&#39;s icon support lets you easily specify which icon the dialog displays. You can use a custom icon, no icon at all, or any one of four standard <code>JOptionPane</code> icons (question, information, warning, and error). Each look and feel has its own versions of the four standard icons. The following figure shows the icons used in the Java (and Windows) look and feel.</p>
+<table summary="Icons used by JOptionPane">
+<caption><strong>Icons used by JOptionPane</strong></caption>
+<tr>
+<th id="h1">Icon description</th>
+<th id="h2">Java look and feel</th>
+<th id="h3">Windows look and feel</th>
+</tr>
+<tr>
+<td headers="h1">question</td>
+<td headers="h2" align="center" width="75">
+<img src="../../figures/uiswing/components/metal-question.png" width="32" height="32" alt="The Java look and feel icon for dialogs that ask questions" /></td>
+<td headers="h3" align="center" width="75">
+<img src="../../figures/uiswing/components/windows-question.png" width="32" height="32" alt="The Windows look and feel icon for dialogs that ask questions" /></td>
+</tr>
+<tr>
+<td headers="h1">information</td>
+<td headers="h2" align="center" width="75">
+<img src="../../figures/uiswing/components/metal-info.png" width="32" height="32" alt="The Java look and feel icon for informational dialogs" /></td>
+<td headers="h3" align="center" width="75">
+<img src="../../figures/uiswing/components/windows-info.png" width="32" height="32" alt="The Windows look and feel icon for informational dialogs" /></td>
+</tr>
+<tr>
+<td headers="h1">warning</td>
+<td headers="h2" align="center" width="75">
+<img src="../../figures/uiswing/components/metal-warning.png" width="32" height="32" alt="The Java look and feel icon for warning dialogs" /></td>
+<td headers="h3" align="center" width="75">
+<img src="../../figures/uiswing/components/windows-warning.png" width="32" height="32" alt="The Windows look and feel icon for warning dialogs" /></td>
+</tr>
+<tr>
+<td headers="h1">error</td>
+<td headers="h2" align="center" width="75">
+<img src="../../figures/uiswing/components/metal-error.png" width="32" height="32" alt="The Java look and feel icon for error dialogs" /></td>
+<td headers="h3" align="center" width="75">
+<img src="../../figures/uiswing/components/windows-error.png" width="32" height="32" alt="The Windows look and feel icon for error dialogs" /></td>
+</tr>
+</table>
+<h2><a name="create" id="create">Creating and Showing Simple Dialogs</a></h2>
+<p>For most simple modal dialogs, you create and show the dialog using one of <code>JOptionPane</code>&#39;s <code>show<em>Xxx</em>Dialog</code> methods. If your dialog should be an <a href="internalframe.html">internal frame</a>, then add <code>Internal</code> after <code>show</code> &#151; for example, <code>showMessageDialog</code> changes to <code>showInternalMessageDialog</code>. If you need to control the dialog window-closing behavior or if you do not want the dialog to be modal, then you should directly instantiate <code>JOptionPane</code> and add it to a <code>JDialog</code> instance. Then invoke <code>setVisible(true)</code> on the <code>JDialog</code> to make it appear.</p>
+<p>The two most useful <code>show<em>Xxx</em>Dialog</code> methods are <code>showMessageDialog</code> and <code>showOptionDialog</code>. The <code>showMessageDialog</code> method displays a simple, one-button dialog. The <code>showOptionDialog</code> method displays a customized dialog &#151; it can display a variety of buttons with customized button text, and can contain a standard text message or a collection of components.</p>
+<p>The other two <code>show<em>Xxx</em>Dialog</code> methods are used less often. The <code>showConfirmDialog</code> method asks the user to confirm something, but presents standard button text (Yes/No or the localized equivalent, for example) rather than button text customized to the user situation (Start/Cancel, for example). A fourth method, <code>showInputDialog</code>, is designed to display a modal dialog that gets a string from the user, using either a text field, an uneditable combo box or a list.</p>
+<p>Here are some examples, taken from 
+<a class="SourceLink" target="_blank" href="../examples/components/DialogDemoProject/src/components/DialogDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/DialogDemoProject/src/components/DialogDemo.java'); return false;"><code>DialogDemo.java</code></a>, of using <code>showMessageDialog</code>, <code>showOptionDialog</code>, and the <code>JOptionPane</code> constructor. For more example code, see 
+<a class="SourceLink" target="_blank" href="../examples/components/DialogDemoProject/src/components/DialogDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/DialogDemoProject/src/components/DialogDemo.java'); return false;"><code>DialogDemo.java</code></a> and the other programs listed in <a href="#eg">Examples that Use Dialogs</a>.</p>
+<dl>
+<dt><strong><code>showMessageDialog</code></strong></dt>
+<dd>Displays a modal dialog with one button, which is labeled &quot;OK&quot; (or the localized equivalent). You can easily specify the message, icon, and title that the dialog displays. Here are some examples of using <code>showMessageDialog</code>:
+<table summary="" datatable="0">
+<tr>
+<td valign="top">
+<img src="../../figures/uiswing/components/InformationalDialogMetal.png" width="268" height="122" alt="Informational dialog with default title and icon" /></td>
+<td valign="top">
+<div class="codeblock"><pre>
+//default title and icon
+JOptionPane.showMessageDialog(frame,
+    "Eggs are not supposed to be green.");
+</pre></div>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<img src="../../figures/uiswing/components/DialogIcon2Metal.png" width="268" height="122" alt="Informational dialog with custom title, warning icon" /></td>
+<td valign="top">
+<div class="codeblock"><pre>
+//custom title, warning icon
+JOptionPane.showMessageDialog(frame,
+    "Eggs are not supposed to be green.",
+    "Inane warning",
+    JOptionPane.WARNING_MESSAGE);
+</pre></div>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<img src="../../figures/uiswing/components/DialogIcon3Metal.png" width="268" height="122" alt="Informational dialog with custom title, error icon" /></td>
+<td valign="top">
+<div class="codeblock"><pre>
+//custom title, error icon
+JOptionPane.showMessageDialog(frame,
+    "Eggs are not supposed to be green.",
+    "Inane error",
+    JOptionPane.ERROR_MESSAGE);
+</pre></div>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<img src="../../figures/uiswing/components/DialogIcon4Metal.png" width="268" height="122" alt="Informational dialog with custom title, no icon" /></td>
+<td valign="top">
+<div class="codeblock"><pre>
+//custom title, no icon
+JOptionPane.showMessageDialog(frame,
+    "Eggs are not supposed to be green.",
+    "A plain message",
+    JOptionPane.PLAIN_MESSAGE);
+</pre></div>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<img src="../../figures/uiswing/components/DialogIcon5Metal.png" width="268" height="122" alt="Informational dialog with custom title, custom icon" /></td>
+<td valign="top">
+<div class="codeblock"><pre>
+//custom title, custom icon
+JOptionPane.showMessageDialog(frame,
+    "Eggs are not supposed to be green.",
+    "Inane custom dialog",
+    JOptionPane.INFORMATION_MESSAGE,
+    icon);
+</pre></div>
+</td>
+</tr>
+</table>
+</dd>
+<dt><strong><code>showOptionDialog</code></strong></dt>
+<dd>Displays a modal dialog with the specified buttons, icons, message, title, and so on. With this method, you can change the text that appears on the buttons of standard dialogs. You can also perform many other kinds of customization.
+<table summary="" datatable="0">
+<tr>
+<td valign="top">
+<img src="../../figures/uiswing/components/OptionDialogMetal.png" width="374" height="122" alt="Yes/No/Cancel (in different words); showOptionDialog" /></td>
+</tr>
+<tr>
+<td valign="top">
+<div class="codeblock"><pre>
+//Custom button text
+Object[] options = {"Yes, please",
+                    "No, thanks",
+                    "No eggs, no ham!"};
+int n = JOptionPane.showOptionDialog(frame,
+    "Would you like some green eggs to go "
+    + "with that ham?",
+    "A Silly Question",
+    JOptionPane.YES_NO_CANCEL_OPTION,
+    JOptionPane.QUESTION_MESSAGE,
+    null,
+    options,
+    options[2]);
+</pre></div>
+</td>
+</tr>
+</table>
+</dd>
+<dt><strong><code>JOptionPane</code> (constructor)</strong></dt>
+<dd>Creates a <code>JOptionPane</code> with the specified buttons, icons, message, title, and so on. You must then add the option pane to a <code>JDialog</code>, register a property-change listener on the option pane, and show the dialog. See <a href="#stayup">Stopping Automatic Dialog Closing</a> for details.
+<table summary="" datatable="0">
+<tr>
+<td valign="top">
+<img src="../../figures/uiswing/components/JOptionPaneMetal.png" width="280" height="145" alt="Explicitly used the JOptionPane constructor" /></td>
+</tr>
+<tr>
+<td valign="top">
+<div class="codeblock"><pre>
+final JOptionPane optionPane = new JOptionPane(
+    "The only way to close this dialog is by\n"
+    + "pressing one of the following buttons.\n"
+    + "Do you understand?",
+    JOptionPane.QUESTION_MESSAGE,
+    JOptionPane.YES_NO_OPTION);
+</pre></div>
+</td>
+</tr>
+</table>
+</dd>
+</dl>
+<p>The arguments to all of the <code>show<em>Xxx</em>Dialog</code> methods and <code>JOptionPane</code> constructors are standardized, though the number of arguments for each method and constructor varies. The following list describes each argument. To see the exact list of arguments for a particular method, see <a href="#api">The Dialog API</a>.</p>
+<dl>
+<dt><code>Component <em>parentComponent</em></code></dt>
+<dd>The first argument to each <code>show<em>Xxx</em>Dialog</code> method is always the parent component, which must be a Frame, a component inside a Frame, or null. If you specify a Frame or Dialog, then the Dialog will appear over the center of the Frame and follow the focus behavior of that Frame. If you specify a component inside a Frame, then the Dialog will appear over the center of that component and will follow the focus behavior of that component&#39;s Frame. If you specify <i>null,</i> then the look and feel will pick an appropriate position for the dialog &#151; generally the center of the screen &#151; and the Dialog will not necessarily follow the focus behavior of any visible Frame or Dialog.
+<p>The <code>JOptionPane</code> constructors do not include this argument. Instead, you specify the parent frame when you create the <code>JDialog</code> that contains the <code>JOptionPane</code>, and you use the <code>JDialog</code> <code>setLocationRelativeTo</code> method to set the dialog position.</p>
+</dd>
+<dt><code>Object <em>message</em></code></dt>
+<dd>This required argument specifies what the dialog should display in its main area. Generally, you specify a string, which results in the dialog displaying a label with the specified text. You can split the message over several lines by putting newline (<code>\n</code>) characters inside the message string. For example:
+<div class="codeblock"><pre>
+"Complete the sentence:\n \"Green eggs and...\""
+</pre></div>
+</dd>
+<dt><code>String <em>title</em></code></dt>
+<dd>The title of the dialog.</dd>
+<dt><code>int <em>optionType</em></code></dt>
+<dd>Specifies the set of buttons that appear at the bottom of the dialog. Choose from one of the following standard sets: <code>DEFAULT_OPTION</code>, <code>YES_NO_OPTION</code>, <code>YES_NO_CANCEL_OPTION</code>, <code>OK_CANCEL_OPTION</code>.</dd>
+<dt><code>int <em>messageType</em></code></dt>
+<dd>This argument determines the icon displayed in the dialog. Choose from one of the following values: <code>PLAIN_MESSAGE</code> (no icon), <code>ERROR_MESSAGE</code>, <code>INFORMATION_MESSAGE</code>, <code>WARNING_MESSAGE</code>, <code>QUESTION_MESSAGE</code>.</dd>
+<dt><code>Icon <em>icon</em></code></dt>
+<dd>The icon to display in the dialog.</dd>
+<dt><code>Object[] <em>options</em></code></dt>
+<dd>Generally used to specify the string displayed by each button at the bottom of the dialog. See <a href="#button">Customizing Button Text in a Standard Dialog</a> for more information. Can also be used to specify icons to be displayed by the buttons or non-button components to be added to the button row.</dd>
+<dt><code>Object <em>initialValue</em></code></dt>
+<dd>Specifies the default value to be selected.</dd>
+</dl>
+<p>You can either let the option pane display its default icon or specify the icon using the message type or icon argument. By default, an option pane created with <code>showMessageDialog</code> displays the information icon, one created with <code>showConfirmDialog</code> or <code>showInputDialog</code> displays the question icon, and one created with a <code>JOptionPane</code> constructor displays no icon. To specify that the dialog display a standard icon or no icon, specify the message type corresponding to the icon you desire. To specify a custom icon, use the icon argument. The icon argument takes precedence over the message type; as long as the icon argument has a non-null value, the dialog displays the specified icon.</p>
+<h2><a name="button" id="button">Customizing Button Text</a></h2>
+<p>When you use <code>JOptionPane</code> to create a dialog, you can either use the standard button text (which might vary by look and feel and locale) or specify different text. By default, the option pane type determines how many buttons appear. For example, <code>YES_NO_OPTION</code> dialogs have two buttons, and <code>YES_NO_CANCEL_OPTION</code> dialogs have three buttons.</p>
+<p>The following code, taken from 
+<a class="SourceLink" target="_blank" href="../examples/components/DialogDemoProject/src/components/DialogDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/DialogDemoProject/src/components/DialogDemo.java'); return false;"><code>DialogDemo.java</code></a>, creates two Yes/No dialogs. The first dialog is implemented with <code>showConfirmDialog</code>, which uses the look-and-feel wording for the two buttons. The second dialog uses <code>showOptionDialog</code> so it can customize the wording. With the exception of wording changes, the dialogs are identical.</p>
+<table summary="" datatable="0">
+<tr>
+<td valign="top">
+<img src="../../figures/uiswing/components/CustomizingButtonTextMetal.png" width="277" height="122" alt="A yes/no dialog, in those words [but perhaps translated]" /></td>
+<td valign="top">
+<div class="codeblock"><pre>
+//default icon, custom title
+int n = JOptionPane.showConfirmDialog(
+    frame,
+    "Would you like green eggs and ham?",
+    "An Inane Question",
+    JOptionPane.YES_NO_OPTION);
+</pre></div>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<img src="../../figures/uiswing/components/CustomizingButtonText2Metal.png" width="277" height="122" alt="A yes/no dialog -- in other words" /></td>
+<td valign="top">
+<div class="codeblock"><pre>
+Object[] options = {"Yes, please",
+                    "No way!"};
+int n = JOptionPane.showOptionDialog(frame,
+    "Would you like green eggs and ham?",
+    "A Silly Question",
+    JOptionPane.YES_NO_OPTION,
+    JOptionPane.QUESTION_MESSAGE,
+    null,     //do not use a custom Icon
+    options,  //the titles of buttons
+    options[0]); //default button title
+</pre></div>
+</td>
+</tr>
+</table>
+<p>As the previous code snippets showed, the <code>showMessageDialog</code>, <code>showConfirmDialog</code>, and <code>showOptionDialog</code> methods return an integer indicating the user&#39;s choice. The values for this integer are <code>YES_OPTION</code>, <code>NO_OPTION</code>, <code>CANCEL_OPTION</code>, <code>OK_OPTION</code>, and <code>CLOSED_OPTION</code>. Except for <code>CLOSED_OPTION</code>, each option corresponds to the button the user pressed. When <code>CLOSED_OPTION</code> is returned, it indicates that the user closed the dialog window explicitly, rather than by choosing a button inside the option pane.</p>
+<p>Even if you change the strings that the standard dialog buttons display, the return value is still one of the pre-defined integers. For example, a <code>YES_NO_OPTION</code> dialog always returns one of the following values: <code>YES_OPTION</code>, <code>NO_OPTION</code>, or <code>CLOSED_OPTION</code>.</p>
+<h2><a name="input" id="input">Getting the User&#39;s Input from a Dialog</a></h2>
+<p>The only form of <code>show<em>Xxx</em>Dialog</code> that does not return an integer is <code>showInputDialog</code>, which returns an <code>Object</code> instead. This <code>Object</code> is generally a <code>String</code> reflecting the user&#39;s choice. Here is an example of using <code>showInputDialog</code> to create a dialog that lets the user choose one of three strings:</p>
+<center><img src="../../figures/uiswing/components/CustomizedDialogMetal.png" width="268" height="152" align="bottom" alt="An input dialog with a combo box" /></center><div class="codeblock"><pre>
+Object[] possibilities = {"ham", "spam", "yam"};
+String s = (String)JOptionPane.showInputDialog(
+                    frame,
+                    "Complete the sentence:\n"
+                    + "\"Green eggs and...\"",
+                    "Customized Dialog",
+                    JOptionPane.PLAIN_MESSAGE,
+                    icon,
+                    possibilities,
+                    "ham");
+
+//If a string was returned, say so.
+if ((s != null) &amp;&amp; (s.length() &gt; 0)) {
+    setLabel("Green eggs and... " + s + "!");
+    return;
+}
+
+//If you're here, the return value was null/empty.
+setLabel("Come on, finish the sentence!");
+</pre></div>
+<p>If you do not care to limit the user&#39;s choices, you can either use a form of the <code>showInputDialog</code> method that takes fewer arguments or specify <code>null</code> for the array of objects. In the Java look and feel, substituting <code>null</code> for <code>possibilities</code> results in a dialog that has a text field and looks like this:</p>
+<center><img src="../../figures/uiswing/components/CustomizedDialog2Metal.png" width="285" height="147" align="bottom" alt="An input dialog with a text field" /></center><p>Because the user can type anything into the text field, you might want to check the returned value and ask the user to try again if it is invalid. Another approach is to create a custom dialog that validates the user-entered data before it returns. See 
+<a class="SourceLink" target="_blank" href="../examples/components/DialogDemoProject/src/components/CustomDialog.java" onclick="showCode('../../displayCode.html', '../examples/components/DialogDemoProject/src/components/CustomDialog.java'); return false;"><code>CustomDialog.java</code></a> for an example of validating data.</p>
+<p>If you&#39;re designing a custom dialog, you need to design your dialog&#39;s API so that you can query the dialog about what the user chose. For example, <code>CustomDialog</code> has a <code>getValidatedText</code> method that returns the text the user entered.</p>
+<h2><a name="stayup" id="stayup">Stopping Automatic Dialog Closing</a></h2>
+<p>By default, when the user clicks a <code>JOptionPane</code>-created button, the dialog closes. But what if you want to check the user&#39;s answer before closing the dialog? In this case, you must implement your own property change listener so that when the user clicks a button, the dialog does not automatically close.</p>
+<p><code>DialogDemo</code> contains two dialogs that implement a property change listener. One of these dialogs is a custom modal dialog, implemented in 
+<a class="SourceLink" target="_blank" href="../examples/components/DialogDemoProject/src/components/CustomDialog.java" onclick="showCode('../../displayCode.html', '../examples/components/DialogDemoProject/src/components/CustomDialog.java'); return false;"><code>CustomDialog</code></a>, that uses <code>JOptionPane</code> both to get the standard icon and to get layout assistance. The other dialog, whose code is below, uses a standard Yes/No <code>JOptionPane</code>. Though this dialog is rather useless as written, its code is simple enough that you can use it as a template for more complex dialogs.</p>
+<p>Besides setting the property change listener, the following code also calls the <code>JDialog</code>&#39;s <code>setDefaultCloseOperation</code> method and implements a window listener that handles the window close attempt properly. If you do not care to be notified when the user closes the window explicitly, then ignore the bold code.</p>
+<div class="codeblock"><pre>
+final JOptionPane optionPane = new JOptionPane(
+                "The only way to close this dialog is by\n"
+                + "pressing one of the following buttons.\n"
+                + "Do you understand?",
+                JOptionPane.QUESTION_MESSAGE,
+                JOptionPane.YES_NO_OPTION);
+
+final JDialog dialog = new JDialog(frame, 
+                             "Click a button",
+                             true);
+dialog.setContentPane(optionPane);
+<b>dialog.setDefaultCloseOperation(
+    JDialog.DO_NOTHING_ON_CLOSE);
+dialog.addWindowListener(new WindowAdapter() {
+    public void windowClosing(WindowEvent we) {
+        setLabel("Thwarted user attempt to close window.");
+    }
+});</b>
+optionPane.addPropertyChangeListener(
+    new PropertyChangeListener() {
+        public void propertyChange(PropertyChangeEvent e) {
+            String prop = e.getPropertyName();
+
+            if (dialog.isVisible() 
+             &amp;&amp; (e.getSource() == optionPane)
+             &amp;&amp; (prop.equals(JOptionPane.VALUE_PROPERTY))) {
+                //If you were going to check something
+                //before closing the window, you'd do
+                //it here.
+                dialog.setVisible(false);
+            }
+        }
+    });
+dialog.pack();
+dialog.setVisible(true);
+
+int value = ((Integer)optionPane.getValue()).intValue();
+if (value == JOptionPane.YES_OPTION) {
+    setLabel("Good.");
+} else if (value == JOptionPane.NO_OPTION) {
+    setLabel("Try using the window decorations "
+             + "to close the non-auto-closing dialog. "
+             + "You can't!");
+}
+</pre></div>
+<h2><a name="api" id="api">The Dialog API</a></h2>
+<p>The following tables list the commonly used <code>JOptionPane</code> and <code>JDialog</code> constructors and methods. Other methods you&#39;re likely to call are defined by the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Dialog.html"><code>Dialog</code></a>, 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Window.html"><code>Window</code></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html"><code>Component</code></a> classes and include <code>pack</code>, <code>setSize</code>, and <code>setVisible</code>.</p>
+<p>The API is listed as follows:</p>
+<ul>
+<li><a href="#showapi">Showing Standard Modal Dialogs (using <code>JOptionPane</code> Class Methods)</a></li>
+<li><a href="#joptionpaneapi">Methods for Using <code>JOptionPane</code>s Directly</a></li>
+<li><a href="#jdialogapi">Frequently Used <code>JDialog</code> Constructors and Methods</a></li>
+</ul>
+<table border="1" summary="Showing Standard Modal Dialogs">
+<caption><a name="showapi" id="showapi">Showing Standard Modal Dialogs (Using <code>JOptionPane</code> Class Methods)</a></caption>
+<tr>
+<th id="h501" scope="col" align="left">Method</th>
+<th id="h502" scope="col" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h501" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showMessageDialog-java.awt.Component-java.lang.Object-">static void showMessageDialog(Component, Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showMessageDialog-java.awt.Component-java.lang.Object-java.lang.String-int-">static void showMessageDialog(Component, Object, String, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showMessageDialog-java.awt.Component-java.lang.Object-java.lang.String-int-javax.swing.Icon-">static void showMessageDialog(Component, Object, String, int, Icon)</a></td>
+<td headers="h502">Show a one-button, modal dialog that gives the user some information. The arguments specify (in order) the parent component, message, title, message type, and icon for the dialog. See <a href="#create">Creating and Showing Simple Dialogs</a> for a discussion of the arguments and their effects.</td>
+</tr>
+<tr>
+<td headers="h501" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showOptionDialog-java.awt.Component-java.lang.Object-java.lang.String-int-int-javax.swing.Icon-java.lang.Object:A-java.lang.Object-">static int showOptionDialog(Component, Object, String, int, int, Icon, Object[], Object)</a></td>
+<td headers="h502">Show a customized modal dialog. The arguments specify (in order) the parent component, message, title, option type, message type, icon, options, and initial value for the dialog. See <a href="#create">Creating and Showing Simple Dialogs</a> for a discussion of the arguments and their effects.</td>
+</tr>
+<tr>
+<td headers="h501" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showConfirmDialog-java.awt.Component-java.lang.Object-">static int showConfirmDialog(Component, Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showConfirmDialog-java.awt.Component-java.lang.Object-java.lang.String-int-">static int showConfirmDialog(Component, Object, String, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showConfirmDialog-java.awt.Component-java.lang.Object-java.lang.String-int-int-">static int showConfirmDialog(Component, Object, String, int, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showConfirmDialog-java.awt.Component-java.lang.Object-java.lang.String-int-int-javax.swing.Icon-">static int showConfirmDialog(Component, Object, String, int, int, Icon)</a></td>
+<td headers="h502">Show a modal dialog that asks the user a question. The arguments specify (in order) the parent component, message, title, option type, message type, and icon for the dialog. See <a href="#create">Creating and Showing Simple Dialogs</a> for a discussion of the arguments and their effects.</td>
+</tr>
+<tr>
+<td headers="h501" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInputDialog-java.lang.Object-">static String showInputDialog(Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInputDialog-java.awt.Component-java.lang.Object-">static String showInputDialog(Component, Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInputDialog-java.awt.Component-java.lang.Object-java.lang.String-int-">static String showInputDialog(Component, Object, String, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInputDialog-java.awt.Component-java.lang.Object-java.lang.String-int-javax.swing.Icon-java.lang.Object:A-java.lang.Object-">static String showInputDialog(Component, Object, String, int, Icon, Object[], Object)</a></td>
+<td headers="h502">Show a modal dialog that prompts the user for input. The single-argument version specifies just the message, with the parent component assumed to be null. The arguments for the other versions specify (in order) the parent component, message, title, message type, icon, options, and initial value for the dialog. See <a href="#create">Creating and Showing Simple Dialogs</a> for a discussion of the arguments and their effects.</td>
+</tr>
+<tr>
+<td headers="h501" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInternalMessageDialog-java.awt.Component-java.lang.Object-">static void showInternalMessageDialog(...)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInternalOptionDialog-java.awt.Component-java.lang.Object-java.lang.String-int-int-javax.swing.Icon-java.lang.Object:A-java.lang.Object-">static void showInternalOptionDialog(...)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInternalConfirmDialog-java.awt.Component-java.lang.Object-">static void showInternalConfirmDialog(...)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInternalInputDialog-java.awt.Component-java.lang.Object-">static String showInternalInputDialog(...)</a></td>
+<td headers="h502">Implement a standard dialog as an internal frame. See the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html"><code>JOptionPane</code> API documentation</a> for the exact list of arguments.</td>
+</tr>
+</table>
+<table border="1" summary="Methods for Using JOptionPanes Directly">
+<caption><a name="joptionpaneapi" id="joptionpaneapi">Methods for Using <code>JOptionPane</code>s Directly</a></caption>
+<tr>
+<th id="h601" scope="col" align="left">Method or Constructor</th>
+<th id="h602" scope="col" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h601" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#JOptionPane--">JOptionPane()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#JOptionPane-java.lang.Object-">JOptionPane(Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#JOptionPane-java.lang.Object-int-">JOptionPane(Object, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#JOptionPane-java.lang.Object-int-int-">JOptionPane(Object, int, int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#JOptionPane-java.lang.Object-int-int-javax.swing.Icon-">JOptionPane(Object, int, int, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#JOptionPane-java.lang.Object-int-int-javax.swing.Icon-java.lang.Object:A-">JOptionPane(Object, int, int, Icon, Object[])</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#JOptionPane-java.lang.Object-int-int-javax.swing.Icon-java.lang.Object:A-java.lang.Object-">JOptionPane(Object, int, int, Icon, Object[], Object)</a></td>
+<td headers="h602">Creates a <code>JOptionPane</code> instance. See <a href="#create">Creating and Showing Simple Dialogs</a> for a discussion of the arguments and their effects.</td>
+</tr>
+<tr>
+<td headers="h601" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#getFrameForComponent-java.awt.Component-">static Frame getFrameForComponent(Component)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#getDesktopPaneForComponent-java.awt.Component-">static JDesktopPane getDesktopPaneForComponent(Component)</a></td>
+<td headers="h602">Handy <code>JOptionPane</code> class methods that find the <a href="frame.html">frame</a> or <a href="internalframe.html">desktop pane</a>, respectively, that the specified component is in.</td>
+</tr>
+<tr>
+<td headers="h601" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#getMaxCharactersPerLineCount--">int getMaxCharactersPerLineCount()</a></td>
+<td headers="h602">Determines where line breaks will be automatically inserted in the option pane text. (The default is <code>Integer.MAX_VALUE</code>.) To use this method, you must create a <code>JOptionPane</code> subclass. For example, the following code results in an option pane with one word per line, due to the fact that each word in the string is 5 characters or less:
+<div class="codeblock"><pre>
+JOptionPane op = new JOptionPane("This is the text.") {
+    public int getMaxCharactersPerLineCount() {
+        return 5;
+    }
+};
+</pre></div>
+</td>
+</tr>
+</table>
+<p>
+</p>
+<table border="1" summary="Frequently Used JDialog Constructors
+and Methods">
+<caption><a name="jdialogapi" id="jdialogapi">Frequently Used <code>JDialog</code> Constructors and Methods</a></caption>
+<tr>
+<th id="h701" scope="col" align="left">Method or Constructor</th>
+<th id="h702" scope="col" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h701" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog--">JDialog()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Dialog-">JDialog(Dialog)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Dialog-boolean-">JDialog(Dialog, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Dialog-java.lang.String-">JDialog(Dialog, String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Dialog-java.lang.String-boolean-">JDialog(Dialog, String, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Dialog-java.lang.String-boolean-java.awt.GraphicsConfiguration-">JDialog(Dialog, String, boolean, GraphicsConfiguration)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Frame-">JDialog(Frame)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Frame-boolean-">JDialog(Frame, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Frame-java.lang.String-">JDialog(Frame, String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Frame-java.lang.String-boolean-">JDialog(Frame, String, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Frame-java.lang.String-boolean-java.awt.GraphicsConfiguration-">JDialog(Frame, String, boolean, GraphicsConfiguration)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Frame-java.lang.String-boolean-java.awt.GraphicsConfiguration-">JDialog(Window owner)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Window-java.awt.Dialog.ModalityType-">JDialog(Window owner, Dialog.ModalityType modalityType)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Window-java.lang.String-">JDialog(Window owner, String title)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Window-java.lang.String-java.awt.Dialog.ModalityType-">JDialog(Window owner, String title, Dialog.ModalityType modalityType)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#JDialog-java.awt.Window-java.lang.String-java.awt.Dialog.ModalityType-java.awt.GraphicsConfiguration-">JDialog(Window owner, String title, Dialog.ModalityType modalityType, GraphicsConfiguration gc)</a></td>
+<td headers="h702">Creates a <code>JDialog</code> instance. The <code>Frame</code> argument, if any, is the frame (usually a <code>JFrame</code> object) that the dialog depends on. Make the boolean argument <code>true</code> to specify a modal dialog, <code>false</code> or absent to specify a non-modal dialog. You can also specify the title of the dialog, using a string argument.</td>
+</tr>
+<tr>
+<td headers="h701" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#setContentPane-java.awt.Container-">void setContentPane(Container)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#getContentPane--">Container getContentPane()</a></td>
+<td headers="h702">Get and set the content pane, which is usually the container of all the dialog&#39;s components. See <a href="toplevel.html">Using Top-Level Containers</a> for more information.</td>
+</tr>
+<tr>
+<td headers="h701" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#setDefaultCloseOperation-int-">void setDefaultCloseOperation(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#getDefaultCloseOperation--">int getDefaultCloseOperation()</a></td>
+<td headers="h702">Get and set what happens when the user tries to close the dialog. Possible values: <code>DISPOSE_ON_CLOSE</code>, <code>DO_NOTHING_ON_CLOSE</code>, <code>HIDE_ON_CLOSE</code> (the default). See <a href="frame.html#windowevents">Responding to Window-Closing Events</a> for more information.</td>
+</tr>
+<tr>
+<td headers="h701" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#setLocationRelativeTo-java.awt.Component-">void setLocationRelativeTo(Component)</a></td>
+<td headers="h702">Centers the dialog over the specified component.</td>
+</tr>
+<tr>
+<td headers="h701" scope="row">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#setDefaultLookAndFeelDecorated-boolean-">static void setDefaultLookAndFeelDecorated(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html#isDefaultLookAndFeelDecorated--">static boolean isDefaultLookAndFeelDecorated()</a></td>
+<td headers="h702">Set or get a hint as to whether the dialog&#39;s window decorations (such as borders, or widgets to close the window) should be provided by the current look and feel. Otherwise the dialog&#39;s decorations will be provided by the current window manager. See <a href="frame.html#setDefaultLookAndFeelDecorated">Specifying Window Decorations</a> for more information.</td>
+</tr>
+</table>
+<p>
+</p>
+<h2><a name="eg" id="eg">Examples that Use Dialogs</a></h2>
+<p>This table lists examples that use <code>JOptionPane</code> or <code>JDialog</code>. To find other examples that use dialogs, see the example lists for <a href="progress.html#eg">progress bars</a>, <a href="colorchooser.html#eg">color choosers</a>, and <a href="filechooser.html#eg">file choosers</a>.</p>
+<table summary="Examples that use dialogs">
+<tr>
+<th id="h801" scope="col" align="left">Example</th>
+<th id="h802" scope="col" align="left">Where Described</th>
+<th id="h803" scope="col" align="left">Notes</th>
+</tr>
+<tr>
+<td headers="h801" scope="row"><a href="../examples/components/index.html#DialogDemo"><code>DialogDemo</code></a>,<br />
+<a href="../examples/components/index.html#DialogDemo"><code>CustomDialog</code></a></td>
+<td headers="h802">This section</td>
+<td headers="h803">Creates many kinds of dialogs, using <code>JOptionPane</code> and <code>JDialog</code>.</td>
+</tr>
+<tr>
+<td headers="h801" scope="row"><a href="../examples/components/index.html#Framework"><code>Framework</code></a></td>
+<td headers="h802">&#151;</td>
+<td headers="h803">Brings up a confirmation dialog when the user selects the Quit menu item.</td>
+</tr>
+<tr>
+<td headers="h801" scope="row"><a href="../examples/components/index.html#ListDialog"><code>ListDialog</code></a></td>
+<td headers="h802"><a href="../layout/box.html">How to Use BoxLayout</a></td>
+<td headers="h803">Implements a modal dialog containing a scrolling list and two buttons. Does not use <code>JOptionPane</code>, except for the utility method <code>getFrameForComponent</code>.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="combobox.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="editorpane.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Use Combo Boxes
+        <br /><b>Next page:</b> How to Use Editor Panes and Text Panes
+    </div>
+</body>
+</html> 

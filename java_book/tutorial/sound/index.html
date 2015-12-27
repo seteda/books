@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Trail: Sound (The Java&trade; Tutorials)</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="java programming, learn java, java sample code, " />
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+    </head>
+<body>
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- trailheader -->
+     <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                    <div id="TopBar_left">
+                        The Java&trade; Tutorials
+                    </div>
+                    <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../search.html" target="_blank">Search Java Tutorials</a>
+                    </div> 
+                </div> </div> </div> </div> </div>
+
+    <div class="MainFlow_wide">
+        <div id="BreadCrumbs">
+            <a href="../index.html" target="_top">Home Page</a>
+        </div>
+        <div class="NavBit">
+            <a href="../index.html">&laquo; Previous</a>
+            &bull;
+            <a href="./TOC.html">Trail</a>
+            &bull;
+            <a href="sampled-overview.html">Next &raquo;</a>
+        </div>
+        <div id="PageTitle"><h1>Trail: Sound</h1></div>
+        <div id="PageContent">
+
+<p>The Java Sound API is a low-level API for effecting and controlling the input and output of sound media, including both audio and Musical Instrument Digital Interface (MIDI) data. The Java Sound API provides explicit control over the capabilities normally required for sound input and output, in a framework that promotes extensibility and flexibility. <a name="111814"></a></p>
+<p><a name="111816"></a> The Java Sound API fulfills the needs of a wide range of application developers. Potential application areas include:</p>
+<ul>
+<li><a name="111817"></a>Communication frameworks, such as conferencing and telephony</li>
+<li><a name="111818"></a>End-user content delivery systems, such as media players and music using streamed content</li>
+<li><a name="111819"></a>Interactive application programs, such as games and Web sites that use dynamic content</li>
+<li><a name="111820"></a>Content creation and editing</li>
+<li><a name="111821"></a>Tools, toolkits, and utilities</li>
+</ul>
+<p><a name="111823"></a> <!--
+<h2> How Does the Java Sound API Relate to Other Interfaces? </h2>
+--></p>
+<p><a name="111825"></a> The Java Sound API provides the lowest level of sound support on the Java platform. It provides application programs with a great amount of control over sound operations, and it is extensible. For example, the Java Sound API supplies mechanisms for installing, accessing, and manipulating system resources such as audio mixers, MIDI synthesizers, other audio or MIDI devices, file readers and writers, and sound format converters. The Java Sound API does not include sophisticated sound editors or graphical tools, but it provides capabilities upon which such programs can be built. It emphasizes low-level control beyond that commonly expected by the end user.</p>
+<p><a name="111827"></a></p>
+<p>The Java Sound API includes support for both digital audio and MIDI data. These two major modules of functionality are provided in separate packages:</p>
+<ul>
+<li><a name="111834"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/package-summary.html"><code>javax.sound.sampled</code></a> &ndash; This package specifies interfaces for capture, mixing, and playback of digital (sampled) audio.</li>
+<li><a name="111837"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/package-summary.html"><code>javax.sound.midi</code></a> &ndash; This package provides interfaces for MIDI synthesis, sequencing, and event transport.</li>
+</ul>
+<p>Two other packages permit service providers (as opposed to application developers) to create custom software components that extend the capabilities of an implementation of the Java Sound API: <a name="111842"></a></p>
+<ul>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/spi/package-summary.html"><code>javax.sound.sampled.spi</code></a></li>
+<li><a name="111843"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/spi/package-summary.html"><code>javax.sound.midi.spi</code></a><p><a name="111845"></a></p>
+</li>
+</ul>
+<p>This page introduces the sampled-audio system, the MIDI system, and the SPI packages. Each package is then discussed in greater detail later in the tutorial. <a name="111847"></a></p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>There are other Java platform APIs that also have sound-related elements. The 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/tech/index-jsp-140239.html">Java Media Framework API (JMF)</a> is a higher-level API that is currently available as a Standard Extension to the Java platform. JMF specifies a unified architecture, messaging protocol, and programming interface for capturing and playing back time-based media. JMF provides a simpler solution for basic media-player application programs, and it enables synchronization between different media types, such as audio and video. On the other hand, programs that focus on sound can benefit from the Java Sound API, especially if they require more advanced features, such as the ability to carefully control buffered audio playback or directly manipulate a MIDI synthesizer. Other Java APIs with sound aspects include Java 3D and APIs for telephony and speech. An implementation of any of these APIs might use an implementation of the Java Sound API internally, but is not required to do so.</p>
+<hr /></div>
+<h2>What is Sampled Audio?</h2>
+<p><a name="112308"></a> The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/package-summary.html"><code>javax.sound.sampled</code></a> package handles digital audio data, which the Java Sound API refers to as sampled audio. <em>Samples</em> are successive snapshots of a signal. In the case of audio, the signal is a sound wave. A microphone converts the acoustic signal into a corresponding analog electrical signal, and an analog-to-digital converter transforms that analog signal into a sampled digital form. The following figure shows a brief moment in a sound recording.</p>
+<center><img src="../figures/sound/chapter1.anc.gif" width="268" height="239" align="bottom" alt="A Sampled Sound Wave" /></p><p class="FigureCaption">A Sampled Sound Wave</p></center><p>This graph plots sound pressure (amplitude) on the vertical axis, and time on the horizontal axis. The amplitude of the analog sound wave is measured periodically at a certain rate, resulting in the discrete samples (the red data points in the figure) that comprise the digital audio signal. The center horizontal line indicates zero amplitude; points above the line are positive-valued samples, and points below are negative. The accuracy of the digital approximation of the analog signal depends on its resolution in time (the <em>sampling rate</em>) and its <em>quantization</em>, or resolution in amplitude (the number of bits used to represent each sample). As a point of reference, the audio recorded for storage on compact discs is sampled 44,100 times per second and represented with 16 bits per sample.</p>
+<p><a name="115938"></a> The term &quot;sampled audio&quot; is used here slightly loosely. A sound wave could be sampled at discrete intervals while being left in an analog form. For purposes of the Java Sound API, however, &quot;sampled audio&quot; is equivalent to &quot;digital audio.&quot;</p>
+<p><a name="115936"></a> Typically, sampled audio on a computer comes from a sound recording, but the sound could instead be synthetically generated (for example, to create the sounds of a touch-tone telephone). The term &quot;sampled audio&quot; refers to the type of data, not its origin.</p>
+<p><a name="111869"></a> The Java Sound API does not assume a specific audio hardware configuration; it is designed to allow different sorts of audio components to be installed on a system and accessed by the API. The Java Sound API supports common functionality such as input and output from a sound card (for example, for recording and playback of sound files) as well as mixing of multiple streams of audio. Here is one example of a typical audio architecture:</p>
+<center><img src="../figures/sound/chapter1.anc1.gif" width="413" height="251" align="bottom" alt="The following context describes this figure" /></p><p class="FigureCaption">A Typical Audio Architecture</p></center><p>In this example, a device such as a sound card has various input and output ports, and mixing is provided in the software. The mixer might receive data that has been read from a file, streamed from a network, generated on the fly by an application program, or produced by a MIDI synthesizer. The mixer combines all its audio inputs into a single stream, which can be sent to an output device for rendering.</p>
+<h2>What is MIDI?</h2>
+<p><a name="111878"></a> The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/package-summary.html">javax.sound.midi</a> package contains APIs for transporting and sequencing MIDI events, and for synthesizing sound from those events.</p>
+<p><a name="111880"></a> Whereas sampled audio is a direct representation of a sound itself, <i>MIDI data</i> can be thought of as a recipe for creating a sound, especially a musical sound. MIDI data, unlike audio data, does not describe sound directly. Instead, it describes events that affect the sounds (or actions) performed by a MIDI-enabled device or instrument, such as a synthesizer. MIDI data is analogous to a graphical user interface&#39;s keyboard and mouse events. In the case of MIDI, the events can be thought of as actions upon a musical keyboard, along with actions on various pedals, sliders, switches, and knobs on that musical instrument. These events need not actually originate with a hardware musical instrument; they can be simulated in software, and they can be stored in MIDI files. A program that can create, edit, and perform these files is called a sequencer. Many computer sound cards include MIDI-controllable music synthesizer chips to which sequencers can send their MIDI events. Synthesizers can also be implemented entirely in software. The synthesizers interpret the MIDI events that they receive and produce audio output. Usually the sound synthesized from MIDI data is musical sound (as opposed to speech, for example). MIDI synthesizers are also capable of generating various kinds of sound effects.</p>
+<p><a name="111884"></a> Some sound cards include MIDI input and output ports to which external MIDI hardware devices (such as keyboard synthesizers or other instruments) can be connected. From a MIDI input port, an application program can receive events generated by an external MIDI-equipped musical instrument. The program might play the musical performance using the computer&#39;s internal synthesizer, save it to disk as a MIDI file, or render it into musical notation. A program might use a MIDI output port to play an external instrument, or to control other external devices such as recording equipment.</p>
+<p>The following diagram illustrates the functional relationships between the major components in a possible MIDI configuration based on the Java Sound API. (As with audio, the Java Sound API permits a variety of MIDI software devices to be installed and interconnected. The system shown here is just one potential scenario.) The flow of data between components is indicated by arrows. The data can be in a standard file format, or (as indicated by the key in the lower right corner of the diagram), it can be audio, raw MIDI bytes, or time-tagged MIDI messages.</p>
+<center><img src="../figures/sound/chapter1.anc2.gif" width="520" height="360" align="bottom" alt="The following context describes this figure. " /></p><p class="FigureCaption">A Possible MIDI Configuration</p></center><p>In this example, the application program prepares a musical performance by loading a musical score that&#39;s stored as a standard MIDI file on a disk (left side of the diagram). Standard MIDI files contain tracks, each of which is a list of time-tagged MIDI events. Most of the events represent musical notes (pitches and rhythms). This MIDI file is read and then &quot;performed&quot; by a software sequencer. A sequencer performs its music by sending MIDI messages to some other device, such as an internal or external synthesizer. The synthesizer itself may read a soundbank file containing instructions for emulating the sounds of certain musical instruments. If not, the synthesizer will play the notes stored in the MIDI file using whatever instrument sounds are already loaded into it.</p>
+<p><a name="111898"></a> As illustrated, the MIDI events must be translated into raw (non-time-tagged) MIDI before being sent through a MIDI output port to an external MIDI instrument. Similarly, raw MIDI data coming into the computer from an external MIDI source (a keyboard instrument, in the diagram) is translated into time-tagged MIDI messages that can control a synthesizer, or that a sequencer can store for later use.</p>
+<h2>Service Provider Interfaces</h2>
+<p><a name="111902"></a> The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/spi/package-summary.html"><code>javax.sound.sampled.spi</code></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/spi/package-summary.html"><code>javax.sound.midi.spi</code></a> packages contain APIs that let software developers create new audio or MIDI resources that can be provided separately to the user and &quot;plugged in&quot; to an existing implementation of the Java Sound API. Here are some examples of services (resources) that can be added in this way:</p>
+<ul>
+<li><a name="111903"></a>An audio mixer</li>
+<li><a name="112110"></a>A MIDI synthesizer</li>
+<li><a name="111906"></a>A file parser that can read or write a new type of audio or MIDI file</li>
+<li><a name="111907"></a>A converter that translates between different sound data formats</li>
+</ul>
+<p><a name="111910"></a> In some cases, services are software interfaces to the capabilities of hardware devices, such as sound cards, and the service provider might be the same as the vendor of the hardware. In other cases, the services exist purely in software. For example, a synthesizer or a mixer could be an interface to a chip on a sound card, or it could be implemented without any hardware support at all.</p>
+<p><a name="111912"></a> An implementation of the Java Sound API contains a basic set of services, but the service provider interface (SPI) packages allow third parties to create new services. These third-party services are integrated into the system in the same way as the built-in services. The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/AudioSystem.html"><code>AudioSystem</code></a> class and the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/MidiSystem.html"><code>MidiSystem</code></a> class act as coordinators that let application programs access the services explicitly or implicitly. Often the existence of a service is completely transparent to an application program that uses it. The service-provider mechanism benefits users of application programs based on the Java Sound API, because new sound features can be added to a program without requiring a new release of the JDK or runtime environment, and, in many cases, without even requiring a new release of the application program itself.</p>
+
+
+        </div>
+    <div class="NavBit">
+        <a href="../index.html">&laquo; Previous</a>
+        &bull;
+        <a href="./TOC.html">TOC</a>
+        &bull;
+        <a href="sampled-overview.html">Next &raquo;</a>
+
+    </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Beginning of Tutorial
+        <br /><b>Next page:</b> Overview of the Sampled Package
+    </div>
+</body>
+</html> 

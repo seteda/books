@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Retrieving and Modifying Values from Result Sets (The Java&trade; Tutorials &gt;        
+            JDBC(TM) Database Access &gt; JDBC Basics)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JDBC Java tutorial describes how to use JDBC API to create, insert into, update, and query tables. You will also learn how to use simple and prepared statements, stored procedures and perform transactions" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jdbc, prepared statement, result set" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">JDBC Basics</a></div>
+<div class="linkAHEAD"><a href="gettingstarted.html">Getting Started</a></div>
+<div class="linkAHEAD"><a href="processingsqlstatements.html">Processing SQL Statements with JDBC</a></div>
+<div class="linkAHEAD"><a href="connecting.html">Establishing a Connection</a></div>
+<div class="linkAHEAD"><a href="sqldatasources.html">Connecting with DataSource Objects</a></div>
+<div class="linkAHEAD"><a href="sqlexception.html">Handling SQLExceptions</a></div>
+<div class="linkAHEAD"><a href="tables.html">Setting Up Tables</a></div>
+<div class="nolinkAHEAD">Retrieving and Modifying Values from Result Sets</div>
+<div class="linkAHEAD"><a href="prepared.html">Using Prepared Statements</a></div>
+<div class="linkAHEAD"><a href="transactions.html">Using Transactions</a></div>
+<div class="linkAHEAD"><a href="rowset.html">Using RowSet Objects</a></div>
+<div class="linkAHEAD"><a href="jdbcrowset.html">Using JdbcRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="cachedrowset.html">Using CachedRowSetObjects</a></div>
+<div class="linkAHEAD"><a href="joinrowset.html">Using JoinRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="filteredrowset.html">Using FilteredRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="webrowset.html">Using WebRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="sqltypes.html">Using Advanced Data Types</a></div>
+<div class="linkAHEAD"><a href="blob.html">Using Large Objects</a></div>
+<div class="linkAHEAD"><a href="sqlxml.html">Using SQLXML Objects</a></div>
+<div class="linkAHEAD"><a href="array.html">Using Array Objects</a></div>
+<div class="linkAHEAD"><a href="distinct.html">Using DISTINCT Data Type</a></div>
+<div class="linkAHEAD"><a href="sqlstructured.html">Using Structured Objects</a></div>
+<div class="linkAHEAD"><a href="sqlcustommapping.html">Using Customized Type Mappings</a></div>
+<div class="linkAHEAD"><a href="sqldatalink.html">Using Datalink Objects</a></div>
+<div class="linkAHEAD"><a href="sqlrowid.html">Using RowId Objects</a></div>
+<div class="linkAHEAD"><a href="storedprocedures.html">Using Stored Procedures</a></div>
+<div class="linkAHEAD"><a href="jdbcswing.html">Using JDBC with GUI API</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> JDBC(TM) Database Access
+        <br /><b>Lesson:</b> JDBC Basics
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">JDBC(TM) Database Access</a>
+                &gt;
+                <a href="index.html" target="_top">JDBC Basics</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="tables.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="prepared.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Retrieving and Modifying Values from Result Sets</h1></div>
+            <div id="PageContent">
+
+<p>The following method, <code><a href="gettingstarted.html">CoffeesTable.viewTable</a></code> outputs the contents of the <code>COFFEES</code> tables, and demonstrates the use of <code>ResultSet</code> objects and cursors:</p>
+<div class="codeblock"><pre>
+public static void viewTable(Connection con, String dbName)
+    throws SQLException {
+
+    Statement stmt = null;
+    String query =
+        "select COF_NAME, SUP_ID, PRICE, " +
+        "SALES, TOTAL " +
+        "from " + dbName + ".COFFEES";
+
+    try {
+        stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        while (rs.next()) {
+            String coffeeName = rs.getString("COF_NAME");
+            int supplierID = rs.getInt("SUP_ID");
+            float price = rs.getFloat("PRICE");
+            int sales = rs.getInt("SALES");
+            int total = rs.getInt("TOTAL");
+            System.out.println(coffeeName + "\t" + supplierID +
+                               "\t" + price + "\t" + sales +
+                               "\t" + total);
+        }
+    } catch (SQLException e ) {
+        JDBCTutorialUtilities.printSQLException(e);
+    } finally {
+        if (stmt != null) { stmt.close(); }
+    }
+}
+</pre></div>
+<p>A <code>ResultSet</code> object is a table of data representing a database result set, which is usually generated by executing a statement that queries the database. For example, the <code><a href="gettingstarted.html">CoffeeTables.viewTable</a></code> method creates a <code>ResultSet</code>, <code>rs</code>, when it executes the query through the <code>Statement</code> object, <code>stmt</code>. Note that a <code>ResultSet</code> object can be created through any object that implements the <code>Statement</code> interface, including <code>PreparedStatement</code>, <code>CallableStatement</code>, and <code>RowSet</code>.</p>
+<p>You access the data in a <code>ResultSet</code> object through a cursor. Note that this cursor is not a database cursor. This cursor is a pointer that points to one row of data in the <code>ResultSet</code>. Initially, the cursor is positioned before the first row. The method <code>ResultSet.next</code> moves the cursor to the next row. This method returns <code>false</code> if the cursor is positioned after the last row. This method repeatedly calls the <code>ResultSet.next</code> method with a <code>while</code> loop to iterate through all the data in the <code>ResultSet</code>.</p>
+<p>This page covers the following topics:</p>
+<ul>
+<li><a href="#rs_interface">ResultSet Interface</a></li>
+<li><a href="#retrieve_rs">Retrieving Column Values from Rows</a></li>
+<li><a href="#cursors">Cursors</a></li>
+<li><a href="#rs_update">Updating Rows in ResultSet Objects</a></li>
+<li><a href="#batch_updates">Using Statement Objects for Batch Updates</a></li>
+<li><a href="#rs_insert">Inserting Rows in ResultSet Objects</a></li>
+</ul>
+<!-- **************************************** -->
+<h2><a name="rs_interface" id="rs_interface">ResultSet Interface</a></h2>
+<p>The <code>ResultSet</code> interface provides methods for retrieving and manipulating the results of executed queries, and <code>ResultSet</code> objects can have different functionality and characteristics. These characteristics are type, concurrency, and cursor <em>holdability</em>.</p>
+<!-- ==================================== -->
+<h3>ResultSet Types</h3>
+<p>The type of a <code>ResultSet</code> object determines the level of its functionality in two areas: the ways in which the cursor can be manipulated, and how concurrent changes made to the underlying data source are reflected by the <code>ResultSet</code> object.</p>
+<p>The sensitivity of a <code>ResultSet</code> object is determined by one of three different <code>ResultSet</code> types:</p>
+<ul>
+<li><code>TYPE_FORWARD_ONLY</code>: The result set cannot be scrolled; its cursor moves forward only, from before the first row to after the last row. The rows contained in the result set depend on how the underlying database generates the results. That is, it contains the rows that satisfy the query at either the time the query is executed or as the rows are retrieved.</li>
+<li><code>TYPE_SCROLL_INSENSITIVE</code>: The result can be scrolled; its cursor can move both forward and backward relative to the current position, and it can move to an absolute position. The result set is insensitive to changes made to the underlying data source while it is open. It contains the rows that satisfy the query at either the time the query is executed or as the rows are retrieved.</li>
+<li><code>TYPE_SCROLL_SENSITIVE</code>: The result can be scrolled; its cursor can move both forward and backward relative to the current position, and it can move to an absolute position. The result set reflects changes made to the underlying data source while the result set remains open.</li>
+</ul>
+<p>The default <code>ResultSet</code> type is <code>TYPE_FORWARD_ONLY</code>.</p>
+<p><strong>Note</strong>: Not all databases and JDBC drivers support all <code>ResultSet</code> types. The method <code>DatabaseMetaData.supportsResultSetType</code> returns <code>true</code> if the specified <code>ResultSet</code> type is supported and <code>false</code> otherwise.</p>
+<!-- ==================================== -->
+<h3>ResultSet Concurrency</h3>
+<p>The concurrency of a <code>ResultSet</code> object determines what level of update functionality is supported.</p>
+<p>There are two concurrency levels:</p>
+<ul>
+<li><code>CONCUR_READ_ONLY</code>: The <code>ResultSet</code> object cannot be updated using the <code>ResultSet</code> interface.</li>
+<li><code>CONCUR_UPDATABLE</code>: The <code>ResultSet</code> object can be updated using the <code>ResultSet</code> interface.</li>
+</ul>
+<p>The default <code>ResultSet</code> concurrency is <code>CONCUR_READ_ONLY</code>.</p>
+<p><strong>Note</strong>: Not all JDBC drivers and databases support concurrency. The method <code>DatabaseMetaData.supportsResultSetConcurrency</code> returns <code>true</code> if the specified concurrency level is supported by the driver and <code>false</code> otherwise.</p>
+<p>The method <code><a href="gettingstarted.html">CoffeesTable.modifyPrices</a></code> demonstrates how to use a <code>ResultSet</code> object whose concurrency level is <code>CONCUR_UPDATABLE</code>.</p>
+<!-- ==================================== -->
+<h3>Cursor Holdability</h3>
+<p>Calling the method <code>Connection.commit</code> can close the <code>ResultSet</code> objects that have been created during the current transaction. In some cases, however, this may not be the desired behavior. The <code>ResultSet</code> property <em>holdability</em> gives the application control over whether <code>ResultSet</code> objects (cursors) are closed when commit is called.</p>
+<p>The following <code>ResultSet</code> constants may be supplied to the <code>Connection</code> methods <code>createStatement</code>, <code>prepareStatement</code>, and <code>prepareCall</code>:</p>
+<ul>
+<li><code>HOLD_CURSORS_OVER_COMMIT</code>: <code>ResultSet</code> cursors are not closed; they are <em>holdable</em>: they are held open when the method <code>commit</code> is called. Holdable cursors might be ideal if your application uses mostly read-only <code>ResultSet</code> objects.</li>
+<li><code>CLOSE_CURSORS_AT_COMMIT</code>: <code>ResultSet</code> objects (cursors) are closed when the <code>commit</code> method is called. Closing cursors when this method is called can result in better performance for some applications.</li>
+</ul>
+<p>The default cursor holdability varies depending on your DBMS.</p>
+<p><strong>Note</strong>: Not all JDBC drivers and databases support holdable and non-holdable cursors. The following method, <code>JDBCTutorialUtilities.cursorHoldabilitySupport</code>, outputs the default cursor holdability of <code>ResultSet</code> objects and whether <code>HOLD_CURSORS_OVER_COMMIT</code> and <code>CLOSE_CURSORS_AT_COMMIT</code> are supported:</p>
+<div class="codeblock"><pre>
+public static void cursorHoldabilitySupport(Connection conn)
+    throws SQLException {
+
+    DatabaseMetaData dbMetaData = conn.getMetaData();
+    System.out.println("ResultSet.HOLD_CURSORS_OVER_COMMIT = " +
+        ResultSet.HOLD_CURSORS_OVER_COMMIT);
+
+    System.out.println("ResultSet.CLOSE_CURSORS_AT_COMMIT = " +
+        ResultSet.CLOSE_CURSORS_AT_COMMIT);
+
+    System.out.println("Default cursor holdability: " +
+        <strong>dbMetaData.getResultSetHoldability()</strong>);
+
+    System.out.println("Supports HOLD_CURSORS_OVER_COMMIT? " +
+        <strong>dbMetaData.supportsResultSetHoldability(
+            ResultSet.HOLD_CURSORS_OVER_COMMIT)</strong>);
+
+    System.out.println("Supports CLOSE_CURSORS_AT_COMMIT? " +
+        <strong>dbMetaData.supportsResultSetHoldability(
+            ResultSet.CLOSE_CURSORS_AT_COMMIT)</strong>);
+}
+</pre></div>
+<!-- ********************************************* -->
+<h2><a name="retrieve_rs" id="retrieve_rs">Retrieving Column Values from Rows</a></h2>
+<p>The <code>ResultSet</code> interface declares getter methods (for example, <code>getBoolean</code> and <code>getLong</code>) for retrieving column values from the current row. You can retrieve values using either the index number of the column or the alias or name of the column. The column index is usually more efficient. Columns are numbered from 1. For maximum portability, result set columns within each row should be read in left-to-right order, and each column should be read only once.</p>
+<p>For example, the following method, <code><a href="gettingstarted.html">CoffeesTable.alternateViewTable</a></code>, retrieves column values by number:</p>
+<div class="codeblock"><pre>
+public static void alternateViewTable(Connection con)
+    throws SQLException {
+
+    Statement stmt = null;
+    String query =
+        "select COF_NAME, SUP_ID, PRICE, " +
+        "SALES, TOTAL from COFFEES";
+
+    try {
+        stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        while (rs.next()) {
+            String coffeeName = rs.getString(1);
+            int supplierID = rs.getInt(2);
+            float price = rs.getFloat(3);
+            int sales = rs.getInt(4);
+            int total = rs.getInt(5);
+            System.out.println(coffeeName + "\t" + supplierID +
+                               "\t" + price + "\t" + sales +
+                               "\t" + total);
+        }
+    } catch (SQLException e ) {
+        JDBCTutorialUtilities.printSQLException(e);
+    } finally {
+        if (stmt != null) { stmt.close(); }
+    }
+}
+</pre></div>
+<p>Strings used as input to getter methods are case-insensitive. When a getter method is called with a string and more than one column has the same alias or name as the string, the value of the first matching column is returned. The option to use a string as opposed to an integer is designed to be used when column aliases and names are used in the SQL query that generated the result set. For columns that are <em>not</em> explicitly named in the query (for example, <code>select * from COFFEES</code>) it is best to use column numbers. If column names are used, the developer should guarantee that they uniquely refer to the intended columns by using column aliases. A column alias effectively renames the column of a result set. To specify a column alias, use the SQL <code>AS</code> clause in the <code>SELECT</code> statement.</p>
+<p>The getter method of the appropriate type retrieves the value in each column. For example, in the method <code><a href="gettingstarted.html">CoffeeTables.viewTable</a></code>, the first column in each row of the <code>ResultSet</code> <code>rs</code> is <code>COF_NAME</code>, which stores a value of SQL type <code>VARCHAR</code>. The method for retrieving a value of SQL type <code>VARCHAR</code> is <code>getString</code>. The second column in each row stores a value of SQL type <code>INTEGER</code>, and the method for retrieving values of that type is <code>getInt</code>.</p>
+<p>Note that although the method <code>getString</code> is recommended for retrieving the SQL types <code>CHAR</code> and <code>VARCHAR</code>, it is possible to retrieve any of the basic SQL types with it. Getting all values with <code>getString</code> can be very useful, but it also has its limitations. For instance, if it is used to retrieve a numeric type, <code>getString</code> converts the numeric value to a Java <code>String</code> object, and the value has to be converted back to a numeric type before it can be operated on as a number. In cases where the value is treated as a string anyway, there is no drawback. Furthermore, if you want an application to retrieve values of any standard SQL type other than SQL3 types, use the <code>getString</code> method.</p>
+<!-- ********************************************* -->
+<h2><a name="cursors" id="cursors">Cursors</a></h2>
+<p>As mentioned previously, you access the data in a <code>ResultSet</code> object through a cursor, which points to one row in the <code>ResultSet</code> object. However, when a <code>ResultSet</code> object is first created, the cursor is positioned before the first row. The method <code><a href="gettingstarted.html">CoffeeTables.viewTable</a></code> moves the cursor by calling the <code>ResultSet.next</code> method. There are other methods available to move the cursor:</p>
+<ul>
+<li><code>next</code>: Moves the cursor forward one row. Returns <code>true</code> if the cursor is now positioned on a row and <code>false</code> if the cursor is positioned after the last row.</li>
+<li><code>previous</code>: Moves the cursor backward one row. Returns <code>true</code> if the cursor is now positioned on a row and <code>false</code> if the cursor is positioned before the first row.</li>
+<li><code>first</code>: Moves the cursor to the first row in the <code>ResultSet</code> object. Returns <code>true</code> if the cursor is now positioned on the first row and <code>false</code> if the <code>ResultSet</code> object does not contain any rows.</li>
+<li><code>last:</code>: Moves the cursor to the last row in the <code>ResultSet</code> object. Returns <code>true</code> if the cursor is now positioned on the last row and <code>false</code> if the <code>ResultSet</code> object does not contain any rows.</li>
+<li><code>beforeFirst</code>: Positions the cursor at the start of the <code>ResultSet</code> object, before the first row. If the <code>ResultSet</code> object does not contain any rows, this method has no effect.</li>
+<li><code>afterLast</code>: Positions the cursor at the end of the <code>ResultSet</code> object, after the last row. If the <code>ResultSet</code> object does not contain any rows, this method has no effect.</li>
+<li><code>relative(int rows)</code>: Moves the cursor relative to its current position.</li>
+<li><code>absolute(int row)</code>: Positions the cursor on the row specified by the parameter <code>row</code>.</li>
+</ul>
+<p>Note that the default sensitivity of a <code>ResultSet</code> is <code>TYPE_FORWARD_ONLY</code>, which means that it cannot be scrolled; you cannot call any of these methods that move the cursor, except <code>next</code>, if your <code>ResultSet</code> cannot be scrolled. The method <code><a href="gettingstarted.html">CoffeesTable.modifyPrices</a></code>, described in the following section, demonstrates how you can move the cursor of a <code>ResultSet</code>.</p>
+<!-- ********************************************* -->
+<h2><a name="rs_update" id="rs_update">Updating Rows in ResultSet Objects</a></h2>
+<p>You cannot update a default <code>ResultSet</code> object, and you can only move its cursor forward. However, you can create <code>ResultSet</code> objects that can be scrolled (the cursor can move backwards or move to an absolute position) and updated.</p>
+<p>The following method, <code><a href="gettingstarted.html">CoffeesTable.modifyPrices</a></code>, multiplies the <code>PRICE</code> column of each row by the argument <code>percentage</code>:</p>
+<div class="codeblock"><pre>
+public void modifyPrices(float percentage) throws SQLException {
+
+    Statement stmt = null;
+    try {
+        stmt = con.createStatement();
+        stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                   ResultSet.CONCUR_UPDATABLE);
+        ResultSet uprs = stmt.executeQuery(
+            "SELECT * FROM " + dbName + ".COFFEES");
+
+        while (uprs.next()) {
+            float f = uprs.getFloat("PRICE");
+            uprs.updateFloat( "PRICE", f * percentage);
+            uprs.updateRow();
+        }
+
+    } catch (SQLException e ) {
+        JDBCTutorialUtilities.printSQLException(e);
+    } finally {
+        if (stmt != null) { stmt.close(); }
+    }
+}
+</pre></div>
+<p>The field <code>ResultSet.TYPE_SCROLL_SENSITIVE</code> creates a <code>ResultSet</code> object whose cursor can move both forward and backward relative to the current position and to an absolute position. The field <code>ResultSet.CONCUR_UPDATABLE</code> creates a <code>ResultSet</code> object that can be updated. See the <code>ResultSet</code> Javadoc for other fields you can specify to modify the behavior of <code>ResultSet</code> objects.</p>
+<p>The method <code>ResultSet.updateFloat</code> updates the specified column (in this example, <code>PRICE</code> with the specified <code>float</code> value in the row where the cursor is positioned. <code>ResultSet</code> contains various updater methods that enable you to update column values of various data types. However, none of these updater methods modifies the database; you must call the method <code>ResultSet.updateRow</code> to update the database.</p>
+<!-- ********************************************* -->
+<h2><a name="batch_updates" id="batch_updates">Using Statement Objects for Batch Updates</a></h2>
+<p><code>Statement</code>, <code>PreparedStatement</code> and <code>CallableStatement</code> objects have a list of commands that is associated with them. This list may contain statements for updating, inserting, or deleting a row; and it may also contain DDL statements such as <code>CREATE TABLE</code> and <code>DROP TABLE</code>. It cannot, however, contain a statement that would produce a <code>ResultSet</code> object, such as a <code>SELECT</code> statement. In other words, the list can contain only statements that produce an update count.</p>
+<p>The list, which is associated with a <code>Statement</code> object at its creation, is initially empty. You can add SQL commands to this list with the method <code>addBatch</code> and empty it with the method <code>clearBatch</code>. When you have finished adding statements to the list, call the method <code>executeBatch</code> to send them all to the database to be executed as a unit, or batch.</p>
+<p>For example, the following method <code><a href="gettingstarted.html">CoffeesTable.batchUpdate</a></code> adds four rows to the <code>COFFEES</code> table with a batch update:</p>
+<div class="codeblock"><pre>
+public void batchUpdate() throws SQLException {
+
+    Statement stmt = null;
+    try {
+        this.con.setAutoCommit(false);
+        stmt = this.con.createStatement();
+
+        stmt.addBatch(
+            "INSERT INTO COFFEES " +
+            "VALUES('Amaretto', 49, 9.99, 0, 0)");
+
+        stmt.addBatch(
+            "INSERT INTO COFFEES " +
+            "VALUES('Hazelnut', 49, 9.99, 0, 0)");
+
+        stmt.addBatch(
+            "INSERT INTO COFFEES " +
+            "VALUES('Amaretto_decaf', 49, " +
+            "10.99, 0, 0)");
+
+        stmt.addBatch(
+            "INSERT INTO COFFEES " +
+            "VALUES('Hazelnut_decaf', 49, " +
+            "10.99, 0, 0)");
+
+        int [] updateCounts = stmt.executeBatch();
+        this.con.commit();
+
+    } catch(BatchUpdateException b) {
+        JDBCTutorialUtilities.printBatchUpdateException(b);
+    } catch(SQLException ex) {
+        JDBCTutorialUtilities.printSQLException(ex);
+    } finally {
+        if (stmt != null) { stmt.close(); }
+        this.con.setAutoCommit(true);
+    }
+}
+</pre></div>
+<p>The following line disables auto-commit mode for the <code>Connection</code> object con so that the transaction will not be automatically committed or rolled back when the method <code>executeBatch</code> is called.</p>
+<div class="codeblock"><pre>
+this.con.setAutoCommit(false);
+</pre></div>
+<p>To allow for correct error handling, you should always disable auto-commit mode before beginning a batch update.</p>
+<p>The method <code>Statement.addBatch</code> adds a command to the list of commands associated with the <code>Statement</code> object <code>stmt</code>. In this example, these commands are all <code>INSERT INTO</code> statements, each one adding a row consisting of five column values. The values for the columns <code>COF_NAME</code> and <code>PRICE</code> are the name of the coffee and its price, respectively. The second value in each row is 49 because that is the identification number for the supplier, Superior Coffee. The last two values, the entries for the columns <code>SALES</code> and <code>TOTAL</code>, all start out being zero because there have been no sales yet. (<code>SALES</code> is the number of pounds of this row&#39;s coffee sold in the current week; <code>TOTAL</code> is the total of all the cumulative sales of this coffee.)</p>
+<p>The following line sends the four SQL commands that were added to its list of commands to the database to be executed as a batch:</p>
+<div class="codeblock"><pre>
+int [] updateCounts = stmt.executeBatch();
+</pre></div>
+<p>Note that <code>stmt</code> uses the method <code>executeBatch</code> to send the batch of insertions, not the method <code>executeUpdate</code>, which sends only one command and returns a single update count. The DBMS executes the commands in the order in which they were added to the list of commands, so it will first add the row of values for Amaretto, then add the row for Hazelnut, then Amaretto decaf, and finally Hazelnut decaf. If all four commands execute successfully, the DBMS will return an update count for each command in the order in which it was executed. The update counts that indicate how many rows were affected by each command are stored in the array <code>updateCounts</code>.</p>
+<p>If all four of the commands in the batch are executed successfully, <code>updateCounts</code> will contain four values, all of which are 1 because an insertion affects one row. The list of commands associated with <code>stmt</code> will now be empty because the four commands added previously were sent to the database when <code>stmt</code> called the method <code>executeBatch</code>. You can at any time explicitly empty this list of commands with the method <code>clearBatch</code>.</p>
+<p>The <code>Connection.commit</code> method makes the batch of updates to the <code>COFFEES</code> table permanent. This method needs to be called explicitly because the auto-commit mode for this connection was disabled previously.</p>
+<p>The following line enables auto-commit mode for the current <code>Connection</code> object.</p>
+<div class="codeblock"><pre>
+this.con.setAutoCommit(true);
+</pre></div>
+<p>Now each statement in the example will automatically be committed after it is executed, and it no longer needs to invoke the method <code>commit</code>.</p>
+<h3>Performing Parameterized Batch Update</h3>
+<p>It is also possible to have a parameterized batch update, as shown in the following code fragment, where <code>con</code> is a <code>Connection</code> object:</p>
+<div class="codeblock"><pre>
+con.setAutoCommit(false);
+PreparedStatement pstmt = con.prepareStatement(
+                              "INSERT INTO COFFEES VALUES( " +
+                              "?, ?, ?, ?, ?)");
+pstmt.setString(1, "Amaretto");
+pstmt.setInt(2, 49);
+pstmt.setFloat(3, 9.99);
+pstmt.setInt(4, 0);
+pstmt.setInt(5, 0);
+pstmt.addBatch();
+
+pstmt.setString(1, "Hazelnut");
+pstmt.setInt(2, 49);
+pstmt.setFloat(3, 9.99);
+pstmt.setInt(4, 0);
+pstmt.setInt(5, 0);
+pstmt.addBatch();
+
+<strong>// ... and so on for each new
+// type of coffee</strong>
+
+int [] updateCounts = pstmt.executeBatch();
+con.commit();
+con.setAutoCommit(true);
+</pre></div>
+<h3>Handling Batch Update Exceptions</h3>
+<p>You will get a <code>BatchUpdateException</code> when you call the method <code>executeBatch</code> if (1) one of the SQL statements you added to the batch produces a result set (usually a query) or (2) one of the SQL statements in the batch does not execute successfully for some other reason.</p>
+<p>You should not add a query (a <code>SELECT</code> statement) to a batch of SQL commands because the method <code>executeBatch</code>, which returns an array of update counts, expects an update count from each SQL statement that executes successfully. This means that only commands that return an update count (commands such as <code>INSERT INTO</code>, <code>UPDATE</code>, <code>DELETE</code>) or that return 0 (such as <code>CREATE TABLE</code>, <code>DROP TABLE</code>, <code>ALTER TABLE</code>) can be successfully executed as a batch with the <code>executeBatch</code> method.</p>
+<p>A <code>BatchUpdateException</code> contains an array of update counts that is similar to the array returned by the method <code>executeBatch</code>. In both cases, the update counts are in the same order as the commands that produced them. This tells you how many commands in the batch executed successfully and which ones they are. For example, if five commands executed successfully, the array will contain five numbers: the first one being the update count for the first command, the second one being the update count for the second command, and so on.</p>
+<p><code>BatchUpdateException</code> is derived from <code>SQLException</code>. This means that you can use all of the methods available to an <code>SQLException</code> object with it. The following method, <code><a href="gettingstarted.html">JDBCTutorialUtilities.printBatchUpdateException</a></code> prints all of the <code>SQLException</code> information plus the update counts contained in a <code>BatchUpdateException</code> object. Because <code>BatchUpdateException.getUpdateCounts</code> returns an array of <code>int</code>, the code uses a <code>for</code> loop to print each of the update counts:</p>
+<div class="codeblock"><pre>
+public static void printBatchUpdateException(BatchUpdateException b) {
+
+    System.err.println("----BatchUpdateException----");
+    System.err.println("SQLState:  " + b.getSQLState());
+    System.err.println("Message:  " + b.getMessage());
+    System.err.println("Vendor:  " + b.getErrorCode());
+    System.err.print("Update counts:  ");
+    int [] updateCounts = b.getUpdateCounts();
+
+    for (int i = 0; i &lt; updateCounts.length; i++) {
+        System.err.print(updateCounts[i] + "   ");
+    }
+}
+</pre></div>
+<!-- ********************************************* -->
+<h2><a name="rs_insert" id="rs_insert">Inserting Rows in ResultSet Objects</a></h2>
+<p><strong>Note</strong>: Not all JDBC drivers support inserting new rows with the <code>ResultSet</code> interface. If you attempt to insert a new row and your JDBC driver database does not support this feature, a <code>SQLFeatureNotSupportedException</code> exception is thrown.</p>
+<p>The following method, <code><a href="gettingstarted.html">CoffeesTable.insertRow</a></code>, inserts a row into the <code>COFFEES</code> through a <code>ResultSet</code> object:</p>
+<div class="codeblock"><pre>
+public void insertRow(String coffeeName, int supplierID,
+                      float price, int sales, int total)
+    throws SQLException {
+
+    Statement stmt = null;
+    try {
+        stmt = con.createStatement(
+            ResultSet.TYPE_SCROLL_SENSITIVE
+            ResultSet.CONCUR_UPDATABLE);
+
+        ResultSet uprs = stmt.executeQuery(
+            "SELECT * FROM " + dbName +
+            ".COFFEES");
+
+        uprs.moveToInsertRow();
+        uprs.updateString("COF_NAME", coffeeName);
+        uprs.updateInt("SUP_ID", supplierID);
+        uprs.updateFloat("PRICE", price);
+        uprs.updateInt("SALES", sales);
+        uprs.updateInt("TOTAL", total);
+
+        uprs.insertRow();
+        uprs.beforeFirst();
+    } catch (SQLException e ) {
+        JDBCTutorialUtilities.printSQLException(e);
+    } finally {
+        if (stmt != null) { stmt.close(); }
+    }
+}
+</pre></div>
+<p>This example calls the <code>Connection.createStatement</code> method with two arguments, <code>ResultSet.TYPE_SCROLL_SENSITIVE</code> and <code>ResultSet.CONCUR_UPDATABLE</code>. The first value enables the cursor of the <code>ResultSet</code> object to be moved both forward and backward. The second value, <code>ResultSet.CONCUR_UPDATABLE</code>, is required if you want to insert rows into a <code>ResultSet</code> object; it specifies that it can be updatable.</p>
+<p>The same stipulations for using strings in getter methods also apply to updater methods.</p>
+<p>The method <code>ResultSet.moveToInsertRow</code> moves the cursor to the insert row. The insert row is a special row associated with an updatable result set. It is essentially a buffer where a new row can be constructed by calling the updater methods prior to inserting the row into the result set. For example, this method calls the method <code>ResultSet.updateString</code> to update the insert row&#39;s <code>COF_NAME</code> column to <code>Kona</code>.</p>
+<p>The method <code>ResultSet.insertRow</code> inserts the contents of the insert row into the <code>ResultSet</code> object and into the database.</p>
+<p><strong>Note</strong>: After inserting a row with the <code>ResultSet.insertRow</code>, you should move the cursor to a row other than the insert row. For example, this example moves it to before the first row in the result set with the method <code>ResultSet.beforeFirst</code>. Unexpected results can occur if another part of your application uses the same result set and the cursor is still pointing to the insert row.</p>
+<!-- ***************************************** -->
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="tables.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="prepared.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Setting Up Tables
+        <br /><b>Next page:</b> Using Prepared Statements
+    </div>
+</body>
+</html> 

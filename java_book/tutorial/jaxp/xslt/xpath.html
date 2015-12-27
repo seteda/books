@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How XPath Works (The Java&trade; Tutorials &gt;        
+            Java API for XML Processing (JAXP) &gt; Extensible Stylesheet Language Transformations)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JAXP Java tutorial describes Java API for XML Processing (jaxp), XSLT, SAX, and related XML topics" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jaxp, xml, xslt, sax" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Extensible Stylesheet Language Transformations</a></div>
+<div class="linkAHEAD"><a href="intro.html">Introducing XSL, XSLT, and XPath</a></div>
+<div class="nolinkAHEAD">How XPath Works</div>
+<div class="linkAHEAD"><a href="writingDom.html">Writing Out a DOM as an XML File</a></div>
+<div class="linkAHEAD"><a href="generatingXML.html">Generating XML from an Arbitrary Data Structure</a></div>
+<div class="linkAHEAD"><a href="transformingXML.html">Transforming XML Data with XSLT</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java API for XML Processing (JAXP)
+        <br /><b>Lesson:</b> Extensible Stylesheet Language Transformations
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java API for XML Processing (JAXP)</a>
+                &gt;
+                <a href="index.html" target="_top">Extensible Stylesheet Language Transformations</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="intro.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="writingDom.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How XPath Works</h1></div>
+            <div id="PageContent">
+
+<!-- How XPath Works -->
+<p>The XPath specification is the foundation for a variety of specifications, including XSLT and linking/addressing specifications such as <tt>XPointer</tt>. So an understanding of XPath is fundamental to a lot of advanced XML usage. This section provides an introduction to XPath in the context of XSLT.<a name="gchmd" id="gchmd"></a></p>
+<h2>XPath Expressions</h2>
+<p>In general, an XPath expression specifies a pattern that selects a set of XML nodes. XSLT templates then use those patterns when applying transformations. (<tt>XPointer</tt>, on the other hand, adds mechanisms for defining a <b>point</b> or a <b>range</b> so that XPath expressions can be used for addressing).</p>
+<p>The nodes in an XPath expression refer to more than just elements. They also refer to text and attributes, among other things. In fact, the XPath specification defines an abstract document model that defines seven kinds of nodes:</p>
+<ul>
+<li>
+<p>Root</p>
+</li>
+<li>
+<p>Element</p>
+</li>
+<li>
+<p>Text</p>
+</li>
+<li>
+<p>Attribute</p>
+</li>
+<li>
+<p>Comment</p>
+</li>
+<li>
+<p>Processing instruction</p>
+</li>
+<li>
+<p>Namespace</p>
+</li>
+</ul>
+<p>The root element of the XML data is modeled by an <b>element</b> node. The XPath root node contains the document&#39;s root element as well as other information relating to the document.</p>
+<p><a name="gchlm" id="gchlm"></a></p>
+<h2>XSLT/XPath Data Model</h2>
+<p>Like the Document Object Model (DOM), the XSLT/XPath data model consists of a tree containing a variety of nodes. Under any given element node, there are text nodes, attribute nodes, element nodes, comment nodes, and processing instruction nodes.</p>
+<p>In this abstract model, syntactic distinctions disappear, and you are left with a normalized view of the data. In a text node, for example, it makes no difference whether the text was defined in a CDATA section or whether it included entity references. The text node will consist of normalized data, as it exists after all parsing is complete. So the text will contain a <tt>&lt;</tt> character, whether or not an entity reference such as <tt>&lt;</tt> or a CDATA section was used to include it. (Similarly, the text will contain an <tt>&amp;</tt> character, whether it was delivered using <tt>&amp;</tt> or it was in a CDATA section).</p>
+<p>In this section, we will deal mostly with element nodes and text nodes. For the other addressing mechanisms, see the XPath specification.</p>
+<p><a name="gchkv" id="gchkv"></a></p>
+<h2>Templates and Contexts</h2>
+<p>An XSLT template is a set of formatting instructions that apply to the nodes selected by an XPath expression. In a stylesheet, an XSLT template would look something like this:</p>
+<div class="codeblock"><pre>
+&lt;xsl:template match="//LIST">
+    ...
+&lt;/xsl:template>
+</pre></div>
+<p>The expression <tt>//LIST</tt> selects the set of <tt>LIST</tt> nodes from the input stream. Additional instructions within the template tell the system what to do with them.</p>
+<p>The set of nodes selected by such an expression defines the context in which other expressions in the template are evaluated. That context can be considered as the whole set - for example, when determining the number of the nodes it contains.</p>
+<p>The context can also be considered as a single member of the set, as each member is processed one by one. For example, inside the <tt>LIST</tt>-processing template, the expression <tt>@type</tt> refers to the type attribute of the current <tt>LIST</tt> node. (Similarly, the expression <tt>@*</tt> refers to all the attributes for the current LIST element).</p>
+<p><a name="gchlo" id="gchlo"></a></p>
+<h2>Basic XPath Addressing</h2>
+<p>An XML document is a tree-structured (hierarchical) collection of nodes. As with a hierarchical directory structure, it is useful to specify a <i>path</i> that points to a particular node in the hierarchy (hence the name of the specification: XPath). In fact, much of the notation of directory paths is carried over intact:</p>
+<ul>
+<li>
+<p>The forward slash (/) is used as a path separator.</p>
+</li>
+<li>
+<p>An absolute path from the root of the document starts with a /.</p>
+</li>
+<li>
+<p>A relative path from a given location starts with anything else.</p>
+</li>
+<li>
+<p>A double period (..) indicates the parent of the current node.</p>
+</li>
+<li>
+<p>A single period (.) indicates the current node.</p>
+</li>
+</ul>
+<p>For example, in an Extensible HTML (XHTML) document (an XML document that looks like HTML but is well formed according to XML rules), the path <tt>/h1/h2/</tt> would indicate an <tt>h2</tt> element under an <tt>h1</tt>. (Recall that in XML, element names are case-sensitive, so this kind of specification works much better in XHTML than it would in plain HTML, because HTML is case-insensitive).</p>
+<p>In a pattern-matching specification such as XPath, the specification <tt>/h1/h2</tt> selects all <tt>h2</tt> elements that lie under an <tt>h1</tt> element. To select a specific <tt>h2</tt> element, you use square brackets <tt>[]</tt> for indexing (like those used for arrays). The path <tt>/h1[4]/h2[5]</tt> would therefore select the fifth <tt>h2</tt> element under the fourth <tt>h1</tt> element.</p>
+<hr />
+<p><b>Note -</b> In XHTML, all element names are in lowercase. That is a fairly common convention for XML documents. However, uppercase names are easier to read in a tutorial like this one. So for the remainder of the XSLT lesson, all XML element names will be in uppercase. (Attribute names, on the other hand, will remain in lowercase).</p>
+<hr />
+<p>A name specified in an XPath expression refers to an element. For example, <tt>h1</tt> in <tt>/h1/h2</tt> refers to an <tt>h1</tt> element. To refer to an attribute, you prefix the attribute name with an <tt>@</tt> sign. For example, <tt>@type</tt> refers to the type attribute of an element. Assuming that you have an XML document with LIST elements, for example, the expression <tt>LIST/@type</tt> selects the type attribute of the <tt>LIST</tt> element.</p>
+<hr />
+<p><b>Note -</b> Because the expression does not begin with <tt>/</tt>, the reference specifies a list node relative to the current context-whatever position in the document that happens to be.</p>
+<hr />
+<p><a name="gchly" id="gchly"></a></p>
+<h2>Basic XPath Expressions</h2>
+<p>The full range of XPath expressions takes advantage of the wild cards, operators, and functions that XPath defines. You will learn more about those shortly. Here, we look at a couple of the most common XPath expressions simply to introduce them.</p>
+<p>The expression <tt>@type=&quot;unordered&quot;</tt> specifies an attribute named <tt>type</tt> whose value is <tt>unordered</tt>. An expression such as <tt>LIST/@type</tt> specifies the type attribute of a <tt>LIST</tt> element.</p>
+<p>You can combine those two notations to get something interesting. In XPath, the square-bracket notation (<tt>[]</tt>) normally associated with indexing is extended to specify selection criteria. So the expression <tt>LIST[@type=&quot;unordered&quot;]</tt> selects all <tt>LIST</tt> elements whose type value is unordered.</p>
+<p>Similar expressions exist for elements. Each element has an associated string-value, which is formed by concatenating all the text segments that lie under the element. (A more detailed explanation of how that process works is presented in <a href="#gchmn">String-Value of an Element</a>).</p>
+<p>Suppose you model what is going on in your organization using an XML structure that consists of <tt>PROJECT</tt> elements and <tt>ACTIVITY</tt> elements that have a text string with the project name, multiple <tt>PERSON</tt> elements to list the people involved and, optionally, a <tt>STATUS</tt> element that records the project status. Here are other examples that use the extended square-bracket notation:</p>
+<ul>
+<li>
+<p><tt>/PROJECT[.=&quot;MyProject&quot;]</tt>: Selects a <tt>PROJECT</tt> named <tt>&quot;MyProject&quot;</tt>.</p>
+</li>
+<li>
+<p><tt>/PROJECT[STATUS]</tt>: Selects all projects that have a <tt>STATUS</tt> child element.</p>
+</li>
+<li>
+<p><tt>/PROJECT[STATUS=&quot;Critical&quot;]</tt>: Selects all projects that have a <tt>STATUS</tt> child element with the string-value <tt>Critical</tt>.</p>
+</li>
+</ul>
+<p><a name="gchml" id="gchml"></a></p>
+<h2>Combining Index Addresses</h2>
+<p>The XPath specification defines quite a few addressing mechanisms, and they can be combined in many different ways. As a result, XPath delivers a lot of expressive power for a relatively simple specification. This section illustrates other interesting combinations:</p>
+<ul>
+<li>
+<p><tt>LIST[@type=&quot;ordered&quot;][3]</tt>: Selects all <tt>LIST</tt> elements of the type <tt>ordered</tt>, and returns the third.</p>
+</li>
+<li>
+<p><tt>LIST[3][@type=&quot;ordered&quot;]</tt>: Selects the third <tt>LIST</tt> element, but only if it is of the type <tt>ordered</tt>.</p>
+</li>
+</ul>
+<hr />
+<p><b>Note -</b> Many more combinations of address operators are listed in section 2.5 of the 
+<a class="OutsideLink" target="_blank" href="http://www.w3.org/TR/xpath/">XPath specification</a>. This is arguably the most useful section of the specification for defining an XSLT transform.</p>
+<hr />
+<p><a name="gchlg" id="gchlg"></a></p>
+<h2>Wild Cards</h2>
+<p>By definition, an unqualified XPath expression selects a set of XML nodes that matches that specified pattern. For example, <tt>/HEAD</tt> matches all top-level <tt>HEAD</tt> entries, whereas <tt>/HEAD[1]</tt> matches only the first. <a href="#gchlc">Table&nbsp;4-1</a> lists the wild cards that can be used in XPath expressions to broaden the scope of the pattern matching.</p>
+<p><a name="gchlc" id="gchlc"></a></p>
+<p>Table&nbsp;4-1 XPath Wild Cards</p>
+<table summary="XPath Wild Cards">
+<col width="50%" />
+<col width="50%" />
+<tr>
+<th id="h1" align="left" valign="top">
+<p>Wild card</p>
+</th>
+<th id="h2" align="left" valign="top">
+<p>Meaning</p>
+</th>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top">
+<p><tt>*</tt></p>
+</td>
+<td headers="h2" align="left" valign="top">
+<p>Matches any element node (not attributes or text).</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top">
+<p><tt>node()</tt></p>
+</td>
+<td headers="h2" align="left" valign="top">
+<p>Matches any node of any kind: element node, text node, attribute node, processing instruction node, namespace node, or comment node.</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top">
+<p><tt>@*</tt></p>
+</td>
+<td headers="h2" align="left" valign="top">
+<p>Matches any attribute node.</p>
+</td>
+</tr>
+</table>
+<p>In the project database example, <tt>/*/PERSON[.=&quot;Fred&quot;]</tt> matches any <tt>PROJECT</tt> or <tt>ACTIVITY</tt> element that names Fred.</p>
+<p><a name="gchnx" id="gchnx"></a></p>
+<h2>Extended-Path Addressing</h2>
+<p>So far, all the patterns you have seen have specified an exact number of levels in the hierarchy. For example, <tt>/HEAD</tt> specifies any <tt>HEAD</tt> element at the first level in the hierarchy, whereas <tt>/*/*</tt> specifies any element at the second level in the hierarchy. To specify an indeterminate level in the hierarchy, use a double forward slash (<tt>//</tt>). For example, the XPath expression <tt>//PARA</tt> selects all paragraph elements in a document, wherever they may be found.</p>
+<p>The <tt>//</tt> pattern can also be used within a path. So the expression <tt>/HEAD/LIST//PARA</tt> indicates all paragraph elements in a subtree that begins from /<tt>HEAD/LIST</tt>.</p>
+<p><a name="gchmu" id="gchmu"></a></p>
+<h2>XPath Data Types and Operators</h2>
+<p>XPath expressions yield either a set of nodes, a string, a Boolean (a true/false value), or a number. <a href="#gchmt">Table&nbsp;4-2</a> lists the operators that can be used in an Xpath expression:</p>
+<p><a name="gchmt" id="gchmt"></a></p>
+<p>Table&nbsp;4-2 XPath Operators</p>
+<table summary="XPath Operators">
+<col width="50%" />
+<col width="50%" />
+<tr>
+<th id="h101" align="left" valign="top">
+<p>Operator</p>
+</th>
+<th id="h102" align="left" valign="top">
+<p>Meaning</p>
+</th>
+</tr>
+<tr>
+<td headers="h101" align="left" valign="top">
+<p><tt>|</tt></p>
+</td>
+<td headers="h102" align="left" valign="top">
+<p>Alternative. For example, <tt>PARA|LIST</tt> selects all <tt>PARA</tt> and <tt>LIST</tt> elements.</p>
+</td>
+</tr>
+<tr>
+<td headers="h101" align="left" valign="top">
+<p><tt>or</tt>, <tt>and</tt></p>
+</td>
+<td headers="h102" align="left" valign="top">
+<p>Returns the or/and of two Boolean values.</p>
+</td>
+</tr>
+<tr>
+<td headers="h101" align="left" valign="top">
+<p><tt>=</tt>, <tt>!=</tt></p>
+</td>
+<td headers="h102" align="left" valign="top">
+<p>Equal or not equal, for Booleans, strings, and numbers.</p>
+</td>
+</tr>
+<tr>
+<td headers="h101" align="left" valign="top">
+<p><tt>&lt;</tt>, <tt>&gt;</tt>, <tt>&lt;=</tt>, <tt>&gt;=</tt></p>
+</td>
+<td headers="h102" align="left" valign="top">
+<p>Less than, greater than, less than or equal to, greater than or equal to, for numbers.</p>
+</td>
+</tr>
+<tr>
+<td headers="h101" align="left" valign="top">
+<p><tt>+</tt>, <tt>-</tt>, <tt>*</tt>, <tt>div</tt>, <tt>mod</tt></p>
+</td>
+<td headers="h102" align="left" valign="top">
+<p>Add, subtract, multiply, floating-point divide, and modulus (remainder) operations (e.g., 6 mod 4 = 2).</p>
+</td>
+</tr>
+</table>
+<p>Expressions can be grouped in parentheses, so you do not have to worry about operator precedence.</p>
+<hr />
+<p><b>Note -</b> Operator precedence is a term that answers the question, &quot;If you specify a + b * c, does that mean (a+b) * c or a + (b*c)?&quot; (The operator precedence is roughly the same as that shown in the table).</p>
+<hr />
+<p><a name="gchmn" id="gchmn"></a></p>
+<h2>String-Value of an Element</h2>
+<p>The string-value of an element is the concatenation of all descendent text nodes, no matter how deep. Consider this mixed-content XML data:</p>
+<div class="codeblock"><pre>
+&lt;PARA>This paragraph contains a &lt;b>bold&lt;/b> word&lt;/PARA>
+</pre></div>
+<p>The string-value of the <tt>&lt;PARA&gt;</tt> element is <b>This paragraph contains a bold word</b>. In particular, note that <tt>&lt;B&gt;</tt> is a child of <tt>&lt;PARA&gt;</tt> and that the text <tt>bold</tt> is a child of <tt>&lt;B&gt;</tt>.</p>
+<p>The point is that all the text in all children of a node joins in the concatenation to form the string-value.</p>
+<p>Also, it is worth understanding that the text in the abstract data model defined by XPath is fully normalized. So whether the XML structure contains the entity reference <tt>&amp;lt;</tt> or <tt>&lt;</tt> in a <tt>CDATA</tt> section, the element&#39;s string-value will contain the <tt>&lt;</tt> character. Therefore, when generating HTML or XML with an XSLT stylesheet, you must convert occurrences of <tt>&lt;</tt> to <tt>&amp;lt;</tt> or enclose them in a <tt>CDATA</tt> section. Similarly, occurrences of <tt>&amp;</tt> must be converted to <tt>&amp;amp;</tt>.</p>
+<p><a name="gchnl" id="gchnl"></a></p>
+<h2>XPath Functions</h2>
+<p>This section ends with an overview of the XPath functions. You can use XPath functions to select a collection of nodes in the same way that you would use an element specification such as those you have already seen. Other functions return a string, a number, or a Boolean value. For example, the expression <tt>/PROJECT/text()</tt> gets the string-value of <tt>PROJECT</tt> nodes.</p>
+<p>Many functions depend on the current context. In the preceding example, the context for each invocation of the <tt>text()</tt> function is the <tt>PROJECT</tt> node that is currently selected.</p>
+<p>There are many XPath functions - too many to describe in detail here. This section provides a brief listing that shows the available XPath functions, along with a summary of what they do. For more information about functions, see section 4 of the 
+<a class="OutsideLink" target="_blank" href="http://www.w3.org/TR/xpath/">XPath specification</a>.</p>
+<p><a name="gchoa" id="gchoa"></a></p>
+<h3>Node-Set Functions</h3>
+<p>Many XPath expressions select a set of nodes. In essence, they return a node-set. One function does that, too. The <tt>id(...)</tt> function returns the node with the specified ID. (Elements have an ID only when the document has a DTD, which specifies which attribute has the ID type).</p>
+<p><a name="gchob" id="gchob"></a></p>
+<h3>Positional Functions</h3>
+<p>These functions return positionally based numeric values.</p>
+<ul>
+<li>
+<p><tt>last()</tt>: Returns the index of the last element. For example, <tt>/HEAD[last()]</tt> selects the last <tt>HEAD</tt> element.</p>
+</li>
+<li>
+<p><tt>position()</tt>: Returns the index position. For example, <tt>/HEAD[position() &lt;= 5]</tt> selects the first five <tt>HEAD</tt> elements.</p>
+</li>
+<li>
+<p><tt>count(...)</tt>: Returns the count of elements. For example, <tt>/HEAD[count(HEAD)=0]</tt> selects all <tt>HEAD</tt> elements that have no subheads.</p>
+</li>
+</ul>
+<p><a name="gchmp" id="gchmp"></a></p>
+<h3>String Functions</h3>
+<p>These functions operate on or return strings.</p>
+<ul>
+<li>
+<p><tt>concat(string, string, ...)</tt>: Concatenates the string values.</p>
+</li>
+<li>
+<p><tt>starts-with(string1, string2)</tt>: Returns true if <tt>string1</tt> starts with <tt>string2</tt>.</p>
+</li>
+<li>
+<p><tt>contains(string1, string2)</tt>: Returns true if <tt>string1</tt> contains <tt>string2</tt>.</p>
+</li>
+<li>
+<p><tt>substring-before(string1, string2)</tt>: Returns the start of <tt>string1</tt> before <tt>string2</tt> occurs in it.</p>
+</li>
+<li>
+<p><tt>substring-after(string1, string2)</tt>: Returns the remainder of <tt>string1</tt> after <tt>string2</tt> occurs in it.</p>
+</li>
+<li>
+<p><tt>substring(string, idx)</tt>: Returns the substring from the index position to the end, where the index of the first <tt>char</tt> = 1.</p>
+</li>
+<li>
+<p><tt>substring(string, idx, len)</tt>: Returns the substring of the specified length from the index position.</p>
+</li>
+<li>
+<p><tt>string-length()</tt>: Returns the size of the context node&#39;s string-value; the context node is the currently selected node-the node that was selected by an XPath expression in which a function such as <tt>string-length()</tt> is applied.</p>
+</li>
+<li>
+<p><tt>string-length(string)</tt>: Returns the size of the specified string.</p>
+</li>
+<li>
+<p><tt>normalize-space()</tt>: Returns the normalized string-value of the current node (no leading or trailing white space, and sequences of white space characters converted to a single space).</p>
+</li>
+<li>
+<p><tt>normalize-space(string)</tt>: Returns the normalized string-value of the specified string.</p>
+</li>
+<li>
+<p><tt>translate(string1, string2, string3)</tt>: Converts <tt>string1</tt>, replacing occurrences of characters in <tt>string2</tt> with the corresponding character from <tt>string3</tt>.</p>
+</li>
+</ul>
+<hr />
+<p><b>Note -</b> XPath defines three ways to get the text of an element: <tt>text()</tt>, <tt>string(object)</tt>, and the string-value implied by an element name in an expression like this: <tt>/PROJECT[PERSON=&quot;Fred&quot;]</tt>.</p>
+<hr />
+<p><a name="gchny" id="gchny"></a></p>
+<h3>Boolean Functions</h3>
+<p>These functions operate on or return Boolean values.</p>
+<ul>
+<li>
+<p><tt>not(...)</tt>: Negates the specified Boolean value.</p>
+</li>
+<li>
+<p><tt>true()</tt>: Returns true.</p>
+</li>
+<li>
+<p><tt>false()</tt>: Returns false.</p>
+</li>
+<li>
+<p><tt>lang(string)</tt>: Returns true if the language of the context node (specified by <tt>xml:Lang</tt> attributes) is the same as (or a sub-language of) the specified language; for example, Lang(&quot;en&quot;) is true for <tt>&lt;PARA_xml:Lang=&quot;en&quot;&gt;...&lt;/PARA&gt;</tt>.</p>
+</li>
+</ul>
+<p><a name="gchta" id="gchta"></a></p>
+<h3>Numeric Functions</h3>
+<p>These functions operate on or return numeric values.</p>
+<ul>
+<li>
+<p><tt>sum(...)</tt>: Returns the sum of the numeric value of each node in the specified node-set.</p>
+</li>
+<li>
+<p><tt>floor(N)</tt>: Returns the largest integer that is not greater than <i>N</i>.</p>
+</li>
+<li>
+<p><tt>ceiling(N)</tt>: Returns the smallest integer that is not less than <i>N</i>.</p>
+</li>
+<li>
+<p><tt>round(N)</tt>: Returns the integer that is closest to <i>N</i>.</p>
+</li>
+</ul>
+<p><a name="gchsp" id="gchsp"></a></p>
+<h3>Conversion Functions</h3>
+<p>These functions convert one data type to another.</p>
+<ul>
+<li>
+<p><tt>string(...)</tt>: Returns the string value of a number, Boolean, or node-set.</p>
+</li>
+<li>
+<p><tt>boolean(...)</tt>: Returns a Boolean value for a number, string, or node-set (a non-zero number, a non-empty node-set, and a non-empty string are all true).</p>
+</li>
+<li>
+<p><tt>number(...)</tt>: Returns the numeric value of a Boolean, string, or node-set (true is 1, false is 0, a string containing a number becomes that number, the string-value of a node-set is converted to a number).</p>
+</li>
+</ul>
+<p><a name="gchtb" id="gchtb"></a></p>
+<h3>Namespace Functions</h3>
+<p>These functions let you determine the namespace characteristics of a node.</p>
+<ul>
+<li>
+<p><tt>local-name()</tt>: Returns the name of the current node, minus the namespace prefix.</p>
+</li>
+<li>
+<p><tt>local-name(...)</tt>: Returns the name of the first node in the specified node set, minus the namespace prefix.</p>
+</li>
+<li>
+<p><tt>namespace-uri()</tt>: Returns the namespace URI from the current node.</p>
+</li>
+<li>
+<p><tt>namespace-uri(...)</tt>: Returns the namespace URI from the first node in the specified node-set.</p>
+</li>
+<li>
+<p><tt>name()</tt>: Returns the expanded name (URI plus local name) of the current node.</p>
+</li>
+<li>
+<p><tt>name(...)</tt>: Returns the expanded name (URI plus local name) of the first node in the specified node-set.</p>
+</li>
+</ul>
+<p><a name="gchsu" id="gchsu"></a></p>
+<h2>Summary</h2>
+<p>XPath operators, functions, wild cards, and node-addressing mechanisms can be combined in wide variety of ways. The introduction you have had so far should give you a good head start at specifying the pattern you need for any particular purpose.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="intro.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="writingDom.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Introducing XSL, XSLT, and XPath
+        <br /><b>Next page:</b> Writing Out a DOM as an XML File
+    </div>
+</body>
+</html> 

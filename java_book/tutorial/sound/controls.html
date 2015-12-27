@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Processing Audio with Controls (The Java&trade; Tutorials &gt;        
+            Sound)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="" />
+     <meta name="keywords" content="java programming, learn java, java sample code, " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkAHEAD"><a href="sampled-overview.html">Overview of the Sampled Package</a></div>
+<div class="linkAHEAD"><a href="accessing.html">Accessing Audio System Resources</a></div>
+<div class="linkAHEAD"><a href="playing.html">Playing Back Audio</a></div>
+<div class="linkAHEAD"><a href="capturing.html">Capturing Audio</a></div>
+<div class="nolinkAHEAD">Processing Audio with Controls</div>
+<div class="linkAHEAD"><a href="converters.html">Using Files and Format Converters</a></div>
+<div class="linkAHEAD"><a href="overview-MIDI.html">Overview of the MIDI Package</a></div>
+<div class="linkAHEAD"><a href="accessing-MIDI.html">Accessing MIDI System Resources</a></div>
+<div class="linkAHEAD"><a href="MIDI-messages.html">Transmitting and Receiving MIDI Messages</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-intro.html">Introduction to Sequencers</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-methods.html">Using Sequencer Methods</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-adv.html">Using Advanced Sequencer Features</a></div>
+<div class="linkAHEAD"><a href="MIDI-synth.html">Synthesizing Sound</a></div>
+<div class="linkAHEAD"><a href="SPI-intro.html">Introduction to the Service Provider Interfaces</a></div>
+<div class="linkAHEAD"><a href="SPI-providing-sampled.html">Providing Sampled-Audio Services</a></div>
+<div class="linkAHEAD"><a href="SPI-providing-MIDI.html">Providing MIDI Services</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Sound
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="./index.html" target="_top">Sound</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="capturing.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="./TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="converters.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Processing Audio with Controls</h1></div>
+            <div id="PageContent">
+
+<p>Previous sections have discussed how to play or capture audio samples. The implicit goal has been to deliver samples as faithfully as possible, without modification (other than possibly mixing the samples with those from other audio lines). Sometimes, however, you want to be able to modify the signal. The user might want it to sound louder, quieter, fuller, more reverberant, higher or lower in pitch, and so on. This page discusses the Java Sound API features that provide these kinds of signal processing.</p>
+<p><a name="114172"></a> There are two ways to apply signal processing:</p>
+<ul>
+<li><a name="114174"></a>You can use any processing supported by the mixer or its component lines, by querying for 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/Control.html"><code>Control</code></a> objects and then setting the controls as the user desires. Typical controls supported by mixers and lines include gain, pan, and reverberation controls.</li>
+<li><a name="114175"></a>If the kind of processing you need isn&#39;t provided by the mixer or its lines, your program can operate directly on the audio bytes, manipulating them as desired.</li>
+</ul>
+<p><a name="114177"></a> This page discusses the first technique in greater detail, because there is no special API for the second technique.</p>
+<p><a name="114180"></a></p>
+<h2>Introduction to Controls</h2>
+<p><a name="114182"></a> A mixer can have various sorts of signal-processing controls on some or all of its lines. For example, a mixer used for audio capture might have an input port with a gain control, and target data lines with gain and pan controls. A mixer used for audio playback might have sample-rate controls on its source data lines. In each case, the controls are all accessed through methods of the <code>Line</code> interface.</p>
+<p><a name="114185"></a> Because the <code>Mixer</code> interface extends <code>Line</code>, the mixer itself can have its own set of controls. These might serve as master controls affecting all the mixer&#39;s source or target lines. For example, the mixer might have a master gain control whose value in decibels is added to the values of individual gain controls on its target lines.</p>
+<p><a name="115789"></a> Others of the mixer&#39;s own controls might affect a special line, neither a source nor a target, that the mixer uses internally for its processing. For example, a global reverb control might choose the sort of reverberation to apply to a mixture of the input signals, and this &quot;wet&quot; (reverberated) signal would get mixed back into the &quot;dry&quot; signal before delivery to the mixer&#39;s target lines.</p>
+<p><a name="114187"></a> If the mixer or any of its lines have controls, you might wish to expose the controls via graphical objects in your program&#39;s user interface, so that the user can adjust the audio characteristics as desired. The controls are not themselves graphical; they just allow you to retrieve and change their settings. It&#39;s up to you to decide what sort of graphical representations (sliders, buttons, etc.), if any, to use in your program.</p>
+<p><a name="114189"></a> All controls are implemented as concrete subclasses of the abstract class <code>Control</code>. Many typical audio-processing controls can be described by abstract subclasses of <code>Control</code> based on a data type (such as boolean, enumerated, or float). Boolean controls, for example, represent binary-state controls, such as on/off controls for mute or reverb. Float controls, on the other hand, are well suited to represent continuously variable controls, such as pan, balance, or volume.</p>
+<p><a name="114191"></a> The Java Sound API specifies the following abstract subclasses of <code>Control</code>:</p>
+<ul>
+<li><a name="114193"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/BooleanControl.html"><code>BooleanControl</code></a>&mdash; represents a binary-state (true or false) control. For example, mute, solo, and on/off switches would be good candidates for <code>BooleanControls</code>. <a name="114194"></a></li>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/FloatControl.html"><code>FloatControl</code></a> &mdash; data model providing control over a range of floating-point values. For example, volume and pan are <code>FloatControls</code> that could be manipulated via a dial or slider.</li>
+<li><a name="114195"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/EnumControl.html"><code>EnumControl</code></a>&mdash; offers a choice from a set of objects. For example, you might associate a set of buttons in the user interface with an <code>EnumControl</code> to select one of several preset reverberation settings.</li>
+<li><a name="114196"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/CompoundControl.html"><code>CompoundControl</code></a>???provides access to a collection of related items, each of which is itself an instance of a <code>Control</code> subclass. <code>CompoundControls</code> represent multi-control modules such as graphic equalizers. (A graphic equalizer would typically be depicted by a set of sliders, each affecting a <code>FloatControl</code>.)</li>
+</ul>
+<p><a name="114198"></a> Each subclass of <code>Control</code> above has methods appropriate for its underlying data type. Most of the classes include methods that set and get the control&#39;s current value(s), get the control&#39;s label(s), and so on.</p>
+<p><a name="115790"></a> Of course, each class has methods that are particular to it and the data model represented by the class. For example, <code>EnumControl</code> has a method that lets you get the set of its possible values, and <code>FloatControl</code> permits you to get its minimum and maximum values, as well as the precision (increment or step size) of the control.</p>
+<p><a name="114976"></a> Each subclass of <code>Control</code> has a corresponding <code>Control.Type</code> subclass, which includes static instances that identify specific controls.</p>
+<p><a name="115785"></a> The following table shows each <code>Control</code> subclass, its corresponding <code>Control.Type</code> subclass, and the static instances that indicate specific kinds of controls:</p>
+<p><a name="115028"></a></p>
+<table summary="Control, Control.Type and static instances" border="2" align="center" width="90%">
+<tr>
+<th id="h1"><a name="114979"></a> <code>Control</code></th>
+<th id="h2"><a name="114981"></a> <code>Control.Type</code></th>
+<th id="h3"><a name="114983"></a> <code>Control.Type</code> <b>instances</b></th>
+</tr>
+<tr valign="top">
+<td headers="h1"><a name="114985"></a> <code>BooleanControl</code></td>
+<td headers="h2"><a name="114987"></a> <code>BooleanControl.Type</code></td>
+<td headers="h3"><code>MUTE</code> &ndash; Mute status of line<br />
+<code>APPLY_REVERB</code> &ndash; <a name="114990"></a>Reverberation on/off</td>
+</tr>
+<tr>
+<td headers="h1"><a name="114992"></a> <code>CompoundControl</code></td>
+<td headers="h2"><a name="114994"></a> <code>CompoundControl.Type</code></td>
+<td headers="h3"><a name="114996"></a> (none)</td>
+</tr>
+<tr valign="top">
+<td headers="h1"><a name="114998"></a> <code>EnumControl</code></td>
+<td headers="h2"><a name="115000"></a> <code>EnumControl.Type</code></td>
+<td headers="h3"><a name="115002"></a> <code>REVERB</code> &ndash; <a name="115003"></a> Access to reverb settings (each is an instance of ReverbType)</td>
+</tr>
+<tr valign="top">
+<td headers="h1"><a name="115006"></a> <code>FloatControl</code></td>
+<td headers="h2"><a name="115008"></a> <code>FloatControl.Type</code></td>
+<td headers="h3"><a name="115010"></a> <code>AUX_RETURN</code> &ndash; <a name="115011"></a> Auxiliary return gain on a line<br />
+<a name="115012"></a> <code>AUX_SEND</code> &ndash; <a name="115134"></a> Auxiliary send gain on a line<br />
+<a name="115174"></a> <code>BALANCE</code> &ndash; <a name="115175"></a> Left-right volume balance<br />
+<a name="115176"></a> <code>MASTER_GAIN</code> &ndash; <a name="115016"></a> Overall gain on a line<br />
+<a name="115202"></a> <code>PAN</code> &ndash; <a name="115018"></a> Left-right position<br />
+<a name="115019"></a> <code>REVERB_RETURN</code> &ndash; <a name="115020"></a> Post-reverb gain on a line<br />
+<a name="115021"></a> <code>REVERB_SEND</code> &ndash; <a name="115022"></a> Pre-reverb gain on a line<br />
+<a name="115023"></a> <code>SAMPLE_RATE</code> &ndash; <a name="115024"></a> Playback sample rate<br />
+<a name="115025"></a> <code>VOLUME</code> &ndash; <a name="115256"></a> Volume on a line</td>
+</tr>
+</table>
+<p><a name="115029"></a></p>
+<p><a name="117861"></a> An implementation of the Java Sound API can provide any or all of these control types on its mixers and lines. It can also supply additional control types not defined in the Java Sound API. Such control types could be implemented via concrete subclasses of any of these four abstract subclasses, or via additional <code>Control</code> subclasses that don&#39;t inherit from any of these four abstract subclasses. An application program can query each line to find what controls it supports.</p>
+<p><a name="117862"></a></p>
+<h3>Getting a Line that Has the Desired Controls</h3>
+<p><a name="114235"></a> In many cases, an application program will simply display whatever controls happen to be supported by the line in question. If the line doesn&#39;t have any controls, so be it. But what if it&#39;s important to find a line that has certain controls? In that case, you can use a <code>Line.Info</code> to obtain a line that has the right characteristics, as previously described under 
+<a class="TutorialLink" target="_top" href="accessing.html#113154">Getting a Line of a Desired Type</a>.</p>
+<p><a name="114237"></a> For example, suppose you prefer an input port that lets the user set the volume of the sound input. The following code excerpt shows how one might query the default mixer to determine whether it has the desired port and control:</p>
+<div class="codeblock"><pre>
+Port lineIn;
+FloatControl volCtrl;
+try {
+  mixer = AudioSystem.getMixer(null);
+  lineIn = (Port)mixer.getLine(Port.Info.LINE_IN);
+  lineIn.open();
+  volCtrl = (FloatControl) lineIn.getControl(<br />
+      FloatControl.Type.VOLUME);
+
+  // Assuming getControl call succeeds, 
+  // we now have our LINE_IN VOLUME control.
+} catch (Exception e) {
+  System.out.println("Failed trying to find LINE_IN"
+    + " VOLUME control: exception = " + e);
+}
+if (volCtrl != null)
+  // ...
+</pre></div>
+<h3>Getting the Controls from the Line</h3>
+<p><a name="114257"></a> An application program that needs to expose controls in its user interface might simply query the available lines and controls, and then display an appropriate user-interface element for every control on every line of interest. In such a case, the program&#39;s only mission is to provide the user with &quot;handles&quot; on the control; not to know what those controls do to the audio signal. As long as the program knows how to map a line&#39;s controls into user-interface elements, the Java Sound API architecture of <code>Mixer</code>, <code>Line</code>, and <code>Control</code> will generally take care of the rest.</p>
+<p><a name="117125"></a> For example, suppose your program plays back sound. You&#39;re using a <code>SourceDataLine</code>, which you&#39;ve obtained as previously described under 
+<a class="TutorialLink" target="_top" href="accessing.html#113154">Getting a Line of a Desired Type</a>. You can access the line&#39;s controls by invoking the following <code>Line</code> method:</p>
+<div class="codeblock"><pre>
+Control[] getControls()
+</pre></div>
+<p>Then, for each of the controls in this returned array, you then use the following <code>Control</code> method to get the control&#39;s type:</p>
+<div class="codeblock"><pre>
+Control.Type getType()
+</pre></div>
+<p>Knowing the specific <code>Control.Type</code> instance, your program can display a corresponding user-interface element. Of course, choosing &quot;a corresponding user-interface element&quot; for a specific <code>Control.Type</code> depends on the approach taken by your program. On the one hand, you might use the same kind of element to represent all <code>Control.Type</code> instances of the same class. This would require you to query the <em>class</em> of the <code>Control.Type</code> instance using, for example, the <code>Object.getClass</code> method. Let&#39;s say the result matched <code>BooleanControl.Type</code>. In this case, your program might display a generic checkbox or toggle button, but if its class matched <code>FloatControl.Type</code>, then you might display a graphic slider.</p>
+<p><a name="116400"></a> On the other hand, your program might distinguish between different types of controls???even those of the same class???and use a different user-interface element for each one. This would require you to test the <em>instance</em> returned by <code>Control&#39;s getType</code> method. Then if, for example, the type matched <code>BooleanControl.Type.APPLY_REVERB</code>, your program might display a checkbox; while if the type matched <code>BooleanControl.Type.MUTE</code>, you might instead display a toggle button.</p>
+<p><a name="116401"></a></p>
+<h3>Using a Control to Change the Audio Signal</h3>
+<p><a name="116402"></a> Now that you know how to access a control and determine its type, this section will describe how to use <code>Controls</code> to change aspects of the audio signal. This section doesn&#39;t cover every available control; rather, it provides a few examples in this area to show you how to get started. These example include:</p>
+<ul>
+<li><a name="114276"></a>Controlling a line&#39;s mute state</li>
+<li><a name="114277"></a>Changing a line&#39;s volume</li>
+<li><a name="114278"></a>Selecting among various reverberation presets</li>
+</ul>
+<p><a name="114280"></a> Suppose that your program has accessed all of its mixers, their lines and the controls on those lines, and that it has a data structure to manage the logical associations between the controls and their corresponding user-interface elements. Then, translating the user&#39;s manipulations of those controls into the corresponding <code>Control</code> methods becomes a fairly straightforward matter.</p>
+<p><a name="114282"></a> The following subsections describe some of the methods that must be invoked to affect the changes to specific controls.</p>
+<p><a name="114284"></a></p>
+<h3>Controlling a Line&#39;s Mute State</h3>
+<p><a name="114286"></a> Controlling the mute state of any line is simply a matter of calling the following <code>BooleanControl</code> method:</p>
+<div class="codeblock"><pre>
+void setValue(boolean value)
+</pre></div>
+<p>(Presumably, the program knows, by referring to its control-management data structures, that the mute is an instance of a <code>BooleanControl</code>.) To mute the signal that&#39;s passing through the line, the program invokes the method above, specifying <code>true</code> as the value. To turn muting off, permitting the signal to flow through the line, the program invokes the method with the parameter set to <code>false</code>. <a name="114292"></a></p>
+<h3>Changing a Line&#39;s Volume</h3>
+<p><a name="114294"></a> Let&#39;s assume your program associates a particular graphic slider with a particular line&#39;s volume control. The value of a volume control (i.e., <code>FloatControl.Type.VOLUME</code>) is set using the following <code>FloatControl</code> method:</p>
+<div class="codeblock"><pre>
+void setValue(float newValue)
+</pre></div>
+<p>Detecting that the user moved the slider, the program gets the slider&#39;s current value and passes it, as the parameter <code>newValue</code>, to the method above. This changes the volume of the signal flowing though the line that &quot;owns&quot; the control. <a name="114300"></a></p>
+<h3>Selecting among Various Reverberation Presets</h3>
+<p><a name="114302"></a> Let&#39;s suppose that our program has a mixer with a line that has a control of type <code>EnumControl.Type.REVERB</code>. Calling the <code>EnumControl</code> method:</p>
+<div class="codeblock"><pre>
+java.lang.Objects[] getValues()
+</pre></div>
+<p>on that control produces an array of <code>ReverbType</code> objects. If desired, the particular parameter settings of each of these objects can be accessed using the following <code>ReverbType</code> methods:</p>
+<div class="codeblock"><pre>
+int getDecayTime() 
+int getEarlyReflectionDelay() 
+float getEarlyReflectionIntensity() 
+int getLateReflectionDelay() 
+float getLateReflectionIntensity() 
+</pre></div>
+<p>For example, if a program only wants a single reverb setting that sounds like a cavern, it can iterate over the <code>ReverbType</code> objects until it finds one for which <code>getDecayTime</code> returns a value greater than 2000. For a thorough explanation of these methods, including a table of representative return values, see the API reference documentation for <code>javax.sound.sampled.ReverbType</code>.</p>
+<p><a name="114316"></a> Typically, though, a program will create a user-interface element, for example, a radio button, for each of the <code>ReverbType</code> objects within the array returned by the <code>getValues</code> method. When the user clicks on one of these radio buttons, the program invokes the <code>EnumControl</code> method</p>
+<div class="codeblock"><pre>
+void setValue(java.lang.Object value) 
+</pre></div>
+<p>where <code>value</code> is set to the <code>ReverbType</code> that corresponds to the newly engaged button. The audio signal sent through the line that &quot;owns&quot; this <code>EnumControl</code> will then be reverberated according to the parameter settings that constitute the control&#39;s current <code>ReverbType</code> (i.e., the particular <code>ReverbType</code> specified in the <code>value</code> argument of the <code>setValue</code> method).</p>
+<p><a name="114323"></a> So, from our application program&#39;s perspective, enabling a user to move from one reverberation preset (i.e., ReverbType) to another is simply a matter of connecting each element of the array returned by <code>getValues</code> to a distinct radio button.</p>
+<p><a name="114326"></a></p>
+<h3>Manipulating the Audio Data Directly</h3>
+<p><a name="114328"></a> The <code>Control</code> API allows an implementation of the Java Sound API, or a third-party provider of a mixer, to supply arbitrary sorts of signal processing through controls. But what if no mixer offers the kind of signal processing you need? It will take more work, but you might be able to implement the signal processing in your program. Because the Java Sound API gives you access to the audio data as an array of bytes, you can alter these bytes in any way you choose.</p>
+<p><a name="114330"></a> If you&#39;re processing incoming sound, you can read the bytes from a <code>TargetDataLine</code> and then manipulate them. An algorithmically trivial example that can yield sonically intriguing results is to play a sound backwards by arranging its frames in reverse order. This trivial example may not be of much use for your program, but there are numerous sophisticated digital signal processing (DSP) techniques that might be more appropriate. Some examples are equalization, dynamic-range compression, peak limiting, and time stretching or compression, as well as special effects such as delay, chorus, flanging, distortion, and so on.</p>
+<p><a name="114332"></a> To play back processed sound, you can place your manipulated array of bytes into a <code>SourceDataLine</code> or <code>Clip</code>. Of course, the array of bytes need not be derived from an existing sound. You can synthesize sounds from scratch, although this requires some knowledge of acoustics or else access to sound-synthesis functions. For either processing or synthesis, you may want to consult an audio DSP textbook for the algorithms in which you&#39;re interested, or else import a third-party library of signal-processing functions into your program. For playback of synthesized sound, consider whether the <code>Synthesizer</code> API in the <code>javax.sound.midi</code> package meets your needs instead. You&#39;ll learn about more about <code>javax.sound.midi</code> later under 
+<a class="TutorialLink" target="_top" href="MIDI-synth.html">Synthesizing Sound</a>.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="capturing.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="./TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="converters.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Capturing Audio
+        <br /><b>Next page:</b> Using Files and Format Converters
+    </div>
+</body>
+</html> 

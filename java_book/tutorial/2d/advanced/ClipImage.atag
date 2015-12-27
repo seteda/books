@@ -1,0 +1,5 @@
+<APPLET CODE="ClipImage.class"
+        codebase="examples/"
+        archive="clipimage.jar"
+	WIDTH=300 HEIGHT=300>
+</APPLET>

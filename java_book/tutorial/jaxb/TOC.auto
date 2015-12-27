@@ -1,0 +1,18 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="intro/index.html">Introduction to JAXB</a>
+<ul>
+<li class="tocli"><a href="intro/arch.html">JAXB Architecture</a></li>
+<li class="tocli"><a href="intro/repcon.html">Representing XML Content</a></li>
+<li class="tocli"><a href="intro/bind.html">Binding XML Schemas </a></li>
+<li class="tocli"><a href="intro/customize.html">Customizing Generated Classes and Java Program Elements</a></li>
+<li class="tocli"><a href="intro/examples.html">JAXB Examples</a></li>
+<li class="tocli"><a href="intro/basic.html">Basic Examples</a></li>
+<li class="tocli"><a href="intro/custom.html">Customizing JAXB Bindings</a></li>
+<li class="tocli"><a href="intro/j2schema.html">Java-to-Schema Examples</a></li>
+<li class="tocli"><a href="intro/info.html">For More Information</a>
+</li>
+</ul>
+</li>
+</ul>

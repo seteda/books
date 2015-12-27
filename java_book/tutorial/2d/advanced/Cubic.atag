@@ -1,0 +1,5 @@
+<APPLET CODE="Cubic.class"
+        codebase="examples/"
+        archive="cubic.jar"
+	WIDTH=350 HEIGHT=250>
+</APPLET>

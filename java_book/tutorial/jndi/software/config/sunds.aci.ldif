@@ -1,0 +1,1 @@
+aci: (target ="ldap:///o=jnditutorial")(targetattr ="*")(version 3.0;acl "full access";allow (all)(userdn = "ldap:///anyone");)

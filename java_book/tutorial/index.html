@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xml:lang=
+"en-US">
+<head>
+<title>The Java&trade; Tutorials</title>
+<meta name="Description" content=
+"Tutorials and reference guides for the Java Programming Language" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<style type="text/css">
+/*<![CDATA[*/
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+               
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;    
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    @media print {
+        div#TopBar_left {
+            margin-left: 0;
+        }
+    }
+
+    @media print {
+        div#TopBar_right {
+            display: none;
+        }
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+    
+    div#TutBody {
+        margin: 10px 20em 10px 3em;
+    }
+    div.RightBar {
+        font-family: sans-serif; 
+        float: right;
+    }
+    div.RightBar img {
+        margin: 0 0 1em 0;
+    }
+    div.RightBox {
+        margin: 10px 3em 10px 0;
+        width: 15em;
+        border-style: double;
+    }
+    div.BlueRightBox {
+        margin: 10px 3em 10px 0;
+        width: 15em;
+        border-style: double;
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    div.Pad {
+        font-size: 80%;
+        padding: 1em;
+    }
+    div.Pad h2 {
+        text-align: center;
+        margin: 0;
+    }
+    div.Pad div {
+        display: list-item;
+        list-style-image: url(images/arrow-right-gray.gif);
+        margin: 0.3em 1em;
+    }
+    ul.BlueArrows {
+        list-style-image: url(images/ar_dbl_blue.gif);
+    }
+    ul.BlueArrows a:visited, ul.BlueArrows a:link {
+        text-decoration: none;
+    }
+    ul.BlueArrows a:hover, ul.BlueArrows a:active {
+        text-decoration: underline;
+    }
+     h1, h2, h3, h4, h5 {
+        color: #333;
+        font-family: sans-serif;
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+/*]]>*/
+</style>
+</head>
+<body>
+<noscript>A browser with JavaScript enabled is required for this
+page to operate properly.</noscript>
+<div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                    <div id="TopBar_left">
+                        The Java&trade; Tutorials
+                    </div>
+                    <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="search.html" target="_blank">Search Java
+                                Tutorials</a>
+                    </div> 
+      </div> </div> </div> </div> </div>
+                        
+<div class="RightBar"><img src="images/ThinkingDuke.png" width=
+"124" height="128" align="middle" alt=
+"Duke thinking about what to study" style="margin-top:2px" /><br />
+Not sure where to start?<br />
+See <a href="tutorialLearningPaths.html">Learning Paths</a>
+<div class="BlueRightBox">
+<center>
+<h2>Tutorial Contents</h2>
+</center>
+<div>
+<center><a href="reallybigindex.html"><img src=
+"images/really_big_index_button.gif" width="108" height="22" align=
+"middle" alt="really big index button" /></a></center>
+</div>
+</div>
+<div class="RightBox">
+<div class="Pad">
+<h2>Tutorial Resources</h2>
+<div>View the <a href=
+"https://docs.oracle.com/javase/tutorial/">Java Tutorials</a> Online
+(Last Updated <a href=
+"information/history.html">3/3/2015</a>).</div>
+<div><a href="https://blogs.oracle.com/thejavatutorials/">The Java
+Tutorials' Blog</a> has news and updates about the Java SE
+tutorials.</div>
+<div><a href=
+"http://www.oracle.com/technetwork/java/javase/java-tutorial-downloads-2005894.html">
+Download the latest Java Tutorials bundle</a>.</div>
+</div>
+</div>
+<div class="RightBox">
+<div class="Pad">
+<h2>In Book Form</h2>
+<div><a href=
+"http://www.oracle.com/technetwork/java/javase/java-tutorial-downloads-2005894.html">
+Download ebook files</a>.</div>
+<div><i>The Java Tutorial, Sixth Edition.</i> <a href=
+"http://www.amazon.com/The-Java-Tutorial-Course-Edition/dp/0134034082"
+target="_blank">Amazon.com</a>.</div>
+</div>
+</div>
+<div class="RightBox">
+<div class="Pad">
+<h2>Other Resources</h2>
+<div><a href="https://docs.oracle.com/javase/8/docs/">Java SE
+Developer Guides</a></div>
+<div><a href="https://docs.oracle.com/javase/8/docs/api">API
+Documentation</a></div>
+<div><a href="https://docs.oracle.com/javase/8/javase-clienttechnologies.htm">JavaFX Documentation</a></div>
+<div><a href="https://docs.oracle.com/javaee/6/tutorial/doc/">The
+Java EE 6 Tutorial</a></div>
+<div><a href="https://netbeans.org/kb/">NetBeans&trade;
+Documentation</a></div>
+</div>
+</div>
+<div class="RightBox">
+<div class="Pad">
+<h2>Oracle Training and Professional Certification</h2>
+<div><a href=
+"http://education.oracle.com/pls/web_prod-plq-dad/ou_product_category.getFamilyPage?p_family_id=48">
+Java Certification and Training</a></div>
+<div><a href=
+"http://education.oracle.com/pls/web_prod-plq-dad/db_pages.getpage?page_id=3">
+Oracle University</a></div>
+</div>
+</div>
+<div class="RightBox">
+<div class="Pad">
+<h2>Software</h2>
+<div>The <a href=
+"http://www.oracle.com/technetwork/java/javase/downloads/index.html">
+Java Development Kit</a> (JDK) for Java SE 8.</div>
+<div><a href="https://netbeans.org/">NetBeans IDE</a></div>
+<div><a href=
+"http://www.oracle.com/technetwork/java/javaee/downloads/index.html">
+Java EE SDK</a></div>
+</div>
+</div>
+</div>
+<div id="TutBody">The Java Tutorials are practical guides for
+programmers who want to use the Java programming language to create
+applications. They include hundreds of complete, working examples,
+and dozens of lessons. Groups of related lessons are organized into
+"trails".
+<p>The Java Tutorials primarily describe features in Java SE 8. For
+best results, <a class="OutsideLink" target="_blank" href=
+"http://www.oracle.com/technetwork/java/javase/downloads/index.html">
+download JDK 8</a>.</p>
+<h2><a name="whatsnew" id="whatsnew">What's New</a></h2>
+
+<p>The Java Tutorials are continuously updated to keep up with changes to the Java Platform and to incorporate feedback from our readers.</p> 
+<p>This release of the tutorial corresponds to the JDK 8u40 release.</p>
+<p>This release includes a new lesson in the Deployment trail that describes how to use the Java packaging tools to generate self-contained applications. Self-contained applications are Java applications that are bundled with the JRE that is needed to run. These applications are installed on a user's local drive and launched in the same way as native applications. See <a href="deployment/selfContainedApps/index.html">Deploying Self-Contained Applications</a> for more information.</p>
+
+<h2>Trails Covering the Basics</h2>
+These trails are available in book form as <i>The Java Tutorial,
+Sixth Edition</i>. To buy this book, refer to the box to the right.
+<ul class="BlueArrows">
+<li><a href="getStarted/index.html">Getting Started</a> &mdash; An
+introduction to Java technology and lessons on installing Java
+development software and using it to create a simple program.</li>
+<li><a href="java/index.html">Learning the Java Language</a>
+&mdash; Lessons describing the essential concepts and features of
+the Java Programming Language.</li>
+<li><a href="essential/index.html">Essential Java Classes</a>
+&mdash; Lessons on exceptions, basic input/output, concurrency,
+regular expressions, and the platform environment.</li>
+<li><a href="collections/index.html">Collections</a> &mdash;
+Lessons on using and extending the Java Collections Framework.</li>
+<li><a href="datetime/index.html">Date-Time APIs</a> &mdash; How to
+use the <tt>java.time</tt> pages to write date and time code.</li>
+<li><a href="deployment/index.html">Deployment</a> &mdash; How to
+package applications and applets using JAR files, and deploy them
+using Java Web Start and Java Plug-in.</li>
+<li><a href="extra/certification/index.html">Preparation for Java
+Programming Language Certification</a> &mdash; List of available
+training and tutorial resources.</li>
+</ul>
+<h2>Creating Graphical User Interfaces</h2>
+<ul class="BlueArrows">
+<li><a href="uiswing/index.html">Creating a GUI with Swing</a>
+&mdash; A comprehensive introduction to GUI creation on the Java
+platform.</li>
+<li><a href="https://docs.oracle.com/javafx/index.html">Creating a
+JavaFX GUI</a> &mdash; A collection of JavaFX tutorials.</li>
+</ul>
+<h2>Specialized Trails and Lessons</h2>
+<p>These trails and lessons are only available as web pages.</p>
+<ul class="BlueArrows">
+<li><a href="networking/index.html">Custom Networking</a> &mdash;
+An introduction to the Java platform's powerful networking
+features.</li>
+<li><a href="ext/index.html">The Extension Mechanism</a> &mdash;
+How to make custom APIs available to all applications running on
+the Java platform.</li>
+<li><a href="extra/fullscreen/index.html">Full-Screen Exclusive
+Mode API</a> &mdash; How to write applications that more fully
+utilize the user's graphics hardware.</li>
+<li><a href="extra/generics/index.html">Generics</a> &mdash; An
+enhancement to the type system that supports operations on objects
+of various types while providing compile-time type safety. Note
+that this lesson is for advanced users. The <a href=
+"java/index.html">Java Language</a> trail contains a <a href=
+"java/generics/index.html">Generics</a> lesson that is suitable for
+beginners.</li>
+<li><a href="i18n/index.html">Internationalization</a> &mdash; An
+introduction to designing software so that it can be easily adapted
+(localized) to various languages and regions.</li>
+<li><a href="javabeans/index.html">JavaBeans</a> &mdash; The Java
+platform's component technology.</li>
+<li><a href="jdbc/index.html">JDBC Database Access</a> &mdash;
+Introduces an API for connectivity between the Java applications
+and a wide range of databases and data sources.</li>
+<li><a href="jmx/index.html">JMX</a>&mdash; Java Management
+Extensions provides a standard way of managing resources such as
+applications, devices, and services.</li>
+<li><a href="jndi/index.html">JNDI</a>&mdash; Java Naming and
+Directory Interface enables accessing the Naming and Directory
+Service such as DNS and LDAP.</li>
+<li><a href="jaxp/index.html">JAXP</a> &mdash; Introduces the Java
+API for XML Processing (JAXP) technology.</li>
+<li><a href="jaxb/index.html">JAXB</a> &mdash; Introduces the Java
+architecture for XML Binding (JAXB) technology.</li>
+<li><a href="rmi/index.html">RMI</a> &mdash; The Remote Method
+Invocation API allows an object to invoke methods of an object
+running on another Java Virtual Machine.</li>
+<li><a href="reflect/index.html">Reflection</a> &mdash; An API that
+represents ("reflects") the classes, interfaces, and objects in the
+current Java Virtual Machine.</li>
+<li><a href="security/index.html">Security</a> &mdash; Java
+platform features that help protect applications from malicious
+software.</li>
+<li><a href="sound/index.html">Sound</a> &mdash; An API for playing
+sound data from applications.</li>
+<li><a href="2d/index.html">2D Graphics</a> &mdash; How to display
+and print 2D graphics in applications.</li>
+<li><a href="sdp/index.html">Sockets Direct Protocol</a> &mdash;
+How to enable the Sockets Direct Protocol to take advantage of
+InfiniBand.</li>
+</ul>
+</div>
+<hr />
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+<td>
+<p class="footertext"><a name="license_info" id="license_info">Your use
+of this</a> page <a href=
+"https://docs.oracle.com/javase/tutorial/">(https://docs.oracle.com/javase/tutorial)</a>
+and all the material on pages under "The Java Tutorials" banner is
+subject to these <a href="information/cpyr.html">legal
+notices</a>.</p>
+</td>
+<td align="right">
+<p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All
+rights reserved.</p>
+</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+<td width="30%">&nbsp;</td>
+<td valign="middle" align="center"><p class="footertext"><a href="http://www.oracle.com/us/corporate/index.html">About
+Oracle</a> | <a href=
+"http://www.oracle.com/technology/index.html">Oracle Technology
+Network</a> | <a href=
+"http://www.oracle.com/technetwork/indexes/samplecode/index.html">
+Terms of Service</a> | <a href=
+"information/docaccessibility.html">Documentation
+Accessibility</a></p>
+</td>
+<td width="30%">&nbsp;</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

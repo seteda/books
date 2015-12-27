@@ -1,0 +1,19 @@
+<applet code="AppletButton.class"
+        archive="example-swing/layout.jar"
+        width="350" height="60"
+        alt="FlowLayout applet">
+<param name="windowClass" value="FlowWindow">
+<param name="windowTitle" value="FlowLayout">
+<param name="buttonText" value="Click here to see a FlowLayout in action">
+
+Since you can't run the applet,
+here's a picture of it:
+
+#usemacro UI_FIGURE (
+    NAME flowlayout.gif
+    W 542
+    H 66
+    ALT Five buttons laid out with a FlowLayout.
+)
+
+</applet>

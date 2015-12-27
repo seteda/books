@@ -1,0 +1,30 @@
+dn: o=JNDITutorial
+o: JNDITutorial
+objectclass: top
+objectclass: organization
+
+dn: ou=People, o=JNDITutorial
+ou: People
+objectclass: top
+objectclass: organizationalunit
+objectclass: referral
+ref: ldap://localhost:389/ou=People,o=JNDITutorial
+
+dn: ou=All, o=JNDITutorial
+ou: All
+objectclass: top
+objectclass: organizationalunit
+
+dn: ou=People, ou=All, o=JNDITutorial
+ou: People
+objectclass: top
+objectclass: organizationalunit
+objectclass: referral
+ref: ldap://localhost:389/ou=People,o=JNDITutorial
+
+dn: ou=NewHires, ou=All, o=JNDITutorial
+ou: NewHires
+objectclass: top
+objectclass: organizationalunit
+objectclass: referral
+ref: ldap://localhost:389/ou=NewHires,o=JNDITutorial

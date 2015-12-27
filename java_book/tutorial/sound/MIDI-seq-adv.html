@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Using Advanced Sequencer Features (The Java&trade; Tutorials &gt;        
+            Sound)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="" />
+     <meta name="keywords" content="java programming, learn java, java sample code, " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkAHEAD"><a href="sampled-overview.html">Overview of the Sampled Package</a></div>
+<div class="linkAHEAD"><a href="accessing.html">Accessing Audio System Resources</a></div>
+<div class="linkAHEAD"><a href="playing.html">Playing Back Audio</a></div>
+<div class="linkAHEAD"><a href="capturing.html">Capturing Audio</a></div>
+<div class="linkAHEAD"><a href="controls.html">Processing Audio with Controls</a></div>
+<div class="linkAHEAD"><a href="converters.html">Using Files and Format Converters</a></div>
+<div class="linkAHEAD"><a href="overview-MIDI.html">Overview of the MIDI Package</a></div>
+<div class="linkAHEAD"><a href="accessing-MIDI.html">Accessing MIDI System Resources</a></div>
+<div class="linkAHEAD"><a href="MIDI-messages.html">Transmitting and Receiving MIDI Messages</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-intro.html">Introduction to Sequencers</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-methods.html">Using Sequencer Methods</a></div>
+<div class="nolinkAHEAD">Using Advanced Sequencer Features</div>
+<div class="linkAHEAD"><a href="MIDI-synth.html">Synthesizing Sound</a></div>
+<div class="linkAHEAD"><a href="SPI-intro.html">Introduction to the Service Provider Interfaces</a></div>
+<div class="linkAHEAD"><a href="SPI-providing-sampled.html">Providing Sampled-Audio Services</a></div>
+<div class="linkAHEAD"><a href="SPI-providing-MIDI.html">Providing MIDI Services</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Sound
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="./index.html" target="_top">Sound</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="MIDI-seq-methods.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="./TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="MIDI-synth.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Using Advanced Sequencer Features</h1></div>
+            <div id="PageContent">
+
+<p><a name="124685"></a> So far, we&#39;ve focused on simple playback and recording of MIDI data. This section will briefly describe some of the more advanced features available through methods of the <code>Sequencer</code> interface and the <code>Sequence</code> class.</p>
+<p><a name="124686"></a></p>
+<h2>Moving to an Arbitrary Position in the Sequence</h2>
+<p><a name="124687"></a> There are two <code>Sequencer</code> methods that obtain the sequencer&#39;s current position in the sequence. The first of these:</p>
+<div class="codeblock"><pre>
+long getTickPosition()
+</pre></div>
+<p><a name="124689"></a> returns the position measured in MIDI ticks from the beginning of the sequence. The second method:</p>
+<div class="codeblock"><pre>
+long getMicrosecondPosition()
+</pre></div>
+<p>returns the current position in microseconds. This method assumes that the sequence is being played at the default rate as stored in the MIDI file or in the <code>Sequence</code>. It does <em>not</em> return a different value if you&#39;ve changed the playback speed as described below.</p>
+<p><a name="124692"></a> You can similarly set the sequencer&#39;s current position according to one unit or the other:</p>
+<div class="codeblock"><pre>
+void setTickPosition(long tick)
+</pre></div>
+<p>or</p>
+<div class="codeblock"><pre>
+void setMicrosecondPosition(long microsecond)
+</pre></div>
+<p><a name="124696"></a></p>
+<h2>Changing the Playback Speed</h2>
+<p><a name="124697"></a> As indicated earlier, a sequence&#39;s speed is indicated by its tempo, which can vary over the course of the sequence. A sequence can contain events that encapsulate standard MIDI tempo-change messages. When the sequencer processes such an event, it changes the speed of playback to reflect the indicated tempo. In addition, you can programmatically change the tempo by invoking any of these <code>Sequencer</code> methods:</p>
+<div class="codeblock"><pre>
+    public void setTempoInBPM(float bpm)
+    public void setTempoInMPQ(float mpq)
+    public void setTempoFactor(float factor)
+</pre></div>
+<p>The first two of these methods set the tempo in beats per minute or microseconds per quarter note, respectively. The tempo will stay at the specified value until one of these methods is invoked again, or until a tempo-change event is encountered in the sequence, at which point the current tempo is overridden by the newly specified one.</p>
+<p><a name="124702"></a> The third method, <code>setTempoFactor</code>, is different in nature. It scales whatever tempo is set for the sequencer (whether by tempo-change events or by one of the first two methods above). The default scalar is 1.0 (no change). Although this method causes the playback or recording to be faster or slower than the nominal tempo (unless the factor is 1.0), it doesn&#39;t alter the nominal tempo. In other words, the tempo values returned by <code>getTempoInBPM</code> and <code>getTempoInMPQ</code> are unaffected by the tempo factor, even though the tempo factor does affect the actual rate of playback or recording. Also, if the tempo is changed by a tempo-change event or by one of the first two methods, it still gets scaled by whatever tempo factor was last set. If you load a new sequence, however, the tempo factor is reset to 1.0.</p>
+<p><a name="124703"></a> Note that all these tempo-change directives are ineffectual when the sequence&#39;s division type is one of the SMPTE types, instead of PPQ.</p>
+<p><a name="124704"></a></p>
+<h2>Muting or Soloing Individual Tracks in the Sequence</h2>
+<p><a name="124705"></a> It&#39;s often convenient for users of sequencers to be able to turn off certain tracks, to hear more clearly exactly what is happening in the music. A full-featured sequencer program lets the user choose which tracks should sound during playback. (Speaking more precisely, since sequencers don&#39;t actually create sound themselves, the user chooses which tracks will contribute to the stream of MIDI messages that the sequencer produces.) Typically, there are two types of graphical controls on each track: a <em>mute</em> button and a <em>solo</em> button. If the mute button is activated, that track will not sound under any circumstances, until the mute button is deactivated. Soloing is a less well-known feature. It&#39;s roughly the opposite of muting. If the solo button on any track is activated, only tracks whose solo buttons are activated will sound. This feature lets the user quickly audition a small number of tracks without having to mute all the other tracks. The mute button typically takes priority over the solo button: if both are activated, the track doesn&#39;t sound.</p>
+<p><a name="124706"></a> Using <code>Sequencer</code> methods, muting or soloing tracks (as well as querying a track&#39;s current mute or solo state) is easily accomplished. Let&#39;s assume we have obtained the default <code>Sequencer</code> and that we&#39;ve loaded sequence data into it. Muting the fifth track in the sequence would be accomplished as follows:</p>
+<div class="codeblock"><pre>
+    sequencer.setTrackMute(4, true);
+    boolean muted = sequencer.getTrackMute(4);
+    if (!muted) { 
+        return;         // muting failed
+    }
+</pre></div>
+<p>There are a couple of things to note about the above code snippet. First, tracks of a sequence are numbered starting with 0 and ending with the total number of tracks minus 1. Also, the second argument to <code>setTrackMute</code> is a boolean. If it&#39;s true, the request is to mute the track; otherwise the request is to unmute the specified track. Lastly, in order to test that the muting took effect, we invoke the <code>Sequencer getTrackMute</code> method, passing it the track number we&#39;re querying. If it returns <code>true</code>, as we&#39;d expect in this case, then the mute request worked. If it returns <code>false</code>, then it failed.</p>
+<p><a name="124713"></a> Mute requests may fail for various reasons. For example, the track number specified in the <code>setTrackMute</code> call might exceed the total number of tracks, or the sequencer might not support muting. By calling <code>getTrackMute</code>, we can determine if our request succeeded or failed.</p>
+<p><a name="124714"></a> As an aside, the boolean that&#39;s returned by <code>getTrackMute</code> can, indeed, tell us if a failure occurred, but it can&#39;t tell us why it occurred. We could test to see if a failure was caused by passing an invalid track number to the <code>setTrackMute</code> method. To do this, we would call the <code>getTracks</code> method of <code>Sequence</code>, which returns an array containing all of the tracks in the sequence. If the track number specified in the <code>setTrackMute</code> call exceeds the length of this array, then we know we specified an invalid track number.</p>
+<p><a name="124715"></a> If the mute request succeeded, then in our example, the fifth track will not sound when the sequence is playing, nor will any other tracks that are currently muted.</p>
+<p><a name="124716"></a> The method and techniques for soloing a track are very similar to those for muting. To solo a track, invoke the <code>setTrackSolo</code> method of <code>Sequence:</code></p>
+<div class="codeblock"><pre>
+void setTrackSolo(int track, boolean bSolo)
+</pre></div>
+<p>As in <code>setTrackMute</code>, the first argument specifies the zero-based track number, and the second argument, if <code>true</code>, specifies that the track should be in solo mode; otherwise the track should not be soloed.</p>
+<p><a name="124719"></a> By default, a track is neither muted nor soloed.</p>
+<p><a name="124721"></a></p>
+<h2>Synchronizing with Other MIDI Devices</h2>
+<p><a name="124722"></a> <code>Sequencer</code> has an inner class called <code>Sequencer.SyncMode</code>. A <code>SyncMode</code> object represents one of the ways in which a MIDI sequencer&#39;s notion of time can be synchronized with a master or slave device. If the sequencer is being synchronized to a master, the sequencer revises its current time in response to certain MIDI messages from the master. If the sequencer has a slave, the sequencer similarly sends MIDI messages to control the slave&#39;s timing.</p>
+<p><a name="124723"></a> There are three predefined modes that specify possible masters for a sequencer: <code>INTERNAL_CLOCK</code>, <code>MIDI_SYNC</code>, and <code>MIDI_TIME_CODE</code>. The latter two work if the sequencer receives MIDI messages from another device. In these two modes, the sequencer&#39;s time gets reset based on system real-time timing clock messages or MIDI time code (MTC) messages, respectively. (See the MIDI specification for more information about these types of message.) These two modes can also be used as slave modes, in which case the sequencer sends the corresponding types of MIDI messages to its receiver. A fourth mode, <code>NO_SYNC</code>, is used to indicate that the sequencer should not send timing information to its receivers.</p>
+<p><a name="124724"></a> By calling the <code>setMasterSyncMode</code> method with a supported <code>SyncMode</code> object as the argument, you can specify how the sequencer&#39;s timing is controlled. Likewise, the <code>setSlaveSyncMode</code> method determines what timing information the sequencer will send to its receivers. This information controls the timing of devices that use the sequencer as a master timing source.</p>
+<p><a name="124725"></a></p>
+<h2>Specifying Special Event Listeners</h2>
+<p><a name="124726"></a> Each track of a sequence can contain many different kinds of <code>MidiEvents</code>. Such events include Note On and Note Off messages, program changes, control changes, and meta events. The Java Sound API specifies &quot;listener&quot; interfaces for the last two of these event types (control change events and meta events). You can use these interfaces to receive notifications when such events occur during playback of a sequence.</p>
+<p><a name="124727"></a> Objects that support the <code>ControllerEventListener</code> interface can receive notification when a <code>Sequencer</code> processes particular control-change messages. A control-change message is a standard type of MIDI message that represents a change in the value of a MIDI controller, such as a pitch-bend wheel or a data slider. (See the MIDI specification for the complete list of control-change messages.) When such a message is processed during playback of a sequence, the message instructs any device (probably a synthesizer) that&#39;s receiving the data from the sequencer to update the value of some parameter. The parameter usually controls some aspect of sound synthesis, such as the pitch of the currently sounding notes if the controller was the pitch-bend wheel. When a sequence is being recorded, the control-change message means that a controller on the external physical device that created the message has been moved, or that such a move has been simulated in software.</p>
+<p><a name="124728"></a> Here&#39;s how the <code>ControllerEventListener</code> interface is used. Let&#39;s assume that you&#39;ve developed a class that implements the <code>ControllerEventListener</code> interface, meaning that your class contains the following method:</p>
+<div class="codeblock"><pre>
+    void controlChange(ShortMessage msg)
+</pre></div>
+<p>Let&#39;s also assume that you&#39;ve created an instance of your class and assigned it to a variable called <code>myListener</code>. If you include the following statements somewhere within your program:</p>
+<div class="codeblock"><pre>
+    int[] controllersOfInterest = { 1, 2, 4 };
+    sequencer.addControllerEventListener(myListener,
+        controllersOfInterest);
+</pre></div>
+<p>then your class&#39;s <code>controlChange</code> method will be invoked every time the sequencer processes a control-change message for MIDI controller numbers 1, 2, or 4. In other words, when the <code>Sequencer</code> processes a request to set the value of any of the registered controllers, the <code>Sequencer</code> will invoke your class&#39;s <code>controlChange</code> method. (Note that the assignments of MIDI controller numbers to specific control devices is detailed in the MIDI 1.0 Specification.)</p>
+<p><a name="124734"></a> The <code>controlChange</code> method is passed a <code>ShortMessage</code> containing the controller number affected, and the new value to which the controller was set. You can obtain the controller number using the <code>ShortMessage.getData1</code> method, and the new setting of the controller&#39;s value using the <code>ShortMessage.getData2</code> method.</p>
+<p><a name="124735"></a> The other kind of special event listener is defined by the <code>MetaEventListener</code> interface. Meta messages, according to the Standard MIDI Files 1.0 specification, are messages that are not present in MIDI wire protocol but that can be embedded in a MIDI file. They are not meaningful to a synthesizer, but can be interpreted by a sequencer. Meta messages include instructions (such as tempo change commands), lyrics or other text, and other indicators (such as end-of-track).</p>
+<p><a name="124736"></a> The <code>MetaEventListener</code> mechanism is analogous to <code>ControllerEventListener</code>. Implement the <code>MetaEventListener</code> interface in any class whose instances need to be notified when a <code>MetaMessage</code> is processed by the sequencer. This involves adding the following method to the class:</p>
+<div class="codeblock"><pre>
+void meta(MetaMessage msg)
+</pre></div>
+<p><a name="124738"></a> You register an instance of this class by passing it as the argument to the <code>Sequencer addMetaEventListener</code> method:</p>
+<div class="codeblock"><pre>
+boolean b = sequencer.addMetaEventListener
+        (myMetaListener);
+</pre></div>
+<p>This is slightly different from the approach taken by the <code>ControllerEventListener</code> interface, because you have to register to receive all <code>MetaMessages,</code> not just selected ones of interest. If the sequencer encounters a <code>MetaMessage</code> in its sequence, it will invoke <code>myMetaListener.meta</code>, passing it the <code>MetaMessage</code> encountered. The <code>meta</code> method can invoke <code>getType</code> on its <code>MetaMessage</code> argument to obtain an integer from 0 to 127 that indicates the message type, as defined by the Standard MIDI Files 1.0 specification.</p>
+<p>&nbsp;</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="MIDI-seq-methods.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="./TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="MIDI-synth.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Using Sequencer Methods
+        <br /><b>Next page:</b> Synthesizing Sound
+    </div>
+</body>
+</html> 

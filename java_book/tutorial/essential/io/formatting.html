@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Formatting (The Java&trade; Tutorials &gt;        
+            Essential Classes &gt; Basic I/O)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Java tutorial describes exceptions, basic input/output, concurrency, regular expressions, and the platform environment" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java exception, java input output, java threads, java regex, regular expressions, path, classpath, environment variable" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Basic I/O</a></div>
+<div class="linkAHEAD"><a href="streams.html">I/O Streams</a></div>
+<div class="linkBHEAD"><a href="bytestreams.html">Byte Streams</a></div>
+<div class="linkBHEAD"><a href="charstreams.html">Character Streams</a></div>
+<div class="linkBHEAD"><a href="buffers.html">Buffered Streams</a></div>
+<div class="linkBHEAD"><a href="scanfor.html">Scanning and Formatting</a></div>
+<div class="linkCHEAD"><a href="scanning.html">Scanning</a></div>
+<div class="nolinkCHEAD">Formatting</div>
+<div class="linkBHEAD"><a href="cl.html">I/O from the Command Line</a></div>
+<div class="linkBHEAD"><a href="datastreams.html">Data Streams</a></div>
+<div class="linkBHEAD"><a href="objectstreams.html">Object Streams</a></div>
+<div class="linkAHEAD"><a href="fileio.html">File I/O (Featuring NIO.2)</a></div>
+<div class="linkBHEAD"><a href="path.html">What Is a Path? (And Other File System Facts)</a></div>
+<div class="linkBHEAD"><a href="pathClass.html">The Path Class</a></div>
+<div class="linkCHEAD"><a href="pathOps.html">Path Operations</a></div>
+<div class="linkBHEAD"><a href="fileOps.html">File Operations</a></div>
+<div class="linkBHEAD"><a href="check.html">Checking a File or Directory</a></div>
+<div class="linkBHEAD"><a href="delete.html">Deleting a File or Directory</a></div>
+<div class="linkBHEAD"><a href="copy.html">Copying a File or Directory</a></div>
+<div class="linkBHEAD"><a href="move.html">Moving a File or Directory</a></div>
+<div class="linkBHEAD"><a href="fileAttr.html">Managing Metadata (File and File Store Attributes)</a></div>
+<div class="linkBHEAD"><a href="file.html">Reading, Writing, and Creating Files</a></div>
+<div class="linkBHEAD"><a href="rafs.html">Random Access Files</a></div>
+<div class="linkBHEAD"><a href="dirs.html">Creating and Reading Directories</a></div>
+<div class="linkBHEAD"><a href="links.html">Links, Symbolic or Otherwise</a></div>
+<div class="linkBHEAD"><a href="walk.html">Walking the File Tree</a></div>
+<div class="linkBHEAD"><a href="find.html">Finding Files</a></div>
+<div class="linkBHEAD"><a href="notification.html">Watching a Directory for Changes</a></div>
+<div class="linkBHEAD"><a href="misc.html">Other Useful Methods</a></div>
+<div class="linkBHEAD"><a href="legacy.html">Legacy File I/O Code</a></div>
+<div class="linkAHEAD"><a href="summary.html">Summary</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Essential Classes
+        <br /><b>Lesson:</b> Basic I/O
+        <br /><b>Section:</b> I/O Streams
+        <br /><b>Subsection:</b> Scanning and Formatting
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Essential Classes</a>
+                &gt;
+                <a href="index.html" target="_top">Basic I/O</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="scanning.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="cl.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Formatting</h1></div>
+            <div id="PageContent">
+
+<p>Stream objects that implement formatting are instances of either 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html"><code>PrintWriter</code></a>, a character stream class, or
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html"><code>PrintStream</code></a>, a byte stream class.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;The only <code>PrintStream</code> objects you are likely to need are 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#out"><code>System.out</code></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#err"><code>System.err</code></a>. (See <a href="cl.html">I/O from the Command Line</a> for more on these objects.) When you need to create a formatted output stream, instantiate <code>PrintWriter</code>, not <code>PrintStream</code>.
+<hr /></div>
+<p>Like all byte and character stream objects, instances of <code>PrintStream</code> and <code>PrintWriter</code> implement a standard set of <code>write</code> methods for simple byte and character output. In addition, both <code>PrintStream</code> and <code>PrintWriter</code> implement the same set of methods for converting internal data into formatted output. Two levels of formatting are provided:</p>
+<ul>
+<li><code>print</code> and <code>println</code> format individual values in a standard way.</li>
+<li><code>format</code> formats almost any number of values based on a format string, with many options for precise formatting.</li>
+</ul>
+<h2>The <code>print</code> and <code>println</code> Methods</h2>
+<p>Invoking <code>print</code> or <code>println</code> outputs a single value after converting the value using the appropriate <code>toString</code> method. We can see this in the 
+<a class="SourceLink" target="_blank" href="examples/Root.java" onclick="showCode('../../displayCode.html', 'examples/Root.java'); return false;"><code>Root</code></a> example:</p>
+<div class="codeblock"><pre>
+public class Root {
+    public static void main(String[] args) {
+        int i = 2;
+        double r = Math.sqrt(i);
+        
+        System.out.print("The square root of ");
+        System.out.print(i);
+        System.out.print(" is ");
+        System.out.print(r);
+        System.out.println(".");
+
+        i = 5;
+        r = Math.sqrt(i);
+        System.out.println("The square root of " + i + " is " + r + ".");
+    }
+}
+</pre></div>
+<p>Here is the output of <code>Root</code>:</p>
+<div class="codeblock"><pre>
+The square root of 2 is 1.4142135623730951.
+The square root of 5 is 2.23606797749979.
+</pre></div>
+<p>The <code>i</code> and <code>r</code> variables are formatted twice: the first time using code in an overload of <code>print</code>, the second time by conversion code automatically generated by the Java compiler, which also utilizes <code>toString</code>. You can format any value this way, but you don&#39;t have much control over the results.</p>
+<h2>The <code>format</code> Method</h2>
+<p>The <code>format</code> method formats multiple arguments based on a <i>format string</i>. The format string consists of static text embedded with <i>format specifiers</i>; except for the format specifiers, the format string is output unchanged.</p>
+<p>Format strings support many features. In this tutorial, we&#39;ll just cover some basics. For a complete description, see 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax"><code>format string syntax</code></a> in the API specification.</p>
+<p>The 
+<a class="SourceLink" target="_blank" href="examples/Root2.java" onclick="showCode('../../displayCode.html', 'examples/Root2.java'); return false;"><code>Root2</code></a> example formats two values with a single <code>format</code> invocation:</p>
+<div class="codeblock"><pre>
+public class Root2 {
+    public static void main(String[] args) {
+        int i = 2;
+        double r = Math.sqrt(i);
+        
+        System.out.format("The square root of %d is %f.%n", i, r);
+    }
+}
+</pre></div>
+<p>Here is the output:</p>
+<div class="codeblock"><pre>
+The square root of 2 is 1.414214.
+</pre></div>
+<p>Like the three used in this example, all format specifiers begin with a <code>%</code> and end with a 1- or 2-character <i>conversion</i> that specifies the kind of formatted output being generated. The three conversions used here are:</p>
+<ul>
+<li><code>d</code> formats an integer value as a decimal value.</li>
+<li><code>f</code> formats a floating point value as a decimal value.</li>
+<li><code>n</code> outputs a platform-specific line terminator.</li>
+</ul>
+<p>Here are some other conversions:</p>
+<ul>
+<li><code>x</code> formats an integer as a hexadecimal value.</li>
+<li><code>s</code> formats any value as a string.</li>
+<li><code>tB</code> formats an integer as a locale-specific month name.</li>
+</ul>
+<p>There are many other conversions.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>Except for <code>%%</code> and <code>%n</code>, all format specifiers must match an argument. If they don&#39;t, an exception is thrown.</p>
+<p>In the Java programming language, the <code>\n</code> escape always generates the linefeed character (<code>\u000A</code>). Don&#39;t use <code>\n</code> unless you specifically want a linefeed character. To get the correct line separator for the local platform, use <code>%n</code>.</p>
+<hr /></div>
+<p>In addition to the conversion, a format specifier can contain several additional elements that further customize the formatted output. Here&#39;s an example, 
+<a class="SourceLink" target="_blank" href="examples/Format.java" onclick="showCode('../../displayCode.html', 'examples/Format.java'); return false;"><code>Format</code></a>, that uses every possible kind of element.</p>
+<div class="codeblock"><pre>
+public class Format {
+    public static void main(String[] args) {
+        System.out.format("%f, %1$+020.10f %n", Math.PI);
+    }
+}
+</pre></div>
+<p>Here&#39;s the output:</p>
+<div class="codeblock"><pre>
+3.141593, +00000003.1415926536
+</pre></div>
+<p>The additional elements are all optional. The following figure shows how the longer specifier breaks down into elements.</p>
+<center><img src="../../figures/essential/io-spec.gif" width="284" height="137" align="bottom" alt="Elements of a format specifier" /></p><p class="FigureCaption">Elements of a Format Specifier.</p></center><p>The elements must appear in the order shown. Working from the right, the optional elements are:</p>
+<ul>
+<li><b>Precision</b>. For floating point values, this is the mathematical precision of the formatted value. For <code>s</code> and other general conversions, this is the maximum width of the formatted value; the value is right-truncated if necessary.</li>
+<li><b>Width</b>. The minimum width of the formatted value; the value is padded if necessary. By default the value is left-padded with blanks.</li>
+<li><b>Flags</b> specify additional formatting options. In the <code>Format</code> example, the <code>+</code> flag specifies that the number should always be formatted with a sign, and the <code>0</code> flag specifies that <code>0</code> is the padding character. Other flags include <code>-</code> (pad on the right) and <code>,</code> (format number with locale-specific thousands separators). Note that some flags cannot be used with certain other flags or with certain conversions.</li>
+<li>The <b>Argument Index</b> allows you to explicitly match a designated argument. You can also specify <code>&lt;</code> to match the same argument as the previous specifier. Thus the example could have said: <code>System.out.format(&quot;%f, %&lt;+020.10f %n&quot;, Math.PI);</code></li>
+</ul>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="scanning.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="cl.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Scanning
+        <br /><b>Next page:</b> I/O from the Command Line
+    </div>
+</body>
+</html> 

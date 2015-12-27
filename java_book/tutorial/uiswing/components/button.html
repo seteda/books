@@ -1,0 +1,1248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Use Buttons, Check Boxes, and Radio Buttons (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Swing Components)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Swing Components</a></div>
+<div class="linkAHEAD"><a href="toplevel.html">Using Top-Level Containers</a></div>
+<div class="linkAHEAD"><a href="jcomponent.html">The JComponent Class</a></div>
+<div class="linkAHEAD"><a href="text.html">Using Text Components</a></div>
+<div class="linkBHEAD"><a href="generaltext.html">Text Component Features</a></div>
+<div class="linkBHEAD"><a href="textapi.html">The Text Component API</a></div>
+<div class="linkAHEAD"><a href="componentlist.html">How to Use Various Components</a></div>
+<div class="linkBHEAD"><a href="applet.html">How to Make Applets</a></div>
+<div class="nolinkBHEAD">How to Use Buttons, Check Boxes, and Radio Buttons</div>
+<div class="linkBHEAD"><a href="buttongroup.html">How to Use the ButtonGroup Component</a></div>
+<div class="linkBHEAD"><a href="colorchooser.html">How to Use Color Choosers</a></div>
+<div class="linkBHEAD"><a href="combobox.html">How to Use Combo Boxes</a></div>
+<div class="linkBHEAD"><a href="dialog.html">How to Make Dialogs</a></div>
+<div class="linkBHEAD"><a href="editorpane.html">How to Use Editor Panes and Text Panes</a></div>
+<div class="linkBHEAD"><a href="filechooser.html">How to Use File Choosers</a></div>
+<div class="linkBHEAD"><a href="formattedtextfield.html">How to Use Formatted Text Fields</a></div>
+<div class="linkBHEAD"><a href="frame.html">How to Make Frames (Main Windows)</a></div>
+<div class="linkBHEAD"><a href="internalframe.html">How to Use Internal Frames</a></div>
+<div class="linkBHEAD"><a href="label.html">How to Use Labels</a></div>
+<div class="linkBHEAD"><a href="layeredpane.html">How to Use Layered Panes</a></div>
+<div class="linkBHEAD"><a href="list.html">How to Use Lists</a></div>
+<div class="linkBHEAD"><a href="menu.html">How to Use Menus</a></div>
+<div class="linkBHEAD"><a href="panel.html">How to Use Panels</a></div>
+<div class="linkBHEAD"><a href="passwordfield.html">How to Use Password Fields</a></div>
+<div class="linkBHEAD"><a href="progress.html">How to Use Progress Bars</a></div>
+<div class="linkBHEAD"><a href="rootpane.html">How to Use Root Panes</a></div>
+<div class="linkBHEAD"><a href="scrollpane.html">How to Use Scroll Panes</a></div>
+<div class="linkBHEAD"><a href="separator.html">How to Use Separators</a></div>
+<div class="linkBHEAD"><a href="slider.html">How to Use Sliders</a></div>
+<div class="linkBHEAD"><a href="spinner.html">How to Use Spinners</a></div>
+<div class="linkBHEAD"><a href="splitpane.html">How to Use Split Panes</a></div>
+<div class="linkBHEAD"><a href="tabbedpane.html">How to Use Tabbed Panes</a></div>
+<div class="linkBHEAD"><a href="table.html">How to Use Tables</a></div>
+<div class="linkBHEAD"><a href="textarea.html">How to Use Text Areas</a></div>
+<div class="linkBHEAD"><a href="textfield.html">How to Use Text Fields</a></div>
+<div class="linkBHEAD"><a href="toolbar.html">How to Use Tool Bars</a></div>
+<div class="linkBHEAD"><a href="tooltip.html">How to Use Tool Tips</a></div>
+<div class="linkBHEAD"><a href="tree.html">How to Use Trees</a></div>
+<div class="linkAHEAD"><a href="html.html">How to Use HTML in Swing Components</a></div>
+<div class="linkAHEAD"><a href="model.html">How to Use Models</a></div>
+<div class="linkAHEAD"><a href="icon.html">How to Use Icons</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use Borders</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Component Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Swing Components
+        <br /><b>Section:</b> How to Use Various Components
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Swing Components</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="applet.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="buttongroup.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Use Buttons, Check Boxes, and Radio Buttons</h1></div>
+            <div id="PageContent">
+
+<p>To create a button, you can instantiate one of the many classes that descend from the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html"><code>AbstractButton</code></a> class. The following table shows the Swing-defined <code>AbstractButton</code> subclasses that you might want to use:</p>
+<table border="0" cellspacing="5" summary="Swing-defined AbstractButton subclasses">
+<tr>
+<th id="h1" align="left">Class</th>
+<th id="h2" align="left">Summary</th>
+<th id="h3" align="left">Where Described</th>
+</tr>
+<tr valign="top">
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JButton.html"><code>JButton</code></a></td>
+<td headers="h2">A common button.</td>
+<td headers="h3"><a href="#abstractbutton">How to Use the Common Button API</a> and <a href="#jbutton">How to Use JButton Features</a></td>
+</tr>
+<tr valign="top">
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html"><code>JCheckBox</code></a></td>
+<td headers="h2">A check box button.</td>
+<td headers="h3"><a href="#checkbox">How to Use Check Boxes</a></td>
+</tr>
+<tr valign="top">
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html"><code>JRadioButton</code></a></td>
+<td headers="h2">One of a group of radio buttons.</td>
+<td headers="h3"><a href="#radiobutton">How to Use Radio Buttons</a></td>
+</tr>
+<tr valign="top">
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuItem.html"><code>JMenuItem</code></a></td>
+<td headers="h2">An item in a menu.</td>
+<td headers="h3"><a href="menu.html">How to Use Menus</a></td>
+</tr>
+<tr valign="top">
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html"><code>JCheckBoxMenuItem</code></a></td>
+<td headers="h2">A menu item that has a check box.</td>
+<td headers="h3"><a href="menu.html">How to Use Menus</a> and <a href="#checkbox">How to Use Check Boxes</a></td>
+</tr>
+<tr valign="top">
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html"><code>JRadioButtonMenuItem</code></a></td>
+<td headers="h2">A menu item that has a radio button.</td>
+<td headers="h3"><a href="menu.html">How to Use Menus</a> and <a href="#radiobutton">How to Use Radio Buttons</a></td>
+</tr>
+<tr valign="top">
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JToggleButton.html"><code>JToggleButton</code></a></td>
+<td headers="h2">Implements toggle functionality inherited by <code>JCheckBox</code> and <code>JRadioButton</code>. Can be instantiated or subclassed to create two-state buttons.</td>
+<td headers="h3">Used in some <a href="#tbeg">examples</a></td>
+</tr>
+</table>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;If you want to collect a group of buttons into a row or column, then you should check out <a href="toolbar.html">tool bars</a>.
+<hr /></div>
+<!-- 
+<center><img src="../../figures/uiswing/components/buttonhierarchy.gif" width="489" height="96" align="bottom" alt="Class Hierarchy of various buttons." /></center>-->
+<p>First, this section explains the basic button API that <code>AbstractButton</code> defines &#151; and thus all Swing buttons have in common. Next, it describes the small amount of API that <code>JButton</code> adds to <code>AbstractButton</code>. After that, this section shows you how to use specialized API to implement check boxes and radio buttons.</p>
+<h2><a name="abstractbutton" id="abstractbutton">How to Use the Common Button API</a></h2>
+<p>Here is a picture of an application that displays three buttons:</p>
+<center><img src="../../figures/uiswing/components/ButtonDemoMetal.png" width="489" height="96" align="bottom" alt="A snapshot of ButtonDemo" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol><!-- *******  boilerplate stuff ******* -->
+<li>Click the Launch button to run the Button Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#ButtonDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ButtonDemoProject/ButtonDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ButtonDemo example" /></a><br />
+<p><!--  ******* end boilerplate stuff  *******  -->
+ <!-- 
+
+<li> <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ButtonDemoProject/ButtonDemo.jnlp">Run ButtonDemo</a> (
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>).    Or, to compile and run the example yourself,
+     consult the 
+     <a href="../examples/components/index.html#ButtonDemo">example index</a>.
+        
+--></p>
+</li>
+<li>Click the left button.<br />
+It disables the middle button (and itself, since it is no longer useful) and enables the right button.</li>
+<li>Click the right button.<br />
+It enables the middle button and the left button, and disables itself.</li>
+</ol>
+<hr /></div>
+<p>As the <code>ButtonDemo</code> example shows, a Swing button can display both text and an image. In <code>ButtonDemo</code>, each button has its text in a different place, relative to its image. The underlined letter in each button&#39;s text shows the <em>mnemonic</em> &#151; the keyboard alternative &#151; for each button. In most look and feels, the user can click a button by pressing the Alt key and the mnemonic. For example, Alt-M would click the Middle button in ButtonDemo.</p>
+<p>When a button is disabled, the look and feel automatically generates the button&#39;s disabled appearance. However, you could provide an image to be substituted for the normal image. For example, you could provide gray versions of the images used in the left and right buttons.</p>
+<p>How you implement event handling depends on the type of button you use and how you use it. Generally, you implement an 
+<a class="TutorialLink" target="_top" href="../events/actionlistener.html">action listener</a>, which is notified every time the user clicks the button. For <a href="#checkbox">check boxes</a> you usually use an 
+<a class="TutorialLink" target="_top" href="../events/itemlistener.html">item listener</a>, which is notified when the check box is selected or deselected.</p>
+<p>Below is the code from 
+<a class="SourceLink" target="_blank" href="../examples/components/ButtonDemoProject/src/components/ButtonDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/ButtonDemoProject/src/components/ButtonDemo.java'); return false;"><code>ButtonDemo.java</code></a> that creates the buttons in the previous example and reacts to button clicks. The bold code is the code that would remain if the buttons had no images.</p>
+<div class="codeblock"><pre>
+<em>//In initialization code:</em>
+    ImageIcon leftButtonIcon = createImageIcon("images/right.gif");
+    ImageIcon middleButtonIcon = createImageIcon("images/middle.gif");
+    ImageIcon rightButtonIcon = createImageIcon("images/left.gif");
+
+    <b>b1 = new JButton("Disable middle button"</b>, leftButtonIcon<b>);</b>
+    b1.setVerticalTextPosition(AbstractButton.CENTER);
+    b1.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
+    <b>b1.setMnemonic(KeyEvent.VK_D);</b>
+    <b>b1.setActionCommand("disable");</b>
+
+    <b>b2 = new JButton("Middle button"</b>, middleButtonIcon<b>);</b>
+    b2.setVerticalTextPosition(AbstractButton.BOTTOM);
+    b2.setHorizontalTextPosition(AbstractButton.CENTER);
+    <b>b2.setMnemonic(KeyEvent.VK_M);</b>
+
+    <b>b3 = new JButton("Enable middle button"</b>, rightButtonIcon<b>);</b>
+    //Use the default text position of CENTER, TRAILING (RIGHT).
+    <b>b3.setMnemonic(KeyEvent.VK_E);
+    b3.setActionCommand("enable");
+    b3.setEnabled(false);</b>
+
+    //Listen for actions on buttons 1 and 3.
+    <b>b1.addActionListener(this);
+    b3.addActionListener(this);
+
+    b1.setToolTipText("Click this button to disable "
+                      + "the middle button.");
+    b2.setToolTipText("This middle button does nothing "
+                      + "when you click it.");
+    b3.setToolTipText("Click this button to enable the "
+                      + "middle button.");</b>
+    ...
+}
+
+<b>public void actionPerformed(ActionEvent e) {
+    if ("disable".equals(e.getActionCommand())) {
+        b2.setEnabled(false);
+        b1.setEnabled(false);
+        b3.setEnabled(true);
+    } else {
+        b2.setEnabled(true);
+        b1.setEnabled(true);
+        b3.setEnabled(false);
+    }
+} </b>
+
+protected static ImageIcon createImageIcon(String path) {
+    java.net.URL imgURL = ButtonDemo.class.getResource(path);
+    <em>...//error handling omitted for clarity...</em>
+    return new ImageIcon(imgURL);
+}
+</pre></div>
+<h2><a name="jbutton" id="jbutton">How to Use JButton Features</a></h2>
+<p>Ordinary buttons &#151; <code>JButton</code> objects &#151; have just a bit more functionality than the <code>AbstractButton</code> class provides: You can make a <code>JButton</code> be the default button.</p>
+<p>At most one button in a top-level container can be the default button. The default button typically has a highlighted appearance and acts clicked whenever the top-level container has the keyboard focus and the user presses the Return or Enter key. Here is a picture of a dialog, implemented in the <a href="../examples/components/index.html#ListDialog">ListDialog</a> example, in which the <b>Set</b> button is the default button:</p>
+<center><img src="../../figures/uiswing/components/NameChooserMetal.png" width="278" height="191" align="bottom" alt="In the Java Look &amp; Feel, the default button has a heavy border" /></center><p>You set the default button by invoking the <code>setDefaultButton</code> method on a top-level container&#39;s root pane. Here is the code that sets up the default button for the <code>ListDialog</code> example:</p>
+<div class="codeblock"><pre>
+<em>//In the constructor for a JDialog subclass:</em>
+getRootPane().setDefaultButton(setButton);
+</pre></div>
+<p>The exact implementation of the default button feature depends on the look and feel. For example, in the Windows look and feel, the default button changes to whichever button has the focus, so that pressing Enter clicks the focused button. When no button has the focus, the button you originally specified as the default button becomes the default button again.</p>
+<h2><a name="checkbox" id="checkbox">How to Use Check Boxes</a></h2>
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html"><code>JCheckBox</code></a> class provides support for check box buttons. You can also put check boxes in <a href="menu.html">menus</a>, using the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html"><code>JCheckBoxMenuItem</code></a> class. Because <code>JCheckBox</code> and <code>JCheckBoxMenuItem</code> inherit from <code>AbstractButton</code>, Swing check boxes have all the usual button characteristics, as discussed earlier in this section. For example, you can specify images to be used in check boxes.</p>
+<p>Check boxes are similar to <a href="#radiobutton">radio buttons</a> but their selection model is different, by convention. Any number of check boxes in a group &#151; none, some, or all &#151; can be selected. A group of radio buttons, on the other hand, can have only one button selected.</p>
+<p>Here is a picture of an application that uses four check boxes to customize a cartoon:</p>
+<center><img src="../../figures/uiswing/components/CheckBoxDemoMetal.png" width="203" height="170" align="bottom" alt="NOT a tutorial reader!" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<!-- *******  boilerplate stuff ******* -->
+<ol>
+<li>Click the Launch button to run the CheckBox Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#CheckBoxDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/CheckBoxDemoProject/CheckBoxDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ButtonDemo example" /></a><br />
+<p><!--  ******* end boilerplate stuff  *******  -->
+ <!-- 
+
+<li> <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/CheckBoxDemoProject/CheckBoxDemo.jnlp">Run CheckBoxDemo</a> (
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>).
+     Or, to compile and run the example yourself,
+     consult the 
+     <a href="../examples/components/index.html#CheckBoxDemo">example index</a>.
+--></p>
+</li>
+<li>Click the <b>Chin</b> button or press Alt-c.<br />
+The <b>Chin</b> check box becomes unselected, and the chin disappears from the picture. The other check boxes remain selected. This application has one item listener that listens to all the check boxes. Each time the item listener receives an event, the application loads a new picture that reflects the current state of the check boxes.</li>
+</ol>
+<hr /></div>
+<p>A check box generates one item event and one action event per click. Usually, you listen only for item events, since they let you determine whether the click selected or deselected the check box. Below is the code from 
+<a class="SourceLink" target="_blank" href="../examples/components/CheckBoxDemoProject/src/components/CheckBoxDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/CheckBoxDemoProject/src/components/CheckBoxDemo.java'); return false;"><code>CheckBoxDemo.java</code></a> that creates the check boxes in the previous example and reacts to clicks.</p>
+<div class="codeblock"><pre>
+<em>//In initialization code:</em>
+    chinButton = new JCheckBox("Chin");
+    chinButton.setMnemonic(KeyEvent.VK_C); 
+    chinButton.setSelected(true);
+
+    glassesButton = new JCheckBox("Glasses");
+    glassesButton.setMnemonic(KeyEvent.VK_G); 
+    glassesButton.setSelected(true);
+
+    hairButton = new JCheckBox("Hair");
+    hairButton.setMnemonic(KeyEvent.VK_H); 
+    hairButton.setSelected(true);
+
+    teethButton = new JCheckBox("Teeth");
+    teethButton.setMnemonic(KeyEvent.VK_T); 
+    teethButton.setSelected(true);
+
+    //Register a listener for the check boxes.
+    chinButton.addItemListener(this);
+    glassesButton.addItemListener(this);
+    hairButton.addItemListener(this);
+    teethButton.addItemListener(this);
+...
+public void itemStateChanged(ItemEvent e) {
+    ...
+    Object source = e.getItemSelectable();
+
+    if (source == chinButton) {
+        <em>//...make a note of it...</em>
+    } else if (source == glassesButton) {
+        <em>//...make a note of it...</em>
+    } else if (source == hairButton) {
+        <em>//...make a note of it...</em>
+    } else if (source == teethButton) {
+        <em>//...make a note of it...</em>
+    }
+
+    if (e.getStateChange() == ItemEvent.DESELECTED)
+        <em>//...make a note of it...</em>
+    ...
+    updatePicture();
+}
+</pre></div>
+<h2><a name="radiobutton" id="radiobutton">How to Use Radio Buttons</a></h2>
+<p>Radio buttons are groups of buttons in which, by convention, only one button at a time can be selected. The Swing release supports radio buttons with the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html"><code>JRadioButton</code></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ButtonGroup.html"><code>ButtonGroup</code></a> classes. To put a radio button in a <a href="menu.html">menu</a>, use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html"><code>JRadioButtonMenuItem</code></a> class. Other ways of displaying one-of-many choices are <a href="combobox.html">combo boxes</a> and <a href="list.html">lists</a>. Radio buttons look similar to <a href="#checkbox">check boxes</a>, but, by convention, check boxes place no limits on how many items can be selected at a time.</p>
+<p>Because <code>JRadioButton</code> inherits from <code>AbstractButton</code>, Swing radio buttons have all the usual button characteristics, as discussed earlier in this section. For example, you can specify the image displayed in a radio button.</p>
+<p>Here is a picture of an application that uses five radio buttons to let you choose which kind of pet is displayed:</p>
+<center><img src="../../figures/uiswing/components/RadioButtonDemoMetal.png" width="286" height="196" align="bottom" alt="A snapshot of RadioButtonDemo" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol><!-- *******  boilerplate stuff ******* -->
+<li>Click the Launch button to run the RadioButton Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#RadioButtonDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/RadioButtonDemoProject/RadioButtonDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ButtonDemo example" /></a><br />
+<p><!--  ******* end boilerplate stuff  *******  -->
+ <!-- 
+
+<li> <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/RadioButtonDemoProject/RadioButtonDemo.jnlp">Run RadioButtonDemo</a> (
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>).
+     Or, to compile and run the example yourself,
+     consult the 
+     <a href="../examples/components/index.html#RadioButtonDemo">example index</a>.
+        
+--></p>
+</li>
+<li>Click the <b>Dog</b> button or press Alt-d.<br />
+The <b>Dog</b> button becomes selected, which makes the <b>Bird</b> button become unselected. The picture switches from a bird to a dog. This application has one action listener that listens to all the radio buttons. Each time the action listener receives an event, the application displays the picture for the radio button that was just clicked.</li>
+</ol>
+<hr /></div>
+<p>Each time the user clicks a radio button (even if it was already selected), the button fires an 
+<a class="TutorialLink" target="_top" href="../events/actionlistener.html">action event</a>. One or two 
+<a class="TutorialLink" target="_top" href="../events/itemlistener.html">item events</a> also occur &#151; one from the button that was just selected, and another from the button that lost the selection (if any). Usually, you handle radio button clicks using an action listener.</p>
+<p>Below is the code from 
+<a class="SourceLink" target="_blank" href="../examples/components/RadioButtonDemoProject/src/components/RadioButtonDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/RadioButtonDemoProject/src/components/RadioButtonDemo.java'); return false;"><code>RadioButtonDemo.java</code></a> that creates the radio buttons in the previous example and reacts to clicks.</p>
+<div class="codeblock"><pre>
+<em>//In initialization code:</em>
+    //Create the radio buttons.
+    JRadioButton birdButton = new JRadioButton(birdString);
+    birdButton.setMnemonic(KeyEvent.VK_B);
+    birdButton.setActionCommand(birdString);
+    birdButton.setSelected(true);
+
+    JRadioButton catButton = new JRadioButton(catString);
+    catButton.setMnemonic(KeyEvent.VK_C);
+    catButton.setActionCommand(catString);
+
+    JRadioButton dogButton = new JRadioButton(dogString);
+    dogButton.setMnemonic(KeyEvent.VK_D);
+    dogButton.setActionCommand(dogString);
+
+    JRadioButton rabbitButton = new JRadioButton(rabbitString);
+    rabbitButton.setMnemonic(KeyEvent.VK_R);
+    rabbitButton.setActionCommand(rabbitString);
+
+    JRadioButton pigButton = new JRadioButton(pigString);
+    pigButton.setMnemonic(KeyEvent.VK_P);
+    pigButton.setActionCommand(pigString);
+
+    //Group the radio buttons.
+    ButtonGroup group = new ButtonGroup();
+    group.add(birdButton);
+    group.add(catButton);
+    group.add(dogButton);
+    group.add(rabbitButton);
+    group.add(pigButton);
+
+    //Register a listener for the radio buttons.
+    birdButton.addActionListener(this);
+    catButton.addActionListener(this);
+    dogButton.addActionListener(this);
+    rabbitButton.addActionListener(this);
+    pigButton.addActionListener(this);
+...
+public void actionPerformed(ActionEvent e) {
+    picture.setIcon(new ImageIcon("images/" 
+                                  + e.getActionCommand() 
+                                  + ".gif"));
+}
+</pre></div>
+<p>For each group of radio buttons, you need to create a <code>ButtonGroup</code> instance and add each radio button to it. The <code>ButtonGroup</code> takes care of unselecting the previously selected button when the user selects another button in the group.</p>
+<p>You should generally initialize a group of radio buttons so that one is selected. However, the API doesn&#39;t enforce this rule &#151; a group of radio buttons can have no initial selection. Once the user has made a selection, exactly one button is selected from then on.</p>
+<h2><a name="api" id="api">The Button API</a></h2>
+<p>The following tables list the commonly used button-related API. Other methods you might call, such as <code>setFont</code> and <code>setForeground</code>, are listed in the API tables in <a href="jcomponent.html#api">The JComponent Class</a>.</p>
+<p>The API for using buttons falls into these categories:</p>
+<ul>
+<li><a href="#contents">Setting or Getting the Button&#39;s Contents</a></li>
+<li><a href="#looks">Fine Tuning the Button&#39;s Appearance</a></li>
+<li><a href="#acts">Implementing the Button&#39;s Functionality</a></li>
+<li><a href="#checkboxapi">Check Box Constructors</a></li>
+<li><a href="#radiobuttonapi">Radio Button Constructors</a></li>
+<li><a href="#togglebuttonapi">Toggle Button Constructors</a></li>
+<li><a href="#buttongroup">Commonly Used Button Group Constructors/Methods</a></li>
+</ul>
+<table border="1" summary="Setting or Getting the Button&#39;s Contents">
+<caption><a name="contents" id="contents">Setting or Getting the Button&#39;s Contents</a></caption>
+<tr>
+<th id="h101">Method or Constructor</th>
+<th id="h102">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JButton.html#JButton-javax.swing.Action-">JButton(Action)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JButton.html#JButton-java.lang.String-javax.swing.Icon-">JButton(String, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JButton.html#JButton-java.lang.String-">JButton(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JButton.html#JButton-javax.swing.Icon-">JButton(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JButton.html#JButton--">JButton()</a></td>
+<td headers="h102">Create a <code>JButton</code> instance, initializing it to have the specified text/image/action.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setAction-javax.swing.Action-">void setAction(Action)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getAction--">Action getAction()</a><br /></td>
+<td headers="h102">Set or get the button&#39;s properties according to values from the <code>Action</code> instance.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setText-java.lang.String-">void setText(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getText--">String getText()</a><br /></td>
+<td headers="h102">Set or get the text displayed by the button. You can use HTML formatting, as described in <a href="html.html">Using HTML in Swing Components</a>.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setIcon-javax.swing.Icon-">void setIcon(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getIcon--">Icon getIcon()</a><br /></td>
+<td headers="h102">Set or get the image displayed by the button when the button isn&#39;t selected or pressed.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setDisabledIcon-javax.swing.Icon-">void setDisabledIcon(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getDisabledIcon--">Icon getDisabledIcon()</a><br /></td>
+<td headers="h102">Set or get the image displayed by the button when it is disabled. If you do not specify a disabled image, then the look and feel creates one by manipulating the default image.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setPressedIcon-javax.swing.Icon-">void setPressedIcon(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getPressedIcon--">Icon getPressedIcon()</a><br /></td>
+<td headers="h102">Set or get the image displayed by the button when it is being pressed.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setSelectedIcon-javax.swing.Icon-">void setSelectedIcon(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getSelectedIcon--">Icon getSelectedIcon()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setDisabledSelectedIcon-javax.swing.Icon-">void setDisabledSelectedIcon(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getDisabledSelectedIcon--">Icon getDisabledSelectedIcon()</a><br /></td>
+<td headers="h102">Set or get the image displayed by the button when it is selected. If you do not specify a disabled selected image, then the look and feel creates one by manipulating the selected image.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setRolloverEnabled-boolean-">setRolloverEnabled(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#isRolloverEnabled--">boolean isRolloverEnabled()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setRolloverIcon-javax.swing.Icon-">void setRolloverIcon(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getRolloverIcon--">Icon getRolloverIcon()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setRolloverSelectedIcon-javax.swing.Icon-">void setRolloverSelectedIcon(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getRolloverSelectedIcon--">Icon getRolloverSelectedIcon()</a><br /></td>
+<td headers="h102">Use <code>setRolloverIcon(someIcon)</code> to make the button display the specified icon when the cursor passes over it. The <code>setRolloverSelectedIcon</code> method lets you specify the rollover icon when the button is selected &#151; this is useful for two-state buttons such as toggle buttons. Setting the rollover icon automatically calls <code>setRollover(true)</code>, enabling rollover.</td>
+</tr>
+</table>
+<table border="1" summary="Fine Tuning the Button&#39;s Appearance">
+<caption><a name="looks" id="looks">Fine Tuning the Button&#39;s Appearance</a></caption>
+<tr>
+<th id="h201">Method or Constructor</th>
+<th id="h202">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setHorizontalAlignment-int-">void setHorizontalAlignment(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setVerticalAlignment-int-">void setVerticalAlignment(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getHorizontalAlignment--">int getHorizontalAlignment()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getVerticalAlignment--">int getVerticalAlignment()</a></td>
+<td headers="h202">Set or get where in the button its contents should be placed. The <code>AbstractButton</code> class allows any one of the following values for horizontal alignment: <code>RIGHT</code>, <code>LEFT</code>, <code>CENTER</code> (the default), <code>LEADING</code>, and <code>TRAILING</code>. For vertical alignment: <code>TOP</code>, <code>CENTER</code> (the default), and <code>BOTTOM</code>.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setHorizontalTextPosition-int-">void setHorizontalTextPosition(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setVerticalTextPosition-int-">void setVerticalTextPosition(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getHorizontalTextPosition--">int getHorizontalTextPosition()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getVerticalTextPosition--">int getVerticalTextPosition()</a></td>
+<td headers="h202">Set or get where the button&#39;s text should be placed, relative to the button&#39;s image. The <code>AbstractButton</code> class allows any one of the following values for horizontal position: <code>LEFT</code>, <code>CENTER</code>, <code>RIGHT</code>, <code>LEADING</code>, and <code>TRAILING</code> (the default). For vertical position: <code>TOP</code>, <code>CENTER</code> (the default), and <code>BOTTOM</code>.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setMargin-java.awt.Insets-">void setMargin(Insets)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getMargin--">Insets getMargin()</a></td>
+<td headers="h202">Set or get the number of pixels between the button&#39;s border and its contents.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setFocusPainted-boolean-">void setFocusPainted(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#isFocusPainted--">boolean isFocusPainted()</a></td>
+<td headers="h202">Set or get whether the button should look different when it has the focus.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setBorderPainted-boolean-">void setBorderPainted(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#isBorderPainted--">boolean isBorderPainted()</a></td>
+<td headers="h202">Set or get whether the border of the button should be painted.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setIconTextGap-int-">void setIconTextGap(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getIconTextGap--">int getIconTextGap()</a><br /></td>
+<td headers="h202">Set or get the amount of space between the text and the icon displayed in this button.</td>
+</tr>
+</table>
+<table border="1" summary="Implementing the Button&#39;s Functionality">
+<caption><a name="acts" id="acts">Implementing the Button&#39;s Functionality</a></caption>
+<tr>
+<th id="h301">Method or Constructor</th>
+<th id="h302">Purpose</th>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setMnemonic-int-">void setMnemonic(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getMnemonic--">char getMnemonic()</a><br /></td>
+<td headers="h302">Set or get the keyboard alternative to clicking the button. One form of the <code>setMnemonic</code> method accepts a character argument; however, the Swing team recommends that you use an <code>int</code> argument instead, specifying a <code>KeyEvent.VK_<em>X</em></code> constant.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setDisplayedMnemonicIndex-int-">void setDisplayedMnemonicIndex(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getDisplayedMnemonicIndex--">int getDisplayedMnemonicIndex()</a><br /></td>
+<td headers="h302">Set or get a hint as to which character in the text should be decorated to represent the mnemonic. Note that not all look and feels may support this.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setActionCommand-java.lang.String-">void setActionCommand(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getActionCommand--">String getActionCommand()</a><br /></td>
+<td headers="h302">Set or get the name of the action performed by the button.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#addActionListener-java.awt.event.ActionListener-">void addActionListener(ActionListener)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#removeActionListener--">ActionListener removeActionListener()</a><br /></td>
+<td headers="h302">Add or remove an object that listens for action events fired by the button.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#addItemListener-java.awt.event.ItemListener-">void addItemListener(ItemListener)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#removeItemListener--">ItemListener removeItemListener()</a><br /></td>
+<td headers="h302">Add or remove an object that listens for item events fired by the button.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setSelected-boolean-">void setSelected(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#isSelected--">boolean isSelected()</a><br /></td>
+<td headers="h302">Set or get whether the button is selected. Makes sense only for buttons that have on/off state, such as check boxes. 
+</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#doClick--">void doClick()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#doClick-int-">void doClick(int)</a><br /></td>
+<td headers="h302">Programmatically perform a &quot;click&quot;. The optional argument specifies the amount of time (in milliseconds) that the button should look pressed.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#setMultiClickThreshhold-long-">void setMultiClickThreshhold(long)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractButton.html#getMultiClickThreshhold--">long getMultiClickThreshhold()</a></td>
+<td headers="h302">Set or get the amount of time (in milliseconds) required between mouse press events for the button to generate corresponding action events.</td>
+</tr>
+</table>
+<table border="1" summary="Check Box Constructors">
+<caption><a name="checkboxapi" id="checkboxapi">Check Box Constructors</a></caption>
+<tr>
+<th id="h401">Constructor</th>
+<th id="h402">Purpose</th>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html#JCheckBox-javax.swing.Action-">JCheckBox(Action)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html#JCheckBox-java.lang.String-">JCheckBox(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html#JCheckBox-java.lang.String-boolean-">JCheckBox(String, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html#JCheckBox-javax.swing.Icon-">JCheckBox(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html#JCheckBox-javax.swing.Icon-boolean-">JCheckBox(Icon, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html#JCheckBox-java.lang.String-javax.swing.Icon-">JCheckBox(String, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html#JCheckBox-java.lang.String-javax.swing.Icon-boolean-">JCheckBox(String, Icon, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html#JCheckBox--">JCheckBox()</a></td>
+<td headers="h402">Create a <code>JCheckBox</code> instance. The string argument specifies the text, if any, that the check box should display. Similarly, the <code>Icon</code> argument specifies the image that should be used instead of the look and feel&#39;s default check box image. Specifying the boolean argument as <code>true</code> initializes the check box to be selected. If the boolean argument is absent or <code>false</code>, then the check box is initially unselected.</td>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem-javax.swing.Action-">JCheckBoxMenuItem(Action)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem-java.lang.String-">JCheckBoxMenuItem(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem-java.lang.String-boolean-">JCheckBoxMenuItem(String, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem-javax.swing.Icon-">JCheckBoxMenuItem(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem-java.lang.String-javax.swing.Icon-">JCheckBoxMenuItem(String, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem-java.lang.String-javax.swing.Icon-boolean-">JCheckBoxMenuItem(String, Icon, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBoxMenuItem.html#JCheckBoxMenuItem--">JCheckBoxMenuItem()</a></td>
+<td headers="h402">Create a <code>JCheckBoxMenuItem</code> instance. The arguments are interpreted in the same way as the arguments to the <code>JCheckBox</code> constructors, except that any specified icon is shown in addition to the normal check box icon.</td>
+</tr>
+</table>
+<table border="1" summary="Radio Button Constructors">
+<caption><a name="radiobuttonapi" id="radiobuttonapi">Radio Button Constructors</a></caption>
+<tr>
+<th id="h501">Constructor</th>
+<th id="h502">Purpose</th>
+</tr>
+<tr>
+<td headers="h501">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html#JRadioButton-javax.swing.Action-">JRadioButton(Action)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html#JRadioButton-java.lang.String-">JRadioButton(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html#JRadioButton-java.lang.String-boolean-">JRadioButton(String, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html#JRadioButton-javax.swing.Icon-">JRadioButton(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html#JRadioButton-javax.swing.Icon-boolean-">JRadioButton(Icon, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html#JRadioButton-java.lang.String-javax.swing.Icon-">JRadioButton(String, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html#JRadioButton-java.lang.String-javax.swing.Icon-boolean-">JRadioButton(String, Icon, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html#JRadioButton--">JRadioButton()</a></td>
+<td headers="h502">Create a <code>JRadioButton</code> instance. The string argument specifies the text, if any, that the radio button should display. Similarly, the <code>Icon</code> argument specifies the image that should be used instead of the look and feel&#39;s default radio button image. Specifying the boolean argument as <code>true</code> initializes the radio button to be selected, subject to the approval of the <code>ButtonGroup</code> object. If the boolean argument is absent or <code>false</code>, then the radio button is initially unselected.</td>
+</tr>
+<tr>
+<td headers="h501">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem-javax.swing.Action-">JRadioButtonMenuItem(Action)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem-java.lang.String-">JRadioButtonMenuItem(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem-javax.swing.Icon-">JRadioButtonMenuItem(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem-java.lang.String-javax.swing.Icon-">JRadioButtonMenuItem(String, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButtonMenuItem.html#JRadioButtonMenuItem--">JRadioButtonMenuItem()</a></td>
+<td headers="h502">Create a <code>JRadioButtonMenuItem</code> instance. The arguments are interpreted in the same way as the arguments to the <code>JRadioButton</code> constructors, except that any specified icon is shown in addition to the normal radio button icon.</td>
+</tr>
+</table>
+<table border="1" summary="Toggle Button Constructors">
+<caption><a name="togglebuttonapi" id="togglebuttonapi">Toggle Button Constructors</a></caption>
+<tr>
+<th id="h601">Constructor</th>
+<th id="h602">Purpose</th>
+</tr>
+<tr>
+<td headers="h601">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JToggleButton.html#JToggleButton-javax.swing.Action-">JToggleButton(Action)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JToggleButton.html#JToggleButton-java.lang.String-">JToggleButton(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JToggleButton.html#JToggleButton-java.lang.String-boolean-">JToggleButton(String, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JToggleButton.html#JToggleButton-javax.swing.Icon-">JToggleButton(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JToggleButton.html#JToggleButton-javax.swing.Icon-boolean-">JToggleButton(Icon, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JToggleButton.html#JToggleButton-java.lang.String-javax.swing.Icon-">JToggleButton(String, Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JToggleButton.html#JToggleButton-java.lang.String-javax.swing.Icon-boolean-">JToggleButton(String, Icon, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JToggleButton.html#JToggleButton--">JToggleButton()</a></td>
+<td headers="h602">Create a <code>JToggleButton</code> instance, which is similar to a <code>JButton</code>, but with two states. Normally, you use a <code>JRadioButton</code> or <code>JCheckBox</code> instead of directly instantiating <code>JToggleButton</code>, but <code>JToggleButton</code> can be useful when you do not want the typical radio button or check box appearance. The string argument specifies the text, if any, that the toggle button should display. Similarly, the <code>Icon</code> argument specifies the image that should be used. Specifying the boolean argument as <code>true</code> initializes the toggle button to be selected. If the boolean argument is absent or <code>false</code>, then the toggle button is initially unselected.</td>
+</tr>
+</table>
+<table border="1" summary="Commonly Used Button Group Constructors/Methods">
+<caption><a name="buttongroup" id="buttongroup">Commonly Used Button Group Constructors/Methods</a></caption>
+<tr>
+<th id="h701">Constructor or Method</th>
+<th id="h702">Purpose</th>
+</tr>
+<tr>
+<td headers="h701">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ButtonGroup.html#ButtonGroup--">ButtonGroup()</a></td>
+<td headers="h702">Create a <code>ButtonGroup</code> instance.</td>
+</tr>
+<tr>
+<td headers="h701">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ButtonGroup.html#add-javax.swing.AbstractButton-">void add(AbstractButton)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ButtonGroup.html#remove-javax.swing.AbstractButton-">void remove(AbstractButton)</a></td>
+<td headers="h702">Add a button to the group, or remove a button from the group. 
+</td>
+</tr>
+<tr>
+<td headers="h701">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/DefaultButtonModel.html#getGroup--">public ButtonGroup getGroup()</a><br />
+<em>(in <code>DefaultButtonModel</code>)</em></td>
+<td headers="h702">Get the <code>ButtonGroup</code>, if any, that controls a button. For example:<br />
+<code>ButtonGroup group = ((DefaultButtonModel)button.getModel()).getGroup();</code></td>
+</tr>
+<tr>
+<td headers="h701">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ButtonGroup.html#ButtonGroup--">public ButtonGroup clearSelection()</a></td>
+<td headers="h702">Clears the state of selected buttons in the ButtonGroup. None of the buttons in the ButtonGroup are selected .</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples that Use Various Kinds of Buttons</a></h2>
+<p>The following examples use buttons. Also see <a href="toolbar.html#eg">Examples that Use Tool Bars</a>, which lists programs that add <code>JButton</code> objects to <code>JToolBar</code>s.</p>
+<table summary="Examples that use buttons">
+<tr>
+<th id="h801" align="left">Example</th>
+<th id="h802" align="left">Where Described</th>
+<th id="h803" align="left">Notes</th>
+</tr>
+<tr>
+<td headers="h801"><a href="../examples/components/index.html#ButtonDemo"><code>ButtonDemo</code></a></td>
+<td headers="h802"><a href="#abstractbutton">How to Use the Common Button API</a></td>
+<td headers="h803">Uses mnemonics and icons. Specifies the button text position, relative to the button icon. Uses action commands.</td>
+</tr>
+<tr>
+<td headers="h801"><a href="../examples/components/index.html#ButtonHtmlDemo"><code>ButtonHtmlDemo</code></a></td>
+<td headers="h802"><a href="html.html">Using HTML in Swing Components</a></td>
+<td headers="h803">A version of ButtonDemo that uses HTML formatting in its buttons.</td>
+</tr>
+<tr>
+<td headers="h801"><a href="../examples/components/index.html#ListDialog"><code>ListDialog</code></a></td>
+<td headers="h802"><a href="#jbutton">How to Use JButton Features</a></td>
+<td headers="h803">Implements a dialog with two buttons, one of which is the default button.</td>
+</tr>
+<tr>
+<td headers="h801"><a href="../examples/components/index.html#DialogDemo"><code>DialogDemo</code></a></td>
+<td headers="h802"><a href="dialog.html">How to Make Dialogs</a></td>
+<td headers="h803">Has &quot;Show it&quot; buttons whose behavior is tied to the state of radio buttons. Uses sizable, though anonymous, inner classes to implement the action listeners.</td>
+</tr>
+<tr>
+<td headers="h801"><a href="../examples/components/index.html#ProgressBarDemo"><code>ProgressBarDemo</code></a></td>
+<td headers="h802"><a href="progress.html">How to Monitor Progress</a></td>
+<td headers="h803">Implements a button&#39;s action listener with a named inner class.</td>
+</tr>
+<tr>
+<td headers="h801"><a href="../examples/components/index.html#CheckBoxDemo"><code>CheckBoxDemo</code></a></td>
+<td headers="h802"><a href="#checkbox">How to Use Check Boxes</a></td>
+<td headers="h803">Uses check box buttons to determine which of 16 images it should display.</td>
+</tr>
+<tr>
+<td headers="h801"><a href="../examples/misc/index.html#ActionDemo"><code>ActionDemo</code></a></td>
+<td headers="h802">
+<a class="TutorialLink" target="_top" href="../misc/action.html">How to Use Actions</a></td>
+<td headers="h803">Uses check box menu items to set the state of the program.</td>
+</tr>
+<tr>
+<td headers="h801"><a href="../examples/components/index.html#RadioButtonDemo"><code>RadioButtonDemo</code></a></td>
+<td headers="h802"><a href="#radiobutton">How to Use Radio Buttons</a></td>
+<td headers="h803">Uses radio buttons to determine which of five images it should display.</td>
+</tr>
+<tr>
+<td headers="h801"><a href="../examples/components/index.html#DialogDemo"><code>DialogDemo</code></a></td>
+<td headers="h802"><a href="dialog.html">How to Make Dialogs</a></td>
+<td headers="h803">Contains several sets of radio buttons, which it uses to determine which dialog to bring up.</td>
+</tr>
+<tr>
+<td headers="h801"><a href="../examples/components/index.html#MenuDemo"><code>MenuDemo</code></a></td>
+<td headers="h802"><a href="menu.html">How to Use Menus</a></td>
+<td headers="h803">Contains radio button menu items and check box menu items.</td>
+</tr>
+<tr>
+<td headers="h801"><a name="tbeg" id="tbeg"></a><a href="../examples/components/index.html#ColorChooserDemo2"><code>ColorChooserDemo2</code></a></td>
+<td headers="h802"><a href="colorchooser.html">How to Use Color Choosers</a></td>
+<td headers="h803">The crayons in <code>CrayonPanel</code> are implemented as toggle buttons.</td>
+</tr>
+<tr>
+<td headers="h801"><a href="../examples/components/index.html#ScrollDemo"><code>ScrollDemo</code></a></td>
+<td headers="h802"><a href="scrollpane.html">How to Use Scroll Panes</a></td>
+<td headers="h803">The <strong>cm</strong> button is a toggle button.</td>
+</tr>
+</table>
+
+<p>
+You can learn more about JavaFX button components from the following documents:</p>
+<ul>
+<li>
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/button.htm">Using JavaFX UI Controls: Button</a></li>
+<li>
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/radio-button.htm">Using JavaFX UI Controls: Radio Button</a></li>
+<li>
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/toggle-button.htm">Using JavaFX UI Controls: Toggle Button</a></li>
+<li>
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/checkbox.htm">Using JavaFX UI Controls: Checkbox</a></li>
+</ul>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="applet.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="buttongroup.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Make Applets
+        <br /><b>Next page:</b> How to Use the ButtonGroup Component
+    </div>
+</body>
+</html> 

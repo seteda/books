@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Use Internal Frames (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Swing Components)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Swing Components</a></div>
+<div class="linkAHEAD"><a href="toplevel.html">Using Top-Level Containers</a></div>
+<div class="linkAHEAD"><a href="jcomponent.html">The JComponent Class</a></div>
+<div class="linkAHEAD"><a href="text.html">Using Text Components</a></div>
+<div class="linkBHEAD"><a href="generaltext.html">Text Component Features</a></div>
+<div class="linkBHEAD"><a href="textapi.html">The Text Component API</a></div>
+<div class="linkAHEAD"><a href="componentlist.html">How to Use Various Components</a></div>
+<div class="linkBHEAD"><a href="applet.html">How to Make Applets</a></div>
+<div class="linkBHEAD"><a href="button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a></div>
+<div class="linkBHEAD"><a href="buttongroup.html">How to Use the ButtonGroup Component</a></div>
+<div class="linkBHEAD"><a href="colorchooser.html">How to Use Color Choosers</a></div>
+<div class="linkBHEAD"><a href="combobox.html">How to Use Combo Boxes</a></div>
+<div class="linkBHEAD"><a href="dialog.html">How to Make Dialogs</a></div>
+<div class="linkBHEAD"><a href="editorpane.html">How to Use Editor Panes and Text Panes</a></div>
+<div class="linkBHEAD"><a href="filechooser.html">How to Use File Choosers</a></div>
+<div class="linkBHEAD"><a href="formattedtextfield.html">How to Use Formatted Text Fields</a></div>
+<div class="linkBHEAD"><a href="frame.html">How to Make Frames (Main Windows)</a></div>
+<div class="nolinkBHEAD">How to Use Internal Frames</div>
+<div class="linkBHEAD"><a href="label.html">How to Use Labels</a></div>
+<div class="linkBHEAD"><a href="layeredpane.html">How to Use Layered Panes</a></div>
+<div class="linkBHEAD"><a href="list.html">How to Use Lists</a></div>
+<div class="linkBHEAD"><a href="menu.html">How to Use Menus</a></div>
+<div class="linkBHEAD"><a href="panel.html">How to Use Panels</a></div>
+<div class="linkBHEAD"><a href="passwordfield.html">How to Use Password Fields</a></div>
+<div class="linkBHEAD"><a href="progress.html">How to Use Progress Bars</a></div>
+<div class="linkBHEAD"><a href="rootpane.html">How to Use Root Panes</a></div>
+<div class="linkBHEAD"><a href="scrollpane.html">How to Use Scroll Panes</a></div>
+<div class="linkBHEAD"><a href="separator.html">How to Use Separators</a></div>
+<div class="linkBHEAD"><a href="slider.html">How to Use Sliders</a></div>
+<div class="linkBHEAD"><a href="spinner.html">How to Use Spinners</a></div>
+<div class="linkBHEAD"><a href="splitpane.html">How to Use Split Panes</a></div>
+<div class="linkBHEAD"><a href="tabbedpane.html">How to Use Tabbed Panes</a></div>
+<div class="linkBHEAD"><a href="table.html">How to Use Tables</a></div>
+<div class="linkBHEAD"><a href="textarea.html">How to Use Text Areas</a></div>
+<div class="linkBHEAD"><a href="textfield.html">How to Use Text Fields</a></div>
+<div class="linkBHEAD"><a href="toolbar.html">How to Use Tool Bars</a></div>
+<div class="linkBHEAD"><a href="tooltip.html">How to Use Tool Tips</a></div>
+<div class="linkBHEAD"><a href="tree.html">How to Use Trees</a></div>
+<div class="linkAHEAD"><a href="html.html">How to Use HTML in Swing Components</a></div>
+<div class="linkAHEAD"><a href="model.html">How to Use Models</a></div>
+<div class="linkAHEAD"><a href="icon.html">How to Use Icons</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use Borders</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Component Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Swing Components
+        <br /><b>Section:</b> How to Use Various Components
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Swing Components</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="frame.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="label.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Use Internal Frames</h1></div>
+            <div id="PageContent">
+
+<p>With the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html"><code>JInternalFrame</code></a> class you can display a <a href="frame.html"><code>JFrame</code></a>-like window within another window. Usually, you add internal frames to a desktop pane. The desktop pane, in turn, might be used as the content pane of a <code>JFrame</code>. The desktop pane is an instance of
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDesktopPane.html"><code>JDesktopPane</code></a>, which is a subclass of <a href="layeredpane.html"><code>JLayeredPane</code></a> that has added API for managing multiple overlapping internal frames.</p>
+<p>You should consider carefully whether to base your program&#39;s GUI around frames or internal frames. Switching from internal frames to frames or vice versa is not necessarily a simple task. By experimenting with both frames and internal frames, you can get an idea of the tradeoffs involved in choosing one over the other.</p>
+<p>Here is a picture of an application that has two internal frames (one of which is iconified) inside a regular frame:</p>
+<center><img src="../../figures/uiswing/components/InternalFrameDemoMetal.png" width="278" height="180" align="bottom" alt="InternalFrameDemo has multiple internal frames, managed by a desktop pane" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run InternalFrameDemo using
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#InternalFrameDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/InternalFrameDemoProject/InternalFrameDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the InternalFrameDemo example" /></a><br /></li>
+<li>Create new internal frames using the Create item in the Document menu.<br />
+Each internal frame comes up 30 pixels lower and to the right of the place where the previous internal frame first appeared. This functionality is implemented in the <code>MyInternalFrame</code> class, which is the custom subclass of <code>JInternalFrame</code>.</li>
+</ol>
+<hr /></div>
+<p>The following code, taken from
+<a class="SourceLink" target="_blank" href="../examples/components/InternalFrameDemoProject/src/components/InternalFrameDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/InternalFrameDemoProject/src/components/InternalFrameDemo.java'); return false;"><code>InternalFrameDemo.java</code></a>, creates the desktop and internal frames in the previous example.</p>
+<div class="codeblock"><pre>
+<em>...//In the constructor of InternalFrameDemo, a JFrame subclass:</em>
+    desktop = new JDesktopPane();
+    createFrame(); //Create first window
+    setContentPane(desktop);
+    ...
+    //Make dragging a little faster but perhaps uglier.
+    desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
+...
+protected void createFrame() {
+    MyInternalFrame frame = new MyInternalFrame();
+    frame.setVisible(true);
+    desktop.add(frame);
+    try {
+        frame.setSelected(true);
+    } catch (java.beans.PropertyVetoException e) {}
+}
+
+<em>...//In the constructor of MyInternalFrame, a JInternalFrame subclass:</em>
+static int openFrameCount = 0;
+static final int xOffset = 30, yOffset = 30;
+
+public MyInternalFrame() {
+    super("Document #" + (++openFrameCount),
+          true, //resizable
+          true, //closable
+          true, //maximizable
+          true);//iconifiable
+    //...Create the GUI and put it in the window...
+    //...Then set the window size or call pack...
+    ...
+    //Set the window's location.
+    setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
+}
+</pre></div>
+<h2><a name="frame" id="frame">Internal Frames vs. Regular Frames</a></h2>
+<p>The code for using internal frames is similar in many ways to the code for using regular Swing frames. Because internal frames have root panes, setting up the GUI for a <code>JInternalFrame</code> is very similar to setting up the GUI for a <code>JFrame</code>. <code>JInternalFrame</code> also provides other API, such as <code>pack</code>, that makes it similar to <code>JFrame</code>.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>Just as for a regular frame, you must invoke <code>setVisible(true)</code> or <code>show()</code> on an internal frame to display it. The internal frame does not appear until you explicitly make it visible.</p>
+<hr /></div>
+<p>Internal frames are not windows or top-level containers, however, which makes them different from frames. For example, you must add an internal frame to a container (usually a <code>JDesktopPane</code>); an internal frame cannot be the root of a containment hierarchy. Also, internal frames do not generate window events. Instead, the user actions that would cause a frame to fire window events cause an internal frame to fire internal frame events.</p>
+<p>Because internal frames are implemented with platform-independent code, they add some features that frames cannot give you. One such feature is that internal frames give you more control over their state and capabilities than frames do. You can programatically iconify or maximize an internal frame. You can also specify what icon goes in the internal frame&#39;s title bar. You can even specify whether the internal frame has the window decorations to support resizing, iconifying, closing, and maximizing.</p>
+<p>Another feature is that internal frames are designed to work within desktop panes. The <code>JInternalFrame</code> API contains methods such as <code>moveToFront</code> that work only if the internal frame&#39;s container is a layered pane such as a <code>JDesktopPane</code>.</p>
+<h2><a name="rules" id="rules">Rules of Using Internal Frames</a></h2>
+<p>If you have built any programs using <code>JFrame</code> and the other Swing components, then you already know a lot about how to use internal frames. The following list summarizes the rules for using internal frames. For additional information, see <a href="frame.html">How to Make Frames</a> and <a href="jcomponent.html">The JComponent Class</a>.</p>
+<dl>
+<dt><strong>You must set the size of the internal frame.</strong></dt>
+<dd>If you do not set the size of the internal frame, it will have zero size and thus never be visible. You can set the size using one of the following methods: <code>setSize</code>, <code>pack</code>, or <code>setBounds</code>.</dd>
+<dt><strong>As a rule, you should set the location of the internal frame.</strong></dt>
+<dd>If you do not set the location of the internal frame, it will come up at 0,0 (the upper left of its container). You can use the <code>setLocation</code> or <code>setBounds</code> method to specify the upper left point of the internal frame, relative to its container.</dd>
+<dt><strong>To add components to an internal frame, you add them to the internal frame&#39;s content pane.</strong></dt>
+<dd>This is exactly like the <code>JFrame</code> situation. See <a href="toplevel.html#contentpane">Adding Components to the Content Pane</a> for details.</dd>
+<dt><strong>Dialogs that are internal frames should be implemented using <code>JOptionPane</code> or <code>JInternalFrame</code>, not <code>JDialog</code>.</strong></dt>
+<dd>To create a simple dialog, you can use the <code>JOptionPane</code> <code>showInternal<em>Xxx</em>Dialog</code> methods, as described in <a href="dialog.html">How to Make Dialogs</a>.</dd>
+<dt><strong>You must add an internal frame to a container.</strong></dt>
+<dd>If you do not add the internal frame to a container (usually a <code>JDesktopPane</code>), the internal frame will not appear.</dd>
+<dt><strong>You need to call <code>show</code> or <code>setVisible</code> on internal frames.</strong></dt>
+<dd>Internal frames are invisible by default. You must invoke <code>setVisible(true)</code> or <code>show()</code> to make them visible.</dd>
+<dt><strong>Internal frames fire internal frame events, not window events.</strong></dt>
+<dd>Handling internal frame events is almost identical to handling window events. See <a href="../events/internalframelistener.html">How to Write an Internal Frame Listener</a> for more information.</dd>
+</dl>
+<p><a name="drag" id="drag"></a></p>
+<div class="note"><hr /><strong>Performance tip:</strong>&nbsp;<p>When a desktop has many internal frames, the user might notice that moving them seems slow. Outline dragging is one way to avoid this problem. With outline dragging, only the outline of the internal frame is painted at the current mouse position while the internal frame&#39;s being dragged. The internal frame&#39;s innards are not repainted at a new position until dragging stops. The default behavior (called <em>live</em> dragging) is to reposition and repaint some or all of internal frame continuously while it is being moved; this can be slow if the desktop has many internal frames.</p>
+<p>Use the <code>JDesktopPane</code> method <code>setDragMode</code>* to specify outline dragging. For example:</p>
+<div class="codeblock"><pre>
+desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
+</pre></div>
+<hr /></div>
+<h2><a name="api" id="api">The Internal Frame API</a></h2>
+<p>The following tables list the commonly used <code>JInternalFrame</code> constructors and methods, as well as a few methods that <code>JDesktopPane</code> provides. Besides the API listed in this section, <code>JInternalFrame</code> inherits useful API from its superclasses, <code>JComponent</code>, <code>Component</code>, and <code>Container</code>. See <a href="jcomponent.html">The JComponent Class</a> for lists of methods from those classes.</p>
+<p>Like <code>JInternalFrame</code>, <code>JDesktopPane</code> descends from <code>JComponent</code>, and thus provides the methods described in <a href="jcomponent.html">The JComponent Class</a>. Because <code>JDesktopPane</code> extends <code>JLayeredPane</code>, it also supports the methods described in <a href="layeredpane.html#api">The Layered Pane API</a>.</p>
+<p>The API for using internal frames falls into these categories:</p>
+<ul>
+<li><a href="#construct">Creating the internal frame</a></li>
+<li><a href="#add">Adding components to the internal frame</a></li>
+<li><a href="#layout">Specifying the internal frame&#39;s visibility, size, and location</a></li>
+<li><a href="#window">Performing window operations on the internal frame</a></li>
+<li><a href="#decorate">Controlling window decorations and capabilities</a></li>
+<li><a href="#JDesktopPane">Using the JDesktopPane API</a></li>
+</ul>
+<table summary="Creating the Internal Frame" border="1">
+<caption><a name="construct" id="construct">Creating the Internal Frame</a></caption>
+<tr>
+<th id="h1" align="left">Constructor or Method</th>
+<th id="h2" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#JInternalFrame--">JInternalFrame()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#JInternalFrame-java.lang.String-">JInternalFrame(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#JInternalFrame-java.lang.String-boolean-">JInternalFrame(String, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#JInternalFrame-java.lang.String-boolean-boolean-">JInternalFrame(String, boolean, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#JInternalFrame-java.lang.String-boolean-boolean-boolean-">JInternalFrame(String, boolean, boolean, boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#JInternalFrame-java.lang.String-boolean-boolean-boolean-boolean-">JInternalFrame(String, boolean, boolean, boolean, boolean)</a></td>
+<td headers="h2">Create a <code>JInternalFrame</code> instance. The first argument specifies the title (if any) to be displayed by the internal frame. The rest of the arguments specify whether the internal frame should contain decorations allowing the user to resize, close, maximize, and iconify the internal frame (specified in that order). The default value for each boolean argument is <code>false</code>, which means that the operation is not allowed.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInternalConfirmDialog-java.awt.Component-java.lang.Object-">static int showInternalConfirmDialog(Component, Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInternalInputDialog-java.awt.Component-java.lang.Object-">static String showInternalInputDialog(Component, Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInternalMessageDialog-java.awt.Component-java.lang.Object-">static Object showInternalMessageDialog(Component, Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html#showInternalOptionDialog-java.awt.Component-java.lang.Object-java.lang.String-int-int-javax.swing.Icon-java.lang.Object:A-java.lang.Object-">static int showInternalOptionDialog(Component, Object, String, int, int, Icon, Object[], Object)</a></td>
+<td headers="h2">Create a <code>JInternalFrame</code> that simulates a dialog. See <a href="dialog.html">How to Make Dialogs</a> for details.</td>
+</tr>
+</table>
+<table summary="Adding Components to the Internal Frame" border="1">
+<caption><a name="add" id="add">Adding Components to the Internal Frame</a></caption>
+<tr>
+<th id="h101" align="left">Method</th>
+<th id="h102" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setContentPane-java.awt.Container-">void setContentPane(Container)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#getContentPane--">Container getContentPane()</a></td>
+<td headers="h102">Set or get the internal frame&#39;s content pane, which generally contains all of the internal frame&#39;s GUI, with the exception of the menu bar and window decorations.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setJMenuBar-javax.swing.JMenuBar-">void setJMenuBar(JMenuBar)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#getJMenuBar--">JMenuBar getJMenuBar()</a></td>
+<td headers="h102">Set or get the internal frame&#39;s menu bar.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setLayeredPane-javax.swing.JLayeredPane-">void setLayeredPane(JLayeredPane)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#getLayeredPane--">JLayeredPane getLayeredPane()</a></td>
+<td headers="h102">Set or get the internal frame&#39;s layered pane.</td>
+</tr>
+</table>
+<table summary="Specifying the Internal Frame's Visibility, Size, and Location" border="1">
+<caption><a name="layout" id="layout">Specifying the Internal Frame&#39;s Visibility, Size, and Location</a></caption>
+<tr>
+<th id="h201" align="left">Method</th>
+<th id="h202" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.html#setVisible-boolean-">void setVisible(boolean)</a></td>
+<td headers="h202">Make the internal frame visible (if <code>true</code>) or invisible (if <code>false</code>). You should invoke <code>setVisible(true)</code> on each <code>JInternalFrame</code> before adding it to its container. (Inherited from <code>Component</code>).</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#pack--">void pack()</a></td>
+<td headers="h202">Size the internal frame so that its components are at their preferred sizes.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setLocation-java.awt.Point-">void setLocation(Point)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setLocation-int-int-">void setLocation(int, int)</a></td>
+<td headers="h202">Set the position of the internal frame. (Inherited from <code>Component</code>).</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setBounds-java.awt.Rectangle-">void setBounds(Rectangle)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setBounds-int-int-int-int-">void setBounds(int, int, int, int)</a></td>
+<td headers="h202">Explicitly set the size and location of the internal frame. (Inherited from <code>Component</code>).</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setSize-java.awt.Dimension-">void setSize(Dimension)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setSize-int-int-">void setSize(int, int)</a></td>
+<td headers="h202">Explicitly set the size of the internal frame. (Inherited from <code>Component</code>).</td>
+</tr>
+</table>
+<table summary="Performing Window Operations on the Internal Frame" border="1">
+<caption><a name="window" id="window">Performing Window Operations on the Internal Frame</a></caption>
+<tr>
+<th id="h301" align="left">Method</th>
+<th id="h302" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setDefaultCloseOperation-int-">void setDefaultCloseOperation(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#getDefaultCloseOperation--">int getDefaultCloseOperation()</a></td>
+<td headers="h302">Set or get what the internal frame does when the user attempts to &quot;close&quot; the internal frame. The default value is <code>DISPOSE_ON_CLOSE</code>. Other possible values are <code>DO_NOTHING_ON_CLOSE</code> and <code>HIDE_ON_CLOSE</code> See <a href="frame.html#windowevents">Responding to Window-Closing Events</a> for details.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#addInternalFrameListener-javax.swing.event.InternalFrameListener-">void addInternalFrameListener(InternalFrameListener)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#removeInternalFrameListener-javax.swing.event.InternalFrameListener-">void removeInternalFrameListener(InternalFrameListener)</a></td>
+<td headers="h302">Add or remove an internal frame listener (<code>JInternalFrame</code>&#39;s equivalent of a window listener). See <a href="../events/internalframelistener.html">How to Write an Internal Frame Listener</a> for more information.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#moveToFront--">void moveToFront()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#moveToBack--">void moveToBack()</a></td>
+<td headers="h302">If the internal frame&#39;s parent is a layered pane such as a desktop pane, moves the internal frame to the front or back (respectively) of its layer.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setClosed-boolean-">void setClosed(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#isClosed--">boolean isClosed()</a></td>
+<td headers="h302">Set or get whether the internal frame is currently closed. The argument to <code>setClosed</code> must be <code>true</code>. When reopening a closed internal frame, you make it visible and add it to a container (usually the desktop pane you originally added it to).</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setIcon-boolean-">void setIcon(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#isIcon--">boolean isIcon()</a></td>
+<td headers="h302">Iconify or deiconify the internal frame, or determine whether it is currently iconified.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setMaximum-boolean-">void setMaximum(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#isMaximum--">boolean isMaximum()</a></td>
+<td headers="h302">Maximize or restore the internal frame, or determine whether it is maximized.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setSelected-boolean-">void setSelected(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#isSelected--">boolean isSelected()</a></td>
+<td headers="h302">Set or get whether the internal frame is the currently &quot;selected&quot; (activated) internal frame.</td>
+</tr>
+</table>
+<table summary="Controlling Window Decorations and Capabilities" border="1">
+<caption><a name="decorate" id="decorate">Controlling Window Decorations and Capabilities</a></caption>
+<tr>
+<th id="h401" align="left">Method</th>
+<th id="h402" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setFrameIcon-javax.swing.Icon-">void setFrameIcon(Icon)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#getFrameIcon--">Icon getFrameIcon()</a></td>
+<td headers="h402">Set or get the icon displayed in the title bar of the internal frame (usually in the top-left corner).</td>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setClosable-boolean-">void setClosable(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#isClosable--">boolean isClosable()</a></td>
+<td headers="h402">Set or get whether the user can close the internal frame.</td>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setIconifiable-boolean-">void setIconifiable(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#isIconifiable--">boolean isIconifiable()</a></td>
+<td headers="h402">Set or get whether the internal frame can be iconified.</td>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setMaximizable-boolean-">void setMaximizable(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#isMaximizable--">boolean isMaximizable()</a></td>
+<td headers="h402">Set or get whether the user can maximize this internal frame.</td>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setResizable-boolean-">void setResizable(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#isResizable--">boolean isResizable()</a></td>
+<td headers="h402">Set or get whether the internal frame can be resized.</td>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#setTitle-java.lang.String-">void setTitle(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JInternalFrame.html#getTitle--">String getTitle()</a></td>
+<td headers="h402">Set or get the window title.</td>
+</tr>
+</table>
+<table summary="Using the JDesktopPane API" border="1">
+<caption><a name="JDesktopPane" id="JDesktopPane">Using the <code>JDesktopPane</code> API</a></caption>
+<tr>
+<th id="h501" align="left">Constructor or Method</th>
+<th id="h502" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h501">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDesktopPane.html#JDesktopPane--">JDesktopPane()</a></td>
+<td headers="h502">Creates a new instance of <code>JDesktopPane</code>.</td>
+</tr>
+<tr>
+<td headers="h501">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDesktopPane.html#getAllFrames--">JInternalFrame[] getAllFrames()</a></td>
+<td headers="h502">Returns all <code>JInternalFrame</code> objects that the desktop contains.</td>
+</tr>
+<tr>
+<td headers="h501">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDesktopPane.html#getAllFramesInLayer-int-">JInternalFrame[] getAllFramesInLayer(int)</a></td>
+<td headers="h502">Returns all <code>JInternalFrame</code> objects that the desktop contains that are in the specified layer. See <a href="layeredpane.html">How to Use Layered Panes</a> for information about layers.</td>
+</tr>
+<tr>
+<td headers="h501">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDesktopPane.html#setDragMode-int-">void setDragMode(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JDesktopPane.html#getDragMode--">int getDragMode()</a></td>
+<td headers="h502">Set or get the drag mode used for internal frames in this desktop. The integer can be either <code>JDesktopPane.LIVE_DRAG_MODE</code> or <code>JDesktopPane.OUTLINE_DRAG_MODE</code>. The default for the Java look and feel is live-drag mode.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples that Use Internal Frames</a></h2>
+<p>The following examples use internal frames. Because internal frames are similar to regular frames, you should also look at <a href="frame.html#eg">Examples that Use Frames</a>.</p>
+<table summary="Information about examples">
+<tr>
+<th id="h601" align="left">Example</th>
+<th id="h602" align="left">Where Described</th>
+<th id="h603" align="left">Notes</th>
+</tr>
+<tr>
+<td headers="h601"><a href="../examples/components/index.html#InternalFrameDemo"><code>MyInternalFrame</code></a></td>
+<td headers="h602">This page.</td>
+<td headers="h603">Implements an internal frame that appears at an offset to the previously created internal frame.</td>
+</tr>
+<tr>
+<td headers="h601"><a href="../examples/components/index.html#InternalFrameDemo"><code>InternalFrameDemo</code></a></td>
+<td headers="h602">This page.</td>
+<td headers="h603">Lets you create internal frames (instances of <code>MyInternalFrame</code>) that go into the application&#39;s <code>JDesktopPane</code>.</td>
+</tr>
+<tr>
+<td headers="h601"><a href="../examples/events/index.html#InternalFrameEventDemo"><code>InternalFrameEventDemo</code></a></td>
+<td headers="h602"><a href="../events/internalframelistener.html">How to Write an Internal Frame Listener</a></td>
+<td headers="h603">Demonstrates listening for internal frame events. Also demonstrates positioning internal frames within a desktop pane.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="frame.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="label.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Make Frames (Main Windows)
+        <br /><b>Next page:</b> How to Use Labels
+    </div>
+</body>
+</html> 

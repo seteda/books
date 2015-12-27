@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Lesson: API and Tools Use for Secure Code and File Exchanges (The Java&trade; Tutorials &gt; Security Features in Java SE)</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This security Java tutorial describes usage of digital signatures, keys, and cryptography services" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java security, cryptography, digital signature, verifying signature, signing code" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+    </head>
+<body>
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+    <!-- ixheader -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+        <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                    <div id="TopBar_left">
+                        The Java&trade; Tutorials
+                    </div>
+                    <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java
+                                Tutorials</a>
+                        <br />
+                    </div> 
+      </div> </div> </div> </div> </div>
+
+    <div class="MainFlow_wide">
+        <div class="PrintHeaders">
+            <b>Trail:</b> Security Features in Java SE
+        </div>
+        <div id="BreadCrumbs">
+            <a href="../../index.html" target="_top">Home Page</a>
+        &gt;
+            <a href="../index.html" target="_top">Security Features in Java SE</a>
+        </div>
+        <div class="NavBit">
+                <a target="_top" href="../tour2/index.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../toolsign/index.html">Next&nbsp;&raquo;</a>
+        </div>
+        <div id="PageTitle"><h1>Lesson: API and Tools Use for Secure Code and File Exchanges</h1></div>
+        <div id="PageContent">
+
+<p>This lesson explains why digital signatures, certificates, and keystores are needed. The lesson also compares use of the tools versus the JDK Security API with respect to generating signatures. Such tool usage is demonstrated in the next two lessons, 
+<a class="TutorialLink" target="_top" href="../toolsign/index.html">Signing Code and Granting It Permissions</a> and 
+<a class="TutorialLink" target="_top" href="../toolfilex/index.html">Exchanging Files</a>. API usage is demonstrated in the 
+<a class="TutorialLink" target="_top" href="../apisign/index.html">Generating and Verifying Signatures</a> lesson.</p>
+<p>This lesson contains the following sections</p>
+<ul>
+<li><a href="#Intro">Code and Document Security</a></li>
+<li><a href="#Notes">Tool and API Notes</a></li>
+<li><a href="#API">Use of the JDK Security API to Sign Documents</a></li>
+<li><a href="#Tools">Use of the Tools to Sign Code or Documents</a></li>
+</ul>
+<h2><a name="Intro" id="Intro">Code and Document Security</a></h2>
+<p>If you electronically send someone an important document (or documents), or an applet or application to run, the recipient needs a way to verify that the document or code came from you and was not modified in transit (for example, by a malicious user intercepting it). Digital signatures, certificates, and keystores all help ensure the security of the files you send.</p>
+<h3><a name="Sigs">Digital Signatures</a></h3>
+<p>The basic idea in the use of digital signatures is as follows.</p>
+<ol>
+<li>You &quot;sign&quot; the document or code using one of your <b>private keys</b>, which you can generate by using <code>keytool</code> or security API methods. That is, you generate a digital signature for the document or code, using the <code>jarsigner</code> tool or Security API methods.</li>
+<li>You send your signed document to your recipient.</li>
+<li>You also supply your recipient with your <b>public key.</b> This public key corresponds to the private key you originally used to generate the signature.</li>
+<li>Your recipient uses your public key to verify that your document came from you and was not modified before it reached him/her.</li>
+</ol>
+<p>A recipient needs to ensure that your public key <i>itself</i> is authentic before he/she can use it to verify that your signature is authentic. Therefore, you will usually supply a <b>certificate</b> that contains your public key together with the key of a <b>Certificate Authority</b> who can vouch for your key&#39;s authenticity. See the next section for details.</p>
+<p>For more information about the terminology and concepts of signing and verification, and further explanation of the benefits, see the 
+<a class="TutorialLink" target="_top" href="../../deployment/jar/signing.html">Signing JAR Files</a> section of the &quot;The Packaging Programs in JAR Files&quot; lesson.</p>
+<h3>Certificates</h3>
+<p>A certificate contains:</p>
+<ul>
+<li>A public key.</li>
+<li>The &quot;distinguished-name&quot; information of the entity (person, company, or so on) whose certificate it is. This entity is referred to as the certificate <i>subject</i>, or <i>owner</i>. The distinguished-name information includes the following attributes (or a subset): the entity&#39;s name, organizational unit, organization, city or locality, state or province, and country code.</li>
+<li>A digital signature. A certificate is signed by one entity, the <i>issuer</i>, to vouch for the fact that the enclosed public key is the actual public key of another entity, the <i>owner</i>.</li>
+<li>The distinguished-name information for the signer (issuer).</li>
+</ul>
+<p>One way for a recipient to check whether a certificate is valid is by verifying its digital signature, using its issuer&#39;s (signer&#39;s) public key. That key can itself be stored within another certificate whose signature can also be verified by using the public key of that next certificate&#39;s issuer, and that key may <i>also</i> be stored in yet <i>another</i> certificate, and so on. You can stop checking when you reach a public key that you already trust and use it to verify the signature on the corresponding certificate.</p>
+<p>If the recipient cannot establish a trust chain, then he/she can calculate the the certificate <b>fingerprint(s)</b>, using the <code>keytool</code> <code>-import</code> or <code>-printcert</code> command. A fingerprint is a relatively short number that uniquely and reliably identifies the certificate. (Technically, the fingerprint is a hash value of the certificate information, using a message digest function.) The recipient can then phone the certificate owner and compare the fingerprint values of the received certificate with the certificate that was sent. If the fingerprints are the same, the certificates are the same.</p>
+<p>Thus you can ensure that a certificate was not modified in transit. One other potential uncertainty when working with certificates is the identity of the sender. Sometimes a certificate is <b>self-signed</b>, that is, signed using the private key corresponding to the public key in the certificate; the issuer is the same as the subject.</p>
+<p>Self-signing a certificate is useful for developing and testing an application. However, before deploying to users, obtain a certificate from a trusted third party, referred to as a certification authority (CA). To do so, you send a self-signed certificate signing request (CSR) to the CA. The CA verifies the signature on the CSR and your identity, perhaps by checking your driver&#39;s license or other information. The CA then vouches for your being the owner of the public key by issuing a certificate and signing it with its own (the CA&#39;s) private key. Anybody who trusts the issuing CA&#39;s public key can now verify the signature on the certificate. In many cases the issuing CA itself may have a certificate from a CA higher up in the CA hierarchy, leading to <b>certificate chains</b>.</p>
+<p>Certificates of entities you trust are typically imported into your keystore as &quot;<b>trusted certificates</b>.&quot; The public key in each such certificate may then be used to verify signatures generated using the corresponding private key. Such verifications can be accomplished by:</p>
+<ul>
+<li>the <code>jarsigner</code> tool (if the document/code and signature appear in a JAR file),</li>
+<li>API methods, or</li>
+<li>the runtime system, when a resource access is attempted and a policy file specifies that the resource access is allowed for the code attempting the access if its signature is authentic. The code&#39;s class file(s) and signature must be in a JAR file.</li>
+</ul>
+<p>If you are sending signed code or documents to others, you need to supply them with the certificate containing the public key corresponding to the private key used to sign the code/document. The <code>keytool</code> <code>-export</code> command or API methods can export your certificate from your keystore to a file, which can then be sent to anyone needing it. A person who receives the certificate can import it into the keystore as a trusted certificate, using, for example, API methods or the <code>keytool</code> <code>-import</code> command.</p>
+<p>If you use the <code>jarsigner</code> tool to generate a signature for a JAR file, the tool retrieves your certificate and its supporting certificate chain from your keystore. The tool then stores them, along with the signature, in the JAR file.</p>
+<h3><a name="Keystores" id="Keystores">Keystores</a></h3>
+<p>Private keys and their associated public key certificates are stored in password-protected databases called <b>keystores</b>. A keystore can contain two types of entries: the trusted certificate entries discussed above, and key/certificate entries, each containing a private key and the corresponding public key certificate. Each entry in a keystore is identified by an <em>alias</em>.</p>
+<p>A keystore owner can have multiple keys in the keystore, accessed via different aliases. An alias is typically named after a particular role in which the keystore owner uses the associated key. An alias may also identify the purpose of the key. For example, the alias <code>signPersonalEmail</code> might be used to identify a keystore entry whose private key is used for signing personal e-mail, and the alias <code>signJarFiles</code> might be used to identify an entry whose private key is used for signing JAR files.</p>
+<p>The <code>keytool</code> tool can be used to</p>
+<ul>
+<li>Create private keys and their associated public key certificates</li>
+<li>Issue certificate requests, which you send to the appropriate certification authority</li>
+<li>Import certificate replies, obtained from the certification authority you contacted</li>
+<li>Import public key certificates belonging to other parties as trusted certificates</li>
+<li>Manage your keystore</li>
+</ul>
+<p>API methods can also be used to access and to modify a keystore.</p>
+<h2><a name="Notes" id="Notes">Tool and API Notes</a></h2>
+<p>Note the following regarding use of the tools and the API related to digital signatures.</p>
+<ul>
+<li>You can use the JDK Security API, tools, or a combination to generate keys and signatures and to import certificates. You can use these API or tool features to securely exchange documents with others.</li>
+<li>To use the <i>tools</i> for document exchange, the document(s) must be placed in a JAR (Java ARchive) file, which may be created by the <code>jar</code> tool. A JAR file is a good way of encapsulating multiple files in one spot. When a file is &quot;signed&quot;, the resulting digital signature bytes need to be stored somewhere. When a JAR file is signed, the signature can go in the JAR file itself. This is what happens when you use the <code>jarsigner</code> tool to sign a JAR file.</li>
+<li>If you are creating applet code that you will sign, it needs to be placed in a JAR file. The same is true if you are creating application code that may be similarly restricted by running it with a security manager. The reason you need the JAR file is that when a policy file specifies that code signed by a particular entity is permitted one or more operations, such as specific file reads or writes, the code is expected to come from a signed JAR file. (The term &quot;signed code&quot; is an abbreviated way of saying &quot;code in a class file that appears in a JAR file that was signed.&quot;)</li>
+<li>In order for the runtime system to check a code signature, the person/organization that will run the code first needs to import into their keystore a certificate authenticating the public key corresponding to the private key used to sign the code.</li>
+<li>In order for the <code>jarsigner</code> tool to verify the authenticity of a JAR file signature, the person/organization that received the JAR file first needs to import into their keystore a certificate authenticating the public key corresponding to the private key used to sign the code.</li>
+<li>At this time there are no APIs for certificate creation.</li>
+</ul>
+<h2><a name="API" id="API">Use of the JDK Security API to Sign Documents</a></h2>
+<p>The 
+<a class="TutorialLink" target="_top" href="../apisign/index.html">Generating and Verifying Signatures</a> shows you how to use the JDK Security API to sign documents. The lesson shows what one program, executed by the person who has the original document, would do to</p>
+<ul>
+<li>generate keys,</li>
+<li>generate a digital signature for the data using the private key, and</li>
+<li>export the public key and the signature to files.</li>
+</ul>
+<p>Then it shows an example of another program, executed by the receiver of the data, signature, and public key. It shows how the program</p>
+<ul>
+<li>Imports the public key</li>
+<li>Verifies the authenticity of the signature.</li>
+</ul>
+<p>This lesson also shows you alternative ways to import and supply keys, including certificates.</p>
+<h2><a name="Tools" id="Tools">Use of the Tools to Sign Code or Documents</a></h2>
+<p>The 
+<a class="TutorialLink" target="_top" href="../toolsign/index.html">Signing Code and Granting It Permissions</a> lesson shows how to use Java Security tools to place your code into a JAR file, sign it, and export your public key. Then it shows how your recipient can use these same Java tools to import your public key certificate and then add an entry to a policy file that will grant your code the permission it needs to access system resources controlled by your recipient.</p>
+<p>The 
+<a class="TutorialLink" target="_top" href="../toolfilex/index.html">Exchanging Files</a> lesson you how to use Java security tools to sign a document and then export the public key certificate for the public key using <code>keytool</code>. corresponding to the private key used to sign that document using <code>keytool</code>. Then it shows how your recipient can verify your signature by installing your public key certificate and then using the <code>jarsigner</code> tool to verify your signature.</p>
+<p>These two lessons have much in common. In both cases, the first two steps for the code or document sender are to:</p>
+<ul>
+<li>Create a JAR file containing the document or class file, using the <code>jar</code> tool.</li>
+<li>Generate keys (if they don&#39;t already exist), using the <code>keytool</code> <code>-genkey</code> command.</li>
+</ul>
+<p>The next two steps are optional:</p>
+<ul>
+<li>Use the <code>keytool</code> <code>-certreq</code> command; then send the resulting certificate signing request to a certification authority (CA) such as VeriSign.</li>
+<li>Use the <code>keytool</code> <code>-import</code> command to import the CA&#39;s response.</li>
+</ul>
+<p>The next two steps are required:</p>
+<ul>
+<li>Sign the JAR file, using the <code>jarsigner</code> tool and the private key generated earlier.</li>
+<li>Export the public key certificate, using the <code>keytool</code> <code>-export</code> command. Then supply the signed JAR file and the certificate to the receiver.</li>
+</ul>
+<p>In both cases, the receiver of the signed JAR file and the certificate should import the certificate as a trusted certificate, using the <code>keytool</code> <code>-import</code> command. The <code>keytool</code> will attempt to construct a trust chain from the certificate to be imported to an already trusted certificate in the keystore. If that fails, the <code>keytool</code> will display the certificate fingerprint and prompt you to verify it.</p>
+<p>If what was sent was code, the receiver also needs to modify a policy file to permit the required resource accesses to code signed by the private key corresponding to the public key in the imported certificate. The <b>Policy Tool</b> can be used to do this.</p>
+<p>If what was sent was one or more documents, the receiver needs to verify the authenticity of the JAR file signature, using the <code>jarsigner</code> tool.</p>
+<p>This lesson discusses the two optional steps. The other steps are covered in the next two lessons, 
+<a class="TutorialLink" target="_top" href="../toolsign/index.html">Signing Code and Granting It Permissions</a> and 
+<a class="TutorialLink" target="_top" href="../toolfilex/index.html">Exchanging Files</a> .</p>
+<h3><a name="GenCSR" id="GenCSR">Generating a Certificate Signing Request (CSR) for a Public Key Certificate</a></h3>
+<p>When <code>keytool</code> is used to generate public/private key pairs, it creates a keystore entry containing a private key and a self-signed certificate for the public key. (That is, the certificate is signed using the corresponding private key.) This is adequate when developing and testing an application.</p>
+<p>However, a certificate is more likely to be trusted by others if it is signed by a certification authority (CA). To get a certificate signed by a CA, you first generate a certificate signing request (CSR), via a command such as the following:</p>
+<div class="codeblock"><pre>
+keytool -certreq -alias <i>alias</i> -file <i>csrFile</i> 
+</pre></div>
+<p>Here <i>alias</i> is used to access the keystore entry containing the private key and the public key certificate, and <i>csrFile</i> specifies the name to be used for the CSR created by this command.</p>
+<p>You then submit this file to a CA, such as VeriSign, Inc. The CA authenticates you, the requestor (&quot;subject&quot;), and then signs and returns a certificate authenticating your public key. By signing the certificate, the CA vouches that you are the owner of the public key.</p>
+<p>In some cases, the CA will return a chain of certificates, each one authenticating the public key of the signer of the previous certificate in the chain.</p>
+<h3>Importing the Response from the CA</h3>
+<p>After submitting a certificate signing request (CSR) to a certification authority (CA), you need to replace the original self-signed certificate in your keystore with a certificate chain by importing the certificate (or chain of certificates) returned to you by the CA.</p>
+<p>But first you need a &quot;trusted certificate&quot; entry in your keystore (or in the <code>cacerts</code> keystore file, described below) that authenticates the <i>CA</i>&#39;s public key. With such an entry the CA&#39;s signature can be verified. That is, the CA&#39;s signature on the certificate, or on the final certificate in the chain the CA sends to you in response to your CSR, can be verified.</p>
+<h3><a name="ImportCA" id="ImportCA">Importing a Certificate from a CA as a &quot;Trusted Certificate&quot;</a></h3>
+<p>Before you import the certificate reply from a CA, you need one or more &quot;trusted certificates&quot; in your keystore or in the <code>cacerts</code> file.</p>
+<ul>
+<li>If the certificate reply is a certificate chain, you just need the top certificate of the chain -- the &quot;root&quot; CA certificate authenticating that CA&#39;s public key.</li>
+<li>If the certificate reply is a single certificate, you need a certificate for the issuing CA (the one that signed it). If that certificate is not self-signed, you need a certificate for its signer, and so on, up to a self-signed &quot;root&quot; CA certificate.</li>
+</ul>
+<p>The <code>cacerts</code> file represents a system-wide keystore with CA certificates. This file resides in the JRE security properties directory, <code><i>java.home</i>/lib/security</code>, where <i>java.home</i> is the JRE installation directory.</p>
+<hr />
+<p><b>IMPORTANT: Verify Your <code>cacerts</code> File</b><br />
+Since you trust the CAs in the <code>cacerts</code> file as entities for signing and issuing certificates to other entities, you must manage the <code>cacerts</code> file carefully. The <code>cacerts</code> file should contain only certificates of the CAs you trust. It is your responsibility to verify the trusted root CA certificates bundled in the <code>cacerts</code> file and make your own trust decisions. To remove an untrusted CA certificate from the <code>cacerts</code> file, use the delete option of the <code>keytool</code> command. You can find the <code>cacerts</code> file in the JRE installation directory. Contact your system administrator if you do not have permission to edit this file.<br /></p>
+<hr />
+<p>The <code>cacerts</code> file contains a number of trusted CA certificates. If you sent your CSR to one of these trusted vendors (such as VeriSign), you won&#39;t need to import the vendor&#39;s root certificate as a trusted certificate in your keystore; you can go on to the <a href="#ImportReply">next</a> section to see how to import the certificate reply from the CA.</p>
+<p>A certificate from a CA is usually either self-signed or signed by another CA, in which case you also need a certificate authenticating that CA&#39;s public key. Suppose that company ABC, Inc., is a CA and that you obtain a file named <code>ABCCA.cer</code>, purportedly a self-signed certificate from ABC, authenticating that CA&#39;s public key.</p>
+<p>Be very careful to ensure that the certificate is valid prior to importing it as a &quot;trusted&quot; certificate! View it first (using the <code>keytool</code> <code>-printcert</code> command or the <code>keytool</code> <code>-import</code> command without the <code>-noprompt</code> option), and make sure that the displayed certificate fingerprint(s) match the expected ones. You can call the person who sent the certificate and compare the fingerprint(s) that you see with the ones that they show or that a secure public key repository shows. Only if the fingerprints are equal is it guaranteed that the certificate has not been replaced in transit with somebody else&#39;s (for example, an attacker&#39;s) certificate. If such an attack took place and you did not check the certificate before you imported it, you would end up trusting anything the attacker has signed.</p>
+<p>If you trust that the certificate is valid, you can add it to your keystore via a command such as the following:</p>
+<div class="codeblock"><pre>
+keytool -import -alias <i>alias</i> -file ABCCA.cer -keystore <i>storefile</i> 
+</pre></div>
+<p>This command creates a &quot;trusted certificate&quot; entry in the keystore whose name is that specified in <i>storefile</i>. The entry contains the data from the file <code>ABCCA.cer</code>, and it is assigned the specified alias.</p>
+<h3><a name="ImportReply" id="ImportReply">Importing the Certificate Reply from the CA</a></h3>
+<p>Once you&#39;ve imported the required trusted certificate(s), as described in the previous section, or they are already in your keystore or in the <code>cacerts</code> file, you can import the certificate reply and thereby replace your self-signed certificate with a certificate chain. This chain will be either the one returned by the CA in response to your request (if the CA reply is a chain) or one constructed (if the CA reply is a single certificate) by using the certificate reply and trusted certificates that are already available in the keystore or in the <code>cacerts</code> keystore file.</p>
+<p>As an example, suppose that you sent your certificate signing request to VeriSign. You can then import the reply via the following, which assumes that the returned certificate is in the file specified by <i>certReplyFile</i>:</p>
+<div class="codeblock"><pre>
+keytool -import -trustcacerts
+    -keystore <i>storefile</i>
+    -alias <i>alias </i>
+    -file <i>certReplyFile</i> 
+</pre></div>
+<p>Type this command on one line.</p>
+<p>The certificate reply is validated by using trusted certificates from the keystore and optionally by using the certificates configured in the <code>cacerts</code> keystore file (if the <code>-trustcacerts</code> option is specified). Each certificate in the chain is verified, using the certificate at the next level higher in the chain. You need to trust only the top-level &quot;root&quot; CA certificate in the chain. If you do not already trust the top-level certificate, <code>keytool</code> will display the fingerprint of that certificate and ask you whether you want to trust it.</p>
+<p>The new certificate chain of the specified (by <i>alias</i>) entry replaces the old certificate (or chain) associated with this entry. The old chain can be replaced only if a valid <i>keypass</i>, the password used to protect the private key of the entry, is supplied. If no password is provided and if the private key password is different from the keystore password, the user is prompted for it.</p>
+<p>For more detailed information about generating CSRs and importing certificate replies, see the <code>keytool</code> documentation:</p>
+<ul>
+<li>
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/keytool.html">keytool documentation with Windows examples</a></li>
+<li>
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html">keytool documentation with UNIX examples</a></li>
+</ul>
+
+
+        </div>
+    <div class="NavBit">
+        <a href="../tour2/index.html">&laquo; Previous</a>
+        &bull;
+        <a href="../TOC.html">Trail</a>
+        &bull;
+        <a href="../toolsign/index.html">Next &raquo;</a>
+    </div>
+    </div>
+   
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+   
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Previous Lesson
+        <br /><b>Next page:</b> Signing Code and Granting It Permissions
+    </div>
+</body>
+</html> 

@@ -1,0 +1,1035 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Use Progress Bars (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Swing Components)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Swing Components</a></div>
+<div class="linkAHEAD"><a href="toplevel.html">Using Top-Level Containers</a></div>
+<div class="linkAHEAD"><a href="jcomponent.html">The JComponent Class</a></div>
+<div class="linkAHEAD"><a href="text.html">Using Text Components</a></div>
+<div class="linkBHEAD"><a href="generaltext.html">Text Component Features</a></div>
+<div class="linkBHEAD"><a href="textapi.html">The Text Component API</a></div>
+<div class="linkAHEAD"><a href="componentlist.html">How to Use Various Components</a></div>
+<div class="linkBHEAD"><a href="applet.html">How to Make Applets</a></div>
+<div class="linkBHEAD"><a href="button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a></div>
+<div class="linkBHEAD"><a href="buttongroup.html">How to Use the ButtonGroup Component</a></div>
+<div class="linkBHEAD"><a href="colorchooser.html">How to Use Color Choosers</a></div>
+<div class="linkBHEAD"><a href="combobox.html">How to Use Combo Boxes</a></div>
+<div class="linkBHEAD"><a href="dialog.html">How to Make Dialogs</a></div>
+<div class="linkBHEAD"><a href="editorpane.html">How to Use Editor Panes and Text Panes</a></div>
+<div class="linkBHEAD"><a href="filechooser.html">How to Use File Choosers</a></div>
+<div class="linkBHEAD"><a href="formattedtextfield.html">How to Use Formatted Text Fields</a></div>
+<div class="linkBHEAD"><a href="frame.html">How to Make Frames (Main Windows)</a></div>
+<div class="linkBHEAD"><a href="internalframe.html">How to Use Internal Frames</a></div>
+<div class="linkBHEAD"><a href="label.html">How to Use Labels</a></div>
+<div class="linkBHEAD"><a href="layeredpane.html">How to Use Layered Panes</a></div>
+<div class="linkBHEAD"><a href="list.html">How to Use Lists</a></div>
+<div class="linkBHEAD"><a href="menu.html">How to Use Menus</a></div>
+<div class="linkBHEAD"><a href="panel.html">How to Use Panels</a></div>
+<div class="linkBHEAD"><a href="passwordfield.html">How to Use Password Fields</a></div>
+<div class="nolinkBHEAD">How to Use Progress Bars</div>
+<div class="linkBHEAD"><a href="rootpane.html">How to Use Root Panes</a></div>
+<div class="linkBHEAD"><a href="scrollpane.html">How to Use Scroll Panes</a></div>
+<div class="linkBHEAD"><a href="separator.html">How to Use Separators</a></div>
+<div class="linkBHEAD"><a href="slider.html">How to Use Sliders</a></div>
+<div class="linkBHEAD"><a href="spinner.html">How to Use Spinners</a></div>
+<div class="linkBHEAD"><a href="splitpane.html">How to Use Split Panes</a></div>
+<div class="linkBHEAD"><a href="tabbedpane.html">How to Use Tabbed Panes</a></div>
+<div class="linkBHEAD"><a href="table.html">How to Use Tables</a></div>
+<div class="linkBHEAD"><a href="textarea.html">How to Use Text Areas</a></div>
+<div class="linkBHEAD"><a href="textfield.html">How to Use Text Fields</a></div>
+<div class="linkBHEAD"><a href="toolbar.html">How to Use Tool Bars</a></div>
+<div class="linkBHEAD"><a href="tooltip.html">How to Use Tool Tips</a></div>
+<div class="linkBHEAD"><a href="tree.html">How to Use Trees</a></div>
+<div class="linkAHEAD"><a href="html.html">How to Use HTML in Swing Components</a></div>
+<div class="linkAHEAD"><a href="model.html">How to Use Models</a></div>
+<div class="linkAHEAD"><a href="icon.html">How to Use Icons</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use Borders</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Component Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Swing Components
+        <br /><b>Section:</b> How to Use Various Components
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Swing Components</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="passwordfield.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="rootpane.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Use Progress Bars</h1></div>
+            <div id="PageContent">
+
+<p>Sometimes a task running within a program might take a while to complete. A user-friendly program provides some indication to the user that the task is occurring, how long the task might take, and how much work has already been done. One way of indicating work, and perhaps the amount of progress, is to use an animated image.</p>
+<p>Another way of indicating work is to set the wait cursor, using the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Cursor.html"><code>Cursor</code></a> class and the <code>Component</code>-defined 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setCursor-java.awt.Cursor-"><code>setCursor</code></a> method. For example, the following code makes the wait cursor be displayed when the cursor is over <code>container</code> (including any components it contains that have no cursor specified):</p>
+<div class="codeblock"><pre>
+container.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+</pre></div>
+<p>To convey how complete a task is, you can use a progress bar like this one:</p>
+<center><img src="../../figures/uiswing/components/progressbar.png" width="156" height="27" align="bottom" alt="A typical progress bar" /></center><p>Sometimes you can&#39;t immediately determine the length of a long-running task, or the task might stay stuck at the same state of completion for a long time. You can show work without measurable progress by putting the progress bar in <em>indeterminate mode.</em> A progress bar in indeterminate mode displays animation to indicate that work is occurring. As soon as the progress bar can display more meaningful information, you should switch it back into its default, determinate mode. In the Java look and feel, indeterminate progress bars look like this:</p>
+<center><img src="../../figures/uiswing/components/indprogressbar.gif" width="148" height="21" align="bottom" alt="An indeterminate progress bar" /></center><p>Swing provides three classes to help you use progress bars:</p>
+<dl>
+<dt>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html"><strong><code>JProgressBar</code></strong></a></dt>
+<dd>A visible component to graphically display how much of a total task has completed. See <a href="#bars">Using Determinate Progress Bars</a> for information and an example of using a typical progress bar. The section <a href="#indeterminate">Using Indeterminate Mode</a> tells you how to animate a progress bar to show activity before the task&#39;s scope is known.</dd>
+<dt>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitor.html"><strong><code>ProgressMonitor</code></strong></a></dt>
+<dd><em>Not</em> a visible component. Instead, an instance of this class monitors the progress of a task and pops up a <a href="dialog.html">dialog</a> if necessary. See <a href="#monitors">How to Use Progress Monitors</a> for details and an example of using a progress monitor.</dd>
+<dt>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitorInputStream.html"><strong><code>ProgressMonitorInputStream</code></strong></a></dt>
+<dd>An input stream with an attached progress monitor, which monitors reading from the stream. You use an instance of this stream like any of the other input streams described in 
+<a class="TutorialLink" target="_top" href="../../essential/io/index.html">Basic I/O</a>. You can get the stream&#39;s progress monitor with a call to <code>getProgressMonitor</code> and configure it as described in <a href="#monitors">How to Use Progress Monitors</a>.</dd>
+</dl>
+<p>After you see a progress bar and a progress monitor in action, <a href="#deciding">Deciding Whether to Use a Progress Bar or a Progress Monitor</a> can help you figure out which is appropriate for your application.</p>
+<h2><a name="bars" id="bars">Using Determinate Progress Bars</a></h2>
+<p>Here&#39;s a picture of a small demo application that uses a progress bar to measure the progress of a task that runs in its own thread:</p>
+<center><img src="../../figures/uiswing/components/ProgressBarDemo.png" width="281" height="203" align="bottom" alt="A snapshot of ProgressBarDemo, which uses a progress bar" /></center><!-- *******  boilerplate stuff ******* -->
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ul>
+<li>Click the Launch button to run the ProgressBar Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#ProgressBarDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ProgressBarDemoProject/ProgressBarDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ProgressBar Demo example" /></a><br /></li>
+</ul>
+<hr /></div>
+<!--  ******* end boilerplate stuff  *******  -->
+<!-- 
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li> <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ProgressBarDemoProject/ProgressBarDemo.jnlp">Run ProgressBarDemo</a> (
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>).    Or, to compile and run the example yourself,
+     consult the
+     <a href="../examples/components/index.html#ProgressBarDemo">example index</a>.
+<p>
+<li> Push the <strong>Start</strong> button.
+     The demo puts up a wait cursor
+     and starts updating 
+     the progress bar.
+     The task displays its output in the text area
+     at the bottom of the window.
+</ol>
+<hr /></div>
+-->
+<p>The following code, from 
+<a class="SourceLink" target="_blank" href="../examples/components/ProgressBarDemoProject/src/components/ProgressBarDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/ProgressBarDemoProject/src/components/ProgressBarDemo.java'); return false;"><code>ProgressBarDemo.java</code></a>, creates and sets up the progress bar:</p>
+<div class="codeblock"><pre>
+<em>//Where member variables are declared:</em>
+JProgressBar progressBar;
+...
+<em>//Where the GUI is constructed:</em>
+progressBar = new JProgressBar(0, task.getLengthOfTask());
+progressBar.setValue(0);
+progressBar.setStringPainted(true);
+</pre></div>
+<p>The constructor that creates the progress bar sets the progress bar&#39;s minimum and maximum values. You can also set these values with <code>setMinimum</code> and <code>setMaximum</code>. The minimum and maximum values used in this program are 0 and the length of the task, which is typical of many programs and tasks. However, a progress bar&#39;s minimum and maximum values can be any value, even negative. The code snippet also sets the progress bar&#39;s current value to 0. 
+</p>
+<p>The call to <code>setStringPainted</code> causes the progress bar to display, within its bounds, a textual indication of the percentage of the task that has completed. By default, the progress bar displays the value returned by its <code>getPercentComplete</code> method formatted as a percent, such as <strong>33%</strong>. Alternatively, you can replace the default with a different string by calling <code>setString</code>. For example,</p>
+<div class="codeblock"><pre>
+if (<em>/*...half way done...*/</em>)
+    progressBar.setString("Half way there!");
+</pre></div>
+<p>When the user clicks <b>Start</b>, an instance of the inner class <code>Task</code> is created and executed.</p>
+<div class="codeblock"><pre>
+public void actionPerformed(ActionEvent evt) {
+    startButton.setEnabled(false);
+    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    done = false;
+    <b>task = new Task();
+    task.addPropertyChangeListener(this);
+    task.execute();</b>
+}
+</pre></div>
+<p><code>Task</code> is a subclass of 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/SwingWorker.html"><code>javax.swing.SwingWorker</code></a>. The <code>Task</code> instance does three important things for <code>ProgressBarDemo</code>:</p>
+<ol>
+<li>The instance invokes the <code>doInBackground</code> in a separate thread. This is where the long-running task is actually executed. Using a background thread instead of the event-dispatching thread prevents the user interface from freezing while the task is running.</li>
+<li>When the background task is complete, the instance invokes the <code>done</code> method in the event-dispatching thread.</li>
+<li>The instance maintains a bound property, <code>progress</code>, that is updated to indicate the progress of the task. The <code>propertyChange</code> method is invoked each time <code>progress</code> changes.</li>
+</ol>
+<p>See 
+<a class="TutorialLink" target="_top" href="../concurrency/worker.html">Worker Threads and SwingWorker</a> in 
+<a class="TutorialLink" target="_top" href="../concurrency/index.html">Concurrency in Swing</a> for more information about <code>SwingWorker</code>.</p>
+<p>The background task in <code>ProgressBarDemo</code> simulates a real task by reporting random amounts of progress at random intervals. The <code>propertyChange</code> method responds to changes in the the task&#39;s <code>progress</code> property by updating the progress bar:</p>
+<div class="codeblock"><pre>
+public void propertyChange(PropertyChangeEvent evt) {
+    if (!done) {
+        int progress = task.getProgress();
+        <b>progressBar.setValue(progress);</b>
+        taskOutput.append(String.format(
+                "Completed %d%% of task.\n", progress));
+    }
+</pre></div>
+<p>When the background task is complete, the task&#39;s <code>done</code> method resets the progress bar:</p>
+<div class="codeblock"><pre>
+public void done() {
+    //Tell progress listener to stop updating progress bar.
+    done = true;
+    Toolkit.getDefaultToolkit().beep();
+    startButton.setEnabled(true);
+    setCursor(null); //turn off the wait cursor
+    <b>progressBar.setValue(progressBar.getMinimum());</b>
+    taskOutput.append("Done!\n");
+}
+</pre></div>
+<p>Note that the <code>done</code> method sets the <code>done</code> field to <code>true</code>, preventing <code>propertyChange</code> from making further updates to the progress bar. This is necessary because the final updates to the <code>progress</code> property may occcur after <code>done</code> is invoked.</p>
+<h2><a name="indeterminate" id="indeterminate">Using Indeterminate Mode</a></h2>
+<p>In <code>ProgressBarDemo2</code> indeterminate mode is set until actual progress begins:</p>
+<div class="codeblock"><pre>
+public void propertyChange(PropertyChangeEvent evt) {
+    if (!done) {
+        int progress = task.getProgress();
+        if (progress == 0) {
+            <b>progressBar.setIndeterminate(true);</b>
+            taskOutput.append("No progress yet\n");
+        } else {
+            <b>progressBar.setIndeterminate(false); </b>
+            progressBar.setString(null);
+            progressBar.setValue(progress);
+            taskOutput.append(String.format(
+                    "Completed %d%% of task.\n", progress));
+        }
+    }
+}
+</pre></div>
+<p>The other changes in the code are related to string display. A progress bar that displays a string is likely to be taller than one that doesn&#39;t, and, as the demo designers, we&#39;ve arbitarily decided that this progress bar should display a string only when it&#39;s in the default, determinate mode. However, we want to avoid the layout ugliness that might result if the progress bar changed height when it changed modes. Thus, the code leaves in the call to <code>setStringPainted(true)</code> but adds a call to <code>setString(&quot;&quot;)</code> so that no text will be displayed. Later, when the progress bar switches from indeterminate to determinate mode, invoking <code>setString(null)</code> makes the progress bar display its default string.</p>
+<p>One change we did <em>not</em> make was removing the call to <code>progressBar.setValue</code> from the <code>progress</code> event handler. The call doesn&#39;t do any harm because an indeterminate progress bar doesn&#39;t use its value property, except perhaps to display it in the status string. In fact, keeping the progress bar&#39;s data as up-to-date as possible is a good practice, since some look and feels might not support indeterminate mode.</p>
+<!-- *******  boilerplate stuff ******* -->
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run the ProgressBar2 Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#ProgressBarDemo2">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ProgressBarDemo2Project/ProgressBarDemo2.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ProgressBar2 Demo example" /></a><br /></li>
+<li>Push the <strong>Start</strong> button. Note that the progress bar starts animating as soon as the button is pressed, and then switches back into determinate mode (like ProgressBarDemo).</li>
+</ol>
+<hr /></div>
+<!--  ******* end boilerplate stuff  *******  -->
+<!--
+
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li> <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ProgressBarDemo2Project/ProgressBarDemo2.jnlp">Run ProgressBarDemo2</a> (
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>).    Or, to compile and run the example yourself,
+     consult the
+     <a href="../examples/components/index.html#ProgressBarDemo2">example index</a>.
+
+<p>
+<li> Push the <strong>Start</strong> button.
+     Note that the progress bar starts animating as soon as
+     the button is pressed,
+     and then switches back into
+     determinate mode (like ProgressBarDemo).
+</ol>
+<hr /></div>
+-->
+<h2><a name="monitors" id="monitors">How to Use Progress Monitors</a></h2>
+<p>Now let&#39;s rewrite ProgressBarDemo to use a progress monitor instead of a progress bar. Here&#39;s a picture of the new demo program, ProgressMonitorDemo:</p>
+<center><img src="../../figures/uiswing/components/ProgressMonitorDemo.png" width="469" height="267" align="bottom" alt="A snapshot of ProgressMonitorDemo and a dialog brought up by a progress monitor" /></center><!-- *******  boilerplate stuff ******* -->
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run the ProgressMonitor Demo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#ProgressMonitorDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ProgressMonitorDemoProject/ProgressMonitorDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ProgressMonitor Demo example" /></a><br /></li>
+<li>Push the <strong>Start</strong> button. After a certain amount of time, the program displays a progress dialog.</li>
+<li>Click the <strong>OK</strong> button. Note that the task continues even though the dialog is gone.</li>
+<li>Start another task. After the dialog pops up, click the <strong>Cancel</strong> button. The dialog goes away and the task stops.</li>
+</ol>
+<hr /></div>
+<!--  ******* end boilerplate stuff  *******  -->
+<!-- 
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li> <a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ProgressMonitorDemoProject/ProgressMonitorDemo.jnlp">Run ProgressMonitorDemo</a> (
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>).    Or, to compile and run the example yourself,
+     consult the
+     <a href="../examples/components/index.html#ProgressMonitorDemo">example index</a>.
+ 
+<li> Push the <strong>Start</strong> button.
+     After a certain amount of time, the program displays a progress dialog.
+
+<li> Click the <strong>OK</strong> button.
+     Note that the task continues even though the dialog is gone.
+
+<li> Start another task. After the dialog pops up,
+     click the <strong>Cancel</strong> button.
+     The dialog goes away and the task stops.
+
+</ol>
+<hr /></div>
+-->
+<p>A progress monitor cannot be used again, so a new one must be created each time a new task is started. This program creates a progress monitor each time the user starts a new task with the <strong>Start</strong> button.</p>
+<p>Here&#39;s the statement that creates the progress monitor:</p>
+<div class="codeblock"><pre>
+progressMonitor = new ProgressMonitor(ProgressMonitorDemo.this,
+                                      "Running a Long Task",
+                                      "", 0, task.getLengthOfTask());
+</pre></div>
+<p>This code uses <code>ProgressMonitor</code>&#39;s only constructor to create the monitor and initialize several arguments:</p>
+<ul>
+<li>The first argument provides the parent component to the dialog popped up by the progress monitor.</li>
+<li>The second argument is a string that describes the nature of the task being monitored. This string is displayed on the dialog. see <a href="#api">The Progress Monitoring API</a> for details about this argument.</li>
+<li>The third argument is another string that provides a changeable status note. The example uses an empty string to indicate that the dialog should make space for a changeable status note, but that the note is initially empty. If you provide <code>null</code> for this argument, the note is omitted from the dialog. The example updates the note each time the <code>progress</code> property changes. It updates the monitor&#39;s current value at the same time:
+<div class="codeblock"><pre>
+int progress = task.getProgress();
+String message = String.format("Completed %d%%.\n", progress);
+<b>progressMonitor.setNote(message);
+progressMonitor.setProgress(progress);</b>
+taskOutput.append(message);
+</pre></div>
+</li>
+<li>The last two arguments provide the minimum and maximum values, respectively, for the progress bar displayed in the dialog.</li>
+</ul>
+<p>By default, a progress monitor waits a minium of 500 milliseconds before deciding whether to pop up the dialog. It also waits for the progress to become more than the minimum value. If it calculates that the task will take more than 2000 milliseconds to complete, the progress dialog appears. To adjust the minimum waiting period, invoke <code>setMillisToDecidedToPopup</code>. To adjust the minimum progress time required for a dialog to appear, invoke <code>setMillisToPopup</code>.</p>
+<p>By the simple fact that this example uses a progress monitor, it adds a feature that wasn&#39;t present in the version of the program that uses a progress bar: The user can cancel the task by clicking the <strong>Cancel</strong> button on the dialog. Here&#39;s the code in the example that checks to see if the user canceled the task or if the task exited normally:</p>
+<div class="codeblock"><pre>
+if (progressMonitor.isCanceled() || task.isDone()) {
+    progressMonitor.close();
+    Toolkit.getDefaultToolkit().beep();
+    if (progressMonitor.isCanceled()) {
+        task.cancel(true);
+        taskOutput.append("Task canceled.\n");
+    } else {
+        taskOutput.append("Task completed.\n");
+    }
+    startButton.setEnabled(true);
+}
+</pre></div>
+<p>Note that the progress monitor doesn&#39;t itself cancel the task. It provides the GUI and API to allow the program to do so easily.</p>
+<h2><a name="deciding" id="deciding">Deciding Whether to Use a Progress Bar or a Progress Monitor</a></h2>
+<p>Use a <em>progress bar</em> if:</p>
+<ul>
+<li>You want more control over the configuration of the progress bar. If you are working directly with a progress bar, you can set it to be indeterminate, make it display vertically, provide a string for it to display, register change listeners on it, and provide it with a bounded range model to control the progress bar&#39;s minimum, maximum, and current values.</li>
+<li>The program needs to display other components along with the progress bar.</li>
+<li>You need more than one progress bar. With some tasks, you need to monitor more than one parameter. For example, an installation program might monitor disk space usage in addition to how many files have been successfully installed.</li>
+<li>You need to reuse the progress bar. A progress bar can be reused; a progress monitor cannot. Once the progress monitor has decided to display a dialog (or not), the progress monitor cannot do it again.</li>
+</ul>
+<p>Use a <em>progress monitor</em> if:</p>
+<ul>
+<li>You want an easy way to display progress in a <a href="dialog.html">dialog</a>.</li>
+<li>The running task is secondary and the user might not be interested in the progress of the task. Progress monitor provides a way for the user to dismiss the dialog while the task is still running.</li>
+<li>You want an easy way for the task to be cancelled. Progress monitor provides a GUI for the user to cancel the task. All you have to do is call progress monitor&#39;s <code>isCanceled</code> method to find out if the user pressed the <strong>Cancel</strong> button.</li>
+<li>Your task displays a short message periodically while running. The progress monitor dialog provides the <code>setNote</code> method so that the task can provide further information about what it&#39;s doing. For example, an installation task might report the name of each file as it&#39;s installed.</li>
+<li>The task might not take a long time to complete. You decide at what point a running task is taking long enough to warrant letting the user know about it. Progress monitor won&#39;t pop up a dialog if the task completes within the timeframe you set.</li>
+</ul>
+<p>If you decide to use a progress monitor <em>and</em> the task you are monitoring is reading from an input stream, use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitorInputStream.html"><strong><code>ProgressMonitorInputStream</code></strong></a> class.</p>
+<h2><a name="api" id="api">The Progress Monitoring API</a></h2>
+<p>The following tables list the commonly used API for using progress bars and progress monitors. Because <code>JProgressBar</code> is a subclass of <code>JComponent</code>, other methods you are likely to call on a <code>JProgressBar</code> are listed in <a href="jcomponent.html">The JComponent Class</a>. Note that <code>ProgressMonitor</code> is a subclass of <code>Object</code> and is not a visual component.</p>
+<p>The API for monitoring progress falls into these categories:</p>
+<ul>
+<li><a href="#progressbarapi">Creating the Progress Bar</a></li>
+<li><a href="#contentsapi">Setting or Getting the Progress Bar&#39;s Constraints/Values</a></li>
+<li><a href="#looksapi">Controlling the Progress Bar&#39;s Appearance</a></li>
+<li><a href="#progressmonapi">Creating the Progress Monitor</a></li>
+<li><a href="#monitorapi">Configuring the Progress Monitor</a></li>
+<li><a href="#terminateapi">Terminating the Progress Monitor</a></li>
+</ul>
+<table border="1" summary="methods for creating the progress bar">
+<caption><a name="progressbarapi" id="progressbarapi">Creating the Progress Bar</a></caption>
+<tr>
+<th id="h1">Constructor</th>
+<th id="h2">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#JProgressBar--">JProgressBar()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#JProgressBar-int-int-">JProgressBar(int, int)</a></td>
+<td headers="h2">Create a horizontal progress bar. The no-argument constructor initializes the progress bar with a minimum and initial value of 0 and a maximum of 100. The constructor with two integer arguments specifies the minimum and maximum values.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#JProgressBar-int-">JProgressBar(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#JProgressBar-int-int-int-">JProgressBar(int, int, int)</a></td>
+<td headers="h2">Create a progress bar with the specified orientation, which can be either <code>JProgressBar.HORIZONTAL</code> or <code>JProgressBar.VERTICAL</code>. The optional second and third arguments specify minimum and maximum values.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#JProgressBar-javax.swing.BoundedRangeModel-">JProgressBar(BoundedRangeModel)</a></td>
+<td headers="h2">Create a horizontal progress bar with the specified range model.</td>
+</tr>
+</table>
+<table border="1" summary="methods for setting or getting the progress bar's constraints/values">
+<caption><a name="contentsapi" id="contentsapi">Setting or Getting the Progress Bar&#39;s Constraints/Values</a></caption>
+<tr>
+<th id="h101">Method</th>
+<th id="h102">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#setValue-int-">void setValue(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#getValue--">int getValue()</a></td>
+<td headers="h102">Set or get the current value of the progress bar. The value is constrained by the minimum and maximum values.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#getPercentComplete--">double getPercentComplete()</a></td>
+<td headers="h102">Get the percent complete for the progress bar.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#setMinimum-int-">void setMinimum(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#getMinimum--">int getMinimum()</a></td>
+<td headers="h102">Set or get the minimum value of the progress bar.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#setMaximum-int-">void setMaximum(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#getMaximum--">int getMaximum()</a></td>
+<td headers="h102">Set or get the maximum value of the progress bar.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#setModel-javax.swing.BoundedRangeModel-">void setModel(BoundedRangeModel)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#getModel--">BoundedRangeModel getModel()</a></td>
+<td headers="h102">Set or get the model used by the progress bar. The model establishes the progress bar&#39;s constraints and values, so you can use it directly as an alternative to using the individual set/get methods listed above.</td>
+</tr>
+</table>
+<table border="1" summary="methods for controlling the progress bar">
+<caption><a name="looksapi" id="looksapi">Controlling the Progress Bar&#39;s Appearance</a></caption>
+<tr>
+<th id="h201">Method</th>
+<th id="h202">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#setIndeterminate-boolean-">void setIndeterminate(boolean)</a></td>
+<td headers="h202">By specifying <code>true</code>, put the progress bar into indeterminate mode. Specifying <code>false</code> puts the progress bar back into its default, determinate mode.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#setOrientation-int-">void setOrientation(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#getOrientation--">int getOrientation()</a></td>
+<td headers="h202">Set or get whether the progress bar is vertical or horizontal. Acceptable values are <code>JProgressBar.VERTICAL</code> or <code>JProgressBar.HORIZONTAL</code>.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#setBorderPainted-boolean-">void setBorderPainted(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#isBorderPainted--">boolean isBorderPainted()</a></td>
+<td headers="h202">Set or get whether the progress bar has a border.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#setStringPainted-boolean-">void setStringPainted(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#isStringPainted--">boolean isStringPainted()</a></td>
+<td headers="h202">Set or get whether the progress bar displays a percent string. By default, the value of the percent string is the value returned by <code>getPercentComplete</code> formatted as a percent. You can set the string to be displayed with <code>setString</code>.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#setString-java.lang.String-">void setString(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#getString--">String getString()</a></td>
+<td headers="h202">Set or get the percent string.</td>
+</tr>
+</table>
+<table border="1" summary="methods for creating the progress monitor">
+<caption><a name="progressmonapi" id="progressmonapi">Creating the Progress Monitor</a></caption>
+<tr>
+<th id="h301">Method or Constructor</th>
+<th id="h302">Purpose</th>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitor.html#ProgressMonitor-java.awt.Component-java.lang.Object-java.lang.String-int-int-">ProgressMonitor(Component, Object, String, int, int)</a></td>
+<td headers="h302">Create a progress monitor. The <code>Component</code> argument is the parent for the monitor&#39;s dialog. The <code>Object</code> argument is a message to put on the <a href="dialog.html">option pane</a> within the dialog. The value of this object is typically a <code>String</code>. The <code>String</code> argument is a changeable status note. The final two <code>int</code> arguments set the minimum and maximum values, respectively, for the progress bar used in the dialog.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitorInputStream.html#getProgressMonitor--">ProgressMonitor getProgressMonitor()</a><br />
+<em>(in <code>ProgressMonitorInputStream</code>)</em></td>
+<td headers="h302">Gets a progress monitor that monitors reading from an input stream.</td>
+</tr>
+</table>
+<table border="1" summary="methods for configuring the progress monitor">
+<caption><a name="monitorapi" id="monitorapi">Configuring the Progress Monitor</a></caption>
+<tr>
+<th id="h401">Method</th>
+<th id="h402">Purpose</th>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#setMinimum-int-">void setMinimum(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#getMinimum--">int getMinimum()</a></td>
+<td headers="h402">Set or get the minimum value of the progress monitor. This value is used by the monitor to set up the progress bar in the dialog.</td>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#setMaximum-int-">void setMaximum(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html#getMaximum--">int getMaximum()</a></td>
+<td headers="h402">Set or get the maximum value of the progress monitor. This value is used by the monitor to set up the progress bar in the dialog.</td>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitor.html#setProgress-int-">void setProgress(int)</a></td>
+<td headers="h402">Update the monitor&#39;s progress.</td>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitor.html#setNote-java.lang.String-"><code>void setNote(String)</code></a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitor.html#getNote--"><code>String getNote()</code></a></td>
+<td headers="h402">Set or get the status note. This note is displayed on the dialog. To omit the status note from the dialog, provide <code>null</code> as the third argument to the monitor&#39;s constructor.</td>
+</tr>
+<tr>
+<td headers="h401">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitor.html#setMillisToDecideToPopup-int-"><code>void setMillisToDecideToPopup(int)</code></a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitor.html#getMillisToDecideToPopup--"><code>int getMillisToDecideToPopup()</code></a></td>
+<td headers="h402">Set or get the time after which the monitor should decide whether to popup a dialog.</td>
+</tr>
+</table>
+<table border="1" summary="methods for terminating the progress monitor">
+<caption><a name="terminateapi" id="terminateapi">Terminating the Progress Monitor</a></caption>
+<tr>
+<th id="h501">Method</th>
+<th id="h502">Purpose</th>
+</tr>
+<tr>
+<td headers="h501">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitor.html#close--"><code>void close()</code></a></td>
+<td headers="h502">Close the progress monitor. This disposes of the dialog.</td>
+</tr>
+<tr>
+<td headers="h501">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ProgressMonitor.html#isCanceled--"><code>boolean isCanceled()</code></a></td>
+<td headers="h502">Determine whether the user pressed the <strong>Cancel</strong> button.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples that Monitor Progress</a></h2>
+<p>This following examples use <code>JProgressBar</code> or <code>ProgressMonitor</code>.</p>
+<table summary="Information about examples">
+<tr>
+<th id="h601" align="left">Example</th>
+<th id="h602" align="left">Where Described</th>
+<th id="h603" align="left">Notes</th>
+</tr>
+<tr>
+<td headers="h601"><a href="../examples/components/index.html#ProgressBarDemo"><code>ProgressBarDemo</code></a></td>
+<td headers="h602">This section</td>
+<td headers="h603">Uses a basic progress bar to show progress on a task running in a separate thread.</td>
+</tr>
+<tr>
+<td headers="h601"><a href="../examples/components/index.html#ProgressBarDemo2"><code>ProgressBarDemo2</code></a></td>
+<td headers="h602">This section</td>
+<td headers="h603">Uses a basic progress bar to show progress on a task running in a separate thread.</td>
+</tr>
+<tr>
+<td headers="h601"><a href="../examples/components/index.html#ProgressMonitorDemo"><code>ProgressMonitorDemo</code></a></td>
+<td headers="h602">This section</td>
+<td headers="h603">Modification of the previous example that uses a progress monitor instead of a progress bar.</td>
+</tr>
+</table>
+
+<p>If you are programming in JavaFX, see
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/progress.htm">Progress Bar and Progress Indicator</a>.</p>
+
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="passwordfield.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="rootpane.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Use Password Fields
+        <br /><b>Next page:</b> How to Use Root Panes
+    </div>
+</body>
+</html> 

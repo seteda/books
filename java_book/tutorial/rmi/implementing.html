@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Implementing a Remote Interface (The Java&trade; Tutorials &gt;        
+            RMI)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This RMI Java tutorial describes the Java RMI system. It walks through a complete client/server example" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java rmi, java client server" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkAHEAD"><a href="overview.html">An Overview of RMI Applications</a></div>
+<div class="linkAHEAD"><a href="server.html">Writing an RMI Server</a></div>
+<div class="linkBHEAD"><a href="designing.html">Designing a Remote Interface</a></div>
+<div class="nolinkBHEAD">Implementing a Remote Interface</div>
+<div class="linkAHEAD"><a href="client.html">Creating a Client Program</a></div>
+<div class="linkAHEAD"><a href="example.html">Compiling and Running the Example</a></div>
+<div class="linkBHEAD"><a href="compiling.html">Compiling the Example Programs</a></div>
+<div class="linkBHEAD"><a href="running.html">Running the Example Programs</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> RMI
+        <br /><b>Section:</b> Writing an RMI Server
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="./index.html" target="_top">RMI</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="designing.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="./TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="client.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Implementing a Remote Interface</h1></div>
+            <div id="PageContent">
+
+<p>This section discusses the task of implementing a class for the compute engine. In general, a class that implements a remote interface should at least do the following:</p>
+<ul>
+<li>Declare the remote interfaces being implemented</li>
+<li>Define the constructor for each remote object</li>
+<li>Provide an implementation for each remote method in the remote interfaces</li>
+</ul>
+<p>An RMI server program needs to create the initial remote objects and <i>export</i> them to the RMI runtime, which makes them available to receive incoming remote invocations. This setup procedure can be either encapsulated in a method of the remote object implementation class itself or included in another class entirely. The setup procedure should do the following:</p>
+<ul>
+<li>Create and install a security manager</li>
+<li>Create and export one or more remote objects</li>
+<li>Register at least one remote object with the RMI registry (or with another naming service, such as a service accessible through the Java Naming and Directory Interface) for bootstrapping purposes</li>
+</ul>
+<p>The complete implementation of the compute engine follows. The 
+<a class="SourceLink" target="_blank" href="examples/engine/ComputeEngine.java" onclick="showCode('../displayCode.html', 'examples/engine/ComputeEngine.java'); return false;"><code><code>engine.ComputeEngine</code></code></a> class implements the remote interface <code>Compute</code> and also includes the <code>main</code> method for setting up the compute engine. Here is the source code for the <code>ComputeEngine</code> class:</p>
+<div class="codeblock"><pre>
+package engine;
+
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
+import compute.Compute;
+import compute.Task;
+
+public class ComputeEngine implements Compute {
+
+    public ComputeEngine() {
+        super();
+    }
+
+    public &lt;T&gt; T executeTask(Task&lt;T&gt; t) {
+        return t.execute();
+    }
+
+    public static void main(String[] args) {
+        if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new SecurityManager());
+        }
+        try {
+            String name = "Compute";
+            Compute engine = new ComputeEngine();
+            Compute stub =
+                (Compute) UnicastRemoteObject.exportObject(engine, 0);
+            Registry registry = LocateRegistry.getRegistry();
+            registry.rebind(name, stub);
+            System.out.println("ComputeEngine bound");
+        } catch (Exception e) {
+            System.err.println("ComputeEngine exception:");
+            e.printStackTrace();
+        }
+    }
+}
+</pre></div>
+<p>The following sections discuss each component of the compute engine implementation.</p>
+<h2>Declaring the Remote Interfaces Being Implemented</h2>
+<p>The implementation class for the compute engine is declared as follows:</p>
+<div class="codeblock"><pre>
+public class ComputeEngine implements Compute
+</pre></div>
+<p>This declaration states that the class implements the <code>Compute</code> remote interface and therefore can be used for a remote object.</p>
+<p>The <code>ComputeEngine</code> class defines a remote object implementation class that implements a single remote interface and no other interfaces. The <code>ComputeEngine</code> class also contains two executable program elements that can only be invoked locally. The first of these elements is a constructor for <code>ComputeEngine</code> instances. The second of these elements is a <code>main</code> method that is used to create a <code>ComputeEngine</code> instance and make it available to clients.</p>
+<h2>Defining the Constructor for the Remote Object</h2>
+<p>The <code>ComputeEngine</code> class has a single constructor that takes no arguments. The code for the constructor is as follows:</p>
+<div class="codeblock"><pre>
+public ComputeEngine() {
+    super();
+}
+</pre></div>
+<p>This constructor just invokes the superclass constructor, which is the no-argument constructor of the <code>Object</code> class. Although the superclass constructor gets invoked even if omitted from the <code>ComputeEngine</code> constructor, it is included for clarity.</p>
+<h2>Providing Implementations for Each Remote Method</h2>
+<p>The class for a remote object provides implementations for each remote method specified in the remote interfaces. The <code>Compute</code> interface contains a single remote method, <code>executeTask</code>, which is implemented as follows:</p>
+<div class="codeblock"><pre>
+public &lt;T&gt; T executeTask(Task&lt;T&gt; t) {
+    return t.execute();
+}
+</pre></div>
+<p>This method implements the protocol between the <code>ComputeEngine</code> remote object and its clients. Each client provides the <code>ComputeEngine</code> with a <code>Task</code> object that has a particular implementation of the <code>Task</code> interface&#39;s <code>execute</code> method. The <code>ComputeEngine</code> executes each client&#39;s task and returns the result of the task&#39;s <code>execute</code> method directly to the client.</p>
+<h2>Passing Objects in RMI</h2>
+<p>Arguments to or return values from remote methods can be of almost any type, including local objects, remote objects, and primitive data types. More precisely, any entity of any type can be passed to or from a remote method as long as the entity is an instance of a type that is a primitive data type, a remote object, or a <i>serializable</i> object, which means that it implements the interface <code>java.io.Serializable.</code></p>
+<p>Some object types do not meet any of these criteria and thus cannot be passed to or returned from a remote method. Most of these objects, such as threads or file descriptors, encapsulate information that makes sense only within a single address space. Many of the core classes, including the classes in the packages <code>java.lang</code> and <code>java.util</code>, implement the <code>Serializable</code> interface.</p>
+<p>The rules governing how arguments and return values are passed are as follows:</p>
+<ul>
+<li>Remote objects are essentially passed by reference. A <i>remote object reference</i> is a stub, which is a client-side proxy that implements the complete set of remote interfaces that the remote object implements.</li>
+<li>Local objects are passed by copy, using object serialization. By default, all fields are copied except fields that are marked <code>static</code> or <code>transient</code>. Default serialization behavior can be overridden on a class-by-class basis.</li>
+</ul>
+<p>Passing a remote object by reference means that any changes made to the state of the object by remote method invocations are reflected in the original remote object. When a remote object is passed, only those interfaces that are remote interfaces are available to the receiver. Any methods defined in the implementation class or defined in non-remote interfaces implemented by the class are not available to that receiver.</p>
+<p>For example, if you were to pass a reference to an instance of the <code>ComputeEngine</code> class, the receiver would have access only to the compute engine&#39;s <code>executeTask</code> method. That receiver would not see the <code>ComputeEngine</code> constructor, its <code>main</code> method, or its implementation of any methods of <code>java.lang.Object</code>.</p>
+<p>In the parameters and return values of remote method invocations, objects that are not remote objects are passed by value. Thus, a copy of the object is created in the receiving Java virtual machine. Any changes to the object&#39;s state by the receiver are reflected only in the receiver&#39;s copy, not in the sender&#39;s original instance. Any changes to the object&#39;s state by the sender are reflected only in the sender&#39;s original instance, not in the receiver&#39;s copy.</p>
+<h2>Implementing the Server&#39;s <code>main</code> Method</h2>
+<p>The most complex method of the <code>ComputeEngine</code> implementation is the <code>main</code> method. The <code>main</code> method is used to start the <code>ComputeEngine</code> and therefore needs to do the necessary initialization and housekeeping to prepare the server to accept calls from clients. This method is not a remote method, which means that it cannot be invoked from a different Java virtual machine. Because the <code>main</code> method is declared <code>static</code>, the method is not associated with an object at all but rather with the class <code>ComputeEngine</code>.</p>
+<h2>Creating and Installing a Security Manager</h2>
+<p>The <code>main</code> method&#39;s first task is to create and install a security manager, which protects access to system resources from untrusted downloaded code running within the Java virtual machine. A security manager determines whether downloaded code has access to the local file system or can perform any other privileged operations.</p>
+<p>If an RMI program does not install a security manager, RMI will not download classes (other than from the local class path) for objects received as arguments or return values of remote method invocations. This restriction ensures that the operations performed by downloaded code are subject to a security policy.</p>
+<p>Here&#39;s the code that creates and installs a security manager:</p>
+<div class="codeblock"><pre>
+if (System.getSecurityManager() == null) {
+    System.setSecurityManager(new SecurityManager());
+}
+</pre></div>
+<h2>Making the Remote Object Available to Clients</h2>
+<p>Next, the <code>main</code> method creates an instance of <code>ComputeEngine</code> and exports it to the RMI runtime with the following statements:</p>
+<div class="codeblock"><pre>
+Compute engine = new ComputeEngine();
+Compute stub =
+    (Compute) UnicastRemoteObject.exportObject(engine, 0);
+</pre></div>
+<p>The static <code>UnicastRemoteObject.exportObject</code> method exports the supplied remote object so that it can receive invocations of its remote methods from remote clients. The second argument, an <code>int</code>, specifies which TCP port to use to listen for incoming remote invocation requests for the object. It is common to use the value zero, which specifies the use of an anonymous port. The actual port will then be chosen at runtime by RMI or the underlying operating system. However, a non-zero value can also be used to specify a specific port to use for listening. Once the <code>exportObject</code> invocation has returned successfully, the <code>ComputeEngine</code> remote object is ready to process incoming remote invocations.</p>
+<p>The <code>exportObject</code> method returns a stub for the exported remote object. Note that the type of the variable <code>stub</code> must be <code>Compute</code>, not <code>ComputeEngine</code>, because the stub for a remote object only implements the remote interfaces that the exported remote object implements.</p>
+<p>The <code>exportObject</code> method declares that it can throw a <code>RemoteException</code>, which is a checked exception type. The <code>main</code> method handles this exception with its <code>try</code>/<code>catch</code> block. If the exception were not handled in this way, <code>RemoteException</code> would have to be declared in the <code>throws</code> clause of the <code>main</code> method. An attempt to export a remote object can throw a <code>RemoteException</code> if the necessary communication resources are not available, such as if the requested port is bound for some other purpose.</p>
+<p>Before a client can invoke a method on a remote object, it must first obtain a reference to the remote object. Obtaining a reference can be done in the same way that any other object reference is obtained in a program, such as by getting the reference as part of the return value of a method or as part of a data structure that contains such a reference.</p>
+<p>The system provides a particular type of remote object, the RMI registry, for finding references to other remote objects. The RMI registry is a simple remote object naming service that enables clients to obtain a reference to a remote object by name. The registry is typically only used to locate the first remote object that an RMI client needs to use. That first remote object might then provide support for finding other objects.</p>
+<p>The <code>java.rmi.registry.Registry</code> remote interface is the API for binding (or registering) and looking up remote objects in the registry. The <code>java.rmi.registry.LocateRegistry</code> class provides static methods for synthesizing a remote reference to a registry at a particular network address (host and port). These methods create the remote reference object containing the specified network address without performing any remote communication. <code>LocateRegistry</code> also provides static methods for creating a new registry in the current Java virtual machine, although this example does not use those methods. Once a remote object is registered with an RMI registry on the local host, clients on any host can look up the remote object by name, obtain its reference, and then invoke remote methods on the object. The registry can be shared by all servers running on a host, or an individual server process can create and use its own registry.</p>
+<p>The <code>ComputeEngine</code> class creates a name for the object with the following statement:</p>
+<div class="codeblock"><pre>
+String name = &quot;Compute&quot;;
+</pre></div>
+<p>The code then adds the name to the RMI registry running on the server. This step is done later with the following statements:</p>
+<div class="codeblock"><pre>
+Registry registry = LocateRegistry.getRegistry();
+registry.rebind(name, stub);
+</pre></div>
+<p>This <code>rebind</code> invocation makes a remote call to the RMI registry on the local host. Like any remote call, this call can result in a <code>RemoteException</code> being thrown, which is handled by the <code>catch</code> block at the end of the <code>main</code> method.</p>
+<p>Note the following about the <code>Registry.rebind</code> invocation:</p>
+<ul>
+<li>The no-argument overload of <code>LocateRegistry.getRegistry</code> synthesizes a reference to a registry on the local host and on the default registry port, 1099. You must use an overload that has an <code>int</code> parameter if the registry is created on a port other than 1099.</li>
+<li>When a remote invocation on the registry is made, a stub for the remote object is passed instead of a copy of the remote object itself. Remote implementation objects, such as instances of <code>ComputeEngine</code>, never leave the Java virtual machine in which they were created. Thus, when a client performs a lookup in a server&#39;s remote object registry, a copy of the stub is returned. Remote objects in such cases are thus effectively passed by (remote) reference rather than by value.</li>
+<li>For security reasons, an application can only <code>bind</code>, <code>unbind</code>, or <code>rebind</code> remote object references with a registry running on the same host. This restriction prevents a remote client from removing or overwriting any of the entries in a server&#39;s registry. A <code>lookup</code>, however, can be requested from any host, local or remote.</li>
+</ul>
+<p>Once the server has registered with the local RMI registry, it prints a message indicating that it is ready to start handling calls. Then, the <code>main</code> method completes. It is not necessary to have a thread wait to keep the server alive. As long as there is a reference to the <code>ComputeEngine</code> object in another Java virtual machine, local or remote, the <code>ComputeEngine</code> object will not be shut down or garbage collected. Because the program binds a reference to the <code>ComputeEngine</code> in the registry, it is reachable from a remote client, the registry itself. The RMI system keeps the <code>ComputeEngine</code>&#39;s process running. The <code>ComputeEngine</code> is available to accept calls and won&#39;t be reclaimed until its binding is removed from the registry <i>and</i> no remote clients hold a remote reference to the <code>ComputeEngine</code> object.</p>
+<p>The final piece of code in the <code>ComputeEngine.main</code> method handles any exception that might arise. The only checked exception type that could be thrown in the code is <code>RemoteException</code>, either by the <code>UnicastRemoteObject.exportObject</code> invocation or by the registry <code>rebind</code> invocation. In either case, the program cannot do much more than exit after printing an error message. In some distributed applications, recovering from the failure to make a remote invocation is possible. For example, the application could attempt to retry the operation or choose another server to continue the operation.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="designing.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="./TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="client.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Designing a Remote Interface
+        <br /><b>Next page:</b> Creating a Client Program
+    </div>
+</body>
+</html> 

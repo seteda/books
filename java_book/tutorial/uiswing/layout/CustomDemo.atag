@@ -1,0 +1,19 @@
+<applet code="AppletButton.class"
+        archive="example-swing/layout.jar"
+        width="450" height="60"
+        alt="DiagonalLayout applet">
+<param name="windowClass" value="CustomWindow">
+<param name="windowTitle" value="Custom Layout Manager (DiagonalLayout)">
+<param name="buttonText" value="Click here to see a custom layout manager in action">
+
+Since you can't run the applet,
+here's a picture of it:
+
+#usemacro UI_FIGURE (
+    NAME 13custom31.gif
+    W 325
+    H 170
+    ALT A custom layout manager that lays out components diagonally.
+)
+
+</applet>

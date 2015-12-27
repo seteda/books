@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+
+Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+
+  - Neither the name of Oracle or the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+
+<project name="rbcpsample" default="all" basedir=".">
+
+  <path id="CLASSPATH">
+    <pathelement location="rbcontrolprovider.jar"/>
+    <pathelement location="."/>
+  </path>
+
+  <target name="clean">
+
+    <delete quiet="true">
+      <fileset dir="build" includes="**/*"/>
+      <fileset dir="lib" includes="**/*"/>
+      <fileset dir="." includes="*.zip"/>
+      
+    </delete>
+
+
+  </target>
+
+  <target name="compile">
+    <mkdir dir="build" />
+
+    <!-- Compile the ResourceProviders -->
+    <!-- executable="/java/re/jdk/8/latest/binaries/solaris-sparc/bin/javac" -->
+
+    <echo message="In rbcpsample, using ${JAVAC} as the Java compiler"/>   
+
+    <javac srcdir="src"
+         destdir="build"
+         fork="yes"
+         debug="on"
+         executable="${JAVAC}"
+    >
+        <compilerarg value="-g"/>
+        <compilerarg value="-Xlint:overrides"/>
+    </javac>
+    
+
+    <mkdir dir="build/META-INF"/>
+    <mkdir dir="build/META-INF/services"/>
+
+    <mkdir dir="lib"/>
+
+    <copy todir="build">
+      <fileset dir="src">
+        <include name="**/*.xml"/>
+        <include name="**/*.properties"/>
+      </fileset>
+    </copy>
+    <copy file="src/java.util.spi.ResourceBundleControlProvider" todir="build/META-INF/services"/>
+  </target>
+
+  <target name="jar" depends="compile">
+    <jar destfile="lib/rbcontrolprovider.jar" basedir="build"/>
+  </target>
+
+  <target name="run">
+
+    <exec executable="${JAVA}">
+      <arg line="-Djava.ext.dirs=lib -cp build RBCPTest"/>
+    </exec>
+
+  </target>
+
+    <target name="zip">
+        <delete file="./RBCPTest.zip"/>
+        <zip destfile="./RBCPTest.zip"
+            basedir="."
+            excludes="**/*.zip"/>
+    </target>
+
+
+
+</project>

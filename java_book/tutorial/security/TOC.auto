@@ -1,0 +1,131 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="overview/index.html">Security Features Overview</a></li>
+<li class="tocli"><a href="tour1/index.html">Creating a Policy File</a>
+<ul>
+<li class="tocli"><a href="tour1/step2.html">Set up a Policy File to Grant the Required Permission</a>
+<ul>
+<li class="tocli"><a href="tour1/wstep1.html">Start Policy Tool</a></li>
+<li class="tocli"><a href="tour1/wstep2.html">Grant the Required Permission</a></li>
+<li class="tocli"><a href="tour1/wstep3.html">Save the Policy File</a>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li class="tocli"><a href="tour2/index.html">Quick Tour of Controlling Applications</a>
+<ul>
+<li class="tocli"><a href="tour2/step1.html">Observe Application Freedom</a></li>
+<li class="tocli"><a href="tour2/step2.html">See How to Restrict Applications</a></li>
+<li class="tocli"><a href="tour2/step3.html">Set up the Policy File to Grant the Required Permissions</a>
+<ul>
+<li class="tocli"><a href="tour2/wstep1.html">Open the Policy File</a></li>
+<li class="tocli"><a href="tour2/wstep2.html">Grant the Required Permissions</a></li>
+<li class="tocli"><a href="tour2/wstep3.html">Save the Policy File</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="tour2/step4.html">See the Policy File Effects</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="sigcert/index.html">API and Tools Use for Secure Code and File Exchanges</a></li>
+<li class="tocli"><a href="toolsign/index.html">Signing Code and Granting It Permissions</a>
+<ul>
+<li class="tocli"><a href="toolsign/signer.html">Steps for the Code Signer</a>
+<ul>
+<li class="tocli"><a href="toolsign/step1.html">Download and Try the Sample Application</a></li>
+<li class="tocli"><a href="toolsign/step2.html">Create a JAR File Containing the Class File</a></li>
+<li class="tocli"><a href="toolsign/step3.html">Generate Keys</a></li>
+<li class="tocli"><a href="toolsign/step4.html">Sign the JAR File</a></li>
+<li class="tocli"><a href="toolsign/step5.html">Export the Public Key Certificate</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="toolsign/receiver.html">Steps for the Code Receiver</a>
+<ul>
+<li class="tocli"><a href="toolsign/rstep1.html">Observe the Restricted Application</a></li>
+<li class="tocli"><a href="toolsign/rstep2.html">Import the Certificate as a Trusted Certificate</a></li>
+<li class="tocli"><a href="toolsign/rstep3.html">Set Up a Policy File to Grant the Required Permission</a>
+<ul>
+<li class="tocli"><a href="toolsign/wstep1.html">Start Policy Tool</a></li>
+<li class="tocli"><a href="toolsign/wstep2.html">Specify the Keystore</a></li>
+<li class="tocli"><a href="toolsign/wstep3.html">Add a Policy Entry with a SignedBy Alias</a></li>
+<li class="tocli"><a href="toolsign/wstep4.html">Save the Policy File</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="toolsign/rstep4.html">See the Policy File Effects</a>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li class="tocli"><a href="toolfilex/index.html">Exchanging Files</a>
+<ul>
+<li class="tocli"><a href="toolfilex/sender.html">Steps for the Contract Sender</a>
+<ul>
+<li class="tocli"><a href="toolfilex/step1.html">Create a JAR File Containing the Contract</a></li>
+<li class="tocli"><a href="toolfilex/step2.html">Generate Keys</a></li>
+<li class="tocli"><a href="toolfilex/step3.html">Sign the JAR File</a></li>
+<li class="tocli"><a href="toolfilex/step4.html">Export the Public Key Certificate</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="toolfilex/receiver.html">Steps for the Contract Receiver</a>
+<ul>
+<li class="tocli"><a href="toolfilex/rstep1.html">Import the Certificate as a Trusted Certificate</a></li>
+<li class="tocli"><a href="toolfilex/rstep2.html">Verify the JAR File Signature</a>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li class="tocli"><a href="apisign/index.html">Generating and Verifying Signatures</a>
+<ul>
+<li class="tocli"><a href="apisign/gensig.html">Generating a Digital Signature</a>
+<ul>
+<li class="tocli"><a href="apisign/step1.html">Prepare Initial Program Structure</a></li>
+<li class="tocli"><a href="apisign/step2.html">Generate Public and Private Keys</a></li>
+<li class="tocli"><a href="apisign/step3.html">Sign the Data</a></li>
+<li class="tocli"><a href="apisign/step4.html">Save the Signature and the Public Key in Files</a></li>
+<li class="tocli"><a href="apisign/step5.html">Compile and Run the Program</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="apisign/versig.html">Verifying a Digital Signature</a>
+<ul>
+<li class="tocli"><a href="apisign/vstep1.html">Prepare Initial Program Structure</a></li>
+<li class="tocli"><a href="apisign/vstep2.html">Input and Convert the Encoded Public Key Bytes</a></li>
+<li class="tocli"><a href="apisign/vstep3.html">Input the Signature Bytes</a></li>
+<li class="tocli"><a href="apisign/vstep4.html">Verify the Signature</a></li>
+<li class="tocli"><a href="apisign/vstep5.html">Compile and Run the Program</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="apisign/enhancements.html">Weaknesses and Alternatives</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="userperm/index.html">Implementing Your Own Permission</a>
+<ul>
+<li class="tocli"><a href="userperm/game.html">ExampleGame</a></li>
+<li class="tocli"><a href="userperm/highscore.html">The HighScore Class</a></li>
+<li class="tocli"><a href="userperm/perm.html">The HighScorePermission Class</a></li>
+<li class="tocli"><a href="userperm/policy.html">A Sample Policy File</a></li>
+<li class="tocli"><a href="userperm/together.html">Putting It All Together</a>
+<ul>
+<li class="tocli"><a href="userperm/chris.html">Steps for the HighScore Developer (Chris)</a></li>
+<li class="tocli"><a href="userperm/terry.html">Steps for the ExampleGame Developer (Terry)</a></li>
+<li class="tocli"><a href="userperm/kim.html">Steps for a User Running ExampleGame (Kim)</a>
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+</ul>

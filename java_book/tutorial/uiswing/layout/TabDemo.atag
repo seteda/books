@@ -1,0 +1,19 @@
+<applet code="AppletButton.class"
+        archive="example-swing/layout.jar"
+        width="350" height="60"
+        alt="tabbed pane applet">
+<param name="windowClass" value="TabWindow">
+<param name="windowTitle" value="Tabbed Pane">
+<param name="buttonText" value="Click here to see a tabbed pane in action">
+
+Since you can't run the applet,
+here's a picture of it:
+
+#usemacro UI_FIGURE (
+    NAME TabWindow.gif
+    W 306
+    H 99
+    ALT A program that puts two panels in the same space with a tabbed pane.
+)
+
+</applet>

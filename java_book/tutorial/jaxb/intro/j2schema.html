@@ -1,0 +1,920 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Java-to-Schema Examples (The Java&trade; Tutorials &gt;        
+            Java Architecture for XML Binding (JAXB) &gt; Introduction to JAXB)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JAXB tutorial describes Java Architecture for XML Binding (jaxb), and related XML topics" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jaxb, xml" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Introduction to JAXB</a></div>
+<div class="linkAHEAD"><a href="arch.html">JAXB Architecture</a></div>
+<div class="linkAHEAD"><a href="repcon.html">Representing XML Content</a></div>
+<div class="linkAHEAD"><a href="bind.html">Binding XML Schemas </a></div>
+<div class="linkAHEAD"><a href="customize.html">Customizing Generated Classes and Java Program Elements</a></div>
+<div class="linkAHEAD"><a href="examples.html">JAXB Examples</a></div>
+<div class="linkAHEAD"><a href="basic.html">Basic Examples</a></div>
+<div class="linkAHEAD"><a href="custom.html">Customizing JAXB Bindings</a></div>
+<div class="nolinkAHEAD">Java-to-Schema Examples</div>
+<div class="linkAHEAD"><a href="info.html">For More Information</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java Architecture for XML Binding (JAXB)
+        <br /><b>Lesson:</b> Introduction to JAXB
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java Architecture for XML Binding (JAXB)</a>
+                &gt;
+                <a href="index.html" target="_top">Introduction to JAXB</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="custom.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="info.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Java-to-Schema Examples</h1></div>
+            <div id="PageContent">
+
+<p>The Java-to-Schema examples show how to use annotations to map Java classes to XML schema.</p>
+
+<h2><a name="bnbcw"></a>j2s-create-marshal Example</h2>
+<p>The j2s-create-marshal example illustrates Java-to-schema data binding. It demonstrates marshalling and unmarshalling of JAXB annotated classes and also shows how to enable JAXP 1.3 validation at unmarshal time using a schema file that was generated from the JAXB mapped classes.</p>
+<p>The schema file, <tt>bc.xsd</tt>, was generated with the following commands:</p>
+<div class="codeblock"><pre>
+<tt>schemagen src/cardfile/*.java</tt>
+<tt>cp schema1.xsd bc.xsd</tt>
+</pre></div>
+<p>Note that <tt>schema1.xsd</tt> was copied to <tt>bc.xsd</tt>;
+<tt>schemagen</tt> does not allow you to specify a schema name of your choice.</p>
+<h3><a name="bnbcy"></a>Building and Running the j2s-create-marshal Example Using Ant</h3>
+<p>To compile and run the j2s-create-marshal example using Ant, in a
+terminal window, go to the <i>jaxb-ri-install</i><tt>/samples/j2s-create-marshal/</tt> directory and type the following:</p>
+<div class="codeblock"><pre>
+ant 
+</pre></div>
+
+<h2><a name="bnbcz"></a>j2s-xmlAccessorOrder Example</h2>
+<p>The j2s-xmlAccessorOrder example shows how to use the
+<tt>@XmlAccessorOrder</tt> and <tt>@XmlType.propOrder</tt> annotations to dictate the order in which XML content is marshalled and unmarshalled by a Java type.</p>
+
+<p>With Java-to-schema mapping, a JavaBean&rsquo;s properties and
+fields are mapped to an XML Schema type. The class elements are mapped to either an XML Schema complex type or an XML Schema simple type. The default element order for a generated schema type is currently unspecified because Java reflection does not impose a return order. The lack of reliable element ordering negatively impacts application portability. You can use two annotations, <tt>@XmlAccessorOrder</tt> and <tt>@XmlType.propOrder</tt>, to define schema element ordering for applications that must be portable across JAXB Providers.</p>
+
+<h3><a name="bnbda"></a>Using the <tt>@XmlAccessorOrder</tt> Annotation to Define Schema Element Ordering</h3>
+<p>The <tt>@XmlAccessorOrder</tt> annotation imposes one of two element ordering algorithms, <tt>AccessorOrder.UNDEFINED</tt> or <tt>AccessorOrder.ALPHABETICAL</tt>. <tt>AccessorOrder.UNDEFINED</tt> is the default setting. The order is dependent on the system&rsquo;s reflection
+implementation. <tt>AccessorOrder.ALPHABETICAL</tt> algorithm orders the elements in lexicographic order as determined by <tt>java.lang.String.CompareTo(String anotherString)</tt>.</p>
+
+<p>You can define the <tt>@XmlAccessorOrder</tt> annotation for annotation type <tt>ElementType.PACKAGE</tt> on a class object. When the <tt>@XmlAccessorOrder</tt> annotation is defined on a package, the scope of the formatting rule is active for every class in the package. When defined on a class, the rule is active on the contents of that class.</p>
+<p>There can be multiple <tt>@XmlAccessorOrder</tt> annotations within a package. The innermost (class) annotation takes precedence over the outer annotation. For example, if <tt>@XmlAccessorOrder(AccessorOrder.ALPHABETICAL)</tt> is defined on a package and
+<tt>@XmlAccessorOrder(AccessorOrder.UNDEFINED)</tt> is defined on a class in that package, the contents of the generated schema type for the class would be in an unspecified order and the contents of the generated schema type for every other class in the package would be in alphabetical order.</p>
+
+<h3><a name="bnbdb"></a>Using the <tt>@XmlType</tt> Annotation to Define Schema Element Ordering</h3>
+<p>The <tt>@XmlType</tt> annotation can be defined for a class. The annotation element <tt>propOrder()</tt> in the <tt>@XmlType</tt> annotation enables you to specify the content order in the generated schema type. When you use the <tt>@XmlType.propOrder</tt> annotation on a class to specify content order, all public properties and public fields in the class must be specified in the parameter list. Any public property or field that you want to keep out of the parameter list must be annotated with <tt>@XmlAttribute</tt> or <tt>@XmlTransient</tt> annotation.</p>
+
+<p>The default content order for <tt>@XmlType.propOrder</tt>
+is <tt>{}</tt> or <tt>{&quot;&quot;}</tt>, not active. In such cases, the active <tt>@XmlAccessorOrder</tt> annotation takes precedence. When class content order is specified by the <tt>@XmlType.propOrder</tt> annotation, it takes precedence over any active <tt>@XmlAccessorOrder</tt>
+annotation on the class or package. If the <tt>@XmlAccessorOrder</tt>
+and <tt>@XmlType.propOrder(A, B, ...)</tt> annotations are specified on a class, the <tt>propOrder</tt> always takes precedence regardless of the order of the annotation statements. For example, in the following code segment, the <tt>@XmlAccessorOrder</tt> annotation precedes the <tt>@XmlType.propOrder</tt> annotation.</p>
+<div class="codeblock"><pre>
+@XmlAccessorOrder(AccessorOrder.ALPHABETICAL)
+@XmlType(propOrder={&quot;name&quot;, &quot;city&quot;})
+
+public class USAddress {
+    // ...
+    public String getCity() {return city;}
+    public void setCity(String city) {this.city = city;}
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
+    // ...
+}
+</pre></div>
+<p>In the following code segment, the <tt>@XmlType.propOrder</tt>
+annotation precedes the <tt>@XmlAccessorOrder</tt> annotation.</p>
+
+<div class="codeblock"><pre>
+@XmlType(propOrder={&quot;name&quot;, &quot;city&quot;})
+@XmlAccessorOrder(AccessorOrder.ALPHABETICAL)
+public class USAddress {
+    // ...
+    public String getCity() {return city;}
+    public void setCity(String city) {this.city = city;}
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
+    // ...
+}
+</pre></div>
+
+<p>In both scenarios, <tt>propOrder</tt> takes precedence and the following identical schema content is generated:</p>
+<div class="codeblock"><pre>
+&lt;xs:complexType name=&quot;usAddress&quot;&gt;
+    &lt;xs:sequence&gt;
+        &lt;xs:element 
+            name=&quot;name&quot; 
+            type=&quot;xs:string&quot; 
+            minOccurs=&quot;0&quot;/&gt;
+        &lt;xs:element 
+            name=&quot;city&quot; 
+            type=&quot;xs:string&quot; 
+            minOccurs=&quot;0&quot;/&gt;
+    &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;
+</pre></div>
+
+<h3><a name="bnbdc"></a>Schema Content Ordering in the Example</h3>
+<p>The purchase order code example demonstrates the effects of schema content ordering using the <tt>@XmlAccessorOrder</tt> annotation at the package and class level, and the <tt>@XmlType.propOrder</tt> annotation on a class.</p>
+<p>Class <tt>package-info.java</tt> defines <tt>@XmlAccessorOrder</tt> to be <tt>ALPHABETICAL</tt> for the package. The public fields <tt>shipTo</tt>
+and <tt>billTo</tt> in class <tt>PurchaseOrderType</tt> are affected in the generated schema content order by this rule. Class <tt>USAddress</tt> defines the <tt>@XmlType.propOrder</tt> annotation on the class which demonstrates user-defined property order superseding <tt>ALPHABETICAL</tt> order in the generated schema.</p>
+<p>The generated schema file can be found in the
+<i>jaxb-ri-install</i><tt>/samples/j2s-xmlAccessorOrder/build/schemas/</tt>
+directory.</p>
+<h3><a name="bnbde"></a>Building and Running the j2s-xmlAccessorOrder Example Using Ant</h3>
+<p>To compile and run the j2s-xmlAccessorOrder example using Ant, in a
+terminal window, go to the
+<i>jaxb-ri-install</i><tt>/samples/j2s-xmlAccessorOrder/</tt> directory and type the following:</p>
+<div class="codeblock"><pre>
+ant 
+</pre></div>
+
+<h2><a name="bnbdf"></a>j2s-xmlAdapter Example</h2>
+<p> The j2s-xmlAdapter example demonstrates how to use the <tt>XmlAdapter</tt> interface and the <tt>@XmlJavaTypeAdapter</tt> annotation to provide a custom mapping of XML content into and out of a <tt>HashMap</tt> (field) that uses an <tt>int</tt> as the key and a <tt>String</tt> as the value.</p>
+<p>Interface <tt>XmlAdapter</tt> and annotation <tt>@XmlJavaTypeAdapter</tt> are used for special processing of data types during unmarshalling and marshalling. There are a variety of XML data types for which the representation does not map easily into Java (for example, <tt>xs:DateTime</tt> and <tt>xs:Duration</tt>), and Java types that do not map properly into XML representations. For example, implementations of <tt>java.util.Collection</tt> (such as <tt>List</tt>) and <tt>java.util.Map</tt> (such as <tt>HashMap</tt>) or for non-JavaBean
+classes.</p>
+<p>The <tt>XmlAdapter</tt> interface and the <tt>@XmlJavaTypeAdapter</tt> annotation are provided for cases such as these. This combination provides a portable mechanism for reading and writing XML content into and out of Java applications.</p>
+<p>The <tt>XmlAdapter</tt> interface defines the methods for data reading and writing.</p>
+<div class="codeblock"><pre>
+/*
+ *  ValueType - Java class that provides an 
+ *  XML representation of the data. 
+ *  It is the object that is used for marshalling and 
+ *  unmarshalling.
+ *
+ *  BoundType - Java class that is used to 
+ *  process XML content.
+ */
+ 
+public abstract class XmlAdapter&lt;ValueType,BoundType&gt; {
+
+    // Do-nothing constructor for the derived classes.
+    protected XmlAdapter() {}
+    
+    // Convert a value type to a bound type.
+    public abstract BoundType unmarshal(ValueType v);
+    
+    // Convert a bound type to a value type.
+    public abstract ValueType marshal(BoundType v);
+}
+</pre></div>
+<p>You can use the <tt>@XmlJavaTypeAdapter</tt> annotation to associate a particular <tt>XmlAdapter</tt> implementation with a <tt>Target</tt> type, <tt>PACKAGE</tt>, <tt>FIELD</tt>, <tt>METHOD</tt>, <tt>TYPE</tt>, or <tt>PARAMETER</tt>.</p>
+
+<p>The j2s-xmlAdapter example shows how to use an <tt>XmlAdapter</tt> for mapping XML content into and out of a (custom) <tt>HashMap</tt>. The <tt>HashMap</tt> object, <tt>basket</tt>, in class <tt>KitchenWorldBasket</tt>, uses a key of type <tt>int</tt> and a value of type <tt>String</tt>. These data types should be reflected in the XML content that is read and written, so the XML content should look as in the following example:</p>
+<div class="codeblock"><pre>
+&lt;basket&gt;
+    &lt;entry key=&quot;9027&quot;&gt;glasstop stove in black&lt;/entry&gt;
+    &lt;entry key=&quot;288&quot;&gt;wooden spoon&lt;/entry&gt;
+&lt;/basket&gt;
+</pre></div>
+<p>The default schema generated for Java type <tt>HashMap</tt>
+does not reflect the desired format.</p>
+<div class="codeblock"><pre>
+&lt;xs:element name=&quot;basket&quot;&gt;
+    &lt;xs:complexType&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element 
+                name=&quot;entry&quot; 
+                minOccurs=&quot;0&quot; 
+                maxOccurs=&quot;unbounded&quot;&gt;
+                &lt;xs:complexType&gt;
+                    &lt;xs:sequence&gt;
+                        &lt;xs:element 
+                            name=&quot;key&quot; 
+                            minOccurs=&quot;0&quot;
+                            type=&quot;xs:anyType&quot;/&gt;
+                        &lt;xs:element 
+                            name=&quot;value&quot; 
+                            minOccurs=&quot;0&quot; 
+                            type=&quot;xs:anyType&quot;/&gt;
+                    &lt;/xs:sequence&gt;
+                &lt;/xs:complexType&gt;
+            &lt;/xs:element&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+</pre></div>
+<p>In the default <tt>HashMap</tt> schema, key and value are both elements and are of data type <tt>anyType</tt>. The XML content looks like the following:</p>
+<div class="codeblock"><pre>
+&lt;basket&gt;
+    &lt;entry&gt;
+        &lt;key&gt;9027&lt;/key&gt;
+        &lt;value&gt;glasstop stove in black&lt;/value&gt;
+    &lt;/entry&gt;
+    &lt;entry&gt;
+        &lt;key&gt;288&lt;/key&gt;
+        &lt;value&gt;wooden spoon&lt;/value&gt;
+    &lt;/entry&gt;
+&lt;/basket&gt;
+</pre></div>
+<p>To resolve this issue, the example uses two Java classes,
+<tt>PurchaseList</tt> and <tt>PartEntry</tt>,
+that reflect the needed schema format for unmarshalling and marshalling
+the content. The XML schema generated for these classes is as
+follows:</p>
+<div class="codeblock"><pre>
+&lt;xs:complexType name=&quot;PurchaseListType&quot;&gt;
+    &lt;xs:sequence&gt;
+        &lt;xs:element 
+            name=&quot;entry&quot; 
+            type=&quot;partEntry&quot;
+            nillable=&quot;true&quot; 
+            maxOccurs=&quot;unbounded&quot;
+            minOccurs=&quot;0&quot;/&gt;
+    &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;
+
+&lt;xs:complexType name=&quot;partEntry&quot;&gt;
+    &lt;xs:simpleContent&gt;
+        &lt;xs:extension base=&quot;xs:string&quot;&gt;
+            &lt;xs:attribute
+                name=&quot;key&quot; 
+                type=&quot;xs:int&quot;
+                use=&quot;required&quot;/&gt;
+        &lt;/xs:extension&gt;
+    &lt;/xs:simpleContent&gt;
+&lt;/xs:complexType&gt;
+</pre></div>
+<p>Class <tt>AdapterPurchaseListToHashMap</tt> implements the <tt>XmlAdapter</tt> interface. In class <tt>KitchenWorldBasket</tt>, the
+<tt>@XmlJavaTypeAdapter</tt> annotation is used to pair  <tt>AdapterPurchaseListToHashMap</tt> with the field <tt>HashMap</tt> <tt>basket</tt>. This pairing causes the marshal or unmarshal method of
+<tt>AdapterPurchaseListToHashMap</tt> to be called for any corresponding marshal or unmarshal action on <tt>KitchenWorldBasket</tt>.</p>
+
+<h3><a name="bnbdh"></a>Building and Running the j2s-xmlAdapter Example Using Ant</h3>
+<p>To compile and run the j2s-xmlAdapter example using Ant, in a
+terminal window, go to the <i>jaxb-ri-install</i><tt>/samples/j2s-xmlAdapter/</tt> directory and type the following:</p>
+<div class="codeblock"><pre>
+ant
+</pre></div>
+
+<h2><a name="bnbdi"></a>j2s-xmlAttribute Example</h2>
+<p>The j2s-xmlAttribute example shows how to use the <tt>@XmlAttribute</tt> annotation to define a property or field to be treated as an XML
+attribute.</p>
+<p>The <tt>@XmlAttribute</tt> annotation maps a field
+or JavaBean property to an XML attribute. The following rules are
+imposed:</p>
+<ul>
+	<li>A static final field is mapped to an XML fixed attribute.</li>
+	<li>When the field or property is a collection type, the items of
+	the collection type must map to a schema simple type.</li>
+	<li>When the field or property is other than a collection type,
+	the type must map to a schema simple type.</li>
+</ul>
+<p>When following the JavaBean programming paradigm, a property is
+defined by a <tt>get</tt> and <tt>set</tt>
+prefix on a field name.</p>
+<div class="codeblock"><pre>
+int zip;
+public int getZip(){return zip;}
+public void setZip(int z){zip=z;}
+</pre></div>
+<p>Within a bean class, you have the choice of setting the <tt>@XmlAttribute</tt> annotation on one of three components: the field, the setter method, or the getter method. If you set the <tt>@XmlAttribute</tt> annotation on the field, the setter method must be renamed or
+there will be a naming conflict at compile time. If you set the
+<tt>@XmlAttribute</tt> annotation on one of the methods, it must be set on either the setter or getter method, but not on both.</p>
+<p>The XmlAttribute example shows how to use the <tt>@XmlAttribute</tt> annotation on a static final field, on a field rather than on one of
+the corresponding bean methods, on a bean property (method), and on a
+field that is other than a collection type. In class <tt>USAddress</tt>,
+fields, country, and zip are tagged as attributes. The <tt>setZip</tt>
+method was disabled to avoid the compile error. Property state was
+tagged as an attribute on the setter method. You could have used the
+getter method instead. In class <tt>PurchaseOrderType</tt>,
+field <tt>cCardVendor</tt> is a non-collection type. It meets the requirement of being a simple type; it is an <tt>enum</tt> type.</p>
+
+
+<h3><a name="bnbdk"></a>Building and Running the j2s-xmlAttribute Example Using Ant</h3>
+<p>To compile and run the j2s-xmlAttribute example using Ant, in a terminal window, go to the <i>jaxb-ri-install</i><tt>/samples/j2s-xmlAttribute/</tt> directory and type the following:</p>
+<div class="codeblock"><pre>
+ant
+</pre></div>
+
+<h2><a name="bnbdl"></a>j2s-xmlRootElement Example</h2>
+<p>The j2s-xmlRootElement example demonstrates the use of the
+<tt>@XmlRootElement</tt> annotation to define an XML
+element name for the XML schema type of the corresponding class.</p>
+<p>The <tt>@XmlRootElement</tt> annotation maps a
+class or an <tt>enum</tt> type to an XML element. At
+least one element definition is needed for each top-level Java type
+used for unmarshalling and marshalling. If there is no element
+definition, there is no starting location for XML content processing.</p>
+<p>The <tt>@XmlRootElement</tt> annotation uses the
+class name as the default element name. You can change the default
+name by using the annotation attribute <tt>name</tt>. If you do, the specified name is used as the element name and the type name. 
+It is common schema practice for the element and type names to be different. You can use the <tt>@XmlType</tt> annotation to set the element type name.</p>
+<p>The namespace attribute of the <tt>@XmlRootElement</tt>
+annotation is used to define a namespace for the element.</p>
+
+
+<h3><a name="bnbdn"></a>Building and Running the j2s-xmlRootElement Example Using Ant</h3>
+<p>To compile and run the j2s-xmlRootElement example using Ant, in a terminal window, go to the <i>jaxb-ri-install</i><tt>/samples/j2s-xmlRootElement/</tt> directory and type the following:</p>
+<div class="codeblock"><pre>
+ant
+</pre></div>
+
+<h2><a name="bnbdo"></a>j2s-xmlSchemaType Example</h2>
+<p>The j2s-xmlSchemaType example demonstrates the use of the
+annotation <tt>@XmlSchemaType</tt> to customize the mapping of a property or field to an XML built-in type.</p>
+
+<p>The <tt>@XmlSchemaType</tt> annotation can be used to map a Java type to one of the XML built-in types. This annotation is most useful in mapping a Java type to one of the nine date/time primitive data types.</p>
+<p>When the <tt>@XmlSchemaType</tt> annotation is defined at the package level, the identification requires both the XML built-in type name and the corresponding Java type class. An <tt>@XmlSchemaType</tt> definition on a field or property takes precedence over a package definition.</p>
+<p>The XmlSchemaType Class example shows how to use the 
+<tt>@XmlSchemaType</tt> annotation at the package level, on a field, and on a property. File <tt>TrackingOrder</tt> has two fields, <tt>orderDate</tt> and <tt>deliveryDate</tt>, which are defined to be of type <tt>XMLGregorianCalendar</tt>. The generated schema will define these elements to be of XML built-in type <tt>gMonthDay</tt>. This relationship was defined on the package in the file <tt>package-info.java</tt>. Field <tt>shipDate</tt> in file <tt>TrackingOrder</tt> is also defined to be of type <tt>XMLGregorianCalendar</tt>, but the <tt>@XmlSchemaType</tt> annotation statements override the package definition and specify the field to be of type <tt>date</tt>. Property method <tt>getTrackingDuration</tt>
+defines the schema element to be defined as primitive type <tt>duration</tt>
+and not Java type <tt>String</tt>.</p>
+<h3><a name="bnbdq"></a>Building and Running the j2s-xmlSchemaType Example Using Ant</h3>
+<p>To compile and run the j2s-xmlSchemaType example using Ant, in a
+terminal window, go to the
+<i>jaxb-ri-install</i><tt>/samples/j2s-xmlSchemaType/</tt> directory and type the following:</p>
+<div class="codeblock"><pre>
+ant 
+</pre></div>
+
+<h2><a name="bnbdr"></a>j2s-xmlType Example</h2>
+<p>The j2s-xmlType example demonstrates the use of the <tt>@XmlType</tt>
+annotation. The <tt>@XmlType</tt> annotation maps a class or an <tt>enum</tt> type to an XML Schema type.</p>
+
+<p>A class must have either a public zero-argument constructor or a
+static zero-argument factory method in order to be mapped by this
+annotation. One of these methods is used during unmarshalling to
+create an instance of the class. The factory method can be located within
+in a factory class or the existing class.</p>
+
+<p>There is an order of precedence as to which method is used for
+unmarshalling:</p>
+<ul>
+	<li>If a factory class is identified in the annotation, a
+	corresponding factory method in that class must also be identified, 		and that method will be used.</li>
+	<li>If a factory method is identified in the annotation but no
+	factory class is identified, the factory method must be located in 		the current class. The factory method is used even if there is a 
+	public zero argument constructor method present.</li>
+	<li>If no factory method is identified in the annotation, the
+	class must contain a public zero argument constructor method.</li>
+</ul>
+<p>In this example, a factory class provides zero arg factory methods
+for several classes. The <tt>@XmlType</tt> annotation on class <tt>OrderContext</tt> references the factory class. The unmarshaller uses the identified factory method in this class.</p>
+<div class="codeblock"><pre>
+public class OrderFormsFactory {
+
+    public OrderContext newOrderInstance() {
+        return new OrderContext()
+    }
+
+    public PurchaseOrderType {
+        newPurchaseOrderType() {
+            return new newPurchaseOrderType();
+        }
+    }
+    
+    @XmlType(name=&quot;oContext&quot;,
+        factoryClass=&quot;OrderFormsFactory&quot;,
+        factoryMethod=&quot;newOrderInstance&quot;)
+    public class OrderContext {
+        public OrderContext() {
+            // ...
+        }
+    }
+}
+</pre></div>
+<p>In this example, a factory method is defined in a class, which also
+contains a standard class construct. Because the <tt>factoryMethod</tt>
+value is defined and no <tt>factoryClass</tt> is defined, the factory method <tt>newOrderInstance</tt> is used during unmarshalling.</p>
+<div class="codeblock"><pre>
+@XmlType(name=&quot;oContext&quot;, 
+    factoryMethod=&quot;newOrderInstance&quot;)
+public class OrderContext {
+
+    public OrderContext() {
+        // ...
+    }
+
+    public OrderContext newOrderInstance() {
+        return new OrderContext();
+    }
+}
+</pre></div>
+
+
+<h3><a name="bnbdt"></a>Building and Running the j2s-xmlType Example Using Ant</h3>
+<p>To compile and run the j2s-xmlType example using Ant, in a terminal
+window, go to the <i>jaxb-ri-install</i><tt>/samples/j2s-xmlType/</tt>
+directory and type the following:</p>
+<div class="codeblock"><pre>
+ant
+</pre></div>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="custom.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="info.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Customizing JAXB Bindings
+        <br /><b>Next page:</b> For More Information
+    </div>
+</body>
+</html> 

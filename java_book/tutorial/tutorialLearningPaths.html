@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<title>Java Tutorials Learning Paths</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<style type="text/css">
+/*<![CDATA[*/
+/* styles specific to this page */
+.nonfloatingimg { 
+vertical-align:middle;
+}
+
+.floatingimg {
+float: left;
+margin: 4px;
+}
+
+.homepagediv {
+float: right;
+margin: 0px 15px 10px 3em;
+}
+
+.cdiv {
+padding:0;
+} 
+.ldiv,.rdiv{
+padding:1px;
+}
+
+.paneldiv {
+width: 44%;
+margin-left: auto;
+margin-right: auto;
+}
+
+.panelimagediv {
+float:left;
+padding:1px;
+}
+
+.ldiv {
+width:48%;
+float:left;
+text-align:justify;
+}
+.rdiv {
+margin-left:51%;
+text-align:justify;
+}
+.clear {
+clear:both;
+}
+
+h1 {
+margin-left:10px;
+font-family: sans-serif;
+font-size: 20px;
+color: #F90000;
+margin-bottom: 3px;
+}
+h2 {
+font-family: sans-serif; 
+font-size: 18px;
+color: #F90000;
+margin-bottom: 3px;
+}
+/* styles specific to this page end */
+/* other standard tutorial styles */
+body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-size:12px;
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+
+    div#TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    div#TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    div#TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;
+		align: left;
+        height: 60px;
+    }
+    div#TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    div#TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+   
+    div#PageTitle {          
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+        float: left;
+    }
+
+   
+    div#Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;   
+    }
+  
+    .footertext {
+        font-size: 11px;
+        color: #454545
+    }
+    
+    div#TagNotes {
+        margin-top: 10px;
+        color: #35556B;
+    }
+    @media print {
+        span#TagNotes a:visited, span#TagNotes a:link {
+            text-decoration: none;
+        }
+    }
+    div#TutBody {
+        margin: 10px 3em 10px 3em;
+    }
+   
+    
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+    .thickhr {
+        color:#000000;
+        background-color:#000000;
+        height:3px;
+        border:none;
+    }
+
+
+/*]]>*/
+</style>
+</head>
+<body>
+<!-- tutorial boiler plate start -->
+<div class="header-container">
+    <div class="bookwrapper  clearfix">       
+        <div id="brandProdName">
+            <div id="logocover"></div>
+            <div id="productName" >Documentation</div>
+        </div> 
+        <br class="clearfloat" />
+    </div>
+</div>
+<div id="TopBar">
+<div id="TopBar_tr">
+<div id="TopBar_tl">
+<div id="TopBar_br">
+<div id="TopBar_bl">
+<div id="TopBar_left">
+The Java&trade; Tutorials
+</div>
+<div id="TopBar_right"><a href="search.html" target=
+"_top">Search</a><br />
+<a href=
+"https://docs.oracle.com/javase/feedback.html">Feedback</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- tutorial boiler plate end -->
+<div id="PageTitle">
+<h1>Java Tutorials Learning Paths</h1>
+</div>
+<div class="homepagediv">
+<p><a href="index.html">Home Page</a></p>
+</div>
+<div class="clear"></div>
+<div id="TutBody">
+<p>Are you a student trying to learn the Java language or a
+professional seeking to expand your skill set? If you are feeling a
+bit overwhelmed by the breadth of the Java platform, here are a few 
+suggested learning paths to help you get the most from your Java
+learning experience.</p>
+<div class="cdiv">
+<div class="paneldiv">
+<div class="panelimagediv"><a href="#newtojava" title=
+"Java for beginners"><img alt="Java for beginners" src=
+"images/newtojava.png" style="border-style: none" /></a></div>
+<div class="panelimagediv"><a href="#buildingon" title=
+"Intermediate Java topics"><img alt="Intermediate Java topics" src=
+"images/buildingon.png" style="border-style: none" /></a></div>
+<div class="panelimagediv"><a href="#client" title=
+"Java UI and rich internet applications"><img alt=
+"Java UI and rich internet applications" src="images/client.png"
+style="border-style: none" /></a></div>
+<div class="panelimagediv"><a href="#server" title=
+"Middleware and server related topics"><img alt=
+"Middleware and server related topics" src="images/server.png"
+style="border-style: none" /></a></div>
+</div>
+<div class="clear"></div>
+<hr class="thickhr" />
+<div class="ldiv">
+<h2><a id="newtojava" name="newtojava"></a>New To Java</h2>
+<p><img alt="blocks" src="images/abc_blocks_petri_lummema_01.png"
+class="nonfloatingimg" /> The following trails are most useful for
+beginners:</p>
+<ul>
+<li><a href="getStarted/index.html">Getting Started</a> &ndash; An
+introduction to Java technology and lessons on installing Java
+development software and using it to create a simple program.</li>
+<li><a href="java/index.html">Learning the Java Language</a>
+&ndash; Lessons describing essential concepts such as classes,
+objects, inheritance, datatypes, generics, and packages.</li>
+<li><a href="essential/index.html">Essential Java Classes</a>
+&ndash; Lessons on exceptions, basic input/output, concurrency,
+regular expressions, and the platform environment.</li>
+</ul>
+</div>
+<div class="rdiv">
+<h2><a id="buildingon" name="buildingon"></a>Building On The
+Foundation</h2>
+<p><img alt="building" src="images/brunurb_LegoBlocks_brunurb.png"
+class="nonfloatingimg" /> Ready to dive deeper into the technology?
+See the following topics:</p>
+<ul>
+<li><a href="collections/index.html">Collections</a> &ndash;
+Lessons on using and extending the Java Collections Framework.</li>
+<li><a href="java/javaOO/lambdaexpressions.html">Lambda Expressions</a>: Learn how and why to use Lambda Expressions in your applications.</li>
+<li><a href="collections/streams/index.html">Aggregate Operations</a>:  Explore how Aggregate Operations, Streams, and Lambda Expressions work together to provide powerful filtering capabilities.</li>
+<li><a href="deployment/jar/index.html">Packaging Programs In JAR
+Files</a> &ndash; Lesson on creating and signing JAR files.</li>
+<li><a href="i18n/index.html">Internationalization</a> &ndash; An
+introduction to designing software so that it can be easily be
+adapted (localized) to various languages and regions.</li>
+<li><a href="reflect/index.html">Reflection</a> &ndash; An API that
+represents ("reflects") the classes, interfaces, and objects in the
+current Java Virtual Machine.</li>
+<li><a href="security/index.html">Security</a> &ndash; Java
+platform features that help protect applications from malicious
+software.</li>
+<li><a href="javabeans/index.html">JavaBeans</a> &ndash; The Java
+platform's component technology.</li>
+<li><a href="ext/index.html">The Extension Mechanism</a> &ndash;
+How to make custom APIs available to all applications running on
+the Java platform.</li>
+<li><a href="extra/generics/index.html">Generics</a> &ndash; An
+enhancement to the type system that supports operations on objects
+of various types while providing compile-time type safety.</li>
+</ul>
+</div>
+<div class="clear"></div>
+</div>
+<div class="cdiv">
+<div class="ldiv">
+<h2><a id="client" name="client"></a>Cherish the Client?</h2>
+<img alt="client" src="images/rihard_Computer_LCD_display.png"
+class="floatingimg" />
+<p>If you want to focus on developing Java based desktop solutions
+and rich Internet applications, see the following topics:</p>
+<ul>
+<!--
+<li><a href="ui/index.html">Swing</a> &ndash; An introduction to
+the Swing GUI toolkit, with an overview of features and a visual
+catalog of components. See below for a more comprehensive tutorial
+on Swing.</li>
+-->
+<li><a href="uiswing/index.html">Creating a GUI with Swing</a>
+&ndash; A comprehensive introduction to GUI creation on the Java
+platform.</li>
+<li><a href="deployment/index.html">Deployment</a> &ndash; How to
+package applications and applets using JAR files, and deploy them
+using Java Web Start and Java Plug-in.</li>
+<li><a href="2d/index.html">2D Graphics</a> &ndash; How to display
+and print 2D graphics in applications.</li>
+<li><a href="extra/fullscreen/index.html">Full-Screen Exclusive
+Mode API</a> &ndash; How to write applications that more fully
+utilize the user's graphics hardware.</li>
+</ul>
+</div>
+<div class="rdiv">
+<h2><a id="server" name="server"></a>Fervor Over Server!</h2>
+<img alt="server" src="images/Anonymous_server.png" class=
+"floatingimg" />
+<p>If you are interested in acquiring skills important for
+middleware, server-side, or web application development, see the
+following trails:</p>
+<ul>
+<li><a href="jdbc/index.html">JDBC Database Access</a> &ndash;
+Introduces an API for connectivity between the Java applications
+and a wide range of databases and a data sources.</li>
+<li><a href="jmx/index.html">JMX</a> &ndash; Java Management
+Extensions provides a standard way of managing resources such as
+applications, devices, and services.</li>
+<li><a href="jndi/index.html">JNDI</a> &ndash; Java Naming and
+Directory Interface enables accessing the Naming and Directory
+Service such as DNS and LDAP.</li>
+<li><a href="jaxp/index.html">JAXP</a> &ndash; Introduces the Java
+API for XML Processing (JAXP) 1.4 technology.</li>
+<li><a href="rmi/index.html">RMI</a> &ndash; The Remote Method
+Invocation API allows an object to invoke methods of an object
+running on another Java Virtual Machine.</li>
+<li><a href="essential/concurrency/index.html">Concurrency</a>
+&ndash; The Java platform has APIs to help you develop
+multi-threaded programs.</li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+<!-- tutorial boiler plate start -->
+<hr />
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td width="75%">
+        <p class="footertext"><a name="license_info" id="license_info"></a>
+        Your use of this page 
+        and all the material on pages under "The Java Tutorials" banner is
+        subject to these <a href="information/cpyr.html">legal
+        notices</a>.</p>
+    </td>
+    <td width="25%">
+        <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All
+        rights reserved.</p>
+    </td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+<td width="20%">
+</td>
+<td width="55%" valign="middle" align="center">
+<p class="footertext"><a href="http://www.oracle.com/us/corporate/index.html">About
+Oracle</a> | <a href=
+"http://www.oracle.com/technology/index.html">Oracle Technology
+Network</a> | <a href=
+"http://www.oracle.com/technetwork/indexes/samplecode/index.html">
+Terms of Service</a> | <a href=
+"information/docaccessibility.html">Documentation
+Accessibility</a></p></td>
+<td width="25%" valign="middle" align="right"></td>
+</tr>
+</table>
+</div>
+<!-- tutorial boiler plate end --></div>
+<noscript>
+<p>Scripting on this page tracks web page traffic, but does not change the content in any way.</p>
+
+</noscript>
+</body>
+</html>

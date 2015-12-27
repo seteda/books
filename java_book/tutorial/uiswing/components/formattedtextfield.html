@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Use Formatted Text Fields (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Swing Components)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Swing Components</a></div>
+<div class="linkAHEAD"><a href="toplevel.html">Using Top-Level Containers</a></div>
+<div class="linkAHEAD"><a href="jcomponent.html">The JComponent Class</a></div>
+<div class="linkAHEAD"><a href="text.html">Using Text Components</a></div>
+<div class="linkBHEAD"><a href="generaltext.html">Text Component Features</a></div>
+<div class="linkBHEAD"><a href="textapi.html">The Text Component API</a></div>
+<div class="linkAHEAD"><a href="componentlist.html">How to Use Various Components</a></div>
+<div class="linkBHEAD"><a href="applet.html">How to Make Applets</a></div>
+<div class="linkBHEAD"><a href="button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a></div>
+<div class="linkBHEAD"><a href="buttongroup.html">How to Use the ButtonGroup Component</a></div>
+<div class="linkBHEAD"><a href="colorchooser.html">How to Use Color Choosers</a></div>
+<div class="linkBHEAD"><a href="combobox.html">How to Use Combo Boxes</a></div>
+<div class="linkBHEAD"><a href="dialog.html">How to Make Dialogs</a></div>
+<div class="linkBHEAD"><a href="editorpane.html">How to Use Editor Panes and Text Panes</a></div>
+<div class="linkBHEAD"><a href="filechooser.html">How to Use File Choosers</a></div>
+<div class="nolinkBHEAD">How to Use Formatted Text Fields</div>
+<div class="linkBHEAD"><a href="frame.html">How to Make Frames (Main Windows)</a></div>
+<div class="linkBHEAD"><a href="internalframe.html">How to Use Internal Frames</a></div>
+<div class="linkBHEAD"><a href="label.html">How to Use Labels</a></div>
+<div class="linkBHEAD"><a href="layeredpane.html">How to Use Layered Panes</a></div>
+<div class="linkBHEAD"><a href="list.html">How to Use Lists</a></div>
+<div class="linkBHEAD"><a href="menu.html">How to Use Menus</a></div>
+<div class="linkBHEAD"><a href="panel.html">How to Use Panels</a></div>
+<div class="linkBHEAD"><a href="passwordfield.html">How to Use Password Fields</a></div>
+<div class="linkBHEAD"><a href="progress.html">How to Use Progress Bars</a></div>
+<div class="linkBHEAD"><a href="rootpane.html">How to Use Root Panes</a></div>
+<div class="linkBHEAD"><a href="scrollpane.html">How to Use Scroll Panes</a></div>
+<div class="linkBHEAD"><a href="separator.html">How to Use Separators</a></div>
+<div class="linkBHEAD"><a href="slider.html">How to Use Sliders</a></div>
+<div class="linkBHEAD"><a href="spinner.html">How to Use Spinners</a></div>
+<div class="linkBHEAD"><a href="splitpane.html">How to Use Split Panes</a></div>
+<div class="linkBHEAD"><a href="tabbedpane.html">How to Use Tabbed Panes</a></div>
+<div class="linkBHEAD"><a href="table.html">How to Use Tables</a></div>
+<div class="linkBHEAD"><a href="textarea.html">How to Use Text Areas</a></div>
+<div class="linkBHEAD"><a href="textfield.html">How to Use Text Fields</a></div>
+<div class="linkBHEAD"><a href="toolbar.html">How to Use Tool Bars</a></div>
+<div class="linkBHEAD"><a href="tooltip.html">How to Use Tool Tips</a></div>
+<div class="linkBHEAD"><a href="tree.html">How to Use Trees</a></div>
+<div class="linkAHEAD"><a href="html.html">How to Use HTML in Swing Components</a></div>
+<div class="linkAHEAD"><a href="model.html">How to Use Models</a></div>
+<div class="linkAHEAD"><a href="icon.html">How to Use Icons</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use Borders</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Component Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Swing Components
+        <br /><b>Section:</b> How to Use Various Components
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Swing Components</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="filechooser.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="frame.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Use Formatted Text Fields</h1></div>
+            <div id="PageContent">
+
+<p>Formatted text fields provide a way for developers to specify the valid set of characters that can be typed in a text field. Specifically, the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html"><code>JFormattedTextField</code></a> class adds a <em>formatter</em> and an object <em>value</em> to the features inherited from the <code>JTextField</code> class. The formatter translates the field&#39;s value into the text it displays, and the text into the field&#39;s value.</p>
+<p>Using the formatters that Swing provides, you can set up formatted text fields to type dates and numbers in localized formats. Another kind of formatter enables you to use a character mask to specify the set of characters that can be typed at each position in the field. For example, you can specify a mask for typing phone numbers in a particular format, such as (XX) X-XX-XX-XX-XX.</p>
+<p>If the possible values of a formatted text field have an obvious order, use a <a href="spinner.html">spinner</a> instead. A spinner uses a formatted text field by default, but adds two buttons that enable the user to choose a value in a sequence.</p>
+<p>Another alternative or adjunct to using a formatted text field is installing an 
+<a class="TutorialLink" target="_top" href="../misc/focus.html#inputVerification">input verifier</a> on the field. A component&#39;s input verifier is called when the component nearly loses the keyboard focus. The input verifier enables you to check whether the value of the component is valid and optionally change it or stop the focus from being transferred.</p>
+<p>This GUI uses formatted text fields to display numbers in four different formats.</p>
+<center><img src="../../figures/uiswing/components/FormattedTextFieldDemoMetal.png" width="265" height="154" align="bottom" alt="A snapshot of FormattedTextFieldDemo" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run FormattedTextFieldDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start </a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#FormattedTextFieldDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/FormattedTextFieldDemoProject/FormattedTextFieldDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the FormattedTextFieldDemo Application" /></a><br /></li>
+<li>Experiment with different loan amounts, annual percentage rates (APRs), and loan lengths.<br />
+Note that as long as the text you type is valid, the Month Payment field is updated when you press Enter or move the focus out of the field that you are editing.</li>
+<li>Type invalid text such as &quot;abcd&quot; in the Loan Amount field and then press Enter.<br />
+The Month Payment field remains the same. When you move the focus from the Loan Amount field, the text reverts to the field&#39;s last valid value.</li>
+<li>Type marginally valid text such as &quot;2000abcd&quot; in the Loan Amount field and press Enter.<br />
+The Monthly Payment field is updated, though the Loan Amount field still displays <code>2000abcd</code>. When you move the focus from the Loan Amount field, the text it displays is updated to a neatly formatted version of its value, for example, &quot;2,000&quot;.</li>
+</ol>
+<hr /></div>
+<p>You can find the entire code for this program in 
+<a class="SourceLink" target="_blank" href="../examples/components/FormattedTextFieldDemoProject/src/components/FormattedTextFieldDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/FormattedTextFieldDemoProject/src/components/FormattedTextFieldDemo.java'); return false;"><code><code>FormattedTextFieldDemo.java</code></code></a>. This code creates the first field.</p>
+<div class="codeblock"><pre>
+amountField = new JFormattedTextField(amountFormat);
+amountField.setValue(new Double(amount));
+amountField.setColumns(10);
+amountField.addPropertyChangeListener("value", this);
+...
+amountFormat = NumberFormat.getNumberInstance();
+</pre></div>
+<p>The constructor used to create the <code>amountField</code> object takes a <code>java.text.Format</code> argument. The <code>Format</code> object is used by the field&#39;s formatter to translate the field&#39;s value to text and the text to the field&#39;s value.</p>
+<p>The remaining code sets up the <code>amountField</code> object. The <code>setValue</code> method sets the field&#39;s value property to a floating-point number represented as a <code>Double</code> object. The <code>setColumns</code> method, inherited from the <code>JTextField</code> class, hints about the preferred size of the field. The call to the <code>addPropertyChangeListener</code> method registers a listener for the value property of the field, so the program can update the Monthly Payment field whenever the user changes the loan amount.</p>
+<p>The rest of this section covers the following topics:</p>
+<ul>
+<li><a href="#constructors">Creating and Initializing Formatted Text Fields</a></li>
+<li><a href="#value">Setting and Getting the Field&#39;s Value</a></li>
+<li><a href="#format">Specifying Formats</a></li>
+<li><a href="#maskformatter">Using MaskFormatter</a></li>
+<li><a href="#factory">Specifying Formatters and Using Formatter Factories</a></li>
+</ul>
+<p>This section does not explain the API inherited from the <code>JTextField</code> class. That API is described in <a href="textfield.html">How to Use Text Fields</a>.</p>
+<h2><a name="constructors" id="constructors">Creating and Initializing Formatted Text Fields</a></h2>
+<p>The following code creates and initializes the remaining three fields in the <code>FormattedTextFieldDemo</code> example.</p>
+<div class="codeblock"><pre>
+rateField = new JFormattedTextField(percentFormat);
+rateField.setValue(new Double(rate));
+rateField.setColumns(10);
+rateField.addPropertyChangeListener("value", this);
+
+numPeriodsField = new JFormattedTextField();
+numPeriodsField.setValue(new Integer(numPeriods));
+numPeriodsField.setColumns(10);
+numPeriodsField.addPropertyChangeListener("value", this);
+
+paymentField = new JFormattedTextField(paymentFormat);
+paymentField.setValue(new Double(payment));
+paymentField.setColumns(10);
+paymentField.setEditable(false);
+paymentField.setForeground(Color.red);
+
+...
+percentFormat = NumberFormat.getNumberInstance();
+percentFormat.setMinimumFractionDigits(2);
+
+paymentFormat = NumberFormat.getCurrencyInstance();
+</pre></div>
+<p>The code for setting up the <code>rateField</code> object is almost identical to the code listed previously for other fields. The only difference is that the format is slightly different, thanks to the code <code>percentFormat.setMinimumFractionDigits(2)</code>.</p>
+<p>The code that creates the <code>numPeriodsField</code> object does not explicitly set a format or formatter. Instead, it sets the value to an <code>Integer</code> and enables the field to use the default formatter for <code>Integer</code> objects. The code did not do this in the previous two fields because the default formatter is not being used for <code>Double</code> objects. The result was not what was needed. How to specify formats and formatters is covered later in this section.</p>
+<p>The payment field is different from the other fields because it is uneditable, uses a different color for its text, and does not have a property change listener. Otherwise, it is identical to the other fields. We could have chosen to use a <a href="textfield.html">text field</a> or <a href="label.html">label</a> instead. Whatever the component, we could still use the <code>paymentFormat</code> method to parse the payment amount into the text to be displayed.</p>
+<h2><a name="value" id="value">Setting and Getting the Field&#39;s Value</a></h2>
+<p>Keep the following in mind when using a formatted text field:</p>
+<hr />
+<p><strong>A formatted text field&#39;s <em>text</em> and its <em>value</em> are two different properties, and the value often lags behind the text.</strong></p>
+<hr />
+<p>The <em>text</em> property is defined by the <code>JTextField</code> class. This property always reflects what the field displays. The <em>value</em> property, defined by the <code>JFormattedTextField</code> class, might not reflect the latest text displayed in the field. While the user is typing, the text property changes, but the value property does not change until the changes are <em>committed</em>.</p>
+<p>To be more precise, the value of a formatted text field can be set by using either the <code>setValue</code> method or the <code>commitEdit</code> method. The <code>setValue</code> method sets the value to the specified argument. The argument can technically be any <code>Object</code>, but the formatter needs to be able to convert it into a string. Otherwise, the text field does not display any substantive information.</p>
+<p>The <code>commitEdit</code> method sets the value to whatever object the formatter determines is represented by the field&#39;s text. The <code>commitEdit</code> method is automatically called when either of the following happens:</p>
+<ul>
+<li>When the user presses Enter while the field has the focus.</li>
+<li>By default, when the field loses the focus, for example, when the user presses the Tab key to change the focus to another component. You can use the <code>setFocusLostBehavior</code> method to specify a different outcome when the field loses the focus.</li>
+</ul>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>Some formatters might update the value constantly, rendering the loss of focus meaningless, as the value is always the same as what the text specifies.</p>
+<hr /></div>
+<p>When you set the value of a formatted text field, the field&#39;s text is updated to reflect the value. Exactly how the value is represented as text depends on the field&#39;s formatter.</p>
+<p>Note that although the <code>JFormattedTextField</code> class inherits the <code>setText</code> method from the <code>JTextField</code> class, you do not usually call the <code>setText</code> method on a formatted text field. If you do, the field&#39;s display changes accordingly but the value is not updated (unless the field&#39;s formatter updates it constantly).</p>
+<p>To obtain a formatted text field&#39;s current value, use the <code>getValue</code> method. If necessary, you can ensure that the value reflects the text by calling the <code>commitEdit</code> method before <code>getValue</code>. Because the <code>getValue</code> method returns an <code>Object</code>, you need to cast it to the type used for your field&#39;s value. For example:</p>
+<div class="codeblock"><pre>
+Date enteredDate = (Date)dateField.getValue();
+</pre></div>
+<p>To detect changes in a formatted text field&#39;s value, you can register a property change listener on the formatted text field to listen for changes to the &quot;value&quot; property. The property change listener is taken from the <code>FormattedTextFieldDemo</code> example:</p>
+<div class="codeblock"><pre>
+<em>//The property change listener is registered on each
+//field using code like this:
+//    someField.addPropertyChangeListener("value", this);</em>
+
+/** Called when a field's "value" property changes. */
+public void propertyChange(PropertyChangeEvent e) {
+    Object source = e.getSource();
+    if (source == amountField) {
+        amount = ((Number)amountField.getValue()).doubleValue();
+    } else if (source == rateField) {
+        rate = ((Number)rateField.getValue()).doubleValue();
+    } else if (source == numPeriodsField) {
+        numPeriods = ((Number)numPeriodsField.getValue()).intValue();
+    }
+
+    double payment = computePayment(amount, rate, numPeriods);
+    paymentField.setValue(new Double(payment));
+}
+</pre></div>
+<h2><a name="format" id="format">Specifying Formats</a></h2>
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/text/Format.html"><code>Format</code></a> class provides a way to format locale-sensitive information such as dates and numbers. Formatters that descend from the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/InternationalFormatter.html"><code>InternationalFormatter</code></a> class, such as the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/DateFormatter.html"><code>DateFormatter</code></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/NumberFormatter.html"><code>NumberFormatter</code></a> classes, use <code>Format</code> objects to translate between the field&#39;s text and value. You can obtain a <code>Format</code> object by calling one of the factory methods in the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/text/DateFormat.html"><code>DateFormat</code></a> or 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/text/NumberFormat.html"><code>NumberFormat</code></a> classes, or by using one of the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html"><code>SimpleDateFormat</code></a> constructors.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>A third commonly used formatter class, <code>MaskFormatter</code>, does not descend from the <code>InternationalFormatter</code> class and does not use formats. The <code>MaskFormatter</code> is discussed in <a href="#maskformatter">Using MaskFormatter</a>.</p>
+<hr /></div>
+<p>You can customize certain format aspects when you create the <code>Format</code> object, and others through a format-specific API. For example, 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html"><code>DecimalFormat</code></a> objects, which inherit from <code>NumberFormat</code> and are often returned by its factory methods, can be customized by using the <code>setMaximumFractionDigits</code> and <code>setNegativePrefix</code> methods. For information about using <code>Format</code> objects, see the 
+<a class="TutorialLink" target="_top" href="../../i18n/format/index.html">Formatting</a> lesson of the Internationalization trail.</p>
+<p>The easiest way to associate a customized format with a formatted text field is to create the field by using the <code>JFormattedTextField</code> constructor that takes a <code>Format</code> as an argument. You can see this association in the previous code examples that create <code>amountField</code> and <code>rateField</code> objects.</p>
+<h2><a name="maskformatter" id="maskformatter">Using MaskFormatter</a></h2>
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/MaskFormatter.html"><code>MaskFormatter</code></a> class implements a formatter that specifies exactly which characters are valid in each position of the field&#39;s text. For example, the following code creates a <code>MaskFormatter</code> that lets the user to type a five-digit zip code:</p>
+<div class="codeblock"><pre>
+zipField = new JFormattedTextField(
+                    createFormatter("#####"));
+...
+protected MaskFormatter createFormatter(String s) {
+    MaskFormatter formatter = null;
+    try {
+        formatter = new MaskFormatter(s);
+    } catch (java.text.ParseException exc) {
+        System.err.println("formatter is bad: " + exc.getMessage());
+        System.exit(-1);
+    }
+    return formatter;
+}
+</pre></div>
+<p>You can try out the results of the preceding code by running <code>TextInputDemo</code>. Click the Launch button to run TextInputDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start </a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#TextInputDemo">example index</a>.</p>
+<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/TextInputDemoProject/TextInputDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the TextInputDemo Application" /></a><br />
+<p>The program&#39;s GUI is displayed.</p>
+<center><img src="../../figures/uiswing/components/TextInputDemoMetal.png" width="549" height="185" align="bottom" alt="A snapshot of TextInputDemo" /></center><p>The following table shows the characters that you can use in the formatting mask:</p>
+<table border="1" summary="Valid characters and their descriptions">
+<tr>
+<th id="h1" align="center">Character&nbsp;</th>
+<th id="h2" align="left">Description</th>
+</tr>
+<tr>
+<td headers="h1" align="center">#</td>
+<td headers="h2">Any valid number (<code>Character.isDigit</code>).</td>
+</tr>
+<tr>
+<td headers="h1" align="center">&#39;<br />
+<em>(single quote)</em></td>
+<td headers="h2">Escape character, used to escape any of the special formatting characters.</td>
+</tr>
+<tr>
+<td headers="h1" align="center">U</td>
+<td headers="h2">Any character (<code>Character.isLetter</code>). All lowercase letters are mapped to uppercase.</td>
+</tr>
+<tr>
+<td headers="h1" align="center">L</td>
+<td headers="h2">Any character (<code>Character.isLetter</code>). All uppercase letters are mapped to lowercase.</td>
+</tr>
+<tr>
+<td headers="h1" align="center">A</td>
+<td headers="h2">Any character or number (<code>Character.isLetter</code> or <code>Character.isDigit</code>).</td>
+</tr>
+<tr>
+<td headers="h1" align="center">?</td>
+<td headers="h2">Any character (<code>Character.isLetter</code>).</td>
+</tr>
+<tr>
+<td headers="h1" align="center">*</td>
+<td headers="h2">Anything.</td>
+</tr>
+<tr>
+<td headers="h1" align="center">H</td>
+<td headers="h2">Any hex character (0-9, a-f or A-F).</td>
+</tr>
+</table>
+<h2><a name="factory" id="factory">Specifying Formatters and Using Formatter Factories</a></h2>
+<p>When specifying formatters, keep in mind that each formatter object can be used by at most one formatted text field at a time. Each field should have at least one formatter associated with it, of which exactly one is used at any time.</p>
+<p>You can specify the formatters to be used by a formatted text field in several ways:</p>
+<ul>
+<li><b>Use the <code>JFormattedTextField</code> constructor that takes a <code>Format</code> argument.</b><br />
+A formatter for the field is automatically created that uses the specified format.</li>
+<li><b>Use the <code>JFormattedTextField</code> constructor that takes a <code>JFormattedTextField.AbstractFormatter</code> argument.</b><br />
+The specified formatter is used for the field.</li>
+<li><b>Set the value of a formatted text field that has no format, formatter, or formatter factory specified.</b><br />
+A formatter is assigned to the field by the default formatter factory, using the type of the field&#39;s value as a guide. If the value is a <code>Date</code>, the formatter is a <code>DateFormatter</code>. If the value is a <code>Number</code>, the formatter is a <code>NumberFormatter</code>. Other types result in an instance of <code>DefaultFormatter</code>.</li>
+<li><b>Make the formatted text field use a formatter factory that returns customized formatter objects.</b><br />
+This is the most flexible approach. It is useful when you want to associate more than one formatter with a field or add a new kind of formatter to be used for multiple fields. An example of the former use is a field that interprets the user typing in a certain way but displays the value (when the user is not typing) in another way. An example of the latter use is several fields with custom class values, for example, <code>PhoneNumber</code>. You can set up the fields to use a formatter factory that returns specialized formatters for phone numbers.</li>
+</ul>
+<p>You can set a field&#39;s formatter factory either by creating the field using a constructor that takes a formatter factory argument, or by calling the <code>setFormatterFactory</code> method on the field. To create a formatter factory, you can often use an instance of 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/DefaultFormatterFactory.html"><code>DefaultFormatterFactory</code></a> class. A <code>DefaultFormatterFactory</code> object enables you to specify the formatters returned when a value is being edited, is not being edited, or has a null value.</p>
+<p>The following figures show an application based on the <code>FormattedTextFieldDemo</code> example that uses formatter factories to set multiple editors for the Loan Amount and APR fields. While the user is editing the Loan Amount, the $ character is not used so that the user is not forced to type it. Similarly, while the user is editing the APR field, the % character is not required.</p>
+<p>Click the Launch button to run FormatterFactoryDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start </a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#FormatterFactoryDemo">example index</a>.</p>
+<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/FormatterFactoryDemoProject/FormatterFactoryDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the FormatterFactoryDemo Application" /></a><br />
+<p style="text-align: center">
+<img src="../../figures/uiswing/components/FormatterFactoryDemoMetal.png" width="260" height="154" alt="FormatterFactoryDemo, with amount field being edited" /> 
+<img src="../../figures/uiswing/components/FormatterFactoryDemo2Metal.png" width="260" height="154" alt="FormatterFactoryDemo, with no custom editors installed" /></p>
+<p>The following code that creates the formatters and sets them up by using instances of the <code>DefaultFormatterFactory</code> class:</p>
+<div class="codeblock"><pre>
+private double rate = .075;  //7.5 %
+...
+amountField = new JFormattedTextField(
+                    <b>new DefaultFormatterFactory(
+                        new NumberFormatter(amountDisplayFormat),
+                        new NumberFormatter(amountDisplayFormat),
+                        new NumberFormatter(amountEditFormat))</b>);
+...
+NumberFormatter percentEditFormatter =
+        new NumberFormatter(percentEditFormat) {
+    public String valueToString(Object o)
+          throws ParseException {
+        Number number = (Number)o;
+        if (number != null) {
+            double d = number.doubleValue() * 100.0;
+            number = new Double(d);
+        }
+        return super.valueToString(number);
+    }
+    public Object stringToValue(String s)
+           throws ParseException {
+        Number number = (Number)super.stringToValue(s);
+        if (number != null) {
+            double d = number.doubleValue() / 100.0;
+            number = new Double(d);
+        }
+        return number;
+    }
+};
+rateField = new JFormattedTextField(
+                     <b>new DefaultFormatterFactory(
+                        new NumberFormatter(percentDisplayFormat),
+                        new NumberFormatter(percentDisplayFormat),
+                        percentEditFormatter)</b>);
+...
+amountDisplayFormat = NumberFormat.getCurrencyInstance();
+amountDisplayFormat.setMinimumFractionDigits(0);
+amountEditFormat = NumberFormat.getNumberInstance();
+
+percentDisplayFormat = NumberFormat.getPercentInstance();
+percentDisplayFormat.setMinimumFractionDigits(2);
+percentEditFormat = NumberFormat.getNumberInstance();
+percentEditFormat.setMinimumFractionDigits(2);
+</pre></div>
+<p>The boldface code highlights the calls to <code>DefaultFormatterFactory</code> constructors. The first argument to the constructor specifies the default formatter to use for the formatted text field. The second argument specifies the display formatter, which is used when the field does not have the focus. The third argument specifies the edit formatter, which is used when the field has the focus. The code does not use a fourth argument, but if it did, the fourth argument would specify the null formatter, which is used when the field&#39;s value is null. Because no null formatter is specified, the default formatter is used when the value is null.</p>
+<p>The code customizes the formatter that uses <code>percentEditFormat</code> by creating a subclass of the <code>NumberFormatter</code> class. This subclass overrides the <code>valueToString</code> and <code>stringToValue</code> methods of <code>NumberFormatter</code> so that they convert the displayed number to the value actually used in calculations, and convert the value to a number. Specifically, the displayed number is 100 times the actual value. The reason is that the percent format used by the display formatter automatically displays the text as 100 times the value, so the corresponding editor formatter must display the text at the same value. The <code>FormattedTextFieldDemo</code> example does not need to take care of this conversion because this demo uses only one format for both display and editing.</p>
+<p>You can find the code for the entire program in 
+<a class="SourceLink" target="_blank" href="../examples/components/FormatterFactoryDemoProject/src/components/FormatterFactoryDemo.java" onclick="showCode('../../displayCode.html', '../examples/components/FormatterFactoryDemoProject/src/components/FormatterFactoryDemo.java'); return false;"><code><code>FormatterFactoryDemo.java</code></code></a>.</p>
+<h2><a name="api" id="api">Formatted Text Field API</a></h2>
+<p>The following tables list some of the commonly used APIs for using formatted text fields.</p>
+<ul>
+<li><a href="#newclassesapi">Classes Related to Formatted Text Fields</a></li>
+<li><a href="#formattedtextfieldapi">JFormattedTextField Methods</a></li>
+<li><a href="#defaultformatterapi">DefaultFormatter Options</a></li>
+</ul>
+<table border="1" summary="Classes Related to Formatted Text Fields">
+<caption><a style="font-weight: bold" name="newclassesapi" id="newclassesapi">Classes Related to Formatted Text Fields</a></caption>
+<tr>
+<th id="h101" align="left">Class or Interface</th>
+<th id="h102" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html">JFormattedTextField</a></td>
+<td headers="h102">Subclass of <code>JTextField</code> that supports formatting arbitrary values.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.AbstractFormatter.html">JFormattedTextField.AbstractFormatter</a></td>
+<td headers="h102">The superclass of all formatters for <code>JFormattedTextField</code>. A formatter enforces editing policies and navigation policies, handles string-to-object conversions, and manipulates the <code>JFormattedTextField</code> as necessary to enforce the desired policy.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.AbstractFormatterFactory.html">JFormattedTextField.AbstractFormatterFactory</a></td>
+<td headers="h102">The superclass of all formatter factories. Each <code>JFormattedTextField</code> uses a formatter factory to obtain the formatter that best corresponds to the text field&#39;s state.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/DefaultFormatterFactory.html">DefaultFormatterFactory</a></td>
+<td headers="h102">The formatter factory normally used. Provides formatters based on details such as the passed-in parameters and focus state.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/DefaultFormatter.html">DefaultFormatter</a></td>
+<td headers="h102">Subclass of <code>JFormattedTextField.AbstractFormatter</code> that formats arbitrary objects by using the <code>toString</code> method.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/MaskFormatter.html">MaskFormatter</a></td>
+<td headers="h102">Subclass of <code>DefaultFormatter</code> that formats and edits strings using a specified character mask. (For example, seven-digit phone numbers can be specified by using &quot;###-####&quot;.)</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/InternationalFormatter.html">InternationalFormatter</a></td>
+<td headers="h102">Subclass of <code>DefaultFormatter</code> that uses an instance of <code>java.text.Format</code> to handle conversion to and from a <code>String</code>.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/NumberFormatter.html">NumberFormatter</a></td>
+<td headers="h102">Subclass of <code>InternationalFormatter</code> that supports number formats by using an instance of <code>NumberFormat</code>.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/DateFormatter.html">DateFormatter</a></td>
+<td headers="h102">Subclass of <code>InternationalFormatter</code> that supports date formats by using an instance of <code>DateFormat</code>.</td>
+</tr>
+</table>
+<table border="1" summary="JFormattedTextField Methods">
+<caption><a style="font-weight: bold" name="formattedtextfieldapi" id="formattedtextfieldapi">JFormattedTextField Methods</a></caption>
+<tr>
+<th id="h201" align="left">Method or Constructor</th>
+<th id="h202" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#JFormattedTextField--">JFormattedTextField()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#JFormattedTextField-java.lang.Object-">JFormattedTextField(Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#JFormattedTextField-java.text.Format-">JFormattedTextField(Format)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#JFormattedTextField-javax.swing.JFormattedTextField.AbstractFormatter-">JFormattedTextField(AbstractFormatter)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#JFormattedTextField-javax.swing.JFormattedTextField.AbstractFormatterFactory-">JFormattedTextField(AbstractFormatterFactory)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#JFormattedTextField-javax.swing.JFormattedTextField.AbstractFormatterFactory-java.lang.Object-">JFormattedTextField(AbstractFormatterFactory, Object)</a></td>
+<td headers="h202">Creates a new formatted text field. The <code>Object</code> argument, if present, specifies the initial value of the field and causes an appropriate formatter factory to be created. The <code>Format</code> or <code>AbstractFormatter</code> argument specifies the format or formatter to be used for the field, and causes an appropriate formatter factory to be created. The <code>AbstractFormatterFactory</code> argument specifies the formatter factory to be used, which determines which formatters are used for the field.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#setValue-java.lang.Object-">void setValue(Object)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#getValue--">Object getValue()</a></td>
+<td headers="h202">Sets or obtains the value of the formatted text field. You must cast the return type based on how the <code>JFormattedTextField</code> has been configured. If the formatter has not been set yet, calling <code>setValue</code> sets the formatter to one returned by the field&#39;s formatter factory.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#setFormatterFactory-javax.swing.JFormattedTextField.AbstractFormatterFactory-">void setFormatterFactory(AbstractFormatterFactory)</a></td>
+<td headers="h202">Sets the object that determines the formatters used for the formatted text field. The object is often an instance of the <code>DefaultFormatterFactory</code> class.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#getFormatter--">AbstractFormatter getFormatter()</a></td>
+<td headers="h202">Obtains the formatter of the formatted text field. The formatter is often an instance of the <code>DefaultFormatter</code> class.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#setFocusLostBehavior-int-">void setFocusLostBehavior(int)</a></td>
+<td headers="h202">Specifies the outcome of a field losing the focus. Possible values are defined in <code>JFormattedTextField</code> as <code>COMMIT_OR_REVERT</code> (the default), <code>COMMIT</code> (commit if valid, otherwise leave everything the same), <code>PERSIST</code> (do nothing), and <code>REVERT</code> (change the text to reflect the value).</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#commitEdit--">void commitEdit()</a></td>
+<td headers="h202">Sets the value to the object represented by the field&#39;s text, as determined by the field&#39;s formatter. If the text is invalid, the value remains the same and a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html"><code>ParseException</code></a> is thrown.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JFormattedTextField.html#isEditValid--">boolean isEditValid()</a></td>
+<td headers="h202">Returns true if the formatter considers the current text to be valid, as determined by the field&#39;s formatter.</td>
+</tr>
+</table>
+<table border="1" summary="DefaultFormatter Options">
+<caption><a style="font-weight: bold" name="defaultformatterapi" id="defaultformatterapi">DefaultFormatter Options</a></caption>
+<tr>
+<th id="h301" align="left">Method</th>
+<th id="h302" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/DefaultFormatter.html#setCommitsOnValidEdit-boolean-">void setCommitsOnValidEdit(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/DefaultFormatter.html#getCommitsOnValidEdit--">boolean getCommitsOnValidEdit()</a></td>
+<td headers="h302">Sets or obtains values when edits are pushed back to the <code>JFormattedTextField</code>. If <code>true</code>, <code>commitEdit</code> is called after every valid edit. This property is <code>false</code> by default.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/DefaultFormatter.html#setOverwriteMode-boolean-">void setOverwriteMode(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/DefaultFormatter.html#getOverwriteMode--">boolean getOverwriteMode()</a></td>
+<td headers="h302">Sets or obtains the behavior when inserting characters. If <code>true</code>, new characters overwrite existing characters in the model as they are inserted. The default value of this property is <code>true</code> in <code>DefaultFormatter</code> (and thus in <code>MaskFormatter</code>) and <code>false</code> in <code>InternationalFormatter</code> (and thus in <code>DateFormatter</code> and <code>NumberFormatter</code>).</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/DefaultFormatter.html#setAllowsInvalid-boolean-">void setAllowsInvalid(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/DefaultFormatter.html#getAllowsInvalid--">boolean getAllowsInvalid()</a></td>
+<td headers="h302">Sets or interprets whether the value being edited is allowed to be invalid for a length of time. It is often convenient to enable the user to type invalid values until the <code>commitEdit</code> method is attempted. <code>DefaultFormatter</code> initializes this property to <code>true</code>. Of the standard Swing formatters, only <code>MaskFormatter</code> sets this property to <code>false</code>.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples That Use Formatted Text Fields</a></h2>
+<p>This table lists examples that use formatted text fields and points to where those examples are described.</p>
+<table summary="" datatable="0">
+<tr>
+<td align="left">Example</th>
+<td align="left">Where Described</th>
+<td align="left">Notes</th>
+</tr>
+<tr valign="top">
+<td><a href="../examples/components/index.html#FormattedTextFieldDemo">FormattedTextFieldDemo</a></td>
+<td>This section</td>
+<td>Uses four formatted text fields.</td>
+</tr>
+<tr valign="top">
+<td><a href="../examples/components/index.html#SpinnerDemo">SpinnerDemo</a></td>
+<td><a href="spinner.html">How to Use Spinners</a></td>
+<td>Customizes the appearance of the formatted text fields used by two spinners.</td>
+</tr>
+<tr valign="top">
+<td><a href="../examples/components/index.html#Converter">Converter</a></td>
+<td><a href="model.html">Using Models</a></td>
+<td>Each <code>ConversionPanel</code> pairs a formatted text field with a slider.</td>
+</tr>
+<tr valign="top">
+<td><a href="../examples/components/index.html#TextInputDemo">TextInputDemo</a></td>
+<td>This section</td>
+<td>Shows how to use text fields, spinners, and formatted text fields together, and demonstrates how to use <code>MaskFormatter</code>. Includes code for selecting the text of the field that has just received the focus.</td>
+</tr>
+<tr valign="top">
+<td><a href="../examples/components/index.html#FormatterFactoryDemo">FormatterFactoryDemo</a></td>
+<td>This section</td>
+<td>A variation on FormattedTextFieldDemo that uses formatter factories to specify multiple formatters for two formatted text fields.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="filechooser.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="frame.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Use File Choosers
+        <br /><b>Next page:</b> How to Make Frames (Main Windows)
+    </div>
+</body>
+</html> 

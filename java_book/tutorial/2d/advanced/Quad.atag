@@ -1,0 +1,5 @@
+<APPLET CODE="Quad.class"
+        codebase="examples/"
+        archive="quad.jar"
+	WIDTH=350 HEIGHT=250>
+</APPLET>

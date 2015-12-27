@@ -1,0 +1,27 @@
+@charset "ISO-8859-1";
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+table {
+	margin: 0px;
+	padding: 0px;
+    border-collapse: collapse; 
+}
+th {
+	border: thin solid #CCCCCC;
+	background-color:#CCCCCC;
+	color:#666666;
+	font-size:12px;
+	margin: 0px;
+	padding: 2px;
+}
+td {
+	border: thin solid #CCCCCC;
+	margin: 0px;
+	padding: 2px;
+	font-size:12px;
+}
+pre,code {
+	font-size: 10px;
+}	

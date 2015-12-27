@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Walking the File Tree (The Java&trade; Tutorials &gt;        
+            Essential Classes &gt; Basic I/O)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Java tutorial describes exceptions, basic input/output, concurrency, regular expressions, and the platform environment" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java exception, java input output, java threads, java regex, regular expressions, path, classpath, environment variable" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Basic I/O</a></div>
+<div class="linkAHEAD"><a href="streams.html">I/O Streams</a></div>
+<div class="linkBHEAD"><a href="bytestreams.html">Byte Streams</a></div>
+<div class="linkBHEAD"><a href="charstreams.html">Character Streams</a></div>
+<div class="linkBHEAD"><a href="buffers.html">Buffered Streams</a></div>
+<div class="linkBHEAD"><a href="scanfor.html">Scanning and Formatting</a></div>
+<div class="linkCHEAD"><a href="scanning.html">Scanning</a></div>
+<div class="linkCHEAD"><a href="formatting.html">Formatting</a></div>
+<div class="linkBHEAD"><a href="cl.html">I/O from the Command Line</a></div>
+<div class="linkBHEAD"><a href="datastreams.html">Data Streams</a></div>
+<div class="linkBHEAD"><a href="objectstreams.html">Object Streams</a></div>
+<div class="linkAHEAD"><a href="fileio.html">File I/O (Featuring NIO.2)</a></div>
+<div class="linkBHEAD"><a href="path.html">What Is a Path? (And Other File System Facts)</a></div>
+<div class="linkBHEAD"><a href="pathClass.html">The Path Class</a></div>
+<div class="linkCHEAD"><a href="pathOps.html">Path Operations</a></div>
+<div class="linkBHEAD"><a href="fileOps.html">File Operations</a></div>
+<div class="linkBHEAD"><a href="check.html">Checking a File or Directory</a></div>
+<div class="linkBHEAD"><a href="delete.html">Deleting a File or Directory</a></div>
+<div class="linkBHEAD"><a href="copy.html">Copying a File or Directory</a></div>
+<div class="linkBHEAD"><a href="move.html">Moving a File or Directory</a></div>
+<div class="linkBHEAD"><a href="fileAttr.html">Managing Metadata (File and File Store Attributes)</a></div>
+<div class="linkBHEAD"><a href="file.html">Reading, Writing, and Creating Files</a></div>
+<div class="linkBHEAD"><a href="rafs.html">Random Access Files</a></div>
+<div class="linkBHEAD"><a href="dirs.html">Creating and Reading Directories</a></div>
+<div class="linkBHEAD"><a href="links.html">Links, Symbolic or Otherwise</a></div>
+<div class="nolinkBHEAD">Walking the File Tree</div>
+<div class="linkBHEAD"><a href="find.html">Finding Files</a></div>
+<div class="linkBHEAD"><a href="notification.html">Watching a Directory for Changes</a></div>
+<div class="linkBHEAD"><a href="misc.html">Other Useful Methods</a></div>
+<div class="linkBHEAD"><a href="legacy.html">Legacy File I/O Code</a></div>
+<div class="linkAHEAD"><a href="summary.html">Summary</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Essential Classes
+        <br /><b>Lesson:</b> Basic I/O
+        <br /><b>Section:</b> File I/O (Featuring NIO.2)
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Essential Classes</a>
+                &gt;
+                <a href="index.html" target="_top">Basic I/O</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="links.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="find.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Walking the File Tree</h1></div>
+            <div id="PageContent">
+
+<!-- Walking the File Tree -->
+<p>Do you need to create an application that will recursively visit all the files in a file tree? Perhaps you need to delete every <code>.class</code> file in a tree, or find every file that hasn&#39;t been accessed in the last year. You can do so with the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html"><code>FileVisitor</code></a> interface.</p>
+<p>This section covers the following:</p>
+<ul>
+<li><a href="#filevisitor">The FileVisitor Interface</a></li>
+<li><a href="#invoke">Kickstarting the Process</a></li>
+<li><a href="#order">Considerations When Creating a FileVisitor</a></li>
+<li><a href="#return">Controlling the Flow</a></li>
+<li><a href="#ex">Examples</a></li>
+</ul>
+<h2><a name="filevisitor" id="filevisitor">The FileVisitor Interface</a></h2>
+<p>To walk a file tree, you first need to implement a <code>FileVisitor</code>. A <code>FileVisitor</code> specifies the required behavior at key points in the traversal process: when a file is visited, before a directory is accessed, after a directory is accessed, or when a failure occurs. The interface has four methods that correspond to these situations:</p>
+<ul>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html#preVisitDirectory-T-java.nio.file.attribute.BasicFileAttributes-"><code>preVisitDirectory</code></a> &ndash; Invoked before a directory&#39;s entries are visited.</li>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html#postVisitDirectory-T-java.io.IOException-"><code>postVisitDirectory</code></a> &ndash; Invoked after all the entries in a directory are visited. If any errors are encountered, the specific exception is passed to the method.</li>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html#visitFile-T-java.nio.file.attribute.BasicFileAttributes-"><code>visitFile</code></a> &ndash; Invoked on the file being visited. The file&#39;s <code>BasicFileAttributes</code> is passed to the method, or you can use the 
+<a class="TutorialLink" target="_top" href="fileAttr.html">file attributes</a> package to read a specific set of attributes. For example, you can choose to read the file&#39;s <code>DosFileAttributeView</code> to determine if the file has the &quot;hidden&quot; bit set.</li>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html#visitFileFailedy-T-java.io.IOException-"><code>visitFileFailed</code></a> &ndash; Invoked when the file cannot be accessed. The specific exception is passed to the method. You can choose whether to throw the exception, print it to the console or a log file, and so on.</li>
+</ul>
+<p>If you don&#39;t need to implement all four of the <code>FileVisitor</code> methods, instead of implementing the <code>FileVisitor</code> interface, you can extend the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/SimpleFileVisitor.html"><code>SimpleFileVisitor</code></a> class. This class, which implements the <code>FileVisitor</code> interface, visits all files in a tree and throws an <code>IOError</code> when an error is encountered. You can extend this class and override only the methods that you require.</p>
+<p>Here is an example that extends <code>SimpleFileVisitor</code> to print all entries in a file tree. It prints the entry whether the entry is a regular file, a symbolic link, a directory, or some other &quot;unspecified&quot; type of file. It also prints the size, in bytes, of each file. Any exception that is encountered is printed to the console.</p>
+<p>The <code>FileVisitor</code> methods are shown in bold:</p>
+<div class="codeblock"><pre>
+import static java.nio.file.FileVisitResult.*;
+
+public static class PrintFiles
+    extends SimpleFileVisitor&lt;Path&gt; {
+
+    // Print information about
+    // each type of file.
+    @Override
+    <strong>public FileVisitResult visitFile(Path file,
+                                   BasicFileAttributes attr)</strong> {
+        if (attr.isSymbolicLink()) {
+            System.out.format("Symbolic link: %s ", file);
+        } else if (attr.isRegularFile()) {
+            System.out.format("Regular file: %s ", file);
+        } else {
+            System.out.format("Other: %s ", file);
+        }
+        System.out.println("(" + attr.size() + "bytes)");
+        return CONTINUE;
+    }
+
+    // Print each directory visited.
+    @Override
+    <strong>public FileVisitResult postVisitDirectory(Path dir,
+                                          IOException exc)</strong> {
+        System.out.format("Directory: %s%n", dir);
+        return CONTINUE;
+    }
+
+    // If there is some error accessing
+    // the file, let the user know.
+    // If you don't override this method
+    // and an error occurs, an IOException 
+    // is thrown.
+    @Override
+    <strong>public FileVisitResult visitFileFailed(Path file,
+                                       IOException exc)</strong> {
+        System.err.println(exc);
+        return CONTINUE;
+    }
+}
+</pre></div>
+<h2><a name="invoke" id="invoke">Kickstarting the Process</a></h2>
+<p>Once you have implemented your <code>FileVisitor</code>, how do you initiate the file walk? There are two <code>walkFileTree</code> methods in the <code>Files</code> class.</p>
+<ul>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#walkFileTree-java.nio.file.Path-java.nio.file.FileVisitor-"><code>walkFileTree(Path, FileVisitor)</code></a></li>
+<li>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#walkFileTree-java.nio.file.Path-java.util.Set-int-java.nio.file.FileVisitor-"><code>walkFileTree(Path, Set&lt;FileVisitOption&gt;, int, FileVisitor)</code></a></li>
+</ul>
+<p>The first method requires only a starting point and an instance of your <code>FileVisitor</code>. You can invoke the <code>PrintFiles</code> file visitor as follows:</p>
+<div class="codeblock"><pre>
+Path startingDir = ...;
+PrintFiles pf = new PrintFiles();
+Files.walkFileTree(startingDir, pf);
+</pre></div>
+<p>The second <code>walkFileTree</code> method enables you to additionally specify a limit on the number of levels visited and a set of 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitOption.html"><code>FileVisitOption</code></a> enums. If you want to ensure that this method walks the entire file tree, you can specify <code>Integer.MAX_VALUE</code> for the maximum depth argument.</p>
+<p>You can specify the <code>FileVisitOption</code> enum, <code>FOLLOW_LINKS</code>, which indicates that symbolic links should be followed.</p>
+<p>This code snippet shows how the four-argument method can be invoked:</p>
+<div class="codeblock"><pre>
+import static java.nio.file.FileVisitResult.*;
+
+Path startingDir = ...;
+
+EnumSet&lt;FileVisitOption&gt; opts = EnumSet.of(FOLLOW_LINKS);
+
+Finder finder = new Finder(pattern);
+Files.walkFileTree(startingDir, opts, Integer.MAX_VALUE, finder);
+</pre></div>
+<h2><a name="order" id="order">Considerations When Creating a FileVisitor</a></h2>
+<p>A file tree is walked depth first, but you cannot make any assumptions about the iteration order that subdirectories are visited.</p>
+<p>If your program will be changing the file system, you need to carefully consider how you implement your <code>FileVisitor</code>.</p>
+<p>For example, if you are writing a recursive delete, you first delete the files in a directory before deleting the directory itself. In this case, you delete the directory in <code>postVisitDirectory</code>.</p>
+<p>If you are writing a recursive copy, you create the new directory in <code>preVisitDirectory</code> before attempting to copy the files to it (in <code>visitFiles</code>). If you want to preserve the attributes of the source directory (similar to the UNIX <code>cp -p</code> command), you need to do that <em>after</em> the files have been copied, in <code>postVisitDirectory</code>. The 
+<a class="SourceLink" target="_blank" href="examples/Copy.java" onclick="showCode('../../displayCode.html', 'examples/Copy.java'); return false;"><code><code>Copy</code></code></a> example shows how to do this.</p>
+<p>If you are writing a file search, you perform the comparison in the <code>visitFile</code> method. This method finds all the files that match your criteria, but it does not find the directories. If you want to find both files and directories, you must also perform the comparison in either the <code>preVisitDirectory</code> or <code>postVisitDirectory</code> method. The 
+<a class="SourceLink" target="_blank" href="examples/Find.java" onclick="showCode('../../displayCode.html', 'examples/Find.java'); return false;"><code><code>Find</code></code></a> example shows how to do this.</p>
+<p>You need to decide whether you want symbolic links to be followed. If you are deleting files, for example, following symbolic links might not be advisable. If you are copying a file tree, you might want to allow it. By default, <code>walkFileTree</code> does not follow symbolic links.</p>
+<p>The <code>visitFile</code> method is invoked for files. If you have specified the <code>FOLLOW_LINKS</code> option and your file tree has a circular link to a parent directory, the looping directory is reported in the <code>visitFileFailed</code> method with the <code>FileSystemLoopException</code>. The following code snippet shows how to catch a circular link and is from the 
+<a class="SourceLink" target="_blank" href="examples/Copy.java" onclick="showCode('../../displayCode.html', 'examples/Copy.java'); return false;"><code><code>Copy</code></code></a> example:</p>
+<div class="codeblock"><pre>
+@Override
+public FileVisitResult
+    visitFileFailed(Path file,
+        IOException exc) {
+    if (exc instanceof FileSystemLoopException) {
+        System.err.println("cycle detected: " + file);
+    } else {
+        System.err.format("Unable to copy:" + " %s: %s%n", file, exc);
+    }
+    return CONTINUE;
+}
+</pre></div>
+<p>This case can occur only when the program is following symbolic links.</p>
+<h2><a name="return" id="return">Controlling the Flow</a></h2>
+<p>Perhaps you want to walk the file tree looking for a particular directory and, when found, you want the process to terminate. Perhaps you want to skip specific directories.</p>
+<p>The <code>FileVisitor</code> methods return a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitResult.html"><code>FileVisitResult</code></a> value. You can abort the file walking process or control whether a directory is visited by the values you return in the <code>FileVisitor</code> methods:</p>
+<ul>
+<li><code>CONTINUE</code> &ndash; Indicates that the file walking should continue. If the <code>preVisitDirectory</code> method returns <code>CONTINUE</code>, the directory is visited.</li>
+<li><code>TERMINATE</code> &ndash; Immediately aborts the file walking. No further file walking methods are invoked after this value is returned.</li>
+<li><code>SKIP_SUBTREE</code> &ndash; When <code>preVisitDirectory</code> returns this value, the specified directory and its subdirectories are skipped. This branch is &quot;pruned out&quot; of the tree.</li>
+<li><code>SKIP_SIBLINGS</code> &ndash; When <code>preVisitDirectory</code> returns this value, the specified directory is not visited, <code>postVisitDirectory</code> is not invoked, and no further unvisited siblings are visited. If returned from the <code>postVisitDirectory</code> method, no further siblings are visited. Essentially, nothing further happens in the specified directory.</li>
+</ul>
+<p>In this code snippet, any directory named <code>SCCS</code> is skipped:</p>
+<div class="codeblock"><pre>
+import static java.nio.file.FileVisitResult.*;
+
+public FileVisitResult
+     preVisitDirectory(Path dir,
+         BasicFileAttributes attrs) {
+    (if (dir.getFileName().toString().equals("SCCS")) {
+         return SKIP_SUBTREE;
+    }
+    return CONTINUE;
+}
+</pre></div>
+<p>In this code snippet, as soon as a particular file is located, the file name is printed to standard output, and the file walking terminates:</p>
+<div class="codeblock"><pre>
+import static java.nio.file.FileVisitResult.*;
+
+// The file we are looking for.
+Path lookingFor = ...;
+
+public FileVisitResult
+    visitFile(Path file,
+        BasicFileAttributes attr) {
+    if (file.getFileName().equals(lookingFor)) {
+        System.out.println("Located file: " + file);
+        return TERMINATE;
+    }
+    return CONTINUE;
+}
+</pre></div>
+<h2><a name="ex" id="ex">Examples</a></h2>
+<p>The following examples demonstrate the file walking mechanism:</p>
+<ul>
+<li>
+<a class="SourceLink" target="_blank" href="examples/Find.java" onclick="showCode('../../displayCode.html', 'examples/Find.java'); return false;"><code><code>Find</code></code></a> &ndash; Recurses a file tree looking for files and directories that match a particular glob pattern. This example is discussed in 
+<a class="TutorialLink" target="_top" href="find.html">Finding Files</a>.</li>
+<li>
+<a class="SourceLink" target="_blank" href="examples/Chmod.java" onclick="showCode('../../displayCode.html', 'examples/Chmod.java'); return false;"><code><code>Chmod</code></code></a> &ndash; Recursively changes permissions on a file tree (for POSIX systems only).</li>
+<li>
+<a class="SourceLink" target="_blank" href="examples/Copy.java" onclick="showCode('../../displayCode.html', 'examples/Copy.java'); return false;"><code><code>Copy</code></code></a> &ndash; Recursively copies a file tree.</li>
+<li>
+<a class="SourceLink" target="_blank" href="examples/WatchDir.java" onclick="showCode('../../displayCode.html', 'examples/WatchDir.java'); return false;"><code><code>WatchDir</code></code></a> &ndash; Demonstrates the mechanism that watches a directory for files that have been created, deleted or modified. Calling this program with the <code>-r</code> option watches an entire tree for changes. For more information about the file notification service, see 
+<a class="TutorialLink" target="_top" href="notification.html">Watching a Directory for Changes</a>.</li>
+</ul>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="links.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="find.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Links, Symbolic or Otherwise
+        <br /><b>Next page:</b> Finding Files
+    </div>
+</body>
+</html> 

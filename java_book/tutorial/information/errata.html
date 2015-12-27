@@ -1,0 +1,113 @@
+
+
+<h2>First Printing</h2>
+<p>These errors are corrected in the 4th printing.</p>
+<ul>
+<li>CD problems on Linux:
+<p>Some Linux systems automount the CD with a filesystem that forces all file names to lower case. This will break browser links to HTML files with mixed-case names, and also prevent the examples from compiling.</p>
+<p>If you have this problem, try manually mounting the CD with the UDF filesystem. To do this:</p>
+<ul>
+<li>Become superuser.</li>
+<li>Unmount the cd:
+<div class="codeblock"><pre>
+umount <i>cd_device_path</i>
+</pre></div>
+</li>
+<li>Remount the the cd using the UDF filesystem:
+<div class="codeblock"><pre>
+mount -t udf <i>cd_device_path cd_mount_point</i>
+</pre></div>
+</li>
+</ul>
+<hr /></li>
+<li>Chapter 1: Getting Started, page 3:
+<p>The source code inside figure 1.2 is missing a closing bracket to end the class definition.</p>
+<p>The missing bracket appears in bold below:</p>
+<div class="codeblock"><pre>
+class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+<strong>}</strong>
+</pre></div>
+<p>Thanks to the anonymous reader who reported this!</p>
+<hr /></li>
+<li>Chapter 3: Language Basics, page 59:
+<p>Typo fix: In the following sentence, the word &quot;operand&quot; (shown in bold) was mistakenly printed as &quot;operator&quot;:</p>
+<p>&quot;The equality and relational operators determine if one <strong>operand</strong> is greater than, less than, equal to, or not equal to another operand.&quot;</p>
+<p>Thanks to Dirk Henrici for reporting this!</p>
+<hr /></li>
+<li>Chapter 4: Classes and Objects, pages 89 and 116:
+<p>In the <code>Bicycle</code> class, the <code>getspeed()</code> method should be called <code>getSpeed()</code>.</p>
+</li>
+<li style="list-style: none; display: inline">
+<hr /></li>
+<li>Chapter 4: Classes and Objects, page 97:
+<p>In the example in the second paragraph, getX and getY should be changed to getX() and getY() so that the 3rdand 4th lines in the example read:</p>
+<div class="codeblock"><pre>
+circle.setX(circle.getX() + deltaX);
+circle.setY(circle.getY() + deltaY);
+</pre></div>
+Thanks to Laslo Vukovitch for reporting this.</li>
+<li style="list-style: none; display: inline">
+<hr /></li>
+<li>Chapter 4: Classes and Objects, page 107:
+<p>In the <code>SeeWhosFastest()</code> method, the method should be called <code>seeWhosFastest()</code>.</p>
+</li>
+<li style="list-style: none; display: inline">
+<hr /></li>
+<li>Chapter 4: Classes and Objects, page 114:
+<p>The last word in the Note should be changed from &quot;variables&quot; to &quot;methods&quot; so that the sentence reads: &quot;You can also refer to static methods with an object reference like instanceName.methodName(args) but this is discouraged because it does not make it clear that they are class methods.&quot;</p>
+</li>
+<li style="list-style: none; display: inline">
+<hr /></li>
+<li>Chapter 5: Interfaces and Inheritance, page 145:
+<p>The code &quot;if ( (obj1)isLargerThan(obj2)) ...&quot; should be changed to &quot;if ( (obj1)isLargerThan(obj2) ...&quot; in three places by removing the extra parenthesis, ). The three lines should read:</p>
+<div class="codeblock"><pre>
+if ( (obj1)isLargerThan(obj2) &gt; 0);
+if ( (obj1)isLargerThan(obj2) &lt; 0);
+if ( (obj1)isLargerThan(obj2) == 0);
+</pre></div>
+Thanks to Clare Murnaghan for catching this.</li>
+<li style="list-style: none; display: inline">
+<hr /></li>
+<li>Chapter 8: Numbers and Strings, page 200:
+<p>In the title for Table 8.3, the file name should be <code>TestFormat.java</code>.</p>
+</li>
+<li style="list-style: none; display: inline">
+<hr /></li>
+<li>Chapter 8: Numbers and Strings, page 208:
+<p>In the Random Numbers section:</p>
+<ol>
+<li>in the 4th line, change the sentence to read: &quot;For example, to generate an integer between 0 and 9.&quot;</li>
+<li>change the code in line 6 to read <code>int number = (int)(Math.random() * 10);</code></li>
+<li>in line 8, remove the entire sentence that begins &quot;The compiler boxes....&quot;</li>
+</ol>
+<p>Thanks to Serge Abrashevich for pointing this out.</p>
+</li>
+<li style="list-style: none; display: inline">
+<hr /></li>
+<li>Chapter 8: Numbers and Strings, page 223:
+<p>In the picture, change substring(sep, dot) to substring(sep + 1, dot)</p>
+<p>Thanks to Tomec Czechowski for pointing this out.</p>
+</li>
+<li style="list-style: none; display: inline">
+<hr /></li>
+<li>Chapter 3: Language Basics, page 80:
+<p>The second paragraph from the bottom reads: To see this effect more clearly, try removing the <code>continue</code> statement and recompiling. When you run the program again, the count will be wrong, saying that it found <b>44</b> p&#39;s instead of 9. In fact, when you run the program again, the count is <b>35</b>.</p>
+<p>Thanks to Cesar Siqueira for being the first to report this error!</p>
+<hr /></li>
+<li>Chapter 17: Java Web Start, page 525:
+<p>The footnote takes you to the wrong URL. The correct URL is:</p>
+<div class="codeblock"><pre>
+docs/books/tutorialJWS/deployment/webstart/examples/Notepad.jnlp
+</pre></div>
+<hr /></li>
+<li>Appendix A
+<p>There is a clarification to the descriptive text above the keyword list.</p>
+<p>Previous text: &quot;Here&#39;s a list of keywords in the Java language. These words are reserved &mdash; you cannot use any of these words as names in your programs. <code>true</code>, <code>false</code>, and <code>null</code> are not keywords but they are reserved words, so you cannot use them as names in your programs either.&quot;</p>
+<p>Clarified text: &quot;Here&#39;s a list of keywords in the Java programming language. You cannot use any of the following as identifiers in your programs. The keywords <code>const</code> and <code>goto</code> are reserved, even though they are not currently used. <code>true</code>, <code>false</code>, and <code>null</code> might seem like keywords, but they are actually literals; you cannot use them as identifiers in your programs.&quot;</p>
+</li>
+</ul>
+
+

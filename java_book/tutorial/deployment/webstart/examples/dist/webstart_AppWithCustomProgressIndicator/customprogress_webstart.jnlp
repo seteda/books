@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *   - Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *   - Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ *   - Neither the name of Oracle or the names of its
+ *     contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+-->
+
+<!-- Custom Progress bar Demo Application; also contains splash image used when application is loaded from cache -->
+
+<jnlp spec="1.0+" codebase="https://docs.oracle.com/javase/tutorialJWS/samples/deployment"
+      href="webstart_AppWithCustomProgressIndicator/customprogress_webstart.jnlp">
+  <information>
+    <title>Weather Application With Custom Progress Bar</title>
+    <vendor>Oracle</vendor>
+    <description>custom progress bar example</description>
+    <offline-allowed/>
+    <icon kind="splash" href="webstart_AppWithCustomProgressIndicator/dukeanimated.gif"/>    
+  </information>
+  <resources>
+    <j2se version="1.7+"/>
+    <jar href="webstart_AppWithCustomProgressIndicator/webstart_AppWithCustomProgressIndicator.jar" />
+    <jar href="webstart_CustomProgressIndicator/webstart_CustomProgressIndicator.jar" download="progress" />
+    <jar href="webstart_AppWithCustomProgressIndicator/lib/IconDemo.jar" />
+    <jar href="webstart_AppWithCustomProgressIndicator/lib/SplitPaneDemo.jar" />
+    <jar href="webstart_AppWithCustomProgressIndicator/lib/SplitPaneDemo2.jar" />
+    <jar href="webstart_AppWithCustomProgressIndicator/lib/TextBatchPrintingDemo.jar" />
+    <jar href="webstart_AppWithCustomProgressIndicator/lib/ToolBarDemo.jar" />
+    <jar href="webstart_AppWithCustomProgressIndicator/lib/ToolBarDemo2.jar" />
+    <jar href="webstart_AppWithCustomProgressIndicator/lib/SwingSet2.jar" />
+    <jar href="webstart_AppWithCustomProgressIndicator/lib/SomeBigJar.jar" />
+  </resources>
+  <application-desc 
+      main-class="customprogressindicatordemo.Main"
+      progress-class="customprogressindicator.CustomProgress"
+  />
+</jnlp>

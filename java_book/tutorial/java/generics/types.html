@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Generic Types (The Java&trade; Tutorials &gt;        
+            Learning the Java Language &gt; Generics (Updated))
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This beginner Java tutorial describes fundamentals of programming in the Java programming language" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java objects, java classes, java inheritance, interfaces, variables, arrays, data types, operators, control flow, number, string" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Generics (Updated)</a></div>
+<div class="linkAHEAD"><a href="why.html">Why Use Generics?</a></div>
+<div class="nolinkAHEAD">Generic Types</div>
+<div class="linkBHEAD"><a href="rawTypes.html">Raw Types</a></div>
+<div class="linkAHEAD"><a href="methods.html">Generic Methods</a></div>
+<div class="linkAHEAD"><a href="bounded.html">Bounded Type Parameters</a></div>
+<div class="linkBHEAD"><a href="boundedTypeParams.html">Generic Methods and Bounded Type Parameters</a></div>
+<div class="linkAHEAD"><a href="inheritance.html">Generics, Inheritance, and Subtypes</a></div>
+<div class="linkAHEAD"><a href="genTypeInference.html">Type Inference</a></div>
+<div class="linkAHEAD"><a href="wildcards.html">Wildcards</a></div>
+<div class="linkBHEAD"><a href="upperBounded.html">Upper Bounded Wildcards</a></div>
+<div class="linkBHEAD"><a href="unboundedWildcards.html">Unbounded Wildcards</a></div>
+<div class="linkBHEAD"><a href="lowerBounded.html">Lower Bounded Wildcards</a></div>
+<div class="linkBHEAD"><a href="subtyping.html">Wildcards and Subtyping</a></div>
+<div class="linkBHEAD"><a href="capture.html">Wildcard Capture and Helper Methods</a></div>
+<div class="linkBHEAD"><a href="wildcardGuidelines.html">Guidelines for Wildcard Use</a></div>
+<div class="linkAHEAD"><a href="erasure.html">Type Erasure</a></div>
+<div class="linkBHEAD"><a href="genTypes.html">Erasure of Generic Types</a></div>
+<div class="linkBHEAD"><a href="genMethods.html">Erasure of Generic Methods</a></div>
+<div class="linkBHEAD"><a href="bridgeMethods.html">Effects of Type Erasure and Bridge Methods</a></div>
+<div class="linkBHEAD"><a href="nonReifiableVarargsType.html">Non-Reifiable Types</a></div>
+<div class="linkAHEAD"><a href="restrictions.html">Restrictions on Generics</a></div>
+<div class="linkQUESTIONS"><a href="QandE/generics-questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Learning the Java Language
+        <br /><b>Lesson:</b> Generics (Updated)
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Learning the Java Language</a>
+                &gt;
+                <a href="index.html" target="_top">Generics (Updated)</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="why.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="rawTypes.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Generic Types</h1></div>
+            <div id="PageContent">
+
+<p>
+A <em>generic type</em> is a generic class or interface that is parameterized over types. The following <tt>Box</tt> class will be modified to demonstrate the concept.</p>
+
+<h2>A Simple Box Class</h2>
+<p>
+Begin by examining a non-generic <tt>Box</tt> class that operates on objects of any type. It needs only to provide two methods: <tt>set</tt>, which adds an object to the box, and <tt>get</tt>, which retrieves it:</p>
+<div class="codeblock"><pre>
+public class Box {
+    private Object object;
+
+    public void set(Object object) { this.object = object; }
+    public Object get() { return object; }
+}
+</pre></div>
+<p>
+Since its methods accept or return an <tt>Object</tt>, you are free to pass in whatever you want, provided that it is not one of the primitive types. There is no way to verify, at compile time, how the class is used. One part of the code may place an <tt>Integer</tt> in the box and expect to get <tt>Integer</tt>s out of it, while another part of the code may mistakenly pass in a <tt>String</tt>, resulting in a runtime error.</p>
+
+<h2>A Generic Version of the Box Class</h2>
+<p>
+A <em>generic class</em> is defined with the following format:</p>
+<div class="codeblock"><pre>
+class name&lt;T1, T2, ..., Tn&gt; { /* ... */ }
+</pre></div>
+<p>
+The type parameter section, delimited by angle brackets (<tt>&lt;&gt;</tt>), follows the class name. It specifies the <em>type parameters</em> (also called <em>type variables</em>) <tt>T1</tt>, <tt>T2</tt>, ..., and <tt>Tn</tt>.</p>
+<p>
+To update the <tt>Box</tt> class to use generics, you create a <em>generic type declaration</em> by changing the code "<tt>public class Box</tt>" to "<tt>public class Box&lt;T&gt;</tt>". This introduces the type variable, <tt>T</tt>, that can be used anywhere inside the class.</p>
+<p>
+With this change, the <tt>Box</tt> class becomes:</p>
+<div class="codeblock"><pre>
+/**
+ * Generic version of the Box class.
+ * @param &lt;T&gt; the type of the value being boxed
+ */
+public class Box&lt;T&gt; {
+    // T stands for "Type"
+    private T t;
+
+    public void set(T t) { this.t = t; }
+    public T get() { return t; }
+}
+</pre></div>
+<p>
+As you can see, all occurrences of <tt>Object</tt> are replaced by <tt>T</tt>.  A type variable can be any <strong>non-primitive</strong> type you specify: any class type, any interface type, any array type, or even another type variable.</p>
+<p>
+This same technique can be applied to create generic interfaces.</p>
+
+<h2>Type Parameter Naming Conventions</h2>
+<p>By convention, type parameter names are single, uppercase letters. This stands in sharp contrast to the variable 
+<a class="TutorialLink" target="_top" href="../nutsandbolts/variables.html#naming">naming</a> conventions that you already know about, and with good reason: Without this convention, it would be difficult to tell the difference between a type variable and an ordinary class or interface name.</p>
+<p>The most commonly used type parameter names are:</p>
+<ul>
+<li>E - Element (used extensively by the Java Collections Framework)</li>
+<li>K - Key</li>
+<li>N - Number</li>
+<li>T - Type</li>
+<li>V - Value</li>
+<li>S,U,V etc. - 2nd, 3rd, 4th types</li>
+</ul>
+<p>You&#39;ll see these names used throughout the Java SE API and the rest of this lesson.</p>
+
+<h2><a name="instantiation">Invoking and Instantiating a Generic Type</a></h2>
+<p>
+To reference the generic <tt>Box</tt> class from within your code, you must perform a <em>generic type invocation</em>, which replaces <tt>T</tt> with some concrete value, such as <tt>Integer</tt>:</p>
+<div class="codeblock"><pre>
+Box&lt;Integer&gt; integerBox;
+</pre></div>
+<p>
+You can think of a generic type invocation as being similar to an ordinary method invocation, but instead of passing an argument to a method, you are passing a <em>type argument</em> &mdash; <tt>Integer</tt> in this case &mdash; to the <tt>Box</tt> class itself.</p>
+<div class="note"><hr /><strong>Type Parameter and Type Argument Terminology:</strong>&nbsp;Many developers use the terms "type parameter" and "type argument" interchangeably, but these terms are not the same. When coding, one provides type arguments in order to create a parameterized type. Therefore, the <tt>T</tt> in <tt>Foo&lt;T&gt;</tt> is a type parameter and the <tt>String</tt> in <tt>Foo&lt;String&gt; f</tt> is a type argument. This lesson observes this definition when using these terms.
+<hr /></div>
+<p>
+Like any other variable declaration, this code does not actually create a new <tt>Box</tt> object. It simply declares that <tt>integerBox</tt> will hold a reference to a "<tt>Box</tt> of <tt>Integer</tt>", which is how <tt>Box&lt;Integer&gt;</tt> is read.</p>
+<p>
+An invocation of a generic type is generally known as a <em>parameterized type</em>.</p>
+<p>
+To instantiate this class, use the <tt>new</tt> keyword, as usual, but place <tt>&lt;Integer&gt;</tt> between the class name and the parenthesis:</p>
+<div class="codeblock"><pre>
+Box&lt;Integer&gt; integerBox = new Box&lt;Integer&gt;();
+</pre></div>
+
+<h2><a name="diamond" id="diamond">The Diamond</a></h2>
+<p>
+In Java SE 7 and later, you can replace the type arguments required to invoke the constructor of a generic class with an empty set of type arguments (&lt;&gt;) as long as the compiler can determine, or infer, the type arguments from the context. This pair of angle brackets, &lt;&gt;, is informally called <em>the diamond</em>. For example, you can create an instance of <tt>Box&lt;Integer&gt;</tt> with the following statement:</p>
+<div class="codeblock"><pre>
+Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
+</pre></div>
+<p>
+For more information on diamond notation and type inference, see
+<a class="TutorialLink" target="_top" href="genTypeInference.html">Type Inference</a>.</p>
+
+<h2><a name="multiple" id="multiple">Multiple Type Parameters</a></h2>
+<p>
+As mentioned previously, a generic class can have multiple type parameters. For example, the generic <tt>OrderedPair</tt> class, which implements the generic <tt>Pair</tt> interface:</p>
+<div class="codeblock"><pre>
+public interface Pair&lt;K, V&gt; {
+    public K getKey();
+    public V getValue();
+}
+
+public class OrderedPair&lt;K, V&gt; implements Pair&lt;K, V&gt; {
+
+    private K key;
+    private V value;
+
+    public OrderedPair(K key, V value) {
+	this.key = key;
+	this.value = value;
+    }
+
+    public K getKey()	{ return key; }
+    public V getValue() { return value; }
+}
+</pre></div>
+
+<p>
+The following statements create two instantiations of the <tt>OrderedPair</tt> class:</p>
+<div class="codeblock"><pre>
+Pair&lt;String, Integer&gt; p1 = new OrderedPair&lt;String, Integer&gt;("Even", 8);
+Pair&lt;String, String&gt;  p2 = new OrderedPair&lt;String, String&gt;("hello", "world");
+</pre></div>
+
+<p>
+The code, <tt>new OrderedPair&lt;String, Integer&gt;</tt>, instantiates <tt>K</tt> as a <tt>String</tt> and <tt>V</tt> as an <tt>Integer</tt>. Therefore, the parameter types of <tt>OrderedPair</tt>'s constructor are <tt>String</tt> and <tt>Integer</tt>, respectively. Due to 
+<a class="TutorialLink" target="_top" href="../data/autoboxing.html">autoboxing</a>, it is valid to pass a <tt>String</tt> and an <tt>int</tt> to the class.</p>
+<p>
+As mentioned in <a href="#diamond">The Diamond</a>, because a Java compiler can infer the <tt>K</tt> and <tt>V</tt> types from the declaration <tt>OrderedPair&lt;String, Integer&gt;</tt>, these statements can be shortened using diamond notation:</p>
+<div class="codeblock"><pre>
+OrderedPair&lt;String, Integer&gt; p1 = new OrderedPair<strong>&lt;&gt;</strong>("Even", 8);
+OrderedPair&lt;String, String&gt;  p2 = new OrderedPair<strong>&lt;&gt;</strong>("hello", "world");
+</pre></div>
+
+<p>
+To create a generic interface, follow the same conventions as for creating a generic class.</p>
+
+<h2>Parameterized Types</h2>
+<p>
+You can also substitute a type parameter (i.e., <tt>K</tt> or <tt>V</tt>) with a parameterized type (i.e., <tt>List&lt;String&gt;</tt>). For example, using the <tt>OrderedPair&lt;K, V&gt;</tt> example:</p>
+<div class="codeblock"><pre>
+OrderedPair&lt;String, <strong>Box&lt;Integer&gt;</strong>&gt; p = new OrderedPair&lt;&gt;("primes", new Box&lt;Integer&gt;(...));
+</pre></div>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="why.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="rawTypes.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Why Use Generics?
+        <br /><b>Next page:</b> Raw Types
+    </div>
+</body>
+</html> 

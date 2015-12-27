@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Trouble Shooting Tips (The Java&trade; Tutorials &gt;        
+            Java Naming and Directory Interface &gt; Naming and Directory Operations)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JNDI Java tutorial describes Java Naming and Directory Interface (JNDI) technology, naming and directory operations, and LDAP" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jndi, ldap, jndi service provider" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Naming and Directory Operations</a></div>
+<div class="linkAHEAD"><a href="exception.html">Naming Exceptions</a></div>
+<div class="linkAHEAD"><a href="lookup.html">Lookup an Object</a></div>
+<div class="linkAHEAD"><a href="list.html">List the Context</a></div>
+<div class="linkAHEAD"><a href="bind.html">Add, Replace or Remove a Binding</a></div>
+<div class="linkAHEAD"><a href="rename.html">Rename</a></div>
+<div class="linkAHEAD"><a href="create.html">Create and Destroy Subcontexts</a></div>
+<div class="linkAHEAD"><a href="attrnames.html">Attribute Names</a></div>
+<div class="linkAHEAD"><a href="getattrs.html">Read Attributes</a></div>
+<div class="linkAHEAD"><a href="modattrs.html">Modify Attributes</a></div>
+<div class="linkAHEAD"><a href="bindattr.html">Add, Replace Bindings with Attributes</a></div>
+<div class="linkAHEAD"><a href="search.html">Search</a></div>
+<div class="linkBHEAD"><a href="basicsearch.html">Basic Search</a></div>
+<div class="linkBHEAD"><a href="filter.html">Filters</a></div>
+<div class="linkBHEAD"><a href="scope.html">Scope</a></div>
+<div class="linkBHEAD"><a href="countlimit.html">Result Count</a></div>
+<div class="linkBHEAD"><a href="timelimit.html">Time Limit</a></div>
+<div class="nolinkAHEAD">Trouble Shooting Tips</div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java Naming and Directory Interface
+        <br /><b>Lesson:</b> Naming and Directory Operations
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java Naming and Directory Interface</a>
+                &gt;
+                <a href="index.html" target="_top">Naming and Directory Operations</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="timelimit.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../ldap/index.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Trouble Shooting Tips</h1></div>
+            <div id="PageContent">
+
+<p>Here are the most common problems that you might encounter when you try to run a successfully compiled program that uses the JNDI classes.</p>
+<hr />
+<ol>
+<li><a href="#1">No Initial Context</a></li>
+<li><a href="#2">Connection Refused</a></li>
+<li><a href="#3">Connection Fails</a></li>
+<li><a href="#4">Program Hangs</a></li>
+<li><a href="#5">Name Not Found</a></li>
+<li><a href="#6">Cannot Connect to Arbitrary Hosts</a></li>
+<li><a href="#7">Cannot Access System Properties for Configuration</a></li>
+<li><a href="#8">Cannot Authenticate by Using CRAM-MD5</a></li>
+</ol>
+<hr />
+<p><a style="font-weight: bold" name="1">1. You get a <tt>NoInitialContextException</tt></a>.</p>
+<p><em>Cause</em>: You did not specify which implementation to use for the initial context. Specifically, the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/Context.html#INITIAL_CONTEXT_FACTORY"><tt>Context.INITIAL_CONTEXT_FACTORY</tt></a> environment property was not set to the class name of the factory that will create the initial context. Or, you did not make available to the program the classes of the service provider named by <tt>Context.INITIAL_CONTEXT_FACTORY</tt>.</p>
+<p><em>Solution</em>: Set the <tt>Context.INITIAL_CONTEXT_FACTORY</tt> environment property to the class name of the initial context implementation that you are using. See 
+<a class="TutorialLink" target="_top" href="index.html">Configuration</a> section for details.</p>
+<p>If the property was set, then make sure that the class name was not mistyped, and that the class named is available to your program (either in its classpath or installed in the <tt>jre/lib/ext</tt> directory of the JRE). The <a href="">Java Platform</a> includes service providers for LDAP, COS naming, DNS, and the RMI registry. All other service providers must be installed and added to the execution environment.</p>
+<p><a style="font-weight: bold" name="2">2. You get a <tt>CommunicationException</tt>, indicating &quot;connection refused.&quot;</a></p>
+<p><em>Cause</em>: The server and port identified by the <tt>Context.PROVIDER_URL</tt> environment property is not being served by the server. Perhaps someone has disabled or turned off the machine on which the server is running. Or, maybe you mistyped the server&#39;s name or port number.</p>
+<p><em>Solution</em>: Check that there is indeed a server running on that port, and restart the server if necessary. The way that you perform this check depends on the LDAP server that you are using. Usually, an administrative console or tool is available that you can use to administer the server. You may use that tool to verify the server&#39;s status.</p>
+<p><a style="font-weight: bold" name="3">3. The LDAP server responds to other utilities (such as its administration console) but does not seem to respond to your program&#39;s requests.</a></p>
+<p><em>Cause</em>: The server does not respond to LDAP v3 connection requests. Some servers (especially public servers) do not respond correctly to the LDAP v3, ignoring the requests instead of rejecting them. Also, some LDAP v3 servers have problems handling a control that Oracle's LDAP service provider automatically sends and often return a server-specific failure code.</p>
+<p><em>Solution</em>. Try setting the environment property <tt>&quot;java.naming.ldap.version&quot;</tt> to <tt>&quot;2&quot;</tt>. The LDAP service provider by default attempts to connect to an LDAP server using the LDAP v3; if that fails, then it uses the LDAP v2. If the server silently ignores the v3 request, then the provider will assume that the request worked. To work around such servers, you must explicitly set the protocol version to ensure proper behavior by the server.</p>
+<p>If the server is a v3 server, then try setting the following environment property before creating the initial context:</p>
+<div class="codeblock"><pre>
+env.put(Context.REFERRAL, "throw");
+</pre></div>
+<p>This will turn off the control that the LDAP provider sends automatically. (Check out the 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/jndi/tutorial/ldap/referral/index.html">JNDI Tutorial</a> for details.)</p>
+<p><a style="font-weight: bold" name="4">4. The program hangs.</a></p>
+<p><em>Causes</em>: Some servers (especially public ones) won&#39;t respond (not even with a negative answer) if you attempt to perform a search that would generate too many results or that would require the server to examine too many entries in order to generate the answer. Such servers are trying to limit the amount of resources that they expend on a per-request basis.</p>
+<p>Or, you tried to use Secure Socket Layer (SSL) against a server/port that does not support it, and vice versa (that is, you tried to use a plain socket to talk to an SSL port).</p>
+<p>And lastly, the server is either responding very slowly due to heavy load or is not responding at all for some reason.</p>
+<p><em>Solution</em>: If your program is hanging because the server is trying to restrict the use of its resources, then retry your request using a query that will return a single result or only a few results. This will help you to determine whether the server is alive. If it is, then you can broaden your initial query and resubmit it.</p>
+<p>If your program is hanging because of SSL problems, then you need to find out whether the port is an SSL port and then set the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/Context.html#SECURITY_PROTOCOL"><tt>Context.SECURITY_PROTOCOL</tt></a> environment property appropriately. If the port is an SSL port, then this property should be set to <tt>&quot;ssl&quot;</tt>. If it is not an SSL port, then this property should not be set.</p>
+<p>If you program is hanging for none of the above reasons the property <tt>com.sun.jndi.ldap.read.timeout</tt> comes in handy to specify the read timeout. The value of this property is the string representation of an integer representing the read timeout in milliseconds for LDAP operations. If the LDAP provider cannot get a LDAP response within that period, it aborts the read attempt. The integer should be greater than zero. An integer less than or equal to zero means no read timeout is specified which is equivalent to waiting for the response infinitely until it is received.</p>
+<p>If this property is not specified, the default is to wait for the response until it is received.</p>
+<p><a>For example,</a></p>
+<p><a><tt>env.put(&quot;com.sun.jndi.ldap.read.timeout&quot;, &quot;5000&quot;);</tt></a> causes the LDAP service provider to abort the read attempt if the server does not respond with a reply within 5 seconds.</p>
+<p><a style="font-weight: bold" name="5">5. You get a <tt>NameNotFoundException</tt></a>.</p>
+<p><em>Causes</em>: When you initialized the initial context for the LDAP, you supply a root-distinguished name. For example, if you set the <tt>Context.PROVIDER_URL</tt> environment property for the initial context to <tt>&quot;ldap://ldapserver:389/o=JNDITutorial&quot;</tt> and subsequently supplied a name such as <tt>&quot;cn=Joe,c=us&quot;</tt>, then the full name that you passed to the LDAP service was <tt>&quot;cn=Joe,c=us,o=JNDITutorial&quot;</tt>. If this was really the name that you intended, then you should check your server to make sure that it contains such an entry.</p>
+<p>Also, the Oracle Directory Server returns this error if you supply an incorrect distinguished name for authentication purposes. For example, the LDAP provider will throw a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/NameNotFoundException.html"><tt>NameNotFoundException</tt></a> if you set the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/naming/Context.html#SECURITY_PRINCIPAL"><tt>Context.SECURITY_PRINCIPAL</tt></a> environment property to <tt>&quot;cn=Admin, o=Tutorial&quot;</tt>, and <tt>&quot;cn=Admin, o=Tutorial&quot;</tt> is not an entry on the LDAP server. The correct error for the Oracle Directory Server to return actually should be something related to authentication, rather than &quot;name not found.&quot;</p>
+<p><em>Solution</em>: Verify the name that you supplied is that of an entry existing on the server. You can do this by listing the entry&#39;s parent context or using some other tool such as the directory server&#39;s administration console.</p>
+<hr />
+<p>Here are some problems that you might encounter when trying to deploy an applet that uses the JNDI classes.</p>
+<p><a style="font-weight: bold" name="6">6. You get an <tt>AppletSecurityException</tt> when your applet attempts to communicate with a directory server that is running on a machine different from the one from which the applet was loaded</a></p>
+<p><em>Cause</em>: Your applet was not signed, so it can connect only to the machine from which it was loaded. Or, if the applet was signed, the browser has not granted the applet permission to connect to the directory server machine.</p>
+<p><em>Solution</em>: If you want to allow the applet to connect to directory servers running on arbitrary machines, then you need to sign <em>both</em> your applet <em>and</em> all of the JNDI JARs that your applet will be using. For information on signing jars, see 
+<a class="TutorialLink" target="_top" href="../../deployment/jar/signindex.html">Signing and Verifying JAR files</a>
+ .</p>
+<p><a style="font-weight: bold" name="7">7. You get an <tt>AppletSecurityException</tt> when your applet attempts to set up the environment properties using system properties.</a></p>
+<p><em>Cause</em>: Web browsers limit access to system properties and throw a <tt>SecurityException</tt> if you attempt to read them.</p>
+<p><em>Solution</em>: If you need to obtain input for your applet, then try using applet params instead.</p>
+<p><a style="font-weight: bold" name="8">8. You get an <tt>AppletSecurityException</tt> when an applet running inside Firefox attempts to authenticate using CRAM-MD5 to the LDAP server.</a></p>
+<p><em>Cause</em>: Firefox disables access to the <tt>java.security</tt> packages. The LDAP provider used the message digest functionality provided by <tt>java.security.MessageDigest</tt> for implementing CRAM-MD5.</p>
+<p><em>Solution</em>: Use the Java Plug-in.</p>
+<hr />
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="timelimit.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="../ldap/index.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Time Limit
+        <br /><b>Next page:</b> Advanced Topics for LDAP Users
+    </div>
+</body>
+</html> 

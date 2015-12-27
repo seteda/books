@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html lang="en-US">
+<head>
+	<title>Applet Deployment Options Specified as Attribute and Parameter Name-Value Pairs</title>
+
+</head>
+<body>
+<h1>Applet Deployment Options Specified as Attribute and Parameter Name-Value Pairs</h1>
+
+<script src="https://www.java.com/js/deployJava.js"></script>
+<script>
+    var attributes = {code:'java2d.Java2DemoApplet.class',
+                      archive:'Java2Demo.jar',
+                      width:710, height:540};
+    var parameters = {fontSize:16, permissions:'sandbox'};
+    var version = '1.4' ;
+
+    deployJava.runApplet(attributes, parameters, version);
+</script>
+<noscript>This page requires JavaScript.</noscript>
+</body>
+</html>

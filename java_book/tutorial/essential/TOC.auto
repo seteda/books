@@ -1,0 +1,189 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="exceptions/index.html">Exceptions</a>
+<ul>
+<li class="tocli"><a href="exceptions/definition.html">What Is an Exception?</a></li>
+<li class="tocli"><a href="exceptions/catchOrDeclare.html">The Catch or Specify Requirement</a></li>
+<li class="tocli"><a href="exceptions/handling.html">Catching and Handling Exceptions</a>
+<ul>
+<li class="tocli"><a href="exceptions/try.html">The try Block</a></li>
+<li class="tocli"><a href="exceptions/catch.html">The catch Blocks</a></li>
+<li class="tocli"><a href="exceptions/finally.html">The finally Block</a></li>
+<li class="tocli"><a href="exceptions/tryResourceClose.html">The try-with-resources Statement</a></li>
+<li class="tocli"><a href="exceptions/putItTogether.html">Putting It All Together</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="exceptions/declaring.html">Specifying the Exceptions Thrown by a Method</a></li>
+<li class="tocli"><a href="exceptions/throwing.html">How to Throw Exceptions</a>
+<ul>
+<li class="tocli"><a href="exceptions/chained.html">Chained Exceptions</a></li>
+<li class="tocli"><a href="exceptions/creating.html">Creating Exception Classes</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="exceptions/runtime.html">Unchecked Exceptions &#151; The Controversy</a></li>
+<li class="tocli"><a href="exceptions/advantages.html">Advantages of Exceptions</a></li>
+<li class="tocli"><a href="exceptions/summary.html">Summary</a></li>
+<li class="tocli"><a href="exceptions/QandE/questions.html">Questions and Exercises</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="io/index.html">Basic I/O</a>
+<ul>
+<li class="tocli"><a href="io/streams.html">I/O Streams</a>
+<ul>
+<li class="tocli"><a href="io/bytestreams.html">Byte Streams</a></li>
+<li class="tocli"><a href="io/charstreams.html">Character Streams</a></li>
+<li class="tocli"><a href="io/buffers.html">Buffered Streams</a></li>
+<li class="tocli"><a href="io/scanfor.html">Scanning and Formatting</a>
+<ul>
+<li class="tocli"><a href="io/scanning.html">Scanning</a></li>
+<li class="tocli"><a href="io/formatting.html">Formatting</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="io/cl.html">I/O from the Command Line</a></li>
+<li class="tocli"><a href="io/datastreams.html">Data Streams</a></li>
+<li class="tocli"><a href="io/objectstreams.html">Object Streams</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="io/fileio.html">File I/O (Featuring NIO.2)</a>
+<ul>
+<li class="tocli"><a href="io/path.html">What Is a Path? (And Other File System Facts)</a></li>
+<li class="tocli"><a href="io/pathClass.html">The Path Class</a>
+<ul>
+<li class="tocli"><a href="io/pathOps.html">Path Operations</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="io/fileOps.html">File Operations</a></li>
+<li class="tocli"><a href="io/check.html">Checking a File or Directory</a></li>
+<li class="tocli"><a href="io/delete.html">Deleting a File or Directory</a></li>
+<li class="tocli"><a href="io/copy.html">Copying a File or Directory</a></li>
+<li class="tocli"><a href="io/move.html">Moving a File or Directory</a></li>
+<li class="tocli"><a href="io/fileAttr.html">Managing Metadata (File and File Store Attributes)</a></li>
+<li class="tocli"><a href="io/file.html">Reading, Writing, and Creating Files</a></li>
+<li class="tocli"><a href="io/rafs.html">Random Access Files</a></li>
+<li class="tocli"><a href="io/dirs.html">Creating and Reading Directories</a></li>
+<li class="tocli"><a href="io/links.html">Links, Symbolic or Otherwise</a></li>
+<li class="tocli"><a href="io/walk.html">Walking the File Tree</a></li>
+<li class="tocli"><a href="io/find.html">Finding Files</a></li>
+<li class="tocli"><a href="io/notification.html">Watching a Directory for Changes</a></li>
+<li class="tocli"><a href="io/misc.html">Other Useful Methods</a></li>
+<li class="tocli"><a href="io/legacy.html">Legacy File I/O Code</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="io/summary.html">Summary</a></li>
+<li class="tocli"><a href="io/QandE/questions.html">Questions and Exercises: Basic I/O</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="concurrency/index.html">Concurrency</a>
+<ul>
+<li class="tocli"><a href="concurrency/procthread.html">Processes and Threads</a></li>
+<li class="tocli"><a href="concurrency/threads.html">Thread Objects</a>
+<ul>
+<li class="tocli"><a href="concurrency/runthread.html">Defining and Starting a Thread</a></li>
+<li class="tocli"><a href="concurrency/sleep.html">Pausing Execution with Sleep</a></li>
+<li class="tocli"><a href="concurrency/interrupt.html">Interrupts</a></li>
+<li class="tocli"><a href="concurrency/join.html">Joins</a></li>
+<li class="tocli"><a href="concurrency/simple.html">The SimpleThreads Example</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="concurrency/sync.html">Synchronization</a>
+<ul>
+<li class="tocli"><a href="concurrency/interfere.html">Thread Interference</a></li>
+<li class="tocli"><a href="concurrency/memconsist.html">Memory Consistency Errors</a></li>
+<li class="tocli"><a href="concurrency/syncmeth.html">Synchronized Methods</a></li>
+<li class="tocli"><a href="concurrency/locksync.html">Intrinsic Locks and Synchronization</a></li>
+<li class="tocli"><a href="concurrency/atomic.html">Atomic Access</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="concurrency/liveness.html">Liveness</a>
+<ul>
+<li class="tocli"><a href="concurrency/deadlock.html">Deadlock</a></li>
+<li class="tocli"><a href="concurrency/starvelive.html">Starvation and Livelock</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="concurrency/guardmeth.html">Guarded Blocks</a></li>
+<li class="tocli"><a href="concurrency/immutable.html">Immutable Objects</a>
+<ul>
+<li class="tocli"><a href="concurrency/syncrgb.html">A Synchronized Class Example</a></li>
+<li class="tocli"><a href="concurrency/imstrat.html">A Strategy for Defining Immutable Objects</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="concurrency/highlevel.html">High Level Concurrency Objects</a>
+<ul>
+<li class="tocli"><a href="concurrency/newlocks.html">Lock Objects</a></li>
+<li class="tocli"><a href="concurrency/executors.html">Executors</a>
+<ul>
+<li class="tocli"><a href="concurrency/exinter.html">Executor Interfaces</a></li>
+<li class="tocli"><a href="concurrency/pools.html">Thread Pools</a></li>
+<li class="tocli"><a href="concurrency/forkjoin.html">Fork/Join</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="concurrency/collections.html">Concurrent Collections</a></li>
+<li class="tocli"><a href="concurrency/atomicvars.html">Atomic Variables</a></li>
+<li class="tocli"><a href="concurrency/threadlocalrandom.html">Concurrent Random Numbers</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="concurrency/further.html">For Further Reading</a></li>
+<li class="tocli"><a href="concurrency/QandE/questions.html">Questions and Exercises: Concurrency</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="environment/index.html">The Platform Environment</a>
+<ul>
+<li class="tocli"><a href="environment/config.html">Configuration Utilities</a>
+<ul>
+<li class="tocli"><a href="environment/properties.html">Properties</a></li>
+<li class="tocli"><a href="environment/cmdLineArgs.html">Command-Line Arguments</a></li>
+<li class="tocli"><a href="environment/env.html">Environment Variables</a></li>
+<li class="tocli"><a href="environment/other.html">Other Configuration Utilities</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="environment/system.html">System Utilities</a>
+<ul>
+<li class="tocli"><a href="environment/cl.html">Command-Line I/O Objects</a></li>
+<li class="tocli"><a href="environment/sysprop.html">System Properties</a></li>
+<li class="tocli"><a href="environment/security.html">The Security Manager</a></li>
+<li class="tocli"><a href="environment/sysmisc.html">Miscellaneous Methods in System</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="environment/paths.html">PATH and CLASSPATH</a></li>
+<li class="tocli"><a href="environment/QandE/questions.html">Questions and Exercises: The Platform Environment</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="regex/index.html">Regular Expressions</a>
+<ul>
+<li class="tocli"><a href="regex/intro.html">Introduction</a></li>
+<li class="tocli"><a href="regex/test_harness.html">Test Harness</a></li>
+<li class="tocli"><a href="regex/literals.html">String Literals</a></li>
+<li class="tocli"><a href="regex/char_classes.html">Character Classes</a></li>
+<li class="tocli"><a href="regex/pre_char_classes.html">Predefined Character Classes</a></li>
+<li class="tocli"><a href="regex/quant.html">Quantifiers</a></li>
+<li class="tocli"><a href="regex/groups.html">Capturing Groups</a></li>
+<li class="tocli"><a href="regex/bounds.html">Boundary Matchers</a></li>
+<li class="tocli"><a href="regex/pattern.html">Methods of the Pattern Class</a></li>
+<li class="tocli"><a href="regex/matcher.html">Methods of the Matcher Class</a></li>
+<li class="tocli"><a href="regex/pse.html">Methods of the PatternSyntaxException Class</a></li>
+<li class="tocli"><a href="regex/unicode.html">Unicode Support</a></li>
+<li class="tocli"><a href="regex/resources.html">Additional Resources</a></li>
+<li class="tocli"><a href="regex/QandE/questions.html">Questions and Exercises: Regular Expressions</a>
+</li>
+</ul>
+</li>
+</ul>

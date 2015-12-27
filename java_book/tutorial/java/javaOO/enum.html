@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Enum Types (The Java&trade; Tutorials &gt;        
+            Learning the Java Language &gt; Classes and Objects)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This beginner Java tutorial describes fundamentals of programming in the Java programming language" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java objects, java classes, java inheritance, interfaces, variables, arrays, data types, operators, control flow, number, string" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Classes and Objects</a></div>
+<div class="linkAHEAD"><a href="classes.html">Classes</a></div>
+<div class="linkBHEAD"><a href="classdecl.html">Declaring Classes</a></div>
+<div class="linkBHEAD"><a href="variables.html">Declaring Member Variables</a></div>
+<div class="linkBHEAD"><a href="methods.html">Defining Methods</a></div>
+<div class="linkBHEAD"><a href="constructors.html">Providing Constructors for Your Classes</a></div>
+<div class="linkBHEAD"><a href="arguments.html">Passing Information to a Method or a Constructor</a></div>
+<div class="linkAHEAD"><a href="objects.html">Objects</a></div>
+<div class="linkBHEAD"><a href="objectcreation.html">Creating Objects</a></div>
+<div class="linkBHEAD"><a href="usingobject.html">Using Objects</a></div>
+<div class="linkAHEAD"><a href="more.html">More on Classes</a></div>
+<div class="linkBHEAD"><a href="returnvalue.html">Returning a Value from a Method</a></div>
+<div class="linkBHEAD"><a href="thiskey.html">Using the this Keyword</a></div>
+<div class="linkBHEAD"><a href="accesscontrol.html">Controlling Access to Members of a Class</a></div>
+<div class="linkBHEAD"><a href="classvars.html">Understanding Class Members</a></div>
+<div class="linkBHEAD"><a href="initial.html">Initializing Fields</a></div>
+<div class="linkBHEAD"><a href="summaryclasses.html">Summary of Creating and Using Classes and Objects</a></div>
+<div class="linkQUESTIONS"><a href="QandE/creating-questions.html">Questions and Exercises</a></div>
+<div class="linkQUESTIONS"><a href="QandE/objects-questions.html">Questions and Exercises</a></div>
+<div class="linkAHEAD"><a href="nested.html">Nested Classes</a></div>
+<div class="linkBHEAD"><a href="innerclasses.html">Inner Class Example</a></div>
+<div class="linkBHEAD"><a href="localclasses.html">Local Classes</a></div>
+<div class="linkBHEAD"><a href="anonymousclasses.html">Anonymous Classes</a></div>
+<div class="linkBHEAD"><a href="lambdaexpressions.html">Lambda Expressions</a></div>
+<div class="linkCHEAD"><a href="methodreferences.html">Method References</a></div>
+<div class="linkBHEAD"><a href="whentouse.html">When to Use Nested Classes, Local Classes, Anonymous Classes, and Lambda Expressions </a></div>
+<div class="linkQUESTIONS"><a href="QandE/nested-questions.html">Questions and Exercises</a></div>
+<div class="nolinkAHEAD">Enum Types</div>
+<div class="linkQUESTIONS"><a href="QandE/enum-questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Learning the Java Language
+        <br /><b>Lesson:</b> Classes and Objects
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Learning the Java Language</a>
+                &gt;
+                <a href="index.html" target="_top">Classes and Objects</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="QandE/nested-questions.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="QandE/enum-questions.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Enum Types</h1></div>
+            <div id="PageContent">
+
+<p>An <i>enum type</i> is a special data type that enables for a variable to be a set of predefined constants. The variable must be equal to one of the values that have been predefined for it. Common examples include compass directions (values of NORTH, SOUTH, EAST, and WEST) and the days of the week.</p>
+<p>Because they are constants, the names of an enum type&#39;s fields are in uppercase letters.</p>
+<p>In the Java programming language, you define an enum type by using the <code>enum</code> keyword. For example, you would specify a days-of-the-week enum type as:</p>
+<div class="codeblock"><pre>
+
+public enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+    THURSDAY, FRIDAY, SATURDAY 
+}
+</pre></div>
+<p>You should use enum types any time you need to represent a fixed set of constants. That includes natural enum types such as the planets in our solar system and data sets where you know all possible values at compile time&#151;for example, the choices on a menu, command line flags, and so on.</p>
+<p>Here is some code that shows you how to use the <code>Day</code> enum defined above:</p>
+<div class="codeblock"><pre>
+
+public class EnumTest {
+    Day day;
+    
+    public EnumTest(Day day) {
+        this.day = day;
+    }
+    
+    public void tellItLikeItIs() {
+        switch (day) {
+            case MONDAY:
+                System.out.println(&quot;Mondays are bad.&quot;);
+                break;
+                    
+            case FRIDAY:
+                System.out.println(&quot;Fridays are better.&quot;);
+                break;
+                         
+            case SATURDAY: case SUNDAY:
+                System.out.println(&quot;Weekends are best.&quot;);
+                break;
+                        
+            default:
+                System.out.println(&quot;Midweek days are so-so.&quot;);
+                break;
+        }
+    }
+    
+    public static void main(String[] args) {
+        EnumTest firstDay = new EnumTest(Day.MONDAY);
+        firstDay.tellItLikeItIs();
+        EnumTest thirdDay = new EnumTest(Day.WEDNESDAY);
+        thirdDay.tellItLikeItIs();
+        EnumTest fifthDay = new EnumTest(Day.FRIDAY);
+        fifthDay.tellItLikeItIs();
+        EnumTest sixthDay = new EnumTest(Day.SATURDAY);
+        sixthDay.tellItLikeItIs();
+        EnumTest seventhDay = new EnumTest(Day.SUNDAY);
+        seventhDay.tellItLikeItIs();
+    }
+}
+</pre></div>
+<p>The output is:</p>
+<div class="codeblock"><pre>
+Mondays are bad.
+Midweek days are so-so.
+Fridays are better.
+Weekends are best.
+Weekends are best.
+</pre></div>
+<p>Java programming language enum types are much more powerful than their counterparts in other languages. The <code>enum</code> declaration defines a <i>class</i> (called an <i>enum type</i>). The enum class body can include methods and other fields. The compiler automatically adds some special methods when it creates an enum. For example, they have a static <code>values</code> method that returns an array containing all of the values of the enum in the order they are declared. This method is commonly used in combination with the for-each construct to iterate over the values of an enum type. For example, this code from the <code>Planet</code> class example below iterates over all the planets in the solar system.</p>
+<div class="codeblock"><pre>
+for (Planet p : Planet.values()) {
+    System.out.printf("Your weight on %s is %f%n",
+                      p, p.surfaceWeight(mass));
+}
+</pre></div>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<i>All</i> enums implicitly extend <code>java.lang.Enum</code>. Because a class can only extend one parent (see
+<a class="TutorialLink" target="_top" href="classdecl.html">Declaring Classes</a>), the Java language does not support multiple inheritance of state (see 
+<a class="TutorialLink" target="_top" href="../IandI/multipleinheritance.html">Multiple Inheritance of State, Implementation, and Type</a>), and therefore an enum cannot extend anything else.
+<hr /></div>
+<p>In the following example, <code>Planet</code> is an enum type that represents the planets in the solar system. They are defined with constant mass and radius properties.</p>
+<p>Each enum constant is declared with values for the mass and radius parameters. These values are passed to the constructor when the constant is created. Java requires that the constants be defined first, prior to any fields or methods. Also, when there are fields and methods, the list of enum constants must end with a semicolon.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;The constructor for an enum type must be package-private or private access. It automatically creates the constants that are defined at the beginning of the enum body. You cannot invoke an enum constructor yourself.
+<hr /></div>
+<p>In addition to its properties and constructor, <code>Planet</code> has methods that allow you to retrieve the surface gravity and weight of an object on each planet. Here is a sample program that takes your weight on earth (in any unit) and calculates and prints your weight on all of the planets (in the same unit):</p>
+<div class="codeblock"><pre>
+
+public enum Planet {
+    MERCURY (3.303e+23, 2.4397e6),
+    VENUS   (4.869e+24, 6.0518e6),
+    EARTH   (5.976e+24, 6.37814e6),
+    MARS    (6.421e+23, 3.3972e6),
+    JUPITER (1.9e+27,   7.1492e7),
+    SATURN  (5.688e+26, 6.0268e7),
+    URANUS  (8.686e+25, 2.5559e7),
+    NEPTUNE (1.024e+26, 2.4746e7);
+
+    private final double mass;   // in kilograms
+    private final double radius; // in meters
+    Planet(double mass, double radius) {
+        this.mass = mass;
+        this.radius = radius;
+    }
+    private double mass() { return mass; }
+    private double radius() { return radius; }
+
+    // universal gravitational constant  (m3 kg-1 s-2)
+    public static final double G = 6.67300E-11;
+
+    double surfaceGravity() {
+        return G * mass / (radius * radius);
+    }
+    double surfaceWeight(double otherMass) {
+        return otherMass * surfaceGravity();
+    }
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.err.println(&quot;Usage: java Planet &lt;earth_weight&gt;&quot;);
+            System.exit(-1);
+        }
+        double earthWeight = Double.parseDouble(args[0]);
+        double mass = earthWeight/EARTH.surfaceGravity();
+        for (Planet p : Planet.values())
+           System.out.printf(&quot;Your weight on %s is %f%n&quot;,
+                             p, p.surfaceWeight(mass));
+    }
+}
+</pre></div>
+<p>If you run <code>Planet.class</code> from the command line with an argument of 175, you get this output:</p>
+<div class="codeblock"><pre>
+$ java Planet 175
+Your weight on MERCURY is 66.107583
+Your weight on VENUS is 158.374842
+Your weight on EARTH is 175.000000
+Your weight on MARS is 66.279007
+Your weight on JUPITER is 442.847567
+Your weight on SATURN is 186.552719
+Your weight on URANUS is 158.397260
+Your weight on NEPTUNE is 199.207413
+</pre></div>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="QandE/nested-questions.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="QandE/enum-questions.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Questions and Exercises: Nested Classes
+        <br /><b>Next page:</b> Questions and Exercises: Enum Types
+    </div>
+</body>
+</html> 

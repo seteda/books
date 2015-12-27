@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>"Hello World!" for the NetBeans IDE (The Java&trade; Tutorials &gt;        
+            Getting Started &gt; The "Hello World!" Application)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This beginner Java tutorial describes getting started with Java and setting up your Netbeans IDE" />
+     <meta name="keywords" content="java programming, learn java, java sample code, getting started with java, development environment setup" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">The "Hello World!" Application</a></div>
+<div class="nolinkAHEAD">"Hello World!" for the NetBeans IDE</div>
+<div class="linkAHEAD"><a href="win32.html">"Hello World!" for Microsoft Windows</a></div>
+<div class="linkAHEAD"><a href="unix.html">"Hello World!" for Solaris OS and Linux</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Getting Started
+        <br /><b>Lesson:</b> The "Hello World!" Application
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Getting Started</a>
+                &gt;
+                <a href="index.html" target="_top">The "Hello World!" Application</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="index.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="win32.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>"Hello World!" for the NetBeans IDE</h1></div>
+            <div id="PageContent">
+
+<p><a name="netbeans-top" id="netbeans-top"></a></p>
+<p>It&#39;s time to write your first application! These detailed instructions are for users of the NetBeans IDE. The NetBeans IDE runs on the Java platform, which means that you can use it with any operating system for which there is a JDK available. These operating systems include Microsoft Windows, Solaris OS, Linux, and Mac OS X.</p>
+<p>
+
+<ul>
+  <li><a href="#netbeans-1">A Checklist</a></li>
+  <li><a href="#netbeans-2">Creating Your First Application</a>
+    <ul>
+      <li><a href="#netbeans-2a">Create an IDE Project</a></li>
+      <li><a href="#netbeans-jdk">Add JDK 8 to the Platform List (if necessary)</a></li>
+      <li><a href="#netbeans-2b">Add Code to the Generated Source File</a></li>
+      <li><a href="#netbeans-2c">Compile the Source File</a></li>
+      <li><a href="#netbeans-2d">Run the Program</a></li>
+    </ul>
+  </li>
+  <li><a href="#netbeans-3">Continuing the Tutorial with the NetBeans IDE</a></li>
+</ul>
+
+<hr />
+
+</p>
+<h2><a name="netbeans-1" id="netbeans-1"></a> A Checklist&nbsp; 
+<img src="../../figures/getStarted/check.gif" width="56" height="68" alt="a checkmark" /></h2>
+<p>To write your first program, you&#39;ll need:</p>
+<ol>
+<li>
+<p style="font-weight: bold">The Java SE Development Kit (JDK 7 has been selected in this example)</p>
+<ul>
+<li>For Microsoft Windows, Solaris OS, and Linux: 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java SE Downloads Index</a> page</li>
+<li>For Mac OS X: 
+<a class="OutsideLink" target="_blank" href="https://developer.apple.com/">developer.apple.com</a></li>
+</ul>
+</li>
+<li>
+<p style="font-weight: bold">The NetBeans IDE</p>
+<ul>
+<li>For all platforms: 
+<a class="OutsideLink" target="_blank" href="http://netbeans.org/downloads/index.html">NetBeans IDE Downloads Index </a>page</li>
+</ul>
+</li>
+</ol>
+<p>
+          <hr />
+</p>
+<h2><a name="netbeans-2" id="netbeans-2"></a>Creating Your First Application</h2>
+<p>Your first application, <code>HelloWorldApp</code>, will simply display the greeting &quot;Hello World!&quot; To create this program, you will:</p>
+<ul>
+<li>
+<p style="font-weight: bold">Create an IDE project</p>
+<p>When you create an IDE project, you create an environment in which to build and run your applications. Using IDE projects eliminates configuration issues normally associated with developing on the command line. You can build or run your application by choosing a single menu item within the IDE.</p>
+</li>
+<li>
+<p style="font-weight: bold">Add code to the generated source file</p>
+<p>A source file contains code, written in the Java programming language, that you and other programmers can understand. As part of creating an IDE project, a skeleton source file will be automatically generated. You will then modify the source file to add the &quot;Hello World!&quot; message.</p>
+</li>
+<li>
+<p style="font-weight: bold">Compile the source file into a .class file</p>
+<p>The IDE invokes the Java programming language <i>compiler</i> <code>(javac)</code>, which takes your source file and translates its text into instructions that the Java virtual machine can understand. The instructions contained within this file are known as <i>bytecodes</i>.</p>
+</li>
+<li>
+<p style="font-weight: bold">Run the program</p>
+<p>The IDE invokes the Java application <i>launcher tool</i> (<code>java</code>), which uses the Java virtual machine to run your application.</p>
+</li>
+</ul>
+<h3><a name="netbeans-2a" id="netbeans-2a"></a>Create an IDE Project</h3>
+<p>To create an IDE project:</p>
+<ol>
+<li>
+<p>Launch the NetBeans IDE.</p>
+<ul>
+<li>
+<p>On Microsoft Windows systems, you can use the NetBeans IDE item in the Start menu.</p>
+</li>
+<li>
+<p>On Solaris OS and Linux systems, you execute the IDE launcher script by navigating to the IDE&#39;s <code>bin</code> directory and typing <code>./netbeans.</code></p>
+</li>
+<li>
+<p>On Mac OS X systems, click the NetBeans IDE application icon.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>In the NetBeans IDE, choose <strong>File</strong> | <strong>New Project...</strong>.</p>
+<center><img src="../../figures/getStarted/nb-javatutorial-newprojectmenu.png" width="794" height="292" align="bottom" alt="NetBeans IDE with the File | New Project menu item selected." /></p><p class="FigureCaption">NetBeans IDE with the File | New Project menu item selected.</p></center></li>
+<li>
+<p>In the <strong>New Project</strong> wizard, expand the <strong>Java</strong> category and select <strong>Java Application</strong> as shown in the following figure:</p>
+<center><img src="../../figures/getStarted/nb-javatutorial-project1.png" width="729" height="511" align="bottom" alt="NetBeans IDE, New Project wizard, Choose Project page." /></p><p class="FigureCaption">NetBeans IDE, New Project wizard, Choose Project page.</p></center></li>
+<li>
+<p>In the <strong>Name and Location</strong> page of the wizard, do the following (as shown in the figure below):</p>
+<ul>
+<li>
+<p>In the <strong>Project Name</strong> field, type <code>Hello World App</code>.</p>
+</li>
+<li>
+<p>In the <strong>Create Main Class</strong> field, type <code>helloworldapp.HelloWorldApp</code>.</p>
+</li>
+</ul>
+<center><img src="../../figures/getStarted/nb-javatutorial-project2.png" width="765" height="511" align="bottom" alt="NetBeans IDE, New Project wizard, Name and Location page." /></p><p class="FigureCaption">NetBeans IDE, New Project wizard, Name and Location page.</p></center></li>
+<li>
+<p>Click Finish.</p>
+</li>
+</ol>
+<p>The project is created and opened in the IDE. You should see the following components:</p>
+<ul>
+<li>
+<p>The <strong>Projects</strong> window, which contains a tree view of the components of the project, including source files, libraries that your code depends on, and so on.</p>
+</li>
+<li>
+<p>The <strong>Source Editor</strong> window with a file called <code>HelloWorldApp.java</code> open.</p>
+</li>
+<li>
+<p>The <strong>Navigator</strong> window, which you can use to quickly navigate between elements within the selected class.</p>
+<center><img src="../../figures/getStarted/nb-javatutorial-project-opened.png" width="810" height="631" align="bottom" alt="NetBeans IDE with the HelloWorldApp project open." /></p><p class="FigureCaption">NetBeans IDE with the HelloWorldApp project open.</p></center></li>
+</ul>
+<p>
+<hr />
+</p>
+<h3><a name="netbeans-jdk" id="netbeans-jdk"></a> Add JDK 8 to the Platform List (if necessary)</h3>
+<p>It may be necessary to add JDK 8 to the IDE&#39;s list of available platforms. To do this, choose Tools | Java Platforms as shown in the following figure:</p>
+<center><img src="../../figures/getStarted/nb-javatutorial-platform-manager.png" width="825" height="461" align="bottom" alt="Selecting the Java Platform Manager from the Tools Menu" /></p><p class="FigureCaption">Selecting the Java Platform Manager from the Tools Menu</p></center><p>If you don&#39;t see JDK 8 (which might appear as 1.8 or 1.8.0) in the list of installed platforms, click <strong>Add Platform</strong>, navigate to your JDK 8 install directory, and click <strong>Finish</strong>. You should now see this newly added platform:</p>
+<center><img src="../../figures/getStarted/nb-javatutorial-add-platform.png" width="822" height="534" align="bottom" alt="The Java Platform Manager from the Tools Menu" /></p><p class="FigureCaption">The Java Platform Manager</p></center><p>To set this JDK as the default for all projects, you can run the IDE with the <code>--jdkhome</code> switch on the command line, or by entering the path to the JDK in the <code>netbeans_j2sdkhome</code> property of your <code>INSTALLATION_DIRECTORY/etc/netbeans.conf</code> file.</p>
+<p>To specify this JDK for the current project only, select <strong>Hello World App</strong> in the <strong>Projects</strong> pane, choose <strong>File</strong> | <strong>Project Properties (Hello World App)</strong>, click <strong>Libraries</strong>, then select <strong>JDK 1.8</strong> in the <strong>Java Platform</strong> pulldown menu. You should see a screen similar to the following:</p>
+<center><img src="../../figures/getStarted/nb-javatutorial-properties2.png" width="819" height="624" align="bottom" alt="" /></p><p class="FigureCaption"></p></center><p>The IDE is now configured for JDK 8.</p>
+<hr />
+<h3><a name="netbeans-2b" id="netbeans-2b"></a>Add Code to the Generated Source File</h3>
+<p>When you created this project, you left the <strong>Create Main Class</strong> checkbox selected in the <strong>New Project</strong> wizard. The IDE has therefore created a skeleton class for you. You can add the &quot;Hello World!&quot; message to the skeleton code by replacing the line:</p>
+<div class="codeblock"><pre>
+// TODO code application logic here
+</pre></div>
+<p>with the line:</p>
+<div class="codeblock"><pre>
+System.out.println("Hello World!"); // Display the string.
+</pre></div>
+<p>Optionally, you can replace these four lines of generated code:</p>
+<div class="codeblock"><pre>
+/**
+ *
+ * @author
+ */
+</pre></div>
+<p>with these lines:</p>
+<div class="codeblock"><pre>
+/**
+ * The HelloWorldApp class implements an application that
+ * simply prints "Hello World!" to standard output.
+ */
+</pre></div>
+<p>These four lines are a code comment and do not affect how the program runs. 
+Later sections of this tutorial explain the use and format of code comments. 
+</p>
+<p><b>Be Careful When You Type</b>
+<img src="../../figures/getStarted/typeA.gif" width="51" height="36" alt="uppercase letter A" />&nbsp;&nbsp;
+<img src="../../figures/getStarted/typea2.gif" width="51" height="36" alt="lowercase letter A" /></p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;Type all code, commands, and file names exactly as shown. Both the compiler (<code>javac</code>) and launcher (<code>java</code>) are <em>case-sensitive</em>, so you must capitalize consistently.<br /><br />
+<code>HelloWorldApp</code> is <em>not</em> the same as <code>helloworldapp</code>.
+<hr /></div>
+<p>Save your changes by choosing <strong>File</strong> | <strong>Save</strong>.</p>
+<p>The file should look something like the following:</p>
+<div class="codeblock"><pre>
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package helloworldapp;
+
+/**
+ * The HelloWorldApp class implements an application that
+ * simply prints "Hello World!" to standard output.
+ */
+public class HelloWorldApp {
+
+   
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("Hello World!"); // Display the string.
+    }
+
+}
+</pre></div>
+<h3><a name="netbeans-2c" id="netbeans-2c"></a>Compile the Source File into a .class File</h3>
+<p>To compile your source file, choose <strong>Run</strong> | <strong>Build Project (Hello World App)</strong> from the IDE&#39;s main menu.</p>
+<p>The Output window opens and displays output similar to what you see in the following figure:</p>
+<center><img src="../../figures/getStarted/nb-javatutorial-project-compiled.png" width="971" height="685" align="bottom" alt="Output window showing results of building the HelloWorld project." /></p><p class="FigureCaption">Output window showing results of building the HelloWorld project.</p></center>
+<p>If the build output concludes with the statement <code>BUILD SUCCESSFUL</code>, congratulations! You have successfully compiled your program!</p>
+
+<p>If the build output concludes with the statement <code>BUILD FAILED</code>, you probably have a syntax error in your code. Errors are reported in the Output window as hyperlinked text. You double-click such a hyperlink to navigate to the source of an error. You can then fix the error and once again choose <strong>Run</strong> | <strong>Build Project</strong>.</p>
+
+<p>When you build the project, the bytecode file <code>HelloWorldApp.class</code> is generated. You can see where the new file is generated by opening the <strong>Files</strong> window and expanding the <strong>Hello&nbsp;World&nbsp;App/build/classes/helloworldapp</strong> node as shown in the following figure.</p>
+<center><img src="../../figures/getStarted/nb-javatutorial-files-window.png" width="254" height="285" align="bottom" alt="Files window, showing the generated .class file." /></p><p class="FigureCaption">Files window, showing the generated .class file.</p></center><p>Now that you have built the project, you can run your program.</p>
+<h3><a name="netbeans-2d" id="netbeans-2d"></a> Run the Program</h3>
+<p>From the IDE&#39;s menu bar, choose <strong>Run</strong> | <strong>Run Main Project</strong>.</p>
+<p>The next figure shows what you should now see.</p>
+<center><img src="../../figures/getStarted/nb-javatutorial-project-run.png" width="393" height="131" align="bottom" alt="The program prints Hello World! to the Output window (along with other output from the build script)." /></p><p class="FigureCaption">The program prints "Hello World!" to the Output window (along with other output from the build script).</p></center><p>Congratulations! Your program works!</p>
+<h2><a name="netbeans-3" id="netbeans-3"></a>Continuing the Tutorial with the NetBeans IDE</h2>
+<p>The next few pages of the tutorial will explain the code in this simple application. After that, the lessons go deeper into core language features and provide many more examples. Although the rest of the tutorial does not give specific instructions about using the NetBeans IDE, you can easily use the IDE to write and run the sample code. The following are some tips on using the IDE and explanations of some IDE behavior that you are likely to see:</p>
+<ul>
+<li>
+<p>Once you have created a project in the IDE, you can add files to the project using the <strong>New File</strong> wizard. Choose <strong>File</strong> | <strong>New File</strong>, and then select a template in the wizard, such as the Empty Java File template.</p>
+</li>
+<li>
+<p>You can compile and run an individual file (as opposed to a whole project) using the IDE&#39;s <strong>Compile File</strong> (F9) and <strong>Run File</strong> (Shift-F6) commands. If you use the <strong>Run Main Project</strong> command, the IDE will run the file that the IDE associates as the main class of the main project. Therefore, if you create an additional class in your HelloWorldApp project and then try to run that file with the <strong>Run Main Project</strong> command, the IDE will run the <code>HelloWorldApp</code> file instead.</p>
+</li>
+<li>
+<p>You might want to create separate IDE projects for sample applications that include more than one source file.</p>
+</li>
+<li>
+<p>As you are typing in the IDE, a code completion box might periodically appear. You can either ignore the code completion box and keep typing, or you can select one of the suggested expressions. If you would prefer not to have the code completion box automatically appear, you can turn off the feature. Choose <strong>Tools</strong> | <strong>Options</strong> | <strong>Editor</strong>, click the <strong>Code Completion</strong> tab and clear the <strong>Auto Popup Completion Window</strong> checkbox.</p>
+</li>
+<li>
+<p>If you want to rename the node for a source file in the <strong>Projects</strong> window, choose <strong>Refactor</strong> from IDE&#39;s main menu. The IDE prompts you with the <strong>Rename</strong> dialog box to lead you through the options of renaming the class and the updating of code that refers to that class. Make the changes and click <strong>Refactor</strong> to apply the changes. This sequence of clicks might seem unnecessary if you have just a single class in your project, but it is very useful when your changes affect other parts of your code in larger projects.</p>
+</li>
+<li>
+<p>For a more thorough guide to the features of the NetBeans IDE, see the 
+<a class="OutsideLink" target="_blank" href="https://netbeans.org/kb/">NetBeans Documentation</a> page.</p>
+</li>
+</ul>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="index.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="win32.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> The "Hello World!" Application
+        <br /><b>Next page:</b> "Hello World!" for Microsoft Windows
+    </div>
+</body>
+</html> 

@@ -1,0 +1,19 @@
+<applet code="AppletButton.class"
+        archive="example-swing/layout.jar"
+        width="350" height="60"
+        alt="GridLayout applet">
+<param name="windowClass" value="GridWindow">
+<param name="windowTitle" value="GridLayout">
+<param name="buttonText" value="Click here to see a GridLayout in action">
+
+Since you can't run the applet,
+here's a picture of it:
+
+#usemacro UI_FIGURE (
+    NAME gridlayout.gif
+    W 379
+    H 106
+    ALT Five buttons laid out with a GridLayout. 
+)
+
+</applet>

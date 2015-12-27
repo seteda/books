@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="MySQL Properties" default="all" basedir=".">
+
+
+    <property name="JAVAC" value="C:\\Java\\jdk1.7.0\\bin\\javac"/>
+    <property name="JAVA" value="C:\\Java\\jdk1.7.0\\bin\\java"/>
+
+
+  <property name="PROPERTIESFILE" value="properties/mysql-sample-properties.xml"/>
+  <property name="MYSQLDRIVER" value="C:\\mysql\\mysql-connector-java-5.1.15-bin.jar"/>
+
+  <path id="CLASSPATH">
+    <pathelement location="classes"/>
+    <pathelement location="${MYSQLDRIVER}"/>
+    <pathelement location="lib/JDBCTutorial.jar"/>
+  </path>
+
+
+  <property name="DB.VENDOR" value="mysql"/>
+  <property name="DB.DRIVER" value="com.mysql.jdbc.Driver"/>
+  <property name="DB.HOST" value="localhost"/>
+  <property name="DB.PORT" value="3306"/>
+  <property name="DB.SID" value="testdb"/>
+  <property name="DB.URL.NEWDATABASE" value="jdbc:mysql://${DB.HOST}:${DB.PORT}/?allowMultiQueries=true"/>
+  <property name="DB.URL" value="jdbc:mysql://${DB.HOST}:${DB.PORT}/${DB.SID}?allowMultiQueries=true"/>
+  <property name="DB.USER" value="root"/>
+  <property name="DB.PASSWORD" value="root"/>
+  <property name="DB.DELIMITER" value=";"/>
+
+</project>
+
+

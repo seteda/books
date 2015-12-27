@@ -1,0 +1,23 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="sampled-overview.html">Overview of the Sampled Package</a></li>
+<li class="tocli"><a href="accessing.html">Accessing Audio System Resources</a></li>
+<li class="tocli"><a href="playing.html">Playing Back Audio</a></li>
+<li class="tocli"><a href="capturing.html">Capturing Audio</a></li>
+<li class="tocli"><a href="controls.html">Processing Audio with Controls</a></li>
+<li class="tocli"><a href="converters.html">Using Files and Format Converters</a></li>
+<li class="tocli"><a href="overview-MIDI.html">Overview of the MIDI Package</a></li>
+<li class="tocli"><a href="accessing-MIDI.html">Accessing MIDI System Resources</a></li>
+<li class="tocli"><a href="MIDI-messages.html">Transmitting and Receiving MIDI Messages</a></li>
+<li class="tocli"><a href="MIDI-seq-intro.html">Introduction to Sequencers</a></li>
+<li class="tocli"><a href="MIDI-seq-methods.html">Using Sequencer Methods</a></li>
+<li class="tocli"><a href="MIDI-seq-adv.html">Using Advanced Sequencer Features</a></li>
+<li class="tocli"><a href="MIDI-synth.html">Synthesizing Sound</a></li>
+<li class="tocli"><a href="SPI-intro.html">Introduction to the Service Provider Interfaces</a></li>
+<li class="tocli"><a href="SPI-providing-sampled.html">Providing Sampled-Audio Services</a></li>
+<li class="tocli"><a href="SPI-providing-MIDI.html">Providing MIDI Services</a>
+</li>
+</ul>
+</li>
+</ul>

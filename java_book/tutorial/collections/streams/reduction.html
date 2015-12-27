@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Reduction (The Java&trade; Tutorials &gt;        
+            Collections &gt; Aggregate Operations)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This collections Java tutorial describes interfaces, implementations, and algorithms in the Java Collections framework" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java collections, set, list, queue, map, array, arraylist" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Aggregate Operations</a></div>
+<div class="nolinkAHEAD">Reduction</div>
+<div class="linkAHEAD"><a href="parallelism.html">Parallelism</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Collections
+        <br /><b>Lesson:</b> Aggregate Operations
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Collections</a>
+                &gt;
+                <a href="index.html" target="_top">Aggregate Operations</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="index.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="parallelism.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Reduction</h1></div>
+            <div id="PageContent">
+
+
+<p>The section
+<a class="TutorialLink" target="_top" href="../../collections/streams/index.html">Aggregate Operations</a> describes the following pipeline of operations, which calculates the average age of all male members in the collection <code>roster</code>:</p>
+
+<pre class="codeblock">double average = roster
+    .stream()
+    .filter(p -&gt; p.getGender() == Person.Sex.MALE)
+    .mapToInt(Person::getAge)
+    .average()
+    .getAsDouble();</pre>
+    
+<p>The JDK contains many terminal operations (such as
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html#average--java/lang/reflect/Executable.html"><code>average</code></a>,
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html#sum--"><code>sum</code></a>,
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#min-java.util.Comparator-"><code>min</code></a>,
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#max-java.util.Comparator-"><code>max</code></a>, and
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#count--"><code>count</code></a>) that return one value by combining the contents of a stream. These operations are called <em>reduction operations</em>. The JDK also contains reduction operations that return a collection instead of a single value. Many reduction operations perform a specific task, such as finding the average of values or grouping elements into categories. However, the JDK provides you with the general-purpose reduction operations
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#reduce-T-java.util.function.BinaryOperator-"><code>reduce</code></a> and
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#collect-java.util.function.Supplier-java.util.function.BiConsumer-java.util.function.BiConsumer-"><code>collect</code></a>, which this section describes in detail.</p>
+
+<p>This section covers the following topics:</p>
+
+<ul>
+  <li><a href="#reduce">The Stream.reduce Method</a></li>
+  <li><a href="#collect">The Stream.collect Method</a></li>
+</ul>
+
+<p>You can find the code excerpts described in this section in the example
+<a class="SourceLink" target="_blank" href="examples/ReductionExamples.java" onclick="showCode('../../displayCode.html', 'examples/ReductionExamples.java'); return false;"><code>ReductionExamples</code></a>.</p>
+
+<h2><a name="reduce">The Stream.reduce Method</a></h2>
+
+<p>The
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#reduce-T-java.util.function.BinaryOperator-"><code>Stream.reduce</code></a> method is a general-purpose reduction operation. Consider the following pipeline, which calculates the sum of the male members' ages in the collection <code>roster</code>. It uses the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html#sum--"><code>Stream.sum</code></a> reduction operation:</p>
+
+<pre class="codeblock">Integer totalAge = roster
+    .stream()
+    .mapToInt(Person::getAge)
+    .sum();</pre>
+    
+   
+<p>Compare this with the following pipeline, which uses the <code>Stream.reduce</code> operation to calculate the same value:</p>
+
+<pre class="codeblock">Integer totalAgeReduce = roster
+   .stream()
+   .map(Person::getAge)
+   .reduce(
+       0,
+       (a, b) -&gt; a + b);</pre>
+
+<p>The <code>reduce</code> operation in this example takes two arguments:</p>
+
+<ul>
+  <li><p><code>identity</code>: The identity element is both the initial value of the reduction and the default result if there are no elements in the stream. In this example, the identity element is <code>0</code>; this is the initial value of the sum of ages and the default value if no members exist in the collection <code>roster</code>.</p></li>
+  
+  <li><p><code>accumulator</code>: The accumulator function takes two parameters: a partial result of the reduction (in this example, the sum of all processed integers so far) and the next element of the stream (in this example, an integer). It returns a new partial result. In this example, the accumulator function is a lambda expression that adds two <code>Integer</code> values and returns an <code>Integer</code> value:</p>
+  
+  <pre class="codeblock">(a, b) -&gt; a + b</pre></li>
+
+</ul>
+
+<p>The <code>reduce</code> operation always returns a new value. However, the accumulator function also returns a new value every time it processes an element of a stream. Suppose that you want to reduce the elements of a stream to a more complex object, such as a collection. This might hinder the performance of your application. If your <code>reduce</code> operation involves adding elements to a collection, then every time your accumulator function processes an element, it creates a new collection that includes the element, which is inefficient. It would be more efficient for you to update an existing collection instead. You can do this with the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#collect-java.util.function.Supplier-java.util.function.BiConsumer-java.util.function.BiConsumer-"><code>Stream.collect</code></a> method, which the next section describes.</p>
+
+<h2><a name="collect">The Stream.collect Method</a></h2>
+
+<p>Unlike the <code>reduce</code> method, which always creates a new value when it processes an element, the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#collect-java.util.function.Supplier-java.util.function.BiConsumer-java.util.function.BiConsumer-"><code>collect</code></a> method modifies, or mutates, an existing value.</p>
+
+<p>Consider how to find the average of values in a stream. You require two pieces of data: the total number of values and the sum of those values. However, like the <code>reduce</code> method and all other reduction methods, the <code>collect</code> method returns only one value. You can create a new data type that contains member variables that keep track of the total number of values and the sum of those values, such as the following class,
+<a class="SourceLink" target="_blank" href="examples/Averager.java" onclick="showCode('../../displayCode.html', 'examples/Averager.java'); return false;"><code>Averager</code></a>:</p>
+
+<pre class="codeblock">class Averager implements IntConsumer
+{
+    private int total = 0;
+    private int count = 0;
+        
+    public double average() {
+        return count > 0 ? ((double) total)/count : 0;
+    }
+        
+    public void accept(int i) { total += i; count++; }
+    public void combine(Averager other) {
+        total += other.total;
+        count += other.count;
+    }
+}</pre>
+
+<p>The following pipeline uses the <code>Averager</code> class and the <code>collect</code> method to calculate the average age of all male members:</p>
+
+<pre class="codeblock">Averager averageCollect = roster.stream()
+    .filter(p -&gt; p.getGender() == Person.Sex.MALE)
+    .map(Person::getAge)
+    .collect(Averager::new, Averager::accept, Averager::combine);
+                   
+System.out.println("Average age of male members: " +
+    averageCollect.average());</pre>
+
+<p>The <code>collect</code> operation in this example takes three arguments:</p>
+
+<ul>
+  <li><code>supplier</code>: The supplier is a factory function; it constructs new instances. For the <code>collect</code> operation, it creates instances of the result container. In this example, it is a new instance of the <code>Averager</code> class.</li>
+  
+  <li><code>accumulator</code>: The accumulator function incorporates a stream element into a result container. In this example, it modifies the <code>Averager</code> result container by incrementing the <code>count</code> variable by one and adding to the <code>total</code> member variable the value of the stream element, which is an integer representing the age of a male member.</li>
+  
+  <li><code>combiner</code>: The combiner function takes two result containers and merges their contents. In this example, it modifies an  <code>Averager</code> result container by incrementing the <code>count</code> variable by the <code>count</code> member variable of the other <code>Averager</code> instance and adding to the <code>total</code> member variable the value of the other <code>Averager</code> instance's <code>total</code> member variable.</li></ul>
+  
+<p>Note the following:</p>
+
+<ul>
+  <li>The supplier is a lambda expression (or a method reference) as opposed to a value like the identity element in the <code>reduce</code> operation.</li>
+  
+  <li>The accumulator and combiner functions do not return a value.</li>
+  
+  <li>You can use the <code>collect</code> operations with parallel streams; see the section
+<a class="TutorialLink" target="_top" href="../../collections/streams/parallelism.html">Parallelism</a> for more information. (If you run the <code>collect</code> method with a parallel stream, then the JDK creates a new thread whenever the combiner function creates a new object, such as an <code>Averager</code> object in this example. Consequently, you do not have to worry about synchronization.)</li>  
+  
+</ul>
+
+<p>Although the JDK provides you with the <code>average</code> operation to calculate the average value of elements in a stream, you can use the <code>collect</code> operation and a custom class if you need to calculate several values from the elements of a stream.</p>
+
+<p>The <code>collect</code> operation is best suited for collections. The following example puts the names of the male members in a collection with the <code>collect</code> operation:</p>
+
+<pre class="codeblock">List&lt;String&gt; namesOfMaleMembersCollect = roster
+    .stream()
+    .filter(p -> p.getGender() == Person.Sex.MALE)
+    .map(p -> p.getName())
+    .collect(Collectors.toList());</pre>
+    
+<p>This version of the <code>collect</code> operation takes one parameter of type
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collector.html"><code>Collector</code></a>. This class encapsulates the functions used as arguments in the <code>collect</code> operation that requires three arguments (supplier, accumulator, and combiner functions).</p>
+
+<p>The
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html"><code>Collectors</code></a> class contains many useful reduction operations, such as accumulating elements into collections and summarizing elements according to various criteria. These reduction operations return instances of the class <code>Collector</code>, so you can use them as a parameter for the <code>collect</code> operation.</p>
+
+<p>This example uses the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#toList--"><code>Collectors.toList</code></a> operation, which accumulates the stream elements into a new instance of <code>List</code>. As with most operations in the <code>Collectors</code> class, the <code>toList</code> operator returns an instance of <code>Collector</code>, not a collection.</p>
+
+<p>The following example groups members of the collection <code>roster</code> by gender:</p>
+
+<pre class="codeblock">Map&lt;Person.Sex, List&lt;Person&gt;&gt; byGender =
+    roster
+        .stream()
+        .collect(
+            Collectors.groupingBy(Person::getGender));</pre>
+            
+<p>The
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#groupingBy-java.util.function.Function-"><code>groupingBy</code></a> operation returns a map whose keys are the values that result from applying the lambda expression specified as its parameter (which is called a <em>classification function</em>). In this example, the returned map contains two keys, <code>Person.Sex.MALE</code> and <code>Person.Sex.FEMALE</code>. The keys' corresponding values are instances of <code>List</code> that contain the stream elements that, when processed by the classification function, correspond to the key value. For example, the value that corresponds to key <code>Person.Sex.MALE</code> is an instance of <code>List</code> that contains all male members.</p>
+
+<p>The following example retrieves the names of each member in the collection <code>roster</code> and groups them by gender:</p>
+
+<pre class="codeblock">Map&lt;Person.Sex, List&lt;String&gt;&gt; namesByGender =
+    roster
+        .stream()
+        .collect(
+            Collectors.groupingBy(
+                Person::getGender,                      
+                Collectors.mapping(
+                    Person::getName,
+                    Collectors.toList())));</pre>
+                    
+<p>The
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#groupingBy-java.util.function.Function-java.util.stream.Collector-"><code>groupingBy</code></a> operation in this example takes two parameters, a classification function and an instance of <code>Collector</code>. The <code>Collector</code> parameter is called a <em>downstream collector</em>. This is a collector that the Java runtime applies to the results of another collector. Consequently, this <code>groupingBy</code> operation enables you to apply a <code>collect</code> method to the <code>List</code> values created by the <code>groupingBy</code> operator. This example applies the collector 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#mapping-java.util.function.Function-java.util.stream.Collector-java.util.stream.Collector-"><code>mapping</code></a>, which applies the mapping function <code>Person::getName</code> to each element of the stream. Consequently, the resulting stream consists of only the names of members. A pipeline that contains one or more downstream collectors, like this example, is called a <em>multilevel reduction</em>.</p>
+
+<p>The following example retrieves the total age of members of each gender:</p>
+
+<pre class="codeblock">Map&lt;Person.Sex, Integer&gt; totalAgeByGender =
+    roster
+        .stream()
+        .collect(
+            Collectors.groupingBy(
+                Person::getGender,                      
+                Collectors.reducing(
+                    0,
+                    Person::getAge,
+                    Integer::sum)));</pre>
+                    
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#reducing-U-java.util.function.Function-java.util.function.BinaryOperator-"><code>reducing</code></a> operation takes three parameters:</p>
+
+<ul>
+  <li><code>identity</code>: Like the <code>Stream.reduce</code> operation, the identity element is both the initial value of the reduction and the default result if there are no elements in the stream. In this example, the identity element is <code>0</code>; this is the initial value of the sum of ages and the default value if no members exist.</li>
+  
+  <li><code>mapper</code>: The <code>reducing</code> operation applies this mapper function to all stream elements. In this example, the mapper retrieves the age of each member.</li>
+  
+  <li><code>operation</code>: The operation function is used to reduce the mapped values. In this example, the operation function adds <code>Integer</code> values.</li>
+</ul>
+
+<p>The following example retrieves the average age of members of each gender:</p>
+
+<pre class="codeblock">Map&lt;Person.Sex, Double&gt; averageAgeByGender = roster
+    .stream()
+    .collect(
+        Collectors.groupingBy(
+            Person::getGender,                      
+            Collectors.averagingInt(Person::getAge)));</pre>
+                    
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="index.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="parallelism.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Aggregate Operations
+        <br /><b>Next page:</b> Parallelism
+    </div>
+</body>
+</html> 

@@ -1,0 +1,30 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="quick/index.html">Quick Start</a>
+<ul>
+<li class="tocli"><a href="quick/project.html">Creating a Project</a></li>
+<li class="tocli"><a href="quick/button.html">A Button is a Bean</a></li>
+<li class="tocli"><a href="quick/wiring.html">Wiring the Application</a></li>
+<li class="tocli"><a href="quick/addbean.html">Using a Third-Party Bean</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="writing/index.html">Writing JavaBeans Components</a>
+<ul>
+<li class="tocli"><a href="writing/properties.html">Properties</a></li>
+<li class="tocli"><a href="writing/methods.html">Methods</a></li>
+<li class="tocli"><a href="writing/events.html">Events</a></li>
+<li class="tocli"><a href="writing/beaninfo.html">Using a BeanInfo</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="advanced/index.html">Advanced JavaBeans Topics</a>
+<ul>
+<li class="tocli"><a href="advanced/persistence.html">Bean Persistence</a></li>
+<li class="tocli"><a href="advanced/longpersistence.html">Long Term Persistence</a></li>
+<li class="tocli"><a href="advanced/customization.html">Bean Customization</a>
+</li>
+</ul>
+</li>
+</ul>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+   Copyright (c) 1995, 2012, Oracle and/or its affiliates. All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+     - Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+
+     - Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+
+     - Neither the name of Oracle or the names of its
+       contributors may be used to endorse or promote products derived
+       from this software without specific prior written permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+   IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+   PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<project name="JDBC Tutorial" default="all" basedir=".">
+  <property name="ANTPROPERTIES" value="properties/javadb-build-properties.xml"/>
+  <!-- <property name="ANTPROPERTIES" value="properties/mysql-build-properties.xml"/> -->
+  <import file="${ANTPROPERTIES}"/>
+
+
+  <target name="clean">
+    <delete dir="classes"/>
+    <delete dir="lib"/>
+  </target>
+
+  <target name="zip" description="Package source in zip file">
+    <delete file="./JDBCTutorial.zip"/>
+    <zip destfile="./JDBCTutorial.zip">
+      <zipfileset dir="sql" prefix="sql"/>
+      <zipfileset dir="src" prefix="src"/>
+      <zipfileset dir="properties" prefix="properties"/>
+      <zipfileset dir="." includes="build.xml"/>
+    </zip>
+  </target>
+
+  <target name="compile" description="Compile JDBC Tutorial">
+    <mkdir dir="classes"/>
+    <echo message="JDBC Tutorial is using ${JAVAC} as Java compiler"/>
+    <javac srcdir="src" destdir="classes" fork="yes" executable="${JAVAC}"
+           classpathref="CLASSPATH" debug="on" includeantruntime="false">
+      <compilerarg value="-Xlint:unchecked"/>
+      <compilerarg value="-Xlint:deprecation"/>
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <mkdir dir="lib"/>
+    <jar destfile="lib/JDBCTutorial.jar" basedir="classes"/>
+  </target>
+
+  <target name="create-mysql-database">
+    <sql driver="${DB.DRIVER}" url="${DB.URL.NEWDATABASE}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH"
+         delimiter="${DB.DELIMITER}" autocommit="false" onerror="continue">
+      create database ${DB.SID};
+    </sql>
+
+
+  </target>
+
+  <target name="drop-tables">
+    <sql driver="${DB.DRIVER}" url="${DB.URL}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH"
+         delimiter="${DB.DELIMITER}" autocommit="false" onerror="continue">
+      <transaction src="./sql/${DB.VENDOR}/drop-tables.sql"></transaction>
+    </sql>
+  </target>
+
+  <target name="build-tables" description="Create database tables">
+    <sql driver="${DB.DRIVER}" url="${DB.URL}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH"
+         delimiter="${DB.DELIMITER}" autocommit="false" onerror="continue">
+      <transaction src="./sql/${DB.VENDOR}/create-tables.sql"></transaction>
+    </sql>
+  </target>
+
+  <target name="populate-tables" description="Populate database tables">
+    <sql driver="${DB.DRIVER}" url="${DB.URL}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH"
+         delimiter="${DB.DELIMITER}" autocommit="false" onerror="continue">
+      <transaction src="./sql/${DB.VENDOR}/populate-tables.sql"></transaction>
+    </sql>
+  </target>
+
+  <target name="javadb-create-procedure">
+
+    <sql driver="${DB.DRIVER}" url="${DB.URL}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH" delimiter=";"
+         autocommit="false" onerror="abort">drop procedure SHOW_SUPPLIERS;</sql>
+
+    <sql driver="${DB.DRIVER}" url="${DB.URL}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH" delimiter=";"
+         autocommit="false" onerror="abort">drop procedure GET_SUPPLIER_OF_COFFEE;</sql>
+
+    <sql driver="${DB.DRIVER}" url="${DB.URL}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH" delimiter=";"
+         autocommit="false" onerror="abort">drop procedure RAISE_PRICE;</sql>
+
+    <sql driver="${DB.DRIVER}" url="${DB.URL}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH"
+         delimiter="${DB.DELIMITER}" autocommit="false" onerror="abort">
+      <transaction src="./sql/${DB.VENDOR}/create-procedures.sql"></transaction>
+
+    </sql>
+
+  </target>
+
+  <!-- Creating Stored Procedure in MySQL -->
+
+  <target name="mysql-create-procedure">
+
+    <sql driver="${DB.DRIVER}" url="${DB.URL}" userid="${DB.USER}"
+         password="${DB.PASSWORD}" classpathref="CLASSPATH" print="true" delimiter="|"
+         autocommit="false" onerror="abort">
+       <transaction src="./sql/${DB.VENDOR}/create-procedures.sql"></transaction>
+    </sql>
+
+  </target>
+
+  <target name="setup">
+      <antcall target="drop-tables"/>
+      <antcall target="build-tables"/>
+      <antcall target="populate-tables"/>
+  </target>
+
+  <target name="run">
+    <java classname="com.oracle.tutorial.jdbc.JDBCTutorialUtilities"
+          classpathref="CLASSPATH" fork="true" dir=".">
+      <arg value="${PROPERTIESFILE}"/>
+    </java>
+  </target>
+
+  <target name="runct">
+    <java classname="com.oracle.tutorial.jdbc.CoffeesTable"
+          classpathref="CLASSPATH" fork="true" dir=".">
+      <arg value="${PROPERTIESFILE}"/>
+    </java>
+  </target>
+
+  <target name="runst">
+    <java classname="com.oracle.tutorial.jdbc.SuppliersTable"
+          classpathref="CLASSPATH" fork="true" dir=".">
+      <arg value="${PROPERTIESFILE}"/>
+    </java>
+  </target>
+
+  <!-- RowSet samples -->
+
+  <target name="runjrs">
+      <java classname="com.oracle.tutorial.jdbc.JdbcRowSetSample"
+            classpathref="CLASSPATH" fork="true" dir=".">
+        <arg value="${PROPERTIESFILE}"/>
+      </java>
+  </target>
+
+  <target name="runcrs">
+    <java classname="com.oracle.tutorial.jdbc.CachedRowSetSample"
+          classpathref="CLASSPATH" fork="true" dir=".">
+      <arg value="${PROPERTIESFILE}"/>
+    </java>
+  </target>
+
+  <target name="runjoin">
+    <java classname="com.oracle.tutorial.jdbc.JoinSample"
+          classpathref="CLASSPATH" fork="true" dir=".">
+      <arg value="${PROPERTIESFILE}"/>
+    </java>
+  </target>
+
+  <target name="runfrs">
+    <java classname="com.oracle.tutorial.jdbc.FilteredRowSetSample"
+          classpathref="CLASSPATH" fork="true" dir=".">
+      <arg value="${PROPERTIESFILE}"/>
+    </java>
+  </target>
+
+
+  <target name="runwrs">
+      <java classname="com.oracle.tutorial.jdbc.WebRowSetSample"
+            classpathref="CLASSPATH" fork="true" dir=".">
+        <arg value="${PROPERTIESFILE}"/>
+      </java>
+  </target>
+
+  <!-- Other JDBC Data Types -->
+
+   <target name="runclob">
+      <java classname="com.oracle.tutorial.jdbc.ClobSample"
+            classpathref="CLASSPATH" fork="true" dir=".">
+        <arg value="${PROPERTIESFILE}"/>
+      </java>
+  </target>
+
+  <target name="runrss">
+      <java classname="com.oracle.tutorial.jdbc.RSSFeedsTable"
+            classpathref="CLASSPATH" fork="true" dir=".">
+        <arg value="${PROPERTIESFILE}"/>
+      </java>
+  </target>
+
+  <target name="rundl">
+      <java classname="com.oracle.tutorial.jdbc.DatalinkSample"
+            classpathref="CLASSPATH" fork="true" dir=".">
+        <arg value="${PROPERTIESFILE}"/>
+      </java>
+  </target>
+
+
+  <target name="runspjavadb">
+    <java classname="com.oracle.tutorial.jdbc.StoredProcedureJavaDBSample"
+          classpathref="CLASSPATH" fork="true" dir=".">
+      <arg value="${PROPERTIESFILE}"/>
+      <arg value="-Dderby.language.logStatementText=true"/>
+    </java>
+  </target>
+
+  <target name="runspmysql">
+    <echo message="Current properties file: ${PROPERTIESFILE}"></echo>
+    <java classname="com.oracle.tutorial.jdbc.StoredProcedureMySQLSample"
+          classpathref="CLASSPATH" fork="true" dir=".">
+      <arg value="${PROPERTIESFILE}"/>
+    </java>
+  </target>
+
+  <target name="runframe">
+      <java classname="com.oracle.tutorial.jdbc.CoffeesFrame"
+            classpathref="CLASSPATH" fork="true" dir=".">
+        <arg value="${PROPERTIESFILE}"/>
+      </java>
+  </target>
+
+
+</project>

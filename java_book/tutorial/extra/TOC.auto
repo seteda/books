@@ -1,0 +1,39 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="generics/index.html">Generics</a>
+<ul>
+<li class="tocli"><a href="generics/intro.html">Introduction</a></li>
+<li class="tocli"><a href="generics/simple.html">Defining Simple Generics</a></li>
+<li class="tocli"><a href="generics/subtype.html">Generics and Subtyping</a></li>
+<li class="tocli"><a href="generics/wildcards.html">Wildcards</a></li>
+<li class="tocli"><a href="generics/methods.html">Generic Methods</a></li>
+<li class="tocli"><a href="generics/legacy.html">Interoperating with Legacy Code</a></li>
+<li class="tocli"><a href="generics/fineprint.html">The Fine Print</a></li>
+<li class="tocli"><a href="generics/literals.html">Class Literals as Runtime-Type Tokens</a></li>
+<li class="tocli"><a href="generics/morefun.html">More Fun with Wildcards</a></li>
+<li class="tocli"><a href="generics/convert.html">Converting Legacy Code to Use Generics</a></li>
+<li class="tocli"><a href="generics/acknowledgements.html">Acknowledgements</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="fullscreen/index.html">Full-Screen Exclusive Mode API</a>
+<ul>
+<li class="tocli"><a href="fullscreen/exclusivemode.html">Full-Screen Exclusive Mode</a></li>
+<li class="tocli"><a href="fullscreen/displaymode.html">Display Mode</a></li>
+<li class="tocli"><a href="fullscreen/rendering.html">Passive vs. Active Rendering</a></li>
+<li class="tocli"><a href="fullscreen/doublebuf.html">Double Buffering and Page Flipping</a></li>
+<li class="tocli"><a href="fullscreen/bufferstrategy.html">BufferStrategy and BufferCapabilities</a></li>
+<li class="tocli"><a href="fullscreen/example.html">Examples</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="certification/index.html">Preparation for Java Programmer Language Certification</a>
+<ul>
+<li class="tocli"><a href="certification/javase-7-programmer1.html">Programmer Level I Exam</a></li>
+<li class="tocli"><a href="certification/javase-7-programmer2.html">Programmer Level II Exam</a></li>
+<li class="tocli"><a href="certification/javase-7-upgrade.html">Java SE 7 Upgrade Exam</a>
+</li>
+</ul>
+</li>
+</ul>

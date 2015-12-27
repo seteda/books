@@ -1,0 +1,38 @@
+<project default="compile">
+
+    <target name="compile">
+        <mkdir dir="classes"/>
+        <javac srcdir="." destdir="classes" fork="yes" executable="${JAVAC}">
+            <compilerarg value="-Xlint:unchecked"/>
+        </javac>
+    </target>
+
+    <target name="clean">
+        <delete dir="classes"/>
+        <delete dir="lib"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="lib"/> 
+        <copy todir="classes" >  
+            <fileset dir=".">  
+                <include name="images/**"/>
+            </fileset>
+        </copy>
+        <jar destfile="lib/2d_geometry.jar" basedir="classes"/>
+        <java jvm="${JAVA}" jar="${ANTCLIENTJAR}"
+           fork="true"
+           failonerror="true">
+           <arg value="-file_to_sign"/>
+           <arg path="lib/2d_geometry.jar"/>
+           <arg value="-user jsedteam"/>
+           <arg value="-pass sign2jsedteam"/>
+           <arg value="-signed_location"/>
+           <arg path="lib"/>
+           <arg value="-sign_method java2"/>   
+       </java>
+        
+    </target>
+
+</project>
+

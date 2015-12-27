@@ -1,0 +1,136 @@
+Questions
+---------
+1. The program Problem.java doesn't compile.  What do you need to do
+   to make it compile?  Why?
+   [.../tutorial/java/javaOO/QandE-1dot1/Problem.java]
+ANSWER: Add "final" in front of the declaration of the <code>timer</code>
+	variable.  As it says in "Other Facts about Nested Classes",
+	"A nested class declared within a method...has access to any
+	final, local variables in scope."
+
+2. Use the 1.3 API documentation for the Box class (in the
+   javax.swing package) to help you answer the following questions.
+
+   a. What static nested class does Box define?
+ANSWER: Box.Filler
+
+   b. What inner class does Box define?
+ANSWER: Box.AccessibleBox   
+
+   c. What is the superclass of Box's inner class?
+ANSWER: [java.awt.]Container.AccessibleAWTContainer
+  
+   d. Which of Box's nested classes can you use from any class?
+ANSWER: Box.Filler
+
+   e. How do you create an instance of Box's Filler class?
+ANSWER: 
+	new Box.Filler(minDimension, prefDimension, maxDimension)
+
+3. What kind of nested class is most appropriate for each of the following
+   situations?  [PENDING: can we make that clearer?  Is there a term
+   for this kind of one-to-one matching question?]
+
+   a. The only users of this nested class will be instances of
+      the enclosing class or instances of the enclosing class's
+      subclasses.
+ANSWER: B
+
+   b. Anyone can use this nested class.
+ANSWER: C
+
+   c. Only instances of the declaring class need to use this nested
+      class, and a particular instance might use it several times.
+ANSWER: F
+
+   d. This tiny nested class is used just once, to create an
+      object that implements an interface.
+ANSWER: A
+
+   e. This nested class has information about its enclosing class
+      (not about instances of the enclosing class) and is used
+      only by its enclosing class and perhaps their subclasses.
+ANSWER: D
+
+   f. Like e, but not intended to be used by subclasses.
+ANSWER: E
+
+   A. anonymous inner class
+   B. protected inner class
+   C. public static nested class
+   D. protected static nested class
+   E. private static nested class
+   F. private inner class
+
+
+Exercises
+---------
+1. First, get the source file InnerClassDemo.java.  
+   [.../tutorial/java/javaOO/QandE-1dot2/InnerClassDemo.java]
+
+   a. Compile and run InnerClassDemo.  If you have problems, see
+      Compiling and Running Swing Programs
+      [http://docs.oracle.com/javase/javatutorials/tutorialJWS/uiswing/start/swingStart.html].
+   
+ANSWER: N/A. [This step is here just to make sure they can compile
+	and run Swing programs, before they start trying to change
+	the programs.]
+
+   b. Make a copy of InnerClassDemo.  Add to it an inner class named
+      MyActionListener that implements the ActionListener interface
+   [http://java.sun.com/products/jdk/1.3/docs/api/java/awt/event/ActionListener.html].
+      The ActionListener interface defines a single method.  Put the
+      following code into your implementation of the method:
+   
+         quit();
+
+      Delete the "//" in front of the following line of code:
+
+	 //button.addActionListener(new MyActionListener());
+
+      Now compile and run the program.  What is the difference in
+      behavior between this version and the previous version of
+      InnerClassDemo?
+
+ANSWER: See InnerClassDemo2.java
+   [.../tutorial/java/javaOO/QandE-1dot2/InnerClassDemo2.java]
+	In this version, the button actually *does* something
+	(makes the program exit).
+
+   c. Make a copy of the program you created for b.  Change your
+      ActionListener implementation to be an anonymous inner class.
+      Hint: The program already has another anonymous inner class
+      (a WindowAdapter), which you can look at for syntax help.
+
+ANSWER: See InnerClassDemo3.java
+   [.../tutorial/java/javaOO/QandE-1dot2/InnerClassDemo3.java]
+
+2. Get the file Class1.java
+   [.../tutorial/java/javaOO/QandE-1dot1/Class1.java].
+  
+   a. Compile and run Class1.  What is the output?
+ANSWER: 
+      InnerClass1: getString invoked.
+      InnerClass1: getAnotherString invoked.
+
+   b. Create a file called Class2.java that defines subclasses
+      of both Class1 and its inner class, InnerClass1.  (Call the
+      subclasses Class2 and InnerClass2, respectively.)  InnerClass2
+      should override the getAnotherString method to return 
+      "InnerClass2 version of getAnotherString invoked".  
+
+      Class2 should define one constructor and one method:
+
+      - A no-argument constructor that initializes the inherited
+	<code>ic</code>
+        instance variable to be an instance of InnerClass2.
+      - A <code>main</code> method that creates an instance 
+         of Class2 and invokes displayStrings on that instance.
+
+      What is the output when you run Class2?
+ANSWER: 
+      InnerClass1: getString invoked.
+      InnerClass2 version of getAnother String invoked.
+See Class2.java
+   [.../tutorial/java/javaOO/QandE-1dot1/Class2.java]
+

@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Write a List Selection Listener (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Writing Event Listeners)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Writing Event Listeners</a></div>
+<div class="linkAHEAD"><a href="intro.html">Introduction to Event Listeners</a></div>
+<div class="linkAHEAD"><a href="generalrules.html">General Information about Writing Event Listeners</a></div>
+<div class="linkAHEAD"><a href="eventsandcomponents.html">Listeners Supported by Swing Components</a></div>
+<div class="linkAHEAD"><a href="handling.html">Implementing Listeners for Commonly Handled Events</a></div>
+<div class="linkBHEAD"><a href="actionlistener.html">How to Write an Action Listener</a></div>
+<div class="linkBHEAD"><a href="caretlistener.html">How to Write a Caret Listener</a></div>
+<div class="linkBHEAD"><a href="changelistener.html">How to Write a Change Listener</a></div>
+<div class="linkBHEAD"><a href="componentlistener.html">How to Write a Component Listener</a></div>
+<div class="linkBHEAD"><a href="containerlistener.html">How to Write a Container Listener</a></div>
+<div class="linkBHEAD"><a href="documentlistener.html">How to Write a Document Listener</a></div>
+<div class="linkBHEAD"><a href="focuslistener.html">How to Write a Focus Listener</a></div>
+<div class="linkBHEAD"><a href="internalframelistener.html">How to Write an Internal Frame Listener</a></div>
+<div class="linkBHEAD"><a href="itemlistener.html">How to Write an Item Listener</a></div>
+<div class="linkBHEAD"><a href="keylistener.html">How to Write a Key Listener</a></div>
+<div class="linkBHEAD"><a href="listdatalistener.html">How to Write a List Data Listener</a></div>
+<div class="nolinkBHEAD">How to Write a List Selection Listener</div>
+<div class="linkBHEAD"><a href="mouselistener.html">How to Write a Mouse Listener</a></div>
+<div class="linkBHEAD"><a href="mousemotionlistener.html">How to Write a Mouse-Motion Listener</a></div>
+<div class="linkBHEAD"><a href="mousewheellistener.html">How to Write a Mouse-Wheel Listener</a></div>
+<div class="linkBHEAD"><a href="propertychangelistener.html">How to Write a Property Change Listener</a></div>
+<div class="linkBHEAD"><a href="tablemodellistener.html">How to Write a Table Model Listener</a></div>
+<div class="linkBHEAD"><a href="treeexpansionlistener.html">How to Write a Tree Expansion Listener</a></div>
+<div class="linkBHEAD"><a href="treemodellistener.html">How to Write a Tree Model Listener</a></div>
+<div class="linkBHEAD"><a href="treeselectionlistener.html">How to Write a Tree Selection Listener</a></div>
+<div class="linkBHEAD"><a href="treewillexpandlistener.html">How to Write a Tree-Will-Expand Listener</a></div>
+<div class="linkBHEAD"><a href="undoableeditlistener.html">How to Write an Undoable Edit Listener</a></div>
+<div class="linkBHEAD"><a href="windowlistener.html">How to Write Window Listeners</a></div>
+<div class="linkAHEAD"><a href="api.html">Listener API Table</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Event-Handling Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Writing Event Listeners
+        <br /><b>Section:</b> Implementing Listeners for Commonly Handled Events
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Writing Event Listeners</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="listdatalistener.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="mouselistener.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Write a List Selection Listener</h1></div>
+            <div id="PageContent">
+
+<p>List selection events occur when the selection in a 
+<a class="TutorialLink" target="_top" href="../components/list.html">list</a> or 
+<a class="TutorialLink" target="_top" href="../components/table.html">table</a> is either changing or has just changed. List selection events are fired from an object that implements the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ListSelectionModel.html"><code>ListSelectionModel</code></a> interface. To get a table&#39;s list selection model object, you can use either <code>getSelectionModel</code> method or getColumnModel().getSelectionModel().</p>
+<p>To detect list selection events, you register a listener on the appropriate list selection model object. The <code>JList</code> class also gives you the option of registering a listener on the list itself, rather than directly on the list selection model.</p>
+<p>This section looks at two examples that show how to listen to list selection events on a selection model. <a href="#eg">Examples that Use List Selection Listeners</a> lists examples that listen on the list directly.</p>
+<p>In these two examples, you can dynamically change the selection mode to any of the three supported modes:</p>
+<ul>
+<li>single selection mode</li>
+<li>single interval selection mode</li>
+<li>multiple interval selection mode</li>
+</ul>
+<p>Here is a picture of ListSelectionDemo example running in a List :</p>
+<center><img src="../../figures/uiswing/events/ListSelectionDemo.gif" width="460" height="291" align="bottom" alt="A snapshot of ListSelectionDemo, which demonstrates selection modes and list selection model." /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run ListSelectionDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/events/index.html#ListSelectionDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ListSelectionDemoProject/ListSelectionDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ListSelectionDemo example" /></a><br /></li>
+<li>Select and deselect items in the list. The mouse and keyboard commands required to select items depends on the look and feel. For the Java look and feel, click the left mouse button to begin a selection, use the shift key to extend a selection contiguously, and use the control key to extend a selection discontiguously. Note that there are two types of selections: Lead and Anchor. Lead is the focused item and Anchor is the highlighted item. When you press ctrl key and move up and down, the lead selection causes the events being fired even though the actual selection has not changed. Dragging the mouse moves or extends the selection, depending on the list selection mode.</li>
+</ol>
+<hr /></div>
+<p>Here is a picture of TableListSelectionDemo example running in a Table:</p>
+<center><img src="../../figures/uiswing/events/TableListSelectionDemo.gif" width="460" height="291" align="bottom" alt="A snapshot of TableListSelectionDemo, which demonstrates selection modes and list selection model." /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run TableListSelectionDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/events/index.html#TableListSelectionDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/TableListSelectionDemoProject/TableListSelectionDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the TableListSelectionDemo example" /></a><br /></li>
+<li>Select and deselect items in the table. The mouse and keyboard commands required to select items depends on the look and feel. For the Java look and feel, click the left mouse button to begin a selection, use the shift key to extend a selection contiguously, and use the control key to extend a selection discontiguously. Note that there are two types of selections: Lead and Anchor. Lead is the focused item and Anchor is the highlighted item. When you press ctrl key and move up or down, the lead selection causes the events being fired even though the actual selection has not changed. Dragging the mouse moves or extends the selection, depending on the list selection mode.</li>
+</ol>
+<hr /></div>
+<p>You can find the entire program of ListSelectionDemo in 
+<a class="SourceLink" target="_blank" href="../examples/events/ListSelectionDemoProject/src/events/ListSelectionDemo.java" onclick="showCode('../../displayCode.html', '../examples/events/ListSelectionDemoProject/src/events/ListSelectionDemo.java'); return false;"><code><code>ListSelectionDemo.java</code></code></a> and the entire program of TableListSelectionDemo in 
+<a class="SourceLink" target="_blank" href="../examples/events/TableListSelectionDemoProject/src/events/TableListSelectionDemo.java" onclick="showCode('../../displayCode.html', '../examples/events/TableListSelectionDemoProject/src/events/TableListSelectionDemo.java'); return false;"><code><code>TableListSelectionDemo.java</code></code></a>.</p>
+<p>Here is the code from <code>ListSelectionDemo</code> that sets up the selection model and adds a listener to it:</p>
+<div class="codeblock"><pre>
+<em>...//where the member variables are defined</em>
+JList list;
+    <em>...//in the init method:</em>
+    listSelectionModel = list.getSelectionModel();
+    listSelectionModel.addListSelectionListener(
+                            new SharedListSelectionHandler());
+    ...
+</pre></div>
+<p>And here is the code for the listener, which works for all the possible selection modes:</p>
+<div class="codeblock"><pre>
+class SharedListSelectionHandler implements ListSelectionListener {
+    public void valueChanged(ListSelectionEvent e) {
+        ListSelectionModel lsm = (ListSelectionModel)e.getSource();
+
+        int firstIndex = e.getFirstIndex();
+        int lastIndex = e.getLastIndex();
+        boolean isAdjusting = e.getValueIsAdjusting();
+        output.append("Event for indexes "
+                      + firstIndex + " - " + lastIndex
+                      + "; isAdjusting is " + isAdjusting
+                      + "; selected indexes:");
+
+        if (lsm.isSelectionEmpty()) {
+            output.append(" &lt;none&gt;");
+        } else {
+            // Find out which indexes are selected.
+            int minIndex = lsm.getMinSelectionIndex();
+            int maxIndex = lsm.getMaxSelectionIndex();
+            for (int i = minIndex; i &lt;= maxIndex; i++) {
+                if (lsm.isSelectedIndex(i)) {
+                    output.append(" " + i);
+                }
+            }
+        }
+        output.append(newline);
+    }
+}
+
+</pre></div>
+<p>This <code>valueChanged</code> method displays the first and last indices reported by the event, the value of the event&#39;s <code>isAdjusting</code> flag, and the indices currently selected.</p>
+<p>Note that the first and last indices reported by the event indicate the inclusive range of items for which the selection has changed. If the selection mode is multiple interval selection some items within the range might not have changed. The <code>isAdjusting</code> flag is <code>true</code> if the user is still manipulating the selection, and <code>false</code> if the user has finished changing the selection.</p>
+<p>The <code>ListSelectionEvent</code> object passed into <code>valueChanged</code> indicates only that the selection has changed. The event contains no information about the current selection. So, this method queries the selection model to figure out the current selection.</p>
+<h2><a name="api" id="api">The List Selection Listener API</a></h2>
+<p style="text-align: center"><a name="listselectionlistener" id="listselectionlistener">The ListSelectionListener Interface</a></p>
+<p><em>Because <code>ListSelectionListener</code> has only one method, it has no corresponding adapter class.</em></p>
+<table border="1" summary="The ListSelectionListener API">
+<tr>
+<th id="h1" align="left">Method</th>
+<th id="h2" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/event/ListSelectionListener.html#valueChanged-javax.swing.ListSelectionEvent-">valueChanged(ListSelectionEvent)</a></td>
+<td headers="h2">Called in response to selection changes.</td>
+</tr>
+</table>
+<p style="text-align: center"><a name="listselectionevent" id="listselectionevent">The ListSelectionEvent API</a></p>
+<table border="1" summary="The ListSelectionEvent API">
+<tr>
+<th id="h101" align="left">Method</th>
+<th id="h102" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/EventObject.html#getSource--">Object getSource()</a><br />
+(<em>in <code>java.util.EventObject</code></em>)</td>
+<td headers="h102">Return the object that fired the event. If you register a list selection listener on a list directly, then the source for each event is the list. Otherwise, the source is the selection model.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/event/ListSelectionEvent.html#getFirstIndex--">int getFirstIndex()</a></td>
+<td headers="h102">Return the index of the first item whose selection value has changed. Note that for multiple interval selection, the first and last items are guaranteed to have changed but items between them might not have. However, when you press ctrl key and move up or down, the lead selection causes the events being fired even though the actual selection has not changed.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/event/ListSelectionEvent.html#getLastIndex--">int getLastIndex()</a></td>
+<td headers="h102">Return the index of the last item whose selection value has changed. Note that for multiple interval selection, the first and last items are guaranteed to have changed but items between them might not have. However, when you press ctrl key and move up and down, the lead selection causes the events being fired even though the actual selection has not changed.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/event/ListSelectionEvent.html#getValueIsAdjusting--">boolean getValueIsAdjusting()</a></td>
+<td headers="h102">Return <code>true</code> if the selection is still changing. Many list selection listeners are interested only in the final state of the selection and can ignore list selection events when this method returns <code>true</code>.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples that Use List Selection Listeners</a></h2>
+<p>The following table lists the examples that use list selection listeners.</p>
+<table summary="Examples that Use ListSelectionListeners">
+<tr>
+<th id="h201" align="left">Example</th>
+<th id="h202" align="left">Where Described</th>
+<th id="h203" align="left">Notes</th>
+</tr>
+<tr valign="top">
+<td headers="h201"><a href="../examples/events/index.html#ListSelectionDemo"><code>ListSelectionDemo</code></a></td>
+<td headers="h202">This section</td>
+<td headers="h203">Reports all list selection events that occur on a list. Lets the user dynamically change the selection mode.</td>
+</tr>
+<tr valign="top">
+<td headers="h201"><a href="../examples/events/index.html#TableListSelectionDemo"><code>TableListSelectionDemo</code></a></td>
+<td headers="h202">This section</td>
+<td headers="h203">Reports all list selection events that occur on a table. Lets the user dynamically change the selection mode.</td>
+</tr>
+<tr valign="top">
+<td headers="h201"><a href="../examples/components/index.html#ListDemo"><code>ListDemo</code></a></td>
+<td headers="h202">
+<a class="TutorialLink" target="_top" href="../components/list.html">How to Use Lists</a></td>
+<td headers="h203">Listens to events on a single-selection list (not on its selection model). Enables and disables a button depending on whether any items are selected in the list.</td>
+</tr>
+<tr valign="top">
+<td headers="h201"><a href="../examples/components/index.html#SplitPaneDemo"><code>SplitPaneDemo</code></a></td>
+<td headers="h202">
+<a class="TutorialLink" target="_top" href="../components/list.html">How to Use Lists</a></td>
+<td headers="h203">Listens to events on a single-selection list (not on its selection model).</td>
+</tr>
+<tr valign="top">
+<td headers="h201"><a href="../examples/components/index.html#SimpleTableSelectionDemo"><code>SimpleTableSelectionDemo</code></a></td>
+<td headers="h202">
+<a class="TutorialLink" target="_top" href="../components/table.html">How to Use Tables</a></td>
+<td headers="h203">Uses two different list selection listeners on one table. One listener listens to list selection events on table columns, the other listens to list selection events on table rows.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="listdatalistener.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="mouselistener.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Write a List Data Listener
+        <br /><b>Next page:</b> How to Write a Mouse Listener
+    </div>
+</body>
+</html> 

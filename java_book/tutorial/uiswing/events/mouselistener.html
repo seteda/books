@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Write a Mouse Listener (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Writing Event Listeners)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Writing Event Listeners</a></div>
+<div class="linkAHEAD"><a href="intro.html">Introduction to Event Listeners</a></div>
+<div class="linkAHEAD"><a href="generalrules.html">General Information about Writing Event Listeners</a></div>
+<div class="linkAHEAD"><a href="eventsandcomponents.html">Listeners Supported by Swing Components</a></div>
+<div class="linkAHEAD"><a href="handling.html">Implementing Listeners for Commonly Handled Events</a></div>
+<div class="linkBHEAD"><a href="actionlistener.html">How to Write an Action Listener</a></div>
+<div class="linkBHEAD"><a href="caretlistener.html">How to Write a Caret Listener</a></div>
+<div class="linkBHEAD"><a href="changelistener.html">How to Write a Change Listener</a></div>
+<div class="linkBHEAD"><a href="componentlistener.html">How to Write a Component Listener</a></div>
+<div class="linkBHEAD"><a href="containerlistener.html">How to Write a Container Listener</a></div>
+<div class="linkBHEAD"><a href="documentlistener.html">How to Write a Document Listener</a></div>
+<div class="linkBHEAD"><a href="focuslistener.html">How to Write a Focus Listener</a></div>
+<div class="linkBHEAD"><a href="internalframelistener.html">How to Write an Internal Frame Listener</a></div>
+<div class="linkBHEAD"><a href="itemlistener.html">How to Write an Item Listener</a></div>
+<div class="linkBHEAD"><a href="keylistener.html">How to Write a Key Listener</a></div>
+<div class="linkBHEAD"><a href="listdatalistener.html">How to Write a List Data Listener</a></div>
+<div class="linkBHEAD"><a href="listselectionlistener.html">How to Write a List Selection Listener</a></div>
+<div class="nolinkBHEAD">How to Write a Mouse Listener</div>
+<div class="linkBHEAD"><a href="mousemotionlistener.html">How to Write a Mouse-Motion Listener</a></div>
+<div class="linkBHEAD"><a href="mousewheellistener.html">How to Write a Mouse-Wheel Listener</a></div>
+<div class="linkBHEAD"><a href="propertychangelistener.html">How to Write a Property Change Listener</a></div>
+<div class="linkBHEAD"><a href="tablemodellistener.html">How to Write a Table Model Listener</a></div>
+<div class="linkBHEAD"><a href="treeexpansionlistener.html">How to Write a Tree Expansion Listener</a></div>
+<div class="linkBHEAD"><a href="treemodellistener.html">How to Write a Tree Model Listener</a></div>
+<div class="linkBHEAD"><a href="treeselectionlistener.html">How to Write a Tree Selection Listener</a></div>
+<div class="linkBHEAD"><a href="treewillexpandlistener.html">How to Write a Tree-Will-Expand Listener</a></div>
+<div class="linkBHEAD"><a href="undoableeditlistener.html">How to Write an Undoable Edit Listener</a></div>
+<div class="linkBHEAD"><a href="windowlistener.html">How to Write Window Listeners</a></div>
+<div class="linkAHEAD"><a href="api.html">Listener API Table</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Event-Handling Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Writing Event Listeners
+        <br /><b>Section:</b> Implementing Listeners for Commonly Handled Events
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Writing Event Listeners</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="listselectionlistener.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="mousemotionlistener.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Write a Mouse Listener</h1></div>
+            <div id="PageContent">
+
+<p>Mouse events notify when the user uses the mouse (or similar input device) to interact with a component. Mouse events occur when the cursor enters or exits a component&#39;s onscreen area and when the user presses or releases one of the mouse buttons.</p>
+<p>Tracking the cursor&#39;s motion involves significantly more system overhead than tracking other mouse events. That is why mouse-motion events are separated into Mouse Motion listener type (see <a href="mousemotionlistener.html">How to Write a Mouse Motion Listener</a>).</p>
+<p>To track mouse wheel events, you can register a mouse-wheel listener. See <a href="mousewheellistener.html">How to Write a Mouse Wheel Listener</a> for more information.</p>
+<p>If an application requires the detection of both mouse events and mouse-motion events, use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/event/MouseInputAdapter.html"><code>MouseInputAdapter</code></a> class. This class implements the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/event/MouseInputListener.html"><code>MouseInputListener</code></a>, a convenient interface that implements the <code>MouseListener</code> and <code>MouseMotionListener</code> interfaces. However, the <code>MouseInputListener</code> interface does not implement the <code>MouseWheelListener</code> interface.</p>
+<p>Alternatively, use the corresponding AWT 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseAdapter.html"><code>MouseAdapter</code></a> class, which implements the <code>MouseListener</code>, <code>MouseMotionListener</code>, and <code>MouseWheelListener</code> interfaces.</p>
+<p>The following example shows a mouse listener. At the top of the window is a blank area (implemented by a class named <code>BlankArea</code>). The mouse listener listens for events both on the <code>BlankArea</code> and on its container, an instance of <code>MouseEventDemo</code>. Each time a mouse event occurs, a descriptive message is displayed under the blank area. By moving the cursor on top of the blank area and occasionally pressing mouse buttons, you can fire mouse events.</p>
+<center><img src="../../figures/uiswing/events/MouseEventDemo.png" width="458" height="335" align="bottom" alt="MouseEventDemo screen shot" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run MouseEventDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/events/index.html#MouseEventDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/MouseEventDemoProject/MouseEventDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the MouseEventDemo application" /></a><br /></li>
+<li>Move the cursor into the yellow rectangle at the top of the window.<br />
+You will see one or more mouse-entered events.</li>
+<li>Press and hold the left mouse button without moving the mouse.<br />
+You will see a mouse-pressed event. You might see some extra mouse events, such as mouse-exited and then mouse-entered.</li>
+<li>Release the mouse button.<br />
+You will see a mouse-released event. If you did not move the mouse, a mouse-clicked event will follow.</li>
+<li>Press and hold the mouse button again, and then drag the mouse so that the cursor ends up outside the window. Release the mouse button.<br />
+You will see a mouse-pressed event, followed by a mouse-exited event, followed by a mouse-released event. You are <em>not</em> notified of the cursor&#39;s motion. To get mouse-motion events, you need to implement a <a href="mousemotionlistener.html">mouse-motion listener.</a></li>
+</ol>
+<hr /></div>
+<p>You can find the demo&#39;s code in 
+<a class="SourceLink" target="_blank" href="../examples/events/MouseEventDemoProject/src/events/MouseEventDemo.java" onclick="showCode('../../displayCode.html', '../examples/events/MouseEventDemoProject/src/events/MouseEventDemo.java'); return false;"><code>MouseEventDemo.java</code></a> and 
+<a class="SourceLink" target="_blank" href="../examples/events/MouseEventDemoProject/src/events/BlankArea.java" onclick="showCode('../../displayCode.html', '../examples/events/MouseEventDemoProject/src/events/BlankArea.java'); return false;"><code>BlankArea.java</code></a>. Here is the demo&#39;s mouse event handling code:</p>
+<div class="codeblock"><pre>
+public class MouseEventDemo ... implements MouseListener {
+        <em>//where initialization occurs:</em>
+        //Register for mouse events on blankArea and the panel.
+        blankArea.addMouseListener(this);
+        addMouseListener(this);
+    ...
+
+    public void mousePressed(MouseEvent e) {
+       saySomething("Mouse pressed; # of clicks: "
+                    + e.getClickCount(), e);
+    }
+
+    public void mouseReleased(MouseEvent e) {
+       saySomething("Mouse released; # of clicks: "
+                    + e.getClickCount(), e);
+    }
+
+    public void mouseEntered(MouseEvent e) {
+       saySomething("Mouse entered", e);
+    }
+
+    public void mouseExited(MouseEvent e) {
+       saySomething("Mouse exited", e);
+    }
+
+    public void mouseClicked(MouseEvent e) {
+       saySomething("Mouse clicked (# of clicks: "
+                    + e.getClickCount() + ")", e);
+    }
+
+    void saySomething(String eventDescription, MouseEvent e) {
+        textArea.append(eventDescription + " detected on "
+                        + e.getComponent().getClass().getName()
+                        + "." + newline);
+    }
+}
+</pre></div>
+<h2><a name="api" id="api">The Mouse Listener API</a></h2>
+<p style="text-align: center"><a name="mouselistener" id="mouselistener">The MouseListener Interface</a></p>
+<table border="1" summary="The MouseListener Interface">
+<tr>
+<th id="h1" align="left">Method</th>
+<th id="h2" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseListener.html#mouseClicked-java.awt.event.MouseEvent-">mouseClicked(MouseEvent)</a></td>
+<td headers="h2">Called just after the user clicks the listened-to component.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseListener.html#mouseEntered-java.awt.event.MouseEvent-">mouseEntered(MouseEvent)</a></td>
+<td headers="h2">Called just after the cursor enters the bounds of the listened-to component.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseListener.html#mouseExited-java.awt.event.MouseEvent-">mouseExited(MouseEvent)</a></td>
+<td headers="h2">Called just after the cursor exits the bounds of the listened-to component.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseListener.html#mousePressed-java.awt.event.MouseEvent-">mousePressed(MouseEvent)</a></td>
+<td headers="h2">Called just after the user presses a mouse button while the cursor is over the listened-to component.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseListener.html#mouseReleased-java.awt.event.MouseEvent-">mouseReleased(MouseEvent)</a></td>
+<td headers="h2">Called just after the user releases a mouse button after a mouse press over the listened-to component.</td>
+</tr>
+</table>
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseAdapter.html"><code>MouseAdapter</code></a> class (the AWT adapter class) is abstract. All its methods have an empty body. So a developer can define methods for events specific to the application. You can also use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/event/MouseInputAdapter.html"><code>MouseInputAdapter</code></a> class, which has all the methods available from <code>MouseListener</code> and <code>MouseMotionListener</code>.</p>
+<p style="text-align: center"><a name="mouseevent" id="mouseevent">The MouseEvent Class</a></p>
+<table border="1" summary="The MouseEvent Class">
+<tr>
+<th id="h101" align="left">Method</th>
+<th id="h102" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html#getClickCount--">int getClickCount()</a></td>
+<td headers="h102">Returns the number of quick, consecutive clicks the user has made (including this event). For example, returns 2 for a double click.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html#getX--">int getX()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html#getY--">int getY()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html#getPoint--">Point getPoint()</a></td>
+<td headers="h102">Return the (x,y) position at which the event occurred, relative to the component that fired the event.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html#getXOnScreen--">int getXOnScreen()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html#getYOnScreen--">int getYOnScreen()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html#getLocationOnScreen--">int getLocationOnScreen()</a></td>
+<td headers="h102">Return the absolute (x,y) position of the event. These coordinates are relative to the virtual coordinate system for the multi-screen environment. Otherwise, these coordinates are relative to the coordinate system associated with the Component&#39;s Graphics Configuration.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html#getButton--">int getButton()</a></td>
+<td headers="h102">Returns which mouse button, if any, has a changed state. One of the following constants is returned: <code>NOBUTTON</code>, <code>BUTTON1</code>, <code>BUTTON2</code>, or <code>BUTTON3</code>.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html#isPopupTrigger--">boolean isPopupTrigger()</a></td>
+<td headers="h102">Returns <code>true</code> if the mouse event should cause a popup menu to appear. Because popup triggers are platform dependent, if your program uses popup menus, you should call <code>isPopupTrigger</code> for all mouse-pressed and mouse-released events fired by components over which the popup can appear. See <a href="../components/menu.html#popup">Bringing Up a Popup Menu</a> for more information about popup menus.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html#getMouseModifiersText-int-">String getMouseModifiersText(int)</a></td>
+<td headers="h102">Returns a <code>String</code> describing the modifier keys and mouse buttons that were active during the event, such as &quot;Shift&quot;, or &quot;Ctrl+Shift&quot;. These strings can be localized using the awt.properties file.</td>
+</tr>
+</table>
+<p style="text-align: center"><a name="inputevent" id="inputevent">The InputEvent Class</a></p>
+<p>The <code>MouseEvent</code> class inherits many useful methods from 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html">InputEvent</a> and a couple handy methods from the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/ComponentEvent.html"><code>ComponentEvent</code></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/AWTEvent.html"><code>AWTEvent</code></a> classes.</p>
+<table border="1" summary="The InputEvent Class">
+<tr>
+<th id="h201" align="left">Method</th>
+<th id="h202" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/AWTEvent.html#getID--">int getID()</a><br />
+(<em>in <code>java.awt.AWTEvent</code></em>)</td>
+<td headers="h202">Returns the event type, which defines the particular action. For example, the MouseEvent id reflects the state of the mouse buttons for every mouse event. The following states could be specified by the MouseEvent id: <code>MouseEvent.MOUSE_PRESSED</code>, <code>MouseEvent.MOUSE_RELEASED</code>, and <code>MouseEvent.MOUSE_CLICKED</code>.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/ComponentEvent.html#getComponent--">Component getComponent()</a><br />
+(<em>in <code>ComponentEvent</code></em>)</td>
+<td headers="h202">Returns the component that fired the event. You can use this method instead of the <code>getSource</code> method.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html#getWhen--">int getWhen()</a></td>
+<td headers="h202">Returns the timestamp of when this event occurred. The higher the timestamp, the more recently the event occurred.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html#isAltDown--">boolean isAltDown()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html#isControlDown--">boolean isControlDown()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html#isMetaDown--">boolean isMetaDown()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html#isShiftDown--">boolean isShiftDown()</a><br /></td>
+<td headers="h202">Return the state of individual modifier keys at the time the event was fired.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html#getModifiers--">int getModifiers()</a></td>
+<td headers="h202">Returns the state of all the modifier keys and mouse buttons when the event was fired. You can use this method to determine which mouse button was pressed (or released) when a mouse event was fired. The <code>InputEvent</code> class defines these constants for use with the <code>getModifiers</code> method: <code>ALT_MASK</code>, <code>BUTTON1_MASK</code>, <code>BUTTON2_MASK</code>, <code>BUTTON3_MASK</code>, <code>CTRL_MASK</code>, <code>META_MASK</code>, and <code>SHIFT_MASK</code>. For example, the following expression is true if the right button was pressed:
+<div class="codeblock"><pre>
+(mouseEvent.getModifiers() &amp; InputEvent.BUTTON3_MASK)
+== InputEvent.BUTTON3_MASK
+</pre></div>
+</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html#getModifiersEx--">int getModifiersEx()</a></td>
+<td headers="h202">Returns the extended modifier mask for this event. Extended modifiers represent the state of the mouse button and all modal keys, such as ALT, CTRL, META, just after the event occurred. You can check the status of the modifiers using one of the following predefined bitmasks: <code>SHIFT_DOWN_MASK</code>, <code>CTRL_DOWN_MASK</code>, <code>META_DOWN_MASK</code>, <code>ALT_DOWN_MASK</code>, <code>BUTTON1_DOWN_MASK</code>, <code>BUTTON2_DOWN_MASK</code>, <code>BUTTON3_DOWN_MASK</code>, or <code>ALT_GRAPH_DOWN_MASK</code>. For example, to check that button 1 is down, but that buttons 2 and 3 are up, you would use the following code snippet:
+<div class="codeblock"><pre>
+if (event.getModifiersEx() &amp; (BUTTON1_DOWN_MASK |
+                              BUTTON2_DOWN_MASK |
+                              BUTTON3_DOWN_MASK)
+                               == BUTTON1_DOWN_MASK) {
+    ...
+}
+</pre></div>
+</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html#getModifiersExText-int-">int getModifiersExText(int)</a></td>
+<td headers="h202">Returns a string describing the extended modifier keys and mouse buttons, such as &quot;Shift&quot;, &quot;Button1&quot;, or &quot;Ctrl+Shift&quot;. These strings can be localized by changing the awt.properties file.</td>
+</tr>
+</table>
+<p style="text-align: center"><a name="mouseinfo" id="mouseinfo">The MouseInfo Class</a></p>
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/MouseInfo.html"><code>MouseInfo</code></a> class provides methods to obtain information about the mouse pointer location at any time while an application runs.</p>
+<table border="1" summary="The MouseInfo Class">
+<tr>
+<th id="h301" align="left">Method</th>
+<th id="h302" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/MouseInfo.html#getPointerInfo--">getPointerInfo()</a></td>
+<td headers="h302">Returns a <code>PointerInfo</code> instance that represents the current location of the mouse pointer.</td>
+</tr>
+<tr>
+<td headers="h301">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/MouseInfo.html#getNumberOfButtons--">getNumberOfButtons()</a></td>
+<td headers="h302">Returns the number of buttons on the mouse or <code>-1</code> , if a system does not support a mouse.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples That Use Mouse Listeners</a></h2>
+<p>The following table lists the examples that use mouse listeners.</p>
+<table summary="Examples That Use Mouse Listeners">
+<tr>
+<th id="h401" align="left">Example</th>
+<th id="h402" align="left">Where Described</th>
+<th id="h403" align="left">Notes</th>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/events/index.html#MouseEventDemo"><code>MouseEventDemo</code></a></td>
+<td headers="h402">This section</td>
+<td headers="h403">Reports all mouse events that occur within a blank panel to demonstrate the circumstances under which mouse events are fired.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#GlassPaneDemo"><code>GlassPaneDemo</code></a></td>
+<td headers="h402">
+<a class="TutorialLink" target="_top" href="../components/rootpane.html">How to Use Root Panes</a></td>
+<td headers="h403">Uses a subclass of <code>MouseInputAdapter</code> to listen to mouse events and mouse-motion events on the root pane&#39;s glass pane. Re-dispatches the events to underlying components.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#TableSortDemo"><code>TableSortDemo</code></a></td>
+<td headers="h402">
+<a class="TutorialLink" target="_top" href="../components/table.html">How to Use Tables</a></td>
+<td headers="h403">Listens to mouse events on a table header. Sorts data in the selected column.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/components/index.html#PopupMenuDemo"><code>PopupMenuDemo</code></a></td>
+<td headers="h402">
+<a class="TutorialLink" target="_top" href="../components/menu.html">How to Use Menus</a></td>
+<td headers="h403">Displays a popup menu in response to mouse clicks.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/misc/index.html#TrackFocusDemo"><code>TrackFocusDemo</code></a></td>
+<td headers="h402">
+<a class="TutorialLink" target="_top" href="../misc/focus.html">How to Use the Focus Subsystem</a></td>
+<td headers="h403">The custom component, <code>Picture</code>, implements a mouse listener that requests the focus when a user clicks on the component.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="listselectionlistener.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="mousemotionlistener.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Write a List Selection Listener
+        <br /><b>Next page:</b> How to Write a Mouse-Motion Listener
+    </div>
+</body>
+</html> 

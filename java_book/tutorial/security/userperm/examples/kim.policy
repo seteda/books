@@ -1,0 +1,41 @@
+keystore "kim.keystore";
+
+// Here is the permission ExampleGame needs.
+// It grants code signed by "terry" the
+// HighScorePermission, if the
+// HighScorePermission was signed by "chris"
+grant SignedBy "terry" {
+  permission
+    com.scoredev.scores.HighScorePermission
+      "ExampleGame", signedBy "chris";
+};
+
+// Here is the set of permissions the HighScore
+// class needs:
+grant SignedBy "chris" {
+  // The HighScore class needs permission to read
+  // "user.home" to find the location of the
+  // highscore file
+
+  permission java.util.PropertyPermission
+    "user.home", "read";
+
+  // It needs permission to read and write the
+  // high score file itself
+
+  permission java.io.FilePermission
+      "${user.home}${/}.highscore", "read,write";
+
+  // It needs to get granted its own permission,
+  // so it can call checkPermission
+  // to see if its caller has permission.
+  // Only grant it the permission
+  // if the permission itself was signed by
+  // "chris"
+
+  permission
+    com.scoredev.scores.HighScorePermission 
+      "*", signedBy "chris";
+};
+
+

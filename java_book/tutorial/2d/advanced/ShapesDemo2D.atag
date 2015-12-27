@@ -1,0 +1,7 @@
+<applet code="ShapesDemo2D.class"
+        codebase="examples/"
+        archive="shapesdemo2d.jar"
+	width="550" height="100"
+        alt="ShapesDemo2D applet">
+Your browser does not support applets.
+</applet>

@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>General Information about Writing Event Listeners (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Writing Event Listeners)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Writing Event Listeners</a></div>
+<div class="linkAHEAD"><a href="intro.html">Introduction to Event Listeners</a></div>
+<div class="nolinkAHEAD">General Information about Writing Event Listeners</div>
+<div class="linkAHEAD"><a href="eventsandcomponents.html">Listeners Supported by Swing Components</a></div>
+<div class="linkAHEAD"><a href="handling.html">Implementing Listeners for Commonly Handled Events</a></div>
+<div class="linkBHEAD"><a href="actionlistener.html">How to Write an Action Listener</a></div>
+<div class="linkBHEAD"><a href="caretlistener.html">How to Write a Caret Listener</a></div>
+<div class="linkBHEAD"><a href="changelistener.html">How to Write a Change Listener</a></div>
+<div class="linkBHEAD"><a href="componentlistener.html">How to Write a Component Listener</a></div>
+<div class="linkBHEAD"><a href="containerlistener.html">How to Write a Container Listener</a></div>
+<div class="linkBHEAD"><a href="documentlistener.html">How to Write a Document Listener</a></div>
+<div class="linkBHEAD"><a href="focuslistener.html">How to Write a Focus Listener</a></div>
+<div class="linkBHEAD"><a href="internalframelistener.html">How to Write an Internal Frame Listener</a></div>
+<div class="linkBHEAD"><a href="itemlistener.html">How to Write an Item Listener</a></div>
+<div class="linkBHEAD"><a href="keylistener.html">How to Write a Key Listener</a></div>
+<div class="linkBHEAD"><a href="listdatalistener.html">How to Write a List Data Listener</a></div>
+<div class="linkBHEAD"><a href="listselectionlistener.html">How to Write a List Selection Listener</a></div>
+<div class="linkBHEAD"><a href="mouselistener.html">How to Write a Mouse Listener</a></div>
+<div class="linkBHEAD"><a href="mousemotionlistener.html">How to Write a Mouse-Motion Listener</a></div>
+<div class="linkBHEAD"><a href="mousewheellistener.html">How to Write a Mouse-Wheel Listener</a></div>
+<div class="linkBHEAD"><a href="propertychangelistener.html">How to Write a Property Change Listener</a></div>
+<div class="linkBHEAD"><a href="tablemodellistener.html">How to Write a Table Model Listener</a></div>
+<div class="linkBHEAD"><a href="treeexpansionlistener.html">How to Write a Tree Expansion Listener</a></div>
+<div class="linkBHEAD"><a href="treemodellistener.html">How to Write a Tree Model Listener</a></div>
+<div class="linkBHEAD"><a href="treeselectionlistener.html">How to Write a Tree Selection Listener</a></div>
+<div class="linkBHEAD"><a href="treewillexpandlistener.html">How to Write a Tree-Will-Expand Listener</a></div>
+<div class="linkBHEAD"><a href="undoableeditlistener.html">How to Write an Undoable Edit Listener</a></div>
+<div class="linkBHEAD"><a href="windowlistener.html">How to Write Window Listeners</a></div>
+<div class="linkAHEAD"><a href="api.html">Listener API Table</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Event-Handling Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Writing Event Listeners
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Writing Event Listeners</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="intro.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="eventsandcomponents.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>General Information about Writing Event Listeners</h1></div>
+            <div id="PageContent">
+
+<p>This section discusses several design considerations to keep in mind when implementing event handlers in your application. We then introduce you to event objects small objects that describe each event. In particular, we talk about <code>EventObject</code>, the superclass for all AWT and Swing events. Next, we introduce the concepts of low-level events and semantic events, recommending that you prefer semantic events when possible. The remainder of this section discusses implementation techniques you might use in some event listeners or see in event listeners created by other people or by GUI builders.</p>
+<ul>
+<li><a href="#design">Design Considerations</a></li>
+<li><a href="#eventobjects">Getting Event Information: Event Objects</a></li>
+<li><a href="#twokinds">Concepts: Low-Level Events and Semantic Events</a></li>
+<li><a href="#eventAdapters">Event Adapters</a></li>
+<li><a href="#innerClasses">Inner Classes and Anonymous Inner Classes</a></li>
+<li><a href="#eventHandlers">The EventHandler Class</a></li>
+</ul>
+<p><a name="design" id="design"></a></p>
+<h2><a name="design__1" id="design__1">Design Considerations</a></h2>
+<p>The most important rule to keep in mind about event listeners is that they should execute very quickly. Because all drawing and event-listening methods are executed in the same thread, a slow event-listener method can make the program seem unresponsive and slow to repaint itself. If you need to perform some lengthy operation as the result of an event, do it by starting up another thread (or somehow sending a request to another thread) to perform the operation. For help on using threads, see 
+<a class="TutorialLink" target="_top" href="../concurrency/index.html">Concurrency in Swing</a>.</p>
+<p>You have many choices on how to implement an event listener. We can not recommend a specific approach because one solution would not suit all situations. However, we can give you some hints and show you some techniques that you might see, even if you do not use the same solution in your program.</p>
+<p>For example, you might choose to implement separate classes for different kinds of event listeners. This can be an easy architecture to maintain, but many classes can also mean reduced performance.</p>
+<p>When designing your program, you might want to implement your event listeners in a class that is not public, but somewhere more hidden. A private implementation is a more secure implementation.</p>
+<p>If you have a very specific kind of simple event listener, you might be able to avoid creating a class at all by using the <code>EventHandler</code> class. <a name="eventobjects" id="eventobjects"></a></p>
+<h2><a name="eventobjects__1" id="eventobjects__1">Getting Event Information: Event Objects</a></h2>
+<p>Every event-listener method has a single argument an object that inherits from the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/EventObject.html"><code>EventObject</code></a> class. Although the argument always descends from <code>EventObject</code>, its type is generally specified more precisely. For example, the argument for methods that handle mouse events is an instance of <code>MouseEvent</code>, where <code>MouseEvent</code> is an indirect subclass of <code>EventObject</code>.</p>
+<p>The <code>EventObject</code> class defines one very useful method:</p>
+<dl>
+<dt><strong><code>Object getSource()</code></strong></dt>
+<dd>Returns the object that fired the event.</dd>
+</dl>
+<p>Note that the <code>getSource</code> method returns an <code>Object</code>. Event classes sometimes define methods similar to <code>getSource</code>, but that have more restricted return types. For example, the <code>ComponentEvent</code> class defines a <code>getComponent</code> method that just like <code>getSource</code> returns the object that fired the event. The difference is that <code>getComponent</code> always returns a <code>Component</code>. Each how-to page for event listeners mentions whether you should use <code>getSource</code> or another method to get the event source.</p>
+<p>Often, an event class defines methods that return information about the event. For example, you can query a <code>MouseEvent</code> object for information about where the event occurred, how many clicks the user made, which modifier keys were pressed, and so on.</p>
+<h2><a name="twokinds" id="twokinds">Concepts: Low-Level Events and Semantic Events</a></h2>
+<p>Events can be divided into two groups: <em>low-level</em> events and <em>semantic</em> events. Low-level events represent window-system occurrences or low-level input. Everything else is a semantic event.</p>
+<p>Examples of low-level events include mouse and key events both of which result directly from user input. Examples of semantic events include action and item events. A semantic event might be triggered by user input; for example, a button customarily fires an action event when the user clicks it, and a text field fires an action event when the user presses <i>Enter</i>. However, some semantic events are not triggered by low-level events, at all. For example, a table-model event might be fired when a table model receives new data from a database.</p>
+<p>Whenever possible, you should listen for semantic events rather than low-level events. That way, you can make your code as robust and portable as possible. For example, listening for action events on buttons, rather than mouse events, means that the button will react appropriately when the user tries to activate the button using a keyboard alternative or a look-and-feel-specific gesture. When dealing with a compound component such as a combo box, it is imperative that you stick to semantic events, since you have no reliable way of registering listeners on all the look-and-feel-specific components that might be used to form the compound component.</p>
+<h2><a name="eventAdapters" id="eventAdapters">Event Adapters</a></h2>
+<p>Some listener interfaces contain more than one method. For example, the <code>MouseListener</code> interface contains five methods: <code>mousePressed</code>, <code>mouseReleased</code>, <code>mouseEntered</code>, <code>mouseExited</code>, and <code>mouseClicked</code>. Even if you care only about mouse clicks, if your class directly implements <code>MouseListener</code>, then you must implement all five <code>MouseListener</code> methods. Methods for those events you do not care about can have empty bodies. Here is an example:</p>
+<div class="codeblock"><pre>
+//An example that implements a listener interface directly.
+public class MyClass implements MouseListener {
+    ...
+        someObject.addMouseListener(this);
+    ...
+    /* Empty method definition. */
+    public void mousePressed(MouseEvent e) {
+    }
+
+    /* Empty method definition. */
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    /* Empty method definition. */
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    /* Empty method definition. */
+    public void mouseExited(MouseEvent e) {
+    }
+
+    public void mouseClicked(MouseEvent e) {
+        <em>...//Event listener implementation goes here...</em>
+    }
+}
+</pre></div>
+<p>The resulting collection of empty method bodies can make code harder to read and maintain. To help you avoid implementing empty method bodies, the API generally includes an <em>adapter</em> class for each listener interface with more than one method. (The <a href="api.html">Listener API Table</a> lists all the listeners and their adapters.) For example, the <code>MouseAdapter</code> class implements the <code>MouseListener</code> interface. An adapter class implements empty versions of all its interface&#39;s methods.</p>
+<p>To use an adapter, you create a subclass of it and override only the methods of interest, rather than directly implementing all methods of the listener interface. Here is an example of modifying the preceding code to extend <code>MouseAdapter</code>. By extending <code>MouseAdapter</code>, it inherits empty definitions of all five of the methods that <code>MouseListener</code> contains.</p>
+<div class="codeblock"><pre>
+/*
+ * An example of extending an adapter class instead of
+ * directly implementing a listener interface.
+ */
+public class MyClass extends MouseAdapter {
+    ... 
+        someObject.addMouseListener(this);
+    ... 
+    public void mouseClicked(MouseEvent e) {
+        <em>...//Event listener implementation goes here...</em>
+    }
+}
+</pre></div>
+<h2><a name="innerClasses" id="innerClasses">Inner Classes and Anonymous Inner Classes</a></h2>
+<p>What if you want to use an adapter class, but do not want your public class to inherit from an adapter class? For example, suppose you write an applet, and you want your <code>Applet</code> subclass to contain some code to handle mouse events. Since the Java language does not permit multiple inheritance, your class cannot extend both the <code>Applet</code> and <code>MouseAdapter</code> classes. A solution is to define an <em>inner class</em> a class inside of your <code>Applet</code> subclass that extends the <code>MouseAdapter</code> class.</p>
+<p>Inner classes can also be useful for event listeners that implement one or more interfaces directly.</p>
+<div class="codeblock"><pre>
+//An example of using an inner class.
+public class MyClass extends Applet {
+    ...
+        someObject.addMouseListener(new MyAdapter());
+    ...
+    class MyAdapter extends MouseAdapter {
+        public void mouseClicked(MouseEvent e) {
+            <em>...//Event listener implementation goes here...</em>
+        }
+    }
+}
+</pre></div>
+<div class="note"><hr /><strong>Performance note:</strong>&nbsp;<p>When considering whether to use an inner class, keep in mind that application startup time and memory footprint are typically directly proportional to the number of classes you load. The more classes you create, the longer your program takes to start up and the more memory it will take. As an application developer you have to balance this with other design constraints you may have. We are not suggesting you turn your application into a single monolithic class in hopes of cutting down startup time and memory footprint this would lead to unnecessary headaches and maintenance burdens.</p>
+<hr /></div>
+<p>You can create an inner class without specifying a name this is known as an <em>anonymous inner class</em>. While it might look strange at first glance, anonymous inner classes can make your code easier to read because the class is defined where it is referenced. However, you need to weigh the convenience against possible performance implications of increasing the number of classes.</p>
+<p>Here is an example of using an anonymous inner class:</p>
+<div class="codeblock"><pre>
+//An example of using an anonymous inner class.
+public class MyClass extends Applet {
+    ...
+        someObject.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                <em>...//Event listener implementation goes here...</em>
+            }
+        });
+    ...
+    }
+}
+</pre></div>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>One drawback of anonymous inner classes is that they can not be seen by the long-term persistence mechanism. For more information see the API documentation for the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/beans/package-summary.html#package_description">JavaBeans&trade; package</a> and the 
+<a class="TutorialLink" target="_top" href="../../javabeans/advanced/persistence.html">Bean Persistence</a> lesson in the 
+<a class="TutorialLink" target="_top" href="../../javabeans/">JavaBeans</a> trail.</p>
+<hr /></div>
+<p>Inner classes work even if your event listener needs access to private instance variables from the enclosing class. As long as you do not declare an inner class to be <code>static</code>, an inner class can refer to instance variables and methods just as if its code is in the containing class. To make a local variable available to an inner class, just save a copy of the variable as a <code>final</code> local variable.</p>
+<p>To refer to the enclosing instance, you can use <code><em>EnclosingClass</em>.this</code>. For more information about inner classes, see 
+<a class="TutorialLink" target="_top" href="../../java/javaOO/nested.html">Nested Classes</a>.</p>
+<h2><a name="eventHandlers" id="eventHandlers">The EventHandler Class</a></h2>
+<p>An 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/beans/EventHandler.html"><code>EventHandler</code></a> class supports dynamic generation of simple, one-statement event listeners. Although <code>EventHandler</code> is only useful for a certain type of extremely simple event listeners, it is worth mentioning for two reasons. It is useful for:</p>
+<ul>
+<li>Making an event listener that persistence can see and yet does not clog up your own classes with event listener interfaces and methods.</li>
+<li>Not adding to the number of classes defined in an application this can help performance.</li>
+</ul>
+<p>Creating an <code>EventHandler</code> by hand is difficult. An <code>EventHandler</code> must be carefully constructed. If you make a mistake, you would not be notified at compile time it will throw an obscure exception at runtime. For this reason, <code>EventHandler</code>s are best created by a GUI builder. <code>EventHandler</code>s should be carefully documented. Otherwise you run the risk of producing hard-to-read code.</p>
+<p>The <code>EventHandler</code> class is intended to be used by interactive tools, such as application builders, that allow developers to make connections between beans. Typically connections are made from a user interface bean (the event source) to an application logic bean (the target). The most effective connections of this kind isolate the application logic from the user interface. For example, the <code>EventHandler</code> for a connection from a JCheckBox to a method that accepts a boolean value can deal with extracting the state of the check box and passing it directly to the method so that the method is isolated from the user interface layer.</p>
+<p>Inner classes are another, more general way to handle events from user interfaces. The <code>EventHandler</code> class handles only a subset of what is possible using inner classes. However, <code>EventHandler</code> works better with the long-term persistence scheme than inner classes. Also, using <code>EventHandler</code> in large applications in which the same interface is implemented many times can reduce the disk and memory footprint of the application.</p>
+<p>Examples of Using <code>EventHandler</code> The simplest use of <code>EventHandler</code> is to install a listener that calls a method on the target object with no arguments. In the following example we create an ActionListener that invokes the toFront method on an instance of <code>javax.swing.JFrame</code>.</p>
+<div class="codeblock"><pre>
+    myButton.addActionListener(
+        (ActionListener)EventHandler.create(ActionListener.class, frame, "toFront"));
+</pre></div>
+<p>When myButton is pressed, the statement frame.toFront() will be executed. One could get the same effect, with some additional compile-time type safety, by defining a new implementation of the ActionListener interface and adding an instance of it to the button:</p>
+<div class="codeblock"><pre>
+    //Equivalent code using an inner class instead of <code>EventHandler</code>.
+    myButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            frame.toFront();
+        }
+    });
+</pre></div>
+<p>The next simplest use of <code>EventHandler</code> is to extract a property value from the first argument of the method in the listener interface (typically an event object) and use it to set the value of a property in the target object. In the following example we create an ActionListener that sets the nextFocusableComponent property of the target (myButton) object to the value of the &quot;source&quot; property of the event.</p>
+<div class="codeblock"><pre>
+    EventHandler.create(ActionListener.class, myButton, "nextFocusableComponent", "source")
+</pre></div>
+<p>This would correspond to the following inner class implementation:</p>
+<div class="codeblock"><pre>
+    //Equivalent code using an inner class instead of <code>EventHandler</code>.
+    new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            myButton.setNextFocusableComponent((Component)e.getSource()); 
+        }
+    }
+</pre></div>
+<p>It is also possible to create an <code>EventHandler</code> that just passes the incoming event object to the target&#39;s action. If the fourth <code>EventHandler.create</code> argument is an empty string, then the event is just passed along:</p>
+<div class="codeblock"><pre>
+    EventHandler.create(ActionListener.class, target, "doActionEvent", "")
+</pre></div>
+<p>This would correspond to the following inner class implementation:</p>
+<div class="codeblock"><pre>
+    //Equivalent code using an inner class instead of <code>EventHandler</code>.
+    new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            target.doActionEvent(e);
+        }
+    }
+</pre></div>
+<p>Probably the most common use of <code>EventHandler</code> is to extract a property value from the source of the event object and set this value as the value of a property of the target object. In the following example we create an ActionListener that sets the &quot;label&quot; property of the target object to the value of the &quot;text&quot; property of the source (the value of the &quot;source&quot; property) of the event.</p>
+<div class="codeblock"><pre>
+    EventHandler.create(ActionListener.class, myButton, "label", "source.text")
+</pre></div>
+<p>This would correspond to the following inner class implementation:</p>
+<div class="codeblock"><pre>
+    //Equivalent code using an inner class instead of <code>EventHandler</code>.
+    new ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            myButton.setLabel(((JTextField)e.getSource()).getText()); 
+        }
+    }
+</pre></div>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="intro.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="eventsandcomponents.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Introduction to Event Listeners
+        <br /><b>Next page:</b> Listeners Supported by Swing Components
+    </div>
+</body>
+</html> 

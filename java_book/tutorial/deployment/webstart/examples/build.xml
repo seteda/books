@@ -1,0 +1,90 @@
+<project default="compile-all">
+    <target name="compile-all">
+        <subant target="compile" failonerror="false">
+            <fileset dir=".">
+                <include name="*/build.xml"/>
+            </fileset>
+        </subant>
+    </target>
+    <target name="compile-abort">
+        <subant target="compile">
+            <fileset dir=".">
+                <include name="*/build.xml"/>
+            </fileset>
+        </subant>
+    </target>
+    <target name="clean">
+        <delete dir="dist"/>
+        <delete dir="zipfiles"/>
+        <subant target="clean">
+            <fileset dir=".">
+                <include name="*/build.xml"/>
+            </fileset>
+        </subant>
+    </target>
+    <target name="jar">
+        <subant target="jar" failonerror="false">
+            <property name="dist.dir" location="dist/${ant.project.name}"/>
+            <fileset dir=".">
+                <include name="*/build.xml"/>
+            </fileset>
+        </subant>
+        <!-- Sign all jar files in dist.dir
+            
+        $JAVA_HOME/bin/java -jar Client.jar
+                            -file_to_sign <Location of File to Sign>
+                            -user <User id provided to you>
+                            -pass <Password provided to you>
+                            -signed_location <Location to download signed file>
+                            -sign_method java1
+
+Need to fully qualify the path to Client.jar if it isn't in the current directory. Same for -file_to_sign and -signed_location. Note that the command on the web page doesn't show the -sign_method, but it didn't work for me until I added it. 
+
+       Remember to download the latest Client.jar file from
+
+       http://stcss.us.oracle.com/codesign/faces/codesign.jsp
+       -->
+            <apply executable="java" parallel="false" verbose="true" force="true">
+                
+                <mapper type="regexp" from="^(.*)/([^/]*)$" to="dist/\1"/>
+                <arg line="-jar"/>
+                <arg path="${ANTCLIENTJAR}"/>
+                <arg value="-file_to_sign"/>
+                <srcfile/>
+                <arg value="-user jsedteam"/>
+                <arg value="-pass sign2jsedteam"/>
+                <arg value="-signed_location"/>
+                <targetfile/>
+                <arg value="-sign_method java2"/>
+                <fileset dir="dist">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </apply>
+    </target>
+    <target name="zip">
+        <subant genericantfile="${ant.file}" target="do-zip">
+            <dirset dir="." includes="webstart_*"/>
+            <property name="zip.dir" location="zipfiles"/>
+            <property name="top" location="."/>
+        </subant>
+        <zip zipfile="zipfiles/JavaWebStartTutorialExamples.zip">
+          <fileset dir=".">
+            <include name="webstart_*/"/>
+            <exclude name="*/build/"/>
+            <exclude name="*/dist/"/>
+            <exclude name="*/nbproject/private/"/>
+          </fileset>
+        </zip>
+    </target>
+    <target name="do-zip">
+        <pathconvert dirsep="-" property="name">
+            <path location="."/>
+            <mapper type="glob" from="${top}${file.separator}*" to="*"/>
+        </pathconvert>
+        <mkdir dir="${zip.dir}"/>
+        <zip zipfile="${zip.dir}/${name}.zip">
+            <zipfileset dir="." prefix="${name}"/>
+        </zip>
+    </target>
+</project>
+

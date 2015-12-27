@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Example Code (The Java&trade; Tutorials &gt;        
+            Java API for XML Processing (JAXP) &gt; Streaming API for XML)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JAXP Java tutorial describes Java API for XML Processing (jaxp), XSLT, SAX, and related XML topics" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jaxp, xml, xslt, sax" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Streaming API for XML</a></div>
+<div class="linkAHEAD"><a href="why.html">Why StAX?</a></div>
+<div class="linkAHEAD"><a href="api.html">StAX API</a></div>
+<div class="linkAHEAD"><a href="using.html">Using StAX</a></div>
+<div class="linkAHEAD"><a href="parser.html">Oracle's Streaming XML Parser Implementation</a></div>
+<div class="nolinkAHEAD">Example Code</div>
+<div class="linkAHEAD"><a href="info.html">Further Information</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java API for XML Processing (JAXP)
+        <br /><b>Lesson:</b> Streaming API for XML
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java API for XML Processing (JAXP)</a>
+                &gt;
+                <a href="index.html" target="_top">Streaming API for XML</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="parser.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="info.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Example Code</h1></div>
+            <div id="PageContent">
+
+<!-- Example Code -->
+<p><a name="indexterm-48" id="indexterm-48"></a><a name="indexterm-49" id="indexterm-49"></a></p>
+<p>This section steps through the example StAX code included in the JAXP reference implementation bundle. All example directories used in this section are located in the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/stax</tt> directory.</p>
+<p>The topics covered in this section are as follows:</p>
+<ul>
+<li>
+<p><a href="#bnbfm">Example Code Organization</a></p>
+</li>
+<li>
+<p><a href="#bnbfn">Example XML Document</a></p>
+</li>
+<li>
+<p><a href="#bnbfo">Cursor Example</a></p>
+</li>
+<li>
+<p><a href="#bnbft">Cursor-to-Event Example</a></p>
+</li>
+<li>
+<p><a href="#bnbfz">Event Example</a></p>
+</li>
+<li>
+<p><a href="#bnbgh">Filter Example</a></p>
+</li>
+<li>
+<p><a href="#bnbgq">Read-and-Write Example</a></p>
+</li>
+<li>
+<p><a href="#bnbgx">Writer Example</a></p>
+</li>
+</ul>
+<p><a name="bnbfm" id="bnbfm"></a></p>
+<h2>Example Code Organization</h2>
+<p>The <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/stax</tt> directory contains the six StAX example directories:</p>
+<ul>
+<li>
+<p><b>Cursor example</b>: The <tt>cursor</tt> directory contains <tt>CursorParse.java</tt>, which illustrates how to use the <tt>XMLStreamReader</tt> (cursor) API to read an XML file.</p>
+</li>
+<li>
+<p><b>Cursor-to-Event example</b>: The <tt>cursor2event</tt> directory contains <tt>CursorApproachEventObject.java</tt>, which illustrates how an application can get information as an <tt>XMLEvent</tt> object when using the cursor API.</p>
+</li>
+<li>
+<p><b>Event example</b>: The <tt>event</tt> directory contains <tt>EventParse.java</tt>, which illustrates how to use the <tt>XMLEventReader</tt> (event iterator) API to read an XML file.</p>
+</li>
+<li>
+<p><b>Filter example</b>: The <tt>filter</tt> directory contains <tt>MyStreamFilter.java</tt>, which illustrates how to use the StAX Stream Filter APIs. In this example, the filter accepts only <tt>StartElement</tt> and <tt>EndElement</tt> events, and filters out the remainder of the events.</p>
+</li>
+<li>
+<p><b>Read-and-Write example</b>: The <tt>readnwrite</tt> directory contains <tt>EventProducerConsumer.java</tt>, which illustrates how the StAX producer/consumer mechanism can be used to simultaneously read and write XML streams.</p>
+</li>
+<li>
+<p><b>Writer example</b>: The <tt>writer</tt> directory contains <tt>CursorWriter.java</tt>, which illustrates how to use <tt>XMLStreamWriter</tt> to write an XML file programatically.</p>
+</li>
+</ul>
+<p>All the StAX examples except for the Writer example use an example XML document, <tt>BookCatalog.xml</tt>.</p>
+<p><a name="bnbfn" id="bnbfn"></a></p>
+<h2>Example XML Document</h2>
+<p>The example XML document, <tt>BookCatalog.xml</tt>, used by most of the StAX example classes, is a simple book catalog based on the common <tt>BookCatalogue</tt> namespace. The contents of <tt>BookCatalog.xml</tt> are listed below:</p>
+<div class="codeblock"><pre>
+&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;BookCatalogue xmlns="http://www.publishing.org">
+&lt;Book>
+    &lt;Title>Yogasana Vijnana: the Science of Yoga&lt;/Title>
+    &lt;author>Dhirendra Brahmachari&lt;/Author>
+    &lt;Date>1966&lt;/Date>
+    &lt;ISBN>81-40-34319-4&lt;/ISBN>
+    &lt;Publisher>Dhirendra Yoga Publications&lt;/Publisher>
+    &lt;Cost currency="INR">11.50&lt;/Cost>
+&lt;/Book>
+&lt;Book>
+    &lt;Title>The First and Last Freedom&lt;/Title>
+    &lt;Author>J. Krishnamurti&lt;/Author>
+    &lt;Date>1954&lt;/Date>
+    &lt;ISBN>0-06-064831-7&lt;/ISBN>
+    &lt;Publisher>Harper &amp;amp; Row&lt;/Publisher>
+    &lt;Cost currency="USD">2.95&lt;/Cost>
+&lt;/Book>
+&lt;/BookCatalogue>
+</pre></div>
+<p><a name="bnbfo" id="bnbfo"></a></p>
+<h2>Cursor Example</h2>
+<p><a name="indexterm-50" id="indexterm-50"></a><a name="indexterm-51" id="indexterm-51"></a></p>
+<p>Located in the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/stax/cursor/</tt> directory, <tt>CursorParse.java</tt> demonstrates using the StAX cursor API to read an XML document. In the Cursor example, the application instructs the parser to read the next event in the XML input stream by calling <tt>next()</tt>.</p>
+<p>Note that <tt>next()</tt> just returns an integer constant corresponding to an underlying event where the parser is positioned. The application needs to call the relevant function to get more information related to the underlying event.</p>
+<p>You can imagine this approach as a virtual cursor moving across the XML input stream. There are various accessor methods which can be called when that virtual cursor is at a particular event.</p>
+<p><a name="bnbfp" id="bnbfp"></a></p>
+<h3>Stepping through Events</h3>
+<p>In this example, the client application pulls the next event in the XML stream by calling the <tt>next</tt> method on the parser; for example:</p>
+<div class="codeblock"><pre>
+try {
+    for (int i = 0 ; i &lt; count ; i++) {
+        // pass the file name.. all relative entity
+        // references will be resolved against this 
+        // as base URI.
+        XMLStreamReader xmlr = xmlif.createXMLStreamReader(filename,
+                                   new FileInputStream(filename));
+
+        // when XMLStreamReader is created, 
+        // it is positioned at START_DOCUMENT event.
+        int eventType = xmlr.getEventType();
+        printEventType(eventType);
+        printStartDocument(xmlr);
+
+        // check if there are more events 
+        // in the input stream
+        while(xmlr.hasNext()) {
+            eventType = xmlr.next();
+            printEventType(eventType);
+
+            // these functions print the information 
+            // about the particular event by calling 
+            // the relevant function
+            printStartElement(xmlr);
+            printEndElement(xmlr);
+            printText(xmlr);
+            printPIData(xmlr);
+            printComment(xmlr);
+        }
+    }
+}
+</pre></div>
+<p>Note that <tt>next</tt> just returns an integer constant corresponding to the event underlying the current cursor location. The application calls the relevant function to get more information related to the underlying event. There are various accessor methods which can be called when the cursor is at a particular event.</p>
+<p><a name="bnbfq" id="bnbfq"></a></p>
+<h3>Returning String Representations</h3>
+<p>Because the <tt>next</tt> method only returns integers corresponding to underlying event types, you typically need to map these integers to string representations of the events; for example:</p>
+<div class="codeblock"><pre>
+public final static String getEventTypeString(int eventType) {
+    switch (eventType) {
+        case XMLEvent.START_ELEMENT:
+            return "START_ELEMENT";
+
+        case XMLEvent.END_ELEMENT:
+            return "END_ELEMENT";
+
+        case XMLEvent.PROCESSING_INSTRUCTION:
+            return "PROCESSING_INSTRUCTION";
+
+        case XMLEvent.CHARACTERS:
+            return "CHARACTERS";
+
+        case XMLEvent.COMMENT:
+            return "COMMENT";
+
+        case XMLEvent.START_DOCUMENT:
+            return "START_DOCUMENT";
+
+        case XMLEvent.END_DOCUMENT:
+            return "END_DOCUMENT";
+
+        case XMLEvent.ENTITY_REFERENCE:
+            return "ENTITY_REFERENCE";
+
+        case XMLEvent.ATTRIBUTE:
+            return "ATTRIBUTE";
+
+        case XMLEvent.DTD:
+            return "DTD";
+
+        case XMLEvent.CDATA:
+            return "CDATA";
+
+        case XMLEvent.SPACE:
+            return "SPACE";
+    }
+    return "UNKNOWN_EVENT_TYPE , " + eventType;
+}
+</pre></div>
+<p><a name="gfyfg" id="gfyfg"></a></p>
+<h3>To Run the Cursor Example</h3>
+<ol>
+<li><b>To compile and run the cursor example, in a terminal window, go to the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/</tt> directory and type the following:</b>
+<div class="codeblock"><pre>
+javac stax/cursor/*.java
+</pre></div>
+</li>
+<li><b>Run the <tt>CursorParse</tt> sample on the <tt>BookCatalogue.xml</tt> file, with the following command.</b>
+<p><tt>CursorParse</tt> will print out each element of the <tt>BookCatalogue.xml</tt> file.</p>
+</li>
+</ol>
+<div class="codeblock"><pre>
+java stax/event/CursorParse stax/data/BookCatalogue.xml
+</pre></div>
+<p><a name="bnbft" id="bnbft"></a></p>
+<h2>Cursor-to-Event Example</h2>
+<p><a name="indexterm-52" id="indexterm-52"></a><a name="indexterm-53" id="indexterm-53"></a></p>
+<p>Located in the <i>tut-install</i><tt>/javaeetutorial5/examples/stax/cursor2event/</tt> directory, <tt>CursorApproachEventObject.java</tt> demonstrates how to get information returned by an <tt>XMLEvent</tt> object even when using the cursor API.</p>
+<p>The idea here is that the cursor API&rsquo;s <tt>XMLStreamReader</tt> returns integer constants corresponding to particular events, while the event iterator API&rsquo;s <tt>XMLEventReader</tt> returns immutable and persistent event objects. <tt>XMLStreamReader</tt> is more efficient, but <tt>XMLEventReader</tt> is easier to use, because all the information related to a particular event is encapsulated in a returned <tt>XMLEvent</tt> object. However, the disadvantage of the event approach is the extra overhead of creating objects for every event, which consumes both time and memory.</p>
+<p>With this mind, <tt>XMLEventAllocator</tt> can be used to get event information as an <tt>XMLEvent</tt> object, even when using the cursor API.</p>
+<p><a name="bnbfu" id="bnbfu"></a></p>
+<h3>Instantiating an XMLEventAllocator</h3>
+<p><a name="indexterm-54" id="indexterm-54"></a></p>
+<p>The first step is to create a new <tt>XMLInputFactory</tt> and instantiate an <tt>XMLEventAllocator</tt>:</p>
+<div class="codeblock"><pre>
+XMLInputFactory xmlif = XMLInputFactory.newInstance();
+System.out.println("FACTORY: " + xmlif);
+xmlif.setEventAllocator(new XMLEventAllocatorImpl());
+allocator = xmlif.getEventAllocator();
+XMLStreamReader xmlr = xmlif.createXMLStreamReader(filename,
+                           new FileInputStream(filename));
+</pre></div>
+<p><a name="bnbfv" id="bnbfv"></a></p>
+<h3>Creating an Event Iterator</h3>
+<p>The next step is to create an event iterator:</p>
+<div class="codeblock"><pre>
+int eventType = xmlr.getEventType();
+
+while (xmlr.hasNext()) {
+    eventType = xmlr.next();
+    // Get all "Book" elements as XMLEvent object
+    if (eventType == XMLStreamConstants.START_ELEMENT 
+        &amp;&amp; xmlr.getLocalName().equals("Book")) {
+        // get immutable XMLEvent
+        StartElement event = getXMLEvent(xmlr).asStartElement();
+        System.out.println ("EVENT: " + event.toString());
+    }
+}
+</pre></div>
+<p><a name="bnbfw" id="bnbfw"></a></p>
+<h3>Creating the Allocator Method</h3>
+<p>The final step is to create the <tt>XMLEventAllocator</tt> method:</p>
+<div class="codeblock"><pre>
+private static XMLEvent getXMLEvent(XMLStreamReader reader)
+    throws XMLStreamException {
+    return allocator.allocate(reader);
+}
+</pre></div>
+<p><a name="gfyeb" id="gfyeb"></a></p>
+<h3>To Run the Cursor-to-Event Example</h3>
+<ol>
+<li><b>To compile and run the cursor&mdash;to&mdash;event example, in a terminal window, go to the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/</tt> directory and type the following:</b>
+<div class="codeblock"><pre>
+javac -classpath ../lib/jaxp-ri.jar stax/cursor2event/*.java
+</pre></div>
+</li>
+<li><b>Run the <tt>CursorApproachEventObject</tt> sample on the <tt>BookCatalogue.xml</tt> file, with the following command.</b>
+<div class="codeblock"><pre>
+java stax/cursor2event/CursorApproachEventObject stax/data/BookCatalogue.xml
+</pre></div>
+<p><tt>CursorApproachEventObject</tt> will print out the list of events defined by the <tt>BookCatalogue.xml</tt> file.</p>
+</li>
+</ol>
+<p><a name="bnbfz" id="bnbfz"></a></p>
+<h2>Event Example</h2>
+<p><a name="indexterm-55" id="indexterm-55"></a><a name="indexterm-56" id="indexterm-56"></a></p>
+<p>Located in the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/stax/event/</tt> directory, <tt>EventParse.java</tt> demonstrates how to use the StAX event API to read an XML document.</p>
+<p><a name="bnbga" id="bnbga"></a></p>
+<h3>Creating an Input Factory</h3>
+<p>The first step is to create a new instance of <tt>XMLInputFactory</tt>:</p>
+<div class="codeblock"><pre>
+XMLInputFactory factory = XMLInputFactory.newInstance();
+System.out.println("FACTORY: " + factory);
+</pre></div>
+<p><a name="bnbgb" id="bnbgb"></a></p>
+<h3>Creating an Event Reader</h3>
+<p>The next step is to create an instance of <tt>XMLEventReader</tt>:</p>
+<div class="codeblock"><pre>
+XMLEventReader r = factory.createXMLEventReader
+                       (filename, new FileInputStream(filename));
+</pre></div>
+<p><a name="bnbgc" id="bnbgc"></a></p>
+<h3>Creating an Event Iterator</h3>
+<p>The third step is to create an event iterator:</p>
+<div class="codeblock"><pre>
+XMLEventReader r = factory.createXMLEventReader
+                       (filename, new FileInputStream(filename));
+while (r.hasNext()) {
+    XMLEvent e = r.nextEvent();
+    System.out.println(e.toString());
+}
+</pre></div>
+<p><a name="bnbgd" id="bnbgd"></a></p>
+<h3>Getting the Event Stream</h3>
+<p>The final step is to get the underlying event stream:</p>
+<div class="codeblock"><pre>
+public final static String getEventTypeString(int eventType) {
+    switch (eventType) {
+        case XMLEvent.START_ELEMENT:
+            return "START_ELEMENT";
+
+        case XMLEvent.END_ELEMENT:
+            return "END_ELEMENT";
+
+        case XMLEvent.PROCESSING_INSTRUCTION:
+            return "PROCESSING_INSTRUCTION";
+
+        case XMLEvent.CHARACTERS:
+            return "CHARACTERS";
+
+        case XMLEvent.COMMENT:
+            return "COMMENT";
+
+        case XMLEvent.START_DOCUMENT:
+            return "START_DOCUMENT";
+
+        case XMLEvent.END_DOCUMENT:
+            return "END_DOCUMENT";
+
+        case XMLEvent.ENTITY_REFERENCE:
+            return "ENTITY_REFERENCE";
+
+        case XMLEvent.ATTRIBUTE:
+            return "ATTRIBUTE";
+
+        case XMLEvent.DTD:
+            return "DTD";
+
+        case XMLEvent.CDATA:
+            return "CDATA";
+
+        case XMLEvent.SPACE:
+            return "SPACE";
+    }
+    return "UNKNOWN_EVENT_TYPE," + eventType;
+}
+</pre></div>
+<p><a name="bnbge" id="bnbge"></a></p>
+<h3>Returning the Output</h3>
+<p>When you run the Event example, the <tt>EventParse</tt> class is compiled, and the XML stream is parsed as events and returned to <tt>STDOUT</tt>. For example, an instance of the <tt>Author</tt> element is returned as:</p>
+<div class="codeblock"><pre>
+&lt;[&rsquo;http://www.publishing.org&rsquo;]::Author>
+    Dhirendra Brahmachari
+&lt;/[&rsquo;http://www.publishing.org&rsquo;]::Author>
+</pre></div>
+<p>Note in this example that the event comprises an opening and closing tag, both of which include the namespace. The content of the element is returned as a string within the tags.</p>
+<p>Similarly, an instance of the <tt>Cost</tt> element is returned as:</p>
+<div class="codeblock"><pre>
+&lt;[&rsquo;http://www.publishing.org&rsquo;]::Cost currency=&rsquo;INR&rsquo;>
+    11.50
+&lt;/[&rsquo;http://www.publishing.org&rsquo;]::Cost
+</pre></div>
+<p>In this case, the <tt>currency</tt> attribute and value are returned in the opening tag for the event.</p>
+<p><a name="gfyek" id="gfyek"></a></p>
+<h3>To Run the Event Example</h3>
+<ol>
+<li><b>To compile and run the event example, in a terminal window, go to the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/</tt> directory and type the following:</b>
+<div class="codeblock"><pre>
+javac -classpath ../lib/jaxp-ri.jar stax/event/*.java
+</pre></div>
+</li>
+<li><b>Run the <tt>EventParse</tt> sample on the <tt>BookCatalogue.xml</tt> file, with the following command.</b>
+<div class="codeblock"><pre>
+java stax/event/EventParse stax/data/BookCatalogue.xml
+</pre></div>
+<p><tt>EventParse</tt> will print out the data from all the elements defined by the <tt>BookCatalogue.xml</tt> file.</p>
+</li>
+</ol>
+<p><a name="bnbgh" id="bnbgh"></a></p>
+<h2>Filter Example</h2>
+<p><a name="indexterm-57" id="indexterm-57"></a><a name="indexterm-58" id="indexterm-58"></a></p>
+<p>Located in the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/stax/filter/</tt> directory, <tt>MyStreamFilter.java</tt> demonstrates how to use the StAX stream filter API to filter out events not needed by your application. In this example, the parser filters out all events except <tt>StartElement</tt> and <tt>EndElement</tt>.</p>
+<p><a name="bnbgi" id="bnbgi"></a></p>
+<h3>Implementing the StreamFilter Class</h3>
+<p>The <tt>MyStreamFilter</tt> class implements <tt>javax.xml.stream.StreamFilter</tt>:</p>
+<div class="codeblock"><pre>
+public class MyStreamFilter implements javax.xml.stream.StreamFilter {
+    // ...
+}
+</pre></div>
+<p><a name="bnbgj" id="bnbgj"></a></p>
+<h3>Creating an Input Factory</h3>
+<p>The next step is to create an instance of <tt>XMLInputFactory</tt>. In this case, various properties are also set on the factory:</p>
+<div class="codeblock"><pre>
+XMLInputFactory xmlif = null ;
+
+try {
+    xmlif = XMLInputFactory.newInstance();
+    xmlif.setProperty(
+        XMLInputFactory.IS_REPLACING_ENTITY_REFERENCES,
+        Boolean.TRUE);
+
+    xmlif.setProperty(
+        XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES,
+        Boolean.FALSE);
+
+    xmlif.setProperty(
+        XMLInputFactory.IS_NAMESPACE_AWARE,
+        Boolean.TRUE);
+
+    xmlif.setProperty(
+        XMLInputFactory.IS_COALESCING,
+        Boolean.TRUE);
+} 
+catch (Exception ex) {
+    ex.printStackTrace();
+}
+
+System.out.println("FACTORY: " + xmlif);
+System.out.println("filename = "+ filename);
+</pre></div>
+<p><a name="bnbgk" id="bnbgk"></a></p>
+<h3>Creating the Filter</h3>
+<p>The next step is to instantiate a file input stream and create the stream filter:</p>
+<div class="codeblock"><pre>
+FileInputStream fis = new FileInputStream(filename);
+XMLStreamReader xmlr = xmlif.createFilteredReader(
+                           xmlif.createXMLStreamReader(fis), 
+                           new MyStreamFilter());
+
+int eventType = xmlr.getEventType();
+printEventType(eventType);
+
+while (xmlr.hasNext()) {
+    eventType = xmlr.next();
+    printEventType(eventType);
+    printName(xmlr,eventType);
+    printText(xmlr);
+
+    if (xmlr.isStartElement()) {
+        printAttributes(xmlr);
+    }
+    printPIData(xmlr);
+    System.out.println("-----------------------");
+}
+</pre></div>
+<p><a name="bnbgl" id="bnbgl"></a></p>
+<h3>Capturing the Event Stream</h3>
+<p>The next step is to capture the event stream. This is done in basically the same way as in the Event example.</p>
+<p><a name="bnbgm" id="bnbgm"></a></p>
+<h3>Filtering the Stream</h3>
+<p>The final step is to filter the stream:</p>
+<div class="codeblock"><pre>
+public boolean accept(XMLStreamReader reader) {
+    if (!reader.isStartElement() &amp;&amp; !reader.isEndElement())
+        return false;
+    else
+        return true;
+}
+</pre></div>
+<p><a name="bnbgn" id="bnbgn"></a></p>
+<h3>Returning the Output</h3>
+<p>When you run the Filter example, the <tt>MyStreamFilter</tt> class is compiled, and the XML stream is parsed as events and returned to <tt>STDOUT</tt>. For example, an <tt>Author</tt> event is returned as follows:</p>
+<div class="codeblock"><pre>
+EVENT TYPE(1):START_ELEMENT
+HAS NAME: Author
+HAS NO TEXT
+HAS NO ATTRIBUTES
+-----------------------------
+EVENT TYPE(2):END_ELEMENT
+HAS NAME: Author
+HAS NO TEXT
+-----------------------------
+</pre></div>
+<p>Similarly, a <tt>Cost</tt> event is returned as follows:</p>
+<div class="codeblock"><pre>
+EVENT TYPE(1):START_ELEMENT
+HAS NAME: Cost
+HAS NO TEXT
+
+HAS ATTRIBUTES:
+ ATTRIBUTE-PREFIX:
+ ATTRIBUTE-NAMESP: null
+ATTRIBUTE-NAME:   currency
+ATTRIBUTE-VALUE: USD
+ATTRIBUTE-TYPE:  CDATA
+
+-----------------------------
+EVENT TYPE(2):END_ELEMENT
+HAS NAME: Cost
+HAS NO TEXT
+-----------------------------
+</pre></div>
+<p>See 
+<a class="TutorialLink" target="_top" href="api.html#bnbee">Iterator API</a> and 
+<a class="TutorialLink" target="_top" href="using.html#bnbew">Reading XML Streams</a> for a more detailed discussion of StAX event parsing.</p>
+<p><a name="gfygs" id="gfygs"></a></p>
+<h3>To Run the Filter Example</h3>
+<ol>
+<li><b>To compile and run the Filter example, in a terminal window, go to the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/</tt> directory and type the following:</b>
+<div class="codeblock"><pre>
+javac -classpath ../lib/jaxp-ri.jar stax/filter/*.java
+</pre></div>
+</li>
+<li><b>Run the <tt>MyStreamFilter</tt> sample on the <tt>BookCatalogue.xml</tt> file, with the following command. This example requires the <tt>java.endorsed.dirs</tt> system property to be set, to point to the <tt>samples/lib</tt> directory.</b>
+<div class="codeblock"><pre>
+java -Djava.endorsed.dirs=../lib stax/filter/MyStreamFilter -f stax/data/BookCatalogue.xml
+</pre></div>
+<p><tt>MyStreamFilter</tt> will print out the events defined by the <tt>BookCatalogue.xml</tt> file as an XML stream.</p>
+</li>
+</ol>
+<p><a name="bnbgq" id="bnbgq"></a></p>
+<h2>Read-and-Write Example</h2>
+<p><a name="indexterm-59" id="indexterm-59"></a><a name="indexterm-60" id="indexterm-60"></a></p>
+<p>Located in the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/stax/readnwrite/</tt> directory, <tt>EventProducerConsumer.java</tt> demonstrates how to use a StAX parser simultaneously as both a producer and a consumer.</p>
+<p>The StAX <tt>XMLEventWriter</tt> API extends from the <tt>XMLEventConsumer</tt> interface, and is referred to as an <b>event consumer</b>. By contrast, <tt>XMLEventReader</tt> is an <b>event producer</b>. StAX supports simultaneous reading and writing, such that it is possible to read from one XML stream sequentially and simultaneously write to another stream.</p>
+<p>The Read-and-Write example shows how the StAX producer/consumer mechanism can be used to read and write simultaneously. This example also shows how a stream can be modified and how new events can be added dynamically and then written to a different stream.</p>
+<p><a name="bnbgr" id="bnbgr"></a></p>
+<h3>Creating an Event Producer/Consumer</h3>
+<p>The first step is to instantiate an event factory and then create an instance of an event producer/consumer:</p>
+<div class="codeblock"><pre>
+XMLEventFactory m_eventFactory = XMLEventFactory.newInstance();
+
+public EventProducerConsumer() {
+    // ...
+    try {
+        EventProducerConsumer ms = new EventProducerConsumer();
+    
+        XMLEventReader reader = XMLInputFactory.newInstance().
+        createXMLEventReader(new java.io.FileInputStream(args[0]));
+    
+        XMLEventWriter writer = 
+            XMLOutputFactory.newInstance().createXMLEventWriter(System.out);
+    }
+    // ...
+}
+</pre></div>
+<p><a name="bnbgs" id="bnbgs"></a></p>
+<h3>Creating an Iterator</h3>
+<p>The next step is to create an iterator to parse the stream:</p>
+<div class="codeblock"><pre>
+while (reader.hasNext()) {
+    XMLEvent event = (XMLEvent)reader.next();
+    if (event.getEventType() == event.CHARACTERS) {
+        writer.add(ms.getNewCharactersEvent(event.asCharacters()));
+    }
+    else {
+        writer.add(event);
+    }
+}
+writer.flush();
+</pre></div>
+<p><a name="bnbgt" id="bnbgt"></a></p>
+<h3>Creating a Writer</h3>
+<p>The final step is to create a stream writer in the form of a new <tt>Character</tt> event:</p>
+<div class="codeblock"><pre>
+Characters getNewCharactersEvent(Characters event) {
+    if (event.getData().equalsIgnoreCase("Name1")) {
+        return m_eventFactory.createCharacters(
+                   Calendar.getInstance().getTime().toString());
+    }
+    // else return the same event
+    else {
+        return event;
+    }
+}
+</pre></div>
+<p><a name="bnbgu" id="bnbgu"></a></p>
+<h3>Returning the Output</h3>
+<p>When you run the Read-and-Write example, the <tt>EventProducerConsumer</tt> class is compiled, and the XML stream is parsed as events and written back to <tt>STDOUT</tt>. The output is the contents of the <tt>BookCatalog.xml</tt> file described in <a href="#bnbfn">Example XML Document</a>.</p>
+<p><a name="gfyfk" id="gfyfk"></a></p>
+<h3>To Run the Read-and-Write Example</h3>
+<ol>
+<li><b>To compile and run the Read&mdash;and&mdash;Write example, in a terminal window, go to the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/</tt> directory and type the following:</b>
+<div class="codeblock"><pre>
+javac -classpath ../lib/jaxp-ri.jar stax/readnwrite/*.java
+</pre></div>
+</li>
+<li><b>Run the <tt>EventProducerConsumer</tt> sample on the <tt>BookCatalogue.xml</tt> file, with the following command.</b>
+<div class="codeblock"><pre>
+java stax/readnwrite/EventProducerConsumer stax/data/BookCatalogue.xml
+</pre></div>
+<p><tt>EventProducerConsumer</tt> will print out the content of the <tt>BookCatalogue.xml</tt> file.</p>
+</li>
+</ol>
+<p><a name="bnbgx" id="bnbgx"></a></p>
+<h2>Writer Example</h2>
+<p><a name="indexterm-61" id="indexterm-61"></a><a name="indexterm-62" id="indexterm-62"></a></p>
+<p>Located in the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/stax/writer/</tt> directory, <tt>CursorWriter.java</tt> demonstrates how to use the StAX cursor API to write an XML stream.</p>
+<p><a name="bnbgy" id="bnbgy"></a></p>
+<h3>Creating the Output Factory</h3>
+<p>The first step is to create an instance of <tt>XMLOutputFactory</tt>:</p>
+<div class="codeblock"><pre>
+XMLOutputFactory xof =  XMLOutputFactory.newInstance();
+</pre></div>
+<p><a name="bnbgz" id="bnbgz"></a></p>
+<h3>Creating a Stream Writer</h3>
+<p>The next step is to create an instance of <tt>XMLStreamWriter</tt>:</p>
+<div class="codeblock"><pre>
+XMLStreamWriter xtw = null;
+</pre></div>
+<p><a name="bnbha" id="bnbha"></a></p>
+<h3>Writing the Stream</h3>
+<p>The final step is to write the XML stream. Note that the stream is flushed and closed after the final <tt>EndDocument</tt> is written:</p>
+<div class="codeblock"><pre>
+xtw = xof.createXMLStreamWriter(new FileWriter(fileName));
+
+xtw.writeComment("all elements here are explicitly in the HTML namespace");
+xtw.writeStartDocument("utf-8","1.0");
+xtw.setPrefix("html", "http://www.w3.org/TR/REC-html40");
+xtw.writeStartElement("http://www.w3.org/TR/REC-html40","html");
+xtw.writeNamespace("html", "http://www.w3.org/TR/REC-html40");
+xtw.writeStartElement("http://www.w3.org/TR/REC-html40", "head");
+xtw.writeStartElement("http://www.w3.org/TR/REC-html40", "title");
+xtw.writeCharacters("Frobnostication");
+xtw.writeEndElement();
+xtw.writeEndElement();
+
+xtw.writeStartElement("http://www.w3.org/TR/REC-html40", "body");
+xtw.writeStartElement("http://www.w3.org/TR/REC-html40", "p");
+xtw.writeCharacters("Moved to");
+xtw.writeStartElement("http://www.w3.org/TR/REC-html40", "a");
+xtw.writeAttribute("href","http://frob.com");
+xtw.writeCharacters("here");
+xtw.writeEndElement();
+xtw.writeEndElement();
+xtw.writeEndElement();
+xtw.writeEndElement();
+xtw.writeEndDocument();
+
+xtw.flush();
+xtw.close();
+</pre></div>
+<p><a name="bnbhb" id="bnbhb"></a></p>
+<h3>Returning the Output</h3>
+<p>When you run the Writer example, the <tt>CursorWriter</tt> class is compiled, and the XML stream is parsed as events and written to a file named <tt>dist/CursorWriter-Output</tt>:</p>
+<div class="codeblock"><pre>
+&lt;!--all elements here are explicitly in the HTML namespace-->
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;html:html xmlns:html="http://www.w3.org/TR/REC-html40">
+&lt;html:head>
+&lt;html:title>Frobnostication&lt;/html:title>&lt;/html:head>
+&lt;html:body>
+&lt;html:p>Moved to &lt;html:a href="http://frob.com">here&lt;/html:a>
+&lt;/html:p>
+&lt;/html:body>
+&lt;/html:html>
+</pre></div>
+<p>In the actual <tt>dist/CursorWriter-Output</tt> file, this stream is written without any line breaks; the breaks have been added here to make the listing easier to read. In this example, as with the object stream in the Event example, the namespace prefix is added to both the opening and closing HTML tags. Adding this prefix is not required by the StAX specification, but it is good practice when the final scope of the output stream is not definitively known.</p>
+<p><a name="gfyez" id="gfyez"></a></p>
+<h3>To Run the Writer Example</h3>
+<ol>
+<li><b>To compile and run the Writer example, in a terminal window, go to the <i>INSTALL_DIR</i><tt>/jaxp-</tt><i>version</i><tt>/samples/</tt> directory and type the following:</b>
+<div class="codeblock"><pre>
+javac -classpath \
+    ../lib/jaxp-ri.jar stax/writer/*.java
+</pre></div>
+</li>
+<li><b>Run the <tt>CursorWriter</tt> sample, specifying the name of the file the output should be written to.</b>
+<div class="codeblock"><pre>
+java stax/writer/CursorWriter -f <i>output_file</i>
+</pre></div>
+<p><tt>CursorWriter</tt> will create an output file of the appropriate name, which contains the data shown in <a href="#bnbhb">Returning the Output</a>.</p>
+</li>
+</ol>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="parser.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="info.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Oracle's Streaming XML Parser Implementation
+        <br /><b>Next page:</b> Further Information
+    </div>
+</body>
+</html> 

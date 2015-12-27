@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Lesson: Algorithms (The Java&trade; Tutorials &gt; Collections)</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This collections Java tutorial describes interfaces, implementations, and algorithms in the Java Collections framework" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java collections, set, list, queue, map, array, arraylist" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+    </head>
+<body>
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+    <!-- ixheader -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+        <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                    <div id="TopBar_left">
+                        The Java&trade; Tutorials
+                    </div>
+                    <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java
+                                Tutorials</a>
+                        <br />
+                    </div> 
+      </div> </div> </div> </div> </div>
+
+    <div class="MainFlow_wide">
+        <div class="PrintHeaders">
+            <b>Trail:</b> Collections
+        </div>
+        <div id="BreadCrumbs">
+            <a href="../../index.html" target="_top">Home Page</a>
+        &gt;
+            <a href="../index.html" target="_top">Collections</a>
+        </div>
+        <div class="NavBit">
+                <a target="_top" href="../implementations/index.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../custom-implementations/index.html">Next&nbsp;&raquo;</a>
+        </div>
+        <div id="PageTitle"><h1>Lesson: Algorithms</h1></div>
+        <div id="PageContent">
+
+<p>The <em>polymorphic algorithms</em> described here are pieces of reusable functionality provided by the Java platform. All of them come from the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html"><code>Collections</code></a> class, and all take the form of static methods whose first argument is the collection on which the operation is to be performed. The great majority of the algorithms provided by the Java platform operate on 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html"><code>List</code></a> instances, but a few of them operate on arbitrary 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html"><code>Collection</code></a> instances. This section briefly describes the following algorithms:</p>
+ 
+<ul>
+<li><a href="#sorting">Sorting</a></li>
+<li><a href="#shuffling">Shuffling</a></li>
+<li><a href="#rdm">Routine Data Manipulation</a></li>
+<li><a href="#searching">Searching</a></li>
+<li><a href="#composition">Composition</a></li>
+<li><a href="#fev">Finding Extreme Values</a></li>
+</ul>
+<a name="sorting" id="sorting"></a>
+<h2>Sorting</h2>
+<p>The <code>sort</code> algorithm reorders a <code>List</code> so that its elements are in ascending order according to an ordering relationship. Two forms of the operation are provided. The simple form takes a <code>List</code> and sorts it according to its elements&#39; <em>natural ordering</em>. If you&#39;re unfamiliar with the concept of natural ordering, read the 
+<a class="TutorialLink" target="_top" href="../interfaces/order.html">Object Ordering</a> section.</p>
+<p>The <code>sort</code> operation uses a slightly optimized <em>merge sort</em> algorithm that is fast and stable:</p>
+<ul>
+<li><b>Fast</b>: It is guaranteed to run in <code>n log(n)</code> time and runs substantially faster on nearly sorted lists. Empirical tests showed it to be as fast as a highly optimized quicksort. A quicksort is generally considered to be faster than a merge sort but isn&#39;t stable and doesn&#39;t guarantee <code>n log(n)</code> performance.</li>
+<li><b>Stable</b>: It doesn&#39;t reorder equal elements. This is important if you sort the same list repeatedly on different attributes. If a user of a mail program sorts the inbox by mailing date and then sorts it by sender, the user naturally expects that the now-contiguous list of messages from a given sender will (still) be sorted by mailing date. This is guaranteed only if the second sort was stable.</li>
+</ul>
+<p>The following 
+<a class="SourceLink" target="_blank" href="examples/Sort.java" onclick="showCode('../../displayCode.html', 'examples/Sort.java'); return false;"><code>trivial program</code></a> prints out its arguments in lexicographic (alphabetical) order.</p>
+<div class="codeblock"><pre>
+
+import java.util.*;
+
+public class Sort {
+    public static void main(String[] args) {
+        List&lt;String&gt; list = Arrays.asList(args);
+        Collections.sort(list);
+        System.out.println(list);
+    }
+}
+</pre></div>
+<p>Let&#39;s run the program.</p>
+<div class="codeblock"><pre>
+% java Sort i walk the line
+</pre></div>
+<p>The following output is produced.</p>
+<div class="codeblock"><pre>
+[i, line, the, walk]
+</pre></div>
+<p>The program was included only to show you that algorithms really are as easy to use as they appear to be.</p>
+<p>The second form of <code>sort</code> takes a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html"><code>Comparator</code></a> in addition to a <code>List</code> and sorts the elements with the <code>Comparator</code>. Suppose you want to print out the anagram groups from our earlier example in reverse order of size &#151; largest anagram group first. The example that follows shows you how to achieve this with the help of the second form of the <code>sort</code> method.</p>
+<p>Recall that the anagram groups are stored as values in a <code>Map</code>, in the form of <code>List</code> instances. The revised printing code iterates through the <code>Map</code>&#39;s values view, putting every <code>List</code> that passes the minimum-size test into a <code>List</code> of <code>List</code>s. Then the code sorts this <code>List</code>, using a <code>Comparator</code> that expects <code>List</code> instances, and implements reverse size-ordering. Finally, the code iterates through the sorted <code>List</code>, printing its elements (the anagram groups). The following code replaces the printing code at the end of the <code>main</code> method in the <code>Anagrams</code> example.</p>
+<div class="codeblock"><pre>
+// Make a List of all anagram groups above size threshold.
+List&lt;List&lt;String&gt;&gt; winners = new ArrayList&lt;List&lt;String&gt;&gt;();
+for (List&lt;String&gt; l : m.values())
+    if (l.size() >= minGroupSize)
+        winners.add(l);
+
+// Sort anagram groups according to size
+Collections.sort(winners, new Comparator&lt;List&lt;String&gt;&gt;() {
+    public int compare(List&lt;String&gt; o1, List&lt;String&gt; o2) {
+        return o2.size() - o1.size();
+    }});
+
+// Print anagram groups.
+for (List&lt;String&gt; l : winners)
+    System.out.println(l.size() + ": " + l);
+</pre></div>
+<p>Running 
+<a class="SourceLink" target="_blank" href="examples/Anagrams2.java" onclick="showCode('../../displayCode.html', 'examples/Anagrams2.java'); return false;"><code>the program</code></a> on the 
+<a class="SourceLink" target="_blank" href="../interfaces/examples/dictionary.txt" onclick="showCode('../../displayCode.html', '../interfaces/examples/dictionary.txt'); return false;"><code>same dictionary</code></a> as in 
+<a class="TutorialLink" target="_top" href="../interfaces/map.html">The Map Interface</a> section, with the same minimum anagram group size (eight), produces the following output.</p>
+<div class="codeblock"><pre>
+
+12: [apers, apres, asper, pares, parse, pears, prase,
+       presa, rapes, reaps, spare, spear]
+11: [alerts, alters, artels, estral, laster, ratels,
+       salter, slater, staler, stelar, talers]
+10: [least, setal, slate, stale, steal, stela, taels,
+       tales, teals, tesla]
+9: [estrin, inerts, insert, inters, niters, nitres,
+       sinter, triens, trines]
+9: [capers, crapes, escarp, pacers, parsec, recaps,
+       scrape, secpar, spacer]
+9: [palest, palets, pastel, petals, plates, pleats,
+       septal, staple, tepals]
+9: [anestri, antsier, nastier, ratines, retains, retinas,
+       retsina, stainer, stearin]
+8: [lapse, leaps, pales, peals, pleas, salep, sepal, spale]
+8: [aspers, parses, passer, prases, repass, spares,
+       sparse, spears]
+8: [enters, nester, renest, rentes, resent, tenser,
+       ternes,??????treens]
+8: [arles, earls, lares, laser, lears, rales, reals, seral]
+8: [earings, erasing, gainers, reagins, regains, reginas,
+       searing, seringa]
+8: [peris, piers, pries, prise, ripes, speir, spier, spire]
+8: [ates, east, eats, etas, sate, seat, seta, teas]
+8: [carets, cartes, caster, caters, crates, reacts,
+       recast,??????traces]
+</pre></div>
+<p><a name="shuffling" id="shuffling"></a></p>
+<h2>Shuffling</h2>
+<p>The <code>shuffle</code> algorithm does the opposite of what <code>sort</code> does, destroying any trace of order that may have been present in a <code>List</code>. That is, this algorithm reorders the <code>List</code> based on input from a source of randomness such that all possible permutations occur with equal likelihood, assuming a fair source of randomness. This algorithm is useful in implementing games of chance. For example, it could be used to shuffle a <code>List</code> of <code>Card</code> objects representing a deck. Also, it&#39;s useful for generating test cases.</p>
+<p>This operation has two forms: one takes a <code>List</code> and uses a default source of randomness, and the other requires the caller to provide a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Random.html">Random</a> object to use as a source of randomness. The code for this algorithm is used as an example in the 
+<a class="TutorialLink" target="_top" href="../interfaces/list.html#shuffle"><code>List</code> section</a>.
+ <a name="rdm" id="rdm"></a></p>
+<h2>Routine Data Manipulation</h2>
+<p>The <code>Collections</code> class provides five algorithms for doing routine data manipulation on <code>List</code> objects, all of which are pretty straightforward:</p>
+<ul>
+<li><code>reverse</code> &#151; reverses the order of the elements in a <code>List</code>.</li>
+<li><code>fill</code> &#151; overwrites every element in a <code>List</code> with the specified value. This operation is useful for reinitializing a <code>List</code>.</li>
+<li><code>copy</code> &#151; takes two arguments, a destination <code>List</code> and a source <code>List</code>, and copies the elements of the source into the destination, overwriting its contents. The destination <code>List</code> must be at least as long as the source. If it is longer, the remaining elements in the destination <code>List</code> are unaffected.</li>
+<li><code>swap</code> &#151; swaps the elements at the specified positions in a <code>List</code>.</li>
+<li><code>addAll</code> &#151; adds all the specified elements to a <code>Collection</code>. The elements to be added may be specified individually or as an array.</li>
+</ul>
+<p><a name="searching" id="searching"></a></p>
+<h2>Searching</h2>
+<p>The <code>binarySearch</code> algorithm searches for a specified element in a sorted <code>List</code>. This algorithm has two forms. The first takes a <code>List</code> and an element to search for (the &quot;search key&quot;). This form assumes that the <code>List</code> is sorted in ascending order according to the natural ordering of its elements. The second form takes a <code>Comparator</code> in addition to the <code>List</code> and the search key, and assumes that the <code>List</code> is sorted into ascending order according to the specified <code>Comparator</code>. The <code>sort</code> algorithm can be used to sort the <code>List</code> prior to calling <code>binarySearch</code>.</p>
+<p>The return value is the same for both forms. If the <code>List</code> contains the search key, its index is returned. If not, the return value is <code>(-(insertion point) - 1)</code>, where the insertion point is the point at which the value would be inserted into the <code>List</code>, or the index of the first element greater than the value or <code>list.size()</code> if all elements in the <code>List</code> are less than the specified value. This admittedly ugly formula guarantees that the return value will be <code>&gt;= 0</code> if and only if the search key is found. It&#39;s basically a hack to combine a boolean <code>(found)</code> and an integer <code>(index)</code> into a single <code>int</code> return value.</p>
+<p>The following idiom, usable with both forms of the <code>binarySearch</code> operation, looks for the specified search key and inserts it at the appropriate position if it&#39;s not already present.</p>
+<div class="codeblock"><pre>
+int pos = Collections.binarySearch(list, key);
+if (pos &lt; 0)
+   l.add(-pos-1, key);
+</pre></div>
+<p><a name="composition" id="composition"></a></p>
+<h2>Composition</h2>
+<p>The frequency and disjoint algorithms test some aspect of the composition of one or more <code>Collections</code>:</p>
+<ul>
+<li><code>frequency</code> &#151; counts the number of times the specified element occurs in the specified collection</li>
+<li><code>disjoint</code> &#151; determines whether two <code>Collections</code> are disjoint; that is, whether they contain no elements in common</li>
+</ul>
+<p><a name="fev" id="fev"></a></p>
+<h2>Finding Extreme Values</h2>
+<p>The <code>min</code> and the <code>max</code> algorithms return, respectively, the minimum and maximum element contained in a specified <code>Collection</code>. Both of these operations come in two forms. The simple form takes only a <code>Collection</code> and returns the minimum (or maximum) element according to the elements&#39; natural ordering. The second form takes a <code>Comparator</code> in addition to the <code>Collection</code> and returns the minimum (or maximum) element according to the specified <code>Comparator</code>.</p>
+
+
+        </div>
+    <div class="NavBit">
+        <a href="../implementations/index.html">&laquo; Previous</a>
+        &bull;
+        <a href="../TOC.html">Trail</a>
+        &bull;
+        <a href="../custom-implementations/index.html">Next &raquo;</a>
+    </div>
+    </div>
+   
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+   
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Previous Lesson
+        <br /><b>Next page:</b> Custom Collection Implementations
+    </div>
+</body>
+</html> 

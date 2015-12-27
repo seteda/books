@@ -1,0 +1,1019 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Support Assistive Technologies (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Other Swing Features)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Other Swing Features</a></div>
+<div class="linkAHEAD"><a href="desktop.html">How to Integrate with the Desktop Class</a></div>
+<div class="linkAHEAD"><a href="trans_shaped_windows.html">How to Create Translucent and Shaped Windows</a></div>
+<div class="linkAHEAD"><a href="jlayer.html">How to Decorate Components with the JLayer Class</a></div>
+<div class="linkAHEAD"><a href="action.html">How to Use Actions</a></div>
+<div class="linkAHEAD"><a href="timer.html">How to Use Swing Timers</a></div>
+<div class="nolinkAHEAD">How to Support Assistive Technologies</div>
+<div class="linkAHEAD"><a href="focus.html">How to Use the Focus Subsystem</a></div>
+<div class="linkAHEAD"><a href="keybinding.html">How to Use Key Bindings</a></div>
+<div class="linkAHEAD"><a href="modality.html">How to Use Modality in Dialogs</a></div>
+<div class="linkAHEAD"><a href="printtable.html">How to Print Tables</a></div>
+<div class="linkAHEAD"><a href="printtext.html">How to Print Text</a></div>
+<div class="linkAHEAD"><a href="splashscreen.html">How to Create a Splash Screen</a></div>
+<div class="linkAHEAD"><a href="systemtray.html">How to Use the System Tray</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Problems Using Other Swing Features</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Other Swing Features
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Other Swing Features</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="timer.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="focus.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Support Assistive Technologies</h1></div>
+            <div id="PageContent">
+
+<p>You might be wondering what exactly assistive technologies are, and why you should care. Primarily, assistive technologies exist to enable people with permanent or temporary disabilities to use the computer. For example, if you get carpal tunnel syndrome, you can use assistive technologies to accomplish your work without using your hands.</p>
+<p>Assistive technologies &#151; voice interfaces, screen readers, alternate input devices, and so on &#151; are useful not only for people with disabilities, but also for people using computers in non-office environments. For example, if you&#39;re stuck in a traffic jam, you might use assistive technologies to check your email, using only voice input and output. The information that enables assistive technologies can be used for other tools, as well, such as automated GUI testers and input devices such as touchscreens. Assistive technologies get information from components using the Accessibility API, which is defined in the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/package-summary.html"><code>javax.accessibility</code></a> package.</p>
+<p>
+Because support for the Accessibility API is built into the Swing components, your Swing program will probably work just fine with assistive technologies, even if you do nothing special. For example, assistive technologies can automatically get the text information that is set by the following lines of code:</p>
+<div class="codeblock"><pre>
+JButton button = new JButton("I'm a Swing button!");
+label = new JLabel(labelPrefix + "0    ");
+label.setText(labelPrefix + numClicks);
+JFrame frame = new JFrame("SwingApplication");
+</pre></div>
+<p>Assistive technologies can also grab the tool-tip text (if any) associated with a component and use it to describe the component to the user. 
+</p>
+<p>Making your program function smoothly with assistive technologies is easy to do and, in the United States, may be required by federal law.</p>
+<p>The rest of this section covers these topics:</p>
+<ul>
+<li><a href="#supporting">Rules for Supporting Accessibility</a></li>
+<li><a href="#testing">Testing for Accessibility</a></li>
+<li><a href="#namesdescriptions">Setting Accessible Names and Descriptions on Components</a></li>
+<li><a href="#developing">Concepts: How Accessibility Works</a></li>
+<li><a href="#accessiblecomponents">Making Custom Components Accessible</a></li>
+<li><a href="#api">The Accessibility API</a></li>
+<li><a href="#eg">Examples that Use the Accessibility API</a></li>
+</ul>
+<h2><a name="supporting" id="supporting">Rules for Supporting Accessibility</a></h2>
+<p>Here are a few things you can do to make your program work as well as possible with assistive technologies:</p>
+<ul>
+<li>If a component doesn&#39;t display a short string (which serves as its default name), specify a name with the <code>setAccessibleName</code> method. You might want to do this for image-only buttons, panels that provide logical groupings, text areas, and so on.</li>
+<li>Set 
+<a class="TutorialLink" target="_top" href="../components/tooltip.html">tool tip</a> text for components whenever it makes sense to do so. For example:
+<div class="codeblock"><pre>
+aJComponent.setToolTipText(
+     "Clicking this component causes XYZ to happen.");
+</pre></div>
+</li>
+<li>If you don&#39;t want to provide a tool tip for a component, use the <code>setAccessibleDescription</code> method to provide a description that assistive technologies can give the user. For example:
+<div class="codeblock"><pre>
+aJComponent.getAccessibleContext().
+    setAccessibleDescription(
+    "Clicking this component causes XYZ to happen.");
+</pre></div>
+</li>
+<li>Specify keyboard alternatives wherever possible. Make sure you can use your program with only the keyboard. Try hiding your mouse! Note that if the focus is in an editable text component, you can use Shift-Tab to move focus to the next component.
+<p>Support for keyboard alternatives varies by component. 
+<a class="TutorialLink" target="_top" href="../components/button.html">Buttons</a> support keyboard alternatives with the <code>setMnemonic</code> method. Menus inherit the button mnemonic support and also support accelerators, as described in 
+<a class="TutorialLink" target="_top" href="../components/menu.html#mnemonic">Enabling Keyboard Operation</a>. Other components can use 
+<a class="TutorialLink" target="_top" href="../components/jcomponent.html#keyboardAction">key bindings</a> to associate user typing with program actions.</p>
+</li>
+<li>Assign a textual description to all <a href="../components/icon.html"><code>ImageIcon</code></a> objects in your program. You can set this property by using either the <code>setDescription</code> method or one of the <code>String</code> forms of the <code>ImageIcon</code> constructors.</li>
+<li>If a bunch of components form a logical group, try to put them into one container. For example, use a 
+<a class="TutorialLink" target="_top" href="../components/panel.html"><code>JPanel</code></a> to contain all the radio buttons in a radio button group.</li>
+<li>Whenever you have a 
+<a class="TutorialLink" target="_top" href="../components/label.html">label</a> that describes another component, use the <code>setLabelFor</code> method so that assistive technologies can find the component that the label is associated with. This is especially important when the label displays a mnemonic for another component (such as a text field).</li>
+<li>If you create a custom component, make sure it supports accessibility. In particular, be aware that subclasses of <code>JComponent</code> are not automatically accessible. Custom components that are descendants of other Swing components should override inherited accessibility information as necessary. For more information, see <a href="#developing">Concepts: How Accessibility Works</a> and <a href="#accessiblecomponents">Making Custom Components Accessible</a>.</li>
+<li>Use the examples provided with the accessibility utilities to test your program. Although the primary purpose of these examples is to show programmers how to use the Accessibility API when implementing assistive technologies, these examples are also quite useful for testing application programs for accessibility. <a href="#testing">Testing for Accessibility</a> shows <code>ScrollDemo</code> running with Monkey, one of the accessibility utilities examples. Monkey shows the tree of accessible components in a program and lets you interact with those components.</li>
+<li>Finally, don&#39;t break what you get for free! If your GUI has an inaccessible container &mdash; for example, your own subclass of <code>Container</code> or <code>JComponent</code> or any other container that doesn&#39;t implement the <code>Accessible</code> interface &mdash; any components inside that container become inaccessible.</li>
+</ul>
+<h2><a name="testing" id="testing">Testing for Accessibility</a></h2>
+<p>The examples that come with the accessibility utilities can give you an idea of how accessible your program is. For instructions on getting these utilities, see the 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/tech/index-jsp-140174.html">Java SE Desktop Accessibility home page</a>. Follow the instructions in the accessibility utilities documentation for setting up the Java Virtual Machine (VM) to run one or more of the utilities automatically.</p>
+<p>Let&#39;s use an accessibility utility to compare the original version of one of our demos to a version in which the rules for supporting accessibility have been applied. Here&#39;s a picture of a program called <code>ScrollDemo</code>.</p>
+<center><img src="../../figures/uiswing/components/ScrollDemo.png" width="343" height="315" align="bottom" alt="A snapshot of the original, inaccessible ScrollDemo." /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>
+<p>Click the Launch button to run <code>ScrollDemo</code> using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Or, to compile and run the example yourself, consult the <a href="../examples/components/index.html#ScrollDemo">example index</a>.</p>
+<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/ScrollDemoProject/ScrollDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the ScrollDemo example" /></a><br /></li>
+<li>Next, click the Launch button to run <code>AccessibleScrollDemo</code> using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Or, to compile and run the example yourself, consult the <a href="../examples/misc/index.html#AccessibleScrollDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/AccessibleScrollDemoProject/AccessibleScrollDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the AccessibleScrollDemo example" /></a><br /></li>
+<li>
+<p>Compare the two versions side by side. The only noticeable difference is that the <strong>cm</strong> toggle button and the photograph have tool tips in the accessible version.</p>
+</li>
+<li>
+<p>Now run the two versions under the accessibility utility called Monkey. Note that when the accessibility tools have been downloaded and configured in the <code>accessibility.properties</code> file, the Monkey window automatically comes up when you click on the Run ScrollDemo and AccessibleScrollDemo links (in steps 1 and 2).</p>
+<p>If the Monkey window does not appear on startup, the problem may be that the <code>accessibility.properties</code> file is not present in the version of the VM being used by Java Web Start. You can change the VM you use by running the Java Web Start <a href="../../information/player.jnlp">Application Manager</a> and selecting <strong>File &gt; Preferences &gt; Java</strong>.</p>
+</li>
+<li>
+<p>Note that when the Monkey window comes up you need to select <strong>File &gt; Refresh Trees</strong> to see information appear under <code>Accessible Tree</code>. You can then expand the tree by successively clicking on the horizontal icons displayed by each folder icon. When the tree has been expanded, you can see detailed information for the various components. The custom components (rules and corners) that weren&#39;t accessible in the original version are accessible in the modified version. This can make quite a difference to assistive technologies.</p>
+</li>
+</ol>
+<hr /></div>
+<p>Here&#39;s a snapshot of Monkey running on <code>ScrollDemo</code>:</p>
+<center><img src="../../figures/uiswing/misc/InaccessibleMonkey.gif" width="512" height="344" align="bottom" alt="Monkey running on inaccessible version of ScrollDemo." /></center><p>The left side of the split pane shows the actual component hierarchy for the program. The right side shows the accessible components in the hierarchy, which is what interests us.</p>
+<p>The first thing to notice is that, even with no explicit support in <code>ScrollDemo</code>, Monkey is able to discover a lot of information about the various components in the program. Most of the components and their children appear in the tree. However, the names for most of the components are empty (null), which is rather unhelpful. The descriptions are also empty.</p>
+<p>Further trouble comes with the program&#39;s custom components. The two rulers are inaccessible, so they are not included in the accessible tree. The viewports that contain the rulers are displayed as leaf nodes because they have no accessible children. The custom corners are also missing from the accessible tree.</p>
+<p>Now here&#39;s a picture of the Monkey window for <code>AccessibleScrollDemo</code>:</p>
+<center><img src="../../figures/uiswing/misc/Monkey.gif" width="512" height="414" align="bottom" alt="Monkey running on accessible version of ScrollDemo." /></center><p><br />
+The rules are now listed as children of the viewports, and the corners are listed as children of the scroll pane. Furthermore, many of the components now have non-null names.</p>
+<p>In the previous snapshot of Monkey, the Column Header item is selected. Monkey highlights the corresponding component in <code>ScrollDemo</code> program.</p>
+<center><img src="../../figures/uiswing/misc/AccessibleScrollDemo.png" width="342" height="314" align="bottom" alt="AccessibleScrollDemo screen shot." /></center><p>When an item is selected, you can use Monkey&#39;s <b>Panels</b> menu to bring up one of four different panels that let you interact with the selected component. Choosing <strong>Panels &gt; Accessibility API panel</strong> brings up a panel like the one shown in the following figure. This panel displays information available through methods defined in the <code>AccessibleContext</code> base class and the <code>AccessibleComponent</code> interface.</p>
+<center><img src="../../figures/uiswing/misc/APIPanelForColumnHeader.gif" width="375" height="297" align="bottom" alt="Accessibility API Panel for Column Header." /></center><p>Monkey has three other panels:</p>
+<ul>
+<li><strong>AccessibleAction</strong>:  Shows the actions supported by an accessible component and lets you invoke the action. Works only with an accessible component whose context implements the <code>AccessibleAction</code> interface.</li>
+<li><strong>AccessibleSelection</strong>:  Shows the current selection of an accessible component and lets you manipulate the selection. Works only with accessible component whose context implements the <code>AccessibleSelection</code> interface.</li>
+<li><strong>AccessibleHypertext</strong>: Shows any hyperlinks contained within an accessible component and lets you traverse them. Works only with accessible component whose context implements the <code>AccessibleHypertext</code> interface.</li>
+</ul>
+<p>
+</p>
+<p>The accessibility utilities examples are handy as testing tools and can give you an idea of how accessible the components in your program are. However, even if your components behave well in Monkey or the other examples, they still might not be completely accessible because Monkey and the other examples exercise only certain portions of the Accessibility API.</p>
+<p>The only true test of accessibility is to run your programs with real-world assistive technologies, however, you may find the following free and open source screen reader useful: 
+<a class="OutsideLink" target="_blank" href="http://www.nvda-project.org/">NonVisual Desktop Access (NVDA)</a>.</p>
+<h2><a name="namesdescriptions" id="namesdescriptions">Setting Accessible Names and Descriptions on Components</a></h2>
+<p>Giving your program&#39;s components accessible names and descriptions is one of the easiest and most important steps in making your program accessible. Following is a complete listing of the <code>AccessibleScrollDemo</code> constructor that creates the scroll pane and the custom components it uses. The boldface statements give components names and descriptions that assistive technologies can use.</p>
+<div class="codeblock"><pre>
+public AccessibleScrollDemo() {
+    // Get the image to use.
+    <b>ImageIcon bee = createImageIcon("images/flyingBee.jpg",
+                      "Photograph of a flying bee.");</b>
+
+    // Create the row and column headers.
+    columnView = new Rule(Rule.HORIZONTAL, true);
+    if (bee != null) {
+        columnView.setPreferredWidth(bee.getIconWidth());
+    } else {
+        columnView.setPreferredWidth(320);
+    }
+    <b>columnView.getAccessibleContext().setAccessibleName("Column Header");</b>
+    <b>columnView.getAccessibleContext().
+            setAccessibleDescription("Displays horizontal ruler for " +
+                                     "measuring scroll pane client.");</b>
+    rowView = new Rule(Rule.VERTICAL, true);
+    if (bee != null) {
+        rowView.setPreferredHeight(bee.getIconHeight());
+    } else {
+        rowView.setPreferredHeight(480);
+    }
+    <b>rowView.getAccessibleContext().setAccessibleName("Row Header");</b>
+    <b>rowView.getAccessibleContext().
+            setAccessibleDescription("Displays vertical ruler for " +
+                                     "measuring scroll pane client.");</b>
+
+    // Create the corners.
+    JPanel buttonCorner = new JPanel();
+    isMetric = new JToggleButton("cm", true);
+    isMetric.setFont(new Font("SansSerif", Font.PLAIN, 11));
+    isMetric.setMargin(new Insets(2,2,2,2));
+    isMetric.addItemListener(this);
+    <b>isMetric.setToolTipText("Toggles rulers' unit of measure " +
+                            "between inches and centimeters.");</b>
+    buttonCorner.add(isMetric); //Use the default FlowLayout
+    <b>buttonCorner.getAccessibleContext().
+                 setAccessibleName("Upper Left Corner");</b>
+
+    <b>String desc = "Fills the corner of a scroll pane " +
+                  "with color for aesthetic reasons.";</b>
+    Corner lowerLeft = new Corner();
+    <b>lowerLeft.getAccessibleContext().
+              setAccessibleName("Lower Left Corner");</b>
+    <b>lowerLeft.getAccessibleContext().setAccessibleDescription(desc);</b>
+
+    Corner upperRight = new Corner();
+    <b>upperRight.getAccessibleContext().
+               setAccessibleName("Upper Right Corner");</b>
+    <b>upperRight.getAccessibleContext().setAccessibleDescription(desc);</b>
+    
+    // Set up the scroll pane.
+    picture = new ScrollablePicture(bee,
+                                    columnView.getIncrement());
+    <b>picture.setToolTipText(bee.getDescription());</b>
+    <b>picture.getAccessibleContext().setAccessibleName(
+                                     "Scroll pane client");</b>
+
+    JScrollPane pictureScrollPane = new JScrollPane(picture);
+    pictureScrollPane.setPreferredSize(new Dimension(300, 250));
+    pictureScrollPane.setViewportBorder(
+            BorderFactory.createLineBorder(Color.black));
+
+    pictureScrollPane.setColumnHeaderView(columnView);
+    pictureScrollPane.setRowHeaderView(rowView);
+
+    // In theory, to support internationalization you would change
+    // UPPER_LEFT_CORNER to UPPER_LEADING_CORNER,
+    // LOWER_LEFT_CORNER to LOWER_LEADING_CORNER, and
+    // UPPER_RIGHT_CORNER to UPPER_TRAILING_CORNER.  In practice,
+    // bug #4467063 makes that impossible (at least in 1.4.0).
+    pictureScrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER,
+                                buttonCorner);
+    pictureScrollPane.setCorner(JScrollPane.LOWER_LEFT_CORNER,
+                                lowerLeft);
+    pictureScrollPane.setCorner(JScrollPane.UPPER_RIGHT_CORNER,
+                                upperRight);
+
+    // Put it in this panel.
+    setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+    add(pictureScrollPane);
+    setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+}
+</pre></div>
+<p>Often, the program sets a component&#39;s name and description directly through the component&#39;s accessible context. Other times, the program sets an accessible description indirectly with tool tips. In the case of the <strong>cm</strong> toggle button, the description is set automatically to the text on the button. <a name="developing" id="developing"></a></p>
+<h2><a name="developing__1" id="developing__1">Concepts: How Accessibility Works</a></h2>
+<p>An object is accessible if it implements the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/Accessible.html"><code>Accessible</code></a> interface. The <code>Accessible</code> interface defines just one method, <code>getAccessibleContext</code>, which returns an 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleContext.html"><code>AccessibleContext</code></a> object. The <code>AccessibleContext</code> object is an intermediary that contains the accessible information for an accessible object. The following figure shows how assistive technologies get the accessible context from an accessible object and query it for information:</p>
+<center><img src="../../figures/uiswing/misc/howaccessworks.gif" width="528" height="190" align="bottom" alt="How assistive technologies get information from accessible objects." /></center><p>
+</p>
+<p><code>AccessibleContext</code> is an abstract class that defines the minimum set of information an accessible object must provide about itself. The minimum set includes name, description, role, state set, and so on. To identify its accessible object as having particular capabilities, an accessible context can implement one or more of the interfaces as shown in the <a href="#interfaceList">Accessible Interfaces</a> table. For example, <code>JButton</code> implements <code>AccessibleAction</code>, <code>AccessibleValue</code>, <code>AccessibleText</code>, and <code>AccessibleExtendedComponent</code>. It is not necessary for <code>JButton</code> to implement <code>AccessibleIcon</code> because that is implemented by the <code>ImageIcon</code> attached to the button.</p>
+<p>Because the <code>JComponent</code> class itself does not implement the <code>Accessible</code> interface, instances of its direct subclasses are not accessible. If you write a custom component that inherits directly from <code>JComponent</code>, you need to explicitly make it implement the <code>Accessible</code> interface. <code>JComponent</code> does have an accessible context, called <code>AccessibleJComponent</code>, that implements the <code>AccessibleComponent</code> interface and provides a minimal amount of accessible information. You can provide an accessible context for your custom components by creating a subclass of <code>AccessibleJComponent</code> and overriding important methods. <a href="#accessiblecomponents">Making Custom Components Accessible</a> shows two examples of doing this.</p>
+<p>All the other standard Swing components implement the <code>Accessible</code> interface and have an accessible context that implements one or more of the preceding interfaces as appropriate. The accessible contexts for Swing components are implemented as inner classes and have names of this style:</p>
+<div class="codeblock"><pre>
+<em>Component</em>.Accessible<em>Component</em>
+</pre></div>
+<p>If you create a subclass of a standard Swing component and your subclass is substantially different from its superclass, then you should provide a custom accessible context for it. The easiest way is to create a subclass of the superclass&#39;s accessible context class and override methods as necessary. For example, if you create a <code>JLabel</code> subclass substantially different from <code>JLabel</code>, then your <code>JLabel</code> subclass should contain an inner class that extends <code>AccessibleJLabel</code>. The next section shows how to do so, using examples in which <code>JComponent</code> subclasses extend <code>AccessibleJComponent</code>. <a name="accessiblecomponents" id="accessiblecomponents"></a></p>
+<h2><a name="accessiblecomponents__1" id="accessiblecomponents__1">Making Custom Components Accessible</a></h2>
+<p>The scroll demo program uses three custom component classes. <code>ScrollablePicture</code> is a subclass of <code>JLabel</code>, and <code>Corner</code> and <code>Rule</code> are both subclasses of <code>JComponent</code>.</p>
+<p>The <code>ScrollablePicture</code> class relies completely on accessibility inherited from <code>JLabel</code> through 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JLabel.AccessibleJLabel.html"><code>JLabel.AccessibleJLabel</code></a>. The code that creates an instance of <code>ScrollablePicture</code> sets the tool-tip text for the scrollable picture. The tool-tip text is used by the context as the component&#39;s accessible description. This behavior is provided by <code>AccessibleJLabel</code>.</p>
+<p>The accessible version of the <code>Corner</code> class contains just enough code to make its instances accessible. We implemented accessibility support by adding the code shown in bold to the original version of <code>Corner</code>.</p>
+<div class="codeblock"><pre>
+public class Corner extends JComponent <strong>implements Accessible</strong> {
+
+    protected void paintComponent(Graphics g) {
+        //Fill me with dirty brown/orange.
+        g.setColor(new Color(230, 163, 4));
+        g.fillRect(0, 0, getWidth(), getHeight());
+    }
+
+    <strong>public AccessibleContext getAccessibleContext() {
+        if (accessibleContext == null) {
+            accessibleContext = new AccessibleCorner();
+        }
+        return accessibleContext;
+    }
+
+    protected class AccessibleCorner extends AccessibleJComponent {
+        //Inherit everything, override nothing.
+    }</strong>
+}
+</pre></div>
+<p>All of the accessibility provided by this class is inherited from 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.AccessibleJComponent.html"><code>AccessibleJComponent</code></a>. This approach is fine for <code>Corner</code> because <code>AccessibleJComponent</code> provides a reasonable amount of default accessibility information and because corners are uninteresting: they exist only to take up a little bit of space onscreen. Other classes, such as <code>Rule</code>, need to provide customized information.</p>
+<p><code>Rule</code> provides an accessible context for itself in the same manner as <code>Corner</code>, but the context overrides two methods to provide details about the component&#39;s role and state:</p>
+<div class="codeblock"><pre>
+protected class AccessibleRuler extends AccessibleJComponent {
+
+    public AccessibleRole getAccessibleRole() {
+        return AccessibleRuleRole.RULER;
+    }
+
+    public AccessibleStateSet getAccessibleStateSet() {
+        AccessibleStateSet states =
+            super.getAccessibleStateSet();
+        if (orientation == VERTICAL) {
+            states.add(AccessibleState.VERTICAL);
+        } else {
+            states.add(AccessibleState.HORIZONTAL);
+        }
+        if (isMetric) {
+            states.add(AccessibleRulerState.CENTIMETERS);
+        } else {
+            states.add(AccessibleRulerState.INCHES);
+        }
+        return states;
+    }
+}
+</pre></div>
+<p>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleRole.html"><code>AccessibleRole</code></a> is an enumeration of objects that identify roles that Swing components can play. It contains predefined roles such as label, button, and so on. The rulers in our example don&#39;t fit well into any of the predefined roles, so the program invents a new one in a subclass of <code>AccessibleRole</code>:</p>
+<div class="codeblock"><pre>
+class AccessibleRuleRole extends AccessibleRole {
+    public static final AccessibleRuleRole RULER
+        = new AccessibleRuleRole("ruler");
+
+    protected AccessibleRuleRole(String key) {
+        super(key);
+    }
+
+    //Should really provide localizable versions of these names.
+    public String toDisplayString(String resourceBundleName,
+                                  Locale locale) {
+        return key;
+    }
+}
+</pre></div>
+<p>Any component that has state can provide state information to assistive technologies by overriding the <code>getAccessibleStateSet</code> method. A rule has two sets of states: its orientation can be either vertical or horizontal, and its units of measure can be either centimeters or inches. 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleState.html"><code>AccessibleState</code></a> is an enumeration of predefined states. This program uses its predefined states for vertical and horizontal orientation. Because <code>AccessibleState</code> contains nothing for centimeters and inches, the program makes a subclass to provide appropriate states:</p>
+<div class="codeblock"><pre>
+class AccessibleRulerState extends AccessibleState {
+    public static final AccessibleRulerState INCHES
+        = new AccessibleRulerState("inches");
+    public static final AccessibleRulerState CENTIMETERS
+        = new AccessibleRulerState("centimeters");
+
+    protected AccessibleRulerState(String key) {
+        super(key);
+    }
+
+    //Should really provide localizable versions of these names.
+    public String toDisplayString(String resourceBundleName,
+                                  Locale locale) {
+        return key;
+    }
+}
+</pre></div>
+<p>You&#39;ve seen how to implement accessibility for two simple components, that exist only to paint themselves onscreen. Components that do more, such as responding to mouse or keyboard events, need to provide more elaborate accessible contexts. You can find examples of implementing accessible contexts by delving in the source code for the Swing components.</p>
+<h2><a name="api" id="api">The Accessibility API</a></h2>
+<p>The tables in this section cover just part of the accessibility API. For more information about the accessibility API, see the API documentation for the classes and packages in the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/package-summary.html">accessibility package</a>. Also, refer to the API documentation for the accessible contexts for individual Swing components.</p>
+<p>The API for supporting accessibility falls into the following categories:</p>
+<ul>
+<li><a href="#settingnamesapi">Naming and Linking Components</a></li>
+<li><a href="#accessibleapi">Making a Custom Component Accessible</a></li>
+<li><a href="#interfaceList">Accessible Interfaces</a></li>
+</ul>
+<table border="1" summary="methods that support naming and linking components">
+<caption><a name="settingnamesapi" id="settingnamesapi">Naming and Linking Components</a></caption>
+<tr>
+<th id="h1" align="left">Method</th>
+<th id="h2" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleContext.html#setAccessibleName-java.lang.String-">getAccessibleContext().setAccessibleName(String)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleContext.html#setAccessibleDescription-java.lang.String-">getAccessibleContext().setAccessibleDescription(String)</a><br />
+(<em>on a <code>JComponent</code> or <code>Accessible</code> object</em>)</td>
+<td headers="h2">Provide a name or description for an accessible object.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.html#setToolTipText-java.lang.String-">void setToolTipText(String)</a><br />
+(<em>in <code>JComponent</code></em>)</td>
+<td headers="h2">Set a component&#39;s tool tip. If you don&#39;t set the description, than many accessible contexts use the tool-tip text as the accessible description.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JLabel.html#setLabelFor-java.awt.Component-">void setLabelFor(Component)</a><br />
+(<em>in <code>JLabel</code></em>)</td>
+<td headers="h2">Associate a label with a component. This tells assistive technologies that a label describes another component.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/ImageIcon.html#setDescription-java.lang.String-">void setDescription(String)</a><br />
+(<em>in <code>ImageIcon</code></em>)</td>
+<td headers="h2">Provide a description for an image icon.</td>
+</tr>
+</table>
+<p><br /></p>
+<table border="1" summary="list of makings for making a custom component accessible">
+<caption><a name="accessibleapi" id="accessibleapi">Making a Custom Component Accessible</a></caption>
+<tr>
+<th id="h101" align="left">Interface or Class</th>
+<th id="h102" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/Accessible.html">Accessible</a><br />
+(<em>an interface</em>)</td>
+<td headers="h102">Components that implement this interface are accessible. Subclasses of <code>JComponent</code> must implement this explicitly.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleContext.html">AccessibleContext</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.AccessibleJComponent.html"><em>JComponent</em>.Accessible<em>JComponent</em></a><br />
+(<em>an abstract class and its subclasses</em>)</td>
+<td headers="h102"><code>AccessibleContext</code> defines the minimal set of information required of accessible objects. The accessible context for each Swing component is a subclass of this and named as shown. For example, the accessible context for <code>JTree</code> is <code>JTree.AccessibleJTree</code>. To provide custom accessible contexts, custom components should contain an inner class that is a subclass of <code>AccessibleContext</code>. For more information, see <a href="#accessiblecomponents">Making Custom Components Accessible</a>.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleRole.html">AccessibleRole</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleStateSet.html">AccessibleStateSet</a><br />
+(<em>classes</em>)</td>
+<td headers="h102">Define the objects returned by an <code>AccessibleContext</code> object&#39;s <code>getAccessibleRole</code> and <code>getAccessibleStateSet</code> methods, respectively.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleRelation.html">AccessibleRelation</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleRelationSet.html">AccessibleRelationSet</a><br />
+</td>
+<td headers="h102">Define the relations between components that implement this interface and one or more other objects. 
+</td>
+</tr>
+</table>
+<p><br /></p>
+<table border="1" summary="interfaces in Accessible">
+<caption><a name="interfaceList" id="interfaceList">Accessible Interfaces</a></caption>
+<tr>
+<th id="h201" align="left">Interface</th>
+<th id="h202" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleAction.html">AccessibleAction</a></td>
+<td headers="h202">Indicates that the object can perform actions. By implementing this interface, the accessible context can give information about what actions the accessible object can perform and can tell the accessible object to perform them.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleComponent.html">AccessibleComponent</a></td>
+<td headers="h202">Indicates that the accessible object has an onscreen presence. Through this interface, an accessible object can provide information about its size, position, visibility and so on. The accessible contexts for all standard Swing components implement this interface, directly or indirectly. The accessible contexts for your custom components should do the same. The <code>AccessibleExtendedComponent</code> method is preferred.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleEditableText.html">AccessibleEditableText</a><br />
+</td>
+<td headers="h202">Indicates that the accessible object displays editable text. In addition to the information available from its superinterface, <code>AccessibleText</code>, methods are provided for cutting, pasting, deleting, selecting, and inserting text.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleExtendedComponent.html">AccessibleExtendedComponent</a><br />
+</td>
+<td headers="h202">In addition to the information available from its superinterface, <code>AccessibleComponent</code>, methods are provided for obtaining key bindings, border text, and tool-tip text.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleExtendedTable.html">AccessibleExtendedTable</a><br />
+</td>
+<td headers="h202">In addition to the information available from its superinterface, <code>AccessibleTable</code>, methods are provided to convert between an index and its row or column.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleHypertext.html">AccessibleHypertext</a></td>
+<td headers="h202">Indicates that the accessible object contains hyperlinks. Through this interface, an accessible object can provide information about its links and allow them to be traversed.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleIcon.html">AccessibleIcon</a></td>
+<td headers="h202">Indicates that the accessible object has an associated icon. Methods are provided that return information about the icon, such as size and description.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleKeyBinding.html">AccessibleKeyBinding</a><br />
+</td>
+<td headers="h202">Indicates that the accessible object supports one or more keyboard shortcuts that can be used to select the object. Methods are provided that return the key bindings for a given object.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleSelection.html">AccessibleSelection</a></td>
+<td headers="h202">Indicates that the accessible object can contain a selection. Accessible contexts that implement this interface can report information about the current selection and can modify the selection.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleTable.html">AccessibleTable</a></td>
+<td headers="h202">Indicates that the accessible object presents data in a two-dimensional data object. Through this interface information about the table such as table caption, row and column size, description, and name are provided. The <code>AccessibleExtendedTable</code> method is preferred.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleText.html">AccessibleText</a></td>
+<td headers="h202">Indicates that the accessible object displays text. This interface provides methods for returning all or part of the text, attributes applied to it, and other information about the text such as its length.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/accessibility/AccessibleValue.html">AccessibleValue</a></td>
+<td headers="h202">Indicates that the object has a numeric value. Through this interface an accessible object provides information about its current value and its minimum and maximum values.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples that Use the Accessibility API</a></h2>
+<p>The following table lists some of our examples that have good support for assistive technologies.<br />
+</p>
+<table summary="list of methods that support assistive technologies">
+<tr>
+<th id="h301" align="left">Example</th>
+<th id="h302" align="left">Where Described</th>
+<th id="h303" align="left">Notes</th>
+</tr>
+<tr>
+<td headers="h301"><a href="../examples/misc/index.html#AccessibleScrollDemo"><code>AccessibleScrollDemo</code></a></td>
+<td headers="h302">This section</td>
+<td headers="h303">Contains two custom components that implement the <code>Accessible</code> interface. To see a less accessible version of this program see <a href="../components/scrollpane.html">How to Use Scroll Panes</a>.</td>
+</tr>
+<tr>
+<td headers="h301"><a href="../examples/components/index.html#ButtonDemo"><code>ButtonDemo</code></a></td>
+<td headers="h302">
+<a class="TutorialLink" target="_top" href="../components/button.html#abstractbutton">How to Use the Common Button API</a></td>
+<td headers="h303">Uses three buttons. Supports accessibility through button text, mnemonics, and tool tips.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="timer.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="focus.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Use Swing Timers
+        <br /><b>Next page:</b> How to Use the Focus Subsystem
+    </div>
+</body>
+</html> 

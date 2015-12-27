@@ -1,0 +1,14 @@
+
+<project name="depltoolkit_Java2Demo" default="default" basedir=".">
+    <description>Builds, tests, and runs the project depltoolkit_Java2Demo.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <target name="-post-jar">
+            <copy file="${src.dir}/DeployUsingNameValuePairs.html" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/DeployUsingJNLP.html" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/DeployUsingNameValuePairsAndJNLP.html" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/java2d.jnlp" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/Java2Demo.jar" todir="${dist.jar.dir}"/>
+    </target>
+    <target name="-do-jar-with-libraries-without-manifest"/>
+
+</project>

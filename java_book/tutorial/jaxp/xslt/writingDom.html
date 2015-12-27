@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Writing Out a DOM as an XML File (The Java&trade; Tutorials &gt;        
+            Java API for XML Processing (JAXP) &gt; Extensible Stylesheet Language Transformations)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JAXP Java tutorial describes Java API for XML Processing (jaxp), XSLT, SAX, and related XML topics" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jaxp, xml, xslt, sax" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Extensible Stylesheet Language Transformations</a></div>
+<div class="linkAHEAD"><a href="intro.html">Introducing XSL, XSLT, and XPath</a></div>
+<div class="linkAHEAD"><a href="xpath.html">How XPath Works</a></div>
+<div class="nolinkAHEAD">Writing Out a DOM as an XML File</div>
+<div class="linkAHEAD"><a href="generatingXML.html">Generating XML from an Arbitrary Data Structure</a></div>
+<div class="linkAHEAD"><a href="transformingXML.html">Transforming XML Data with XSLT</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java API for XML Processing (JAXP)
+        <br /><b>Lesson:</b> Extensible Stylesheet Language Transformations
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java API for XML Processing (JAXP)</a>
+                &gt;
+                <a href="index.html" target="_top">Extensible Stylesheet Language Transformations</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="xpath.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="generatingXML.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Writing Out a DOM as an XML File</h1></div>
+            <div id="PageContent">
+
+<!-- Writing Out a DOM as an XML File -->
+<p>After you have constructed a DOM (either by parsing an XML file or building it programmatically) you frequently want to save it as XML. This section shows you how to do that using the Xalan transform package.</p>
+<p>Using that package, you will create a transformer object to wire a <tt>DOMSource</tt> to a <tt>StreamResult</tt>. You will then invoke the transformer&#39;s <tt>transform()</tt> method to write out the DOM as XML data.</p>
+<p><a name="gghiy" id="gghiy"></a></p>
+<h2>Reading the XML</h2>
+<p>The first step is to create a DOM in memory by parsing an XML file. By now, you should be getting comfortable with the process.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<!--
+<p>The code discussed in this section is in the file <tt>TransformationApp01.java</tt>. <a href="../examples/xslt_samples.zip">Download the XSLT examples</a> 
+ and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</p>
+-->
+<p>The code discussed in this section is in the file <tt>TransformationApp01.java</tt>.
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>Download the XSLT examlles</code></a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</p>
+<hr /></div>
+<p>The following code provides a basic template to start from. It is basically the same code as was used at the start of the 
+<a class="TutorialLink" target="_top" href="../dom/index.html">Document Object Model</a> lesson.</p>
+<div class="codeblock"><pre>
+import javax.xml.parsers.DocumentBuilder; 
+import javax.xml.parsers.DocumentBuilderFactory; 
+import javax.xml.parsers.FactoryConfigurationError; 
+import javax.xml.parsers.ParserConfigurationException; 
+import org.xml.sax.SAXException; 
+import org.xml.sax.SAXParseException; 
+
+import org.w3c.dom.Document;
+import org.w3c.dom.DOMException;
+
+import java.io.*;
+
+public class TransformationApp01 {
+
+    static Document document; 
+
+    public static void main(String argv[]) {
+        if (argv.length != 1) {
+            System.err.println("Usage: java TransformationApp01 filename");
+            System.exit (1);
+        }
+
+        DocumentBuilderFactory factory =
+        DocumentBuilderFactory.newInstance();
+
+        try {
+            File f = new File(argv[0]);
+            DocumentBuilder builder =
+            factory.newDocumentBuilder();
+            document = builder.parse(f);
+  
+        } 
+        catch (SAXParseException spe) {
+            // Error generated by the parser
+            System.out.println("\n** Parsing error"
+                               + ", line " + spe.getLineNumber()
+                               + ", uri " + spe.getSystemId());
+            System.out.println("  " + spe.getMessage() );
+  
+            // Use the contained exception, if any
+            Exception x = spe;
+            if (spe.getException() != null)
+                x = spe.getException();
+            x.printStackTrace();
+        }
+        catch (SAXException sxe) {
+            // Error generated by this application
+            // (or a parser-initialization error)
+            Exception x = sxe;
+            if (sxe.getException() != null)
+                x = sxe.getException();
+            x.printStackTrace();
+        }
+        catch (ParserConfigurationException pce) {
+            // Parser with specified options 
+            // cannot be built
+            pce.printStackTrace();
+        }
+        catch (IOException ioe) {
+            // I/O error
+            ioe.printStackTrace();
+        }
+    }
+}
+</pre></div>
+<p><a name="gghgi" id="gghgi"></a></p>
+<h2>Creating a Transformer</h2>
+<p>The next step is to create a transformer you can use to transmit the XML to <tt>System.out</tt>. To begin with, the following import statements are required.</p>
+<div class="codeblock"><pre>
+<b>import javax.xml.transform.Transformer;</b>
+<b>import javax.xml.transform.TransformerFactory;</b>
+<b>import javax.xml.transform.TransformerException;</b>
+<b>import javax.xml.transform.TransformerConfigurationException;</b>
+<b>import javax.xml.transform.dom.DOMSource;</b> 
+<b>import javax.xml.transform.stream.StreamResult;</b>
+import java.io.*;
+</pre></div>
+<p>Here, you add a series of classes that should now be forming a standard pattern: an entity (<tt>Transformer</tt>), the factory to create it (<tt>TransformerFactory</tt>), and the exceptions that can be generated by each. Because a transformation always has a source and a result, you then import the classes necessary to use a DOM as a source (<tt>DOMSource</tt>) and an output stream for the result (<tt>StreamResult</tt>).</p>
+<p>Next, add the code to carry out the transformation:</p>
+<div class="codeblock"><pre>
+try {
+    File f = new File(argv[0]);
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    document = builder.parse(f);
+
+    <b>// Use a Transformer for output</b>
+    <b>TransformerFactory tFactory =</b>
+    <b>TransformerFactory.newInstance();</b>
+    <b>Transformer transformer = 
+    tFactory.newTransformer();</b>
+
+    <b>DOMSource source = new DOMSource(document);</b>
+    <b>StreamResult result = new StreamResult(System.out);</b>
+    <b>transformer.transform(source, result);</b>
+}
+</pre></div>
+<p>Here, you create a transformer object, use the DOM to construct a source object, and use <tt>System.out</tt> to construct a result object. You then tell the transformer to operate on the source object and output to the result object.</p>
+<p>In this case, the &quot;transformer&quot; is not actually changing anything. In XSLT terminology, you are using the identity transform, which means that the &quot;transformation&quot; generates a copy of the source, unchanged.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>You can specify a variety of output properties for transformer objects, as defined in the W3C specification at 
+<a class="OutsideLink" target="_blank" href="http://www.w3.org/TR/xslt#output">http://www.w3.org/TR/xslt#output</a>. For example, to get indented output, you can invoke the following method:</p>
+<div class="codeblock"><pre>
+% transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+</pre></div>
+<hr /></div>
+<p>Finally, the following highlighted code catches the new errors that can be generated:</p>
+<div class="codeblock"><pre>
+<b>} 
+catch (TransformerConfigurationException tce) {</b>
+    <b>System.out.println("* Transformer Factory error");</b>
+    <b>System.out.println(" " + tce.getMessage());</b>
+
+    <b>Throwable x = tce;</b>
+    <b>if (tce.getException() != null)</b>
+        <b>x = tce.getException();</b>
+    <b>x.printStackTrace(); </b>
+<b>} 
+catch (TransformerException te) {</b>
+    <b>System.out.println("* Transformation error");</b>
+    <b>System.out.println(" " + te.getMessage());</b>
+
+    <b>Throwable x = te;</b>
+    <b>if (te.getException() != null)</b>
+        <b>x = te.getException();</b>
+    <b>x.printStackTrace();</b>
+} 
+catch (SAXParseException spe) {
+    // ...
+}
+</pre></div>
+<p><strong>Notes</strong></p>
+<ul>
+<li>
+<tt>TransformerExceptions</tt> are thrown by the transformer object.
+</li>
+<li>
+<tt>TransformerConfigurationExceptions</tt> are thrown by the factory.
+</li>
+<li>
+To preserve the XML document&#39;s <tt>DOCTYPE</tt> setting, it is also necessary to add the following code:
+<div class="codeblock"><pre>
+import javax.xml.transform.OutputKeys;
+...
+if (document.getDoctype() != null) {
+    String systemValue = (new File (document.getDoctype().getSystemId())).getName();
+    transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, systemValue);
+}
+</pre></div>
+</li>
+</ul>
+<p>To find out more about configuring the factory and handling validation errors, see 
+<a class="TutorialLink" target="_top" href="../dom/readingXML.html">Reading XML Data into a DOM</a>. <a name="gghig" id="gghig"></a></p>
+<h3>Running the <tt>TransformationApp01</tt> Sample</h3>
+<ol>
+<li><b>Navigate to the <tt>samples</tt> directory.</b>
+<div class="codeblock"><pre>
+% cd <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt>.
+</pre></div>
+</li>
+<!--
+<li><b><a href="../examples/xslt_samples.zip">
+Download the XSLT examples by clicking this link</a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+-->
+<li><b>
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>Download the XSLT examples by clicking this link</code></a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+<li><b>Navigate to the <tt>xslt</tt> directory.</b>
+<div class="codeblock"><pre>
+% cd xslt
+</pre></div>
+</li>
+<li><b>Compile the <tt>TransformationApp01</tt> sample.</b>
+<p>Type the following command:</p>
+<div class="codeblock"><pre>
+% javac TransformationApp01.java
+</pre></div>
+</li>
+<li><b>Run the <tt>TransformationApp01</tt> sample on an XML file.</b>
+<p>In the case below, <tt>TransformationApp01</tt> is run on the file <tt>foo.xml</tt>, found in the <tt>xslt/data</tt> directory after you have unzipped the samples bundle.</p>
+<div class="codeblock"><pre>
+% java TransformationApp01 data/foo.xml
+</pre></div>
+<p>You will see the following output:</p>
+<div class="codeblock"><pre>
+&lt;?xml version="1.0" 
+    encoding="UTF-8" 
+    standalone="no"?>&lt;doc>
+  &lt;name first="David" last="Marston"/>
+  &lt;name first="David" last="Bertoni"/>
+  &lt;name first="Donald" last="Leslie"/>
+  &lt;name first="Emily" last="Farmer"/>
+  &lt;name first="Joseph" last="Kesselman"/>
+  &lt;name first="Myriam" last="Midy"/>
+  &lt;name first="Paul" last="Dick"/>
+  &lt;name first="Stephen" last="Auriemma"/>
+  &lt;name first="Scott" last="Boag"/>
+  &lt;name first="Shane" last="Curcuru"/>
+</pre></div>
+<p>As mentioned in <a href="#gghgi">Creating a Transformer</a>, this transformer has not actually changed anything, but rather has just performed the identity transform, to generate a copy of the source. A real transformation will be performed in 
+<a class="TutorialLink" target="_top" href="generatingXML.html">Generating XML from an Arbitrary Data Structure</a>.</p>
+</li>
+</ol>
+<p><a name="gghkx" id="gghkx"></a></p>
+<h2>Writing Out a Subtree of the DOM</h2>
+<p>It is also possible to operate on a subtree of a DOM. In this section, you will experiment with that option.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<!--
+<p>The code discussed in this section is in TranformationApp02.java. If you have not done so already, <a href="../examples/xslt_samples.zip">
+download the XSLT examples</a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</p>
+-->
+<p>The code discussed in this section is in TranformationApp02.java. If you have not done so already,
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>download the XSLT examples</code></a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</p>
+<hr /></div>
+<p>The only difference in the process is that now you will create a <tt>DOMSource</tt> using a node in the DOM, rather than the entire DOM. The first step is to import the classes you need to get the node you want, as shown in the following highlighted code:</p>
+<div class="codeblock"><pre>
+import org.w3c.dom.Document;
+import org.w3c.dom.DOMException;
+<b>import org.w3c.dom.Node;</b>
+<b>import org.w3c.dom.NodeList;</b> 
+</pre></div>
+<p>The next step is to find a good node for the experiment. The following highlighted code selects the first <tt>&lt;name&gt;</tt> element.</p>
+<div class="codeblock"><pre>
+try {
+    File f = new File(argv[0]);
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    document = builder.parse(f);
+
+    <b>NodeList list = document.getElementsByTagName("name");</b>
+    <b>Node node = list.item(0); </b>
+}
+</pre></div>
+<p>In <a href="#gghgi">Creating a Transformer</a>, the source object was constructed from the entire document by the following line of code</p>
+<div class="codeblock"><pre>
+DOMSource source = new DOMSource(document);
+</pre></div>
+<p>However, the highlighted line of code below constructs a source object that consists of the subtree rooted at a particular node.</p>
+<div class="codeblock"><pre>
+<b>DOMSource source = new DOMSource(node);</b>
+StreamResult result = new StreamResult(System.out);
+transformer.transform(source, result);
+</pre></div>
+<p><a name="gghku" id="gghku"></a></p>
+<h3>Running the <tt>TranformationApp02</tt> Sample</h3>
+<ol>
+<li><b>Navigate to the <tt>samples</tt> directory.</b>
+<div class="codeblock"><pre>
+% cd <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt>.
+</pre></div>
+</li>
+<!--
+<li><b><a href="../examples/xslt_samples.zip">
+Download the XSLT examples by clicking this link</a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+-->
+<li><b>
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>Download the XSLT examples by clicking this link</code></a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+<li><b>Navigate to the <tt>xslt</tt> directory.</b>
+<div class="codeblock"><pre>
+cd xslt
+</pre></div>
+</li>
+<li><b>Compile the <tt>TranformationApp02</tt> sample.</b>
+<p>Type the following command:</p>
+<div class="codeblock"><pre>
+% javac xslt/TranformationApp02.java
+</pre></div>
+</li>
+<li><b>Run the <tt>TranformationApp02</tt> sample on an XML file.</b>
+<p>In the case below, <tt>TranformationApp02</tt> is run on the file <tt>foo.xml</tt>, found in the <tt>xslt/data</tt> directory after you have unzipped the samples bundle.</p>
+<div class="codeblock"><pre>
+% java TranformationApp02 data/foo.xml
+</pre></div>
+<p>You will see the following output:</p>
+<div class="codeblock"><pre>
+&lt;?xml version="1.0" encoding="UTF-8" 
+    standalone="no"?>&lt;doc>&lt;name 
+    first="David" last="Marston"/>
+</pre></div>
+<p>This time, only the first <tt>&lt;name&gt;</tt> element was printed out.</p>
+<p>At this point, you have seen how to use a transformer to write out a DOM and how to use a subtree of a DOM as the source object in a transformation. In the next section, you will see how to use a transformer to create XML from any data structure you are capable of parsing.</p>
+</li>
+</ol>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="xpath.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="generatingXML.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How XPath Works
+        <br /><b>Next page:</b> Generating XML from an Arbitrary Data Structure
+    </div>
+</body>
+</html> 

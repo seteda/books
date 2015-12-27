@@ -1,0 +1,54 @@
+
+
+<h1>Running Tutorial Examples in NetBeans IDE</h1>
+
+<p>The examples in the Swing Tutorial and Deployment Tutorial are also provided as NetBeans projects that are ready to be opened and run inside of NetBeans IDE, a free integrated development environment that you can use to simplify application development.</p>
+<p>This page provides information on the following tasks:</p>
+<ul>
+<li><a href="#download">Downloading, Installing, and Launching NetBeans IDE</a></li>
+<li><a href="#opening">Opening a Project for an Example</a></li>
+<li><a href="#compiling">Compiling and Running a Project</a></li>
+</ul>
+<h2><a name="download" id="download">Downloading, Installing, and Launching NetBeans IDE</a></h2>
+<p>The easiest way to get NetBeans IDE is to download the NetBeans IDE installer for your operating system from the <a href="http://netbeans.org/downloads/index.html">NetBeans download page</a>.</p>
+<p>You can then run the installer and complete a short sequence of steps in the installation wizard to set up the IDE. You can find more details on the installation process from the installation instructions that are linked to from the download page.</p>
+<p>You can then launch the IDE in one of the following ways:</p>
+<ul>
+<li>On Microsoft Windows systems, you can use the NetBeans IDE item in the Start menu.</li>
+<li>On Solaris OS and Linux systems, execute the IDE launcher script by navigating to the IDE&#39;s bin directory and typing ./netbeans.</li>
+<li>On Mac OS X systems, click the NetBeans IDE application icon.</li>
+</ul>
+<h2><a name="opening" id="opening">Opening a Project for an Example</a></h2>
+<p>Opening a project in NetBeans IDE consists of the following steps:</p>
+<ul>
+<li>Download a tutorial example or the whole set of examples. Individual examples are available in the Example as NetBeans IDE Project column on the various example index pages (such as the 
+<a class="TutorialLink" target="_top" href="../uiswing/examples/components/index.html">Using Swing Components: Examples</a> index page. You can download all of the examples as part of the Java Tutorial bundle. See the &quot;Download the latest Java SE Tutorials&quot; link on the 
+<a class="TutorialLink" target="_top" href="../ext/../index.html">front page</a> of the tutorial.</li>
+<li>If you have downloaded an individual project, unzip the project on your system. If you have downloaded a zip file of the the whole tutorial or a zip file of all of the examples, unzip that file.</li>
+<li>In NetBeans IDE, choose File &gt; Open Project. In the file chooser, select the project and click Open Project.
+</li>
+</ul>
+<img alt="ButtonDemoProject" src="../figures/information/ButtonDemoProject.png" /><br />
+<p>Once opened, the project appears in the IDE&#39;s Projects window. Expand the nodes of the project to show the project&#39;s structure. The project includes the following main subnodes:</p>
+<ul>
+<li><em>Source Packages</em>. Contains nodes representing Java packages for your source files. Expand these nodes to access the <tt>.java</tt> source files for the project.</li>
+<li><em>Libraries</em>. Contains nodes representing the libraries on which the application depends. For the examples in the Swing Tutorial, just the JDK is listed here.</li>
+</ul>
+<p>To open a file, double-click the file&#39;s node in the Projects window. When opened, a file is displayed in the Source Editor, to the right of the Projects window.</p>
+<p>The Projects window represents the &quot;logical&quot; structure of the project, which does not correspond to the layout of the files on your system. This logical structure highlights the parts of the project that you need to access most often. The Projects window does not display compiled <tt>.class</tt> files. If you want to see how the entire project is physically represented on disk, click the Files tab.</p>
+<h2><a name="compiling" id="compiling">Compiling and Running a Project</a></h2>
+<p>For applications that are accessed through a browser, add the <tt>Codebase</tt> and <tt>Permissions</tt> attributes in the JAR file manifest before you compile the project. In the Files tab, expand the project folder to see the subfolders and files. Double-click <tt>manifest.mf</tt> to open the manifest file, and set the <tt>Codebase</tt> attribute to the location from which the application is loaded. Set the <tt>Permissions</tt> attribute to the permissions level that the application requires. See
+
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/docs/technotes/guides/deploy/manifest.html">JAR File Manifest Attributes for Security</a>
+ in the Java Platform, Standard Edition Deployment Guide for more information.</p>
+<p>To compile your whole project, right-click the project&#39;s node in the Projects window and choose Build Project.</p>
+<p>The Output window opens and displays output on the compilation progress.</p>
+<p>If the build output concludes with the statement <code>BUILD FAILED</code>, you probably have a syntax error in your code. Errors are reported in the Output window as hyperlinked text. You double-click such a hyperlink to navigate to the source of an error. You can then fix the error and once again choose Build Project.</p>
+<p>When you build the project, bytecode <tt>.class</tt> files are generated. You can see where the new files are generated by opening the Files window and expanding the folder for the project.</p>
+<p>To run your project, right-click the project&#39;s node in the Projects window and choose Run Project.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;You can also use the Build Main Project and Run Main Project commands in the main menu. However, these commands work only work on the project that is currently designated as the &quot;main&quot; project. You can make a project the main project by right-clicking its node in the Projects window and choosing Set Main Project.
+<hr /></div>
+<p>For more tips on using NetBeans IDE with the Java Tutorial, see 
+<a class="TutorialLink" target="_top" href="../getStarted/cupojava/netbeans.html">"HelloWorld!" for the NetBeans IDE</a>.</p>
+
+

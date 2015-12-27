@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+   <channel>
+      <title>The Coffee Break Blog</title>
+      <link>http://www.example.com/thecoffeebreak/blog</link>
+      <description>The official blog for the world famous coffee store, The Coffee Break</description>
+
+      <item>
+         <title>The Coffee Break Officially Starts Its Blog</title>
+         <link>http://www.example.com/thecoffeebreak/blog/2010/09/the-coffee-break-officially-starts-its-blog.html</link>
+         <description>The Coffee Break officially starts its blog! Visit often to find out about our weekly specials, web-only deals, and amusing anecdotes from the world of coffee!</description>
+         <pubDate>Wed, 01 Sept 2010 15:00:00 GMT</pubDate>
+         <guid>http://www.example.com/thecoffeebreak/blog/2010/09/the-coffee-break-officially-starts-its-blog.html</guid>
+
+      </item>
+      <item>
+         <title>New Coffee! Peaberry Kona Coffee, Direct from Hawaii</title>
+         <link>http://www.example.com/thecoffeebreak/blog/2010/09/new-coffee-peaberry-kona-coffee.html</link>
+         <description>We now carry Peaberry Kona coffee beans imported from Hawaii. As with all of our beans, our Peaberry Kona coffee beans are certified 100% organic.</description>
+         <pubDate>Wed, 8 Sept 2010 15:00:00 GMT</pubDate>
+         <guid>http://www.example.com/thecoffeebreak/blog/2010/09/new-coffee-peaberry-kona-coffee.html</guid>
+
+      </item>
+      <item>
+         <title>Weekly Special! 10% Off Our Columbian House Blend!</title>
+         <link>http://www.example.com/thecoffeebreak/blog/2010/09/weekly-special-10-off-our-columbian.html</link>
+         <description>This week, enjoy our famous Columbian House Blend, 10% off our regular price!</description>
+         <pubDate>Mon, 13 Sept 2010 15:00:00 GMT</pubDate>
+         <guid>http://www.example.com/thecoffeebreak/blog/2010/09/weekly-special-10-off-our-columbian.html</guid>
+
+      </item>
+   </channel>
+</rss>

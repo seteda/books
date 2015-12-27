@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Handling Plurals (The Java&trade; Tutorials &gt;        
+            Internationalization &gt; Formatting)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This internationalization Java tutorial describes setting locale, isolating locale-specific data, formatting data, internationalized domain name and resource identifier" />
+     <meta name="keywords" content="java programming, learn java, java sample code, i18n, internationalization, locale, text formatting" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Formatting</a></div>
+<div class="linkAHEAD"><a href="numberintro.html">Numbers and Currencies</a></div>
+<div class="linkBHEAD"><a href="numberFormat.html">Using Predefined Formats</a></div>
+<div class="linkBHEAD"><a href="decimalFormat.html">Customizing Formats</a></div>
+<div class="linkAHEAD"><a href="dateintro.html">Dates and Times</a></div>
+<div class="linkBHEAD"><a href="dateFormat.html">Using Predefined Formats</a></div>
+<div class="linkBHEAD"><a href="simpleDateFormat.html">Customizing Formats</a></div>
+<div class="linkBHEAD"><a href="dateFormatSymbols.html">Changing Date Format Symbols</a></div>
+<div class="linkAHEAD"><a href="messageintro.html">Messages</a></div>
+<div class="linkBHEAD"><a href="messageFormat.html">Dealing with Compound Messages</a></div>
+<div class="nolinkBHEAD">Handling Plurals</div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Internationalization
+        <br /><b>Lesson:</b> Formatting
+        <br /><b>Section:</b> Messages
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Internationalization</a>
+                &gt;
+                <a href="index.html" target="_top">Formatting</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="messageFormat.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../text/index.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Handling Plurals</h1></div>
+            <div id="PageContent">
+
+<p>The words in a message may vary if both plural and singular word forms are possible. With the <code>ChoiceFormat</code> class, you can map a number to a word or a phrase, allowing you to construct grammatically correct messages.</p>
+<p>In English the plural and singular forms of a word are usually different. This can present a problem when you are constructing messages that refer to quantities. For example, if your message reports the number of files on a disk, the following variations are possible:</p>
+<div class="codeblock"><pre>
+There are no files on XDisk.
+There is one file on XDisk.
+There are 2 files on XDisk.
+</pre></div>
+<p>The fastest way to solve this problem is to create a <code>MessageFormat</code> pattern like this:</p>
+<div class="codeblock"><pre>
+There are {0,number} file(s) on {1}.
+</pre></div>
+<p>Unfortunately the preceding pattern results in incorrect grammar:</p>
+<div class="codeblock"><pre>
+There are 1 file(s) on XDisk.
+</pre></div>
+<p>You can do better than that, provided that you use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/text/ChoiceFormat.html"><code>ChoiceFormat</code></a> class. In this section you&#39;ll learn how to deal with plurals in a message by stepping through a sample program called 
+<a class="SourceLink" target="_blank" href="examples/ChoiceFormatDemo.java" onclick="showCode('../../displayCode.html', 'examples/ChoiceFormatDemo.java'); return false;"><code>ChoiceFormatDemo</code></a>. This program also uses the <code>MessageFormat</code> class, which is discussed in the previous section, <a href="messageFormat.html">Dealing with Compound Messages</a>. <a name="step1" id="step1"></a></p>
+<h2><a name="step1__1" id="step1__1">1. Define the Message Pattern</a></h2>
+<p>First, identify the variables in the message:</p>
+<center><img src="../../figures/i18n/i18n-3.gif" width="227" height="114" align="bottom" alt="Three lines of text, with the variables in each line highlighted." /></center><p>Next, replace the variables in the message with arguments, creating a pattern that can be applied to a <code>MessageFormat</code> object:</p>
+<div class="codeblock"><pre>
+There {0} on {1}.
+</pre></div>
+<p>The argument for the disk name, which is represented by<code>{1}</code>, is easy enough to deal with. You just treat it like any other <code>String</code> variable in a <code>MessageFormat</code> pattern. This argument matches the element at index 1 in the array of argument values. (See <a href="#step7">step 7</a>.)</p>
+<p>Dealing with argument<code>{0}</code> is more complex, for a couple of reasons:</p>
+<ul>
+<li>The phrase that this argument replaces varies with the number of files. To construct this phrase at run time, you need to map the number of files to a particular <code>String</code>. For example, the number 1 will map to the <code>String</code> containing the phrase <code>is one file</code>. The <code>ChoiceFormat</code> class allows you to perform the necessary mapping.</li>
+<li>If the disk contains multiple files, the phrase includes an integer. The <code>MessageFormat</code> class lets you insert a number into a phrase.</li>
+</ul>
+<h2>2. Create a ResourceBundle</h2>
+<p>Because the message text must be translated, isolate it in a <code>ResourceBundle</code>:</p>
+<div class="codeblock"><pre>
+ResourceBundle bundle = ResourceBundle.getBundle(
+    "ChoiceBundle", currentLocale);
+</pre></div>
+<p>The sample program backs the <code>ResourceBundle</code> with properties files. The 
+<a class="SourceLink" target="_blank" href="examples/ChoiceBundle_en_US.properties" onclick="showCode('../../displayCode.html', 'examples/ChoiceBundle_en_US.properties'); return false;"><code>ChoiceBundle_en_US.properties</code></a>contains the following lines:</p>
+<div class="codeblock"><pre>
+pattern = There {0} on {1}.
+noFiles = are no files
+oneFile = is one file
+multipleFiles = are {2} files
+</pre></div>
+<p>The contents of this properties file show how the message will be constructed and formatted. The first line contains the pattern for <code>MessageFormat</code> . (See <a href="#step1">step 1</a>.) The other lines contain phrases that will replace argument <code>{0}</code> in the pattern. The phrase for the <code>multipleFiles</code> key contains the argument <code>{2}</code>, which will be replaced by a number.</p>
+<p>Here is the French version of the properties file, 
+<a class="SourceLink" target="_blank" href="examples/ChoiceBundle_fr_FR.properties" onclick="showCode('../../displayCode.html', 'examples/ChoiceBundle_fr_FR.properties'); return false;"><code>ChoiceBundle_fr_FR.properties</code></a></p>
+<div class="codeblock"><pre>
+pattern = Il {0} sur {1}.
+noFiles = n'y a pas de fichiers
+oneFile = y a un fichier
+multipleFiles = y a {2} fichiers
+</pre></div>
+<h2>3. Create a Message Formatter</h2>
+<p>In this step you instantiate <code>MessageFormat</code> and set its <code>Locale</code>:</p>
+<div class="codeblock"><pre>
+MessageFormat messageForm = new MessageFormat(&quot;&quot;);
+messageForm.setLocale(currentLocale);
+</pre></div>
+<h2>4. Create a Choice Formatter</h2>
+<p>The <code>ChoiceFormat</code> object allows you to choose, based on a <code>double</code> number, a particular <code>String</code>. The range of <code>double</code> numbers, and the <code>String</code> objects to which they map, are specified in arrays:</p>
+<div class="codeblock"><pre>
+double[] fileLimits = {0,1,2};
+String [] fileStrings = {
+    bundle.getString(&quot;noFiles&quot;),
+    bundle.getString(&quot;oneFile&quot;),
+    bundle.getString(&quot;multipleFiles&quot;)
+};
+</pre></div>
+<p><code>ChoiceFormat</code> maps each element in the <code>double</code> array to the element in the <code>String</code> array that has the same index. In the sample code the 0 maps to the <code>String</code> returned by calling <code>bundle.getString(&quot;noFiles&quot;)</code>. By coincidence the index is the same as the value in the <code>fileLimits</code> array. If the code had set <code>fileLimits[0]</code> to seven, <code>ChoiceFormat</code> would map the number 7 to <code>fileStrings[0]</code>.</p>
+<p>You specify the <code>double</code> and <code>String</code> arrays when instantiating <code>ChoiceFormat</code>:</p>
+<div class="codeblock"><pre>
+ChoiceFormat choiceForm = new ChoiceFormat(fileLimits, fileStrings);
+</pre></div>
+<h2>5. Apply the Pattern</h2>
+<p>Remember the pattern you constructed in step 1? It&#39;s time to retrieve the pattern from the <code>ResourceBundle</code> and apply it to the <code>MessageFormat</code> object:</p>
+<div class="codeblock"><pre>
+String pattern = bundle.getString(&quot;pattern&quot;);
+messageForm.applyPattern(pattern);
+</pre></div>
+<h2>6. Assign the Formats</h2>
+<p>In this step you assign to the <code>MessageFormat</code> object the <code>ChoiceFormat</code> object created in step 4:</p>
+<div class="codeblock"><pre>
+Format[] formats = {choiceForm, null, NumberFormat.getInstance()};
+messageForm.setFormats(formats);
+</pre></div>
+<p>The <code>setFormats</code> method assigns <code>Format</code> objects to the arguments in the message pattern. You must invoke the <code>applyPattern</code> method before you call the <code>setFormats</code> method. The following table shows how the elements of the <code>Format</code> array correspond to the arguments in the message pattern:</p>
+<h2>The <code>Format</code> Array of the <code>ChoiceFormatDemo</code> Program</h2>
+<table summary="format array and pattern arguments" border="1">
+<tr>
+<th id="h1">Array Element</th>
+<th id="h2">Pattern Argument</th>
+</tr>
+<tr>
+<td headers="h1"><code>choiceForm</code></td>
+<td headers="h2"><code>{0}</code></td>
+</tr>
+<tr>
+<td headers="h1"><code>null</code></td>
+<td headers="h2"><code>{1}</code></td>
+</tr>
+<tr>
+<td headers="h1"><code>NumberFormat.getInstance()</code></td>
+<td headers="h2"><code>{2}</code></td>
+</tr>
+</table>
+<h2><a name="step7" id="step7">7. Set the Arguments and Format the Message</a></h2>
+<p>At run time the program assigns the variables to the array of arguments it passes to the <code>MessageFormat</code> object. The elements in the array correspond to the arguments in the pattern. For example, <code>messageArgument[1]</code> maps to pattern argument <code>{1}</code>, which is a <code>String</code> containing the name of the disk. In the previous step the program assigned a <code>ChoiceFormat</code> object to argument <code>{0}</code> of the pattern. Therefore the number assigned to <code>messageArgument[0]</code> determines which <code>String</code> the <code>ChoiceFormat</code> object selects. If <code>messageArgument[0]</code> is greater than or equal to 2, the <code>String</code> containing the phrase <code>are {2} files</code> replaces argument <code>{0}</code> in the pattern. The number assigned to <code>messageArgument[2]</code> will be substituted in place of pattern argument <code>{2}</code>. Here&#39;s the code that tries this out:</p>
+<div class="codeblock"><pre>
+Object[] messageArguments = {null, "XDisk", null};
+
+for (int numFiles = 0; numFiles &lt; 4; numFiles++) {
+    messageArguments[0] = new Integer(numFiles);
+    messageArguments[2] = new Integer(numFiles);
+    String result = messageForm.format(messageArguments);
+    System.out.println(result);
+}
+</pre></div>
+<h2>8. Run the Demo Program</h2>
+<p>Compare the messages displayed by the program with the phrases in the <code>ResourceBundle</code> of step 2. Notice that the <code>ChoiceFormat</code> object selects the correct phrase, which the <code>MessageFormat</code> object uses to construct the proper message. The output of the <code>ChoiceFormatDemo</code> program is as follows:</p>
+<div class="codeblock"><pre>
+currentLocale = en_US
+There are no files on XDisk.
+There is one file on XDisk.
+There are 2 files on XDisk.
+There are 3 files on XDisk.
+
+currentLocale = fr_FR
+Il n'y a pas des fichiers sur XDisk.
+Il y a un fichier sur XDisk.
+Il y a 2 fichiers sur XDisk.
+Il y a 3 fichiers sur XDisk.
+</pre></div>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="messageFormat.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="../text/index.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Dealing with Compound Messages
+        <br /><b>Next page:</b> Working with Text
+    </div>
+</body>
+</html> 

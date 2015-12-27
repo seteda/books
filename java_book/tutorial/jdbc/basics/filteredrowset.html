@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Using FilteredRowSet Objects (The Java&trade; Tutorials &gt;        
+            JDBC(TM) Database Access &gt; JDBC Basics)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JDBC Java tutorial describes how to use JDBC API to create, insert into, update, and query tables. You will also learn how to use simple and prepared statements, stored procedures and perform transactions" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jdbc, prepared statement, result set" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">JDBC Basics</a></div>
+<div class="linkAHEAD"><a href="gettingstarted.html">Getting Started</a></div>
+<div class="linkAHEAD"><a href="processingsqlstatements.html">Processing SQL Statements with JDBC</a></div>
+<div class="linkAHEAD"><a href="connecting.html">Establishing a Connection</a></div>
+<div class="linkAHEAD"><a href="sqldatasources.html">Connecting with DataSource Objects</a></div>
+<div class="linkAHEAD"><a href="sqlexception.html">Handling SQLExceptions</a></div>
+<div class="linkAHEAD"><a href="tables.html">Setting Up Tables</a></div>
+<div class="linkAHEAD"><a href="retrieving.html">Retrieving and Modifying Values from Result Sets</a></div>
+<div class="linkAHEAD"><a href="prepared.html">Using Prepared Statements</a></div>
+<div class="linkAHEAD"><a href="transactions.html">Using Transactions</a></div>
+<div class="linkAHEAD"><a href="rowset.html">Using RowSet Objects</a></div>
+<div class="linkAHEAD"><a href="jdbcrowset.html">Using JdbcRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="cachedrowset.html">Using CachedRowSetObjects</a></div>
+<div class="linkAHEAD"><a href="joinrowset.html">Using JoinRowSet Objects</a></div>
+<div class="nolinkAHEAD">Using FilteredRowSet Objects</div>
+<div class="linkAHEAD"><a href="webrowset.html">Using WebRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="sqltypes.html">Using Advanced Data Types</a></div>
+<div class="linkAHEAD"><a href="blob.html">Using Large Objects</a></div>
+<div class="linkAHEAD"><a href="sqlxml.html">Using SQLXML Objects</a></div>
+<div class="linkAHEAD"><a href="array.html">Using Array Objects</a></div>
+<div class="linkAHEAD"><a href="distinct.html">Using DISTINCT Data Type</a></div>
+<div class="linkAHEAD"><a href="sqlstructured.html">Using Structured Objects</a></div>
+<div class="linkAHEAD"><a href="sqlcustommapping.html">Using Customized Type Mappings</a></div>
+<div class="linkAHEAD"><a href="sqldatalink.html">Using Datalink Objects</a></div>
+<div class="linkAHEAD"><a href="sqlrowid.html">Using RowId Objects</a></div>
+<div class="linkAHEAD"><a href="storedprocedures.html">Using Stored Procedures</a></div>
+<div class="linkAHEAD"><a href="jdbcswing.html">Using JDBC with GUI API</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> JDBC(TM) Database Access
+        <br /><b>Lesson:</b> JDBC Basics
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">JDBC(TM) Database Access</a>
+                &gt;
+                <a href="index.html" target="_top">JDBC Basics</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="joinrowset.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="webrowset.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Using FilteredRowSet Objects</h1></div>
+            <div id="PageContent">
+
+<p>A <code>FilteredRowSet</code> object lets you cut down the number of rows that are visible in a <code>RowSet</code> object so that you can work with only the data that is relevant to what you are doing. You decide what limits you want to set on your data (how you want to &quot;filter&quot; the data) and apply that filter to a <code>FilteredRowSet</code> object. In other words, the <code>FilteredRowSet</code> object makes visible only the rows of data that fit within the limits you set. A <code>JdbcRowSet</code> object, which always has a connection to its data source, can do this filtering with a query to the data source that selects only the columns and rows you want to see. The query&#39;s <code>WHERE</code> clause defines the filtering criteria. A <code>FilteredRowSet</code> object provides a way for a disconnected <code>RowSet</code> object to do this filtering without having to execute a query on the data source, thus avoiding having to get a connection to the data source and sending queries to it.</p>
+<p>For example, assume that the Coffee Break chain of coffee houses has grown to hundreds of stores throughout the United States of America, and all of them are listed in a table called <code>COFFEE_HOUSES</code>. The owner wants to measure the success of only the stores in California with a coffee house comparison application that does not require a persistent connection to the database system. This comparison will look at the profitability of selling merchandise versus selling coffee drinks plus various other measures of success, and it will rank California stores by coffee drink sales, merchandise sales, and total sales. Because the table <code>COFFEE_HOUSES</code> has hundreds of rows, these comparisons will be faster and easier if the amount of data being searched is cut down to only those rows where the value in the column <code>STORE_ID</code> indicates California.</p>
+<p>This is exactly the kind of problem that a <code>FilteredRowSet</code> object addresses by providing the following capabilities:</p>
+<ul>
+<li>Ability to limit the rows that are visible according to set criteria</li>
+<li>Ability to select which data is visible without being connected to a data source</li>
+</ul>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#defining-filtering-criteria-in-predicate-object">Defining Filtering Criteria in Predicate Objects</a></li>
+<li><a href="#creating-filteredrowset-object">Creating FilteredRowSet Objects</a></li>
+<li><a href="#creating-and-setting-predicate-object">Creating and Setting Predicate Objects</a></li>
+<li><a href="#filter-data-further">Setting FilteredRowSet Objects with New Predicate Objects to Filter Data Further</a></li>
+<li><a href="#updating-filteredrowset-object">Updating FilteredRowSet Objects</a></li>
+<li><a href="#inserting-or-updating-row">Inserting or Updating Rows</a></li>
+<li><a href="#removing-all-filters">Removing All Filters so All Rows Are Visible</a></li>
+<li><a href="#deleting-row">Deleting Rows</a></li>
+</ul>
+<!-- **************************** -->
+<h2><a name="defining-filtering-criteria-in-predicate-object" id="defining-filtering-criteria-in-predicate-object">Defining Filtering Criteria in Predicate Objects</a></h2>
+<p>To set the criteria for which rows in a <code>FilteredRowSet</code> object will be visible, you define a class that implements the <code>Predicate</code> interface. An object created with this class is initialized with the following:</p>
+<ul>
+<li>The high end of the range within which values must fall</li>
+<li>The low end of the range within which values must fall</li>
+<li>The column name or column number of the column with the value that must fall within the range of values set by the high and low boundaries</li>
+</ul>
+<p>Note that the range of values is inclusive, meaning that a value at the boundary is included in the range. For example, if the range has a high of 100 and a low of 50, a value of 50 is considered to be within the range. A value of 49 is not. Likewise, 100 is within the range, but 101 is not.</p>
+<p>In line with the scenario where the owner wants to compare California stores, an implementation of the <code>Predicate</code> interface that filters for Coffee Break coffee houses located in California must be written. There is no one right way to do this, which means there is a lot of latitude in how the implementation is written. For example, you could name the class and its members whatever you want and implement a constructor and the three evaluate methods in any way that accomplishes the desired results.</p>
+<p>The table listing all of the coffee houses, named <code>COFFEE_HOUSES</code>, has hundreds of rows. To make things more manageable, this example uses a table with far fewer rows, which is enough to demonstrate how filtering is done.</p>
+<p>A value in the column <code>STORE_ID</code> is an <code>int</code> value that indicates, among other things, the state in which the coffee house is located. A value beginning with 10, for example, means that the state is California. <code>STORE_ID</code> values beginning with 32 indicate Oregon, and those beginning with 33 indicate the state of Washington.</p>
+<p>The following class <a href="gettingstarted.html"><code>StateFilter</code></a> implements the <code>Predicate</code> interface:</p>
+<div class="codeblock"><pre>
+public class StateFilter implements Predicate {
+
+    private int lo;
+    private int hi;
+    private String colName = null;
+    private int colNumber = -1;
+
+    public StateFilter(int lo, int hi, int colNumber) {
+        this.lo = lo;
+        this.hi = hi;
+        this.colNumber = colNumber;
+    }
+
+    public StateFilter(int lo, int hi, String colName) {
+        this.lo = lo;
+        this.hi = hi;
+        this.colName = colName;
+    }
+
+    public boolean evaluate(Object value, String columnName) {
+        boolean evaluation = true;
+        if (columnName.equalsIgnoreCase(this.colName)) {
+            int columnValue = ((Integer)value).intValue();
+            if ((columnValue >= this.lo)
+                &amp;&amp;
+                (columnValue &lt;= this.hi)) {
+                evaluation = true;
+            } else {
+                evaluation = false;
+            }
+        }
+        return evaluation;
+    }
+
+    public boolean evaluate(Object value, int columnNumber) {
+
+        boolean evaluation = true;
+
+        if (this.colNumber == columnNumber) {
+            int columnValue = ((Integer)value).intValue();
+            if ((columnValue >= this.lo)
+                &amp;&amp;
+                (columnValue &lt;= this.hi)) {
+                evaluation = true;
+            } else {
+                evaluation = false;
+            }
+        }
+        return evaluation;
+    }
+
+
+    public boolean evaluate(RowSet rs) {
+    
+        CachedRowSet frs = (CachedRowSet)rs;
+        boolean evaluation = false;
+
+        try {
+            int columnValue = -1;
+
+            if (this.colNumber > 0) {
+                columnValue = frs.getInt(this.colNumber);
+            } else if (this.colName != null) {
+                columnValue = frs.getInt(this.colName);
+            } else {
+                return false;
+            }
+
+            if ((columnValue >= this.lo)
+                &amp;&amp;
+                (columnValue &lt;= this.hi)) {
+                evaluation = true;
+            }
+        } catch (SQLException e) {
+            JDBCTutorialUtilities.printSQLException(e);
+            return false;
+        } catch (NullPointerException npe) {
+            System.err.println("NullPointerException caught");
+            return false;
+        }
+        return evaluation;
+    }
+}
+</pre></div>
+<p>This is a very simple implementation that checks the value in the column specified by either <code>colName</code> or <code>colNumber</code> to see if it is in the range of <code>lo</code> to <code>hi</code>, inclusive. The following line of code, from <a href="gettingstarted.html"><code>FilteredRowSetSample</code></a>, creates a filter that allows only the rows where the <code>STORE_ID</code> column value indicates a value between 10000 and 10999, which indicates a California location:</p>
+<div class="codeblock"><pre>
+StateFilter myStateFilter = new StateFilter(10000, 10999, 1);
+</pre></div>
+<p>Note that the <code>StateFilter</code> class just defined applies to one column. It is possible to have it apply to two or more columns by making each of the parameters arrays instead of single values. For example, the constructor for a <code>Filter</code> object could look like the following:</p>
+<div class="codeblock"><pre>
+public Filter2(Object [] lo, Object [] hi, Object [] colNumber) {
+    this.lo = lo;
+    this.hi = hi;
+    this.colNumber = colNumber;
+}
+</pre></div>
+<p>The first element in the <code>colNumber</code> object gives the first column in which the value will be checked against the first element in <code>lo</code> and the first element in <code>hi</code>. The value in the second column indicated by <code>colNumber</code> will be checked against the second elements in <code>lo</code> and <code>hi</code>, and so on. Therefore, the number of elements in the three arrays should be the same. The following code is what an implementation of the method <code>evaluate(RowSet rs)</code> might look like for a <code>Filter2</code> object, in which the parameters are arrays:</p>
+<div class="codeblock"><pre>
+public boolean evaluate(RowSet rs) {
+    CachedRowSet crs = (CachedRowSet)rs;
+    boolean bool1;
+    boolean bool2;
+    for (int i = 0; i &lt; colNumber.length; i++) {
+
+        if ((rs.getObject(colNumber[i] &gt;= lo [i]) &amp;&amp;
+            (rs.getObject(colNumber[i] &lt;= hi[i]) {
+            bool1 = true;
+        } else {
+            bool2 = true;
+        }
+
+        if (bool2) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+</pre></div>
+<p>The advantage of using a <code>Filter2</code> implementation is that you can use parameters of any <code>Object</code> type and can check one column or multiple columns without having to write another implementation. However, you must pass an <code>Object</code> type, which means that you must convert a primitive type to its <code>Object</code> type. For example, if you use an <code>int</code> value for <code>lo</code> and <code>hi</code>, you must convert the <code>int</code> value to an <code>Integer</code> object before passing it to the constructor. <code>String</code> objects are already <code>Object</code> types, so you do not have to convert them.</p>
+<!-- *************************** -->
+<h2><a name="creating-filteredrowset-object" id="creating-filteredrowset-object">Creating FilteredRowSet Objects</a></h2>
+<p>The reference implementation for the <code>FilteredRowSet</code> interface, <code>FilteredRowSetImpl</code>, includes a default constructor, which is used in the following line of code to create the empty <code>FilteredRowSet</code> object <code>frs:</code>.</p>
+<div class="codeblock"><pre>
+FilteredRowSet frs = new FilteredRowSetImpl();
+</pre></div>
+<p>The implementation extends the <code>BaseRowSet</code> abstract class, so the <code>frs</code> object has the default properties defined in <code>BaseRowSet</code>. This means that <code>frs</code> is scrollable, updatable, does not show deleted rows, has escape processing turned on, and so on. Also, because the <code>FilteredRowSet</code> interface is a subinterface of <code>CachedRowSet</code>, <code>Joinable</code>, and <code>WebRowSet</code>, the <code>frs</code> object has the capabilities of each. It can operate as a disconnected <code>RowSet</code> object, can be part of a <code>JoinRowSet</code> object, and can read and write itself in XML format.</p>
+<p><strong>Note</strong>: Alternatively, you can use the constructor from the <code>WebRowSet</code> implementation of your JDBC driver. However, implementations of the <code>RowSet</code> interface will differ from the reference implementation. These implementations will have different names and constructors. For example, the Oracle JDBC driver&#39;s implementation of the <code>WebRowSet</code> interface is named <code>oracle.jdbc.rowset.OracleWebRowSet</code>.</p>
+<p>You can use an instance of <code>RowSetFactory</code>, which is created from the class <code>RowSetProvider</code>, to create a <code>FilteredRowSet</code> object. See <a href="jdbcrowset.html#rowsetfactory">Using the RowSetFactory Interface</a> in <a href="jdbcrowset.html">Using JdbcRowSet Objects</a> for more information.</p>
+<p>Like other disconnected <code>RowSet</code> objects, the <code>frs</code> object must populate itself with data from a tabular data source, which is a relational database in the reference implementation. The following code fragment from <a href="gettingstarted.html"><code>FilteredRowSetSample</code></a> sets the properties necessary to connect to a database to execute its command. Note that this code uses the <code>DriverManager</code> class to make a connection, which is done for convenience. Usually, it is better to use a <code>DataSource</code> object that has been registered with a naming service that implements the Java Naming and Directory Interface (JNDI):</p>
+<div class="codeblock"><pre>
+frs.setCommand("SELECT * FROM COFFEE_HOUSES");
+frs.setUsername(settings.userName);
+frs.setPassword(settings.password);
+frs.setUrl(settings.urlString);
+</pre></div>
+<p>The following line of code populates the <code>frs</code> objectwith the data stored in the <code>COFFEE_HOUSE</code> table:</p>
+<div class="codeblock"><pre>
+frs.execute();
+</pre></div>
+<p>The method <code>execute</code> does all kinds of things in the background by calling on the <code>RowSetReader</code> object for <code>frs</code>, which creates a connection, executes the command for <code>frs</code>, populates <code>frs</code> with the data from the <code>ResultSet</code> object that is produced, and closes the connection. Note that if the table <code>COFFEE_HOUSES</code> had more rows than the <code>frs</code> object could hold in memory at one time, the <code>CachedRowSet</code> paging methods would have been used.</p>
+<p>In the scenario, the Coffee Break owner would have done the preceding tasks in the office and then imported or downloaded the information stored in the <code>frs</code> object to the coffee house comparison application. From now on, the <code>frs</code> object will operate independently without the benefit of a connection to the data source.</p>
+<h2><a name="creating-and-setting-predicate-object" id="creating-and-setting-predicate-object">Creating and Setting Predicate Objects</a></h2>
+<p>Now that the <code>FilteredRowSet</code> object <code>frs</code> contains the list of Coffee Break establishments, you can set selection criteria for narrowing down the number of rows in the <code>frs</code> object that are visible.</p>
+<p>The following line of code uses the <code>StateFilter</code> class defined previously to create the object <code>myStateFilter</code>, which checks the column <code>STORE_ID</code> to determine which stores are in California (a store is in California if its ID number is between 10000 and 10999, inclusive):</p>
+<div class="codeblock"><pre>
+StateFilter myStateFilter = new StateFilter(10000, 10999, 1);
+</pre></div>
+<p>The following line sets <code>myStateFilter</code> as the filter for <code>frs</code>.</p>
+<div class="codeblock"><pre>
+frs.setFilter(myStateFilter);
+</pre></div>
+<p>To do the actual filtering, you call the method <code>next</code>, which in the reference implementation calls the appropriate version of the <code>Predicate.evaluate</code> method that you have implemented previously.</p>
+<p>If the return value is <code>true</code>, the row will be visible; if the return value is <code>false</code>, the row will not be visible.</p>
+<h2><a name="filter-data-further" id="filter-data-further">Setting FilteredRowSet Objects with New Predicate Objects to Filter Data Further</a></h2>
+<p>You set multiple filters serially. The first time you call the method <code>setFilter</code> and pass it a <code>Predicate</code> object, you have applied the filtering criteria in that filter. After calling the method <code>next</code> on each row, which makes visible only those rows that satisfy the filter, you can call <code>setFilter</code> again, passing it a different <code>Predicate</code> object. Even though only one filter is set at a time, the effect is that both filters apply cumulatively.</p>
+<p>For example, the owner has retrieved a list of the Coffee Break stores in California by setting <code>stateFilter</code> as the <code>Predicate</code> object for <code>frs</code>. Now the owner wants to compare the stores in two California cities, San Francisco (SF in the table <code>COFFEE_HOUSES</code>) and Los Angeles (LA in the table). The first thing to do is to write a <code>Predicate</code> implementation that filters for stores in either SF or LA:</p>
+<div class="codeblock"><pre>
+public class CityFilter implements Predicate {
+
+    private String[] cities;
+    private String colName = null;
+    private int colNumber = -1;
+
+    public CityFilter(String[] citiesArg, String colNameArg) {
+        this.cities = citiesArg;
+        this.colNumber = -1;
+        this.colName = colNameArg;
+    }
+
+    public CityFilter(String[] citiesArg, int colNumberArg) {
+        this.cities = citiesArg;
+        this.colNumber = colNumberArg;
+        this.colName = null;
+    }
+
+    public boolean evaluate Object valueArg, String colNameArg) {
+
+        if (colNameArg.equalsIgnoreCase(this.colName)) {
+            for (int i = 0; i &lt; this.cities.length; i++) {
+                if (this.cities[i].equalsIgnoreCase((String)valueArg)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean evaluate(Object valueArg, int colNumberArg) {
+
+        if (colNumberArg == this.colNumber) {
+            for (int i = 0; i &lt; this.cities.length; i++) {
+                if (this.cities[i].equalsIgnoreCase((String)valueArg)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    public boolean evaluate(RowSet rs) {
+
+        if (rs == null) return false;
+
+        try {
+            for (int i = 0; i &lt; this.cities.length; i++) {
+
+                String cityName = null;
+
+                if (this.colNumber &gt; 0) {
+                    cityName = (String)rs.getObject(this.colNumber);
+                } else if (this.colName != null) {
+                    cityName = (String)rs.getObject(this.colName);
+                } else {
+                    return false;
+                }
+
+                if (cityName.equalsIgnoreCase(cities[i])) {
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            return false;
+        }
+        return false;
+    }
+}
+</pre></div>
+<p>The following code fragment from <a href="gettingstarted.html"><code>FilteredRowSetSample</code></a> sets the new filter and iterates through the rows in <code>frs</code>, printing out the rows where the <code>CITY</code> column contains either SF or LA. Note that <code>frs</code> currently contains only rows where the store is in California, so the criteria of the <code>Predicate</code> object <code>state</code> are still in effect when the filter is changed to another <code>Predicate</code> object. The code that follows sets the filter to the <code>CityFilter</code> object <code>city</code>. The <code>CityFilter</code> implementation uses arrays as parameters to the constructors to illustrate how that can be done:</p>
+<div class="codeblock"><pre>
+public void testFilteredRowSet() {
+
+    FilteredRowSet frs = null;
+    StateFilter myStateFilter = new StateFilter(10000, 10999, 1);
+    String[] cityArray = { "SF", "LA" };
+
+    CityFilter myCityFilter = new CityFilter(cityArray, 2);
+
+    try {
+        frs = new FilteredRowSetImpl();
+
+        frs.setCommand("SELECT * FROM COFFEE_HOUSES");
+        frs.setUsername(settings.userName);
+        frs.setPassword(settings.password);
+        frs.setUrl(settings.urlString);
+        frs.execute();
+
+        System.out.println("\nBefore filter:");
+        FilteredRowSetSample.viewTable(this.con);
+
+        System.out.println("\nSetting state filter:");
+        frs.beforeFirst();
+        frs.setFilter(myStateFilter);
+        this.viewFilteredRowSet(frs);
+
+        System.out.println("\nSetting city filter:");
+        frs.beforeFirst();
+        frs.setFilter(myCityFilter);
+        this.viewFilteredRowSet(frs);
+    } catch (SQLException e) {
+        JDBCTutorialUtilities.printSQLException(e);
+    }
+}
+</pre></div>
+<p>The output should contain a row for each store that is in San Francisco, California or Los Angeles, California. If there were a row in which the <code>CITY</code> column contained LA and the <code>STORE_ID</code> column contained 40003, it would not be included in the list because it had already been filtered out when the filter was set to <code>state</code>. (40003 is not in the range of 10000 to 10999.)</p>
+<h2><a name="updating-filteredrowset-object" id="updating-filteredrowset-object">Updating FilteredRowSet Objects</a></h2>
+<p>You can make a change to a <code>FilteredRowSet</code> object but only if that change does not violate any of the filtering criteria currently in effect. For example, you can insert a new row or change one or more values in an existing row if the new value or values are within the filtering criteria.</p>
+<h2><a name="inserting-or-updating-row" id="inserting-or-updating-row">Inserting or Updating Rows</a></h2>
+<p>Assume that two new Coffee Break coffee houses have just opened and the owner wants to add them to the list of all coffee houses. If a row to be inserted does not meet the cumulative filtering criteria in effect, it will be blocked from being added.</p>
+<p>The current state of the <code>frs</code> object is that the <code>StateFilter</code> object was set and then the <code>CityFilter</code> object was set. As a result, <code>frs</code> currently makes visible only those rows that satisfy the criteria for both filters. And, equally important, you cannot add a row to the <code>frs</code> object unless it satisfies the criteria for both filters. The following code fragment attempts to insert two new rows into the <code>frs</code> object, one row in which the values in the <code>STORE_ID</code> and <code>CITY</code> columns both meet the criteria, and one row in which the value in <code>STORE_ID</code> does not pass the filter but the value in the <code>CITY</code> column does:</p>
+<div class="codeblock"><pre>
+frs.moveToInsertRow();
+frs.updateInt("STORE_ID", 10101);
+frs.updateString("CITY", "SF");
+frs.updateLong("COF_SALES", 0);
+frs.updateLong("MERCH_SALES", 0);
+frs.updateLong("TOTAL_SALES", 0);
+frs.insertRow();
+
+frs.updateInt("STORE_ID", 33101);
+frs.updateString("CITY", "SF");
+frs.updateLong("COF_SALES", 0);
+frs.updateLong("MERCH_SALES", 0);
+frs.updateLong("TOTAL_SALES", 0);
+frs.insertRow();
+frs.moveToCurrentRow();
+</pre></div>
+<p>If you were to iterate through the <code>frs</code> object using the method <code>next</code>, you would find a row for the new coffee house in San Francisco, California, but not for the store in San Francisco, Washington.</p>
+<h2><a name="removing-all-filters" id="removing-all-filters">Removing All Filters so All Rows Are Visible</a></h2>
+<p>The owner can add the store in Washington by nullifying the filter. With no filter set, all rows in the <code>frs</code> object are once more visible, and a store in any location can be added to the list of stores. The following line of code unsets the current filter, effectively nullifying both of the <code>Predicate</code> implementations previously set on the <code>frs</code> object.</p>
+<div class="codeblock"><pre>
+frs.setFilter(null);
+</pre></div>
+<h2><a name="deleting-row" id="deleting-row">Deleting Rows</a></h2>
+<p>If the owner decides to close down or sell one of the Coffee Break coffee houses, the owner will want to delete it from the <code>COFFEE_HOUSES</code> table. The owner can delete the row for the underperforming coffee house as long as the row is visible.</p>
+<p>For example, given that the method <code>setFilter</code> has just been called with the argument null, there is no filter set on the <code>frs</code> object. This means that all rows are visible and can therefore be deleted. However, after the <code>StateFilter</code> object <code>myStateFilter</code> was set, which filtered out any state other than California, only stores located in California could be deleted. When the <code>CityFilter</code> object <code>myCityFilter</code> was set for the <code>frs</code> object, only coffee houses in San Francisco, California or Los Angeles, California could be deleted because they were in the only rows visible.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="joinrowset.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="webrowset.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Using JoinRowSet Objects
+        <br /><b>Next page:</b> Using WebRowSet Objects
+    </div>
+</body>
+</html> 

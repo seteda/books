@@ -1,0 +1,1240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Use the Focus Subsystem (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Using Other Swing Features)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Using Other Swing Features</a></div>
+<div class="linkAHEAD"><a href="desktop.html">How to Integrate with the Desktop Class</a></div>
+<div class="linkAHEAD"><a href="trans_shaped_windows.html">How to Create Translucent and Shaped Windows</a></div>
+<div class="linkAHEAD"><a href="jlayer.html">How to Decorate Components with the JLayer Class</a></div>
+<div class="linkAHEAD"><a href="action.html">How to Use Actions</a></div>
+<div class="linkAHEAD"><a href="timer.html">How to Use Swing Timers</a></div>
+<div class="linkAHEAD"><a href="access.html">How to Support Assistive Technologies</a></div>
+<div class="nolinkAHEAD">How to Use the Focus Subsystem</div>
+<div class="linkAHEAD"><a href="keybinding.html">How to Use Key Bindings</a></div>
+<div class="linkAHEAD"><a href="modality.html">How to Use Modality in Dialogs</a></div>
+<div class="linkAHEAD"><a href="printtable.html">How to Print Tables</a></div>
+<div class="linkAHEAD"><a href="printtext.html">How to Print Text</a></div>
+<div class="linkAHEAD"><a href="splashscreen.html">How to Create a Splash Screen</a></div>
+<div class="linkAHEAD"><a href="systemtray.html">How to Use the System Tray</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Problems Using Other Swing Features</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Using Other Swing Features
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Using Other Swing Features</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="access.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="keybinding.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Use the Focus Subsystem</h1></div>
+            <div id="PageContent">
+
+<p>Many components &#150; even those primarily operated with the mouse, such as buttons &#150; can be operated with the keyboard. For a key press to affect a component, the component must have the keyboard focus.</p>
+<p>From the user&#39;s point of view, the component with the keyboard focus is generally prominent &#150; with a dotted or black border, for example. The window containing the component is also more prominent than other windows onscreen. These visual cues let the user know to which component any typing will relate. Only one component at a time in the window system can have the keyboard focus.</p>
+<p>Exactly how a window gains the focus depends on the windowing system. There is no foolproof way, across all platforms, to ensure that a window gains the focus. On some operating systems, such as Microsoft Windows, the front window usually becomes the focused window. In these cases, the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Window.html#toFront--"><code>Window.toFront</code></a> method moves the window to the front, thereby giving it the focus. However, on other operating systems, such as Solaris&trade; Operating System, the window manager may choose the focused window based on cursor position, and in these cases the behavior of the <code>Window.toFront</code> method is different.</p>
+<p>A component generally gains the focus when the user clicks it, or when the user tabs between components, or otherwise interacts with a component. A component can also be given the focus programmatically, such as when its containing frame or dialog-box is made visible. This code snippet shows how to give a particular component the focus every time the window gains the focus:</p>
+<div class="codeblock"><pre>
+//Make textField get the focus whenever frame is activated.
+frame.addWindowFocusListener(new WindowAdapter() {
+    public void windowGainedFocus(WindowEvent e) {
+        textField.requestFocusInWindow();
+    }
+});
+</pre></div>
+<p>If you want to ensure that a particular component gains the focus the first time a window is activated, you can call the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#requestFocusInWindow--"><code>requestFocusInWindow</code></a> method on the component after the component has been realized, but before the frame is displayed. The following sample code shows how this operation can be done:</p>
+<div class="codeblock"><pre>
+    <em>//...Where initialization occurs...</em>
+    JFrame frame = new JFrame("Test");
+    JPanel panel = new JPanel(new BorderLayout());
+
+    <em>//...Create a variety of components here...</em>
+
+    //Create the component that will have the initial focus.
+    JButton button = new JButton("I am first");
+    panel.add(button);
+    frame.getContentPane().add(panel);  //Add it to the panel
+
+    frame.pack();  //Realize the components.
+    <b>//This button will have the initial focus.
+    button.requestFocusInWindow();</b> 
+    frame.setVisible(true); //Display the window.
+</pre></div>
+<p>Alternatively, you can apply a custom <code>FocusTraversalPolicy</code> to the frame and call the <code>getDefaultComponent</code> method to determine which component will gain the focus.</p>
+<p>The rest of this section covers the following topics:</p>
+<ul>
+<li><a href="#intro">Introduction to the Focus Subsystem</a></li>
+<li><a href="#inputVerification">Validating Input</a></li>
+<li><a href="#focusable">Making a Custom Component Focusable</a></li>
+<li><a href="#customFocusTraversal">Customizing Focus Traversal</a></li>
+<li><a href="#trackingFocus">Tracking Focus Changes to Multiple Components</a></li>
+<li><a href="#transferTiming">Timing Focus Transfers</a></li>
+<li><a href="#api">The Focus API</a></li>
+<li><a href="#eg">Focus Examples</a></li>
+</ul>
+<h2><a name="intro" id="intro">Introduction to the Focus Subsystem</a></h2>
+<p>The focus subsystem is designed to do the right thing as invisibly as possible. In most cases it behaves in a reasonable manner, and if it does not you can tweak its behavior in various ways. Some common scenarios might include:</p>
+<ul>
+<li>The ordering is right but the first component with the focus is not set. As shown in a code snippet in the preceding section, you can use the <code>requestFocusInWindow</code> method to set the focus on a component when the window becomes visible.</li>
+<li>The ordering is wrong. To fix this issue, you can change the containment hierarchy, you can change the order that the components are added to their containers, or you can create a custom focus traversal policy. For more details see <a href="#customFocusTraversal">Customizing Focus Traversal</a>.</li>
+<li>A component must to be prevented from losing focus, or you need to check a value in a component before it loses focus. <a href="#inputVerification">Input verification</a> is a solution to this problem.</li>
+<li>A custom component is not getting the focus. To fix this issue, you need to make sure that it satisfies all the requirements outlined in <a href="#focusable">Making a Custom Component Focusable</a>.</li>
+</ul>
+<p>The <code>FocusConceptsDemo</code> example illustrates a few concepts.</p>
+<center><img src="../../figures/uiswing/misc/FocusConceptsDemo.png" width="488" height="360" align="bottom" alt="The FocusConceptsDemo example" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run FocusConceptsDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/misc/index.html#FocusConceptsDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/FocusConceptsDemoProject/FocusConceptsDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" align="bottom" alt="Launches the FocusConceptsDemo application" /></a><br /></li>
+<li>If necessary, click the window to give it the focus.</li>
+<li>Move the focus from component to component using the Tab key.<br />
+You will notice that when the focus moves into the text area, it stays in the text area.</li>
+<li>Move the focus out of the text area using Control-Tab.</li>
+<li>Move the focus in the opposite direction using Shift-Tab.</li>
+<li>Move the focus out of the text area in the opposite direction using Control-Shift-Tab.</li>
+</ol>
+<hr /></div>
+<p>The <code>KeyboardFocusManager</code> is a critical element of the focus subsystem. It manages state and initiates changes. The keyboard manager tracks the <i>focus owner</i> ??? the component that receives typing from the keyboard. The <i>focused window</i> is the window that contains the focus owner.</p>
+<div class="note"><hr /><strong>JWindow and focus:</strong>&nbsp;To use a <code>JWindow</code> component in your GUI, you should know that the <code>JWindow</code> component&#39;s owning frame must be visible in order for any components in the window to get the focus. By default, if you do not specify an owning frame for a <code>JWindow</code> component, an invisible owning frame is created for it. The result is that components in the <code>JWindow</code> component might not be able to get the focus. The solution is either to specify a visible owning frame when creating the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JWindow.html"><code>JWindow</code></a> component, or to use an undecorated 
+<a class="TutorialLink" target="_top" href="../components/frame.html"><code>JFrame</code></a> component instead.
+<hr /></div>
+<p>A <i>focus cycle</i> (or <i>focus traversal cycle</i>) is a set of components that share a common ancestor in the containment hierarchy. The <i>focus cycle root</i> is the container that is the root for a particular focus traversal cycle. By default, every <code>JWindow</code> and <code>JInternalFrame</code> component can be a focus cycle root. A focus cycle root can itself contain one or more focus cycle roots. The following Swing objects can be focus cycle roots: <code>JApplet</code>, <code>JDesktopPane</code>, <code>JDialog</code>, <code>JEditorPane</code>, <code>JFrame</code>, <code>JInternalFrame</code>, and <code>JWindow</code>. While it might appear that <code>JTable</code> and <code>JTree</code> objects are focus cycle roots, they are not.</p>
+<p>A <i>focus traversal policy</i> determines the order in which a group of components are navigated. Swing provides the 
+<a class="SourceLink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/LayoutFocusTraversalPolicy.html" onclick="showCode('../../displayCode.html', 'https://docs.oracle.com/javase/8/docs/api/javax/swing/LayoutFocusTraversalPolicy.html'); return false;"><code><code>LayoutFocusTraversalPolicy</code></code></a> class, which decides the order of navigation based on layout manager-dependent factors, such as size, location, and orientation of components. Within a focus cycle, components can be navigated in a forward or backward direction. In a hierarchy of focus cycle roots, upwards traversal takes the focus out of the current cycle into the parent cycle. <a name="addreturn" id="addreturn"></a></p>
+<p>In most Look and Feel models, components are navigated using the Tab and Shift-Tab keys. These keys are the default <i>focus traversal keys</i> and can be changed programmatically. For example, you can add Enter as a forward focus traversal key with the following four lines of code:</p>
+<div class="codeblock"><pre>
+Set forwardKeys = getFocusTraversalKeys(
+    KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS);
+Set newForwardKeys = new HashSet(forwardKeys);
+newForwardKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));
+setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
+    newForwardKeys);
+</pre></div>
+<p>Tab shifts the focus in the forward direction. Shift-Tab moves the focus in the backward direction. For example, in FocusConceptsDemo, the first button has the initial focus. Tabbing moves the focus through the buttons into the text area. Additional tabbing moves the cursor within the text area but not out of the text area because, inside a text area, Tab is <em>not</em> a focus traversal key. However, Control-Tab moves the focus out of the text area and into the first text field. Likewise, Control-Shift-Tab moves the focus out of the text area and into the previous component. The Control key is used by convention to move the focus out of any component that treats Tab in a special way, such as <code>JTable</code>.</p>
+<p>You have just received a brief introduction to the focus architecture. If you want more details, see the specification for the 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/doc-files/FocusSpec.html">Focus Subsystem</a>.</p>
+<h2><a name="inputVerification" id="inputVerification">Validating Input</a></h2>
+<p>A common requirement of GUI design is a component that restricts the user&#39;s input ??? for example, a text field that allows only numeric input in decimal format (money, for example) or a text field that allows only 5 digits for a zip code. An easy-to-use 
+<a class="TutorialLink" target="_top" href="../components/formattedtextfield.html">formatted text field</a> component that allows input to be restricted to a variety of localizable formats. You can also specify a 
+<a class="TutorialLink" target="_top" href="../components/formattedtextfield.html">custom formatter</a> for the text field, which can perform special checking such as determining whether values are not only formatted correctly, but also reasonable.</p>
+<p>You can use an input verifier as an alternative to a custom formatter, or when you have a component that is not a text field. An input verifier allows you to reject specific values, such as a properly formatted but invalid zip code, or values outside of a desired range, for example a body temperature higher than 110&deg;F. To use an input verifier, you create a subclass of 
+<a class="SourceLink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/InputVerifier.html" onclick="showCode('../../displayCode.html', 'https://docs.oracle.com/javase/8/docs/api/javax/swing/InputVerifier.html'); return false;"><code><code>InputVerifier</code></code></a>, create an instance of your subclass, and set the instance as the input verifier for one or more components.</p>
+<p>A component&#39;s input verifier is consulted whenever the component is about to lose the focus. If the component&#39;s value is not acceptable, the input verifier can take appropriate action, such as refusing to yield the focus on the component or replacing the user&#39;s input with the last valid value and then allowing the focus to transfer to the next component. However, <code>InputVerifier</code> is not called when the focus is transferred to another toplevel component.</p>
+<p>The following two examples show mortgage calculators. One uses formatted text fields and the other uses input verification with standard text fields.</p>
+<center><img src="../../figures/uiswing/misc/InputVerificationDemo.png" width="623" height="155" align="bottom" alt="The InputVerificationDemo and example, which demonstrates" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run the FormattedTextFieldDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/components/index.html#FormattedTextFieldDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/FormattedTextFieldDemoProject/FormattedTextFieldDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" align="bottom" alt="Launches the FormattedTextFieldDemo application" /></a><br /></li>
+<li>Click the Launch button to run the InputVerificationDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/misc/index.html#InputVerificationDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/InputVerificationDemoProject/InputVerificationDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" align="bottom" alt="Launches the InputVerificationDemo application" /></a><br /></li>
+<li>Compare the two mortgage calculators side by side. You will see that the input verification demo specifies valid input values in the associated label for each editable text field. Try entering badly formatted values in both examples to observe behavior. Then try entering a properly formatted, but unacceptable value.</li>
+</ol>
+<hr /></div>
+<p>You can find the code for the Input Verification demo in 
+<a class="SourceLink" target="_blank" href="../examples/misc/InputVerificationDemoProject/src/misc/InputVerificationDemo.java" onclick="showCode('../../displayCode.html', '../examples/misc/InputVerificationDemoProject/src/misc/InputVerificationDemo.java'); return false;"><code>InputVerificationDemo.java</code></a>. Here is the code for the <code>InputVerifier</code> subclass, <code>MyVerifier</code>:</p>
+<div class="codeblock"><pre>
+class MyVerifier extends InputVerifier
+                 implements ActionListener {
+    double MIN_AMOUNT = 10000.0;
+    double MAX_AMOUNT = 10000000.0;
+    double MIN_RATE = 0.0;
+    int MIN_PERIOD = 1;
+    int MAX_PERIOD = 40;
+
+   public boolean shouldYieldFocus(JComponent input) {
+        boolean inputOK = verify(input);
+        makeItPretty(input);
+        updatePayment();
+
+        if (inputOK) {
+            return true;
+        } else {
+            Toolkit.getDefaultToolkit().beep();
+            return false;
+        }
+    }
+
+    protected void updatePayment() {
+        double amount = DEFAULT_AMOUNT;
+        double rate = DEFAULT_RATE;
+        int numPeriods = DEFAULT_PERIOD;
+        double payment = 0.0;
+
+        //Parse the values.
+        try {
+            amount = moneyFormat.parse(amountField.getText()).
+                              doubleValue();
+        } catch (ParseException pe) {pe.printStackTrace();}
+        try {
+            rate = percentFormat.parse(rateField.getText()).
+                                 doubleValue();
+        } catch (ParseException pe) {pe.printStackTrace();}
+        try {
+            numPeriods = decimalFormat.parse(numPeriodsField.getText()).
+                              intValue();
+        } catch (ParseException pe) {pe.printStackTrace();}
+
+        //Calculate the result and update the GUI.
+        payment = computePayment(amount, rate, numPeriods);
+        paymentField.setText(paymentFormat.format(payment));
+    }
+
+    //This method checks input, but should cause no side effects.
+    public boolean verify(JComponent input) {
+        return checkField(input, false);
+    }
+
+    protected void makeItPretty(JComponent input) {
+        checkField(input, true);
+    }
+
+    protected boolean checkField(JComponent input, boolean changeIt) {
+        if (input == amountField) {
+            return checkAmountField(changeIt);
+        } else if (input == rateField) {
+            return checkRateField(changeIt);
+        } else if (input == numPeriodsField) {
+            return checkNumPeriodsField(changeIt);
+        } else {
+            return true; //should not happen
+        }
+    }
+
+    //Checks that the amount field is valid.  If it is valid,
+    //it returns true; otherwise, returns false.  If the
+    //change argument is true, this method sets the
+    //value to the minimum or maximum value if necessary and
+    // (even if not) sets it to the parsed number so that it
+    // looks good -- no letters, for example.
+    protected boolean checkAmountField(boolean change) {
+        boolean wasValid = true;
+        double amount = DEFAULT_AMOUNT;
+
+        //Parse the value.
+        try {
+            amount = moneyFormat.parse(amountField.getText()).
+                              doubleValue();
+        } catch (ParseException pe) {
+            pe.printStackTrace();
+            wasValid = false;
+        }
+
+        //Value was invalid.
+        if ((amount &lt; MIN_AMOUNT) || (amount &gt; MAX_AMOUNT)) {
+            wasValid = false;
+            if (change) {
+                if (amount &lt; MIN_AMOUNT) {
+                    amount = MIN_AMOUNT;
+                } else { // amount is greater than MAX_AMOUNT
+                    amount = MAX_AMOUNT;
+                }
+            }
+        }
+
+        //Whether value was valid or not, format it nicely.
+        if (change) {
+            amountField.setText(moneyFormat.format(amount));
+            amountField.selectAll();
+        }
+
+        return wasValid;
+    }
+
+    //Checks that the rate field is valid.  If it is valid,
+    //it returns true; otherwise, returns false.  If the
+    //change argument is true, this method reigns in the
+    //value if necessary and (even if not) sets it to the
+    //parsed number so that it looks good -- no letters,
+    //for example.
+    protected boolean checkRateField(boolean change) {
+        <em>...//Similar to checkAmountField...</em>
+    }
+
+    //Checks that the numPeriods field is valid.  If it is valid,
+    //it returns true; otherwise, returns false.  If the
+    //change argument is true, this method reigns in the
+    //value if necessary and (even if not) sets it to the
+    //parsed number so that it looks good -- no letters,
+    //for example.
+    protected boolean checkNumPeriodsField(boolean change) {
+        <em>...//Similar to checkAmountField...</em>
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        JTextField source = (JTextField)e.getSource();
+        shouldYieldFocus(source); //ignore return value
+        source.selectAll();
+    }
+}
+</pre></div>
+<p>Note that the <code>verify</code> method is implemented to detect invalid values but does nothing else. The <code>verify</code> method exists only to determine whether the input is valid ??? it should never bring up a dialog-box or cause any other side effects. The <code>shouldYieldFocus</code> method calls <code>verify</code> and, if a values is invalid, sets it to the minimum or maximum value. The <code>shouldYieldFocus</code> method is allowed to cause side effects, in this case, it always formats the text field and may also change its value. In our example, the <code>shouldYieldFocus</code> method always returns true so that the transfer of the focus is never actually prevented. This is just one way verification can be implemented. Find another version of this demo called <a href="../examples/misc/index.html#InputVerificationDialogDemo"><code>InputVerificationDialogDemo</code></a> that puts up a dialog-box when user input is invalid and requires the user to enter a legal value.</p>
+<p>The input verifier is installed using the <code>setInputVerifier</code> method of the <code>JComponent</code> class. For example, the <code>InputVerificationDemo</code> has the following code:</p>
+<div class="codeblock"><pre>
+private MyVerifier verifier = new MyVerifier();
+...
+amountField.setInputVerifier(verifier);
+</pre></div>
+<h2><a name="focusable" id="focusable">Making a Custom Component Focusable</a></h2>
+<p>For a component to gain the focus, it must satisfy three requirements: it must be visible, enabled, and focusable. An input map may also be given. For more information about input map, read 
+<a class="TutorialLink" target="_top" href="../misc/keybinding.html">How to Use Key Bindings</a>.</p>
+<p>The <a href="#trackfocusdemo">TrackFocusDemo</a> example defines the simple component <code>Picture</code>. Its constructor is shown below:</p>
+<div class="codeblock"><pre>
+public Picture(Image image) {
+    this.image = image;
+    setFocusable(true);
+    addMouseListener(this);
+    addFocusListener(this);
+}
+</pre></div>
+<p>The call to the <code>setFocusable(true)</code> method makes the component focusable. If you explicitly give your component key bindings in its <code>WHEN_FOCUSED</code> input map, you do not need to call the <code>setFocusable</code> method.</p>
+<p>To visually show changes in the focus (by drawing a red border only when the component has the focus), <code>Picture</code> has a 
+<a class="TutorialLink" target="_top" href="../events/focuslistener.html">focus listener</a>.</p>
+<p>To gain the focus when the user clicks on the picture, the component has a 
+<a class="TutorialLink" target="_top" href="../events/mouselistener.html">mouse listener</a>. The listener&#39;s <code>mouseClicked</code> method requests for the focus to be transferred to the picture. Here is the code:</p>
+<div class="codeblock"><pre>
+public void mouseClicked(MouseEvent e) {
+    //Since the user clicked on us, let us get focus!
+    requestFocusInWindow();
+}
+</pre></div>
+<p>See <a href="#trackingFocus">Tracking Focus Changes to Multiple Components</a> for more discussion of the TrackFocusDemo example.</p>
+<h2><a name="customFocusTraversal" id="customFocusTraversal">Customizing Focus Traversal</a></h2>
+<p>The focus subsystem determines a default order that is applied when using the focus traversal keys (such as Tab) to navigate. The policy of a Swing application is determined by 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/LayoutFocusTraversalPolicy.html"><code>LayoutFocusTraversalPolicy</code></a> . You can set a focus traversal policy on any <code>Container</code> by using the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#setFocusCycleRoot-boolean-"><code>setFocusCycleRoot</code></a> method. However, if the container is not a focus cycle root, it may have no apparent effect. Alternatively you can pass focus traversal policy providers to the <code>FocusTraversalPolicy</code> methods instead of focus cycle roots. Use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#isFocusTraversalPolicyProvider--"><code>isFocusTraversalPolicyProvider()</code></a> method to determine whether a <code>Container</code> is a focus traversal policy provider. Use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#setFocusTraversalPolicyProvider-boolean-"><code>setFocusTraversalPolicyProvider()</code></a> method to set a container for providing focus traversal policy.</p>
+<p>The <code>FocusTraversalDemo</code> example demonstrates how to customize focus behavior.</p>
+<center><img src="../../figures/uiswing/misc/FocusTraversalDemo.png" width="449" height="234" align="bottom" alt="The Focus Traversal Demo, which demonstrates a custom FocusTraversalPolicy." /></center><p><a name="focustraversaldemo" id="focustraversaldemo"></a></p>
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run FocusTraversalDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/misc/index.html#FocusTraversalDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/FocusTraversalDemoProject/FocusTraversalDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" align="bottom" alt="Launches the FocusTraversalDemo application" /></a><br /></li>
+<li>Click the window, if necessary, to give it the focus.</li>
+<li>Note the focus order as you tab through the components. The focus order was determined by the order that the components were added to the content pane. Note also that the check box never gets the focus; we removed it from the focus cycle.</li>
+<li>To move the focus out of the table, use Control-Tab or Control-Shift-Tab.</li>
+<li>Click the <b>Custom FocusTraversalPolicy</b> check box. This box installs a custom focus traversal policy on the frame.</li>
+<li>Try tabbing through the components again. Note that the focus order is now in left-to-right, top-down order.</li>
+</ol>
+<hr /></div>
+<p>You can find the demo&#39;s code in 
+<a class="SourceLink" target="_blank" href="../examples/misc/FocusTraversalDemoProject/src/misc/FocusTraversalDemo.java" onclick="showCode('../../displayCode.html', '../examples/misc/FocusTraversalDemoProject/src/misc/FocusTraversalDemo.java'); return false;"><code>FocusTraversalDemo.java</code></a>.</p>
+<p>The check box was removed from the focus cycle with this line of code:</p>
+<div class="codeblock"><pre>
+togglePolicy.setFocusable(false);
+</pre></div>
+<p>Here is the application&#39;s custom <code>FocusTraversalPolicy</code>:</p>
+<div class="codeblock"><pre>
+...
+JTextField tf1 = new JTextField("Field 1");
+JTextField tf2 = new JTextField("A Bigger Field 2");
+JTextField tf3 = new JTextField("Field 3");
+JTextField tf4 = new JTextField("A Bigger Field 4");
+JTextField tf5 = new JTextField("Field 5");
+JTextField tf6 = new JTextField("A Bigger Field 6");
+JTable table = new JTable(4,3);
+...
+public FocusTraversalDemo() {
+    super(new BorderLayout());
+
+    JTextField tf1 = new JTextField("Field 1");
+    JTextField tf2 = new JTextField("A Bigger Field 2");
+    JTextField tf3 = new JTextField("Field 3");
+    JTextField tf4 = new JTextField("A Bigger Field 4");
+    JTextField tf5 = new JTextField("Field 5");
+    JTextField tf6 = new JTextField("A Bigger Field 6");
+    JTable table = new JTable(4,3);
+    togglePolicy = new JCheckBox("Custom FocusTraversalPolicy");
+    togglePolicy.setActionCommand("toggle");
+    togglePolicy.addActionListener(this);
+    togglePolicy.setFocusable(false);  //Remove it from the focus cycle.
+    //Note that HTML is allowed and will break this run of text
+    //across two lines.
+    label = new JLabel("&lt;html&gt;Use Tab (or Shift-Tab) to navigate from component to component.&lt;p&gt;Control-Tab 
+    (or Control-Shift-Tab) allows you to break out of the JTable.&lt;/html&gt;");
+
+    JPanel leftTextPanel = new JPanel(new GridLayout(3,2));
+    leftTextPanel.add(tf1, BorderLayout.PAGE_START);
+    leftTextPanel.add(tf3, BorderLayout.CENTER);
+    leftTextPanel.add(tf5, BorderLayout.PAGE_END);
+    leftTextPanel.setBorder(BorderFactory.createEmptyBorder(0,0,5,5));
+    JPanel rightTextPanel = new JPanel(new GridLayout(3,2));
+    rightTextPanel.add(tf2, BorderLayout.PAGE_START);
+    rightTextPanel.add(tf4, BorderLayout.CENTER);
+    rightTextPanel.add(tf6, BorderLayout.PAGE_END);
+    rightTextPanel.setBorder(BorderFactory.createEmptyBorder(0,0,5,5));
+    JPanel tablePanel = new JPanel(new GridLayout(0,1));
+    tablePanel.add(table, BorderLayout.CENTER);
+    tablePanel.setBorder(BorderFactory.createEtchedBorder());
+    JPanel bottomPanel = new JPanel(new GridLayout(2,1));
+    bottomPanel.add(togglePolicy, BorderLayout.PAGE_START);
+    bottomPanel.add(label, BorderLayout.PAGE_END);
+
+    add(leftTextPanel, BorderLayout.LINE_START);
+    add(rightTextPanel, BorderLayout.CENTER);
+    add(tablePanel, BorderLayout.LINE_END);
+    add(bottomPanel, BorderLayout.PAGE_END);
+    setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+    Vector&lt;Component&gt; order = new Vector&lt;Component&gt;(7);
+    order.add(tf1);
+    order.add(tf2);
+    order.add(tf3);
+    order.add(tf4);
+    order.add(tf5);
+    order.add(tf6);
+    order.add(table);
+    newPolicy = new MyOwnFocusTraversalPolicy(order);
+}
+</pre></div>
+<p>To use a custom <code>FocusTraversalPolicy</code>, implement the following code on any focus cycle root.</p>
+<div class="codeblock"><pre>
+    MyOwnFocusTraversalPolicy newPolicy = new MyOwnFocusTraversalPolicy();
+    frame.setFocusTraversalPolicy(newPolicy);
+</pre></div>
+<p>You can remove the custom focus traversal policy by setting the <code>FocusTraversalPolicy</code> to <code>null</code>, which will restore the default policy.</p>
+<h2><a name="trackingFocus" id="trackingFocus">Tracking Focus Changes to Multiple Components</a></h2>
+<p>In some situations an application may need to track which component has the focus. This information might be used to dynamically update menus or perhaps a status bar. If you need to track the focus only on specific components, it may make sense to implement a 
+<a class="TutorialLink" target="_top" href="../events/focuslistener.html">focus event listener</a>.</p>
+<p>If a focus listener is not appropriate, you can instead register a <code>PropertyChangeListener</code> on the <code>KeyboardFocusManager</code>. The property change listener is notified of every change involving the focus, including changes to the focus owner, the focused window, and the default focus traversal policy. See the <a href="#properties">KeyboardFocusManager Properties</a> table for a complete list.</p>
+<p><a name="trackfocusdemo" id="trackfocusdemo">The</a> following example demonstrates tracking the focus owner by installing a property change listener on the keyboard focus manager.</p>
+<center><img src="../../figures/uiswing/misc/TrackFocusDemo.png" width="458" height="384" align="bottom" alt="The TrackFocusDemo example, which demonstrates tracking the focus owner." /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run TrackFocusDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/misc/index.html#TrackFocusDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/TrackFocusDemoProject/TrackFocusDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" align="bottom" alt="Launches the TrackFocusDemo application" /></a><br /></li>
+<li>If necessary, click the window to give it the focus.</li>
+<li>The window shows six images, each of which is displayed by a <code>Picture</code> component. The <code>Picture</code> that has the focus is indicated with a red border. A label at the bottom of the window describes the <code>Picture</code> that has the focus.</li>
+<li>Move the focus to another <code>Picture</code> by using Tab or Shift-Tab, or by clicking an image. Because a property change listener has been registered on the keyboard focus manager, the change in focus is detected and the label is updated appropriately.</li>
+</ol>
+<hr /></div>
+<p>You can view the demo&#39;s code in 
+<a class="SourceLink" target="_blank" href="../examples/misc/TrackFocusDemoProject/src/misc/TrackFocusDemo.java" onclick="showCode('../../displayCode.html', '../examples/misc/TrackFocusDemoProject/src/misc/TrackFocusDemo.java'); return false;"><code>TrackFocusDemo.java</code></a>. The custom component used for drawing the images can be found in 
+<a class="SourceLink" target="_blank" href="../examples/misc/TrackFocusDemoProject/src/misc/Picture.java" onclick="showCode('../../displayCode.html', '../examples/misc/TrackFocusDemoProject/src/misc/Picture.java'); return false;"><code>Picture.java</code></a>. Here is the code that defines and installs the property change listener:</p>
+<div class="codeblock"><pre>
+KeyboardFocusManager focusManager =
+    KeyboardFocusManager.getCurrentKeyboardFocusManager();
+focusManager.addPropertyChangeListener(
+    new PropertyChangeListener() {
+        public void propertyChange(PropertyChangeEvent e) {
+            String prop = e.getPropertyName();
+            if (("focusOwner".equals(prop)) &amp;&amp;
+                  ((e.getNewValue()) instanceof Picture)) {
+                Component comp = (Component)e.getNewValue();
+                String name = comp.getName();
+                Integer num = new Integer(name);
+                int index = num.intValue();
+                if (index &lt; 0 || index > comments.length) {
+                    index = 0;
+                }
+                info.setText(comments[index]);
+            }
+        }
+    }
+);
+</pre></div>
+<p>The custom component, <code>Picture</code>, is responsible for drawing the image. All six components are defined in this manner:</p>
+<div class="codeblock"><pre>
+pic1 = new Picture(createImageIcon("images/" +
+            mayaString + ".gif", mayaString).getImage());
+pic1.setName("1");
+</pre></div>
+<h2><a name="transferTiming" id="transferTiming">Timing Focus Transfers</a></h2>
+<p>Focus transfers are asynchronous. This quality can lead to some odd timing-related problems and assumptions, especially during automatic transfers of the focus. For example, imagine an application with a window containing a Start button, a Cancel button and a text field. The components are added in this order:</p>
+<ol>
+<li>Start button</li>
+<li>Text field</li>
+<li>Cancel button</li>
+</ol>
+<p>When the application is launched, the <code>LayoutFocusTraversalPolicy</code> determines the focus traversal policy ??? in this case, it is the order that the components were added to their container. In this example, the desired behavior is that the Start button has the initial focus, and when the Start button is clicked, it is disabled, and then the Cancel button receives the focus. The correct way to implement this behavior would be to add the components to the container in the desired order or to create a custom focus traversal policy. If, for some reason, that is not possible, then you can implement this behavior with the following code snippet:</p>
+<div class="codeblock"><pre>
+public void actionPerformed(ActionEvent e) {
+    //This works.
+    start.setEnabled(false);
+    cancel.requestFocusInWindow();
+}
+</pre></div>
+<p>As desired, the focus goes from the Start button to the Cancel button, rather than to the text field. But a different result would occur if the same methods were called in the opposite order as follows:</p>
+<div class="codeblock"><pre>
+public void actionPerformed(ActionEvent e) {
+    //This does not work.
+    cancel.requestFocusInWindow();
+    start.setEnabled(false);
+}
+</pre></div>
+<p>In this case, the focus is requested on the Cancel button before it has left the Start button. The call to the <code>requestFocusInWindow</code> method initiates the focus transfer, but it does not immediately move the focus to the Cancel button. When the Start button is disabled, the focus is transferred to the next component (so there is always a component with the focus) and, in this case, it would then move the focus to the text field, <em>not</em> to the Cancel button.</p>
+<p>There are several situations in which you need to make focus requests after all other changes that might affect the focus applies to:</p>
+<ul>
+<li>Hiding the focus owner.</li>
+<li>Making the focus owner non-focusable.</li>
+<li>Calling the <code>removeNotify</code> method on the focus owner.</li>
+<li>Doing any of the above operations to the container of the focus owner, or causing changes to the focus policy so that the container no longer accepts the component as the focus owner.</li>
+<li>Disposing of the top-level window that contains the focus owner.</li>
+</ul>
+<h3><a name="api" id="api">The Focus API</a></h3>
+<p>The following tables list the commonly used constructors and methods related to focus. The focus API falls into four categories:</p>
+<ul>
+<li><a href="#focusMethods">Useful Methods for Components</a></li>
+<li><a href="#focustraversal">Creating and Using a Custom FocusTraversalPolicy</a></li>
+<li><a href="#inputverificationapi">Input Verification API</a></li>
+<li><a href="#properties">KeyboardFocusManager Properties</a></li>
+</ul>
+<p>For more detailed information about the focus architecture, see the specification for the 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/doc-files/FocusSpec.html">Focus Subsystem</a>. You may also find 
+<a class="TutorialLink" target="_top" href="../events/focuslistener.html">How to Write a Focus Listener</a> useful.</p>
+<p style="text-align: center"><a name="focusMethods" id="focusMethods">Useful Methods for Components</a></p>
+<table border="1" summary="Component methods that support focus">
+<tr>
+<th id="h1" align="left">Method (in <code>Component</code>)</th>
+<th id="h2" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#isFocusOwner--">isFocusOwner()</a></td>
+<td headers="h2">Returns <code>true</code> if the component is the focus owner.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.html#setRequestFocusEnabled-boolean-">setRequestFocusEnabled(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.html#isRequestFocusEnabled--">isRequestFocusEnabled()</a><br />
+(<em>in <code>JComponent</code>)</em></td>
+<td headers="h2">Sets or checks on whether this component should get the focus. Setting the <code>setRequestFocusEnabled</code> to <code>false</code> typically prevents mouse clicks from giving the component the focus, while still allowing keyboard navigation to give the component the focus. This method applies only to components that receive mouse events. For example, you can use this method on a <code>JButton</code>, but not on a <code>JPanel</code>. If you write a custom component it is up to you to honor this property. This method is recommended over the <code>setFocusable</code> method and will allow your program to work better for users employing <a href="access.html">assistive technologies</a>.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setFocusable-boolean-">setFocusable(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#isFocusable--">isFocusable()</a></td>
+<td headers="h2">Sets or gets the focusable state of the component. A component must be focusable in order to gain the focus. When a component has been removed from the focus cycle with <code>setFocusable(false)</code>, it can no longer be navigated with the keyboard. The <code>setRequestFocusEnabled</code> method is recommended so that your program can be run by users employing <a href="access.html">assistive technologies</a>.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#requestFocusInWindow--">requestFocusInWindow()</a></td>
+<td headers="h2">Requests that this component should get the focus. The component&#39;s window must be the current focused window. For this request to be granted a subclass of <code>JComponent</code> must be visible, enabled, and focusable, and have an input map for this request to be granted. It should not be assumed that the component has the focus until it fires a <code>FOCUS_GAINED</code> event. This method is preferred to the <code>requestFocus</code> method, which is platform-dependent.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#setFocusTraversalKeys-int-java.util.Set-">setFocusTraversalKeys(int, Set)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#getFocusTraversalKeys-int-">getFocusTraversalKeys(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#areFocusTraversalKeysSet-int-">areFocusTraversalKeysSet(int)</a><br />
+(<em>in <code>java.awt.Container</code></em>)</td>
+<td headers="h2">Sets or gets the focus traversal keys for a particular direction or determines whether any focus traversal keys have been explicitly set on this container. If no focus traversal keys have been set, they are inherited from an ancestor or from the keyboard focus manager. Focus traversal keys can be set for the following directions: <code>KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS</code>, <code>KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS</code> <code>KeyboardFocusManager.UP_CYCLE_TRAVERSAL_KEYS</code>, or <code>KeyboardFocusManager.DOWN_CYCLE_TRAVERSAL_KEYS</code>. If you set the <code>UP_CYCLE_TRAVERSAL_KEYS</code> or the <code>DOWN_CYCLE_TRAVERSAL_KEYS</code>, you must also invoke 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/SortingFocusTraversalPolicy.html#setImplicitDownCycleTraversal-boolean-"><code>setImplicitDownCycleTraversal(false)</code></a> on the focus traversal policy.</td>
+</tr>
+</table>
+<p style="text-align: center"><a name="focustraversal" id="focustraversal">Creating and Using a Custom FocusTraversalPolicy</a></p>
+<table border="1" summary="Methods for creating and using a Custom focus traversal policy">
+<tr>
+<th id="h101" align="left">Class or Method</th>
+<th id="h102" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/LayoutFocusTraversalPolicy.html">LayoutFocusTraversalPolicy</a></td>
+<td headers="h102">The class that, by default, determines the focus traversal policy for Swing components.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/LayoutFocusTraversalPolicy.html#getComponentAfter-java.awt.Container-java.awt.Component-">getComponentAfter(Container, Component)</a></td>
+<td headers="h102">Given the component that is passed as input, returns the component that should next have the focus.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/LayoutFocusTraversalPolicy.html#getComponentBefore-java.awt.Container-java.awt.Component-">getComponentBefore(Container, Component)</a></td>
+<td headers="h102">Given the component that is passed as input, returns the component that should have the focus before this component. The method is used for backward tabbing.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/SortingFocusTraversalPolicy.html#getDefaultComponent-java.awt.Container-">getDefaultComponent(Container)</a><br />
+(<em>in <code>javax.swing.SortingFocusTraversalPolicy</code>)</em></td>
+<td headers="h102">Returns the component that should have the default focus.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/LayoutFocusTraversalPolicy.html#getFirstComponent-java.awt.Container-">getFirstComponent(Container)</a></td>
+<td headers="h102">Returns the first component in the traversal cycle.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/InternalFrameFocusTraversalPolicy.html#getInitialComponent-java.awt.Container-">getInitialComponent(Container)</a></td>
+<td headers="h102">Returns the component that should receive the focus when a window is made visible for the first time.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/LayoutFocusTraversalPolicy.html#getLastComponent-java.awt.Container-">getLastComponent(Container)</a></td>
+<td headers="h102">Returns the last component in the traversal cycle.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#setFocusTraversalPolicy-java.awt.FocusTraversalPolicy-">setFocusTraversalPolicy(FocusTraversalPolicy)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#getFocusTraversalPolicy--">getFocusTraversalPolicy(FocusTraversalPolicy)</a><br />
+(<em>in <code>java.awt.Container</code></em>)</td>
+<td headers="h102">Sets or gets the focus traversal policy or determines if a policy has been set. Note that setting a focus traversal policy on a container that is not the focus cycle root may have no apparent effect. A value of <code>null</code> means that a policy has not been explicitly set. If no policy has been set, a policy is inherited from the parent focus cycle root.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#isFocusCycleRoot--">isFocusCycleRoot()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#setFocusCycleRoot-boolean-">setFocusCycleRoot(boolean)</a><br />
+(<em>in <code>java.awt.Container</code></em>)</td>
+<td headers="h102">Checks or sets whether a container is the root of a focus traversal cycle.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#isFocusTraversalPolicyProvider--">isFocusTraversalPolicyProvider()</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#setFocusTraversalPolicyProvider-boolean-">setFocusTraversalPolicyProvider(boolean)</a><br />
+(<em>in <code>java.awt.Container</code></em>)</td>
+<td headers="h102">Checks or sets whether a container will be used to provide focus traversal policy.</td>
+</tr>
+</table>
+<p style="text-align: center"><a name="inputverificationapi" id="inputverificationapi">Input Verification API</a></p>
+<table border="1" summary="methods that support Input Verification">
+<tr>
+<th id="h201" align="left">Class or Method</th>
+<th id="h202" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/InputVerifier.html">InputVerifier</a></td>
+<td headers="h202">Abstract class that allows input validation via the focus mechanism. When an attempt is made to shift the focus from a component containing an input verifier, the focus is not relinquished until the verifier is satisfied.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/InputVerifier.html#shouldYieldFocus-javax.swing.JComponent-">shouldYieldFocus(JComponent)</a><br />
+<em>(in <code>InputVerifier</code>)</em></td>
+<td headers="h202">When a component has an input verifier, this method is called by the system to determine whether the focus can leave this component. This method may cause side effects, such as bringing up a dialog-box. If this method returns <code>false</code>, the focus remains on the component passed in to the method.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/InputVerifier.html#verify-javax.swing.JComponent-">verify(JComponent)</a><br />
+<em>(in <code>InputVerifier</code>)</em></td>
+<td headers="h202">You need to override this method to check that the component&#39;s input is valid. It should return <code>true</code> if valid, otherwise return <code>false</code>. This method should not cause any side effects, such as bringing up a dialog-box. This method is called by <code>shouldYieldFocus</code>.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.html#setInputVerifier-javax.swing.InputVerifier-">setInputVerifier(inputVerifier)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.html#getInputVerifier--">getInputVerifier()</a><br />
+<em>(in <code>JComponent</code>)</em></td>
+<td headers="h202">Sets or gets the input verifier assigned to the component. By default, components have no input verifier.</td>
+</tr>
+<tr>
+<td headers="h201">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.html#setVerifyInputWhenFocusTarget-boolean-">setVerifyInputWhenFocusTarget(boolean)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.html#getVerifyInputWhenFocusTarget--">getVerifyInputWhenFocusTarget()</a><br />
+<em>(in <code>JComponent</code>)</em></td>
+<td headers="h202">Sets or gets whether the input verifier for the current focus owner is called before this component requests the focus. The default is <code>true</code>. This method should be set to <code>false</code> for components, such as a Cancel button or a scroll bar, that should receive the focus even if input is invalid.</td>
+</tr>
+</table>
+<p style="text-align: center"><a name="properties" id="properties">KeyboardFocusManager Properties</a></p>
+<p>This table defines the bound properties for 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/KeyboardFocusManager.html"><code>KeyboardFocusManager</code></a>. A listener can be registered for these properties by calling 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/KeyboardFocusManager.html#addPropertyChangeListener-java.beans.PropertyChangeListener-"><code>addPropertyChangeListener</code></a>.</p>
+<table border="1" summary="Methods that support KeyboardFocusManager properties">
+<tr>
+<th id="h301" align="left">Property</th>
+<th id="h302" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h301">focusOwner</td>
+<td headers="h302">The component that currently receives key events.</td>
+</tr>
+<tr>
+<td headers="h301">permanentFocusOwner</td>
+<td headers="h302">The component that most recently received a permanent <code>FOCUS_GAINED</code> event. Typically the same as <code>focusOwner</code>, unless a temporary focus change is currently in effect.</td>
+</tr>
+<tr>
+<td headers="h301">focusedWindow</td>
+<td headers="h302">The window that is or that contains the focus owner.</td>
+</tr>
+<tr>
+<td headers="h301">activeWindow</td>
+<td headers="h302">The component must always be either a <code>Frame</code> or a <code>Dialog</code>. The active window is either the focused window, or the first frame or dialog-box that is an owner of the focused window.</td>
+</tr>
+<tr>
+<td headers="h301">defaultFocusTraversalPolicy</td>
+<td headers="h302">The default focus traversal policy, which can be set by the <code>setFocusTraversalPolicy</code> method of the <code>Container</code> class.</td>
+</tr>
+<tr>
+<td headers="h301">forwardDefaultFocusTraversalKeys</td>
+<td headers="h302">The set of default focus keys for a forward traversal. For multi-line text components, these keys default to Control-Tab. For all other components, these keys default to Tab and Control-Tab.</td>
+</tr>
+<tr>
+<td headers="h301">backwardDefaultFocusTraversalKeys</td>
+<td headers="h302">The set of default focus keys for a backward traversal. For multi-line text components these keys default to Control-Shift-Tab. For all other components these keys default to Shift-Tab and Control-Shift-Tab.</td>
+</tr>
+<tr>
+<td headers="h301">upCycleDefaultFocusTraversalKeys</td>
+<td headers="h302">The set of default focus keys for an up cycle. These keys are null, by default, for Swing components. If you set these keys on the <code>KeyboardFocusManager</code>, or if you set the <code>downCycleFocusTraversalKeys</code> on a focus cycle root, you must also invoke the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/SortingFocusTraversalPolicy.html#setImplicitDownCycleTraversal-boolean-"><code>setImplicitDownCycleTraversal(false)</code></a> method on the focus traversal policy.</td>
+</tr>
+<tr>
+<td headers="h301">downCycleDefaultFocusTraversalKeys</td>
+<td headers="h302">The set of default focus keys for a down cycle. These keys are null, by default, for Swing components. If you set these keys on the <code>KeyboardFocusManager</code>, or if you set the <code>upCycleFocusTraversalKeys</code> on a focus cycle root, you must also invoke the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/SortingFocusTraversalPolicy.html#setImplicitDownCycleTraversal-boolean-"><code>setImplicitDownCycleTraversal(false)</code></a> method on the focus traversal policy.</td>
+</tr>
+<tr>
+<td headers="h301">currentFocusCycleRoot</td>
+<td headers="h302">The container that is the current focus cycle root.</td>
+</tr>
+</table>
+<h3><a name="eg" id="eg">Examples that Use Focus</a></h3>
+<p>The following table lists examples that manipulate the focus:</p>
+<table summary="list of examples that manipulate the focus">
+<tr valign="top">
+<th id="h401" align="left">Example</th>
+<th id="h402" align="left">Where Described</th>
+<th id="h403" align="left">Notes</th>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/misc/index.html#FocusConceptsDemo"><code>FocusConceptsDemo</code></a></td>
+<td headers="h402">This section</td>
+<td headers="h403">Demonstrates basic default focus behavior.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/misc/index.html#FocusTraversalDemo"><code>FocusTraversalDemo</code></a></td>
+<td headers="h402">This section</td>
+<td headers="h403">Demonstrates how to override the default focus order.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/misc/index.html#TrackFocusDemo"><code>TrackFocusDemo</code></a></td>
+<td headers="h402">This section</td>
+<td headers="h403">Demonstrates how to use a <code>PropertyChangeListener</code> to track the focus owner. Also implements a custom focusable component.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/misc/index.html#InputVerificationDemo"><code>InputVerificationDemo</code></a></td>
+<td headers="h402">This section</td>
+<td headers="h403">Demonstrates how to implement an <code>InputVerifier</code> to validate user input.</td>
+</tr>
+<tr valign="top">
+<td headers="h401"><a href="../examples/misc/index.html#InputVerificationDialogDemo"><code>InputVerificationDialogDemo</code></a></td>
+<td headers="h402">This section</td>
+<td headers="h403">Demonstrates how to implement an <code>InputVerifier</code> that puts up a dialog-box when user input is invalid.</td>
+</tr>
+<tr valign="top">
+<td headers="h401">
+<a class="TutorialLink" target="_top" href="../examples/events/index.html#FocusEventDemo"><code>FocusEventDemo</code></a></td>
+<td headers="h402">
+<a class="TutorialLink" target="_top" href="../events/focuslistener.html">How to Write a Focus Listener</a></td>
+<td headers="h403">Reports all focus events that occur on several components to demonstrate the circumstances under which focus events are fired.</td>
+</tr>
+</table>
+<p>
+</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="access.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="keybinding.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Support Assistive Technologies
+        <br /><b>Next page:</b> How to Use Key Bindings
+    </div>
+</body>
+</html> 

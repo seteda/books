@@ -1,0 +1,56 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="overview/index.html">Overview of Networking</a>
+<ul>
+<li class="tocli"><a href="overview/alreadyknow.html">What You May Already Know About Networking in Java</a></li>
+<li class="tocli"><a href="overview/networking.html">Networking Basics</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="urls/index.html">Working with URLs</a>
+<ul>
+<li class="tocli"><a href="urls/definition.html">What Is a URL?</a></li>
+<li class="tocli"><a href="urls/creatingUrls.html">Creating a URL</a></li>
+<li class="tocli"><a href="urls/urlInfo.html">Parsing a URL</a></li>
+<li class="tocli"><a href="urls/readingURL.html">Reading Directly from a URL</a></li>
+<li class="tocli"><a href="urls/connecting.html">Connecting to a URL</a></li>
+<li class="tocli"><a href="urls/readingWriting.html">Reading from and Writing to a URLConnection</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="sockets/index.html">All About Sockets</a>
+<ul>
+<li class="tocli"><a href="sockets/definition.html">What Is a Socket?</a></li>
+<li class="tocli"><a href="sockets/readingWriting.html">Reading from and Writing to a Socket</a></li>
+<li class="tocli"><a href="sockets/clientServer.html">Writing the Server Side of a Socket</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="datagrams/index.html">All About Datagrams</a>
+<ul>
+<li class="tocli"><a href="datagrams/definition.html">What Is a Datagram?</a></li>
+<li class="tocli"><a href="datagrams/clientServer.html">Writing a Datagram Client and Server</a></li>
+<li class="tocli"><a href="datagrams/broadcasting.html">Broadcasting to Multiple Recipients</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="nifs/index.html">Programmatic Access to Network Parameters</a>
+<ul>
+<li class="tocli"><a href="nifs/definition.html">What Is a Network Interface?</a></li>
+<li class="tocli"><a href="nifs/retrieving.html">Retrieving Network Interfaces</a></li>
+<li class="tocli"><a href="nifs/listing.html">Listing Network Interface Addresses</a></li>
+<li class="tocli"><a href="nifs/parameters.html">Network Interface Parameters</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="cookies/index.html">Working With Cookies</a>
+<ul>
+<li class="tocli"><a href="cookies/definition.html">HTTP State Management With Cookies</a></li>
+<li class="tocli"><a href="cookies/cookiehandler.html">CookieHandler Callback Mechanism</a></li>
+<li class="tocli"><a href="cookies/cookiemanager.html">Default CookieManager</a></li>
+<li class="tocli"><a href="cookies/custom.html">Custom CookieManager</a>
+</li>
+</ul>
+</li>
+</ul>

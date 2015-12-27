@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>System Properties (The Java&trade; Tutorials &gt;        
+            Essential Classes &gt; The Platform Environment)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Java tutorial describes exceptions, basic input/output, concurrency, regular expressions, and the platform environment" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java exception, java input output, java threads, java regex, regular expressions, path, classpath, environment variable" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">The Platform Environment</a></div>
+<div class="linkAHEAD"><a href="config.html">Configuration Utilities</a></div>
+<div class="linkBHEAD"><a href="properties.html">Properties</a></div>
+<div class="linkBHEAD"><a href="cmdLineArgs.html">Command-Line Arguments</a></div>
+<div class="linkBHEAD"><a href="env.html">Environment Variables</a></div>
+<div class="linkBHEAD"><a href="other.html">Other Configuration Utilities</a></div>
+<div class="linkAHEAD"><a href="system.html">System Utilities</a></div>
+<div class="linkBHEAD"><a href="cl.html">Command-Line I/O Objects</a></div>
+<div class="nolinkBHEAD">System Properties</div>
+<div class="linkBHEAD"><a href="security.html">The Security Manager</a></div>
+<div class="linkBHEAD"><a href="sysmisc.html">Miscellaneous Methods in System</a></div>
+<div class="linkAHEAD"><a href="paths.html">PATH and CLASSPATH</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Essential Classes
+        <br /><b>Lesson:</b> The Platform Environment
+        <br /><b>Section:</b> System Utilities
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Essential Classes</a>
+                &gt;
+                <a href="index.html" target="_top">The Platform Environment</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="cl.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="security.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>System Properties</h1></div>
+            <div id="PageContent">
+
+<p>In <a href="properties.html">Properties</a>, we examined the way an application can use <code>Properties</code> objects to maintain its configuration. The Java platform itself uses a <code>Properties</code> object to maintain its own configuration. The <code>System</code> class maintains a <code>Properties</code> object that describes the configuration of the current working environment. System properties include information about the current user, the current version of the Java runtime, and the character used to separate components of a file path name.</p>
+<p>The following table describes some of the most important system properties</p>
+<table summary="Important system properties" border="1" cellpadding="2" width="80%" align="center">
+<tr>
+<th id="h1">Key</th>
+<th id="h2">Meaning</th>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;file.separator&quot;</code></td>
+<td headers="h2">Character that separates components of a file path. This is &quot;<code>/</code>&quot; on UNIX and &quot;<code>\</code>&quot; on Windows.</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;java.class.path&quot;</code></td>
+<td headers="h2">Path used to find directories and JAR archives containing class files. Elements of the class path are separated by a platform-specific character specified in the <code>path.separator</code> property.</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;java.home&quot;</code></td>
+<td headers="h2">Installation directory for Java Runtime Environment (JRE)</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;java.vendor&quot;</code></td>
+<td headers="h2">JRE vendor name</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;java.vendor.url&quot;</code></td>
+<td headers="h2">JRE vendor URL</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;java.version&quot;</code></td>
+<td headers="h2">JRE version number</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;line.separator&quot;</code></td>
+<td headers="h2">Sequence used by operating system to separate lines in text files</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;os.arch&quot;</code></td>
+<td headers="h2">Operating system architecture</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;os.name&quot;</code></td>
+<td headers="h2">Operating system name</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;os.version&quot;</code></td>
+<td headers="h2">Operating system version</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;path.separator&quot;</code></td>
+<td headers="h2">Path separator character used in <code>java.class.path</code></td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;user.dir&quot;</code></td>
+<td headers="h2">User working directory</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;user.home&quot;</code></td>
+<td headers="h2">User home directory</td>
+</tr>
+<tr>
+<td headers="h1"><code>&quot;user.name&quot;</code></td>
+<td headers="h2">User account name</td>
+</tr>
+</table>
+<div class="note"><hr /><strong>Security consideration:</strong>&nbsp;Access to system properties can be restricted by the <a href="security.html">Security Manager</a>. This is most often an issue in applets, which are prevented from reading some system properties, and from writing <i>any</i> system properties. For more on accessing system properties in applets, refer to 
+<a class="TutorialLink" target="_top" href="../../deployment/doingMoreWithRIA/properties.html">System Properties</a> in the 
+<a class="TutorialLink" target="_top" href="../../deployment/doingMoreWithRIA/index.html">Doing More With Java Rich Internet Applications</a> lesson.
+<hr /></div>
+<h2>Reading System Properties</h2>
+<p>The <code>System</code> class has two methods used to read system properties: <code>getProperty</code> and <code>getProperties</code>.</p>
+<p>The <code>System</code> class has two different versions of <code>getProperty</code>. Both retrieve the value of the property named in the argument list. The simpler of the two <code>getProperty</code> methods takes a single argument, a property key For example, to get the value of <code>path.separator</code>, use the following statement:</p>
+<div class="codeblock"><pre>
+System.getProperty("path.separator");
+</pre></div>
+<p>The <code>getProperty</code> method returns a string containing the value of the property. If the property does not exist, this version of <code>getProperty</code> returns null.</p>
+<p>The other version of <code>getProperty</code> requires two <code>String</code> arguments: the first argument is the key to look up and the second argument is a default value to return if the key cannot be found or if it has no value. For example, the following invocation of <code>getProperty</code> looks up the <code>System</code> property called <code>subliminal.message</code>. This is not a valid system property, so instead of returning null, this method returns the default value provided as a second argument: &quot;<code>Buy StayPuft Marshmallows!</code>&quot;</p>
+<div class="codeblock"><pre>
+System.getProperty("subliminal.message", "Buy StayPuft Marshmallows!");
+</pre></div>
+<p>The last method provided by the <code>System</code> class to access property values is the <code>getProperties</code> method, which returns a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html"><code>Properties</code></a> object. This object contains a complete set of system property definitions.</p>
+<h2>Writing System Properties</h2>
+<p>To modify the existing set of system properties, use <code>System.setProperties</code>. This method takes a <code>Properties</code> object that has been initialized to contain the properties to be set. This method replaces the entire set of system properties with the new set represented by the <code>Properties</code> object.</p>
+<div class="note"><hr /><strong>Warning:</strong>&nbsp;Changing system properties is potentially dangerous and should be done with discretion. Many system properties are not reread after start-up and are there for informational purposes. Changing some properties may have unexpected side-effects.
+<hr /></div>
+<p>The next example, 
+<a class="SourceLink" target="_blank" href="examples/PropertiesTest.java" onclick="showCode('../../displayCode.html', 'examples/PropertiesTest.java'); return false;"><code>PropertiesTest</code></a>, creates a <code>Properties</code> object and initializes it from
+<a class="SourceLink" target="_blank" href="examples/myProperties.txt" onclick="showCode('../../displayCode.html', 'examples/myProperties.txt'); return false;"><code>myProperties.txt</code></a>
+.</p>
+<div class="codeblock"><pre>
+subliminal.message=Buy StayPuft Marshmallows!
+</pre></div>
+<p><code>PropertiesTest</code> then uses <code>System.setProperties</code> to install the new <code>Properties</code> objects as the current set of system properties.</p>
+<div class="codeblock"><pre>
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+public class PropertiesTest {
+    public static void main(String[] args)
+        throws Exception {
+
+        // set up new properties object
+        // from file &quot;myProperties.txt&quot;
+        FileInputStream propFile =
+            new FileInputStream( &quot;myProperties.txt&quot;);
+        Properties p =
+            new Properties(System.getProperties());
+        p.load(propFile);
+
+        // set the system properties
+        System.setProperties(p);
+        // display new properties
+        System.getProperties().list(System.out);
+    }
+}
+</pre></div>
+<p>Note how <code>PropertiesTest</code> creates the <code>Properties</code> object, <code>p</code>, which is used as the argument to <code>setProperties</code>:</p>
+<div class="codeblock"><pre>
+Properties p = new Properties(System.getProperties());
+</pre></div>
+<p>This statement initializes the new properties object, <code>p</code>, with the current set of system properties, which in the case of this small application, is the set of properties initialized by the runtime system. Then the application loads additional properties into <code>p</code> from the file <code>myProperties.txt</code> and sets the system properties to <code>p</code>. This has the effect of adding the properties listed in <code>myProperties.txt</code> to the set of properties created by the runtime system at startup. Note that an application can create <code>p</code> without any default <code>Properties</code> object, like this:</p>
+<div class="codeblock"><pre>
+Properties p = new Properties();
+</pre></div>
+<p>Also note that the value of system properties can be overwritten! For example, if <code>myProperties.txt</code> contains the following line, the <code>java.vendor</code> system property will be overwritten:</p>
+<div class="codeblock"><pre>
+java.vendor=Acme Software Company
+</pre></div>
+<p>In general, be careful not to overwrite system properties.</p>
+<p>The <code>setProperties</code> method changes the set of system properties for the current running application. These changes are not persistent. That is, changing the system properties within an application will not affect future invocations of the Java interpreter for this or any other application. The runtime system re-initializes the system properties each time its starts up. If changes to system properties are to be persistent, then the application must write the values to some file before exiting and read them in again upon startup.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="cl.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="security.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Command-Line I/O Objects
+        <br /><b>Next page:</b> The Security Manager
+    </div>
+</body>
+</html> 

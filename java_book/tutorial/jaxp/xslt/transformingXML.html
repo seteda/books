@@ -1,0 +1,1433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Transforming XML Data with XSLT (The Java&trade; Tutorials &gt;        
+            Java API for XML Processing (JAXP) &gt; Extensible Stylesheet Language Transformations)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JAXP Java tutorial describes Java API for XML Processing (jaxp), XSLT, SAX, and related XML topics" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jaxp, xml, xslt, sax" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Extensible Stylesheet Language Transformations</a></div>
+<div class="linkAHEAD"><a href="intro.html">Introducing XSL, XSLT, and XPath</a></div>
+<div class="linkAHEAD"><a href="xpath.html">How XPath Works</a></div>
+<div class="linkAHEAD"><a href="writingDom.html">Writing Out a DOM as an XML File</a></div>
+<div class="linkAHEAD"><a href="generatingXML.html">Generating XML from an Arbitrary Data Structure</a></div>
+<div class="nolinkAHEAD">Transforming XML Data with XSLT</div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java API for XML Processing (JAXP)
+        <br /><b>Lesson:</b> Extensible Stylesheet Language Transformations
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java API for XML Processing (JAXP)</a>
+                &gt;
+                <a href="index.html" target="_top">Extensible Stylesheet Language Transformations</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="generatingXML.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../stax/index.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Transforming XML Data with XSLT</h1></div>
+            <div id="PageContent">
+
+<!-- Transforming XML Data with XSLT -->
+<p>The Extensible Stylesheet Language Transformations (XSLT) APIs can be used for many purposes. For example, with a sufficiently intelligent stylesheet, you could generate PDF or PostScript output from the XML data. But generally, XSLT is used to generate formatted HTML output, or to create an alternative XML representation of the data.</p>
+<p>In this section, an XSLT transform is used to translate XML input data to HTML output.</p>
+<hr />
+<p><b>Note -</b> The 
+<a class="OutsideLink" target="_blank" href="http://www.w3.org/TR/xslt20/">XSLT specification</a> is large and complex, so this tutorial can only scratch the surface. It will give you a little background so you can understand simple XSLT processing tasks, but it does not examine in detail how to write an XSLT transform, rather concentrating on how to use JAXP&#39;s XSLT transform API. For a more thorough grounding in XSLT, consult a good reference manual, such as Michael Kay&#39;s <i>XSLT 2.0 and XPath 2.0: Programmer&#39;s Reference</i> (Wrox, 2008).</p>
+<hr />
+<p><a name="ggyvk" id="ggyvk"></a></p>
+<h2>Defining a Simple Document Type</h2>
+<p>Start by defining a very simple document type that can be used for writing articles. Our <tt>article</tt> documents will contain these structure tags:</p>
+<ul>
+<li>
+<p><tt>&lt;TITLE&gt;</tt>: The title of the article</p>
+</li>
+<li>
+<p><tt>&lt;SECT&gt;</tt>: A section, consisting of a heading and a body</p>
+</li>
+<li>
+<p><tt>&lt;PARA&gt;</tt>: A paragraph</p>
+</li>
+<li>
+<p><tt>&lt;LIST&gt;</tt>: A list</p>
+</li>
+<li>
+<p><tt>&lt;ITEM&gt;</tt>: An entry in a list</p>
+</li>
+<li>
+<p><tt>&lt;NOTE&gt;</tt>: An aside, that is offset from the main text</p>
+</li>
+</ul>
+<p>The slightly unusual aspect of this structure is that we will not create a separate element tag for a section heading. Such elements are commonly created to distinguish the heading text (and any tags it contains) from the body of the section (that is, any structure elements underneath the heading).</p>
+<p>Instead, we will allow the heading to merge seamlessly into the body of a section. That arrangement adds some complexity to the stylesheet, but it will give us a chance to explore XSLT&#39;s template-selection mechanisms. It also matches our intuitive expectations about document structure, where the text of a heading is followed directly by structure elements, an arrangement that can simplify outline-oriented editing.</p>
+<hr />
+<p><b>Note -</b> This kind of structure is not easily validated, because XML&#39;s mixed-content model allows text anywhere in a section, whereas we want to confine text and inline elements so that they appear only before the first structure element in the body of the section. The assertion-based validator can do it, but most other schema mechanisms cannot. So we will dispense with defining a DTD for the document type.</p>
+<hr />
+<p>In this structure, sections can be nested. The depth of the nesting will determine what kind of HTML formatting to use for the section heading (for example, <tt>h1</tt> or <tt>h2</tt>). Using a plain <tt>SECT</tt> tag (instead of numbered sections) is also useful with outline-oriented editing, because it lets you move sections around at will without having to worry about changing the numbering for any of the affected sections.</p>
+<p>For lists, we will use a type attribute to specify whether the list entries are unordered (bulleted), alpha (enumerated with lowercase letters), ALPHA (enumerated with uppercase letters), or numbered.</p>
+<p>We will also allow for some inline tags that change the appearance of the text.</p>
+<ul>
+<li>
+<p><tt>&lt;B&gt;</tt>: Bold</p>
+</li>
+<li>
+<p><tt>&lt;I&gt;</tt>: Italics</p>
+</li>
+<li>
+<p><tt>&lt;U&gt;</tt>: Underline</p>
+</li>
+<li>
+<p><tt>&lt;DEF&gt;</tt>: Definition</p>
+</li>
+<li>
+<p><tt>&lt;LINK&gt;</tt>: Link to a URL</p>
+</li>
+</ul>
+<hr />
+<p><b>Note -</b> An inline tag does not generate a line break, so a style change caused by an inline tag does not affect the flow of text on the page (although it will affect the appearance of that text). A structure tag, on the other hand, demarcates a new segment of text, so at a minimum it always generates a line break in addition to other format changes.</p>
+<hr />
+<p>The <tt>&lt;DEF&gt;</tt> tag will be used for terms that are defined in the text. Such terms will be displayed in italics, the way they ordinarily are in a document. But using a special tag in the XML will allow an index program to find such definitions and add them to an index, along with keywords in headings. In the preceding Note, for example, the definitions of inline tags and structure tags could have been marked with <tt>&lt;DEF&gt;</tt> tags for future indexing.</p>
+<p>Finally, the <tt>LINK</tt> tag serves two purposes. First, it will let us create a link to a URL without having to put the URL in twice; so we can code <tt>&lt;link&gt;http//...&lt;/link&gt;</tt> instead of <tt>&lt;a href=&quot;http//...&quot;&gt;http//...&lt;/a&gt;</tt>. Of course, we will also want to allow a form that looks like <tt>&lt;link target=&quot;...&quot;&gt;...name...&lt;/link&gt;</tt>. That leads to the second reason for the <tt>&lt;link&gt;</tt> tag. It will give us an opportunity to play with conditional expressions in XSLT.</p>
+<hr />
+<p><b>Note -</b> Although the article structure is exceedingly simple (consisting of only eleven tags), it raises enough interesting problems to give us a good view of XSLT&#39;s basic capabilities. But we will still leave large areas of the specification untouched. In <a href="#ggyut">What Else Can XSLT Do?</a>, we will point out the major features we skipped.</p>
+<hr />
+<p><a name="gghmv" id="gghmv"></a></p>
+<h2>Creating a Test Document</h2>
+<p>Here, you will create a simple test document using nested <tt>&lt;SECT&gt;</tt> elements, a few &lt;PARA&gt; elements, a <tt>&lt;NOTE&gt;</tt> element, a <tt>&lt;LINK&gt;</tt>, and a <tt>&lt;LIST type=&quot;unordered&quot;&gt;</tt>. The idea is to create a document with one of everything so that we can explore the more interesting translation mechanisms.</p>
+<hr />
+<!--
+<p><b>Note -</b> The code discussed in this section is in <tt>article1.xml</tt>, which is found in the <tt>xslt/data</tt> directory after you unzip <a href="../examples/xslt_samples.zip">XSLT examples</a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</p>
+-->
+<p><b>Note -</b> The code discussed in this section is in <tt>article1.xml</tt>, which is found in the <tt>xslt/data</tt> directory after you unzip
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>XSLT examples</code></a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</p>
+<hr />
+<p>To make the test document, create a file called <tt>article.xml</tt> and enter the following XML data.</p>
+<div class="codeblock"><pre>
+&lt;?xml version="1.0"?>
+&lt;ARTICLE>
+   &lt;TITLE>A Sample Article&lt;/TITLE>
+   &lt;SECT>The First Major Section
+      &lt;PARA>This section will introduce a subsection.&lt;/PARA>
+      &lt;SECT>The Subsection Heading
+         &lt;PARA>This is the text of the subsection.
+         &lt;/PARA>
+      &lt;/SECT>
+   &lt;/SECT>
+&lt;/ARTICLE>
+</pre></div>
+<p>Note that in the XML file, the subsection is totally contained within the major section. (In HTML, on the other hand, headings do not contain the body of a section). The result is an outline structure that is harder to edit in plain text form, like this, but is much easier to edit with an outline-oriented editor.</p>
+<p>Someday, given a tree-oriented XML editor that understands inline tags such as <tt>&lt;B&gt;</tt> and <tt>&lt;I&gt;</tt>, it should be possible to edit an article of this kind in outline form, without requiring a complicated stylesheet. (Such an editor would allow the writer to focus on the structure of the article, leaving layout until much later in the process). In such an editor, the article fragment would look something like this:</p>
+<div class="codeblock"><pre>
+&lt;ARTICLE> 
+ &lt;TITLE>A Sample Article 
+  &lt;SECT>The First Major Section 
+   &lt;PARA>This section will 
+            introduce a subsection.
+    &lt;SECT>The Subheading 
+     &lt;PARA>This is the text of the subsection. 
+         Note that ...
+</pre></div>
+<hr />
+<p><b>Note -</b> At the moment, tree-structured editors exist, but they treat inline tags such as <tt>&lt;B&gt;</tt> and <tt>&lt;I&gt;</tt> in the same way that they treat structure tags, and that can make the &quot;outline&quot; a bit difficult to read.</p>
+<hr />
+<p><a name="gghnb" id="gghnb"></a></p>
+<h2>Writing an XSLT Transform</h2>
+<p>Now it is time to begin writing an XSLT transform that will convert the XML article and render it in HTML.</p>
+<hr />
+<!--
+<p><b>Note -</b> The code discussed in this section is in <tt>article1a.xsl</tt>, which is found in the <tt>xslt/data</tt> directory after you unzip <a href="../examples/xslt_samples.zip">XSLT examples</a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</p>
+-->
+<p><b>Note -</b> The code discussed in this section is in <tt>article1a.xsl</tt>, which is found in the <tt>xslt/data</tt> directory after you unzip
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>XSLT examples</code></a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</p>
+<hr />
+<p>Start by creating a normal XML document:</p>
+<div class="codeblock"><pre>
+&lt;?xml version="1.0" encoding="ISO-8859-1"?>
+</pre></div>
+<p>Then add the following highlighted lines to create an XSL stylesheet:</p>
+<div class="codeblock"><pre>
+&lt;?xml version="1.0" encoding="ISO-8859-1"?>
+<b>&lt;xsl:stylesheet </b>
+<b> xmlns:xsl=
+    "http://www.w3.org/1999/XSL/Transform" </b>
+<b> version="1.0"</b>
+<b> ></b>
+<b></b>
+<b>&lt;/xsl:stylesheet></b>
+</pre></div>
+<p>Now set it up to produce HTML-compatible output.</p>
+<div class="codeblock"><pre>
+&lt;xsl:stylesheet 
+[...]
+
+   >
+<b>&lt;xsl:output method="html"/></b>
+
+[...]
+
+&lt;/xsl:stylesheet>
+</pre></div>
+<p>We will get into the detailed reasons for that entry later in this section. For now, note that if you want to output anything other than well-formed XML, then you will need an <tt>&lt;xsl:output&gt;</tt> tag like the one shown, specifying either <tt>text</tt> or <tt>html</tt>. (The default value is <tt>xml</tt>).</p>
+<hr />
+<p><b>Note -</b> When you specify XML output, you can add the indent attribute to produce nicely indented XML output. The specification looks like this: <tt>&lt;xsl:output method=&quot;xml&quot; indent=&quot;yes&quot;/&gt;</tt>.</p>
+<hr />
+<p><a name="ggyvc" id="ggyvc"></a></p>
+<h2>Processing the Basic Structure Elements</h2>
+<p>You will start filling in the stylesheet by processing the elements that go into creating a table of contents: the root element, the title element, and headings. You will also process the <tt>PARA</tt> element defined in the test document.</p>
+<hr />
+<p><b>Note -</b> If on first reading you skipped the section that discusses the XPath addressing mechanisms, 
+<a class="TutorialLink" target="_top" href="xpath.html">How XPath Works</a>, now is a good time to go back and review that section.</p>
+<hr />
+<p>Begin by adding the main instruction that processes the root element:</p>
+<div class="codeblock"><pre>
+<b> &lt;xsl:template match="/"></b>
+      &lt;html>&lt;body>
+         <b>&lt;xsl:apply-templates/></b>
+      &lt;/body>&lt;/html>
+   <b>&lt;/xsl:template></b>
+
+&lt;/xsl:stylesheet>
+</pre></div>
+<p>The new XSL commands are shown in bold. (Note that they are defined in the <tt>xsl</tt> namespace). The instruction <tt>&lt;xsl:apply-templates&gt;</tt> processes the children of the current node. In this case, the current node is the root node.</p>
+<p>Despite its simplicity, this example illustrates a number of important ideas, so it is worth understanding thoroughly. The first concept is that a stylesheet contains a number of templates, defined with the <tt>&lt;xsl:template&gt;</tt> tag. Each template contains a match attribute, which uses the XPath addressing mechanisms described in 
+<a class="TutorialLink" target="_top" href="xpath.html">How XPath Works</a> to select the elements that the template will be applied to.</p>
+<p>Within the template, tags that do not start with the <tt>xsl: namespace</tt> prefix are simply copied. The newlines and whitespace that follow them are also copied, and that helps to make the resulting output readable.</p>
+<hr />
+<p><b>Note -</b> When a newline is not present, whitespace is generally ignored. To include whitespace in the output in such cases, or to include other text, you can use the <tt>&lt;xsl:text&gt;</tt> tag. Basically, an XSLT stylesheet expects to process tags. So everything it sees needs to be either an <tt>&lt;xsl:..&gt;</tt> tag, some other tag, or whitespace.</p>
+<hr />
+<p>In this case, the non-XSL tags are HTML tags. So when the root tag is matched, XSLT outputs the HTML start tags, processes any templates that apply to children of the root, and then outputs the HTML end tags.</p>
+<p><a name="ggyxi" id="ggyxi"></a></p>
+<h2>Process the <tt>&lt;TITLE&gt;</tt> Element</h2>
+<p>Next, add a template to process the article title:</p>
+<div class="codeblock"><pre>
+<b> &lt;xsl:template match="/ARTICLE/TITLE"></b>
+<b> &lt;h1 align="center"> 
+    &lt;xsl:apply-templates/> &lt;/h1></b>
+<b> &lt;/xsl:template></b>
+
+&lt;/xsl:stylesheet>
+</pre></div>
+<p>In this case, you specify a complete path to the TITLE element and output some HTML to make the text of the title into a large, centered heading. In this case, the <tt>apply-templates</tt> tag ensures that if the title contains any inline tags such as italics, links, or underlining, they also will be processed.</p>
+<p>More importantly, the <tt>apply-templates</tt> instruction causes the text of the title to be processed. Like the DOM data model, the XSLT data model is based on the concept of text nodes contained in element nodes (which, in turn, can be contained in other element nodes, and so on). That hierarchical structure constitutes the source tree. There is also a result tree, which contains the output.</p>
+<p>XSLT works by transforming the source tree into the result tree. To visualize the result of XSLT operations, it is helpful to understand the structure of those trees, and their contents. (For more on this subject, see 
+<a class="TutorialLink" target="_top" href="xpath.html#gchlm">XSLT/XPath Data Model</a>).</p>
+<p><a name="ggyuk" id="ggyuk"></a></p>
+<h2>Process Headings</h2>
+<p>To continue processing the basic structure elements, add a template to process the top-level headings:</p>
+<div class="codeblock"><pre>
+<b> &lt;xsl:template match=
+    "/ARTICLE/SECT"></b>
+<b> &lt;h2> &lt;xsl:apply-templates</b>
+<b> select="text()|B|I|U|DEF|LINK"/> 
+&lt;/h2></b>
+<b> &lt;xsl:apply-templates select=
+    "SECT|PARA|LIST|NOTE"/></b>
+<b> &lt;/xsl:template></b>
+
+&lt;/xsl:stylesheet>
+</pre></div>
+<p>Here, you specify the path to the topmost <tt>SECT</tt> elements. But this time, you apply templates in two stages using the <tt>select</tt> attribute. For the first stage, you select text nodes, as well as inline tags such as bold and italics, using the XPath <tt>text()</tt> function. (The vertical pipe (<tt>|</tt>) is used to match multiple items: text or a bold tag or an italics tag, etc). In the second stage, you select the other structure elements contained in the file, for sections, paragraphs, lists, and notes.</p>
+<p>Using the select attribute lets you put the text and inline elements between the <tt>&lt;h2&gt;...&lt;/h2&gt;</tt> tags, while making sure that all the structure tags in the section are processed afterward. In other words, you make sure that the nesting of the headings in the XML document is not reflected in the HTML formatting, a distinction that is important for HTML output.</p>
+<p>In general, using the select clause lets you apply all templates to a subset of the information available in the current context. As another example, this template selects all attributes of the current node:</p>
+<div class="codeblock"><pre>
+&lt;xsl:apply-templates select="@*"/>&lt;/attributes>
+</pre></div>
+<p>Next, add the virtually identical template to process subheadings that are nested one level deeper:</p>
+<div class="codeblock"><pre>
+<b> &lt;xsl:template match=
+    "/ARTICLE/SECT/SECT"></b>
+<b> &lt;h3> &lt;xsl:apply-templates</b>
+<b> select="text()|B|I|U|DEF|LINK"/> 
+&lt;/h3></b>
+<b> &lt;xsl:apply-templates select=
+    "SECT|PARA|LIST|NOTE"/></b>
+<b> &lt;/xsl:template></b>
+
+&lt;/xsl:stylesheet>
+</pre></div>
+<p><a name="ggyuo" id="ggyuo"></a></p>
+<h2>Generate a Runtime Message</h2>
+<p>You could add templates for deeper headings, too, but at some point you must stop, if only because HTML goes down only to five levels. For this example, you will stop at two levels of section headings. But if the XML input happens to contain a third level, you will want to deliver an error message to the user. This section shows you how to do that.</p>
+<hr />
+<p><b>Note -</b> We could continue processing <tt>SECT</tt> elements that are further down, by selecting them with the expression <tt>/SECT/SECT//SECT</tt>. The <tt>//</tt> selects any <tt>SECT</tt> elements, at any depth, as defined by the XPath addressing mechanism. But instead we will take the opportunity to play with messaging.</p>
+<hr />
+<p>Add the following template to generate an error when a section is encountered that is nested too deep:</p>
+<div class="codeblock"><pre>
+<b> &lt;xsl:template match=
+    "/ARTICLE/SECT/SECT/SECT"></b>
+<b> &lt;xsl:message terminate="yes"></b>
+<b> Error: Sections can only be nested 2 deep.</b>
+<b> &lt;/xsl:message></b>
+<b> &lt;/xsl:template></b>
+
+&lt;/xsl:stylesheet>
+</pre></div>
+<p>The <tt>terminate=&quot;yes&quot;</tt> clause causes the transformation process to stop after the message is generated. Without it, processing could still go on, with everything in that section being ignored.</p>
+<p>As an additional exercise, you could expand the stylesheet to handle sections nested up to four sections deep, generating <tt>&lt;h2&gt;...&lt;h5&gt;</tt> tags. Generate an error on any section nested five levels deep.</p>
+<p>Finally, finish the stylesheet by adding a template to process the <tt>PARA</tt> tag:</p>
+<div class="codeblock"><pre>
+<b> &lt;xsl:template match="PARA"></b>
+<b> &lt;p>&lt;xsl:apply-templates/>&lt;/p></b>
+<b> &lt;/xsl:template></b>
+&lt;/xsl:stylesheet>
+</pre></div>
+<p><a name="ggyvn" id="ggyvn"></a></p>
+<h2>Writing the Basic Program</h2>
+<p>Now you will modify the program that uses XSLT to echo an XML file unchanged, changing it so that it uses your stylesheet.</p>
+<hr />
+<!--
+<p><b>Note -</b> The code discussed in this section is in <tt>Stylizer.java</tt>, which is found in the <tt>xslt</tt> directory after you unzip <a href="../examples/xslt_samples.zip">XSLT examples</a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory. The result is <tt>stylizer1a.html</tt>, found in <tt>xslt/data</tt>.</p>
+-->
+<p><b>Note -</b> The code discussed in this section is in <tt>Stylizer.java</tt>, which is found in the <tt>xslt</tt> directory after you unzip
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>XSLT examples</code></a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory. The result is <tt>stylizer1a.html</tt>, found in <tt>xslt/data</tt>.</p>
+<hr />
+<p>The <tt>Stylizer</tt> example is adapted from <tt>TransformationApp02</tt>, which parses an XML file and writes to <tt>System.out</tt>. The main differences between the two programs are described below.</p>
+<p>Firstly, <tt>Stylizer</tt> uses the stylesheet when creating the <tt>Transformer</tt> object.</p>
+<div class="codeblock"><pre>
+// ...
+import javax.xml.transform.dom.DOMSource; 
+<b>import javax.xml.transform.stream.StreamSource;</b> 
+import javax.xml.transform.stream.StreamResult; 
+// ... 
+
+public class Stylizer {
+    // ...
+    public static void main (String argv[]) {
+        // ...
+        try {
+            <b>File stylesheet = new File(argv[0]);</b>
+            <b>File datafile = new File(argv[1]);</b>
+
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            document = builder.parse(<b>datafile</b>);
+            // ...
+            <b>StreamSource stylesource = new StreamSource(stylesheet); </b>
+            Transformer transformer = Factory.newTransformer(<b>stylesource</b>);
+        }
+    }
+}
+</pre></div>
+<p>This code uses the file to create a <tt>StreamSource</tt> object and then passes the source object to the factory class to get the transformer.</p>
+<hr />
+<p><b>Note -</b> You can simplify the code somewhat by eliminating the <tt>DOMSource</tt> class. Instead of creating a <tt>DOMSource</tt> object for the XML file, create a <tt>StreamSource</tt> object for it, as well as for the stylesheet.</p>
+<hr />
+<p><a name="ghbeu" id="ghbeu"></a></p>
+<h3>Running the <tt>Stylizer</tt> Sample</h3>
+<ol>
+<li><b>Navigate to the <tt>samples</tt> directory.</b>
+<div class="codeblock"><pre>
+% cd <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt>.
+</pre></div>
+</li>
+<!--
+<li><b><a href="../examples/xslt_samples.zip">Download the XSLT examples by clicking this link</a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+-->
+<li><b>
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>Download the XSLT examples by clicking this link</code></a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+<li><b>Navigate to the <tt>xslt</tt> directory.</b>
+<div class="codeblock"><pre>
+cd xslt
+</pre></div>
+</li>
+<li><b>Compile the <tt>Stylizer</tt> sample.</b>
+<p>Type the following command:</p>
+<div class="codeblock"><pre>
+% javac Stylizer.java
+</pre></div>
+</li>
+<li><b>Run the <tt>Stylizer</tt> sample on <tt>article1.xml</tt> using the stylesheet <tt>article1a.xsl</tt>.</b>
+<div class="codeblock"><pre>
+% java Stylizer data/article1a.xsl  data/article1.xml
+</pre></div>
+<p>You will see the following output:</p>
+<div class="codeblock"><pre>
+&lt;html>
+&lt;body>
+
+&lt;h1 align="center">A Sample Article&lt;/h1>
+&lt;h2>The First Major Section
+
+&lt;/h2>
+&lt;p>This section will introduce a subsection.&lt;/p>
+&lt;h3>The Subsection Heading
+
+&lt;/h3>
+&lt;p>This is the text of the subsection.
+&lt;/p>
+
+&lt;/body>
+&lt;/html>
+</pre></div>
+<p>At this point, there is quite a bit of excess whitespace in the output. In the next section, you will see how to eliminate most of it.</p>
+</li>
+</ol>
+<p><a name="ggyxa" id="ggyxa"></a></p>
+<h2>Trimming the Whitespace</h2>
+<p>Recall that when you look at the structure of a DOM, there are many text nodes that contain nothing but ignorable whitespace. Most of the excess whitespace in the output comes from these nodes. Fortunately, XSL gives you a way to eliminate them. (For more about the node structure, see 
+<a class="TutorialLink" target="_top" href="xpath.html#gchlm">XSLT/XPath Data Model</a>).</p>
+<hr />
+<!--
+<p><b>Note -</b> The stylesheet discussed in this section is in <tt>article1b.xsl</tt>, which is found in the <tt>xslt/data</tt> directory after you unzip <a href="../examples/xslt_samples.zip">XSLT examples</a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory. The result is <tt>stylizer1b.html</tt>, found in <tt>xslt/data</tt>.</p>
+-->
+<p><b>Note -</b> The stylesheet discussed in this section is in <tt>article1b.xsl</tt>, which is found in the <tt>xslt/data</tt> directory after you unzip
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>XSLT examples</code></a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory. The result is <tt>stylizer1b.html</tt>, found in <tt>xslt/data</tt>.</p>
+<hr />
+<p>To remove some of the excess whitespace, add the following highlighted line to the stylesheet.</p>
+<div class="codeblock"><pre>
+&lt;xsl:stylesheet ...
+   >
+&lt;xsl:output method="html"/> 
+<b>&lt;xsl:strip-space elements="SECT"/></b>
+
+[...]
+</pre></div>
+<p>This instruction tells XSL to remove any text nodes under <tt>SECT</tt> elements that contain nothing but whitespace. Nodes that contain text other than whitespace will not be affected, nor will other kinds of nodes.</p>
+<p><a name="ghbaw" id="ghbaw"></a></p>
+<h3>Running the <tt>Stylizer</tt> Sample with Trimmed Whitespace</h3>
+<ol>
+<li><b>Navigate to the <tt>samples</tt> directory.</b>
+<div class="codeblock"><pre>
+% cd <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt>.
+</pre></div>
+</li>
+<!--
+<li><b><a href="../examples/xslt_samples.zip">Download the XSLT examples by clicking this link</a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+-->
+<li><b>
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>Download the XSLT examples by clicking this link</code></a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+<li><b>Navigate to the <tt>xslt</tt> directory.</b>
+<div class="codeblock"><pre>
+cd xslt
+</pre></div>
+</li>
+<li><b>Compile the <tt>Stylizer</tt> sample.</b>
+<p>Type the following command:</p>
+<div class="codeblock"><pre>
+% javac Stylizer.java
+</pre></div>
+</li>
+<li><b>Run the <tt>Stylizer</tt> sample on <tt>article1.xml</tt> using the stylesheet <tt>article1b.xsl</tt>.</b>
+<div class="codeblock"><pre>
+% java Stylizer 
+  data/article1b.xsl  
+  data/article1.xml
+</pre></div>
+<p>You will see the following output:</p>
+<div class="codeblock"><pre>
+&lt;html>
+&lt;body>
+
+&lt;h1 align="center">A Sample Article&lt;/h1>
+
+&lt;h2>The First Major Section
+   &lt;/h2>
+&lt;p>This section will introduce a subsection.&lt;/p>
+&lt;h3>The Subsection Heading
+      &lt;/h3>
+&lt;p>This is the text of the subsection.
+      &lt;/p>
+
+&lt;/body>
+&lt;/html>
+</pre></div>
+<p>That is quite an improvement. There are still newline characters and whitespace after the headings, but those come from the way the XML is written:</p>
+<div class="codeblock"><pre>
+&lt;SECT>The First Major Section
+____&lt;PARA>This section will introduce a subsection.&lt;/PARA>
+^^^^
+</pre></div>
+<p>Here, you can see that the section heading ends with a newline and indentation space, before the PARA entry starts. That is not a big worry, because the browsers that will process the HTML compress and ignore the excess space routinely. But there is still one more formatting tool at our disposal.</p>
+</li>
+</ol>
+<p><a name="ghbbz" id="ghbbz"></a></p>
+<h2>Removing the Last Whitespace</h2>
+<hr />
+<!--
+<p><b>Note -</b> The stylesheet discussed in this section is in <tt>article1c.xsl</tt>, which is found in the <tt>xslt/data</tt> directory after you unzip <a href="../examples/xslt_samples.zip">XSLT examples</a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory. The result is <tt>stylizer1c.html</tt>, found in <tt>xslt/data</tt>.</p>
+-->
+<p><b>Note -</b> The stylesheet discussed in this section is in <tt>article1c.xsl</tt>, which is found in the <tt>xslt/data</tt> directory after you unzip
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>XSLT examples</code></a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory. The result is <tt>stylizer1c.html</tt>, found in <tt>xslt/data</tt>.</p>
+<hr />
+<p>That last little bit of whitespace is disposed of by adding the following to the stylesheet:</p>
+<div class="codeblock"><pre>
+   <b>&lt;xsl:template match="text()"></b>
+<b> &lt;xsl:value-of select="normalize-space()"/></b>
+<b> &lt;/xsl:template></b>
+
+&lt;/xsl:stylesheet>
+</pre></div>
+<p>Running <tt>Stylizer</tt> with this stylesheet will remove all remaining whitespace.</p>
+<p><a name="ghbah" id="ghbah"></a></p>
+<h3>Running the <tt>Stylizer</tt> Sample with All Whitespace Trimmed</h3>
+<ol>
+<li><b>Navigate to the <tt>samples</tt> directory.</b>
+<div class="codeblock"><pre>
+% cd <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt>.
+</pre></div>
+</li>
+<!--
+<li><b><a href="../examples/xslt_samples.zip">Download the XSLT examples by clicking this link</a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+-->
+<li><b>
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>Download the XSLT examples by clicking this link</code></a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+<li><b>Navigate to the <tt>xslt</tt> directory.</b>
+<div class="codeblock"><pre>
+cd xslt
+</pre></div>
+</li>
+<li><b>Compile the <tt>Stylizer</tt> sample.</b>
+<p>Type the following command:</p>
+<div class="codeblock"><pre>
+% javac Stylizer.java
+</pre></div>
+</li>
+<li><b>Run the <tt>Stylizer</tt> sample on <tt>article1.xml</tt> using the stylesheet <tt>article1c.xsl</tt>.</b>
+<div class="codeblock"><pre>
+% java Stylizer 
+  data/article1c.xsl  
+  data/article1.xml
+</pre></div>
+<p>The output now looks like this:</p>
+<div class="codeblock"><pre>
+&lt;html>
+&lt;body>
+&lt;h1 align="center">A Sample Article
+&lt;/h1>
+&lt;h2>The First Major Section&lt;/h2>
+&lt;p>This section will introduce a subsection.
+&lt;/p>
+&lt;h3>The Subsection Heading&lt;/h3>
+&lt;p>This is the text of the subsection.
+&lt;/p>
+&lt;/body>
+&lt;/html>
+</pre></div>
+<p>That is quite a bit better. Of course, it would be nicer if it were indented, but that turns out to be somewhat harder than expected. Here are some possible avenues of attack, along with the difficulties:</p>
+<dl>
+<dt>Indent option</dt>
+<dd>
+<p>Unfortunately, the <tt>indent=&quot;yes&quot;</tt> option that can be applied to XML output is not available for HTML output. Even if that option were available, it would not help, because HTML elements are rarely nested! Although HTML source is frequently indented to show the implied structure, the HTML tags themselves are not nested in a way that creates a real structure.</p>
+</dd>
+<dt>Indent variables</dt>
+<dd>
+<p>The <tt>&lt;xsl:text&gt;</tt> function lets you add any text you want, including whitespace. So it could conceivably be used to output indentation space. The problem is to vary the amount of indentation space. XSLT variables seem like a good idea, but they do not work here. The reason is that when you assign a value to a variable in a template, the value is known only within that template (statically, at compile time). Even if the variable is defined globally, the assigned value is not stored in a way that lets it be dynamically known by other templates at runtime. When <tt>&lt;apply-templates/&gt;</tt> invokes other templates, those templates are unaware of any variable settings made elsewhere.</p>
+</dd>
+<dt>Parameterized templates</dt>
+<dd>
+<p>Using a parameterized template is another way to modify a template&#39;s behavior. But determining the amount of indentation space to pass as the parameter remains the crux of the problem.</p>
+</dd>
+</dl>
+<p>At the moment, then, there does not appear to be any good way to control the indentation of HTML formatted output. That would be inconvenient if you needed to display or edit the HTML as plain text. But it is not a problem if you do your editing on the XML form, using the HTML version only for display in a browser. (When you view <tt>stylizer1c.html</tt>, for example, you see the results you expect).</p>
+</li>
+</ol>
+<p><a name="ghbam" id="ghbam"></a></p>
+<h2>Processing the Remaining Structure Elements</h2>
+<p>In this section, you will process the <tt>LIST</tt> and <tt>NOTE</tt> elements, which add more structure to an article.</p>
+<hr />
+<!--
+<p><b>Note -</b> The sample document described in this section is <tt>article2.xml</tt>, and the stylesheet used to manipulate it is <tt>article2.xsl</tt>. The result is <tt>stylizer2.html</tt>. These files are found in the <tt>xslt/data</tt> directory after you unzip <a href="../examples/xslt_samples.zip">XSLT examples</a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</p>
+-->
+<p><b>Note -</b> The sample document described in this section is <tt>article2.xml</tt>, and the stylesheet used to manipulate it is <tt>article2.xsl</tt>. The result is <tt>stylizer2.html</tt>. These files are found in the <tt>xslt/data</tt> directory after you unzip
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>XSLT examples</code></a> into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</p>
+<hr />
+<p>Start by adding some test data to the sample document:</p>
+<div class="codeblock"><pre>
+&lt;?xml version="1.0"?>
+&lt;ARTICLE>
+&lt;TITLE>A Sample Article&lt;/TITLE>
+ &lt;SECT>The First Major Section
+    ...
+  &lt;/SECT>
+  &lt;SECT>The Second Major Section
+  &lt;PARA>This section adds a LIST and a NOTE.
+    &lt;PARA>Here is the LIST:
+      &lt;LIST type="ordered">
+        &lt;ITEM>Pears&lt;/ITEM>
+        &lt;ITEM>Grapes&lt;/ITEM>
+      &lt;/LIST>
+  &lt;/PARA>
+  &lt;PARA>And here is the NOTE:
+  &lt;NOTE>Don't forget to go to the 
+           hardware store on your way
+           to the grocery!
+  &lt;/NOTE>
+  &lt;/PARA>
+ &lt;/SECT> 
+&lt;/ARTICLE>
+</pre></div>
+<hr />
+<p><b>Note -</b> Although the <tt>list</tt> and <tt>note</tt> in the XML file are contained in their respective paragraphs, it really makes no difference whether they are contained or not; the generated HTML will be the same either way. But having them contained will make them easier to deal with in an outline-oriented editor.</p>
+<hr />
+<p><a name="ggywf" id="ggywf"></a></p>
+<h2>Modify <tt>&lt;PARA&gt;</tt> Handling</h2>
+<p>Next, modify the <tt>PARA</tt> template to account for the fact that we are now allowing some of the structure elements to be embedded with a paragraph:</p>
+<div class="codeblock"><pre>
+&lt;xsl:template match="PARA">
+<b>&lt;p> &lt;xsl:apply-templates select=
+    "text()|B|I|U|DEF|LINK"/></b>
+<b> &lt;/p></b>
+<b> &lt;xsl:apply-templates select=
+    "PARA|LIST|NOTE"/></b>
+&lt;/xsl:template>
+</pre></div>
+<p>This modification uses the same technique you used for section headings. The only difference is that <tt>SECT</tt> elements are not expected within a paragraph. (However, a paragraph could easily exist inside another paragraph-for example, as quoted material).</p>
+<p><a name="ggyua" id="ggyua"></a></p>
+<h2>Process <tt>&lt;LIST&gt;</tt> and <tt>&lt;ITEM&gt;</tt> Elements</h2>
+<p>Now you&#39;re ready to add a template to process <tt>LIST</tt> elements:</p>
+<div class="codeblock"><pre>
+&lt;xsl:template match="LIST">
+ &lt;xsl:if test="@type='ordered'"> 
+  &lt;ol>
+   &lt;xsl:apply-templates/>
+    &lt;/ol>
+    &lt;/xsl:if>
+    &lt;xsl:if test="@type='unordered'">
+     &lt;ul>
+      &lt;xsl:apply-templates/>
+     &lt;/ul>
+ &lt;/xsl:if>
+&lt;/xsl:template>
+
+&lt;/xsl:stylesheet>
+</pre></div>
+<p>The <tt>&lt;xsl:if&gt;</tt> tag uses the <tt>test=&quot;&quot;</tt> attribute to specify a Boolean condition. In this case, the value of the type attribute is tested, and the list that is generated changes depending on whether the value is ordered or unordered.</p>
+<p>Note two important things in this example:</p>
+<ul>
+<li>
+<p>There is no else clause, nor is there a return or exit statement, so it takes two <tt>&lt;xsl:if&gt;</tt> tags to cover the two options. (Or the <tt>&lt;xsl:choose&gt;</tt> tag could have been used, which provides case-statement functionality).</p>
+</li>
+<li>
+<p>Single quotes are required around the attribute values. Otherwise, the XSLT processor attempts to interpret the word ordered as an XPath function instead of as a string.</p>
+</li>
+</ul>
+<p>Now finish LIST processing by handling ITEM elements:</p>
+<div class="codeblock"><pre>
+<b> &lt;xsl:template match="ITEM"></b>
+<b> &lt;li>&lt;xsl:apply-templates/></b>
+<b> &lt;/li></b>
+<b> &lt;/xsl:template></b>
+
+&lt;/xsl:stylesheet>
+</pre></div>
+<p><a name="ggyvs" id="ggyvs"></a></p>
+<h2>Ordering Templates in a Stylesheet</h2>
+<p>By now, you should have the idea that templates are independent of one another, so it does not generally matter where they occur in a file. So from this point on, we will show only the template you need to add. (For the sake of comparison, they&#39;re always added at the end of the example stylesheet).</p>
+<p>Order does make a difference when two templates can apply to the same node. In that case, the one that is defined last is the one that is found and processed. For example, to change the ordering of an indented list to use lowercase alphabetics, you could specify a template pattern that looks like this: <tt>//LIST//LIST</tt>. In that template, you would use the HTML option to generate an alphabetic enumeration, instead of a numeric one.</p>
+<p>But such an element could also be identified by the pattern <tt>//LIST</tt>. To make sure that the proper processing is done, the template that specifies <tt>//LIST</tt> would have to appear before the template that specifies <tt>//LIST//LIST</tt>.</p>
+<p><a name="ggywm" id="ggywm"></a></p>
+<h2>Process <tt>&lt;NOTE&gt;</tt> Elements</h2>
+<p>The last remaining structure element is the <tt>NOTE</tt> element. Add the following template to handle that.</p>
+<div class="codeblock"><pre>
+<b> &lt;xsl:template match="NOTE"></b>
+<b> &lt;blockquote>&lt;b>Note:&lt;/b>&lt;br/></b>
+<b> &lt;xsl:apply-templates/></b>
+<b> &lt;/p>&lt;/blockquote></b>
+<b> &lt;/xsl:template></b>
+
+&lt;/xsl:stylesheet>
+</pre></div>
+<p>This code brings up an interesting issue that results from the inclusion of the <tt>&lt;br/&gt;</tt> tag. For the file to be well-formed XML, the tag must be specified in the stylesheet as <tt>&lt;br/&gt;</tt>, but that tag is not recognized by many browsers. And although most browsers recognize the sequence <tt>&lt;br&gt;&lt;/br&gt;</tt>, they all treat it like a paragraph break instead of a single line break.</p>
+<p>In other words, the transformation must generate a <tt>&lt;br&gt;</tt> tag, but the stylesheet must specify <tt>&lt;br/&gt;</tt>. That brings us to the major reason for that special output tag we added early in the stylesheet:</p>
+<div class="codeblock"><pre>
+&lt;xsl:stylesheet ... >
+   <b>&lt;xsl:output method="html"/></b>
+   [...]
+&lt;/xsl:stylesheet>
+</pre></div>
+<p>That output specification converts empty tags such as <tt>&lt;br/&gt;</tt> to their HTML form, <tt>&lt;br&gt;</tt>, on output. That conversion is important, because most browsers do not recognize the empty tags. Here is a list of the affected tags:</p>
+<div class="codeblock"><pre>
+area      frame   isindex
+base      hr      link
+basefont  img     meta
+br        input   param
+col
+</pre></div>
+<p>To summarize, by default XSLT produces well-formed XML on output. And because an XSL stylesheet is well-formed XML to start with, you cannot easily put a tag such as <tt>&lt;br&gt;</tt> in the middle of it. The <tt>&lt;xsl:output method=&quot;html&quot;/&gt;</tt> tag solves the problem so that you can code <tt>&lt;br/&gt;</tt> in the stylesheet but get <tt>&lt;br&gt;</tt> in the output.</p>
+<p>The other major reason for specifying <tt>&lt;xsl:output method=&quot;html&quot;/&gt;</tt> is that, as with the specification <tt>&lt;xsl:output method=&quot;text&quot;/&gt;</tt>, generated text is not escaped. For example, if the stylesheet includes the <tt>&lt;</tt> entity reference, it will appear as the <tt>&lt;</tt> character in the generated text. When XML is generated, on the other hand, the <tt>&lt;</tt> entity reference in the stylesheet would be unchanged, so it would appear as <tt>&lt;</tt> in the generated text.</p>
+<hr />
+<p><b>Note -</b> If you actually want <tt>&lt;</tt> to be generated as part of the HTML output, you will need to encode it as <tt>&amp;lt;</tt>. That sequence becomes <tt>&lt;</tt> on output, because only the <tt>&amp;</tt> is converted to an <tt>&amp;</tt> character.</p>
+<hr />
+<p><a name="ghbeb" id="ghbeb"></a></p>
+<h3>Running the <tt>Stylizer</tt> Sample With <tt>LIST</tt> and <tt>NOTE</tt> Elements Defined</h3>
+<ol>
+<li><b>Navigate to the <tt>samples</tt> directory.</b>
+<div class="codeblock"><pre>
+% cd <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt>.
+</pre></div>
+</li>
+<!--
+<li><b><a href="../examples/xslt_samples.zip">Download the XSLT examples by clicking this link</a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+-->
+<li><b>
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>Download the XSLT examples by clicking this link</code></a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+<li><b>Navigate to the <tt>xslt</tt> directory.</b>
+<div class="codeblock"><pre>
+cd xslt
+</pre></div>
+</li>
+<li><b>Compile the <tt>Stylizer</tt> sample.</b>
+<p>Type the following command:</p>
+<div class="codeblock"><pre>
+% javac Stylizer.java
+</pre></div>
+</li>
+<li><b>Run the <tt>Stylizer</tt> sample on <tt>article2.xml</tt> using the stylesheet <tt>article2.xsl</tt>.</b>
+<div class="codeblock"><pre>
+% java Stylizer data/article2.xsl  data/article2.xml
+</pre></div>
+<p>Here is the HTML that is generated for the second section when you run the program now:</p>
+<div class="codeblock"><pre>
+...
+&lt;h2>The Second Major Section
+&lt;/h2>
+&lt;p>This section adds a LIST and a NOTE.
+&lt;/p>
+&lt;p>Here is the LIST:
+&lt;/p>
+&lt;ol>
+&lt;li>Pears&lt;/li>
+&lt;li>Grapes&lt;/li>
+&lt;/ol>
+&lt;p>And here is the NOTE:
+&lt;/p>
+&lt;blockquote>
+&lt;b>Note:&lt;/b>
+&lt;br>Do not forget to go to the hardware store on your way to the grocery!
+&lt;/blockquote>
+</pre></div>
+</li>
+</ol>
+<p><a name="ggywl" id="ggywl"></a></p>
+<h2>Process Inline (Content) Elements</h2>
+<p>The only remaining tags in the <tt>ARTICLE</tt> type are the inline tags-the ones that do not create a line break in the output, but instead are integrated into the stream of text they are part of.</p>
+<p>Inline elements are different from structure elements in that inline elements are part of the content of a tag. If you think of an element as a node in a document tree, then each node has both content and structure. The content is composed of the text and inline tags it contains. The structure consists of the other elements (structure elements) under the tag.</p>
+<hr />
+<p><b>Note -</b> The sample document described in this section is <tt>article3.xml</tt>, and the stylesheet used to manipulate it is <tt>article3.xsl</tt>. The result is <tt>stylizer3.html</tt>.</p>
+<hr />
+<p>Start by adding one more bit of test data to the sample document:</p>
+<div class="codeblock"><pre>
+&lt;?xml version="1.0"?>
+&lt;ARTICLE>
+ &lt;TITLE>A Sample Article&lt;/TITLE>
+  &lt;SECT>The First Major Section
+      [...]
+  &lt;/SECT>
+  &lt;SECT>The Second Major Section
+      [...]
+  &lt;/SECT> 
+<b>&lt;SECT>The &lt;i>Third&lt;/i> 
+    Major Section</b>
+<b> &lt;PARA>In addition to the inline tag
+    in the heading, </b>
+<b> this section defines the term  
+    &lt;DEF>inline&lt;/DEF>,</b>
+<b> which literally means "no line break". </b>
+<b> It also adds a simple link to the main page 
+    for the Java platform </b>
+<b>(&lt;LINK>http://java.sun.com&lt;/LINK>),</b>
+<b> as well as a link to the </b>
+<b> &lt;LINK target="http://java.sun.com/xml">
+   XML &lt;/LINK></b> 
+<b> page.</b>
+<b> &lt;/PARA></b>
+<b> &lt;/SECT></b> 
+&lt;/ARTICLE>
+</pre></div>
+<p>Now process the inline <tt>&lt;DEF&gt;</tt> elements in paragraphs, renaming them to HTML italics tags:</p>
+<div class="codeblock"><pre>
+<b>&lt;xsl:template match="DEF"></b>
+<b> &lt;i> &lt;xsl:apply-templates/> &lt;/i> </b>
+<b>&lt;/xsl:template></b>
+</pre></div>
+<p>Next, comment out the text-node normalization. It has served its purpose, and now you are to the point that you need to preserve important spaces:</p>
+<div class="codeblock"><pre>
+<b>&lt;!--</b>  
+&lt;xsl:template match="text()">
+  &lt;xsl:value-of select="normalize-space()"/>
+   &lt;/xsl:template>
+<b>--></b>
+</pre></div>
+<p>This modification keeps us from losing spaces before tags such as <tt>&lt;I&gt;</tt> and <tt>&lt;DEF&gt;</tt>. (Try the program without this modification to see the result).</p>
+<p>Now process basic inline HTML elements such as <tt>&lt;B&gt;</tt>, <tt>&lt;I&gt;</tt>, and <tt>&lt;U&gt;</tt> for bold, italics, and underlining.</p>
+<div class="codeblock"><pre>
+<b>&lt;xsl:template match="B|I|U"></b>
+<b> &lt;xsl:element name="{name()}"></b>
+<b> &lt;xsl:apply-templates/></b>
+<b> &lt;/xsl:element> </b>
+<b>&lt;/xsl:template></b>
+</pre></div>
+<p>The <tt>&lt;xsl:element&gt;</tt> tag lets you compute the element you want to generate. Here, you generate the appropriate inline tag using the name of the current element. In particular, note the use of curly braces (<tt>{}</tt>) in the <tt>name=&quot;..&quot;</tt> expression. Those curly braces cause the text inside the quotes to be processed as an XPath expression instead of being interpreted as a literal string. Here, they cause the XPath <tt>name()</tt> function to return the name of the current node.</p>
+<p>Curly braces are recognized anywhere that an attribute value template can occur. (Attribute value templates are defined in section 7.6.2 of the XSLT specification, and they appear several places in the template definitions). In such expressions, curly braces can also be used to refer to the value of an attribute, <tt>{@foo}</tt>, or to the content of an element <tt>{foo}</tt>.</p>
+<hr />
+<p><b>Note -</b> You can also generate attributes using <tt>&lt;xsl:attribute&gt;</tt>. For more information, see section 7.1.3 of the XSLT Specification.</p>
+<hr />
+<p>The last remaining element is the <tt>LINK</tt> tag. The easiest way to process that tag will be to set up a named template that we can drive with a parameter:</p>
+<div class="codeblock"><pre>
+<b>&lt;xsl:template name="htmLink"></b>
+<b> &lt;xsl:param name="dest" 
+    select="UNDEFINED"/> </b>
+<b> &lt;xsl:element name="a"></b>
+<b> &lt;xsl:attribute name="href"></b>
+<b> &lt;xsl:value-of select=""/></b>
+<b> &lt;/xsl:attribute></b>
+<b> &lt;xsl:apply-templates/> </b>
+<b> &lt;/xsl:element> </b>
+<b>&lt;/xsl:template></b>
+</pre></div>
+<p>The major difference in this template is that, instead of specifying a match clause, you give the template a name using the <tt>name=&quot;&quot;</tt> clause. So this template gets executed only when you invoke it.</p>
+<p>Within the template, you also specify a parameter named <tt>dest</tt> using the <tt>&lt;xsl:param&gt;</tt> tag. For a bit of error checking, you use the select clause to give that parameter a default value of <tt>UNDEFINED</tt>. To reference the variable in the <tt>&lt;xsl:value-of&gt;</tt> tag, you specify <tt></tt>.</p>
+<hr />
+<p><b>Note -</b> Recall that an entry in quotes is interpreted as an expression unless it is further enclosed in single quotes. That is why the single quotes were needed earlier in <tt>&quot;@type=&#39;ordered&#39;&quot;</tt> to make sure that ordered was interpreted as a string.</p>
+<hr />
+<p>The <tt>&lt;xsl:element&gt;</tt> tag generates an element. Previously, you have been able to simply specify the element we want by coding something like <tt>&lt;html&gt;</tt>. But here you are dynamically generating the content of the HTML anchor (<tt>&lt;a&gt;</tt>) in the body of the <tt>&lt;xsl:element&gt;</tt> tag. And you are dynamically generating the <tt>href</tt> attribute of the anchor using the <tt>&lt;xsl:attribute&gt;</tt> tag.</p>
+<p>The last important part of the template is the <tt>&lt;apply-templates&gt;</tt> tag, which inserts the text from the text node under the <tt>LINK</tt> element. Without it, there would be no text in the generated HTML link.</p>
+<p>Next, add the template for the <tt>LINK</tt> tag, and call the named template from within it:</p>
+<div class="codeblock"><pre>
+<b>&lt;xsl:template match="LINK"></b>
+<b> &lt;xsl:if test="@target"></b>
+<b> &lt;!--Target attribute specified.--></b>
+<b> &lt;xsl:call-template 
+    name="htmLink"></b>
+<b> &lt;xsl:with-param name="dest" 
+    select="@target"/> </b>
+<b> &lt;/xsl:call-template></b>
+<b> &lt;/xsl:if></b>
+<b>&lt;/xsl:template></b>
+&lt;xsl:template name="htmLink">
+
+[...]
+</pre></div>
+<p>The <tt>test=&quot;@target&quot;</tt> clause returns true if the target attribute exists in the LINK tag. So this <tt>&lt;xsl-if&gt;</tt> tag generates HTML links when the text of the link and the target defined for it are different.</p>
+<p>The <tt>&lt;xsl:call-template&gt;</tt> tag invokes the named template, whereas <tt>&lt;xsl:with-param&gt;</tt> specifies a parameter using the name clause and specifies its value using the select clause.</p>
+<p>As the very last step in the stylesheet construction process, add the <tt>&lt;xsl-if&gt;</tt> tag to process <tt>LINK</tt> tags that do not have a target attribute.</p>
+<div class="codeblock"><pre>
+&lt;xsl:template match="LINK">
+   &lt;xsl:if test="@target">
+      [...]
+   &lt;/xsl:if>
+
+   <b>&lt;xsl:if test="not(@target)"></b>
+<b> &lt;xsl:call-template name="htmLink"></b>
+<b> &lt;xsl:with-param name="dest"></b>
+<b> &lt;xsl:apply-templates/></b>
+<b> &lt;/xsl:with-param></b>
+<b> &lt;/xsl:call-template></b>
+<b> &lt;/xsl:if></b>
+&lt;/xsl:template>
+</pre></div>
+<p>The <tt>not(...)</tt> clause inverts the previous test (remember, there is no else clause). So this part of the template is interpreted when the target attribute is not specified. This time, the parameter value comes not from a select clause, but from the contents of the <tt>&lt;xsl:with-param&gt;</tt> element.</p>
+<hr />
+<p><b>Note -</b> Just to make it explicit: Parameters and variables (which are discussed in a few moments in <a href="#ggyut">What Else Can XSLT Do?</a> can have their value specified either by a select clause, which lets you use XPath expressions, or by the content of the element, which lets you use XSLT tags.</p>
+<hr />
+<p>In this case, the content of the parameter is generated by the <tt>&lt;xsl:apply-templates/&gt;</tt> tag, which inserts the contents of the text node under the <tt>LINK</tt> element.</p>
+<p><a name="ghbdo" id="ghbdo"></a></p>
+<h3>Running the <tt>Stylizer</tt> Sample With Inline Elements Defined</h3>
+<ol>
+<li><b>Navigate to the <tt>samples</tt> directory.</b>
+<div class="codeblock"><pre>
+% cd <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt>.
+</pre></div>
+</li>
+<!--
+<li><b><a href="../examples/xslt_samples.zip">Download the XSLT examples by clicking this link</a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+-->
+<li><b>
+<a class="SourceLink" target="_blank" href="../examples/xslt_samples.zip" onclick="showCode('../../displayCode.html', '../examples/xslt_samples.zip'); return false;"><code>Download the XSLT examples by clicking this link</code></a> and unzip them into the <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt> directory.</b></li>
+<li><b>Navigate to the <tt>xslt</tt> directory.</b>&lt;
+<div class="codeblock"><pre>
+cd xslt
+</pre></div>
+</li>
+<li><b>Compile the <tt>Stylizer</tt> sample.</b>
+<p>Type the following command:</p>
+<div class="codeblock"><pre>
+% javac Stylizer.java
+</pre></div>
+</li>
+<li><b>Run the <tt>Stylizer</tt> sample on <tt>article3.xml</tt> using the stylesheet <tt>article3.xsl</tt>.</b>
+<div class="codeblock"><pre>
+% java Stylizer data/article3.xsl  data/article3.xml
+</pre></div>
+<p>When you run the program now, the results should look something like this:</p>
+<div class="codeblock"><pre>
+[...]
+&lt;h2>The &lt;i>Third&lt;/i> Major Section&lt;/h2>
+&lt;p>In addition to the inline tag in the heading, this section  defines the term &lt;i>inline&lt;/i>, which literally means "no line break". It also adds a simple link to the main page for the Java platform (&lt;a href="http://java.sun.com">http://java.sun.com&lt;/a>),  as well as a link to the &lt;a href="http://java.sun.com/xml">XML&lt;/a> page.&lt;/p>
+</pre></div>
+<p>Good work! You have now converted a rather complex XML file to HTML. (As simple as it appears at first, it certainly provides a lot of opportunity for exploration).</p>
+</li>
+</ol>
+<p><a name="ggywy" id="ggywy"></a></p>
+<h2>Printing the HTML</h2>
+<p>You have now converted an XML file to HTML. One day, someone will produce an HTML-aware printing engine that you will be able to find and use through the Java Printing Service API. At that point, you will have ability to print an arbitrary XML file by generating HTML. All you will have to do is to set up a stylesheet and use your browser.</p>
+<p><a name="ggyut" id="ggyut"></a></p>
+<h2>What Else Can XSLT Do?</h2>
+<p>As lengthy as this section has been, it has only scratched the surface of XSLT&#39;s capabilities. Many additional possibilities await you in the XSLT specification. Here are a few things to look for:</p>
+<dl>
+<dt><tt>import</tt> (Section 2.6.2) and <tt>include</tt> (section 2.6.1)</dt>
+<dd>
+<p><tt>rt</tt> (Section 2.6.2) and include (section 2.6.1) Use these statements to modularize and combine XSLT stylesheets. The include statement simply inserts any definitions from the included file. The import statement lets you override definitions in the imported file with definitions in your own stylesheet.</p>
+</dd>
+<dt><tt>for-each</tt> loops (section 8)</dt>
+<dd>
+<p>Loop over a collection of items and process each one in turn.</p>
+</dd>
+<dt><tt>choose</tt> (case statement) for conditional processing (section 9.2)</dt>
+<dd>
+<p>Branch to one of multiple processing paths depending on an input value.</p>
+</dd>
+<dt>Generating numbers (section 7.7)</dt>
+<dd>
+<p>Dynamically generate numbered sections, numbered elements, and numeric literals. XSLT provides three numbering modes:</p>
+<ul>
+<li>
+<p>Single: Numbers items under a single heading, like an ordered list in HTML</p>
+</li>
+<li>
+<p>Multiple: Produces multilevel numbering such as &quot;A.1.3&quot;</p>
+</li>
+<li>
+<p>Any: Consecutively numbers items wherever they appear, as with footnotes in a lesson.</p>
+</li>
+</ul>
+</dd>
+<dt>Formatting numbers (section 12.3)</dt>
+<dd>
+<p>Control enumeration formatting so that you get numerics (<tt>format=&quot;1&quot;</tt>), uppercase alphabetics (<tt>format=&quot;A&quot;</tt>), lowercase alphabetics (<tt>format=&quot;a&quot;</tt>), or compound numbers, like &quot;A.1,&quot; as well as numbers and currency amounts suited for a specific international locale.</p>
+</dd>
+<dt>Sorting output (section 10)</dt>
+<dd>
+<p>Produce output in a desired sorting order.</p>
+</dd>
+<dt>Mode-based templates (section 5.7)</dt>
+<dd>
+<p>Process an element multiple times, each time in a different &quot;mode.&quot; You add a mode attribute to templates and then specify <tt>&lt;apply-templates mode=&quot;...&quot;&gt;</tt> to apply only the templates with a matching mode. Combine with the <tt>&lt;apply-templates select=&quot;...&quot;&gt;</tt> attribute to apply mode-based processing to a subset of the input data.</p>
+</dd>
+<dt>Variables (section 11)</dt>
+<dd>
+<p>Variables are something like method parameters, in that they let you control a template&#39;s behavior. But they are not as valuable as you might think. The value of a variable is known only within the scope of the current template or <tt>&lt;xsl:if&gt;</tt> tag (for example) in which it is defined. You cannot pass a value from one template to another, or even from an enclosed part of a template to another part of the same template.</p>
+<p>These statements are true even for a &quot;global&quot; variable. You can change its value in a template, but the change applies only to that template. And when the expression used to define the global variable is evaluated, that evaluation takes place in the context of the structure&#39;s root node. In other words, global variables are essentially runtime constants. Those constants can be useful for changing the behavior of a template, especially when coupled with include and import statements. But variables are not a general-purpose data-management mechanism.</p>
+</dd>
+</dl>
+<p><a name="ggyuy" id="ggyuy"></a></p>
+<h2>The Trouble with Variables</h2>
+<p>It is tempting to create a single template and set a variable for the destination of the link, rather than go to the trouble of setting up a parameterized template and calling it two different ways. The idea is to set the variable to a default value (say, the text of the <tt>LINK</tt> tag) and then, if the target attribute exists, set the destination variable to the value of the target attribute.</p>
+<p>That would be a good idea-if it worked. But again, the issue is that variables are known only in the scope within which they are defined. So when you code an <tt>&lt;xsl:if&gt;</tt> tag to change the value of the variable, the value is known only within the context of the <tt>&lt;xsl:if&gt;</tt> tag. Once <tt>&lt;/xsl:if&gt;</tt> is encountered, any change to the variable&#39;s setting is lost.</p>
+<p>A similarly tempting idea is the possibility of replacing the <tt>text()|B|I|U|DEF|LINK</tt> specification with a variable (<tt></tt>). But because the value of the variable is determined by where it is defined, the value of a global inline variable consists of text nodes, <tt>&lt;B&gt;</tt> nodes, and so on, that happen to exist at the root level. In other words, the value of such a variable, in this case, is null.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="generatingXML.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="../stax/index.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Generating XML from an Arbitrary Data Structure
+        <br /><b>Next page:</b> Streaming API for XML
+    </div>
+</body>
+</html> 

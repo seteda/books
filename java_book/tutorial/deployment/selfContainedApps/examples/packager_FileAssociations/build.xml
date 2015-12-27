@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See commented blocks below for -->
+<!-- some examples of how to customize the build. -->
+<!-- (If you delete it and reopen the project it will be recreated.) -->
+<!-- By default, only the Clean and Build commands use this build script. -->
+<!-- Commands such as Run, Debug, and Test only use this build script if -->
+<!-- the Compile on Save feature is turned off for the project. -->
+<!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
+<!-- in the project's Project Properties dialog box.-->
+<project name="packager_FileAssociations" default="default" basedir=".">
+    <description>Builds, tests, and runs the project packager_FileAssociations.</description>
+    <import file="nbproject/build-impl.xml"/>
+
+    <target name="-pre-init">
+        <!-- download and copy groovy library -->
+        <copy toFile="lib/groovy-all-2.3.8.jar">
+            <resources>
+                <url url="http://central.maven.org/maven2/org/codehaus/groovy/groovy-all/2.3.8/groovy-all-2.3.8.jar"/>
+            </resources>
+        </copy>
+        <condition property="excludes" value="**/*Mac.java">
+            <not><os family="mac"/></not>
+        </condition>
+        <condition property="main.class" value="sample.fa.ScriptRunnerApplication" else="sample.fa.ScriptRunnerApplicationMac">
+            <not><os family="mac"/></not>
+        </condition>
+        <property name="javac.compilerargs" value="-XDignore.symbol.file=true"/>
+    </target>
+
+
+    <target name="-post-jar">
+        <copy todir="dist">
+            <fileset dir="src">
+                 <exclude name="**/*.java"/>
+            </fileset>
+            <fileset dir="." includes="lib/*"/>
+        </copy>
+    </target>
+
+
+    <target name="package" depends="jar" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+        <taskdef resource="com/sun/javafx/tools/ant/antlib.xml"
+                 uri="javafx:com.sun.javafx.tools.ant"
+                 classpath="${java.home}/../lib/ant-javafx.jar;src"/>
+
+        <fx:deploy outdir="${basedir}/build/packager"
+                   outfile="FileAssociationDemo"
+                   nativeBundles="all"
+                   verbose="false">
+
+            <fx:application id="fileassociationdemo"
+                            name="File Association Demo"
+                            mainClass="${main.class}"
+                            version="1.0">
+                <fx:argument>sample.js</fx:argument>
+            </fx:application>
+
+            <fx:resources>
+                <fx:fileset dir="dist" includes="**/*"/>
+            </fx:resources>
+
+            <fx:info title="File Association Demo"
+                     vendor="My Company"
+                     description="A Demo of a File Associations for JavaPackager"
+                     category="Demos"
+                     copyright="(c) 2014 My Company"
+                     license="3 Clause BSD">
+                <fx:association extension="js" mimetype="text/javascript" description="JavaScript Source"/>
+                <fx:association extension="groovy" mimetype="text/x-groovy" description="Groovy Source"/>
+            </fx:info>
+
+            <fx:bundleArgument arg="classpath" value="FileAssociationsDemo.jar lib/groovy-all-2.3.8.jar"/>
+
+            <fx:bundleArgument arg="win.exe.systemWide" value="true"/>
+
+            <fx:bundleArgument arg="linux.bundleName" value="file-association-demo"/>
+            <fx:bundleArgument arg="email" value="maintainer@example.com"/>
+            <fx:bundleArgument arg="mac.CFBundleName" value="File Assoc Demo"/>
+            <fx:bundleArgument arg="win.menuGroup" value="Java Demos"/>
+        </fx:deploy>
+    </target>
+
+</project>

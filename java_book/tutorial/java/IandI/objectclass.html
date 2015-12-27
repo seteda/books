@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Object as a Superclass (The Java&trade; Tutorials &gt;        
+            Learning the Java Language &gt; Interfaces and Inheritance)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This beginner Java tutorial describes fundamentals of programming in the Java programming language" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java objects, java classes, java inheritance, interfaces, variables, arrays, data types, operators, control flow, number, string" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Interfaces and Inheritance</a></div>
+<div class="linkAHEAD"><a href="createinterface.html">Interfaces</a></div>
+<div class="linkBHEAD"><a href="interfaceDef.html">Defining an Interface</a></div>
+<div class="linkBHEAD"><a href="usinginterface.html">Implementing an Interface</a></div>
+<div class="linkBHEAD"><a href="interfaceAsType.html">Using an Interface as a Type</a></div>
+<div class="linkBHEAD"><a href="nogrow.html">Evolving Interfaces</a></div>
+<div class="linkBHEAD"><a href="defaultmethods.html">Default Methods</a></div>
+<div class="linkBHEAD"><a href="summary-interface.html">Summary of Interfaces</a></div>
+<div class="linkQUESTIONS"><a href="QandE/interfaces-questions.html">Questions and Exercises</a></div>
+<div class="linkAHEAD"><a href="subclasses.html">Inheritance</a></div>
+<div class="linkBHEAD"><a href="multipleinheritance.html">Multiple Inheritance of State, Implementation, and Type</a></div>
+<div class="linkBHEAD"><a href="override.html">Overriding and Hiding Methods</a></div>
+<div class="linkBHEAD"><a href="polymorphism.html">Polymorphism</a></div>
+<div class="linkBHEAD"><a href="hidevariables.html">Hiding Fields</a></div>
+<div class="linkBHEAD"><a href="super.html">Using the Keyword super</a></div>
+<div class="nolinkBHEAD">Object as a Superclass</div>
+<div class="linkBHEAD"><a href="final.html">Writing Final Classes and Methods</a></div>
+<div class="linkBHEAD"><a href="abstract.html">Abstract Methods and Classes</a></div>
+<div class="linkBHEAD"><a href="summaryinherit.html">Summary of Inheritance</a></div>
+<div class="linkQUESTIONS"><a href="QandE/inherit-questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Learning the Java Language
+        <br /><b>Lesson:</b> Interfaces and Inheritance
+        <br /><b>Section:</b> Inheritance
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Learning the Java Language</a>
+                &gt;
+                <a href="index.html" target="_top">Interfaces and Inheritance</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="super.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="final.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Object as a Superclass</h1></div>
+            <div id="PageContent">
+
+<!-- Being a Descendent of Object -->
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html"><code>Object</code></a> class, in the <code>java.lang</code> package, sits at the top of the class hierarchy tree. Every class is a descendant, direct or indirect, of the <code>Object</code> class. Every class you use or write inherits the instance methods of <code>Object</code>. You need not use any of these methods, but, if you choose to do so, you may need to override them with code that is specific to your class. The methods inherited from <code>Object</code> that are discussed in this section are:</p>
+<ul>
+<li><code>protected Object clone() throws CloneNotSupportedException</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Creates and returns a copy of this object.</li>
+<li><code>public boolean equals(Object obj)</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Indicates whether some other object is &quot;equal to&quot; this one.</li>
+<li><code>protected void finalize() throws Throwable</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Called by the garbage collector on an object when garbage<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;collection determines that there are no more references to the object</li>
+<li><code>public final Class getClass()</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns the runtime class of an object.</li>
+<li><code>public int hashCode()</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns a hash code value for the object.</li>
+<li><code>public String toString()</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns a string representation of the object.</li>
+</ul>
+<p>The <code>notify</code>, <code>notifyAll</code>, and <code>wait</code> methods of <code>Object</code> all play a part in synchronizing the activities of independently running threads in a program, which is discussed in a later 
+lesson
+and won&#39;t be covered here. There are five of these methods:</p>
+<ul>
+<li><code>public final void notify()</code></li>
+<li><code>public final void notifyAll()</code></li>
+<li><code>public final void wait()</code></li>
+<li><code>public final void wait(long timeout)</code></li>
+<li><code>public final void wait(long timeout, int nanos)</code></li>
+</ul>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;There are some subtle aspects to a number of these methods, especially the <code>clone</code> method.
+<hr /></div>
+<h2>The clone() Method</h2>
+<p>If a class, or one of its superclasses, implements the <code>Cloneable</code> interface, you can use the <code>clone()</code> method to create a copy from an existing object. To create a clone, you write:</p>
+<div class="codeblock"><pre>
+<i>aCloneableObject</i>.clone();
+</pre></div>
+<p><code>Object</code>&#39;s implementation of this method checks to see whether the object on which <code>clone()</code> was invoked implements the <code>Cloneable</code> interface. If the object does not, the method throws a <code>CloneNotSupportedException</code> exception. Exception handling will be covered in a later 
+lesson. 
+For the moment, you need to know that <code>clone()</code> must be declared as</p>
+<div class="codeblock"><pre>
+protected Object clone() throws CloneNotSupportedException
+</pre></div>
+<p>or:</p>
+<div class="codeblock"><pre>
+public Object clone() throws CloneNotSupportedException
+</pre></div>
+<p>if you are going to write a <code>clone()</code> method to override the one in <code>Object</code>.</p>
+<p>If the object on which <code>clone()</code> was invoked does implement the <code>Cloneable</code> interface, <code>Object</code>&#39;s implementation of the <code>clone()</code> method creates an object of the same class as the original object and initializes the new object&#39;s member variables to have the same values as the original object&#39;s corresponding member variables.</p>
+<p>The simplest way to make your class cloneable is to add <code>implements Cloneable</code> to your class&#39;s declaration. then your objects can invoke the <code>clone()</code> method.</p>
+<p>For some classes, the default behavior of <code>Object</code>&#39;s <code>clone()</code> method works just fine. If, however, an object contains a reference to an external object, say <code>ObjExternal</code>, you may need to override <code>clone()</code> to get correct behavior. Otherwise, a change in <code>ObjExternal</code> made by one object will be visible in its clone also. This means that the original object and its clone are not independent&#151;to decouple them, you must override <code>clone()</code> so that it clones the object <i>and</i> <code>ObjExternal</code>. Then the original object references <code>ObjExternal</code> and the clone references a clone of <code>ObjExternal</code>, so that the object and its clone are truly independent.</p>
+<h2>The equals() Method</h2>
+<p>The <code>equals()</code> method compares two objects for equality and returns <code>true</code> if they are equal. The <code>equals()</code> method provided in the <code>Object</code> class uses the identity operator (<code>==</code>) to determine whether two objects are equal. For primitive data types, this gives the correct result. For objects, however, it does not. The <code>equals()</code> method provided by <code>Object</code> tests whether the object <i>references</i> are equal&#151;that is, if the objects compared are the exact same object.</p>
+<p>To test whether two objects are equal in the sense of <i>equivalency</i> (containing the same information), you must override the <code>equals()</code> method. Here is an example of a <code>Book</code> class that overrides <code>equals()</code>:</p>
+<div class="codeblock"><pre>
+public class Book {
+    ...
+    public boolean equals(Object obj) {
+        if (obj instanceof Book)
+            return ISBN.equals((Book)obj.getISBN()); 
+        else
+            return false;
+    }
+}
+</pre></div>
+<p>Consider this code that tests two instances of the <code>Book</code> class for equality:</p>
+<div class="codeblock"><pre>
+// Swing Tutorial, 2nd edition
+Book firstBook  = new Book("0201914670");
+Book secondBook = new Book("0201914670");
+if (firstBook.equals(secondBook)) {
+    System.out.println("objects are equal");
+} else {
+    System.out.println("objects are not equal");
+}
+</pre></div>
+<p>This program displays <code>objects are equal</code> even though <code>firstBook</code> and <code>secondBook</code> reference two distinct objects. They are considered equal because the objects compared contain the same ISBN number.</p>
+<p>You should always override the <code>equals()</code> method if the identity operator is not appropriate for your class.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;If you override <code>equals()</code>, you must override <code>hashCode()</code> as well.
+<hr /></div>
+<h2>The finalize() Method</h2>
+<p>The <code>Object</code> class provides a callback method, <code>finalize()</code>, that <i>may be</i> invoked on an object when it becomes garbage. <code>Object</code>&#39;s implementation of <code>finalize()</code> does nothing&#151;you can override <code>finalize()</code> to do cleanup, such as freeing resources.</p>
+<p>The <code>finalize()</code> method <em>may be</em> called automatically by the system, but when it is called, or even if it is called, is uncertain. Therefore, you should not rely on this method to do your cleanup for you. For example, if you don&#39;t close file descriptors in your code after performing I/O and you expect <code>finalize()</code> to close them for you, you may run out of file descriptors.</p>
+<h2>The getClass() Method</h2>
+<p>You cannot override <code>getClass</code>.</p>
+<p>The <code>getClass()</code> method returns a <code>Class</code> object, which has methods you can use to get information about the class, such as its name (<code>getSimpleName()</code>), its superclass (<code>getSuperclass()</code>), and the interfaces it implements (<code>getInterfaces()</code>). For example, the following method gets and displays the class name of an object:</p>
+<div class="codeblock"><pre>
+void printClassName(Object obj) {
+    System.out.println("The object's" + " class is " +
+        obj.getClass().getSimpleName());
+}
+</pre></div>
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html"><code>Class</code></a> class, in the <code>java.lang</code> package, has a large number of methods (more than 50). For example, you can test to see if the class is an annotation (<code>isAnnotation()</code>), an interface (<code>isInterface()</code>), or an enumeration (<code>isEnum()</code>). You can see what the object&#39;s fields are (<code>getFields()</code>) or what its methods are (<code>getMethods()</code>), and so on.</p>
+<h2>The hashCode() Method</h2>
+<p>The value returned by <code>hashCode()</code> is the object&#39;s hash code, which is the object&#39;s memory address in hexadecimal.</p>
+<p>By definition, if two objects are equal, their hash code <i>must also</i> be equal. If you override the <code>equals()</code> method, you change the way two objects are equated and <code>Object</code>&#39;s implementation of <code>hashCode()</code> is no longer valid. Therefore, if you override the <code>equals()</code> method, you must also override the <code>hashCode()</code> method as well.</p>
+<h2>The toString() Method</h2>
+<p>You should always consider overriding the <code>toString()</code> method in your classes.</p>
+<p>The <code>Object</code>&#39;s <code>toString()</code> method returns a <code>String</code> representation of the object, which is very useful for debugging. The <code>String</code> representation for an object depends entirely on the object, which is why you need to override <code>toString()</code> in your classes.</p>
+<p>You can use <code>toString()</code> along with <code>System.out.println()</code> to display a text representation of an object, such as an instance of <code>Book</code>:</p>
+<div class="codeblock"><pre>
+System.out.println(firstBook.toString());
+</pre></div>
+<p>which would, for a properly overridden <code>toString()</code> method, print something useful, like this:</p>
+<div class="codeblock"><pre>
+ISBN: 0201914670; The Swing Tutorial; A Guide to Constructing GUIs, 2nd Edition
+</pre></div>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="super.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="final.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Using the Keyword super
+        <br /><b>Next page:</b> Writing Final Classes and Methods
+    </div>
+</body>
+</html> 

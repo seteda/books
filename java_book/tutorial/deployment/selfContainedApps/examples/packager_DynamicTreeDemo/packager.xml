@@ -1,0 +1,38 @@
+<project name="DynamicTreePackaging" default="default" basedir="." xmlns:fx="javafx:com.sun.javafx.tools.ant">
+    <echo>${java.home}/../lib/ant-javafx.jar</echo>
+    <target name="package" depends="jar">
+        <taskdef resource="com/sun/javafx/tools/ant/antlib.xml"
+                 uri="javafx:com.sun.javafx.tools.ant"
+                 classpath="${java.home}/../lib/ant-javafx.jar;src"/>
+
+        <fx:deploy outdir="${basedir}/build/packager"
+                   outfile="DynamicTreeDemo"
+                   nativeBundles="all"
+                   verbose="false">
+
+            <fx:application name="Dynamic Tree Demo"
+                            id="dynamictreedemo"
+                            mainClass="webstartComponentArch.DynamicTreeApplication"
+                            version="1.0"
+            />
+
+            <fx:resources>
+                <fx:fileset dir="dist" includes="DynamicTreeDemo.jar"/>
+            </fx:resources>
+
+            <fx:info title="Dynamic Tree Demo"
+                     vendor="My Company"
+                     description="A Demo of a Dynamic Swing Tree"
+                     category="Demos"
+                     copyright="(c) 2014 My Company"
+                     license="3 Clause BSD"
+            />
+
+            <fx:bundleArgument arg="linux.bundleName" value="dynamic-tree-demo"/>
+            <fx:bundleArgument arg="email" value="maintainer@example.com"/>
+            <fx:bundleArgument arg="mac.CFBundleName" value="Java Tree Demo"/>
+            <fx:bundleArgument arg="win.menuGroup" value="Java Demos"/>
+  
+        </fx:deploy>
+    </target>
+</project>

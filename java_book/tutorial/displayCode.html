@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Java Tutorials Sample Code</title>
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
+var urlParam; 
+var codeSampleURL;
+var codeSampleName;
+var fileType;
+
+function getCodeSampleUrl() {
+ var queryStrNV = document.location.search.split("=");
+ urlParam = decodeURI(queryStrNV[1]);
+ var origURL = urlParam;
+ 
+  if (!beginsWith("http://docs.oracle.com", urlParam) && 
+      !beginsWith("https://docs.oracle.com", urlParam))
+  {
+     urlParam = "";
+     fileType = " java" + " gutter: false;"
+     return;
+  } 
+ 
+ 
+ if ((!endsWith(".jnlp", urlParam)) && (!endsWith(".css", urlParam)) && (!endsWith(".java", urlParam))) {
+     urlParam = "";
+     fileType = " java" + " gutter: false;"
+     return;
+ }
+ 
+ urlParam = removeBadChrs(urlParam);
+ if (urlParam == origURL) {
+     codeSampleURL = urlParam;
+ }
+ 
+ codeSampleName = urlParam.split("/").pop();
+ fileType = codeSampleName.split(".").pop();
+ if (fileType == "jnlp") {
+     fileType = " xml";
+ } else if (fileType == "css") { 
+     fileType = " css";
+ } else {
+     fileType = " java";
+ }
+ fileType = fileType + " gutter: false;"
+ document.title = codeSampleName;
+ return codeSampleURL;
+}
+
+// new prototype defintion
+document.include = function () {
+ if ('undefined' == typeof(codeSampleURL)) return false;
+ var p,rnd;
+ if (document.all){
+   // For IE, create an ActiveX Object instance
+   p = new ActiveXObject("Microsoft.XMLHTTP");
+ }
+ else {
+   // For mozilla, create an instance of XMLHttpRequest.
+   p = new XMLHttpRequest();
+ }
+ // Prevent browsers from caching the included page
+ // by appending a random  number (optional)
+ rnd = Math.random().toString().substring(2);
+ codeSampleURL = codeSampleURL.indexOf('?')>-1 ? codeSampleURL+'&rnd='+rnd : codeSampleURL+'?rnd='+rnd;
+ // Open the codeSampleURL and write out the response
+ p.open("GET",codeSampleURL,false);
+ p.send(null);
+ var code =  encodeSpecialChars(p.responseText);
+ document.write( code );
+}
+
+var HTML_ESCAPE_CHARS = [["&", "&amp;"], ["<", "&lt;"], [">", "&gt;"]];
+function encodeSpecialChars(code) {
+    var re;
+    for (i=0; i <3; i++) {
+        re = new RegExp(HTML_ESCAPE_CHARS[i][0], "g");
+        code = code.replace(re, HTML_ESCAPE_CHARS[i][1]); 
+    }
+    return code;
+}
+
+function beginsWith(partStr, fullStr) {
+    return (fullStr.substr(0, partStr.length) == partStr);
+}
+
+function endsWith(partStr, fullStr) {    
+    var lastIndex = fullStr.lastIndexOf(partStr);
+    return (lastIndex != -1) && (lastIndex + partStr.length == fullStr.length);
+}
+
+function removeBadChrs(str) {    
+    str = str.replace(/\<|\>|\"|\'|\%|\;|\(|\)|\&|\+|\-|\[|\]/g,""); 
+    return str;
+} 
+
+//]]>
+</script>
+
+<script type="text/javascript" src=
+"supporting/syntaxhighlighter_3.0.83/scripts/shCore.js">
+</script>
+
+<script type="text/javascript" src=
+"supporting/syntaxhighlighter_3.0.83/scripts/shBrushJava.js">
+</script>
+
+<script type="text/javascript" src=
+"supporting/syntaxhighlighter_3.0.83/scripts/shBrushXml.js">
+</script>
+
+<script type="text/javascript" src=
+"supporting/syntaxhighlighter_3.0.83/scripts/shBrushCss.js">
+</script>
+
+<link type="text/css" rel="stylesheet" href=
+"supporting/syntaxhighlighter_3.0.83/styles/shCoreDefault.css" />
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+
+<style type="text/css">
+/*<![CDATA[*/
+/* styles specific to this page */
+
+.syntaxhighlighter { overflow-y: hidden !important; }
+
+.homepagediv {
+float: right;
+margin: 0px 15px 10px 3em;
+}
+.clear {
+clear:both;
+}
+/* styles specific to this page end */
+/* other standard tutorial styles start */
+body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-size:12px;
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+
+    div#TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    div#TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    div#TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;
+		align: left;
+        height: 60px;
+    }
+    div#TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    div#TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+   
+    div#PageTitle {          
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+        float: left;
+    }
+
+   
+    div#Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;   
+    }
+  
+    .footertext {
+        font-size: 11px;
+        color: #454545
+    }
+    
+    div#TagNotes {
+        margin-top: 10px;
+        color: #35556B;
+    }
+    @media print {
+        span#TagNotes a:visited, span#TagNotes a:link {
+            text-decoration: none;
+        }
+    }
+    div#TutBody {
+        margin: 10px 3em 10px 3em;
+    }
+   
+    
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+    .thickhr {
+        color:#000000;
+        background-color:#000000;
+        height:3px;
+        border:none;
+    }
+/*]]>*/
+</style>
+</head>
+<body>
+<!-- tutorial boiler plate start -->
+<div class="header-container">
+    <div class="bookwrapper  clearfix">       
+        <div id="brandProdName">
+            <div id="logocover"></div>
+            <div id="productName" >Documentation</div>
+        </div> 
+        <br class="clearfloat" />
+    </div>
+</div>
+<div id="TopBar">
+<div id="TopBar_tr">
+<div id="TopBar_tl">
+<div id="TopBar_br">
+<div id="TopBar_bl">
+<div id="TopBar_left">
+The Java&trade; Tutorials
+</div>
+<div id="TopBar_right"><a href="search.html" target=
+"_top">Search</a><br />
+<a href=
+"https://docs.oracle.com/javase/feedback.html">Feedback</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- tutorial boiler plate end -->
+
+<div id="PageTitle">
+<h1>Java Tutorials Code Sample &ndash; 
+
+<script language="javascript" type="text/javascript">
+    getCodeSampleUrl();
+    document.write(codeSampleName);
+</script>
+</h1>
+</div>
+
+<div class="homepagediv">
+<p><a href="index.html">Home Page</a></p>
+</div>
+<div class="clear"></div>
+
+<div id="TutBody">
+<script language="javascript" type="text/javascript">
+/* <![CDATA[ */
+
+    document.write("<p><a href='" + codeSampleURL + "'>Download<\/a> this sample.<\/p>");
+    document.write("<pre class='brush:" + fileType + "; '>");
+    document.include();
+    document.write("<\/pre>");
+/* ]]> */  
+</script>
+</div>
+<div class="clear"></div>
+<!-- tutorial boiler plate start -->
+<hr />
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td width="75%">
+        <p class="footertext"><a name="license_info" id="license_info"></a>
+        Your use of this page 
+        and all the material on pages under "The Java Tutorials" banner is
+        subject to these <a href="information/cpyr.html">legal
+        notices</a>.</p>
+    </td>
+    <td width="25%">
+        <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All
+        rights reserved.</p>
+    </td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+<td width="20%">
+</td>
+<td width="55%" valign="middle" align="center">
+<p class="footertext"><a href="http://www.oracle.com/us/corporate/index.html">About
+Oracle</a> | <a href=
+"http://www.oracle.com/technology/index.html">Oracle Technology
+Network</a> | <a href=
+"http://www.oracle.com/technetwork/indexes/samplecode/index.html">
+Terms of Service</a> | <a href=
+"information/docaccessibility.html">Documentation
+Accessibility</a></p></td>
+<td width="25%" valign="middle" align="right"></td>
+</tr>
+</table>
+</div>
+<!-- tutorial boiler plate end -->
+<noscript>
+<p>Scripting on this page tracks web page traffic, but does not change the content in any way.</p>
+
+</noscript>
+
+</body>
+</html>
+
+

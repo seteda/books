@@ -1,0 +1,5 @@
+<APPLET CODE="Starry.class"
+        codebase="examples/"
+        archive="starry.jar"
+	WIDTH=600 HEIGHT=150>
+</APPLET>

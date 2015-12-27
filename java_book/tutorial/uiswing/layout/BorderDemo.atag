@@ -1,0 +1,19 @@
+<applet code="AppletButton.class"
+        archive="example-swing/layout.jar"
+        width="350" height="60"
+        alt="BorderLayout applet">
+<param name="windowClass" value="BorderWindow">
+<param name="windowTitle" value="BorderLayout">
+<param name="buttonText" value="Click here to see a BorderLayout in action">
+
+Since you can't run the applet,
+here's a picture of it:
+
+#usemacro UI_FIGURE (
+    NAME borderlayout.gif
+    W 222
+    H 106
+    ALT Five buttons laid out with a BorderLayout.
+)
+
+</applet>

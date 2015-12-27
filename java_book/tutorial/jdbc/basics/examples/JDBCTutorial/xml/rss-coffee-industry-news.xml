@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+   <channel>
+      <title>Coffee Industry News</title>
+      <link>http://www.example.com/thecoffeebreak/blog</link>
+      <description>Coffee Industry News: Your source for the latest news in the coffee and beverage industry</description>
+
+      <item>
+         <title>The Coffee Break Revamps Its Online Presence</title>
+         <link>http://www.example.com/coffeeindustrynews/2010/09/the-coffee-break-revamps-its-online-presence.html</link>
+         <description>The Coffee Break has dramatically revamped its Web site! Check out their site at <a href="http://www.example.com/thecoffeebreak">http://www.example.com/thecoffeebreak</a>.</description>
+         <pubDate>Wed, 01 Sept 2010 16:00:00 GMT</pubDate>
+         <guid>http://www.example.com/coffeeindustrynews/2010/09/the-coffee-break-revamps-its-online-presence.html</guid>
+
+      </item>
+      <item>
+         <title>Home Espresso Machine Sales up 25% from Last Year</title>
+         <link>http://www.example.com/thecoffeebreak/blog/2010/09/home-espresso-machine-espresso-sales-are-up-25.html</link>
+         <description>Industry analysts have observed that home espresso machine sales are up 25% from last year. This should be good news to stores that sell coffee beans!</description>
+         <pubDate>Wed, 8 Sept 2010 16:00:00 GMT</pubDate>
+         <guid>http://www.example.com/thecoffeebreak/blog/2010/09/home-espresso-machine-espresso-sales-are-up-25.html</guid>
+
+      </item>
+   </channel>
+</rss>

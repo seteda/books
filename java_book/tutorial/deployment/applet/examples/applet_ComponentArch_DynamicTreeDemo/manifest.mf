@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+X-COMMENT: Main-Class will be added automatically by build
+Codebase: *.oracle.com
+Permissions: sandbox
+Application-Name: ComponentArch: Dynamic Tree Demo
+Application-Library-Allowable-Codebase: *.oracle.com
+Main-Class: appletComponentArch.DynamicTreePanel
+Entry-Point: appletComponentArch.DynamicTreePanel appletComponentArch.DynamicTreeApplet

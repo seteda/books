@@ -1,0 +1,88 @@
+<project default="compile">
+
+    <target name="compile">
+        <mkdir dir="classes"/>
+        <javac srcdir="." destdir="classes" fork="yes" executable="${JAVAC}">
+            <compilerarg value="-Xlint:unchecked"/>
+        </javac>
+    </target>
+
+    <target name="clean">
+        <delete dir="classes"/>
+        <delete dir="lib"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="lib"/> 
+        <copy todir="classes" >  
+            <fileset dir=".">  
+                <include name="images/**"/>
+            </fileset>
+        </copy>
+
+        <echo message="Creating JAR files"/> 
+
+        <!-- <jar destfile="lib/2d_text.jar" basedir="classes"/> -->
+
+        <jar destfile="lib/FontSelectorApplet.jar" manifest="manifest/FontSelector/manifest.mf">
+            <filelist dir="classes">
+               <file name="FontSelector.class"/>
+               <file name="TextTestPanel.class"/> 
+            </filelist>
+        </jar>
+        
+        <jar destfile="lib/AntialiasedTextApplet.jar" manifest="manifest/AntialiasedText/manifest.mf">
+            <filelist dir="classes">
+               <file name="AntialiasedText.class"/>
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/AttributedTextApplet.jar" manifest="manifest/AttributedText/manifest.mf">
+            <filelist dir="classes">
+               <file name="AttributedText.class"/>
+            </filelist>
+        </jar>
+
+        <jar destfile="lib/LineBreakSampleApplet.jar" manifest="manifest/LineBreakSample/manifest.mf">
+            <filelist dir="classes">
+               <file name="LineBreakSample.class"/>
+               <file name="LineBreakPanel.class"/>
+            </filelist>
+        </jar>
+
+        <apply executable="java" parallel="false" verbose="true" force="true">
+                <mapper type="merge" to="lib"/>
+    
+                <arg line="-jar"/>
+                <arg path="${ANTCLIENTJAR}"/>
+                <arg value="-file_to_sign"/>
+                <srcfile/>
+                <arg value="-user jsedteam"/>
+                <arg value="-pass sign2jsedteam"/>
+                <arg value="-signed_location"/>
+                <targetfile/>
+                <arg value="-sign_method java2"/>
+                <fileset dir="lib">
+                    <include name="*.jar"/>
+                </fileset>
+        </apply>
+
+<!--
+        <java jvm="${JAVA}" jar="${ANTCLIENTJAR}"
+           fork="true"
+           failonerror="true">
+           <arg value="-file_to_sign"/>
+           <arg path="lib/2d_text.jar"/>
+           <arg value="-user jsedteam"/>
+           <arg value="-pass sign2jsedteam"/>
+           <arg value="-signed_location"/>
+           <arg path="lib"/>
+           <arg value="-sign_method java2"/>   
+       </java>
+
+-->
+        
+    </target>
+
+</project>
+

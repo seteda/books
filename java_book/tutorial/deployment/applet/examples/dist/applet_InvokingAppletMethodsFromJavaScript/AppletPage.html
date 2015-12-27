@@ -1,0 +1,110 @@
+<!--
+/*
+ * Copyright (c) 2009, 2013 Oracle and/or its affiliates. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *   - Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *   - Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ *   - Neither the name of Oracle or the names of its
+ *     contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en-US">
+  <head>
+    <title>Math Applet Page - JavaScript to Java LiveConnect</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <script language="javascript">
+		function enterNums(){
+			var numA = prompt('Enter number \'a\' greater than or equal to zero:','0');
+            var numB = prompt('Enter number \'b\' (should be greater than number \'a\') :','2');
+			// set applet's public variable
+            mathApplet.userName = "John Doe";
+
+            // invoke public applet method
+            var greeting = mathApplet.getGreeting();
+
+            // get another class referenced by applet and invoke its methods
+            var calculator = mathApplet.getCalculator();
+            calculator.setNums(numA, numB);
+
+            // primitive datatype returned by applet
+            var sum = calculator.add();
+
+            // array returned by applet
+            var numRange = calculator.getNumInRange();
+            var numRangeStr = arrayToString(numRange);
+
+            // check Java console log for this message
+            mathApplet.printOut("Testing printing to System.out");
+
+            // get another class, set static field and invoke its methods
+            var dateHelper = mathApplet.getDateHelper();
+            dateHelper.label = "Today\'s date is: ";
+            var dateStr = dateHelper.getDate();
+
+            document.writeln("<p>Results of JavaScript to Java Communication</p>");
+            document.writeln("<p>" + greeting + "</p>");
+            document.writeln("<p> a = " + numA + " ; b = " + numB + " </p>");
+            document.writeln("<p>Sum: " + sum + "</p>");
+            document.writeln("<p>Numbers in range array: " + numRangeStr + "</p>");
+            document.writeln("<p>" + dateStr + "</p>");
+
+		}
+
+
+        function arrayToString(arr) {
+            var ret = "[ ";
+            for (i = 0; i < arr.length; i++) {
+                if (i > 0) {
+                    ret += ", ";
+                }
+                ret += arr[i];
+            }
+            ret += " ]";
+            return ret;
+        }
+
+
+	</script>
+
+  </head>
+  <body>
+    <noscript>A browser with JavaScript enabled is required for this page to operate properly.</noscript>
+    <script src="https://www.java.com/js/deployJava.js"></script>
+    <script>
+        <!-- applet id can be used to get a reference to the applet object -->
+        var attributes = { id:'mathApplet', code:'jstojava.MathApplet', width:1, height:1} ;
+        var parameters = {jnlp_href: 'math_applet.jnlp'} ;
+        deployJava.runApplet(attributes, parameters, '1.6');
+    </script>
+
+
+    <h1>Math Applet</h1>
+    <p>Javascript prompts user to enter two numbers and returns a set of results.</p>
+    <p>This page works best on the Firefox web browser</p>
+    <p><a href="javascript:enterNums();">Launch Example</a></p>
+  </body>
+</html>

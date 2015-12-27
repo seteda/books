@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Providing Sampled-Audio Services (The Java&trade; Tutorials &gt;        
+            Sound)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="" />
+     <meta name="keywords" content="java programming, learn java, java sample code, " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkAHEAD"><a href="sampled-overview.html">Overview of the Sampled Package</a></div>
+<div class="linkAHEAD"><a href="accessing.html">Accessing Audio System Resources</a></div>
+<div class="linkAHEAD"><a href="playing.html">Playing Back Audio</a></div>
+<div class="linkAHEAD"><a href="capturing.html">Capturing Audio</a></div>
+<div class="linkAHEAD"><a href="controls.html">Processing Audio with Controls</a></div>
+<div class="linkAHEAD"><a href="converters.html">Using Files and Format Converters</a></div>
+<div class="linkAHEAD"><a href="overview-MIDI.html">Overview of the MIDI Package</a></div>
+<div class="linkAHEAD"><a href="accessing-MIDI.html">Accessing MIDI System Resources</a></div>
+<div class="linkAHEAD"><a href="MIDI-messages.html">Transmitting and Receiving MIDI Messages</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-intro.html">Introduction to Sequencers</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-methods.html">Using Sequencer Methods</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-adv.html">Using Advanced Sequencer Features</a></div>
+<div class="linkAHEAD"><a href="MIDI-synth.html">Synthesizing Sound</a></div>
+<div class="linkAHEAD"><a href="SPI-intro.html">Introduction to the Service Provider Interfaces</a></div>
+<div class="nolinkAHEAD">Providing Sampled-Audio Services</div>
+<div class="linkAHEAD"><a href="SPI-providing-MIDI.html">Providing MIDI Services</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Sound
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="./index.html" target="_top">Sound</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="SPI-intro.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="./TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="SPI-providing-MIDI.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Providing Sampled-Audio Services</h1></div>
+            <div id="PageContent">
+
+<p><a name="118162"></a> As you know, the Java Sound API includes two packages, <code>javax.sound.sampled.spi</code> and <code>javax.sound.midi.spi</code>, that define abstract classes to be used by developers of sound services. By implementing and installing a subclass of one of these abstract classes, a service provider registers the new service, extending the functionality of the runtime system. This page tells you how to go about using the <code>javax.sound.sampled.spi</code> package to provide new services for handling sampled audio.</p>
+<p><a name="118164"></a></p>
+<p><a name="118166"></a> There are four abstract classes in the <code>javax.sound.sampled.spi</code> package, representing four different types of services that you can provide for the sampled-audio system:</p>
+<ul>
+<li><a name="118167"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/spi/AudioFileWriter.html"><code>AudioFileWriter</code></a> provides sound file-writing services. These services make it possible for an application program to write a stream of audio data to a file of a particular type.</li>
+<li><a name="118168"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/spi/AudioFileReader.html"><code>AudioFileReader</code></a> provides file-reading services. These services enable an application program to ascertain a sound file&#39;s characteristics, and to obtain a stream from which the file&#39;s audio data can be read.</li>
+<li><a name="118169"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/spi/FormatConversionProvider.html"><code>FormatConversionProvider</code></a> provides services for converting audio data formats. These services allow an application program to translate audio streams from one data format to another.</li>
+<li><a name="118170"></a> 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/spi/MixerProvider.html"><code>MixerProvider</code></a> provides management of a particular kind of mixer. This mechanism allows an application program to obtain information about, and access instances of, a given kind of mixer.
+<p><a name="118172"></a></p>
+</li>
+</ul>
+<p>To recapitulate earlier discussions, service providers can extend the functionality of the runtime system. A typical SPI class has two types of methods: ones that respond to queries about the types of services available from a particular provider, and ones that either perform the new service directly, or return instances of objects that actually provide the service. The runtime environment&#39;s service-provider mechanism provides <em>registration</em> of installed services with the audio system, and <em>management</em> of the new service provider classes.</p>
+<p><a name="120967"></a> In essence there is a double isolation of the service instances from the application developer. An application program never directly creates instances of the service objects, such as mixers or format converters, that it needs for its audio processing tasks. Nor does the program even directly request these objects from the SPI classes that administer them. The application program makes requests to the <code>AudioSystem</code> object in the <code>javax.sound.sampled</code> package, and <code>AudioSystem</code> in turn uses the SPI objects to process these queries and service requests.</p>
+<p><a name="120968"></a> The existence of new audio services might be completely transparent to both the user and the application programmer. All application references are through standard objects of the <code>javax.sound.sampled</code> package, primarily <code>AudioSystem</code>, and the special handling that new services might be providing is often completely hidden.</p>
+<p><a name="120974"></a> In this discussion, we&#39;ll continue the previous convention of referring to new SPI subclasses by names like <code>AcmeMixer</code> and <code>AcmeMixerProvider</code>.</p>
+<p><a name="118177"></a></p>
+<h2>Providing Audio File-Writing Services</h2>
+<p><a name="118179"></a> Let&#39;s start with <code>AudioFileWriter</code>, one of the simpler SPI classes.</p>
+<p><a name="119866"></a> A subclass that implements the methods of <code>AudioFileWriter</code> must provide implementations of a set of methods to handle queries about the file formats and file types supported by the class, as well as provide methods that actually write out a supplied audio data stream to a <code>File</code> or <code>OutputStream</code>.</p>
+<p><a name="119867"></a> <code>AudioFileWriter</code> includes two methods that have concrete implementations in the base class:</p>
+<div class="codeblock"><pre>
+boolean isFileTypeSupported(AudioFileFormat.Type fileType) 
+boolean isFileTypeSupported(AudioFileFormat.Type fileType, AudioInputStream stream) 
+</pre></div>
+<p>The first of these methods informs the caller whether this file writer can write sound files of the specified type. This method is a general inquiry, it will return <code>true</code> if the file writer can write that kind of file, assuming the file writer is handed appropriate audio data. However, the ability to write a file can depend on the format of the specific audio data that&#39;s handed to the file writer. A file writer might not support every audio data format, or the constraint might be imposed by the file format itself. (Not all kinds of audio data can be written to all kinds of sound files.) The second method is more specific, then, asking whether a particular <code>AudioInputStream</code> can be written to a particular type of file.</p>
+<p><a name="119891"></a> Generally, you won&#39;t need to override these two concrete methods. Each is simply a wrapper that invokes one of two other query methods and iterates over the results returned. These other two query methods are abstract and therefore need to be implemented in the subclass:</p>
+<div class="codeblock"><pre>
+abstract AudioFileFormat.Type[] getAudioFileTypes() 
+abstract AudioFileFormat.Type[] getAudioFileTypes(AudioInputStream stream) 
+</pre></div>
+<p>These methods correspond directly to the previous two. Each returns an array of all the supported file types-all that are supported in general, in the case of the first method, and all that are supported for a specific audio stream, in the case of the second method. A typical implementation of the first method might simply return an array that the file writer&#39;s constructor initializes. An implementation of the second method might test the stream&#39;s <code>AudioFormat</code> object to see whether it&#39;s a data format that the requested type of file supports.</p>
+<p><a name="119946"></a> The final two methods of <code>AudioFileWriter</code> do the actual file-writing work:</p>
+<div class="codeblock"><pre>
+abstract int write(AudioInputStream stream, 
+     AudioFileFormat.Type fileType, java.io.File out) 
+abstract int write(AudioInputStream stream, 
+     AudioFileFormat.Type fileType, java.io.OutputStream out) 
+</pre></div>
+<p>These methods write a stream of bytes representing the audio data to the stream or file specified by the third argument. The details of how this is done depend on the structure of the specified type of file. The <code>write</code> method must write the file&#39;s header and the audio data in the manner prescribed for sound files of this format (whether it&#39;s a standard type of sound file or a new, possibly proprietary one). <a name="118201"></a></p>
+<h2>Providing Audio File-Reading Services</h2>
+<p><a name="120146"></a> The <code>AudioFileReader</code> class consists of six abstract methods that your subclass needs to implement-actually, two different overloaded methods, each of which can take a <code>File</code>, <code>URL</code>, or <code>InputStream</code> argument. The first of these overloaded methods accepts queries about the file format of a specified file:</p>
+<div class="codeblock"><pre>
+abstract AudioFileFormat getAudioFileFormat(java.io.File file) 
+abstract AudioFileFormat getAudioFileFormat(java.io.InputStream stream) 
+abstract AudioFileFormat getAudioFileFormat(java.net.URL url) 
+</pre></div>
+<p>A typical implementation of <code>getAudioFileFormat</code> method reads and parses the sound file&#39;s header to ascertain its file format. See the description of the AudioFileFormat class to see what fields need to be read from the header, and refer to the specification for the particular file type to figure out how to parse the header.</p>
+<p><a name="120204"></a> Because the caller providing a stream as an argument to this method expects the stream to be unaltered by the method, the file reader should generally start by marking the stream. After reading to the end of the header, it should reset the stream to its original position.</p>
+<p><a name="120135"></a> The other overloaded <code>AudioFileReader</code> method provides file-reading services, by returning an AudioInputStream from which the file&#39;s audio data can be read:</p>
+<div class="codeblock"><pre>
+abstract AudioInputStream getAudioInputStream(java.io.File file) 
+abstract AudioInputStream getAudioInputStream(java.io.InputStream stream) 
+abstract AudioInputStream getAudioInputStream(java.net.URL url) 
+</pre></div>
+<p>Typically, an implementation of <code>getAudioInputStream</code> returns an <code>AudioInputStream</code> wound to the beginning of the file&#39;s data chunk (after the header), ready for reading. It would be conceivable, though, for a file reader to return an <code>AudioInputStream</code> whose audio format represents a stream of data that is in some way decoded from what is contained in the file. The important thing is that the method return a formatted stream from which the audio data contained in the file can be read. The <code>AudioFormat</code> encapsulated in the returned <code>AudioInputStream</code> object will inform the caller about the stream&#39;s data format, which is usually, but not necessarily, the same as the data format in the file itself.</p>
+<p><a name="120248"></a> Generally, the returned stream is an instance of <code>AudioInputStream</code>; it&#39;s unlikely you would ever need to subclass <code>AudioInputStream</code>.</p>
+<p><a name="118208"></a></p>
+<h2>Providing Format-Conversion Services</h2>
+<p><a name="120439"></a> A <code>FormatConversionProvider</code> subclass transforms an <code>AudioInputStream</code> that has one audio data format into one that has another format. The former (input) stream is referred to as the <em>source</em> stream, and the latter (output) stream is referred to as the <em>target</em> stream. Recall that an <code>AudioInputStream</code> contains an <code>AudioFormat</code>, and the <code>AudioFormat</code> in turn contains a particular type of data encoding, represented by an <code>AudioFormat.Encoding</code> object. The format and encoding in the source stream are called the source format and source encoding, and those in the target stream are likewise called the target format and target encoding.</p>
+<p><a name="120267"></a> The work of conversion is performed in the overloaded abstract method of <code>FormatConversionProvider</code> called <code>getAudioInputStream</code>. The class also has abstract query methods for learning about all the supported target and source formats and encodings. There are concrete wrapper methods for querying about a specific conversion.</p>
+<p><a name="120265"></a> The two variants of <code>getAudioInputStream</code> are:</p>
+<div class="codeblock"><pre>
+abstract AudioInputStream getAudioInputStream(AudioFormat.Encoding targetEncoding, 
+     AudioInputStream sourceStream) 
+</pre></div>
+<p>and</p>
+<div class="codeblock"><pre>
+abstract AudioInputStream getAudioInputStream(AudioFormat targetFormat, 
+     AudioInputStream sourceStream) 
+</pre></div>
+<p>These differ in the first argument, according to whether the caller is specifying a complete target format or just the format&#39;s encoding.</p>
+<p><a name="120460"></a> A typical implementation of <code>getAudioInputStream</code> works by returning a new subclass of <code>AudioInputStream</code> that wraps around the original (source) <code>AudioInputStream</code> and applies a data format conversion to its data whenever a <code>read</code> method is invoked. For example, consider the case of a new <code>FormatConversionProvider</code> subclass called <code>AcmeCodec</code>, which works with a new <code>AudioInputStream</code> subclass called <code>AcmeCodecStream</code>.</p>
+<p><a name="118212"></a> The implementation of <code>AcmeCodec&#39;s</code> second <code>getAudioInputStream</code> method might be:</p>
+<div class="codeblock"><pre>
+public AudioInputStream getAudioInputStream
+      (AudioFormat outputFormat, AudioInputStream stream) {
+        AudioInputStream cs = null;
+        AudioFormat inputFormat = stream.getFormat();
+        if (inputFormat.matches(outputFormat) ) {
+            cs = stream;
+        } else {
+            cs = (AudioInputStream)
+                (new AcmeCodecStream(stream, outputFormat));
+            tempBuffer = new byte[tempBufferSize];
+        }
+        return cs;
+    }
+</pre></div>
+<p>The actual format conversion takes place in new <code>read</code> methods of the returned <code>AcmeCodecStream</code>, a subclass of <code>AudioInputStream</code>. Again, application programs that access this returned <code>AcmeCodecStream</code> simply operate on it as an <code>AudioInputStream</code>, and don&#39;t need to know the details of its implementation.</p>
+<p><a name="118232"></a> The other methods of a <code>FormatConversionProvider</code> all permit queries about the input and output encodings and formats that the object supports. The following four methods, being abstract, need to be implemented:</p>
+<div class="codeblock"><pre>
+abstract AudioFormat.Encoding[] getSourceEncodings() 
+abstract AudioFormat.Encoding[] getTargetEncodings() 
+abstract AudioFormat.Encoding[] getTargetEncodings(
+    AudioFormat sourceFormat) 
+abstract  AudioFormat[] getTargetFormats(
+    AudioFormat.Encoding targetEncoding, 
+    AudioFormat sourceFormat) 
+</pre></div>
+<p>As in the query methods of the <code>AudioFileReader</code> class discussed above, these queries are typically handled by checking private data of the object and, for the latter two methods, comparing them against the argument(s).</p>
+<p><a name="120475"></a> The remaining four <code>FormatConversionProvider</code> methods are concrete and generally don&#39;t need to be overridden:</p>
+<div class="codeblock"><pre>
+boolean isConversionSupported(
+    AudioFormat.Encoding targetEncoding,
+    AudioFormat sourceFormat) 
+boolean isConversionSupported(AudioFormat targetFormat, 
+    AudioFormat sourceFormat) 
+boolean isSourceEncodingSupported(
+    AudioFormat.Encoding sourceEncoding) 
+boolean isTargetEncodingSupported(
+    AudioFormat.Encoding targetEncoding) 
+</pre></div>
+<p>As with <code>AudioFileWriter.isFileTypeSupported()</code>, the default implementation of each of these methods is essentially a wrapper that invokes one of the other query methods and iterates over the results returned. <a name="120618"></a></p>
+<h2>Providing New Types of Mixers</h2>
+<p><a name="118235"></a> As its name implies, a <code>MixerProvider</code> supplies instances of mixers. Each concrete <code>MixerProvider</code> subclass acts as a factory for the <code>Mixer</code> objects used by an application program. Of course, defining a new <code>MixerProvider</code> only makes sense if one or more new implementations of the <code>Mixer</code> interface are also defined. As in the <code>FormatConversionProvider</code> example above, where our <code>getAudioInputStream</code> method returned a subclass of <code>AudioInputStream</code> that performed the conversion, our new class <code>AcmeMixerProvider</code> has a method <code>getMixer</code> that returns an instance of another new class that implements the <code>Mixer</code> interface. We&#39;ll call the latter class <code>AcmeMixer</code>. Particularly if the mixer is implemented in hardware, the provider might support only one static instance of the requested device. If so, it should return this static instance in response to each invocation of <code>getMixer</code>.</p>
+<p><a name="118238"></a> Since <code>AcmeMixer</code> supports the <code>Mixer</code> interface, application programs don&#39;t require any additional information to access its basic functionality. However, if <code>AcmeMixer</code> supports functionality not defined in the <code>Mixer</code> interface, and the vendor wants to make this extended functionality accessible to application programs, the mixer should of course be defined as a public class with additional, well-documented public methods, so that a program that wishes to make use of this extended functionality can import <code>AcmeMixer</code> and cast the object returned by <code>getMixer</code> to this type.</p>
+<p><a name="120792"></a> The other two methods of <code>MixerProvider</code> are:</p>
+<div class="codeblock"><pre>
+abstract Mixer.Info[] getMixerInfo() 
+</pre></div>
+<p>and</p>
+<div class="codeblock"><pre>
+boolean isMixerSupported(Mixer.Info info) 
+</pre></div>
+<p>These methods allow the audio system to determine whether this particular provider class can produce a device that an application program needs. In other words, the <code>AudioSystem</code> object can iterate over all the installed <code>MixerProviders</code> to see which ones, if any, can supply the device that the application program has requested of the <code>AudioSystem</code>. The <code>getMixerInfo</code> method returns an array of objects containing information about the kinds of mixer available from this provider object. The system can pass these information objects, along with those from other providers, to an application program.</p>
+<p><a name="120729"></a> A single <code>MixerProvider</code> can provide more than one kind of mixer. When the system invokes the <code>MixerProvider&#39;s getMixerInfo</code> method, it gets a list of information objects identifying the different kinds of mixer that this provider supports. The system can then invoke <code>MixerProvider.getMixer(Mixer.Info)</code> to obtain each mixer of interest.</p>
+<p><a name="120841"></a> Your subclass needs to implement <code>getMixerInfo</code>, as it&#39;s abstract. The <code>isMixerSupported</code> method is concrete and doesn&#39;t generally need to be overridden. The default implementation simply compares the provided <code>Mixer.Info</code> to each one in the array returned by <code>getMixerInfo</code>.</p>
+<p>&nbsp;</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="SPI-intro.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="./TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="SPI-providing-MIDI.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Introduction to the Service Provider Interfaces
+        <br /><b>Next page:</b> Providing MIDI Services
+    </div>
+</body>
+</html> 

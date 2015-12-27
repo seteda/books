@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+X-COMMENT: Main-Class will be added automatically by build
+Codebase: *.oracle.com
+Main-Class: HitTestSample
+Permissions: sandbox
+Application-Name: Hit Test Sample Demo

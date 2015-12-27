@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>A Synth Example (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Modifying the Look and Feel)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Modifying the Look and Feel</a></div>
+<div class="linkAHEAD"><a href="plaf.html">How to Set the Look and Feel</a></div>
+<div class="linkAHEAD"><a href="synth.html">The Synth Look and Feel</a></div>
+<div class="nolinkBHEAD">A Synth Example</div>
+<div class="linkAHEAD"><a href="nimbus.html">Nimbus Look and Feel</a></div>
+<div class="linkBHEAD"><a href="custom.html">Changing the Look of Nimbus</a></div>
+<div class="linkBHEAD"><a href="size.html">Resizing a Component</a></div>
+<div class="linkBHEAD"><a href="color.html">Changing the Color Theme</a></div>
+<div class="linkBHEAD"><a href="info.html">For More Information</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Modifying the Look and Feel
+        <br /><b>Section:</b> The Synth Look and Feel
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Modifying the Look and Feel</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="synth.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="nimbus.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>A Synth Example</h1></div>
+            <div id="PageContent">
+
+<!--  Synth look and Feel example -->
+<p>In the lesson titled 
+<a class="TutorialLink" target="_top" href="../../uiswing/layout/groupExample.html">A GroupLayout Example </a>, <code>GroupLayout</code> was used to create a search dialog box called &quot;Find.&quot; The program that created the dialog box, <code>Find.java</code>, used the cross platform (&quot;Metal&quot;) look and feel with the &quot;Ocean&quot; theme:</p>
+<center><img src="../../figures/uiswing/lookandfeel/FindWithOcean.gif" width="410" height="128" align="bottom" alt="Find." /></center><p>This lesson creates the same dialog box with Synth, using an external XML file. Here is the listing of the 
+<a class="SourceLink" target="_blank" href="../examples/lookandfeel/SynthDialogProject/src/lookandfeel/SynthDialog.java" onclick="showCode('../../displayCode.html', '../examples/lookandfeel/SynthDialogProject/src/lookandfeel/SynthDialog.java'); return false;"><code><code>SynthDialog.java</code></code></a>file.</p>
+<p><code>SynthDialog.java</code> is exactly the same as <code>Find.java</code> except for the <code>initLookAndFeel()</code> method, which has been altered to use the Synth look and feel with an external file called <code>synthDemo.xml</code>. Here is the new <code>initLookAndFeel()</code> method:</p>
+<div class="codeblock"><pre>
+private static void initLookAndFeel() {
+   SynthLookAndFeel lookAndFeel = new SynthLookAndFeel();
+       
+   // SynthLookAndFeel load() method throws a checked exception
+   // (java.text.ParseException) so it must be handled
+   try {
+      lookAndFeel.load(SynthDialog.class.getResourceAsStream("synthDemo.xml"),
+                                                               SynthDialog.class);
+      UIManager.setLookAndFeel(lookAndFeel);
+   } 
+            
+   catch (ParseException e) {
+      System.err.println("Couldn't get specified look and feel ("
+                                   + lookAndFeel
+                                    + "), for some reason.");
+      System.err.println("Using the default look and feel.");
+      e.printStackTrace();
+   }
+}
+</pre></div>
+<h2>The XML File</h2>
+<p>The XML file, <code>synthDemo.xml</code>, begins with a style bound to all regions. It is good practice to do this to ensure that regions without a style bound to them will contain something. This style makes all regions paint their background in an opaque color. It also sets a default font and default colors.</p>
+<div class="codeblock"><pre>
+  &lt;!-- Style that all regions will use --&gt;
+  &lt;style id="backingStyle"&gt;
+    &lt;!-- Make all the regions opaque--&gt;
+    &lt;opaque value="TRUE"/&gt;
+    &lt;font name="Dialog" size="14"/&gt;
+    &lt;state&gt;
+      &lt;color value="#D8D987" type="BACKGROUND"/&gt;
+      &lt;color value="RED" type="FOREGROUND"/&gt;
+    &lt;/state&gt;
+  &lt;/style&gt;
+  &lt;bind style="backingStyle" type="region" key=".*"/&gt;
+</pre></div>
+<div class="note"><hr /><strong>Notes:</strong>&nbsp;<p>1. The color definitions must be inside a &lt;state&gt; element. This permits changing colors depending on state. The &lt;state&gt; element in <code>backingStyle</code> has no attributes and is therefore applied to all regions, irrespective of their state. If a region has other states, the states are merged with precedence given to state definitions that appear later in the file.</p>
+<p>2. The font definition is not inside a &lt;state&gt; element because the font should <i>not</i> change when there is a change of state (many components are sized depending on their font, and a change in font could cause components to change in size unintentionally).</p>
+<hr /></div>
+<p>The next &lt;style&gt; element defined is for the text field, which is painted using an image.</p>
+<div class="codeblock"><pre>
+  &lt;style id="textfield"&gt;
+    &lt;insets top="4" left="6" bottom="4" right="6"/&gt;
+    &lt;state&gt;
+       &lt;font name="Verdana" size="14"/&gt;
+       &lt;color value="#D2DFF2" type="BACKGROUND"/&gt;
+       &lt;color value="#000000" type="TEXT_FOREGROUND"/&gt;
+    &lt;/state&gt;
+    &lt;imagePainter method="textFieldBorder" path="images/textfield.png"
+                  sourceInsets="4 6 4 6" paintCenter="false"/&gt;
+  &lt;/style&gt;
+  &lt;bind style="textfield" type="region" key="TextField"/&gt;
+</pre></div>
+<div class="note"><hr /><strong>Notes:</strong>&nbsp;<p>1. The font and color definitions override the definitions in <code>backingStyle</code>.</p>
+<p>2. The <code>insets</code> and <code>sourceInsets</code> are given the same values, which is just a coincidence because they are unrelated to each other.</p>
+<p>3. The BACKGROUND color, #D2DFF2, is a pale blue&mdash;the same color as the background in the image, <code>textfield.png</code>.</p>
+<p>4. <code>paintCenter</code> is <code>false</code> so that you can see the background color.</p>
+<hr /></div>
+<p>The next &lt;style&gt; element is for buttons that are painted with different images, depending on the button state. When the mouse passes over the button, its appearance changes. When it is clicked (PRESSED) the image changes again.</p>
+<div class="codeblock"><pre>
+ &lt;style id="button"&gt;
+        &lt;!-- Shift the text one pixel when pressed --&gt;
+    &lt;property key="Button.textShiftOffset" type="integer" value="1"/&gt;
+    &lt;!-- set size of buttons --&gt;
+    &lt;insets top="15" left="20" bottom="15" right="20"/&gt;
+    &lt;state&gt;
+      &lt;imagePainter method="buttonBackground" path="images/button.png"
+                           sourceInsets="10 10 10 10" /&gt;
+      &lt;font name="Dialog" size="16"/&gt;
+      &lt;color type="TEXT_FOREGROUND" value="#FFFFFF"/&gt;
+    &lt;/state&gt;
+              
+    &lt;state value="PRESSED"&gt; 
+      &lt;imagePainter method="buttonBackground"
+          path="images/button_press.png"
+                   sourceInsets="10 10 10 10" /&gt;
+    &lt;/state&gt;
+            
+    &lt;state value="MOUSE_OVER"&gt;    
+      &lt;imagePainter method="buttonBackground"
+          path="images/button_over.png"
+                 sourceInsets="10 10 10 10" /&gt;
+    &lt;/state&gt;
+  &lt;/style&gt;
+  &lt;bind style="button" type="region" key="Button"/&gt;
+</pre></div>
+<div class="note"><hr /><strong>Notes:</strong>&nbsp;<p>1. The font and color definitions inside the &lt;state&gt; element without attributes apply to all button states. This is because the definitions of all states that apply (and the &lt;state&gt; element without attributes is one of these) will merge and there are no other font and color definitions that might take precedence.</p>
+<p>2. The <code>sourceInsets</code> values are large enough that the curved corners of the button image will not be stretched.</p>
+<p>3. The order of the <code>PRESSED</code> and <code>MOUSE_OVER</code> states is important. Since the mouse will always be over the button when it is pressed, both states will apply to a pressed button and the first state defined (<code>PRESSED</code>) will apply. When the mouse is over the button but it is not pressed, only the <code>MOUSE_OVER</code> state applies. If the order of the <code>PRESSED</code> and <code>MOUSE_OVER</code> states is reversed, the <code>PRESSED</code> state image will never be used.</p>
+<hr /></div>
+<p>The next &lt;style&gt; element is for checkboxes that are painted with different icons, depending on the checkbox state.</p>
+<div class="codeblock"><pre>
+  &lt;style id="checkbox"&gt;
+    &lt;imageIcon id="check_off" path="images/checkbox_off.png"/&gt;
+    &lt;imageIcon id="check_on" path="images/checkbox_on.png"/&gt;
+    &lt;property key="CheckBox.icon" value="check_off"/&gt;
+    &lt;state value="SELECTED"&gt;   
+      &lt;property key="CheckBox.icon" value="check_on"/&gt;
+    &lt;/state&gt;
+  &lt;/style&gt;
+  &lt;bind style="checkbox" type="region" key="Checkbox"/&gt;    
+</pre></div>
+<div class="note"><hr /><strong>Notes:</strong>&nbsp;<p>1. You must use the &lt;imageIcon&gt; element to define any icons to be used.</p>
+<p>2. The &lt;insets&gt; element and the <code>sourceInsets</code> attribute are not used with icons because they are rendered in their fixed size and are not stretched.</p>
+<p>3. The icon used to render the checkbox is the icon named in the <code>CheckBox.icon</code> property. (see 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/plaf/synth/doc-files/componentProperties.html"><code>javax/swing/plaf/synth/doc-files/componentProperties.html</code></a>), which is the icon with id=&quot;check_off&quot; unless the checkbox state is <code>SELECTED</code>.</p>
+<hr /></div>
+<p>The <code>synthDemo.xml</code> file is constructed of the styles presented above, wrapped in &lt;synth&gt;&lt;/synth&gt; tags. You can open the completed file by clicking 
+<a class="SourceLink" target="_blank" href="../examples/lookandfeel/SynthDialogProject/src/lookandfeel/synthDemo.xml" onclick="showCode('../../displayCode.html', '../examples/lookandfeel/SynthDialogProject/src/lookandfeel/synthDemo.xml'); return false;"><code><code>synthDemo.xml</code></code></a>.</p>
+<div class="note"><hr /><strong>Try this:</strong>&nbsp;<p>Click the Launch button to run the SynthDialog example using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/lookandfeel/index.html#SynthDialog">example index&lt;/
+a&gt;.</a></p>
+<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/SynthDialogProject/SynthDialog.jnlp"><img src="../../images/jws-launch-button.png" width="88" height="23" align="bottom" alt="Launches the SynthDialog example" /></a><br />
+<hr /></div>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="synth.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="nimbus.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> The Synth Look and Feel
+        <br /><b>Next page:</b> Nimbus Look and Feel
+    </div>
+</body>
+</html> 

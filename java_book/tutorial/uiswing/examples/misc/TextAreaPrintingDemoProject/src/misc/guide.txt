@@ -1,0 +1,7 @@
+Enter header and footer formats, if desired. You can use {0} for page number in any format.
+
+Select "Show Progress Dialog" if you would like to track progress of the printing job and/or be able to cancel it.
+
+Select "Print in Background" if you would like printing to occur in a background thread so that interaction with the demo application is not blocked.
+
+Finally, click the Print! button.

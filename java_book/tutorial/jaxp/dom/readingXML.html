@@ -1,0 +1,1464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Reading XML Data into a DOM (The Java&trade; Tutorials &gt;        
+            Java API for XML Processing (JAXP) &gt; Document Object Model)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JAXP Java tutorial describes Java API for XML Processing (jaxp), XSLT, SAX, and related XML topics" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jaxp, xml, xslt, sax" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Document Object Model</a></div>
+<div class="linkAHEAD"><a href="when.html">When to Use DOM</a></div>
+<div class="nolinkAHEAD">Reading XML Data into a DOM</div>
+<div class="linkAHEAD"><a href="validating.html">Validating with XML Schema</a></div>
+<div class="linkAHEAD"><a href="info.html">Further Information</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java API for XML Processing (JAXP)
+        <br /><b>Lesson:</b> Document Object Model
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java API for XML Processing (JAXP)</a>
+                &gt;
+                <a href="index.html" target="_top">Document Object Model</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="when.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="validating.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Reading XML Data into a DOM</h1></div>
+            <div id="PageContent">
+
+<!-- Reading XML Data into a DOM -->
+<p>In this section, you will construct a Document Object Model by reading in an existing XML file.</p>
+<hr />
+<p><b>Note -</b> In 
+<a class="TutorialLink" target="_top" href="../xslt/index.html">Extensible Stylesheet Language Transformations</a>, you will see how to write out a DOM as an XML file. (You will also see how to convert an existing data file into XML with relative ease.)</p>
+<hr />
+<h2><a name="gestu" id="gestu"></a>Creating the Program</h2>
+<p>The Document Object Model provides APIs that let you create, modify, delete, and rearrange nodes. Before you try to create a DOM, it is helpful to understand how a DOM is structured. This series of examples will make DOM internals visible via a sample program called <tt>DOMEcho</tt>, which you will find in the directory <tt><i>INSTALL_DIR</i>/jaxp-<i>version</i>/samples/dom</tt> after you have installed the JAXP API.</p>
+<h3><a name="gestx" id="gestx"></a>Create the Skeleton</h3>
+<p>First, build a simple program to read an XML document into a DOM and then write it back out again.</p>
+<p>Start with the normal basic logic for an application, and check to make sure that an argument has been supplied on the command line:</p>
+<div class="codeblock"><pre>
+public class DOMEcho {
+
+    static final String outputEncoding = "UTF-8";
+
+    private static void usage() {
+        // ...
+    }
+
+    public static void main(String[] args) throws Exception {
+        String filename = null;
+    
+        for (int i = 0; i &lt; args.length; i++) {
+            if (...) { 
+                // ...
+            } 
+            else {
+                filename = args[i];
+                if (i != args.length - 1) {
+                    usage();
+                }
+            }
+        }
+
+        if (filename == null) {
+            usage();
+        }
+    }
+}
+</pre></div>
+<p>This code performs all the basic set up operations. All output for <tt>DOMEcho</tt> uses UTF-8 encoding. The <tt>usage()</tt> method that is called if no argument is specified simply tells you what arguments <tt>DOMEcho</tt> expects, so the code is not shown here. A <tt>filename</tt> string is also declared, which will be the name of the XML file to be parsed into a DOM by <tt>DOMEcho</tt>.</p>
+<h3><a name="gesun" id="gesun"></a>Import the Required Classes</h3>
+<p>In this section, all the classes are individually named so you that can see where each class comes from, in case you want to reference the API documentation. In the sample file, the import statements are made with the shorter form, such as <tt>javax.xml.parsers.*</tt>.</p>
+<p>These are the JAXP APIs used by <tt>DOMEcho</tt>:</p>
+<div class="codeblock"><pre>
+package dom;
+import javax.xml.parsers.DocumentBuilder; 
+import javax.xml.parsers.DocumentBuilderFactory;
+</pre></div>
+<p>These classes are for the exceptions that can be thrown when the XML document is parsed:</p>
+<div class="codeblock"><pre>
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException; 
+import org.xml.sax.SAXParseException;
+import org.xml.sax.helpers.*
+</pre></div>
+<p>These classes read the sample XML file and manage output:</p>
+<div class="codeblock"><pre>
+import java.io.File;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+</pre></div>
+<p>Finally, import the W3C definitions for a DOM, DOM exceptions, entities and nodes:</p>
+<div class="codeblock"><pre>
+import org.w3c.dom.Document;
+import org.w3c.dom.DocumentType;
+import org.w3c.dom.Entity;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+</pre></div>
+<h3><a name="gestm" id="gestm"></a>Handle Errors</h3>
+<p>Next, add the error-handling logic. The most important point is that a JAXP-conformant document builder is required to report SAX exceptions when it has trouble parsing an XML document. The DOM parser does not have to actually use a SAX parser internally, but because the SAX standard is already there, it makes sense to use it for reporting errors. As a result, the error-handling code for DOM applications is very similar to that for SAX applications:</p>
+<div class="codeblock"><pre>
+private static class MyErrorHandler implements ErrorHandler {
+     
+    private PrintWriter out;
+
+    MyErrorHandler(PrintWriter out) {
+        this.out = out;
+    }
+
+    private String getParseExceptionInfo(SAXParseException spe) {
+        String systemId = spe.getSystemId();
+        if (systemId == null) {
+            systemId = "null";
+        }
+
+        String info = "URI=" + systemId + " Line=" + spe.getLineNumber() +
+                      ": " + spe.getMessage();
+        return info;
+    }
+
+    public void warning(SAXParseException spe) throws SAXException {
+        out.println("Warning: " + getParseExceptionInfo(spe));
+    }
+        
+    public void error(SAXParseException spe) throws SAXException {
+        String message = "Error: " + getParseExceptionInfo(spe);
+        throw new SAXException(message);
+    }
+
+    public void fatalError(SAXParseException spe) throws SAXException {
+        String message = "Fatal Error: " + getParseExceptionInfo(spe);
+        throw new SAXException(message);
+    }
+}
+
+</pre></div>
+<p>As you can see, the <tt>DomEcho</tt> class&#39;s error handler generates its output using <tt>PrintWriter</tt> instances.</p>
+<h3><a name="geswy" id="geswy"></a>Instantiate the Factory</h3>
+<p>Next, add the following code to the <tt>main()</tt> method, to obtain an instance of a factory that can give us a document builder.</p>
+<div class="codeblock"><pre>
+public static void main(String[] args) throws Exception {
+    <b>DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</b>
+
+    // ...
+}
+
+</pre></div>
+<h3><a name="geswm" id="geswm"></a>Get a Parser and Parse the File</h3>
+<p>Now, add the following code to <tt>main()</tt> to get an instance of a builder, and use it to parse the specified file.</p>
+<div class="codeblock"><pre>
+DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+<b>DocumentBuilder db = dbf.newDocumentBuilder(); 
+Document doc = db.parse(new File(filename));</b>
+
+</pre></div>
+<p>The file being parsed is provided by the <tt>filename</tt> variable that was declared at the beginning of the <tt>main()</tt> method, which is passed to <tt>DOMEcho</tt> as an argument when the program is run.</p>
+<h3><a name="geswk" id="geswk"></a>Configuring the Factory</h3>
+<p>By default, the factory returns a non-validating parser that knows nothing about name spaces. To get a validating parser, or one that understands name spaces (or both), you can configure the factory to set either or both of those options using the following code.</p>
+<div class="codeblock"><pre>
+public static void main(String[] args) throws Exception {
+
+    String filename = null;
+    boolean dtdValidate = false;
+    boolean xsdValidate = false;
+    String schemaSource = null;
+        
+    for (int i = 0; i &lt; args.length; i++) {
+        if (args[i].equals("-dtd"))  { 
+            dtdValidate = true;
+        } 
+        else if (args[i].equals("-xsd")) {
+            xsdValidate = true;
+        } 
+        else if (args[i].equals("-xsdss")) {
+            if (i == args.length - 1) {
+                usage();
+            }
+            xsdValidate = true;
+            schemaSource = args[++i];
+        }
+        else {
+            filename = args[i];
+            if (i != args.length - 1) {
+                usage();
+            }
+        }
+    }
+
+    if (filename == null) {
+        usage();
+    }
+
+    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+    dbf.setNamespaceAware(true);
+    dbf.setValidating(dtdValidate || xsdValidate);
+
+    // ...
+
+    DocumentBuilder db = dbf.newDocumentBuilder();
+    Document doc = db.parse(new File(filename));
+}
+</pre></div>
+<p>As you can see, command line arguments are set up so that you can inform <tt>DOMEcho</tt> to perform validation against either a DTD or an XML Schema, and the factory is configured to be name space aware and to perform whichever type of validation the user specifies.</p>
+<hr />
+<p><b>Note -</b> JAXP-conformant parsers are not required to support all combinations of those options, even though the reference parser does. If you specify an invalid combination of options, the factory generates a <tt>ParserConfigurationException</tt> when you attempt to obtain a parser instance.</p>
+<hr />
+<p>More information about how to use name spaces and validation is provided in 
+<a class="TutorialLink" target="_top" href="validating.html">Validating with XML Schema</a>, in which the code that is missing from the above extract will be described.</p>
+<h3><a name="gesxf" id="gesxf"></a>Handling Validation Errors</h3>
+<p>The default response to a validation error, as dictated by the SAX standard, is to do nothing. The JAXP standard requires throwing SAX exceptions, so you use exactly the same error-handling mechanisms as you use for a SAX application. In particular, you use the <tt>DocumentBuilder</tt> class&#39;s <tt>setErrorHandler</tt> method to supply it with an object that implements the SAX <tt>ErrorHandler</tt> interface.</p>
+<hr />
+<p><b>Note -</b> <tt>DocumentBuilder</tt> also has a <tt>setEntityResolver</tt> method you can use.</p>
+<hr />
+<p>The following code configures the document builder to use the error handler defined in 
+<a class="TutorialLink" target="_top" href="readingXML.html#gestm">Handle Errors</a>.</p>
+<div class="codeblock"><pre>
+DocumentBuilder db = dbf.newDocumentBuilder();
+OutputStreamWriter errorWriter = new OutputStreamWriter(System.err,
+                                         outputEncoding);
+db.setErrorHandler(new MyErrorHandler (new PrintWriter(errorWriter, true)));
+Document doc = db.parse(new File(filename));
+</pre></div>
+<p>The code you have seen so far has set up the document builder, and configured it to perform validation upon request. Error handling is also in place. However, <tt>DOMEcho</tt> does not do anything yet. In the next section, you will see how to display the DOM structure and begin to explore it. For example, you will see what entity references and CDATA sections look like in the DOM. And perhaps most importantly, you will see how text nodes (which contain the actual data) reside under element nodes in a DOM.</p>
+<h2><a name="gesxh" id="gesxh"></a>Displaying the DOM Nodes</h2>
+<p>To create or manipulate a DOM, it helps to have a clear idea of how the nodes in a DOM are structured. This section of the tutorial exposes the internal structure of a DOM, so that you can see what it contains. The <tt>DOMEcho</tt> example does this by echoing the DOM nodes, and then printing them out onscreen, with the appropriate indentation to make the node hierarchy apparent. The specification of these node types can be found in the 
+<a class="OutsideLink" target="_blank" href="http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113">DOM Level 2 Core Specification</a>, under the specification for <tt>Node</tt>. <a href="#gfzpy">Table&nbsp;3-1</a> below is adapted from that specification.</p>
+<p><a name="gfzpy" id="gfzpy"></a>Table&nbsp;3-1 Node Types</p>
+<table summary="Node Types">
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<tr>
+<th id="h1" align="left" valign="top" scope="col">
+<p>Node</p>
+</th>
+<th id="h2" align="left" valign="top" scope="col">
+<p>nodeName</p>
+</th>
+<th id="h3" align="left" valign="top" scope="col">
+<p>nodeValue</p>
+</th>
+<th id="h4" align="left" valign="top" scope="col">
+<p>Attributes</p>
+</th>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>Attr</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p>Name of attribute</p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>Value of attribute</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>CDATASection</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p><tt>#cdata-section</tt></p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>Content of the CDATA section</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>Comment</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p><tt>#comment</tt></p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>Content of the comment</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>Document</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p><tt>#document</tt></p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>DocumentFragment</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p><tt>#documentFragment</tt></p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>DocumentType</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p>Document Type name</p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>Element</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p>Tag name</p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>Entity</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p>Entity name</p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>EntityReference</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p>Name of entity referenced</p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>Notation</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p>Notation name</p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>ProcessingInstruction</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p>Target</p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>Entire content excluding the target</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td headers="h1" align="left" valign="top" scope="row">
+<p><tt>Text</tt></p>
+</td>
+<td headers="h2" align="left" valign="top" scope="row">
+<p><tt>#text</tt></p>
+</td>
+<td headers="h3" align="left" valign="top" scope="row">
+<p>Content of the text node</p>
+</td>
+<td headers="h4" align="left" valign="top" scope="row">
+<p>null</p>
+</td>
+</tr>
+</table>
+<p>The information in this table is extremely useful; you will need it when working with a DOM, because all these types are intermixed in a DOM tree.</p>
+<h3><a name="gfzqh" id="gfzqh"></a>Obtaining Node Type Information</h3>
+<p>The DOM node element type information is obtained by calling the various methods of the <tt>org.w3c.dom.Node</tt> class. The node attributes by exposed by <tt>DOMEcho</tt> are echoed by the following code.</p>
+<div class="codeblock"><pre>
+private void printlnCommon(Node n) {
+    out.print(" nodeName=\"" + n.getNodeName() + "\"");
+
+    String val = n.getNamespaceURI();
+    if (val != null) {
+        out.print(" uri=\"" + val + "\"");
+    }
+
+    val = n.getPrefix();
+
+    if (val != null) {
+        out.print(" pre=\"" + val + "\"");
+    }
+
+    val = n.getLocalName();
+    if (val != null) {
+        out.print(" local=\"" + val + "\"");
+    }
+
+    val = n.getNodeValue();
+    if (val != null) {
+        out.print(" nodeValue=");
+        if (val.trim().equals("")) {
+            // Whitespace
+            out.print("[WS]");
+        }
+        else {
+            out.print("\"" + n.getNodeValue() + "\"");
+        }
+    }
+    out.println();
+}
+</pre></div>
+<p>Every DOM node has at least a type, a name, and a value, which might or might not be empty. In the example above, the <tt>Node</tt> interface&#39;s <tt>getNamespaceURI()</tt>, <tt>getPrefix()</tt>, <tt>getLocalName()</tt>, and <tt>getNodeValue()</tt> methods return and print the echoed node&#39;s namespace URI, namespace prefix, local qualified name and value. Note that the <tt>trim()</tt> method is called on the value returned by <tt>getNodeValue()</tt> to establish whether the node&#39;s value is empty white space and print a message accordingly.</p>
+<p>For the full list of <tt>Node</tt> methods and the different information they return, see the API documentation for 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/Node.html"><code>Node</code></a>.</p>
+<p>Next, a method is defined to set the indentation for the nodes when they are printed, so that the node hierarchy will be easily visible.</p>
+<div class="codeblock"><pre>
+private void outputIndentation() {
+    for (int i = 0; i &lt; indent; i++) {
+        out.print(basicIndent);
+    }
+}
+</pre></div>
+<p>The <tt>basicIndent</tt> constant to define the basic unit of indentation used when <tt>DOMEcho</tt> displays the node tree hierarchy, is defined by adding the following highlighted lines to the <tt>DOMEcho</tt> constructor class.</p>
+<div class="codeblock"><pre>
+public class DOMEcho {
+    static final String outputEncoding = "UTF-8";
+
+    <b>private PrintWriter out;</b>
+    <b>private int indent = 0;</b>
+    <b>private final String basicIndent = " ";</b>
+
+    DOMEcho(PrintWriter out) {
+        this.out = out;
+    }
+}
+</pre></div>
+<p>As was the case with the error handler defined in 
+<a class="TutorialLink" target="_top" href="readingXML.html#gestm">Handle Errors</a>, the <tt>DOMEcho</tt> program will create its output as <tt>PrintWriter</tt> instances.</p>
+<h3><a name="ggdwv" id="ggdwv"></a>Lexical Controls</h3>
+<p>Lexical information is the information you need to reconstruct the original syntax of an XML document. Preserving lexical information is important in editing applications, where you want to save a document that is an accurate reflection of the original-complete with comments, entity references, and any CDATA sections it may have included at the outset.</p>
+<p>Most applications, however, are concerned only with the content of the XML structures. They can afford to ignore comments, and they do not care whether data was coded in a CDATA section or as plain text, or whether it included an entity reference. For such applications, a minimum of lexical information is desirable, because it simplifies the number and kind of DOM nodes that the application must be prepared to examine.</p>
+<p>The following <tt>DocumentBuilderFactory</tt> methods give you control over the lexical information you see in the DOM.</p>
+<dl>
+<dt><tt>setCoalescing()</tt></dt>
+<dd>
+<p>To convert <tt>CDATA</tt> nodes to <tt>Text</tt> nodes and append to an adjacent <tt>Text</tt> node (if any).</p>
+</dd>
+<dt><tt>setExpandEntityReferences()</tt></dt>
+<dd>
+<p>To expand entity reference nodes.</p>
+</dd>
+<dt><tt>setIgnoringComments()</tt></dt>
+<dd>
+<p>To ignore comments.</p>
+</dd>
+<dt><tt>setIgnoringElementContentWhitespace()</tt></dt>
+<dd>
+<p>To ignore whitespace that is not a significant part of element content.</p>
+</dd>
+</dl>
+<p>The default values for all these properties is false, which preserves all the lexical information necessary to reconstruct the incoming document in its original form. Setting them to true lets you construct the simplest possible DOM so that the application can focus on the data&#39;s semantic content without having to worry about lexical syntax details. <a href="#ggdxy">Table&nbsp;3-2</a> summarizes the effects of the settings.</p>
+<p><a name="ggdxy" id="ggdxy"></a>Table&nbsp;3-2 Lexical Control Settings</p>
+<table summary="Lexical Control Settings">
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<tr>
+<th id="h101" align="left" valign="top" scope="col">
+<p>API</p>
+</th>
+<th id="h102" align="left" valign="top" scope="col">
+<p>Preserve Lexical Info</p>
+</th>
+<th id="h103" align="left" valign="top" scope="col">
+<p>Focus on Content</p>
+</th>
+</tr>
+<tr>
+<td headers="h101" align="left" valign="top" scope="row">
+<p><tt>setCoalescing()</tt></p>
+</td>
+<td headers="h102" align="left" valign="top" scope="row">
+<p>False</p>
+</td>
+<td headers="h103" align="left" valign="top" scope="row">
+<p>True</p>
+</td>
+</tr>
+<tr>
+<td headers="h101" align="left" valign="top" scope="row">
+<p><tt>setExpandEntityReferences()</tt></p>
+</td>
+<td headers="h102" align="left" valign="top" scope="row">
+<p>False</p>
+</td>
+<td headers="h103" align="left" valign="top" scope="row">
+<p>True</p>
+</td>
+</tr>
+<tr>
+<td headers="h101" align="left" valign="top" scope="row">
+<p><tt>setIgnoringComments()</tt></p>
+</td>
+<td headers="h102" align="left" valign="top" scope="row">
+<p>False</p>
+</td>
+<td headers="h103" align="left" valign="top" scope="row">
+<p>True</p>
+</td>
+</tr>
+<tr>
+<td headers="h101" align="left" valign="top" scope="row">
+<p><tt>setIgnoringElementContent</tt><tt>Whitespace()</tt></p>
+</td>
+<td headers="h102" align="left" valign="top" scope="row">
+<p>False</p>
+</td>
+<td headers="h103" align="left" valign="top" scope="row">
+<p>True</p>
+</td>
+</tr>
+</table>
+<p>The implementation of these methods in the main method of the <tt>DomEcho</tt> example is shown below.</p>
+<div class="codeblock"><pre>
+// ...
+
+dbf.setIgnoringComments(ignoreComments);
+dbf.setIgnoringElementContentWhitespace(ignoreWhitespace);
+dbf.setCoalescing(putCDATAIntoText);
+dbf.setExpandEntityReferences(!createEntityRefs);
+
+// ...
+</pre></div>
+<p>The boolean variables <tt>ignoreComments</tt>, <tt>ignoreWhitespace</tt>, <tt>putCDATAIntoText</tt>, and <tt>createEntityRefs</tt> are declared at the beginning of the main method code, and they are set by command line arguments when <tt>DomEcho</tt> is run.</p>
+<div class="codeblock"><pre>
+public static void main(String[] args) throws Exception {
+    // ...
+
+    boolean ignoreWhitespace = false;
+    boolean ignoreComments = false;
+    boolean putCDATAIntoText = false;
+    boolean createEntityRefs = false;
+
+    for (int i = 0; i &lt; args.length; i++) {
+        if (...) {  // Validation arguments here
+           // ... 
+        } 
+        else if (args[i].equals("-ws")) {
+            ignoreWhitespace = true;
+        } 
+        else if (args[i].startsWith("-co")) {
+            ignoreComments = true;
+        }
+        else if (args[i].startsWith("-cd")) {
+            putCDATAIntoText = true;
+        } 
+        else if (args[i].startsWith("-e")) {
+            createEntityRefs = true;
+
+            // ...
+        } 
+        else {
+            filename = args[i];
+
+            // Must be last arg
+            if (i != args.length - 1) {
+                usage();
+            }
+        }
+    }
+
+    // ...
+}
+
+</pre></div>
+<p><a name="ggawi" id="ggawi"></a></p>
+<h2>Printing DOM Tree Nodes</h2>
+<p>The <tt>DomEcho</tt> application allows you to see the structure of a DOM, and demonstrates what nodes make up the DOM and how they are arranged. Generally, the vast majority of nodes in a DOM tree will be <tt>Element</tt> and <tt>Text</tt> nodes.</p>
+<hr />
+<p><b>Note -</b> Text nodes exist <b>under</b> element nodes in a DOM, and data is always stored in text nodes. Perhaps the most common error in DOM processing is to navigate to an element node and expect it to contain the data that is stored in that element. Not so! Even the simplest element node has a text node under it that contains the data.</p>
+<hr />
+<p>The code to print out the DOM tree nodes with the appropriate indentation is shown below.</p>
+<div class="codeblock"><pre>
+private void echo(Node n) {
+    outputIndentation();
+    int type = n.getNodeType();
+
+    switch (type) {
+        case Node.ATTRIBUTE_NODE:
+            out.print("ATTR:");
+            printlnCommon(n);
+            break;
+
+        case Node.CDATA_SECTION_NODE:
+            out.print("CDATA:");
+            printlnCommon(n);
+            break;
+
+        case Node.COMMENT_NODE:
+            out.print("COMM:");
+            printlnCommon(n);
+            break;
+
+        case Node.DOCUMENT_FRAGMENT_NODE:
+            out.print("DOC_FRAG:");
+            printlnCommon(n);
+            break;
+
+        case Node.DOCUMENT_NODE:
+            out.print("DOC:");
+            printlnCommon(n);
+            break;
+
+        case Node.DOCUMENT_TYPE_NODE:
+            out.print("DOC_TYPE:");
+            printlnCommon(n);
+            NamedNodeMap nodeMap = ((DocumentType)n).getEntities();
+            indent += 2;
+            for (int i = 0; i &lt; nodeMap.getLength(); i++) {
+                Entity entity = (Entity)nodeMap.item(i);
+                echo(entity);
+            }
+            indent -= 2;
+            break;
+
+        case Node.ELEMENT_NODE:
+            out.print("ELEM:");
+            printlnCommon(n);
+
+            NamedNodeMap atts = n.getAttributes();
+            indent += 2;
+            for (int i = 0; i &lt; atts.getLength(); i++) {
+                Node att = atts.item(i);
+                echo(att);
+            }
+            indent -= 2;
+            break;
+
+        case Node.ENTITY_NODE:
+            out.print("ENT:");
+            printlnCommon(n);
+            break;
+
+        case Node.ENTITY_REFERENCE_NODE:
+            out.print("ENT_REF:");
+            printlnCommon(n);
+            break;
+
+        case Node.NOTATION_NODE:
+            out.print("NOTATION:");
+            printlnCommon(n);
+            break;
+
+        case Node.PROCESSING_INSTRUCTION_NODE:
+            out.print("PROC_INST:");
+            printlnCommon(n);
+            break;
+
+        case Node.TEXT_NODE:
+            out.print("TEXT:");
+            printlnCommon(n);
+            break;
+
+        default:
+            out.print("UNSUPPORTED NODE: " + type);
+            printlnCommon(n);
+            break;
+    }
+
+    indent++;
+    for (Node child = n.getFirstChild(); child != null;
+         child = child.getNextSibling()) {
+        echo(child);
+    }
+    indent--;
+}
+</pre></div>
+<p>This code first of all uses switch statements to print out the different node types and any possible child nodes, with the appropriate indentation.</p>
+<p>Node attributes are not included as children in the DOM hierarchy. They are instead obtained via the <tt>Node</tt> interface&#39;s <tt>getAttributes</tt> method.</p>
+<p>The <tt>DocType</tt> interface is an extension of <tt>w3c.org.dom.Node</tt>. It defines the <tt>getEntities</tt> method, which you use to obtain <tt>Entity</tt> nodes - the nodes that define entities. Like <tt>Attribute</tt> nodes, <tt>Entity</tt> nodes do not appear as children of DOM nodes.</p>
+<p><a name="ggdyc" id="ggdyc"></a></p>
+<h2>Node Operations</h2>
+<p>This section takes a quick look at some of the operations you might want to apply to a DOM.</p>
+<ul>
+<li>
+<p>Creating nodes</p>
+</li>
+<li>
+<p>Traversing nodes</p>
+</li>
+<li>
+<p>Searching for nodes</p>
+</li>
+<li>
+<p>Obtaining node content</p>
+</li>
+<li>
+<p>Creating attributes</p>
+</li>
+<li>
+<p>Removing and changing nodes</p>
+</li>
+<li>
+<p>Inserting nodes</p>
+</li>
+</ul>
+<p><a name="ggdyj" id="ggdyj"></a></p>
+<h3>Creating Nodes</h3>
+<p>You can create different types nodes using the methods of the <tt>Document</tt> interface. For example, <tt>createElement</tt>, <tt>createComment</tt>, <tt>createCDATAsection</tt>, <tt>createTextNode</tt>, and so on. The full list of methods for creating different nodes is provided in the API documentation for 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/Document.html"><code>org.w3c.dom.Document</code></a>.</p>
+<p><a name="ggdvz" id="ggdvz"></a></p>
+<h3>Traversing Nodes</h3>
+<p>The <tt>org.w3c.dom.Node</tt> interface defines a number of methods you can use to traverse nodes, including <tt>getFirstChild</tt>, <tt>getLastChild</tt>, <tt>getNextSibling</tt>, <tt>getPreviousSibling</tt>, and <tt>getParentNode</tt>. Those operations are sufficient to get from anywhere in the tree to any other location in the tree.</p>
+<p><a name="ggdwa" id="ggdwa"></a></p>
+<h3>Searching for Nodes</h3>
+<p>When you are searching for a node with a particular name, there is a bit more to take into account. Although it is tempting to get the first child and inspect it to see whether it is the right one, the search must account for the fact that the first child in the sub-list could be a comment or a processing instruction. If the XML data has not been validated, it could even be a text node containing ignorable whitespace.</p>
+<p>In essence, you need to look through the list of child nodes, ignoring the ones that are of no concern and examining the ones you care about. Here is an example of the kind of routine you need to write when searching for nodes in a DOM hierarchy. It is presented here in its entirety (complete with comments) so that you can use it as a template in your applications.</p>
+<div class="codeblock"><pre>
+/**
+ * Find the named subnode in a node's sublist.
+ * &lt;ul>
+ * &lt;li>Ignores comments and processing instructions.
+ * &lt;li>Ignores TEXT nodes (likely to exist and contain
+ *         ignorable whitespace, if not validating.
+ * &lt;li>Ignores CDATA nodes and EntityRef nodes.
+ * &lt;li>Examines element nodes to find one with
+ *        the specified name.
+ * &lt;/ul>
+ * @param name  the tag name for the element to find
+ * @param node  the element node to start searching from
+ * @return the Node found
+ */
+public Node findSubNode(String name, Node node) {
+    if (node.getNodeType() != Node.ELEMENT_NODE) {
+        System.err.println("Error: Search node not of element type");
+        System.exit(22);
+    }
+
+    if (! node.hasChildNodes()) return null;
+
+    NodeList list = node.getChildNodes();
+    for (int i=0; i &lt; list.getLength(); i++) {
+        Node subnode = list.item(i);
+        if (subnode.getNodeType() == Node.ELEMENT_NODE) {
+           if (subnode.getNodeName().equals(name)) 
+               return subnode;
+        }
+    }
+    return null;
+}
+</pre></div>
+<p>For a deeper explanation of this code, see 
+<a class="TutorialLink" target="_top" href="when.html#gchls">Increasing the Complexity</a> in 
+<a class="TutorialLink" target="_top" href="when.html">When to Use DOM</a>. Note, too, that you can use APIs described in 
+<a class="TutorialLink" target="_top" href="readingXML.html#ggdwv">Lexical Controls</a> to modify the kind of DOM the parser constructs. The nice thing about this code, though, is that it will work for almost any DOM.</p>
+<p><a name="ggdxv" id="ggdxv"></a></p>
+<h3>Obtaining Node Content</h3>
+<p>When you want to get the text that a node contains, you again need to look through the list of child nodes, ignoring entries that are of no concern and accumulating the text you find in <tt>TEXT</tt> nodes, <tt>CDATA</tt> nodes, and <tt>EntityRef</tt> nodes. Here is an example of the kind of routine you can use for that process.</p>
+<div class="codeblock"><pre>
+/**
+  * Return the text that a node contains. This routine:
+  * &lt;ul>
+  * &lt;li>Ignores comments and processing instructions.
+  * &lt;li>Concatenates TEXT nodes, CDATA nodes, and the results of
+  *     recursively processing EntityRef nodes.
+  * &lt;li>Ignores any element nodes in the sublist.
+  *     (Other possible options are to recurse into element 
+  *      sublists or throw an exception.)
+  * &lt;/ul>
+  * @param    node  a  DOM node
+  * @return   a String representing its contents
+  */
+public String getText(Node node) {
+    StringBuffer result = new StringBuffer();
+    if (! node.hasChildNodes()) return "";
+
+    NodeList list = node.getChildNodes();
+    for (int i=0; i &lt; list.getLength(); i++) {
+        Node subnode = list.item(i);
+        if (subnode.getNodeType() == Node.TEXT_NODE) {
+            result.append(subnode.getNodeValue());
+        }
+        else if (subnode.getNodeType() == Node.CDATA_SECTION_NODE) {
+            result.append(subnode.getNodeValue());
+        }
+        else if (subnode.getNodeType() == Node.ENTITY_REFERENCE_NODE) {
+            // Recurse into the subtree for text
+            // (and ignore comments)
+            result.append(getText(subnode));
+        }
+    }
+
+    return result.toString();
+}
+</pre></div>
+<p>For a deeper explanation of this code, see 
+<a class="TutorialLink" target="_top" href="when.html#gchls">Increasing the Complexity</a> in 
+<a class="TutorialLink" target="_top" href="when.html">When to Use DOM</a>. Again, you can simplify this code by using the APIs described in 
+<a class="TutorialLink" target="_top" href="readingXML.html#ggdwv">Lexical Controls</a> to modify the kind of DOM the parser constructs. But the nice thing about this code is that it will work for almost any DOM.</p>
+<p><a name="ggdxn" id="ggdxn"></a></p>
+<h3>Creating Attributes</h3>
+<p>The <tt>org.w3c.dom.Element</tt> interface, which extends Node, defines a <tt>setAttribute</tt> operation, which adds an attribute to that node. (A better name from the Java platform standpoint would have been <tt>addAttribute</tt>. The attribute is not a property of the class, and a new object is created.) You can also use the <tt>Document</tt>&#39;s <tt>createAttribute</tt> operation to create an instance of <tt>Attribute</tt> and then use the <tt>setAttributeNode</tt> method to add it.</p>
+<p><a name="ggdyw" id="ggdyw"></a></p>
+<h3>Removing and Changing Nodes</h3>
+<p>To remove a node, you use its parent Node&#39;s <tt>removeChild</tt> method. To change it, you can use either the parent node&#39;s <tt>replaceChild</tt> operation or the node&#39;s <tt>setNodeValue</tt> operation.</p>
+<p><a name="ggdxt" id="ggdxt"></a></p>
+<h3>Inserting Nodes</h3>
+<p>The important thing to remember when creating new nodes is that when you create an element node, the only data you specify is a name. In effect, that node gives you a hook to hang things on. You hang an item on the hook by adding to its list of child nodes. For example, you might add a text node, a <tt>CDATA</tt> node, or an attribute node. As you build, keep in mind the structure you have seen in this tutorial. Remember: Each node in the hierarchy is extremely simple, containing only one data element.</p>
+<p><a name="ggegf" id="ggegf"></a></p>
+<h2>Running the <tt>DOMEcho</tt> Sample</h2>
+<p>To run the <tt>DOMEcho</tt> sample, follow the steps below.</p>
+<ol>
+<li><b>Navigate to the <tt>samples</tt> directory.</b><code>% cd <i>install-dir</i><tt>/jaxp-1_4_2-</tt><i>release-date</i><tt>/samples</tt>.</code></li>
+<li><b>Compile the example class.</b><code>% javac dom/*</code></li>
+<li><b>Run the <tt>DOMEcho</tt> program on an XML file.</b>
+<p>Choose one of the XML files in the <tt>data</tt> directory and run the <tt>DOMEcho</tt> program on it. Here, we have chosen to run the program on the file <tt>personal-schema.xml</tt>.</p>
+<code>% java dom/DOMEcho data/personal-schema.xml</code>
+<p>The XML file <tt>personal-schema.xml</tt> contains the personnel files for a small company. When you run the <tt>DOMEcho</tt> program on it, you should see the following output.</p>
+<div class="codeblock"><pre>
+DOC: nodeName="#document"
+ ELEM: nodeName="personnel" 
+       local="personnel"
+ TEXT: nodeName="#text" 
+       nodeValue=[WS]
+ ELEM: nodeName="person" 
+       local="person"
+ ATTR: nodeName="id" 
+       local="id" 
+       nodeValue="Big.Boss"
+ TEXT: nodeName="#text" 
+       nodeValue=[WS]
+ ELEM: nodeName="name" 
+       local="name"
+ ELEM: nodeName="family" 
+       local="family"
+ TEXT: nodeName="#text" 
+       nodeValue="Boss"
+ TEXT: nodeName="#text" 
+       nodeValue=[WS]
+ ELEM: nodeName="given" 
+       local="given"
+ TEXT: nodeName="#text" 
+       nodeValue="Big"
+ TEXT: nodeName="#text" 
+       nodeValue=[WS]
+ ELEM: nodeName="email" 
+       local="email"
+ TEXT: nodeName="#text" 
+       nodeValue="chief@foo.example.com"
+ TEXT: nodeName="#text" 
+       nodeValue=[WS]
+ ELEM: nodeName="link" 
+       local="link"
+ ATTR: nodeName="subordinates" 
+       local="subordinates" 
+       nodeValue="one.worker two.worker 
+                  three.worker four.worker
+                  five.worker"
+ TEXT: nodeName="#text" 
+       nodeValue=[WS]
+ TEXT: nodeName="#text" 
+       nodeValue=[WS]
+ ELEM: nodeName="person" 
+       local="person"
+ ATTR: nodeName="id" 
+       local="id" 
+       nodeValue="one.worker"
+ TEXT: nodeName="#text" 
+       nodeValue=[WS]
+ ELEM: nodeName="name" 
+       local="name"
+ ELEM: nodeName="family" 
+       local="family"
+ TEXT: nodeName="#text" 
+       nodeValue="Worker"
+ TEXT: nodeName="#text" 
+       nodeValue=[WS]
+ ELEM: nodeName="given" 
+       local="given"
+ TEXT: nodeName="#text" 
+       nodeValue="One"
+ TEXT: nodeName="#text" 
+       nodeValue=[WS]
+ ELEM: nodeName="email" 
+       local="email"
+ TEXT: nodeName="#text" 
+       nodeValue="one@foo.example.com"
+ TEXT: nodeName="#text" 
+       nodeValue=[WS]
+ ELEM: nodeName="link" 
+       local="link"
+ ATTR: nodeName="manager" 
+       local="manager" 
+       nodeValue="Big.Boss"
+ TEXT: nodeName="#text"
+       nodeValue=[WS]
+
+[...]
+
+</pre></div>
+<p>As you can see, <tt>DOMEcho</tt> prints out all the nodes for the different elements in the document, with the correct indentation to show the node hierarchy.</p>
+</li>
+</ol>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="when.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="validating.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> When to Use DOM
+        <br /><b>Next page:</b> Validating with XML Schema
+    </div>
+</body>
+</html> 

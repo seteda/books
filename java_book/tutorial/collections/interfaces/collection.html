@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>The Collection Interface (The Java&trade; Tutorials &gt;        
+            Collections &gt; Interfaces)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This collections Java tutorial describes interfaces, implementations, and algorithms in the Java Collections framework" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java collections, set, list, queue, map, array, arraylist" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Interfaces</a></div>
+<div class="nolinkAHEAD">The Collection Interface</div>
+<div class="linkAHEAD"><a href="set.html">The Set Interface</a></div>
+<div class="linkAHEAD"><a href="list.html">The List Interface</a></div>
+<div class="linkAHEAD"><a href="queue.html">The Queue Interface</a></div>
+<div class="linkAHEAD"><a href="deque.html">The Deque Interface</a></div>
+<div class="linkAHEAD"><a href="map.html">The Map Interface</a></div>
+<div class="linkAHEAD"><a href="order.html">Object Ordering</a></div>
+<div class="linkAHEAD"><a href="sorted-set.html">The SortedSet Interface</a></div>
+<div class="linkAHEAD"><a href="sorted-map.html">The SortedMap Interface</a></div>
+<div class="linkAHEAD"><a href="summary.html">Summary of Interfaces</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Collections
+        <br /><b>Lesson:</b> Interfaces
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Collections</a>
+                &gt;
+                <a href="index.html" target="_top">Interfaces</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="index.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="set.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>The Collection Interface</h1></div>
+            <div id="PageContent">
+
+<p>A 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html"><code>Collection</code></a> represents a group of objects known as its elements. The <code>Collection</code> interface is used to pass around collections of objects where maximum generality is desired. For example, by convention all general-purpose collection implementations have a constructor that takes a <code>Collection</code> argument. This constructor, known as a <i>conversion constructor</i>, initializes the new collection to contain all of the elements in the specified collection, whatever the given collection&#39;s subinterface or implementation type. In other words, it allows you to <i>convert</i> the collection&#39;s type.</p>
+<p>Suppose, for example, that you have a <code>Collection&lt;String&gt; c</code>, which may be a <code>List</code>, a <code>Set</code>, or another kind of <code>Collection</code>. This idiom creates a new <code>ArrayList</code> (an implementation of the <code>List</code> interface), initially containing all the elements in <code>c</code>.</p>
+
+<div class="codeblock"><pre>
+List&lt;String&gt; list = new ArrayList&lt;String&gt;(c);
+</pre></div>
+
+Or &mdash; if you are using JDK 7 or later &mdash; you can use the diamond operator:
+
+
+<div class="codeblock"><pre>
+List&lt;String&gt; list = new ArrayList&lt;&gt;(c);
+</pre></div>
+
+
+
+
+<!--
+<p>The following shows the <code>Collection</code> interface.</p>
+<div class="codeblock"><pre>
+public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
+    // Basic operations
+    int size();
+    boolean isEmpty();
+    boolean contains(Object element);
+    // optional
+    boolean add(E element);
+    // optional
+    boolean remove(Object element);
+    Iterator&lt;E&gt; iterator();
+
+    // Bulk operations
+    boolean containsAll(Collection&lt;?&gt; c);
+    // optional
+    boolean addAll(Collection&lt;? extends E&gt; c); 
+    // optional
+    boolean removeAll(Collection&lt;?&gt; c);
+    // optional
+    boolean retainAll(Collection&lt;?&gt; c);
+    // optional
+    void clear();
+
+    // Array operations
+    Object[] toArray();
+    &lt;T&gt; T[] toArray(T[] a);
+}
+</pre></div>
+
+-->
+
+<p>
+The <code>Collection</code> interface contains methods that perform basic operations, such as <code>int size()</code>, <code>boolean isEmpty()</code>, 
+<code>boolean contains(Object element)</code>, <code>boolean add(E element)</code>, <code>boolean remove(Object element)</code>, and 
+<code>Iterator&lt;E&gt; iterator()</code>.
+</p>
+
+<p>
+ It also contains
+methods that operate on entire collections, such as <code>boolean containsAll(Collection&lt;?&gt; c)</code>, 
+<code>boolean addAll(Collection&lt;? extends E&gt; c)</code>, 
+ <code>boolean removeAll(Collection&lt;?&gt; c)</code>, <code>boolean retainAll(Collection&lt;?&gt; c)</code>, and  
+<code>void clear()</code>.
+</p>
+
+<p>
+ Additional methods for array operations
+(such as <code>Object[] toArray()</code> and <code>&lt;T&gt; T[] toArray(T[] a)</code> exist as well.
+</p>
+
+<p>
+In JDK 8 and later, the <code>Collection</code> interface also exposes methods <code>Stream&lt;E&gt; stream()</code> and <code>Stream&lt;E&gt; parallelStream()</code>, for obtaining sequential or parallel streams from the underlying collection. 
+
+(See the lesson entitled
+<a class="TutorialLink" target="_top" href="../../collections/streams/index.html">Aggregate Operations</a> for more information about using streams.)
+</p>
+
+
+<p>The <code>Collection</code> interface does about what you&#39;d expect given that a <code>Collection</code> represents a group of objects. It has methods that tell you how many elements are in the collection (<code>size</code>, <code>isEmpty</code>), methods that check whether a given object is in the collection (<code>contains</code>), methods that add and remove an element from the collection (<code>add</code>, <code>remove</code>), and methods that provide an iterator over the collection (<code>iterator</code>).</p>
+<p>The <code>add</code> method is defined generally enough so that it makes sense for collections that allow duplicates as well as those that don&#39;t. It guarantees that the <code>Collection</code> will contain the specified element after the call completes, and returns <code>true</code> if the <code>Collection</code> changes as a result of the call. Similarly, the <code>remove</code> method is designed to remove a single instance of the specified element from the <code>Collection</code>, assuming that it contains the element to start with, and to return <code>true</code> if the <code>Collection</code> was modified as a result. <a name="Traversing" id="Traversing"></a></p>
+
+
+<h2>Traversing Collections</h2>
+<p>There are three ways to traverse collections: (1) using aggregate operations (2) with the <code>for-each</code> construct and (3) by using <code>Iterator</code>s. <a name="ForEach" id="ForEach"></a></p>
+
+<h3>Aggregate Operations</h3>
+<p>
+In JDK 8 and later, the preferred method of iterating over a collection is to obtain a stream 
+and perform aggregate operations on it.
+Aggregate operations are often used in conjunction with lambda expressions
+to make programming more expressive, using less lines of code. The following code sequentially iterates through a collection of shapes and prints 
+out the red objects:
+</p>
+
+<div class="codeblock"><pre>
+myShapesCollection.stream()
+.filter(e -> e.getColor() == Color.RED)
+.forEach(e -> System.out.println(e.getName()));
+</pre></div>
+
+
+<p>
+Likewise, you could easily request a parallel stream, which might make sense 
+if the collection is large enough and your computer has enough cores:
+</p>
+
+
+<div class="codeblock"><pre>
+myShapesCollection.parallelStream()
+.filter(e -> e.getColor() == Color.RED)
+.forEach(e -> System.out.println(e.getName()));
+</pre></div>
+
+<p>
+There are many different ways to collect data with this API. For example,  you might want to convert 
+the elements of a <code>Collection</code> to <code>String</code> objects, then join them, separated by commas:
+</p>
+<pre>
+    String joined = elements.stream()
+    .map(Object::toString)
+    .collect(Collectors.joining(", "));
+</pre>
+
+<p>
+Or perhaps sum the salaries of all employees:
+</p>
+
+<div class="codeblock"><pre>
+int total = employees.stream()
+.collect(Collectors.summingInt(Employee::getSalary)));
+</pre></div>
+
+<p>
+These are but a few examples of what you can do with streams and 
+aggregate operations.
+For more information and examples, see the lesson entitled
+<a class="TutorialLink" target="_top" href="../../collections/streams/index.html">Aggregate Operations</a>.
+</p>
+<p>
+The Collections framework has always provided a number of so-called &quot;bulk operations&quot; as part of its API. 
+These include methods that operate on entire collections, such as <code>containsAll</code>, <code>addAll</code>, <code>removeAll</code>, etc. 
+Do not confuse those methods with the aggregate operations that were introduced in JDK 8.
+The key difference between the new aggregate operations and the existing bulk operations
+ (<code>containsAll</code>, <code>addAll</code>, etc.) is that the old versions are all <em>mutative</em>, meaning that
+  they all modify the underlying collection. In contrast, the new aggregate operations <em>do not</em>
+modify the underlying collection. When using the new aggregate operations and lambda expressions, you must
+take care to avoid mutation so as not to introduce problems in the future, should your code be run later from a parallel stream.
+
+
+
+
+</p>
+
+
+<h3>for-each Construct</h3>
+<p>The <code>for-each</code> construct allows you to concisely traverse a collection or array using a <code>for</code> loop &#151; see 
+<a class="TutorialLink" target="_top" href="../../java/nutsandbolts/for.html">The for Statement</a>. The following code uses the <code>for-each</code> construct to print out each element of a collection on a separate line.</p>
+<div class="codeblock"><pre>
+for (Object o : collection)
+    System.out.println(o);
+</pre></div>
+<h3><a name="Iterator" id="Iterator">Iterators</a></h3>
+<p>An 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html"><code>Iterator</code></a> is an object that enables you to traverse through a collection and to remove elements from the collection selectively, if desired. You get an <code>Iterator</code> for a collection by calling its <code>iterator</code> method. The following is the <code>Iterator</code> interface.</p>
+<div class="codeblock"><pre>
+public interface Iterator&lt;E&gt; {
+    boolean hasNext();
+    E next();
+    void remove(); //optional
+}
+</pre></div>
+<p>The <code>hasNext</code> method returns <code>true</code> if the iteration has more elements, and the <code>next</code> method returns the next element in the iteration. The <code>remove</code> method removes the last element that was returned by <code>next</code> from the underlying <code>Collection</code>. The <code>remove</code> method may be called only once per call to <code>next</code> and throws an exception if this rule is violated.</p>
+<p>Note that <code>Iterator.remove</code> is the <i>only</i> safe way to modify a collection during iteration; the behavior is unspecified if the underlying collection is modified in any other way while the iteration is in progress.</p>
+<p>Use <code>Iterator</code> instead of the <code>for-each</code> construct when you need to:</p>
+<ul>
+<li>Remove the current element. The <code>for-each</code> construct hides the iterator, so you cannot call <code>remove</code>. Therefore, the <code>for-each</code> construct is not usable for filtering.</li>
+<li>Iterate over multiple collections in parallel.</li>
+</ul>
+<p>The following method shows you how to use an <code>Iterator</code> to filter an arbitrary <code>Collection</code> &#151; that is, traverse the collection removing specific elements.</p>
+<div class="codeblock"><pre>
+static void filter(Collection&lt;?&gt; c) {
+    for (Iterator&lt;?&gt; it = c.iterator(); it.hasNext(); )
+        if (!cond(it.next()))
+            it.remove();
+}
+</pre></div>
+<p>This simple piece of code is polymorphic, which means that it works for <i>any</i> <code>Collection</code> regardless of implementation. This example demonstrates how easy it is to write a polymorphic algorithm using the Java Collections Framework.</p>
+<h2>Collection Interface Bulk Operations</h2>
+<p><i>Bulk operations</i> perform an operation on an entire <code>Collection</code>. You could implement these shorthand operations using the basic operations, though in most cases such implementations would be less efficient. The following are the bulk operations:</p>
+<ul>
+<li><code>containsAll</code> &#151; returns <code>true</code> if the target <code>Collection</code> contains all of the elements in the specified <code>Collection</code>.</li>
+<li><code>addAll</code> &#151; adds all of the elements in the specified <code>Collection</code> to the target <code>Collection</code>.</li>
+<li><code>removeAll</code> &#151; removes from the target <code>Collection</code> all of its elements that are also contained in the specified <code>Collection</code>.</li>
+<li><code>retainAll</code> &#151; removes from the target <code>Collection</code> all its elements that are <i>not</i> also contained in the specified <code>Collection</code>. That is, it retains only those elements in the target <code>Collection</code> that are also contained in the specified <code>Collection</code>.</li>
+<li><code>clear</code> &#151; removes all elements from the <code>Collection</code>.</li>
+</ul>
+<p>The <code>addAll</code>, <code>removeAll</code>, and <code>retainAll</code> methods all return <code>true</code> if the target <code>Collection</code> was modified in the process of executing the operation.</p>
+<p>As a simple example of the power of bulk operations, consider the following idiom to remove <i>all</i> instances of a specified element, <code>e</code>, from a <code>Collection</code>, <code>c</code>.</p>
+<div class="codeblock"><pre>
+c.removeAll(Collections.singleton(e));
+</pre></div>
+<p>More specifically, suppose you want to remove all of the <code>null</code> elements from a <code>Collection</code>.</p>
+<div class="codeblock"><pre>
+c.removeAll(Collections.singleton(null));
+</pre></div>
+<p>This idiom uses <code>Collections.singleton</code>, which is a static factory method that returns an immutable <code>Set</code> containing only the specified element. <a name="ArrayOps" id="ArrayOps"></a></p>
+<h2>Collection Interface Array Operations</h2>
+<p>The <code>toArray</code> methods are provided as a bridge between collections and older APIs that expect arrays on input. The array operations allow the contents of a <code>Collection</code> to be translated into an array. The simple form with no arguments creates a new array of <code>Object</code>. The more complex form allows the caller to provide an array or to choose the runtime type of the output array.</p>
+<p>For example, suppose that <code>c</code> is a <code>Collection</code>. The following snippet dumps the contents of <code>c</code> into a newly allocated array of <code>Object</code> whose length is identical to the number of elements in <code>c</code>.</p>
+<div class="codeblock"><pre>
+Object[] a = c.toArray();
+</pre></div>
+<p>Suppose that <code>c</code> is known to contain only strings (perhaps because <code>c</code> is of type <code>Collection&lt;String&gt;</code>). The following snippet dumps the contents of <code>c</code> into a newly allocated array of <code>String</code> whose length is identical to the number of elements in <code>c</code>.</p>
+<div class="codeblock"><pre>
+String[] a = c.toArray(new String[0]);
+</pre></div>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="index.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="set.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Interfaces
+        <br /><b>Next page:</b> The Set Interface
+    </div>
+</body>
+</html> 

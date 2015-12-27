@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Connecting with DataSource Objects (The Java&trade; Tutorials &gt;        
+            JDBC(TM) Database Access &gt; JDBC Basics)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JDBC Java tutorial describes how to use JDBC API to create, insert into, update, and query tables. You will also learn how to use simple and prepared statements, stored procedures and perform transactions" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jdbc, prepared statement, result set" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">JDBC Basics</a></div>
+<div class="linkAHEAD"><a href="gettingstarted.html">Getting Started</a></div>
+<div class="linkAHEAD"><a href="processingsqlstatements.html">Processing SQL Statements with JDBC</a></div>
+<div class="linkAHEAD"><a href="connecting.html">Establishing a Connection</a></div>
+<div class="nolinkAHEAD">Connecting with DataSource Objects</div>
+<div class="linkAHEAD"><a href="sqlexception.html">Handling SQLExceptions</a></div>
+<div class="linkAHEAD"><a href="tables.html">Setting Up Tables</a></div>
+<div class="linkAHEAD"><a href="retrieving.html">Retrieving and Modifying Values from Result Sets</a></div>
+<div class="linkAHEAD"><a href="prepared.html">Using Prepared Statements</a></div>
+<div class="linkAHEAD"><a href="transactions.html">Using Transactions</a></div>
+<div class="linkAHEAD"><a href="rowset.html">Using RowSet Objects</a></div>
+<div class="linkAHEAD"><a href="jdbcrowset.html">Using JdbcRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="cachedrowset.html">Using CachedRowSetObjects</a></div>
+<div class="linkAHEAD"><a href="joinrowset.html">Using JoinRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="filteredrowset.html">Using FilteredRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="webrowset.html">Using WebRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="sqltypes.html">Using Advanced Data Types</a></div>
+<div class="linkAHEAD"><a href="blob.html">Using Large Objects</a></div>
+<div class="linkAHEAD"><a href="sqlxml.html">Using SQLXML Objects</a></div>
+<div class="linkAHEAD"><a href="array.html">Using Array Objects</a></div>
+<div class="linkAHEAD"><a href="distinct.html">Using DISTINCT Data Type</a></div>
+<div class="linkAHEAD"><a href="sqlstructured.html">Using Structured Objects</a></div>
+<div class="linkAHEAD"><a href="sqlcustommapping.html">Using Customized Type Mappings</a></div>
+<div class="linkAHEAD"><a href="sqldatalink.html">Using Datalink Objects</a></div>
+<div class="linkAHEAD"><a href="sqlrowid.html">Using RowId Objects</a></div>
+<div class="linkAHEAD"><a href="storedprocedures.html">Using Stored Procedures</a></div>
+<div class="linkAHEAD"><a href="jdbcswing.html">Using JDBC with GUI API</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> JDBC(TM) Database Access
+        <br /><b>Lesson:</b> JDBC Basics
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">JDBC(TM) Database Access</a>
+                &gt;
+                <a href="index.html" target="_top">JDBC Basics</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="connecting.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="sqlexception.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Connecting with DataSource Objects</h1></div>
+            <div id="PageContent">
+
+<!-- <h3>Connecting with DataSource Objects</h3> -->
+<p>This section covers <code>DataSource</code> objects, which are the preferred means of getting a connection to a data source. In addition to their other advantages, which will be explained later, <code>DataSource</code> objects can provide connection pooling and distributed transactions. This functionality is essential for enterprise database computing. In particular, it is integral to Enterprise JavaBeans (EJB) technology.</p>
+<p>This section shows you how to get a connection using the <code>DataSource</code> interface and how to use distributed transactions and connection pooling. Both of these involve very few code changes in your JDBC application.</p>
+<p>The work performed to deploy the classes that make these operations possible, which a system administrator usually does with a tool (such as Apache Tomcat or Oracle WebLogic Server), varies with the type of <code>DataSource</code> object that is being deployed. As a result, most of this section is devoted to showing how a system administrator sets up the environment so that programmers can use a <code>DataSource</code> object to get connections.</p>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#datasource_connection">Using DataSource Objects to Get Connections</a></li>
+<li><a href="#deploy_datasource">Deploying Basic DataSource Objects</a></li>
+<li><a href="#datasource_implementation">Deploying Other DataSource Implementations</a></li>
+<li><a href="#pooled_connection">Getting and Using Pooled Connections</a></li>
+<li><a href="#deployment_distributed_transactions">Deploying Distributed Transactions</a></li>
+<li><a href="#using_connections_distributed_transactions">Using Connections for Distributed Transactions</a></li>
+</ul>
+<!-- ************************************ -->
+<h2><a name="datasource_connection" id="datasource_connection">Using DataSource Objects to Get a Connection</a></h2>
+<p>In <a href="connecting.html">Establishing a Connection</a>, you learned how to get a connection using the <code>DriverManager</code> class. This section shows you how to use a <code>DataSource</code> object to get a connection to your data source, which is the preferred way.</p>
+<p>Objects instantiated by classes that implement the <code>DataSource</code> represent a particular DBMS or some other data source, such as a file. A <code>DataSource</code> object represents a particular DBMS or some other data source, such as a file. If a company uses more than one data source, it will deploy a separate <code>DataSource</code> object for each of them. The <code>DataSource</code> interface is implemented by a driver vendor. It can be implemented in three different ways:</p>
+<ul>
+<li>A basic <code>DataSource</code> implementation produces standard <code>Connection</code> objects that are not pooled or used in a distributed transaction.</li>
+<li>A <code>DataSource</code> implementation that supports connection pooling produces <code>Connection</code> objects that participate in connection pooling, that is, connections that can be recycled.</li>
+<li>A <code>DataSource</code> implementation that supports distributed transactions produces <code>Connection</code> objects that can be used in a distributed transaction, that is, a transaction that accesses two or more DBMS servers.</li>
+</ul>
+<p>A JDBC driver should include at least a basic <code>DataSource</code> implementation. For example, the Java DB JDBC driver includes the implementation <code>org.apache.derby.jdbc.ClientDataSource</code> and for MySQL, <code>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</code>. If your client runs on Java 8 compact profile 2, then the Java DB JDBC driver is <code>org.apache.derby.jdbc.BasicClientDataSource40</code>. The sample for this tutorial requires compact profile 3 or greater.</p>
+<p>A <code>DataSource</code> class that supports distributed transactions typically also implements support for connection pooling. For example, a <code>DataSource</code> class provided by an EJB vendor almost always supports both connection pooling and distributed transactions.</p>
+<p>Suppose that the owner of the thriving chain of The Coffee Break shops, from the previous examples, has decided to expand further by selling coffee over the Internet. With the large amount of online business expected, the owner will definitely need connection pooling. Opening and closing connections involves a great deal of overhead, and the owner anticipates that this online ordering system will necessitate a sizable number of queries and updates. With connection pooling, a pool of connections can be used over and over again, avoiding the expense of creating a new connection for every database access. In addition, the owner now has a second DBMS that contains data for the recently acquired coffee roasting company. This means that the owner will want to be able to write distributed transactions that use both the old DBMS server and the new one.</p>
+<p>The chain owner has reconfigured the computer system to serve the new, larger customer base. The owner has purchased the most recent JDBC driver and an EJB application server that works with it to be able to use distributed transactions and get the increased performance that comes with connection pooling. Many JDBC drivers are available that are compatible with the recently purchased EJB server. The owner now has a three-tier architecture, with a new EJB application server and JDBC driver in the middle tier and the two DBMS servers as the third tier. Client computers making requests are the first tier.</p>
+<!-- ************************************ -->
+<h2><a name="deploy_datasource" id="deploy_datasource">Deploying Basic DataSource Objects</a></h2>
+<p>The system administrator needs to deploy <code>DataSource</code> objects so that The Coffee Break&#39;s programming team can start using them. Deploying a <code>DataSource</code> object consists of three tasks:</p>
+<ol>
+<li>Creating an instance of the <code>DataSource</code> class</li>
+<li>Setting its properties</li>
+<li>Registering it with a naming service that uses the Java Naming and Directory Interface (JNDI) API</li>
+</ol>
+<p>First, consider the most basic case, which is to use a basic implementation of the <code>DataSource</code> interface, that is, one that does not support connection pooling or distributed transactions. In this case there is only one <code>DataSource</code> object that needs to be deployed. A basic implementation of <code>DataSource</code> produces the same kind of connections that the <code>DriverManager</code> class produces.</p>
+<!-- ====================================== -->
+<h3>Creating Instance of DataSource Class and Setting its Properties</h3>
+<p>Suppose a company that wants only a basic implementation of <code>DataSource</code> has bought a driver from the JDBC vendor DB Access, Inc. This driver includes the class <code>com.dbaccess.BasicDataSource</code> that implements the <code>DataSource</code> interface. The following code excerpt creates an instance of the class <code>BasicDataSource</code> and sets its properties. After the instance of <code>BasicDataSource</code> is deployed, a programmer can call the method <code>DataSource.getConnection</code> to get a connection to the company&#39;s database, <code>CUSTOMER_ACCOUNTS</code>. First, the system administrator creates the <code>BasicDataSource</code> object <code><em>ds</em></code> using the default constructor. The system administrator then sets three properties. Note that the following code is typically be executed by a deployment tool:</p>
+<div class="codeblock"><pre>
+com.dbaccess.BasicDataSource ds = new com.dbaccess.BasicDataSource();
+ds.setServerName(&quot;grinder&quot;);
+ds.setDatabaseName(&quot;CUSTOMER_ACCOUNTS&quot;);
+ds.setDescription("Customer accounts database for billing");
+</pre></div>
+<p>The variable <code><em>ds</em></code> now represents the database <code>CUSTOMER_ACCOUNTS</code> installed on the server. Any connection produced by the <code>BasicDataSource</code> object <code><em>ds</em></code> will be a connection to the database <code>CUSTOMER_ACCOUNTS</code>.</p>
+<!-- ====================================== -->
+<h3>Registering DataSource Object with Naming Service That Uses JNDI API</h3>
+<p>With the properties set, the system administrator can register the <code>BasicDataSource</code> object with a JNDI (Java Naming and Directory Interface) naming service. The particular naming service that is used is usually determined by a system property, which is not shown here. The following code excerpt registers the <code>BasicDataSource</code> object and binds it with the logical name <code>jdbc/billingDB</code>:</p>
+<div class="codeblock"><pre>
+Context ctx = new InitialContext();
+ctx.bind(&quot;jdbc/billingDB&quot;, ds);
+</pre></div>
+<p>This code uses the JNDI API. The first line creates an <code>InitialContext</code> object, which serves as the starting point for a name, similar to root directory in a file system. The second line associates, or binds, the <code>BasicDataSource</code> object <code><em>ds</em></code> to the logical name <code>jdbc/billingDB</code>. In the next code excerpt, you give the naming service this logical name, and it returns the <code>BasicDataSource</code> object. The logical name can be any string. In this case, the company decided to use the name <code>billingDB</code> as the logical name for the <code>CUSTOMER_ACCOUNTS</code> database.</p>
+<p>In the previous example, <code>jdbc</code> is a subcontext under the initial context, just as a directory under the root directory is a subdirectory. The name <code>jdbc/billingDB</code> is like a path name, where the last item in the path is analogous to a file name. In this case, <code>billingDB</code> is the logical name that is given to the <code>BasicDataSource</code> object <code><em>ds</em></code>. The subcontext <code>jdbc</code> is reserved for logical names to be bound to <code>DataSource</code> objects, so <code>jdbc</code> will always be the first part of a logical name for a data source.</p>
+<h3>Using Deployed DataSource Object</h3>
+<p>After a basic <code>DataSource</code> implementation is deployed by a system administrator, it is ready for a programmer to use. This means that a programmer can give the logical data source name that was bound to an instance of a <code>DataSource</code> class, and the JNDI naming service will return an instance of that <code>DataSource</code> class. The method <code>getConnection</code> can then be called on that <code>DataSource</code> object to get a connection to the data source it represents. For example, a programmer might write the following two lines of code to get a <code>DataSource</code> object that produces a connection to the database <code>CUSTOMER_ACCOUNTS</code>.</p>
+<div class="codeblock"><pre>
+Context ctx = new InitialContext();
+DataSource ds = (DataSource)ctx.lookup("jdbc/billingDB");
+</pre></div>
+<p>The first line of code gets an initial context as the starting point for retrieving a <code>DataSource</code> object. When you supply the logical name <code>jdbc/billingDB</code> to the method <code>lookup</code>, the method returns the <code>DataSource</code> object that the system administrator bound to <code>jdbc/billingDB</code> at deployment time. Because the return value of the method <code>lookup</code> is a Java <code>Object</code>, we must cast it to the more specific <code>DataSource</code> type before assigning it to the variable <code><em>ds</em></code>.</p>
+<p>The variable <code><em>ds</em></code> is an instance of the class <code>com.dbaccess.BasicDataSource</code> that implements the <code>DataSource</code> interface. Calling the method <code><em>ds</em>.getConnection</code> produces a connection to the <code>CUSTOMER_ACCOUNTS</code> database.</p>
+<div class="codeblock"><pre>
+Connection con = ds.getConnection("fernanda","brewed");
+</pre></div>
+<p>The <code>getConnection</code> method requires only the user name and password because the variable <code><em>ds</em></code> has the rest of the information necessary for establishing a connection with the <code>CUSTOMER_ACCOUNTS</code> database, such as the database name and location, in its properties.</p>
+<h3>Advantages of DataSource Objects</h3>
+<p>Because of its properties, a <code>DataSource</code> object is a better alternative than the <code>DriverManager</code> class for getting a connection. Programmers no longer have to hard code the driver name or JDBC URL in their applications, which makes them more portable. Also, <code>DataSource</code> properties make maintaining code much simpler. If there is a change, the system administrator can update data source properties and not be concerned about changing every application that makes a connection to the data source. For example, if the data source were moved to a different server, all the system administrator would have to do is set the <code>serverName</code> property to the new server name.</p>
+<p>Aside from portability and ease of maintenance, using a <code>DataSource</code> object to get connections can offer other advantages. When the <code>DataSource</code> interface is implemented to work with a <code>ConnectionPoolDataSource</code> implementation, all of the connections produced by instances of that <code>DataSource</code> class will automatically be pooled connections. Similarly, when the <code>DataSource</code> implementation is implemented to work with an <code>XADataSource</code> class, all of the connections it produces will automatically be connections that can be used in a distributed transaction. The next section shows how to deploy these types of <code>DataSource</code> implementations.</p>
+<!-- ************************************ -->
+<h2><a name="datasource_implementation" id="datasource_implementation">Deploying Other DataSource Implementations</a></h2>
+<p>A system administrator or another person working in that capacity can deploy a <code>DataSource</code> object so that the connections it produces are pooled connections. To do this, he or she first deploys a <code>ConnectionPoolDataSource</code> object and then deploys a <code>DataSource</code> object implemented to work with it. The properties of the <code>ConnectionPoolDataSource</code> object are set so that it represents the data source to which connections will be produced. After the <code>ConnectionPoolDataSource</code> object has been registered with a JNDI naming service, the <code>DataSource</code> object is deployed. Generally only two properties must be set for the <code>DataSource</code> object: <code>description</code> and <code>dataSourceName</code>. The value given to the <code>dataSourceName</code> property is the logical name identifying the <code>ConnectionPoolDataSource</code> object previously deployed, which is the object containing the properties needed to make the connection.</p>
+<p>With the <code>ConnectionPoolDataSource</code> and <code>DataSource</code> objects deployed, you can call the method <code>DataSource.getConnection</code> on the <code>DataSource</code> object and get a pooled connection. This connection will be to the data source specified in the <code>ConnectionPoolDataSource</code> object&#39;s properties.</p>
+<p>The following example describes how a system administrator for The Coffee Break would deploy a <code>DataSource</code> object implemented to provide pooled connections. The system administrator would typically use a deployment tool, so the code fragments shown in this section are the code that a deployment tool would execute.</p>
+<p>To get better performance, The Coffee Break company has bought a JDBC driver from DB Access, Inc. that includes the class <code>com.dbaccess.ConnectionPoolDS</code>, which implements the <code>ConnectionPoolDataSource</code> interface. The system administrator creates create an instance of this class, sets its properties, and registers it with a JNDI naming service. The Coffee Break has bought its <code>DataSource</code> class, <code>com.applogic.PooledDataSource</code>, from its EJB server vendor, Application Logic, Inc. The class <code>com.applogic.PooledDataSource</code> implements connection pooling by using the underlying support provided by the <code>ConnectionPoolDataSource</code> class <code>com.dbaccess.ConnectionPoolDS</code>.</p>
+<p>The <code>ConnectionPoolDataSource</code> object must be deployed first. The following code creates an instance of <code>com.dbaccess.ConnectionPoolDS</code> and sets its properties:</p>
+<div class="codeblock"><pre>
+com.dbaccess.ConnectionPoolDS cpds = new com.dbaccess.ConnectionPoolDS();
+cpds.setServerName(&quot;creamer&quot;);
+cpds.setDatabaseName(&quot;COFFEEBREAK&quot;);
+cpds.setPortNumber(9040);
+cpds.setDescription(&quot;Connection pooling for " + "COFFEEBREAK DBMS&quot;);
+</pre></div>
+<p>After the <code>ConnectionPoolDataSource</code> object has been deployed, the system administrator deploys the <code>DataSource</code> object. The following code registers the <code>com.dbaccess.ConnectionPoolDS</code> object <code><em>cpds</em></code> with a JNDI naming service. Note that the logical name being associated with the <code><em>cpds</em></code> variable has the subcontext <code>pool</code> added under the subcontext <code>jdbc</code>, which is similar to adding a subdirectory to another subdirectory in a hierarchical file system. The logical name of any instance of the class <code>com.dbaccess.ConnectionPoolDS</code> will always begin with <code>jdbc/pool</code>. Oracle recommends putting all <code>ConnectionPoolDataSource</code> objects under the subcontext <code>jdbc/pool</code>:</p>
+<div class="codeblock"><pre>
+Context ctx = new InitialContext();
+ctx.bind(&quot;jdbc/pool/fastCoffeeDB&quot;, cpds);
+</pre></div>
+<p>Next, the <code>DataSource</code> class that is implemented to interact with the <code><em>cpds</em></code> variable and other instances of the <code>com.dbaccess.ConnectionPoolDS</code> class is deployed. The following code creates an instance of this class and sets its properties. Note that only two properties are set for this instance of <code>com.applogic.PooledDataSource</code>. The <code>description</code> property is set because it is always required. The other property that is set, <code>dataSourceName</code>, gives the logical JNDI name for <code><em>cpds</em></code>, which is an instance of the <code>com.dbaccess.ConnectionPoolDS</code> class. In other words, <code><em>cpds</em></code> represents the <code>ConnectionPoolDataSource</code> object that will implement connection pooling for the <code>DataSource</code> object.</p>
+<p>The following code, which would probably be executed by a deployment tool, creates a <code>PooledDataSource</code> object, sets its properties, and binds it to the logical name <code>jdbc/fastCoffeeDB</code>:</p>
+<div class="codeblock"><pre>
+com.applogic.PooledDataSource ds = new com.applogic.PooledDataSource();
+ds.setDescription("produces pooled connections to COFFEEBREAK");
+ds.setDataSourceName(&quot;jdbc/pool/fastCoffeeDB&quot;);
+Context ctx = new InitialContext();
+ctx.bind("jdbc/fastCoffeeDB", ds);
+</pre></div>
+<p>At this point, a <code>DataSource</code> object is deployed from which an application can get pooled connections to the database <code>COFFEEBREAK</code>.</p>
+<!-- ************************************ -->
+<h2><a name="pooled_connection" id="pooled_connection">Getting and Using Pooled Connections</a></h2>
+<p>A <em>connection pool</em> is a cache of database connection objects. The objects represent physical database connections that can be used by an application to connect to a database. At run time, the application requests a connection from the pool. If the pool contains a connection that can satisfy the request, it returns the connection to the application. If no connections are found, a new connection is created and returned to the application. The application uses the connection to perform some work on the database and then returns the object back to the pool. The connection is then available for the next connection request.</p>
+<p>Connection pools promote the reuse of connection objects and reduce the number of times that connection objects are created. Connection pools significantly improve performance for database-intensive applications because creating connection objects is costly both in terms of time and resources.</p>
+<p>Now that these <code>DataSource</code> and <code>ConnectionPoolDataSource</code> objects are deployed, a programmer can use the <code>DataSource</code> object to get a pooled connection. The code for getting a pooled connection is just like the code for getting a nonpooled connection, as shown in the following two lines:</p>
+<div class="codeblock"><pre>
+ctx = new InitialContext();
+ds = (DataSource)ctx.lookup("jdbc/fastCoffeeDB");
+</pre></div>
+<p>The variable <code><em>ds</em></code> represents a <code>DataSource</code> object that produces pooled connections to the database <code>COFFEEBREAK</code>. You need to retrieve this <code>DataSource</code> object only once because you can use it to produce as many pooled connections as needed. Calling the method <code>getConnection</code> on the <code><em>ds</em></code> variable automatically produces a pooled connection because the <code>DataSource</code> object that the <code><em>ds</em></code> variable represents was configured to produce pooled connections.</p>
+<p>Connection pooling is generally transparent to the programmer. There are only two things you need to do when you are using pooled connections:</p>
+<ol>
+<li>
+<p>Use a <code>DataSource</code> object rather than the <code>DriverManager</code> class to get a connection. In the following line of code, <code><em>ds</em></code> is a <code>DataSource</code> object implemented and deployed so that it will create pooled connections and <code>username</code> and <code>password</code> are variables that represent the credentials of the user that has access to the database:</p>
+<div class="codeblock"><pre>
+Connection con = ds.getConnection(username, password);
+</pre></div>
+</li>
+<li>
+<p>Use a <code>finally</code> statement to close a pooled connection. The following <code>finally</code> block would appear after the <code>try/catch</code> block that applies to the code in which the pooled connection was used:</p>
+<div class="codeblock"><pre>
+try {
+    Connection con = ds.getConnection(username, password);
+    // ... code to use the pooled
+    // connection con
+} catch (Exception ex {
+    // ... code to handle exceptions
+} finally {
+    if (con != null) con.close();
+}
+</pre></div>
+</li>
+</ol>
+<p>Otherwise, an application using a pooled connection is identical to an application using a regular connection. The only other thing an application programmer might notice when connection pooling is being done is that performance is better.</p>
+<p>The following sample code gets a <code>DataSource</code> object that produces connections to the database <code>COFFEEBREAK</code> and uses it to update a price in the table <code>COFFEES</code>:</p>
+<div class="codeblock"><pre>
+import java.sql.*;
+import javax.sql.*;
+import javax.ejb.*;
+import javax.naming.*;
+
+public class ConnectionPoolingBean implements SessionBean {
+
+    // ...
+
+    public void ejbCreate() throws CreateException {
+        ctx = new InitialContext();
+        ds = (DataSource)ctx.lookup("jdbc/fastCoffeeDB");
+    }
+
+    public void updatePrice(float price, String cofName,
+                            String username, String password)
+        throws SQLException{
+
+        Connection con;
+        PreparedStatement pstmt;
+        try {
+            con = ds.getConnection(username, password);
+            con.setAutoCommit(false);
+            pstmt = con.prepareStatement(&quot;UPDATE COFFEES &quot; +
+                        &quot;SET PRICE = ? " +
+                        "WHERE COF_NAME = ?&quot;);
+            pstmt.setFloat(1, price);
+            pstmt.setString(2, cofName);
+            pstmt.executeUpdate();
+
+            con.commit();
+            pstmt.close();
+
+        } finally {
+            if (con != null) con.close();
+        }
+    }
+
+    private DataSource ds = null;
+    private Context ctx = null;
+}
+
+</pre></div>
+<p>The connection in this code sample participates in connection pooling because the following are true:</p>
+<ul>
+<li>An instance of a class implementing <code>ConnectionPoolDataSource</code> has been deployed.</li>
+<li>An instance of a class implementing <code>DataSource</code> has been deployed, and the value set for its <code>dataSourceName</code> property is the logical name that was bound to the previously deployed <code>ConnectionPoolDataSource</code> object.</li>
+</ul>
+<p>Note that although this code is very similar to code you have seen before, it is different in the following ways:</p>
+<ul>
+<li>
+<p>It imports the <code>javax.sql</code>, <code>javax.ejb</code>, and <code>javax.naming</code> packages in addition to <code>java.sql</code>.</p>
+<p>The <code>DataSource</code> and <code>ConnectionPoolDataSource</code> interfaces are in the <code>javax.sql</code> package, and the JNDI constructor <code>InitialContext</code> and method <code>Context.lookup</code> are part of the <code>javax.naming</code> package. This particular example code is in the form of an EJB component that uses API from the <code>javax.ejb</code> package. The purpose of this example is to show that you use a pooled connection the same way you use a nonpooled connection, so you need not worry about understanding the EJB API.</p>
+</li>
+<li>
+<p>It uses a <code>DataSource</code> object to get a connection instead of using the <code>DriverManager</code> facility.</p>
+</li>
+<li>
+<p>It uses a <code>finally</code> block to ensure that the connection is closed.</p>
+</li>
+</ul>
+<p>Getting and using a pooled connection is similar to getting and using a regular connection. When someone acting as a system administrator has deployed a <code>ConnectionPoolDataSource</code> object and a <code>DataSource</code> object properly, an application uses that <code>DataSource</code> object to get a pooled connection. An application should, however, use a <code>finally</code> block to close the pooled connection. For simplicity, the preceding example used a <code>finally</code> block but no <code>catch</code> block. If an exception is thrown by a method in the <code>try</code> block, it will be thrown by default, and the <code>finally</code> clause will be executed in any case.</p>
+<!-- ************************************ -->
+<h2><a name="deployment_distributed_transactions" id="deployment_distributed_transactions">Deploying Distributed Transactions</a></h2>
+<p><code>DataSource</code> objects can be deployed to get connections that can be used in distributed transactions. As with connection pooling, two different class instances must be deployed: an <code>XADataSource</code> object and a <code>DataSource</code> object that is implemented to work with it.</p>
+<p>Suppose that the EJB server that The Coffee Break entrepreneur bought includes the <code>DataSource</code> class <code>com.applogic.TransactionalDS</code>, which works with an <code>XADataSource</code> class such as <code>com.dbaccess.XATransactionalDS</code>. The fact that it works with any <code>XADataSource</code> class makes the EJB server portable across JDBC drivers. When the <code>DataSource</code> and <code>XADataSource</code> objects are deployed, the connections produced will be able to participate in distributed transactions. In this case, the class <code>com.applogic.TransactionalDS</code> is implemented so that the connections produced are also pooled connections, which will usually be the case for <code>DataSource</code> classes provided as part of an EJB server implementation.</p>
+<p>The <code>XADataSource</code> object must be deployed first. The following code creates an instance of <code>com.dbaccess.XATransactionalDS</code> and sets its properties:</p>
+<div class="codeblock"><pre>
+com.dbaccess.XATransactionalDS xads = new com.dbaccess.XATransactionalDS();
+xads.setServerName(&quot;creamer&quot;);
+xads.setDatabaseName(&quot;COFFEEBREAK&quot;);
+xads.setPortNumber(9040);
+xads.setDescription("Distributed transactions for COFFEEBREAK DBMS");
+</pre></div>
+<p>The following code registers the <code>com.dbaccess.XATransactionalDS</code> object <code><em>xads</em></code> with a JNDI naming service. Note that the logical name being associated with <code><em>xads</em></code> has the subcontext <code>xa</code> added under <code>jdbc</code>. Oracle recommends that the logical name of any instance of the class <code>com.dbaccess.XATransactionalDS</code> always begin with <code>jdbc/xa</code>.</p>
+<div class="codeblock"><pre>
+Context ctx = new InitialContext();
+ctx.bind("jdbc/xa/distCoffeeDB", xads);
+</pre></div>
+<p>Next, the <code>DataSource</code> object that is implemented to interact with <code><em>xads</em></code> and other <code>XADataSource</code> objects is deployed. Note that the <code>DataSource</code> class, <code>com.applogic.TransactionalDS</code>, can work with an <code>XADataSource</code> class from any JDBC driver vendor. Deploying the <code>DataSource</code> object involves creating an instance of the <code>com.applogic.TransactionalDS</code> class and setting its properties. The <code>dataSourceName</code> property is set to <code>jdbc/xa/distCoffeeDB</code>, the logical name associated with <code>com.dbaccess.XATransactionalDS</code>. This is the <code>XADataSource</code> class that implements the distributed transaction capability for the <code>DataSource</code> class. The following code deploys an instance of the <code>DataSource</code> class:</p>
+<div class="codeblock"><pre>
+com.applogic.TransactionalDS ds = new com.applogic.TransactionalDS();
+ds.setDescription("Produces distributed transaction " +
+                  "connections to COFFEEBREAK&quot;);
+ds.setDataSourceName("jdbc/xa/distCoffeeDB");
+Context ctx = new InitialContext();
+ctx.bind(&quot;jdbc/distCoffeeDB&quot;, ds);
+</pre></div>
+<p>Now that instances of the classes <code>com.applogic.TransactionalDS</code> and <code>com.dbaccess.XATransactionalDS</code> have been deployed, an application can call the method <code>getConnection</code> on instances of the <code>TransactionalDS</code> class to get a connection to the <code>COFFEEBREAK</code> database that can be used in distributed transactions.</p>
+<!-- ************************************ -->
+<h2><a name="using_connections_distributed_transactions" id="using_connections_distributed_transactions">Using Connections for Distributed Transactions</a></h2>
+<p>To get a connection that can be used for distributed transactions, must use a <code>DataSource</code> object that has been properly implemented and deployed, as shown in the section <a href="#deployment_distributed_transactions">Deploying Distributed Transactions</a>. With such a <code>DataSource</code> object, call the method <code>getConnection</code> on it. After you have the connection, use it just as you would use any other connection. Because <code>jdbc/distCoffeesDB</code> has been associated with an <code>XADataSource</code> object in a JNDI naming service, the following code produces a <code>Connection</code> object that can be used in distributed transactions:</p>
+<div class="codeblock"><pre>
+Context ctx = new InitialContext();
+DataSource ds = (DataSource)ctx.lookup(&quot;jdbc/distCoffeesDB&quot;);
+Connection con = ds.getConnection();
+</pre></div>
+<p>There are some minor but important restrictions on how this connection is used while it is part of a distributed transaction. A transaction manager controls when a distributed transaction begins and when it is committed or rolled back; therefore, application code should never call the methods <code>Connection.commit</code> or <code>Connection.rollback</code>. An application should likewise never call <code>Connection.setAutoCommit(true)</code>, which enables the auto-commit mode, because that would also interfere with the transaction manager&#39;s control of the transaction boundaries. This explains why a new connection that is created in the scope of a distributed transaction has its auto-commit mode disabled by default. Note that these restrictions apply only when a connection is participating in a distributed transaction; there are no restrictions while the connection is not part of a distributed transaction.</p>
+<p>For the following example, suppose that an order of coffee has been shipped, which triggers updates to two tables that reside on different DBMS servers. The first table is a new <code>INVENTORY</code> table, and the second is the <code>COFFEES</code> table. Because these tables are on different DBMS servers, a transaction that involves both of them will be a distributed transaction. The code in the following example, which obtains a connection, updates the <code>COFFEES</code> table, and closes the connection, is the second part of a distributed transaction.</p>
+<p>Note that the code does not explicitly commit or roll back the updates because the scope of the distributed transaction is being controlled by the middle tier server&#39;s underlying system infrastructure. Also, assuming that the connection used for the distributed transaction is a pooled connection, the application uses a <code>finally</code> block to close the connection. This guarantees that a valid connection will be closed even if an exception is thrown, thereby ensuring that the connection is returned to the connection pool to be recycled.</p>
+<p>The following code sample illustrates an enterprise Bean, which is a class that implements the methods that can be called by a client computer. The purpose of this example is to demonstrate that application code for a distributed transaction is no different from other code except that it does not call the <code>Connection</code> methods <code>commit</code>, <code>rollback</code>, or <code>setAutoCommit(true)</code>. Therefore, you do not need to worry about understanding the EJB API that is used.</p>
+<div class="codeblock"><pre>
+import java.sql.*;
+import javax.sql.*;
+import javax.ejb.*;
+import javax.naming.*;
+
+public class DistributedTransactionBean implements SessionBean {
+
+    // ...
+
+    public void ejbCreate() throws CreateException {
+
+        ctx = new InitialContext();
+        ds = (DataSource)ctx.lookup(&quot;jdbc/distCoffeesDB&quot;);
+    }
+
+    public void updateTotal(int incr, String cofName, String username,
+                            String password)
+        throws SQLException {
+
+        Connection con;
+        PreparedStatement pstmt;
+
+        try {
+            con = ds.getConnection(username, password);
+            pstmt = con.prepareStatement(&quot;UPDATE COFFEES &quot; +
+                        &quot;SET TOTAL = TOTAL + ? " +
+                        "WHERE COF_NAME = ?&quot;);
+            pstmt.setInt(1, incr);
+            pstmt.setString(2, cofName);
+            pstmt.executeUpdate();
+            stmt.close();
+        } finally {
+            if (con != null) con.close();
+        }
+    }
+
+    private DataSource ds = null;
+    private Context ctx = null;
+}
+</pre></div>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="connecting.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="sqlexception.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Establishing a Connection
+        <br /><b>Next page:</b> Handling SQLExceptions
+    </div>
+</body>
+</html> 

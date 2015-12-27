@@ -1,0 +1,1014 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Working with Bidirectional Text (The Java&trade; Tutorials &gt;        
+            2D Graphics &gt; Working with Text APIs)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This 2d Java tutorial describes 2d graphics, geometry, text APIs, images, printing, advanced 2d topics" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java 2d" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Working with Text APIs</a></div>
+<div class="linkAHEAD"><a href="fontconcepts.html">Font Concepts</a></div>
+<div class="linkAHEAD"><a href="textlayoutconcepts.html">Text Layout Concepts</a></div>
+<div class="linkAHEAD"><a href="fonts.html">Physical and Logical Fonts</a></div>
+<div class="linkAHEAD"><a href="measuringtext.html">Measuring Text</a></div>
+<div class="linkAHEAD"><a href="advanced.html">Advanced Text Display</a></div>
+<div class="linkBHEAD"><a href="renderinghints.html">Displaying Antialiased Text by Using Rendering Hints</a></div>
+<div class="linkBHEAD"><a href="textattributes.html">Using Text Attributes to Style Text</a></div>
+<div class="linkBHEAD"><a href="drawmulstring.html">Drawing Multiple Lines of Text</a></div>
+<div class="nolinkBHEAD">Working with Bidirectional Text</div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> 2D Graphics
+        <br /><b>Lesson:</b> Working with Text APIs
+        <br /><b>Section:</b> Advanced Text Display
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">2D Graphics</a>
+                &gt;
+                <a href="index.html" target="_top">Working with Text APIs</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="drawmulstring.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../images/index.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Working with Bidirectional Text</h1></div>
+            <div id="PageContent">
+
+<!-- ********************************************** -->
+
+<p>This section discusses how to work with bidirectional text with classes in the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/package-summary.html"><code>java.awt</code></a> and
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/package-summary.html"><code>java.awt.font</code></a> packages. These classes let you draw styled text in any language or script supported by The Unicode Standard: a global character coding system for handling diverse modern, classical, and historical languages. When drawing text, the direction the text is read must be taken into account so that all words in the string display correctly. These classes maintain the direction of the text and correctly draws it no matter if the string runs left-to-right, right-to-left, or both (bidirectional). Bidirectional text presents interesting problems for correctly positioning carets, accurately locating selections, and correctly displaying multiple lines. Also bidirectional and right-to-left text present similar problems for moving the caret in the correct direction in response to right and left arrow key presses.</p>
+
+<p>The following topics are covered:</p>
+
+<ul>
+  <li><a href="#ordering_text">Ordering Text</a></li>
+  <li><a href="#manipulating_bidirectional_text">Manipulating Bidirectional Text</a>
+    <ul>
+      <li><a href="#displaying_carets">Displaying Carets</a></li>
+      <li><a href="#moving_carets">Moving Carets</a></li>
+      <li><a href="#hit_testing">Hit Testing</a></li>
+      <li><a href="#highlighting_selections">Highlighting Selections</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#performing_text_layout_in_a_java_application">Performing Text Layout in a Java Application</a></li>
+
+  <li><a href="#managing_text_layout">Managing Text Layout with the TextLayout Class</a>
+  <ul>
+    <li><a href="#laying_out_text">Laying Out Text with the TextLayout Class</a></li>
+    <li><a href="#displaying_dual_carets">Displaying Dual Carets with the TextLayout Class</a></li>
+    <li><a href="#moving_the_caret">Moving the Caret with the TextLayout Class</a></li>
+    <li><a href="#textlayout_hit_testing">Hit Testing with the TextLayout Class</a></li>
+    <li><a href="#textlayout_highlighting_selections">Highlighting Selections with the TextLayout Class</a>
+  </li>
+  </ul>
+  </li>
+</ul>
+
+<p>If you plan to work with Swing components see
+<a class="TutorialLink" target="_top" href="../../i18n/text/bidi.html">Working with Bidirectional Text with the JTextComponent Class</a> and
+<a class="TutorialLink" target="_top" href="../../uiswing/components/text.html">Using Text Components</a> for more information.</p>
+
+
+<!-- ************************************************************* -->
+
+<h2><a name="ordering_text">Ordering Text</a></h2>
+
+<p>Java SE stores text in memory in logical order, which is the order in which characters and words are read and written. The logical order is not necessarily the same as the visual order, which is the order in which the corresponding glyphs are displayed.</p>
+
+<p>A writing system' visual order must be maintained in bidirectional text even when languages are mixed together. This is illustrated in the following figure, which displays an Arabic phrase embedded in an English sentence.</p>
+
+<p><b>Note:</b> In this and subsequent examples, Arabic and Hebrew text is represented by upper case letters and spaces are represented by underscores. Each illustration contains two parts: a representation of the characters stored in memory (the characters in logical order) followed by a representation of how those characters are displayed (the characters in visual order). The numbers below the character boxes indicate the insertion offsets.</p>
+
+<center><img src="../../figures/2d/text/fig44.gif" width="582" height="167" align="bottom" alt="Arabic phrase embedded in an English sentence" /></center>
+<p>Even though they are part of an English sentence, the Arabic words are displayed in the Arabic script order, right-to-left. Because the italicized Arabic word is logically after the Arabic in plain text, it is visually to the left of the plain text.</p>
+
+<p>When a line with a mixture of left-to-right and right-to-left text is displayed, the <em>base direction</em> is significant. The base direction is the script order of the predominant writing system. For example, if the text is primarily English with some embedded Arabic, then the base direction is left-to-right. If the text is primarily Arabic with some embedded English or numbers, then the base direction is right-to-left.</p>
+
+<p>The base direction determines the order in which segments of text with a
+ common direction are displayed. In the example shown in the previous figure,
+ the base direction is left-to-right. There are three directional runs
+in this example: the English text at the beginning of the sentence runs
+left to right, the Arabic text runs right to left, and the period runs
+left to right.</p>
+
+<p>Graphics are often embedded in the flow of text. These inline graphics
+behave like glyphs in terms of how they affect the text flow and line
+wrapping. Such inline graphics need to be positioned using the same
+bidirectional layout algorithm so that they appear in the proper
+location in the flow of characters.</p>
+
+<p>Java SE uses the
+<a class="OutsideLink" target="_blank" href="http://unicode.org/reports/tr9/">Unicode Bidirectional Algorithm</a>, which is an algorithm that is used to order glyphs within a line, thereby determining the directionality of bidirectional texts. In most cases, you do not need to include any additional information in order for this algorithm to obtain the correct display ordering.</p>
+
+<!-- **************************************************************************** -->
+
+<h2><a name="manipulating_bidirectional_text">Manipulating Bidirectional Text</a></h2>
+
+<p>To allow the user to edit bidirectional text, you must be able to do the following:</p>
+
+<ul><li><a href="#displaying_carets">Displaying Carets</a></li>
+<li><a href="#moving_carets">Moving Carets</a></li>
+<li><a href="#hit_testing">Hit Testing</a></li>
+<li><a href="#highlighting_selections">Highlighting Selections</a></li>
+</ul>
+
+<!-- ********************************************** -->
+
+<h3><a name="displaying_carets">Displaying Carets</a></h3>
+
+<p>In editable text, a <em>caret</em> is used to graphically represent the current insertion point, the position in the
+text where new characters will be inserted. Typically, a caret is shown as a blinking vertical bar between two glyphs. New characters are inserted and displayed at the caret's location.</p>
+
+<p>
+Calculating the caret position can be complicated, particularly for
+bidirectional text. Insertion offsets on directional boundaries have two
+ possible caret positions because the two glyphs that correspond to the
+character offset are not displayed adjacent to one another. This is
+illustrated in the following figure. In this figure, the carets are shown as square brackets to indicate the glyph to which the caret corresponds.
+</p>
+
+<center><img src="../../figures/2d/text/fig79.gif" width="582" height="143" align="bottom" alt="Dual carets" /></center>
+<p>Character offset 8 corresponds to the location after the underscore and before the <em>A</em>. If the user enters an Arabic character, its glyph is displayed to the right of (before) the <em>A</em>; if the user enters an English character, its glyph is displayed to the right of (after) the underscore.</p>
+
+<p>To handle this situation, some systems display dual carets, a strong (primary) caret and a weak (secondary) caret. The strong caret indicates where an inserted character will be displayed when that character's direction is the same as the base direction of the text. The weak caret shows where an inserted character will be displayed when the character's 
+direction is the opposite of the base direction
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> automatically supports dual carets.</p>
+
+<p>When you're working with bidirectional text, you can't simply add the widths of the glyphs before a character offset to calculate the caret position. If you did, the caret would be drawn in the wrong place, as shown in the following figure:</p>
+
+<center><img src="../../figures/2d/text/fig610.gif" width="582" height="143" align="bottom" alt="Caret drawn incorrectly" /></center>
+<p>For the caret to be properly positioned, the widths of the glyphs to the left of the offset need to be added and the current context taken into account. Unless the context is taken into account, the glyph metrics will not necessarily match the display. (The context can affect which glyphs are used.)</p>
+
+<!-- ********************************************** -->
+
+<h3><a name="moving_carets">Moving Carets</a></h3>
+
+<p>All text editors allow the user to move the caret with the arrow keys. Users expect the caret to move in the direction of the pressed arrow key. In left-to-right text, moving the insertion offset is simple: the right arrow key increases the insertion offset by one and the left arrow key decreases it by one. In bidirectional text or in text with
+ligatures, this behavior would cause the caret to jump across glyphs at direction boundaries and move in the reverse direction within different directional runs.</p>
+
+<p>To move the caret smoothly through bidirectional text, you need to take into account the direction of the text runs. You can't simply increment the insertion offset when the right arrow key is pressed and decrement it when the left arrow key is pressed. If the current insertion offset is within a run of right-to-left characters, the right arrow key should decrease the insertion offset, and the left arrow key should increase it.</p>
+
+<p>Moving the caret across a directional boundary is even more complicated. The following figure
+ illustrates what happens when a directional boundary is crossed when
+the user is navigating with the arrow key. Stepping three positions to
+the right in the displayed text corresponds to moving to the character
+offsets 7, 19, then 18.
+</p>
+
+<center><img src="../../figures/2d/text/fig1211.gif" width="582" height="162" align="bottom" alt="Caret movement" /></center>
+<p>Certain glyphs should never have a caret between them; instead, the caret should move as though the glyphs represented a single character. For example, there should never be a caret between an <em>o</em> and an umlaut if they are represented by two separate characters.</p>
+
+<p>The
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> class provides methods (
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html#getNextRightHit-int-"><code>getNextRightHit</code></a> and
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html#getNextLeftHit-int-"><code>getNextLeftHit</code></a>) that enable you to easily move the caret smoothly through bidirectional text.</p>
+
+<!-- ********************************************** -->
+
+<h3><a name="hit_testing">Hit Testing</a></h3>
+
+<p>Often, a location in device space must be converted to a text offset. For example, when a user clicks the mouse on selectable text, the location of the mouse is converted to a text offset and used as one end of the selection range. Logically, this is the inverse of positioning a caret.</p>
+
+<p>When you're working with bidirectional text, a single visual location in the display can correspond to two different offsets in the source text, as shown in the following figure:</p>
+
+<center><img src="../../figures/2d/text/fig912.gif" width="582" height="142" align="bottom" alt="Hit testing bidirectional text" /></center>
+<p>Because a single visual location can correspond to two different offsets, hit testing bidirectional text isn't just a matter of measuring glyph widths until the glyph at the correct location is found and then mapping that position back to a character offset. Detecting the side that the hit was on helps distinguish between the two alternatives.</p>
+
+<p>You can perform hit testing using
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html#hitTestChar-float-float-"><code>TextLayout.hitTestChar</code></a>. Hit information is encapsulated in a
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextHitInfo.html"><code>TextHitInfo</code></a> object and includes information about the side that the hit was on.</p>
+
+<!-- ********************************************** -->
+
+<h3><a name="highlighting_selections">Highlighting Selections</a></h3>
+
+<p>A selected range of characters is represented graphically by a highlight region, an area in which glyphs are displayed with inverse video or against a different background color.
+</p>
+
+<p>Highlight regions, like carets, are more complicated for bidirectional text than for unidirectional text. In bidirectional text, a contiguous range of characters might not have a contiguous highlight region when displayed. Conversely, a highlight region showing a visually contiguous range of glyphs might not correspond to a single, contiguous range of characters.</p>
+
+<p>This results in two strategies for highlighting selections in bidirectional text:</p>
+
+<ul>
+
+<li><p><em>Logical highlighting</em>: With logical highlighting, the selected characters are always contiguous in the text model, and the highlight region is allowed to be
+discontiguous. The following is an example of logical highlighting:</p>
+
+<center><img src="../../figures/2d/text/fig1013.gif" width="582" height="162" align="bottom" alt="Illustration of logical highlighting (contiguous characters)" /></center>
+</li>
+
+<li><p><em>Visual highlighting</em>: With
+ visual highlighting, there might be more than one range of selected
+characters, but the highlight region is always contiguous. The following is an
+example of visual highlighting:</p>
+
+<center><img src="../../figures/2d/text/fig1114.gif" width="582" height="162  " align="bottom" alt="Illustration of visual highlighting (contiguous highlight region)" /></center>
+</li></ul>
+
+<p>Logical highlighting is simpler to implement, since the selected characters are always contiguous in the text.</p>
+
+<p>The sample 
+
+<a class="SourceLink" target="_blank" href="examples/SelectionSample.java" onclick="showCode('../../displayCode.html', 'examples/SelectionSample.java'); return false;"><code><code>SelectionSample.java</code></code></a>
+ demonstrates logical highlighting:</p>
+
+<center><img src="../../figures/2d/text/selection-sample.jpg" width="400" height="250" align="bottom" alt="Selection Sample; demonstration of logical highlighting" /></center>
+<!-- ********************************************** -->
+
+<h2><a name="performing_text_layout_in_a_java_application">Performing Text Layout in a Java Application</a></h2>
+
+<p>Depending on which Java APIs you use, you can have as little or as much control over text layout as you need:</p>
+
+<ul><li><p>If you just want to display a block of text or need an editable text control, you can use
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/JTextComponent.html"><code>JTextComponent</code></a>, which will perform the text layout for you.
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/JTextComponent.html"><code>JTextComponent</code></a> is designed to handle the needs of most international applications and supports bidirectional text For more information about
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/JTextComponent.html"><code>JTextComponent</code></a>, see
+<a class="TutorialLink" target="_top" href="../../i18n/text/bidi.html">Working with Bidirectional Text with the JTextComponent Class</a> and
+<a class="TutorialLink" target="_top" href="../../uiswing/components/text.html">Using Text Components</a> for more information.</p></li>
+
+<li><p>If you want to display a simple text string, you can call the method
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics2D.html#drawString-java.text.AttributedCharacterIterator-int-int-"><code>Graphics2D.drawString</code></a> and let Java 2D lay out the string for you. You can also use
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics2D.html#drawString-java.text.AttributedCharacterIterator-int-int-"><code>Graphics2D.drawString</code></a> to render styled strings and strings that contain bidirectional text. For more information about rendering text through
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics2D.html"><code>Graphics2D</code></a>, see
+<a class="TutorialLink" target="_top" href="index.html">Working with Text APIs</a>.</p></li>
+
+<li><p>If you want to implement your own text editing routines, you can use
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> to manage text layout, highlighting, and hit detection. The facilities provided by
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> handle most common cases, including text strings with mixed fonts, mixed languages, and bidirectional text. For more information about using TextLayout, see <a href="#managing_text_layout">Managing Text Layout</a>.</p></li>
+
+<li><p>If you want total control over how text is shaped and positioned, you can construct your own
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/GlyphVector.html"><code>GlyphVector</code></a>
+instances using the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Font.html"><code>Font</code></a> class and then render them through the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics2D.html"><code>Graphics2D</code></a> class.</p></li>
+
+</ul>
+
+<p>Generally, you do not need to perform text layout operations yourself. For most applications,
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/JTextComponent.html"><code>JTextComponent</code></a> is the best solution for displaying static and editable text. However,
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/swing/text/JTextComponent.html"><code>JTextComponent</code></a> does not support the display of dual carets or discontiguous selections in bidirectional text. If your application requires these features, or you prefer to implement your own text editing routines, you can use the Java 2D text layout APIs.</p>
+
+<!-- ********************************************** -->
+
+<h2><a name="managing_text_layout">Managing Text Layout with the TextLayout Class</a></h2>
+
+<p>The
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> class supports text that contains multiple styles and characters from different writing systems, including Arabic and Hebrew. (Arabic and Hebrew are particularly difficult to display because you must reshape and reorder the text to achieve an acceptable representation.)</p>
+
+<p>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> simplifies the process of displaying and measuring text even if you are working with English-only text. By using
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a>, you can achieve high-quality typography with no extra effort.</p>
+
+<p>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> is designed so that there is no significant performance impact when it is used to display simple, unidirectional text. There is some additional processing overhead when 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> is used to display Arabic or Hebrew text. However, it's typically on the order of microseconds per character and is dominated by the execution of normal drawing code.</p>
+
+<p>The
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> class manages the positioning and ordering of glyphs for you. You can use
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> to do the following:</p>
+
+<ul><li><a href="#laying_out_text">Laying Out Text with the TextLayout Class</a></li>
+<li><a href="#displaying_dual_carets">Displaying Dual Carets with the TextLayout Class</a></li>
+<li><a href="#moving_the_caret">Moving the Caret with the TextLayout Class</a></li>
+<li><a href="#textlayout_hit_testing">Hit Testing with the TextLayout Class</a></li>
+<li><a href="#textlayout_highlighting_selections">Highlighting Selections with the TextLayout Class</a></li>
+
+</ul>
+
+<!-- ********************************************** -->
+
+<h3><a name="laying_out_text">Laying Out Text with the TextLayout Class</a></h3>
+
+<p>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> automatically lays out text, including bidirectional text, with the correct shaping and ordering. To correctly shape and order the glyphs representing a line of text,
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> must know the full context of the text:</p>
+
+<ul>
+<li>If the text fits on a single line, such as a single-word label for a button or a line in a dialog box, you can construct a
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> directly from the text.</li>
+
+<li>If you have more text than can fit on a single line or want to break text on a single line into tabbed segments, you cannot construct a
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> directly. You must use a
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/LineBreakMeasurer.html"><code>LineBreakMeasurer</code></a> to provide sufficient context. See
+<a class="TutorialLink" target="_top" href="drawmulstring.html">Drawing Multiple Lines of Text</a> for more information.</li>
+</ul>
+
+<p>The base direction of the text is normally set by an attribute (style) on the text. If that attribute is missing,
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> follows the Unicode bidirectional algorithm and derives the base direction from the initial characters in the paragraph.</p>
+
+<!-- ********************************************** -->
+
+<h3><a name="displaying_dual_carets">Displaying Dual Carets with the TextLayout Class</a></h3>
+
+<p>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> maintains caret information such as the caret
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Shape.html"><code>Shape</code></a>, position, and angle. You can use this information to easily display carets in both unidirectional and bidirectional text. When you're drawing carets for bidirectional text, using
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> ensures that the carets will be positioned correctly.</p>
+
+<p>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> provides default caret <code>Shapes</code> and automatically supports dual carets. For italic and oblique glyphs,
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> produces angled carets, as shown in the following figure. These caret positions are also used as the boundaries between glyphs for highlighting and hit testing, which helps produce a consistent user experience.</p>
+
+<center><img src="../../figures/2d/text/fig85.gif" width="250" height="77" align="bottom" alt="Angled carets" /></center>
+<p>Given an insertion offset, the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html#getCaretShapes-int-"><code>getCaretShapes</code></a> method returns a two-element array of
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Shape.html"><code>Shape</code></a> objects: element 0 contains the strong caret and element 1 contains the weak
+caret, if one exists. To display dual carets, you simply draw both caret
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Shape.html"><code>Shape</code></a> objects; the carets will be automatically be rendered in the correct positions.
+</p>
+
+<p>If you want to use custom carets, you can retrieve the position and angle of the carets from the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> and draw them yourself.</p>
+
+<p>The sample
+<a class="SourceLink" target="_blank" href="examples/HitTestSample.java" onclick="showCode('../../displayCode.html', 'examples/HitTestSample.java'); return false;"><code><code>HitTestSample.java</code></code></a> demonstrates dual carets.</p>
+
+<p>A click on the <em>o</em> on the side of the <em>o</em> towards the Hebrew text records that the end user clicked after the <em>o</em>, which is part of the English text. This positions the weak (black) caret next to the <em>o</em> and the strong caret (red) in front of the <em>H</em>:</p>
+
+<center><img src="../../figures/2d/text/hit-test-sample-before-o.jpg" width="400" height="250" align="bottom" alt="Hit Test Sample, clicked the 'o' on the side towards the Hebrew text" /></center>
+<p>A click on the space to the right of the <em>o</em> records that the end user clicked the space, which is part of the Hebrew text. This positions the strong (red) caret next to the <em>o</em> and the weak caret (black) in front of the <em>H</em>:</p>
+
+<center><img src="../../figures/2d/text/hit-test-sample-after-o.jpg" width="400" height="250" align="bottom" alt="Hit Test Sample, clicked the space to the right of the 'o'" /></center>
+<!-- ********************************************** -->
+
+<h3><a name="moving_the_caret">Moving the Caret with the TextLayout Class</a></h3>
+
+<p>
+You can also use the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> class to determine the resulting insertion offset when a user presses the left or right arrow key. Given a <code>TextHitInfo</code> object that represents the current insertion offset, the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html#getNextRightHit-java.awt.font.TextHitInfo-"><code>getNextRightHit</code></a> method returns a
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextHitInfo.html"><code>TextHitInfo</code></a> object that represents the correct insertion offset if the right arrow key is pressed. The
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html#getNextLeftHit-java.awt.font.TextHitInfo-"><code>getNextLeftHit</code></a> method provides the same information for the left arrow key.
+</p>
+
+<p>The following excerpt from the sample
+<a class="SourceLink" target="_blank" href="examples/ArrowKeySample.java" onclick="showCode('../../displayCode.html', 'examples/ArrowKeySample.java'); return false;"><code><code>ArrowKeySample.java</code></code></a> demonstrates how to determine the resulting insertion offset when a user presses the left or right arrow key:</p>
+
+<div class="codeblock"><pre>
+public class ArrowKeySample extends JPanel implements KeyListener {
+
+  // ...
+
+  private static void createAndShowGUI() {
+    // Create and set up the window.
+    ArrowKey demo = new ArrowKey();
+    frame = new JFrame("Arrow Key Sample");
+    frame.addKeyListener(demo);
+    // ...
+  }
+
+  private void handleArrowKey(boolean rightArrow) {
+    TextHitInfo newPosition;
+    if (rightArrow) {
+      newPosition = textLayout.getNextRightHit(insertionIndex);
+    } else {
+      newPosition = textLayout.getNextLeftHit(insertionIndex);
+    }
+
+    // getNextRightHit() / getNextLeftHit() will return null if
+    // there is not a caret position to the right (left) of the
+    // current position.
+    if (newPosition != null) {
+      // Update insertionIndex.
+      insertionIndex = newPosition.getInsertionIndex();
+      // Repaint the Component so the new caret(s) will be displayed.
+      frame.repaint();
+    }
+  }
+
+  // ...
+
+  @Override
+  public void keyPressed(KeyEvent e) {
+    int keyCode = e.getKeyCode();
+    if (keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_RIGHT) {
+      handleArrowKey(keyCode == KeyEvent.VK_RIGHT);
+    }
+  }
+}
+</pre></div>
+
+<!-- ********************************************** -->
+
+<h3><a name="textlayout_hit_testing">Hit Testing with the TextLayout Class</a></h3>
+
+<p>The
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> class provides a simple mechanism for hit testing text. The
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html#hitTestChar-float-float-"><code>hitTextChar</code></a> method takes <em>x</em> and <em>y</em> coordinates from the mouse as arguments and returns a
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextHitInfo.html"><code>TextHitInfo</code></a> object. The
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextHitInfo.html"><code>TextHitInfo</code></a> contains the insertion offset for the specified position and the side that the hit was on. The insertion offset is the offset closest to the hit: if the hit is past the end of the line, the offset at the end of the line is returned.</p>
+
+<p>The following excerpt from
+<a class="SourceLink" target="_blank" href="examples/HitTestSample.java" onclick="showCode('../../displayCode.html', 'examples/HitTestSample.java'); return false;"><code><code>HitTestSample.java</code></code></a> retrieves the offset from a mouse click:</p>
+
+<div class="codeblock"><pre>
+private class HitTestMouseListener extends MouseAdapter {
+    public void mouseClicked(MouseEvent e) {
+      Point2D origin = computeLayoutOrigin();
+      // Compute the mouse click location relative to
+      // textLayout's origin.
+      float clickX = (float) (e.getX() - origin.getX());
+      float clickY = (float) (e.getY() - origin.getY());
+      // Get the character position of the mouse click.
+      TextHitInfo currentHit = textLayout.hitTestChar(clickX, clickY);
+      insertionIndex = currentHit.getInsertionIndex();
+      // Repaint the Component so the new caret(s) will be displayed.
+      repaint();
+    }
+  }
+</pre></div>
+
+<!-- ********************************************** -->
+
+<h3><a name="textlayout_highlighting_selections">Highlighting Selections with the TextLayout Class</a></h3>
+
+<p>You can get a
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Shape.html"><code>Shape</code></a> that represents the highlight region from the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a>.
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> automatically takes the context into account when calculating the dimensions of the highlight region.
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/font/TextLayout.html"><code>TextLayout</code></a> supports both logical and visual highlighting.</p>
+
+<p>The following excerpt from
+<a class="SourceLink" target="_blank" href="examples/SelectionSample.java" onclick="showCode('../../displayCode.html', 'examples/SelectionSample.java'); return false;"><code><code>SelectionSample.java</code></code></a>  demonstrates one way to display highlighted text:</p>
+
+<div class="codeblock"><pre>
+public void paint(Graphics g) {
+
+    // ...
+
+    boolean haveCaret = anchorEnd == activeEnd;
+
+    if (!haveCaret) {
+      // Retrieve highlight region for selection range.
+      Shape highlight = 
+          textLayout.getLogicalHighlightShape(anchorEnd, activeEnd);
+      // Fill the highlight region with the highlight color.
+      graphics2D.setColor(HIGHLIGHT_COLOR);
+      graphics2D.fill(highlight);
+    }
+
+    // ...
+
+  }
+
+  // ...
+
+  private class SelectionMouseMotionListener extends MouseMotionAdapter {
+    public void mouseDragged(MouseEvent e) {
+      Point2D origin = computeLayoutOrigin();
+      // Compute the mouse location relative to
+      // textLayout's origin.
+      float clickX = (float) (e.getX() - origin.getX());
+      float clickY = (float) (e.getY() - origin.getY());
+      // Get the character position of the mouse location.
+      TextHitInfo position = textLayout.hitTestChar(clickX, clickY);
+      int newActiveEnd = position.getInsertionIndex();
+      // If newActiveEnd is different from activeEnd, update activeEnd
+      // and repaint the Panel so the new selection will be displayed.
+      if (activeEnd != newActiveEnd) {
+        activeEnd = newActiveEnd;
+        frame.repaint();
+      }
+    }
+  }
+
+  private class SelectionMouseListener extends MouseAdapter {
+    public void mousePressed(MouseEvent e) {
+      Point2D origin = computeLayoutOrigin();
+      // Compute the mouse location relative to
+      // TextLayout's origin.
+      float clickX = (float) (e.getX() - origin.getX());
+      float clickY = (float) (e.getY() - origin.getY());
+      // Set the anchor and active ends of the selection
+      // to the character position of the mouse location.
+      TextHitInfo position = textLayout.hitTestChar(clickX, clickY);
+      anchorEnd = position.getInsertionIndex();
+      activeEnd = anchorEnd;
+      // Repaint the Panel so the new selection will be displayed.
+      frame.repaint();
+    }
+  }
+
+</pre></div>
+
+<p>The method <code>SelectionMouseListener.mousePressed</code> specifies the variable <code>anchorEnd</code>, which is the position in the text where the mouse was clicked. The method <code>SelectionMouseMotionListener.mouseDragged</code> specifies the variable <code>activeEnd</code>, which is the position in the text to where the mouse was dragged. The <code>paint</code> method retrieves a
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Shape.html"><code>Shape</code></a> object that represents the selected text (the text between the positions <code>anchorEnd</code> and <code>activeEnd</code>). The <code>paint</code> method then fills the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Shape.html"><code>Shape</code></a> object with the highlight color.</p>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="drawmulstring.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="../images/index.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Drawing Multiple Lines of Text
+        <br /><b>Next page:</b> Working with Images
+    </div>
+</body>
+</html> 

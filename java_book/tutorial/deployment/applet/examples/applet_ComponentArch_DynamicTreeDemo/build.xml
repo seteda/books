@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="applet_ComponentArch_DynamicTreeDemo" default="default" basedir=".">
+    <import file="nbproject/build-impl.xml"/>
+        <target name="-post-jar">
+            <copy file="${src.dir}/AppletPage.html" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/AppletPage_WithAppletTagUsingJNLP.html" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/AppletPage_WithAppletTagNoJNLP.html" todir="${dist.jar.dir}"/>
+            <copy file="${src.dir}/dynamictree_applet.jnlp" todir="${dist.jar.dir}"/>
+        </target>
+    <target name="-do-jar-with-libraries-without-manifest"/>
+
+</project>

@@ -1,0 +1,19 @@
+<applet code="AppletButton.class"
+        archive="example-swing/layout.jar"
+        width="350" height="60"
+        alt="BoxLayout applet">
+<param name="windowClass" value="BoxWindow">
+<param name="windowTitle" value="BoxLayout">
+<param name="buttonText" value="Click here to see a BoxLayout in action">
+
+Since you can't run the applet,
+here's a picture of it:
+
+#usemacro UI_FIGURE (
+    NAME boxlayout.gif
+    W 222
+    H 106
+    ALT Five buttons laid out with a BoxLayout. 
+)
+
+</applet>

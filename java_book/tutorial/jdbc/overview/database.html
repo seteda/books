@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>A Relational Database Overview (The Java&trade; Tutorials &gt;        
+            JDBC(TM) Database Access &gt; JDBC Introduction)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JDBC Java tutorial describes how to use JDBC API to create, insert into, update, and query tables. You will also learn how to use simple and prepared statements, stored procedures and perform transactions" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jdbc, prepared statement, result set" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">JDBC Introduction</a></div>
+<div class="linkAHEAD"><a href="architecture.html">JDBC Architecture</a></div>
+<div class="nolinkAHEAD">A Relational Database Overview</div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> JDBC(TM) Database Access
+        <br /><b>Lesson:</b> JDBC Introduction
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">JDBC(TM) Database Access</a>
+                &gt;
+                <a href="index.html" target="_top">JDBC Introduction</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="architecture.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../basics/index.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>A Relational Database Overview</h1></div>
+            <div id="PageContent">
+
+<!-- A Relational Database Overview -->
+ 
+<p><a name="relational" id="relational"></a></p>
+<p>A database is a means of storing information in such a way that information can be retrieved from it. In simplest terms, a relational database is one that presents information in tables with rows and columns. A table is referred to as a relation in the sense that it is a collection of objects of the same type (rows). Data in a table can be related according to common keys or concepts, and the ability to retrieve related data from a table is the basis for the term relational database. A Database Management System (DBMS) handles the way data is stored, maintained, and retrieved. In the case of a relational database, a Relational Database Management System (RDBMS) performs these tasks. DBMS as used in this book is a general term that includes RDBMS.</p>
+
+<h2><a name="integrity" id="integrity">Integrity Rules</a></h2>
+
+<p>Relational tables follow certain integrity rules to ensure that the data they contain stay accurate and are always accessible. First, the rows in a relational table should all be distinct. If there are duplicate rows, there can be problems resolving which of two possible selections is the correct one. For most DBMSs, the user can specify that duplicate rows are not allowed, and if that is done, the DBMS will prevent the addition of any rows that duplicate an existing row.</p>
+
+<p>A second integrity rule of the traditional relational model is that column values must not be repeating groups or arrays. A third aspect of data integrity involves the concept of a null value. A database takes care of situations where data may not be available by using a null value to indicate that a value is missing. It does not equate to a blank or zero. A blank is considered equal to another blank, a zero is equal to another zero, but two null values are not considered equal.</p>
+
+<p>When each row in a table is different, it is possible to use one or more columns to identify a particular row. This unique column or group of columns is called a primary key. Any column that is part of a primary key cannot be null; if it were, the primary key containing it would no longer be a complete identifier. This rule is referred to as entity integrity.</p>
+
+<p>The <code>Employees</code> table illustrates some of these relational database concepts. It has five columns and six rows, with each row representing a different employee.</p>
+
+<p><a name="employees" id="employees"></a></p>
+<table border="1" summary="Employees table">
+<caption><code>Employees</code> Table</caption>
+<tr>
+<th id="h1"><code>Employee_Number</code></th>
+<th id="h2"><code>First_name</code></th>
+<th id="h3"><code>Last_Name</code></th>
+<th id="h4"><code>Date_of_Birth</code></th>
+<th id="h5"><code>Car_Number</code></th>
+</tr>
+<tr>
+<td headers="h1">10001</td>
+<td headers="h2">John</td>
+<td headers="h3">Washington</td>
+<td headers="h4">28-Aug-43</td>
+<td headers="h5">5</td>
+</tr>
+<tr>
+<td headers="h1">10083</td>
+<td headers="h2">Arvid</td>
+<td headers="h3">Sharma</td>
+<td headers="h4">24-Nov-54</td>
+<td headers="h5">null</td>
+</tr>
+<tr>
+<td headers="h1">10120</td>
+<td headers="h2">Jonas</td>
+<td headers="h3">Ginsberg</td>
+<td headers="h4">01-Jan-69</td>
+<td headers="h5">null</td>
+</tr>
+<tr>
+<td headers="h1">10005</td>
+<td headers="h2">Florence</td>
+<td headers="h3">Wojokowski</td>
+<td headers="h4">04-Jul-71</td>
+<td headers="h5">12</td>
+</tr>
+<tr>
+<td headers="h1">10099</td>
+<td headers="h2">Sean</td>
+<td headers="h3">Washington</td>
+<td headers="h4">21-Sep-66</td>
+<td headers="h5">null</td>
+</tr>
+<tr>
+<td headers="h1">10035</td>
+<td headers="h2">Elizabeth</td>
+<td headers="h3">Yamaguchi</td>
+<td headers="h4">24-Dec-59</td>
+<td headers="h5">null</td>
+</tr>
+</table>
+
+<p>The primary key for this table would generally be the employee number because each one is guaranteed to be different. (A number is also more efficient than a string for making comparisons.) It would also be possible to use <code>First_Name</code> and <code>Last_Name</code> because the combination of the two also identifies just one row in our sample database. Using the last name alone would not work because there are two employees with the last name of &quot;Washington.&quot; In this particular case the first names are all different, so one could conceivably use that column as a primary key, but it is best to avoid using a column where duplicates could occur. If Elizabeth Jones gets a job at this company and the primary key is <code>First_Name</code>, the RDBMS will not allow her name to be added (if it has been specified that no duplicates are permitted). Because there is already an Elizabeth in the table, adding a second one would make the primary key useless as a way of identifying just one row. Note that although using <code>First_Name</code> and <code>Last_Name</code> is a unique composite key for this example, it might not be unique in a larger database. Note also that the <code>Employees</code> table assumes that there can be only one car per employee.</p>
+
+<h2><a name="select" id="select"><code>SELECT</code> Statements</a></h2>
+
+<p>SQL is a language designed to be used with relational databases. There is a set of basic SQL commands that is considered standard and is used by all RDBMSs. For example, all RDBMSs use the <code>SELECT</code> statement.</p>
+
+<p>A <code>SELECT</code> statement, also called a query, is used to get information from a table. It specifies one or more column headings, one or more tables from which to select, and some criteria for selection. The RDBMS returns rows of the column entries that satisfy the stated requirements. A <code>SELECT</code> statement such as the following will fetch the first and last names of employees who have company cars:</p>
+
+<div class="codeblock"><pre>
+SELECT First_Name, Last_Name
+FROM Employees
+WHERE Car_Number IS NOT NULL
+</pre></div>
+
+<p>The result set (the set of rows that satisfy the requirement of not having null in the <code>Car_Number</code> column) follows. The first name and last name are printed for each row that satisfies the requirement because the <code>SELECT</code> statement (the first line) specifies the columns <code>First_Name</code> and <code>Last_Name</code>. The <code>FROM</code> clause (the second line) gives the table from which the columns will be selected.</p>
+
+<table border="1" summary="Result set of rows that satisfy the requirement of not having null in the Car_Number column">
+<tr>
+  <th id="h101"><code>FIRST_NAME</code></th>
+  <th id="h102"><code>LAST_NAME</code></th>
+</tr>
+<tr>
+  <td headers="h101">John</td>
+  <td headers="h102">Washington</td>
+</tr>
+<tr>
+  <td headers="h101">Florence</td>
+  <td headers="h102">Wojokowski</td>
+</tr>
+</table>
+
+<p>The following code produces a result set that includes the whole table because it asks for all of the columns in the table Employees with no restrictions (no <code class="sql">WHERE</code> clause). Note that <code class="sql">SELECT *</code> means &quot;<code>SELECT</code> all columns.&quot;</p>
+
+
+<div class="codeblock"><pre>
+SELECT *
+FROM Employees
+</pre></div>
+
+<h2><a name="where" id="where"><code>WHERE</code> Clauses</a></h2>
+
+<p>The <code class="sql">WHERE</code> clause in a <code class="sql">SELECT</code> statement provides the criteria for selecting values. For example, in the following code fragment, values will be selected only if they occur in a row in which the column <code>Last_Name</code> begins with the string &#39;Washington&#39;.</p>
+<div class="codeblock"><pre>
+SELECT First_Name, Last_Name
+FROM Employees
+WHERE Last_Name LIKE 'Washington%'
+</pre></div>
+
+<p>The keyword <code class="sql">LIKE</code> is used to compare strings, and it offers the feature that patterns containing wildcards can be used. For example, in the code fragment above, there is a percent sign (<code>%</code>) at the end of &#39;Washington&#39;, which signifies that any value containing the string &#39;Washington&#39; plus zero or more additional characters will satisfy this selection criterion. So &#39;Washington&#39; or &#39;Washingtonian&#39; would be matches, but &#39;Washing&#39; would not be. The other wildcard used in <code class="sql">LIKE</code> clauses is an underbar (<code>_</code>), which stands for any one character. For example,</p>
+
+<div class="codeblock"><pre>
+WHERE Last_Name LIKE 'Ba_man'
+</pre></div>
+
+<p>would match &#39;Barman&#39;, &#39;Badman&#39;, &#39;Balman&#39;, &#39;Bagman&#39;, &#39;Bamman&#39;, and so on.</p>
+
+<p>The code fragment below has a <code class="sql">WHERE</code> clause that uses the equal sign (<code>=</code>) to compare numbers. It selects the first and last name of the employee who is assigned car 12.</p>
+
+<div class="codeblock"><pre>
+SELECT First_Name, Last_Name
+FROM Employees
+WHERE Car_Number = 12
+</pre></div>
+
+<p>The next code fragment selects the first and last names of employees whose employee number is greater than 10005:</p>
+
+<div class="codeblock"><pre>
+SELECT First_Name, Last_Name
+FROM Employees
+WHERE Employee_Number &gt; 10005
+</pre></div>
+
+<p><code class="sql">WHERE</code> clauses can get rather elaborate, with multiple conditions and, in some DBMSs, nested conditions. This overview will not cover complicated <code class="sql">WHERE</code> clauses, but the following code fragment has a <code class="sql">WHERE</code> clause with two conditions; this query selects the first and last names of employees whose employee number is less than 10100 and who do not have a company car.</p>
+
+<div class="codeblock"><pre>
+SELECT First_Name, Last_Name
+FROM Employees
+WHERE Employee_Number &lt; 10100 and Car_Number IS NULL
+</pre></div>
+
+<p>A special type of <code class="sql">WHERE</code> clause involves a join, which is explained in the next section.</p>
+
+<h2><a name="joins" id="joins">Joins</a></h2>
+
+<p>A distinguishing feature of relational databases is that it is possible to get data from more than one table in what is called a join. Suppose that after retrieving the names of employees who have company cars, one wanted to find out who has which car, including the license plate number, mileage, and year of car. This information is stored in another table, <code>Cars</code>:</p>
+
+<p><a name="cars" id="cars"></a></p>
+<table border="1" summary="Cars table">
+<caption><code>Cars</code> Table</caption>
+<tr>
+<th id="h201"><code>Car_Number</code></th>
+<th id="h202"><code>License_Plate</code></th>
+<th id="h203"><code>Mileage</code></th>
+<th id="h204"><code>Year</code></th>
+</tr>
+<tr>
+<td headers="h201">5</td>
+<td headers="h202">ABC123</td>
+<td headers="h203">5000</td>
+<td headers="h204">1996</td>
+</tr>
+<tr>
+<td headers="h201">12</td>
+<td headers="h202">DEF123</td>
+<td headers="h203">7500</td>
+<td headers="h204">1999</td>
+</tr>
+</table>
+<p>There must be one column that appears in both tables in order to relate them to each other. This column, which must be the primary key in one table, is called the foreign key in the other table. In this case, the column that appears in two tables is <code>Car_Number</code>, which is the primary key for the table <code>Cars</code> and the foreign key in the table <code>Employees</code>. If the 1996 car with license plate number ABC123 were wrecked and deleted from the <code>Cars</code> table, then <code>Car_Number</code> 5 would also have to be removed from the <code>Employees</code> table in order to maintain what is called referential integrity. Otherwise, the foreign key column (<code>Car_Number</code>) in the <code>Employees</code> table would contain an entry that did not refer to anything in the <code>Cars</code> table. A foreign key must either be null or equal to an existing primary key value of the table to which it refers. This is different from a primary key, which may not be null. There are several null values in the <code>Car_Number</code> column in the table <code>Employees</code> because it is possible for an employee not to have a company car.</p>
+
+<p>The following code asks for the first and last names of employees who have company cars and for the license plate number, mileage, and year of those cars. Note that the <code class="sql">FROM</code> clause lists both the <code>Employees</code> and <code>Cars</code> tables because the requested data is contained in both tables. Using the table name and a dot (<code>.</code>) before the column name indicates which table contains the column.</p>
+
+<div class="codeblock"><pre>
+SELECT Employees.First_Name, Employees.Last_Name,
+    Cars.License_Plate, Cars.Mileage, Cars.Year
+FROM Employees, Cars
+WHERE Employees.Car_Number = Cars.Car_Number
+</pre></div>
+
+<p>This returns a result set that will look similar to the following:</p>
+
+
+<table border="1" summary="Result set of the first and last names of employees who have company cars and for the license plate number, mileage, and year of those cars">
+<tr>
+<th id="h301"><code>FIRST_NAME</code></th>
+<th id="h302"><code>LAST_NAME</code></th>   
+<th id="h303"><code>LICENSE_PLATE</code></th>  
+<th id="h304"><code>MILEAGE</code></th>  
+<th id="h305"><code>YEAR</code></th>
+</tr>
+
+<tr>
+<td headers="h301">John</td>
+<td headers="h302">Washington</td>
+<td headers="h303">ABC123</td>
+<td headers="h304">5000</td>
+<td headers="h305">1996</td>
+</tr>
+<tr>
+<td headers="h301">Florence</td>
+<td headers="h302">Wojokowski</td>
+<td headers="h303">DEF123</td>
+<td headers="h304">7500</td>
+<td headers="h305">1999</td>
+</tr>
+</table>
+
+<h2><a name="commands" id="commands">Common SQL Commands</a></h2>
+
+<p>SQL commands are divided into categories, the two main ones being Data Manipulation Language (DML) commands and Data Definition Language (DDL) commands. DML commands deal with data, either retrieving it or modifying it to keep it up-to-date. DDL commands create or change tables and other database objects such as views and indexes.</p>
+
+<p>A list of the more common DML commands follows:</p>
+
+<ul>
+
+<li>
+<p><code>SELECT&nbsp;&mdash;&nbsp;</code> used to query and display data from a database. The <code class="sql">SELECT</code> statement specifies which columns to include in the result set. The vast majority of the SQL commands used in applications are <code class="sql">SELECT</code> statements.</p>
+</li>
+
+<li>
+<p><code>INSERT&nbsp;&mdash;&nbsp;</code> adds new rows to a table. <code>INSERT</code> is used to populate a newly created table or to add a new row (or rows) to an already-existing table.</p>
+</li>
+
+<li>
+<p><code>DELETE&nbsp;&mdash;&nbsp;</code> removes a specified row or set of rows from a table</p>
+</li>
+
+<li>
+<p><code>UPDATE&nbsp;&mdash;&nbsp;</code> changes an existing value in a column or group of columns in a table</p>
+</li>
+</ul>
+
+<p>The more common DDL commands follow:</p>
+<ul>
+<li>
+<p><code>CREATE TABLE&nbsp;&mdash;&nbsp;</code> creates a table with the column names the user provides. The user also needs to specify a type for the data in each column. Data types vary from one RDBMS to another, so a user might need to use metadata to establish the data types used by a particular database. <code>CREATE TABLE</code> is normally used less often than the data manipulation commands because a table is created only once, whereas adding or deleting rows or changing individual values generally occurs more frequently.</p>
+</li>
+<li>
+<p><code>DROP TABLE&nbsp;&mdash;&nbsp;</code> deletes all rows and removes the table definition from the database. A JDBC API implementation is required to support the DROP TABLE command as specified by SQL92, Transitional Level. However, support for the <code>CASCADE</code> and <code>RESTRICT</code> options of <code>DROP TABLE</code> is optional. In addition, the behavior of <code>DROP TABLE</code> is implementation-defined when there are views or integrity constraints defined that reference the table being dropped.</p>
+</li>
+<li>
+<p><code>ALTER TABLE&nbsp;&mdash;&nbsp;</code> adds or removes a column from a table. It also adds or drops table constraints and alters column attributes</p>
+</li>
+</ul>
+<h2><a name="result" id="result">Result Sets and Cursors</a></h2>
+<p>The rows that satisfy the conditions of a query are called the result set. The number of rows returned in a result set can be zero, one, or many. A user can access the data in a result set one row at a time, and a cursor provides the means to do that. A cursor can be thought of as a pointer into a file that contains the rows of the result set, and that pointer has the ability to keep track of which row is currently being accessed. A cursor allows a user to process each row of a result set from top to bottom and consequently may be used for iterative processing. Most DBMSs create a cursor automatically when a result set is generated.</p>
+<p>Earlier JDBC API versions added new capabilities for a result set&#39;s cursor, allowing it to move both forward and backward and also allowing it to move to a specified row or to a row whose position is relative to another row.</p>
+<p>See 
+<a class="TutorialLink" target="_top" href="../basics/retrieving.html">Retrieving and Modifying Values from Result Sets</a> for more information.</p>
+
+<h2><a name="transactions" id="transactions">Transactions</a></h2>
+
+<p>When one user is accessing data in a database, another user may be accessing the same data at the same time. If, for instance, the first user is updating some columns in a table at the same time the second user is selecting columns from that same table, it is possible for the second user to get partly old data and partly updated data. For this reason, DBMSs use transactions to maintain data in a consistent state (data consistency) while allowing more than one user to access a database at the same time (data concurrency).</p>
+
+<p>A transaction is a set of one or more SQL statements that make up a logical unit of work. A transaction ends with either a commit or a rollback, depending on whether there are any problems with data consistency or data concurrency. The commit statement makes permanent the changes resulting from the SQL statements in the transaction, and the rollback statement undoes all changes resulting from the SQL statements in the transaction.</p>
+
+<p>A lock is a mechanism that prohibits two transactions from manipulating the same data at the same time. For example, a table lock prevents a table from being dropped if there is an uncommitted transaction on that table. In some DBMSs, a table lock also locks all of the rows in a table. A row lock prevents two transactions from modifying the same row, or it prevents one transaction from selecting a row while another transaction is still modifying it.</p>
+
+<p>See 
+<a class="TutorialLink" target="_top" href="../basics/transactions.html">Using Transactions</a> for more information.</p>
+
+<h2><a name="stored" id="stored">Stored Procedures</a></h2>
+
+<p>A stored procedure is a group of SQL statements that can be called by name. In other words, it is executable code, a mini-program, that performs a particular task that can be invoked the same way one can call a function or method. Traditionally, stored procedures have been written in a DBMS-specific programming language. The latest generation of database products allows stored procedures to be written using the Java programming language and the JDBC API. Stored procedures written in the Java programming language are bytecode portable between DBMSs. Once a stored procedure is written, it can be used and reused because a DBMS that supports stored procedures will, as its name implies, store it in the database. See 
+<a class="TutorialLink" target="_top" href="../basics/storedprocedures.html">Using Stored Procedures</a> for information about writing stored procedures.</p>
+
+<h2><a name="metadata" id="metadata">Metadata</a></h2>
+
+<p>Databases store user data, and they also store information about the database itself. Most DBMSs have a set of system tables, which list tables in the database, column names in each table, primary keys, foreign keys, stored procedures, and so forth. Each DBMS has its own functions for getting information about table layouts and database features. JDBC provides the interface <code>DatabaseMetaData</code>, which a driver writer must implement so that its methods return information about the driver and/or DBMS for which the driver is written. For example, a large number of methods return whether or not the driver supports a particular functionality. This interface gives users and tools a standardized way to get metadata. In general, developers writing tools and drivers are the ones most likely to be concerned with metadata.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="architecture.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="../basics/index.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> JDBC Architecture
+        <br /><b>Next page:</b> JDBC Basics
+    </div>
+</body>
+</html> 

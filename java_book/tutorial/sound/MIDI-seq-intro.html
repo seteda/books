@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Introduction to Sequencers (The Java&trade; Tutorials &gt;        
+            Sound)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="" />
+     <meta name="keywords" content="java programming, learn java, java sample code, " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkAHEAD"><a href="sampled-overview.html">Overview of the Sampled Package</a></div>
+<div class="linkAHEAD"><a href="accessing.html">Accessing Audio System Resources</a></div>
+<div class="linkAHEAD"><a href="playing.html">Playing Back Audio</a></div>
+<div class="linkAHEAD"><a href="capturing.html">Capturing Audio</a></div>
+<div class="linkAHEAD"><a href="controls.html">Processing Audio with Controls</a></div>
+<div class="linkAHEAD"><a href="converters.html">Using Files and Format Converters</a></div>
+<div class="linkAHEAD"><a href="overview-MIDI.html">Overview of the MIDI Package</a></div>
+<div class="linkAHEAD"><a href="accessing-MIDI.html">Accessing MIDI System Resources</a></div>
+<div class="linkAHEAD"><a href="MIDI-messages.html">Transmitting and Receiving MIDI Messages</a></div>
+<div class="nolinkAHEAD">Introduction to Sequencers</div>
+<div class="linkAHEAD"><a href="MIDI-seq-methods.html">Using Sequencer Methods</a></div>
+<div class="linkAHEAD"><a href="MIDI-seq-adv.html">Using Advanced Sequencer Features</a></div>
+<div class="linkAHEAD"><a href="MIDI-synth.html">Synthesizing Sound</a></div>
+<div class="linkAHEAD"><a href="SPI-intro.html">Introduction to the Service Provider Interfaces</a></div>
+<div class="linkAHEAD"><a href="SPI-providing-sampled.html">Providing Sampled-Audio Services</a></div>
+<div class="linkAHEAD"><a href="SPI-providing-MIDI.html">Providing MIDI Services</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Sound
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="./index.html" target="_top">Sound</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="MIDI-messages.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="./TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="MIDI-seq-methods.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Introduction to Sequencers</h1></div>
+            <div id="PageContent">
+
+<p><a name="120892"></a> In the world of MIDI, a <em>sequencer</em> is any hardware or software device that can precisely play or record a <em>sequence</em> of time-stamped MIDI messages. Similarly, in the Java Sound API, the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/Sequencer.html"><code>Sequencer</code></a> abstract interface defines the properties of an object that can play and record sequences of 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/MidiEvent.html"><code>MidiEvent</code></a> objects. A <code>Sequencer</code> typically loads these <code>MidiEvent</code> sequences from a standard MIDI file or saves them to such a file. Sequences can also be edited. The following pages explain how to use <code>Sequencer</code> objects, along with related classes and interfaces, to accomplish such tasks.</p>
+<p>To develop an intuitive understanding of what a <code>Sequencer</code> is, think of it by analogy with a tape recorder, which a sequencer resembles in many respects. Whereas a tape recorder plays audio, a sequencer plays MIDI data. A sequence is a multi-track, linear, time-ordered recording of MIDI musical data, which a sequencer can play at various speeds, rewind, shuttle to particular points, record into, or copy to a file for storage.</p>
+<p><a name="124503"></a> 
+<a class="TutorialLink" target="_top" href="MIDI-messages.html">Transmitting and Receiving MIDI Messages</a> explained that devices typically have <code>Receiver</code> objects, <code>Transmitter</code> objects, or both. To <em>play</em> music, a device generally receives <code>MidiMessages</code> through a <code>Receiver</code>, which in turn has usually received them from a <code>Transmitter</code> that belongs to a <code>Sequencer</code>. The device that owns this <code>Receiver</code> might be a <code>Synthesizer</code>, which will generate audio directly, or it might be a MIDI output port, which transmits MIDI data through a physical cable to some external piece of equipment. Similarly, to <em>record</em> music, a series of time-stamped <code>MidiMessages</code> are generally sent to a <code>Receiver</code> owned by a <code>Sequencer</code>, which places them in a <code>Sequence</code> object. Typically the object sending the messages is a <code>Transmitter</code> associated with a hardware input port, and the port relays MIDI data that it gets from an external instrument. However, the device responsible for sending the messages might instead be some other <code>Sequencer</code>, or any other device that has a <code>Transmitter</code>. Furthermore, as previously described, a program can send messages without using any <code>Transmitter</code> at all.</p>
+<p><a name="120896"></a> A <code>Sequencer</code> itself has both <code>Receivers</code> and <code>Transmitters</code>. When it&#39;s recording, it actually obtains <code>MidiMessages</code> via its <code>Receivers</code>. During playback, it uses its <code>Transmitters</code> to send <code>MidiMessages</code> that are stored in the <code>Sequence</code> that it has recorded (or loaded from a file).</p>
+<p><a name="124511"></a> One way to think of the role of a <code>Sequencer</code> in the Java Sound API is as an aggregator and &quot;de-aggregator&quot; of <code>MidiMessages</code>. A series of separate <code>MidiMessages</code>, each of which is independent, is sent to the <code>Sequencer</code> along with its own time stamp that marks the timing of a musical event. These <code>MidiMessages</code> are encapsulated in <code>MidiEvent</code> objects and collected in <code>Sequence</code> objects through the action of the <code>Sequencer.record</code> method. A <code>Sequence</code> is a data structure containing aggregates of <code>MidiEvents</code>, and it usually represents a series of musical notes, often an entire song or composition. On playback, the <code>Sequencer</code> again extracts the <code>MidiMessages</code> from the <code>MidiEvent</code> objects in the <code>Sequence</code> and then transmits them to one or more devices that will either render them into sound, save them, modify them, or pass them on to some other device.</p>
+<p><a name="124522"></a> Some sequencers might have neither transmitters nor receivers. For example, they might create <code>MidiEvents</code> from scratch as a result of keyboard or mouse events, instead of receiving <code>MidiMessages</code> through <code>Receivers</code>. Similarly, they might play music by communicating directly with an internal synthesizer (which could actually be the same object as the sequencer) instead of sending <code>MidiMessages</code> to a <code>Receiver</code> associated with a separate object. However, the rest of this discussion assumes the normal case of a sequencer that uses <code>Receivers</code> and <code>Transmitters</code>.</p>
+<p><a name="when" id="when"></a></p>
+<h2>When to Use a Sequencer</h2>
+<p><a name="124536"></a> It&#39;s possible for an application program to send MIDI messages directly to a device, without using a sequencer, as was described in 
+<a class="TutorialLink" target="_top" href="MIDI-messages.html    ">Transmitting and Receiving MIDI Messages</a>. The program simply invokes the <code>Receiver.send</code> method each time it wants to send a message. This is a straightforward approach that&#39;s useful when the program itself creates the messages in real time. For example, consider a program that lets the user play notes by clicking on an onscreen piano keyboard. When the program gets a mouse-down event, it immediately sends the appropriate Note On message to the synthesizer.</p>
+<p><a name="124540"></a> As previously mentioned, the program can include a time stamp with each MIDI message it sends to the device&#39;s receiver. However, such time stamps are used only for fine-tuning the timing, to correct for processing latency. The caller can&#39;t generally set arbitrary time stamps; the time value passed to <code>Receiver.send</code> must be close to the present time, or the receiving device might not be able to schedule the message correctly. This means that if an application program wanted to create a queue of MIDI messages for an entire piece of music ahead of time (instead of creating each message in response to a real-time event), it would have to be very careful to schedule each invocation of <code>Receiver.send</code> for nearly the right time.</p>
+<p><a name="124541"></a> Fortunately, most application programs don&#39;t have to be concerned with such scheduling. Instead of invoking <code>Receiver.send</code> itself, a program can use a <code>Sequencer</code> object to manage the queue of MIDI messages for it. The sequencer takes care of scheduling and sending the messages???in other words, playing the music with the correct timing. Generally, it&#39;s advantageous to use a sequencer whenever you need to convert a non-real-time series of MIDI messages to a real-time series (as in playback), or vice versa (as in recording). Sequencers are most commonly used for playing data from MIDI files and for recording data from a MIDI input port.</p>
+<p><a name="124542"></a></p>
+<h2>Understanding Sequence Data</h2>
+<p><a name="124543"></a> Before examining the <code>Sequencer</code> API, it helps to understand the kind of data that&#39;s stored in a sequence.</p>
+<p><a name="124544"></a></p>
+<h3>Sequences and Tracks</h3>
+<p><a name="124545"></a> In the Java Sound API, sequencers closely follow the Standard MIDI Files specification in the way that they organize recorded MIDI data. As mentioned above, a <code>Sequence</code> is an aggregation of <code>MidiEvents</code>, organized in time. But there is more structure to a <code>Sequence</code> than just a linear series of <code>MidiEvents</code>: a <code>Sequence</code> actually contains global timing information plus a collection of <code>Tracks</code>, and it is the <code>Tracks</code> themselves that hold the <code>MidiEvent</code> data. So the data played by a sequencer consists of a three-level hierarchy of objects: <code>Sequencer</code>, <code>Track</code>, and <code>MidiEvent</code>.</p>
+<p><a name="124546"></a> In the conventional use of these objects, the <code>Sequence</code> represents a complete musical composition or section of a composition, with each <code>Track</code> corresponding to a voice or player in the ensemble. In this model, all the data on a particular <code>Track</code> would also therefore be encoded into a particular MIDI channel reserved for that voice or player.</p>
+<p><a name="124547"></a> This way of organizing data is convenient for purposes of editing sequences, but note that this is just a conventional way to use <code>Tracks</code>. There is nothing in the definition of the <code>Track</code> class that keeps it from containing a mix of <code>MidiEvents</code> on different MIDI channels. For example, an entire multi-channel MIDI composition can be mixed and recorded onto one <code>Track</code>. Also, standard MIDI files of Type 0 (as opposed to Type 1 and Type 2) contain by definition only one track; so a <code>Sequence</code> that&#39;s read from such a file will necessarily have a single <code>Track</code> object.</p>
+<p><a name="124548"></a></p>
+<h3>MidiEvents and Ticks</h3>
+<p><a name="124552"></a> As discussed in 
+<a class="TutorialLink" target="_top" href="overview-MIDI.html">Overview of the MIDI Package</a>, the Java Sound API includes <code>MidiMessage</code> objects that correspond to the raw two- or three-byte sequences that make up most standard MIDI messages. A <code>MidiEvent</code> is simply a packaging of a <code>MidiMessage</code> along with an accompanying timing value that specifies when the event occurs. (We might then say that a sequence really consists of a four- or five-level hierarchy of data, rather than three-level, because the ostensible lowest level, <code>MidiEvent</code>, actually contains a lower-level <code>MidiMessage</code>, and likewise the <code>MidiMessage</code> object contains an array of bytes that comprises a standard MIDI message.)</p>
+<p><a name="124553"></a> In the Java Sound API, there are two different ways in which <code>MidiMessages</code> can be associated with timing values. One is the way mentioned above under &quot;When to Use a Sequencer.&quot; This technique was described in detail under 
+<a class="TutorialLink" target="_top" href="MIDI-messages.html#sending">Sending a Message to a Receiver without Using a Transmitter</a> and 
+<a class="TutorialLink" target="_top" href="MIDI-messages.html#understanding_time">Understanding Time Stamps</a>. There, we saw that the <code>send</code> method of <code>Receiver</code> takes a <code>MidiMessage</code> argument and a time-stamp argument. That kind of time stamp can only be expressed in microseconds.</p>
+<p><a name="124566"></a> The other way in which a <code>MidiMessage</code> can have its timing specified is by being encapsulated in a <code>MidiEvent</code>. In this case, the timing is expressed in slightly more abstract units called <em>ticks</em>.</p>
+<p><a name="124567"></a> What is the duration of a tick? It can vary between sequences (but not within a sequence), and its value is stored in the header of a standard MIDI file. The size of a tick is given in one of two types of units:</p>
+<ul>
+<li><a name="124568"></a>Pulses (ticks) per quarter note, abbreviated as PPQ</li>
+<li><a name="124569"></a>Ticks per frame, also known as SMPTE time code (a standard adopted by the Society of Motion Picture and Television Engineers)</li>
+</ul>
+<p><a name="124570"></a> If the unit is PPQ, the size of a tick is expressed as a fraction of a quarter note, which is a relative, not absolute, time value. A quarter note is a musical duration value that often corresponds to one beat of the music (a quarter of a measure in 4/4 time). The duration of a quarter note is dependent on the tempo, which can vary during the course of the music if the sequence contains tempo-change events. So if the sequence&#39;s timing increments (ticks) occur, say 96 times per quarter note, each event&#39;s timing value measures that event&#39;s position in musical terms, not as an absolute time value.</p>
+<p><a name="124571"></a> On the other hand, in the case of SMPTE, the units measure absolute time, and the notion of tempo is inapplicable. There are actually four different SMPTE conventions available, which refer to the number of motion-picture frames per second. The number of frames per second can be 24, 25, 29.97, or 30. With SMPTE time code, the size of a tick is expressed as a fraction of a frame.</p>
+<p><a name="124572"></a> In the Java Sound API, you can invoke <code>Sequence.getDivisionType</code> to learn which type of unit???namely, PPQ or one of the SMPTE units???is used in a particular sequence. You can then calculate the size of a tick after invoking <code>Sequence.getResolution</code>. The latter method returns the number of ticks per quarter note if the division type is PPQ, or per SMPTE frame if the division type is one of the SMPTE conventions. You can get the size of a tick using this formula in the case of PPQ:</p>
+<div class="codeblock"><pre>
+ticksPerSecond =  
+    resolution * (currentTempoInBeatsPerMinute / 60.0);
+tickSize = 1.0 / ticksPerSecond;
+</pre></div>
+<p><a name="124576"></a> and this formula in the case of SMPTE:</p>
+<div class="codeblock"><pre>
+framesPerSecond = 
+  (divisionType == Sequence.SMPTE_24 ? 24
+    : (divisionType == Sequence.SMPTE_25 ? 25
+      : (divisionType == Sequence.SMPTE_30 ? 30
+        : (divisionType == Sequence.SMPTE_30DROP ?<br />
+            29.97))));
+ticksPerSecond = resolution * framesPerSecond;
+tickSize = 1.0 / ticksPerSecond;
+</pre></div>
+<p><a name="124584"></a> The Java Sound API&#39;s definition of timing in a sequence mirrors that of the Standard MIDI Files specification. However, there&#39;s one important difference. The tick values contained in <code>MidiEvents</code> measure <em>cumulative</em> time, rather than <em>delta</em> time. In a standard MIDI file, each event&#39;s timing information measures the amount of time elapsed since the onset of the previous event in the sequence. This is called delta time. But in the Java Sound API, the ticks aren&#39;t delta values; they&#39;re the previous event&#39;s time value <em>plus</em> the delta value. In other words, in the Java Sound API the timing value for each event is always greater than that of the previous event in the sequence (or equal, if the events are supposed to be simultaneous). Each event&#39;s timing value measures the time elapsed since the beginning of the sequence.</p>
+<p><a name="124585"></a> To summarize, the Java Sound API expresses timing information in either MIDI ticks or microseconds. <code>MidiEvents</code> store timing information in terms of MIDI ticks. The duration of a tick can be calculated from the <code>Sequence&#39;s</code> global timing information and, if the sequence uses tempo-based timing, the current musical tempo. The time stamp associated with a <code>MidiMessage</code> sent to a <code>Receiver</code>, on the other hand, is always expressed in microseconds.</p>
+<p><a name="124586"></a> One goal of this design is to avoid conflicting notions of time. It&#39;s the job of a <code>Sequencer</code> to interpret the time units in its <code>MidiEvents</code>, which might have PPQ units, and translate these into absolute time in microseconds, taking the current tempo into account. The sequencer must also express the microseconds relative to the time when the device receiving the message was opened. Note that a sequencer can have multiple transmitters, each delivering messages to a different receiver that might be associated with a completely different device. You can see, then, that the sequencer has to be able to perform multiple translations at the same time, making sure that each device receives time stamps appropriate for its notion of time.</p>
+<p><a name="124587"></a> To make matters more complicated, different devices might update their notions of time based on different sources (such as the operating system&#39;s clock, or a clock maintained by a sound card). This means that their timings can drift relative to the sequencer&#39;s. To keep in synchronization with the sequencer, some devices permit themselves to be &quot;slaves&quot; to the sequencer&#39;s notion of time. Setting masters and slaves is discussed later under 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/sound/midi/MidiEvent.html"><code>MidiEvent</code></a>.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="MIDI-messages.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="./TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="MIDI-seq-methods.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Transmitting and Receiving MIDI Messages
+        <br /><b>Next page:</b> Using Sequencer Methods
+    </div>
+</body>
+</html> 

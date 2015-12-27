@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+X-COMMENT: Main-Class will be added automatically by build
+Codebase: *.oracle.com
+Main-Class: ArrowKeySample
+Permissions: sandbox
+Application-Name: Arrow Key Sample Demo

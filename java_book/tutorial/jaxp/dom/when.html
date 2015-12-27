@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>When to Use DOM (The Java&trade; Tutorials &gt;        
+            Java API for XML Processing (JAXP) &gt; Document Object Model)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JAXP Java tutorial describes Java API for XML Processing (jaxp), XSLT, SAX, and related XML topics" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jaxp, xml, xslt, sax" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Document Object Model</a></div>
+<div class="nolinkAHEAD">When to Use DOM</div>
+<div class="linkAHEAD"><a href="readingXML.html">Reading XML Data into a DOM</a></div>
+<div class="linkAHEAD"><a href="validating.html">Validating with XML Schema</a></div>
+<div class="linkAHEAD"><a href="info.html">Further Information</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Java API for XML Processing (JAXP)
+        <br /><b>Lesson:</b> Document Object Model
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Java API for XML Processing (JAXP)</a>
+                &gt;
+                <a href="index.html" target="_top">Document Object Model</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="index.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="readingXML.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>When to Use DOM</h1></div>
+            <div id="PageContent">
+
+<!-- When to Use DOM -->
+<p>The Document Object Model standard is, above all, designed for documents (for example, articles and books). In addition, the JAXP 1.4.2 implementation supports XML Schema, something that can be an important consideration for any given application.</p>
+<p>On the other hand, if you are dealing with simple data structures and if XML Schema is not a big part of your plans, then you may find that one of the more object-oriented standards, such as JDOM or dom4j, is better suited for your purpose.</p>
+<p>From the start, DOM was intended to be language-neutral. Because it was designed for use with languages such as C and Perl, DOM does not take advantage of Java&#39;s object-oriented features. That fact, in addition to the distinction between documents and data, also helps to account for the ways in which processing a DOM differs from processing a JDOM or dom4j structure.</p>
+<p>In this section, we will examine the differences between the models underlying those standards to help you choose the one that is most appropriate for your application.</p>
+<p><a name="gchlq" id="gchlq"></a></p>
+<h2>Documents Versus Data</h2>
+<p>The major point of departure between the document model used in DOM and the data model used in JDOM or dom4j lies in:</p>
+<ul>
+<li>
+The kind of node that exists in the hierarchy
+</li>
+<li>
+The capacity for mixed content
+</li>
+</ul>
+<p>It is the difference in what constitutes a &quot;node&quot; in the data hierarchy that primarily accounts for the differences in programming with these two models. However, the capacity for mixed content, more than anything else, accounts for the difference in how the standards define a node. So we start by examining DOM&#39;s mixed-content model.</p>
+<p><a name="gchkp" id="gchkp"></a></p>
+<h2>Mixed-Content Model</h2>
+<p>Text and elements can be freely intermixed in a DOM hierarchy. That kind of structure is called mixed content in the DOM model.</p>
+<p>Mixed content occurs frequently in documents. For example, suppose you wanted to represent this structure:</p>
+<p><code>&lt;sentence&gt;This is an &lt;bold&gt;important&lt;/bold&gt; idea.&lt;/sentence&gt;</code></p>
+<p>The hierarchy of DOM nodes would look something like this, where each line represents one node:</p>
+<div class="codeblock"><pre>
+ELEMENT: sentence
+   + TEXT: This is an
+   + ELEMENT: bold
+     + TEXT: important
+   + TEXT: idea.
+</pre></div>
+<p>Note that the sentence element contains text, followed by a sub-element, followed by additional text. It is the intermixing of text and elements that defines the mixed-content model.</p>
+<p><a name="gchla" id="gchla"></a></p>
+<h2>Types of Nodes</h2>
+<p>To provide the capacity for mixed content, DOM nodes are inherently very simple. In the foregoing example, the &quot;content&quot; of the first element (its value) simply identifies the kind of node it is.</p>
+<p>First-time users of a DOM are usually thrown by this fact. After navigating to the <tt>&lt;sentence&gt;</tt> node, they ask for the node&#39;s &quot;content&quot;, and expect to get something useful. Instead, all they can find is the name of the element, <tt>sentence</tt>.</p>
+<hr />
+<p><b>Note -</b> The DOM Node API defines <tt>nodeValue()</tt>, <tt>nodeType()</tt>, and <tt>nodeName()</tt> methods. For the first element node, <tt>nodeName()</tt> returns <tt>sentence</tt>, while <tt>nodeValue()</tt> returns null. For the first text node, <tt>nodeName()</tt> returns <tt>#text</tt>, and <tt>nodeValue()</tt> returns &ldquo;<tt>This is an</tt> &rdquo;. The important point is that the <b>value</b> of an element is not the same as its <b>content</b>.</p>
+<hr />
+<p>In the example above, what does it mean to ask for the &quot;text&quot; of the sentence? Any of the following could be reasonable, depending on your application:</p>
+<ul>
+<li>
+This is an
+</li>
+<li>
+This is an idea.
+</li>
+<li>
+This is an important idea.
+</li>
+<li>
+This is an &lt;bold&gt;important&lt;/bold&gt; idea.
+</li>
+</ul>
+<p><a name="gchkz" id="gchkz"></a></p>
+<h2>A Simpler Model</h2>
+<p>With DOM, you are free to create the semantics you need. However, you are also required to do the processing necessary to implement those semantics. Standards such as JDOM and dom4j, on the other hand, make it easier to do simple things, because each node in the hierarchy is an object.</p>
+<p>Although JDOM and dom4j make allowances for elements having mixed content, they are not primarily designed for such situations. Instead, they are targeted for applications where the XML structure contains data.</p>
+<p>The elements in a data structure typically contain either text or other elements, but not both. For example, here is some XML that represents a simple address book:</p>
+<div class="codeblock"><pre>
+&lt;addressbook>
+    &lt;entry>
+        &lt;name>Fred&lt;/name>
+        &lt;email>fred@home&lt;/email>
+    &lt;/entry>
+      ...
+&lt;/addressbook>
+</pre></div>
+<hr />
+<p><b>Note -</b> For very simple XML data structures like this one, you could also use the regular-expression package (<tt>java.util.regex</tt>) built into the Java platform in version 1.4.</p>
+<hr />
+<p>In JDOM and dom4j, after you navigate to an element that contains text, you invoke a method such as <tt>text()</tt> to get its content. When processing a DOM, though, you must inspect the list of sub-elements to &quot;put together&quot; the text of the node, as you saw earlier - even if that list contains only one item (a TEXT node).</p>
+<p>So for simple data structures such as the address book, you can save yourself a bit of work by using JDOM or dom4j. It may make sense to use one of those models even when the data is technically &quot;mixed&quot; but there is always one (and only one) segment of text for a given node.</p>
+<p>Here is an example of that kind of structure, which would also be easily processed in JDOM or dom4j:</p>
+<div class="codeblock"><pre>
+&lt;addressbook>
+    &lt;entry>Fred
+        &lt;email>fred@home&lt;/email>
+    &lt;/entry>
+      ...
+&lt;/addressbook>
+</pre></div>
+<p>Here, each entry has a bit of identifying text, followed by other elements. With this structure, the program could navigate to an entry, invoke <tt>text()</tt> to find out whom it belongs to, and process the <tt>&lt;email&gt;</tt> sub-element if it is at the correct node.</p>
+<p><a name="gchls" id="gchls"></a></p>
+<h2>Increasing the Complexity</h2>
+<p>But for you to get a full understanding of the kind of processing you need to do when searching or manipulating a DOM, it is important to know the kinds of nodes that a DOM can conceivably contain.</p>
+<p>Here is an example that illustrates this point. It is a representation of this data:</p>
+<div class="codeblock"><pre>
+&lt;sentence>
+    The &amp;projectName; &lt;![CDATA[&lt;i>project&lt;/i>]]&gt; is
+    &lt;?editor: red>&lt;bold>important&lt;/bold>&lt;?editor: normal>.
+&lt;/sentence>
+</pre></div>
+<p>This sentence contains an <b>entity reference</b> - a pointer to an entity that is defined elsewhere. In this case, the entity contains the name of the project. The example also contains a CDATA section (uninterpreted data, like <tt>&lt;pre&gt;</tt> data in HTML) as well as <b>processing instructions</b> (<tt>&lt;?...?&gt;</tt>), which in this case tell the editor which color to use when rendering the text.</p>
+<p>Here is the DOM structure for that data. It is representative of the kind of structure that a robust application should be prepared to handle:</p>
+<div class="codeblock"><pre>
++ ELEMENT: sentence
+       + TEXT: The
+       + ENTITY REF: projectName
+        + COMMENT: 
+        The latest name we are using
+        + TEXT: Eagle
+       + CDATA: &lt;i>project&lt;/i>
+       + TEXT: is
+       + PI: editor: red
+       + ELEMENT: bold
+          + TEXT: important
+       + PI: editor: normal
+</pre></div>
+<p>This example depicts the kinds of nodes that may occur in a DOM. Although your application may be able to ignore most of them most of the time, a truly robust implementation needs to recognize and deal with each of them.</p>
+<p>Similarly, the process of navigating to a node involves processing sub-elements, ignoring the ones you are not interested in and inspecting the ones you are, until you find the node you are interested in.</p>
+<p>A program that works on fixed, internally generated data can afford to make simplifying assumptions: that processing instructions, comments, CDATA nodes, and entity references will not exist in the data structure. But truly robust applications that work on a variety of data - especially data coming from the outside world - must be prepared to deal with all possible XML entities.</p>
+<p>(A &quot;simple&quot; application will work only as long as the input data contains the simplified XML structures it expects. But there are no validation mechanisms to ensure that more complex structures will not exist. After all, XML was specifically designed to allow them.)</p>
+<p>To be more robust, a DOM application must do these things:</p>
+<ol>
+<li>
+When searching for an element:
+<ol type="a">
+<li>
+Ignore comments, attributes, and processing instructions.
+</li>
+<li>
+Allow for the possibility that sub-elements do not occur in the expected order.
+</li>
+<li>
+Skip over TEXT nodes that contain ignorable white space, if not validating.
+</li>
+</ol>
+</li>
+<li>
+When extracting text for a node:
+<ol type="a">
+<li>
+Extract text from CDATA nodes as well as text nodes.
+</li>
+<li>
+Ignore comments, attributes, and processing instructions when gathering the text.
+</li>
+<li>
+If an entity reference node or another element node is encountered, recurse (that is, apply the text-extraction procedure to all sub-nodes).
+</li>
+</ol>
+</li>
+</ol>
+<p>Of course, many applications will not have to worry about such things, because the kind of data they see will be strictly controlled. But if the data can come from a variety of external sources, then the application will probably need to take these possibilities into account.</p>
+<p>The code you need to carry out these functions is given near the end of this lesson in 
+<a class="TutorialLink" target="_top" href="readingXML.html#ggdwa">Searching for Nodes</a>and 
+<a class="TutorialLink" target="_top" href="readingXML.html#ggdxv">Obtaining Node Content</a>. Right now, the goal is simply to determine whether DOM is suitable for your application.</p>
+<p><a name="gchln" id="gchln"></a></p>
+<h2>Choosing Your Model</h2>
+<p>As you can see, when you are using DOM, even a simple operation such as getting the text from a node can take a bit of programming. So if your programs handle simple data structures, then JDOM, dom4j, or even the 1.4 regular-expression package (<tt>java.util.regex</tt>) may be more appropriate for your needs.</p>
+<p>For fully-fledged documents and complex applications, on the other hand, DOM gives you a lot of flexibility. And if you need to use XML Schema, then again DOM is the way to go - for now, at least.</p>
+<p>If you process both documents and data in the applications you develop, then DOM may still be your best choice. After all, after you have written the code to examine and process a DOM structure, it is fairly easy to customize it for a specific purpose. So choosing to do everything in DOM means that you will only have to deal with one set of APIs, rather than two.</p>
+<p>In addition, the DOM standard is a codified standard for an in-memory document model. It is powerful and robust, and it has many implementations. That is a significant decision-making factor for many large installations, particularly for large-scale applications that need to minimize costs resulting from API changes.</p>
+<p>Finally, even though the text in an address book may not permit bold, italics, colors, and font sizes today, one day you may want to handle these things. Because DOM will handle virtually anything you throw at it, choosing DOM makes it easier to future-proof your application.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="index.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="readingXML.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Document Object Model
+        <br /><b>Next page:</b> Reading XML Data into a DOM
+    </div>
+</body>
+</html> 

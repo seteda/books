@@ -1,0 +1,21 @@
+# attributes
+
+    ( drinktype-oid
+      NAME 'drinkType'
+      DESC 'drink type'
+      SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+      SINGLE-VALUE
+    )
+
+# object class
+#      AUXILIARY or STRUCTURAL, depending on how you use it
+#      For some LDAP servers, you might need two different object classes:
+#      one for structural and one for auxiliary.
+
+    ( drink-oid
+      NAME 'drink'
+      DESC 'drink object'
+      SUP top 
+      MUST (cn $
+            drinkType)
+    )

@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Installing a Custom Resource Bundle as an Extension (The Java&trade; Tutorials &gt;        
+            Internationalization &gt; Service Providers for Internationalization)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This internationalization Java tutorial describes setting locale, isolating locale-specific data, formatting data, internationalized domain name and resource identifier" />
+     <meta name="keywords" content="java programming, learn java, java sample code, i18n, internationalization, locale, text formatting" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Service Providers for Internationalization</a></div>
+<div class="nolinkAHEAD">Installing a Custom Resource Bundle as an Extension</div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Internationalization
+        <br /><b>Lesson:</b> Service Providers for Internationalization
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Internationalization</a>
+                &gt;
+                <a href="index.html" target="_top">Service Providers for Internationalization</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="index.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../end.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Installing a Custom Resource Bundle as an Extension</h1></div>
+            <div id="PageContent">
+
+
+<p>The section  
+<a class="TutorialLink" target="_top" href="../../i18n/resbundle/control.html">Customizing Resource Bundle Loading</a> shows you how to change how resource bundles are loaded. This involves deriving a new class from the class
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/ResourceBundle.Control.html"><code>ResourceBundle.Control</code></a>, then retrieving the resource bundle by invoking the following method:</p>
+
+<div class="codeblock"><pre>
+ResourceBundle getBundle(
+  String baseName,
+  Locale targetLocale,
+  ResourceBundle.Control control)
+</pre></div>
+
+<p>The parameter <code>control</code> is your implementation of <code>ResourceBundle.Control</code>.</p>
+                       
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/spi/ResourceBundleControlProvider.html"><code>java.util.spi.ResourceBundleControlProvider</code></a> interface enables you to change how the following method loads resource bundles:</p>
+
+<div class="codeblock"><pre>
+ResourceBundle getBundle(
+  String baseName,
+  Locale targetLocale)
+</pre></div>
+
+<p>Note that this version of the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/ResourceBundle.html#getBundle-java.lang.String-java.util.Locale-"><code>ResourceBundle.getBundle</code></a> method does not require an instance of the <code>ResourceBundle.Control</code> class. <code>ResourceBundleControlProvider</code> is a service provider interface (SPI). SPIs enable you to create extensible applications, which are those that you can extend easily without modifying their original code base. See 
+<a class="TutorialLink" target="_top" href="../../ext/basics/spi.html">Creating Extensible Applications</a> for more information.</p>
+ 
+<p>To use SPIs, you first create a service provider by implementing an SPI like <code>ResourceBundleControlProvider</code>. When you implement an SPI, you specify how it will provide the service. The service that the <code>ResourceBundleControlProvider</code> SPI provides is to obtain an appropriate <code>ResourceBundle.Control</code> instance when your application invokes the method <code>ResourceBundle.getBundle(String baseName, Locale targetLocale)</code>. You package the service provider with the
+<a class="TutorialLink" target="_top" href="../../ext/index.html">Java Extension Mechanism</a> as an installed extension. When you run your application, you do not name your extensions in your class path; the runtime environment finds and loads these extensions.</p>
+ 
+ 
+<p>An installed implementation of the <code>ResourceBundleControlProvider</code> SPI replaces the default <code>ResourceBundle.Control</code> class (which defines the default bundle loading process). Consequently, the <code>ResourceBundleControlProvider</code> interface enables you to use any of the custom <code>ResourceBundle.Control</code> classes without any additional changes to the source code of your application. In addition, this interface enables you to write applications without having to refer to any of your custom <code>ResourceBundle.Control</code> classes.</p> 
+ 
+<p>The
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/RBCPTest.java" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/RBCPTest.java'); return false;"><code><code>RBCPTest.java</code></code></a> sample shows how to implement the <code>ResourceBundleControlProvider</code> interface and how to package it as an installed extension. This sample, which is packaged in the zip file <code><a href="examples/rbcpsample/RBCPTest.zip">RBCPTest.zip</a></code>, consists of the following files:</p>
+
+ 
+<ul>
+  <li><code>src</code>
+<ul>
+  <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/java.util.spi.ResourceBundleControlProvider" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/java.util.spi.ResourceBundleControlProvider'); return false;"><code><code>java.util.spi.ResourceBundleControlProvider</code></code></a>  </li>
+  <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/RBCPTest.java" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/RBCPTest.java'); return false;"><code><code>RBCPTest.java</code></code></a></li>
+  <li><code>rbcp</code>
+    <ul>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/rbcp/PropertiesResourceBundleControl.java" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/rbcp/PropertiesResourceBundleControl.java'); return false;"><code><code>PropertiesResourceBundleControl.java</code></code></a>      </li>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/rbcp/PropertiesResourceBundleControlProvider.java" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/rbcp/PropertiesResourceBundleControlProvider.java'); return false;"><code><code>PropertiesResourceBundleControlProvider.java</code></code></a>      </li>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/rbcp/XMLResourceBundleControl.java" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/rbcp/XMLResourceBundleControl.java'); return false;"><code><code>XMLResourceBundleControl.java</code></code></a>      </li>          
+      <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/rbcp/XMLResourceBundleControlProvider.java" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/rbcp/XMLResourceBundleControlProvider.java'); return false;"><code><code>XMLResourceBundleControlProvider.java</code></code></a>      </li>    
+    </ul>
+  </li>
+  <li><code>resources</code>
+    <ul>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/resources/RBControl.properties" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/resources/RBControl.properties'); return false;"><code><code>RBControl.properties</code></code></a>      </li>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/resources/RBControl_zh.properties" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/resources/RBControl_zh.properties'); return false;"><code><code>RBControl_zh.properties</code></code></a>      </li>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/resources/RBControl_zh_CN.properties" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/resources/RBControl_zh_CN.properties'); return false;"><code><code>RBControl_zh_CN.properties</code></code></a>      </li>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/resources/RBControl_zh_HK.properties" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/resources/RBControl_zh_HK.properties'); return false;"><code><code>RBControl_zh_HK.properties</code></code></a>      </li>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/resources/RBControl_zh_TW.properties" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/resources/RBControl_zh_TW.properties'); return false;"><code><code>RBControl_zh_TW.properties</code></code></a>      </li>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/resources/XmlRB.xml" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/resources/XmlRB.xml'); return false;"><code><code>XmlRB.xml</code></code></a>      </li>
+      <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/resources/XmlRB_ja.xml" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/resources/XmlRB_ja.xml'); return false;"><code><code>XmlRB_ja.xml</code></code></a>      </li>
+    </ul>
+  </li>
+</ul>
+
+  </li>
+  <li><code>lib</code>
+    <ul>
+      <li><a href="#package-provider"><code>rbcontrolprovider.jar</code></a></li>
+    </ul>
+  </li>
+  <li><code>build</code>: Contains all files packaged in <code>rbcontrolprovider.jar</code> as well as the class file <code>RBCPTest.class</code></li>
+  <li>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/build.xml" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/build.xml'); return false;"><code><code>build.xml</code></code></a>  </li>
+</ul> 
+
+
+<p>The following steps show you how to re-create the contents of the file <code>RBCPTest.zip</code>, how the <code>RBCPTest</code> sample works, and how to run it:</p> 
+
+<ol>
+  <li><a href="#create-implementations-of-resourcebundle.control">Create implementations of the ResourceBundle.Control class.</a></li>
+  <li><a href="#implement-resourcebundlecontrolprovider">Implement the ResourceBundleControlProvider interface.</a></li>
+  <li><a href="#invoke-resourcebundle.getbundle">In your application, invoke the method ResourceBundle.getBundle.</a></li>
+  <li><a href="#register-service-provider">Register the service provider by creating a configuration file.</a></li>
+  <li><a href="#package-provider">Package the provider, its required classes, and the configuration file in a JAR file.</a></li>
+  <li><a href="#run-rbcptest">Run the RBCPTest program.</a></li>
+</ol>
+
+<!-- ********************************************************************* -->
+
+<h2><a name="create-implementations-of-resourcebundle.control">1. Create implementations of the ResourceBundle.Control class.</a></h2>
+
+<p>The
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/RBCPTest.java" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/RBCPTest.java'); return false;"><code><code>RBCPTest.java</code></code></a> sample uses two implementations of <code>ResourseBundle.Control</code>:</p>
+
+<ul>
+<li><p>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/rbcp/PropertiesResourceBundleControlProvider.java" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/rbcp/PropertiesResourceBundleControlProvider.java'); return false;"><code><code>PropertiesResourceBundleControlProvider.java</code></code></a>: This is the same <code>ResourceBundle.Control</code> implementation that is defined in
+<a class="TutorialLink" target="_top" href="../resbundle/control.html">Customizing Resource Bundle Loading</a>.</p></li>
+
+<li><p>
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/rbcp/XMLResourceBundleControl.java" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/rbcp/XMLResourceBundleControl.java'); return false;"><code><code>XMLResourceBundleControl.java</code></code></a>: This <code>ResourceBundle.Control</code> implementation loads XML-based bundles with the method
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html#loadFromXML-java.io.InputStream-"><code>Properties.loadFromXML</code></a>.</p>
+</li>
+</ul>
+
+<!-- ******************************************************** -->
+
+<h3>XML Properties Files</h3>
+
+<p>As described in the section
+<a class="TutorialLink" target="_top" href="../resbundle/propfile.html">Backing a ResourceBundle with Properties Files</a>, properties files are simple text files. They contain one key-value pair on each line. XML properties files are just like properties files: they contain key-value pairs except they have an XML structure. The following is the XML properties file <code>XmlRB.xml</code>:</p>
+
+<pre class="codeblock">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;!DOCTYPE properties [
+&lt;!ELEMENT properties ( comment?, entry* ) &gt;
+&lt;!ATTLIST properties version CDATA #FIXED "1.0"&gt;
+&lt;!ELEMENT comment (#PCDATA) &gt;
+&lt;!ELEMENT entry (#PCDATA) &gt;
+&lt;!ATTLIST entry key CDATA #REQUIRED&gt;
+]&gt;
+
+&lt;properties&gt;
+    &lt;comment&gt;Test data for RBCPTest.java&lt;/comment&gt;
+    &lt;entry key="type"&gt;XML&lt;/entry&gt;
+&lt;/properties&gt;
+</pre>
+
+<p>The following is the properties text file equivalent:</p>
+
+<pre class="codeblock">
+# Test data for RBCPTest.java
+type = XML
+</pre>
+
+<p>All XML properties text files have the same structure:</p>
+
+<ul>
+  <li><p>A DOCTYPE declaration that specifies the Document Type Definition (DTD): The DTD defines the structure of an XML file. <strong>Note</strong>: You can use the following DOCTYPE declaration instead in an XML properties file:</p>
+
+<pre class="codeblock">
+&lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;  
+</pre>
+
+<p>The system URI (<code>http://java.sun.com/dtd/properties.dtd</code>) is not accessed when exporting or importing properties; it is a string that uniquely identifies the DTD of XML properties files.</p>
+  </li>
+  
+  <li><p>Root element <code>&lt;properties&gt;</code>: This element contains all the other elements.</p></li>
+  <li><p>Any number of <code>&lt;comment&gt;</code> elements: These are used for comments.</p></li>
+  <li><p>Any number of <code>&lt;entry&gt;</code> elements: Use the attribute <code>key</code> to specify the key; specify the value of the key between the <code>&lt;entry&gt;</code> tags.</p></li>
+
+</ul>
+
+<p>See the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html"><code>Properties</code></a> class for more information about XML properties files.</p>
+ 
+<!-- ********************************************************************* -->
+
+<h2><a name="implement-resourcebundlecontrolprovider">2. Implement the ResourceBundleControlProvider interface.</a></h2>
+
+<p>This interface contains one method, the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/spi/ResourceBundleControlProvider.html#getControl-java.lang.String-"><code>ResourceBundle.Control getControl(String baseName)</code></a> method. The parameter <code>baseName</code> is the name of the resource bundle. In the method definition of <code>getBundle</code>, specify the instance of <code>ResourceBundle.Control</code> that should be returned given the name of the resource bundle.</p>
+
+<p>The <code>RBCPTest</code> sample contains two implementations of the <code>ResourceBundleControlProvider</code> interface,
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/rbcp/PropertiesResourceBundleControlProvider.java" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/rbcp/PropertiesResourceBundleControlProvider.java'); return false;"><code><code>PropertiesResourceBundleControlProvider.java</code></code></a> and
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/rbcp/XMLResourceBundleControlProvider.java" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/rbcp/XMLResourceBundleControlProvider.java'); return false;"><code><code>XMLResourceBundleControlProvider.java</code></code></a>. The method <code>PropertiesResourceBundleControlProvider.getBundle</code> returns an instance of <code>PropertiesResourceBundleControl</code> if the base name of the resource bundle starts with <code>resources.RBControl</code> (in this example, all the resource files are contained in the package <code>resources</code>):</p>
+
+<pre class="codeblock">
+
+
+package rbcp;
+
+import java.util.ResourceBundle;
+import java.util.spi.ResourceBundleControlProvider;
+
+public class PropertiesResourceBundleControlProvider
+    implements ResourceBundleControlProvider {
+    static final ResourceBundle.Control PROPERTIESCONTROL =
+        new PropertiesResourceBundleControl();
+
+    public ResourceBundle.Control getControl(String baseName) {
+        System.out.println(&quot;Class: &quot; + getClass().getName() + &quot;.getControl&quot;);
+        System.out.println(&quot;    called for &quot; + baseName);
+
+        // Throws a NPE if baseName is null.
+        if (baseName.startsWith(&quot;resources.RBControl&quot;)) {
+            System.out.println(&quot;    returns &quot; + PROPERTIESCONTROL);
+            return PROPERTIESCONTROL;
+        }
+        System.out.println(&quot;    returns null&quot;);
+        System.out.println();
+        return null;
+    }
+}
+</pre>
+
+<p>Similarly, the method <code>XMLResourceBundleControlProvider.getControl</code> returns an instance of <code>XMLResourceBundleControl</code> if the base name of the resource bundle starts with <code>resources.Xml</code>.</p>
+
+<p><strong>Note</strong>: You can create one implementation of the <code>ResourceBundleControlProvider</code> interface that returns either an instance of <code>PropertiesResourceBundleControl</code> or <code>XMLResourceBundleControl</code> depending on the base name.</p>
+
+<!-- ********************************************************************* -->
+
+<h2><a name="invoke-resourcebundle.getbundle">3. In your application, invoke the method ResourceBundle.getBundle.</a></h2>
+
+<p>The class <code>RBCPTest</code> retrieves resource bundles with the method
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/ResourceBundle.html#getBundle-java.lang.String-java.util.Locale-"><code>ResourceBundle.getBundle</code></a>:</p>  
+
+<pre class="codeblock">
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class RBCPTest {
+    public static void main(String[] args) {
+        ResourceBundle rb = ResourceBundle.getBundle(
+            &quot;resources.XmlRB&quot;, Locale.ROOT);
+        String type = rb.getString(&quot;type&quot;);
+        System.out.println(&quot;Root locale. Key, type: &quot; + type);
+        System.out.println();
+
+        rb = ResourceBundle.getBundle(&quot;resources.XmlRB&quot;, Locale.JAPAN);
+        type = rb.getString(&quot;type&quot;);
+        System.out.println(&quot;Japan locale. Key, type: &quot; + type);
+        System.out.println();
+
+        test(Locale.CHINA);
+        test(new Locale(&quot;zh&quot;, &quot;HK&quot;));
+        test(Locale.TAIWAN);
+        test(Locale.CANADA);
+    }
+
+    private static void test(Locale locale) {
+        ResourceBundle rb = ResourceBundle.getBundle(
+            &quot;resources.RBControl&quot;, locale);
+        System.out.println(&quot;locale: &quot; + locale);
+        System.out.println(&quot;    region: &quot; + rb.getString(&quot;region&quot;));
+        System.out.println(&quot;    language: &quot; + rb.getString(&quot;language&quot;));
+        System.out.println();
+    }
+}
+</pre>
+
+<p>Note that no implementations of <code>ResourceBundle.Control</code> or <code>ResourceBundleControlProvider</code> appear in this class. Because the <code>ResourceBundleControlProvider</code> interface uses the Java Extension Mechanism, the runtime environment finds and loads these implementations. However, <code>ResourceBundleControlProvider</code> implementations and other service providers that are installed with the Java Extension Mechanism are loaded using the
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html"><code>ServiceLoader</code></a>class. Using this class means that you have to register the service provider with a configuration file, which is described in the next step.</p>
+
+<!-- ********************************************************************* -->
+
+<h2><a name="register-service-provider">4. Register the service provider by creating a configuration file.</a></h2>
+
+<p>The name of the configuration file is the fully qualified name of the interface or class that the provider implemented. The configuration file contains the fully qualified class name of your provider. The file 
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/src/java.util.spi.ResourceBundleControlProvider" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/src/java.util.spi.ResourceBundleControlProvider'); return false;"><code><code>java.util.spi.ResourceBundleControlProvider</code></code></a> contains the fully qualified names of <code>PropertiesResourceBundleControlProvider</code> and <code>XMLResourceBundleControlProvider</code>, one name per line:</p>
+
+<pre class="codeblock">
+rbcp.XMLResourceBundleControlProvider
+rbcp.PropertiesResourceBundleControlProvider
+</pre>
+
+<!-- ********************************************************************* -->
+ 
+<h2><a name="package-provider">5. Package the provider, its required classes, and the configuration file in a JAR file.</a></h2>
+
+<p>Compile the source files. From the directory that contains the file <code>build.xml</code>, run the following command:</p>
+
+<pre class="codeblock">javac -d build src/java.* src/rbcp/*.java</pre>
+
+<p>This command will compile the source files contained in the <code>src</code> directory and put the class files in the <code>build</code> directory. On Windows, ensure that you use the backslash (<code>\</code>) to separate directory and file names.</p>
+
+<p>Create a JAR file that contains the compiled class files, resource files, and the configuration file in the following directory structure:</p>
+
+<ul>
+  <li><code>META-INF</code>
+    <ul>
+      <li><code>services</code>
+        <ul>
+          <li><code>java.util.spi.ResourceBundleControlProvider</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>rbcp</code>
+    <ul>
+      <li><code>PropertiesResourceBundleControl.class</code></li>
+      <li><code>PropertiesResourceBundleControlProvider.class</code></li>
+      <li><code>XMLResourceBundleControl.class</code></li>
+      <li><code>XMLResourceBundleControlProvider.class</code></li>
+    </ul>
+  </li>
+  <li><code>resources</code>
+    <ul>
+      <li><code>RBControl.properties</code></li>
+      <li><code>RBControl_zh.properties</code></li>
+      <li><code>RBControl_zh_CN.properties</code></li>
+      <li><code>RBControl_zh_HK.properties</code></li>
+      <li><code>RBControl_zh_TW.properties</code></li>
+      <li><code>XmlRB.xml</code></li>
+      <li><code>XmlRB_ja.xml</code></li>                  
+    </ul>
+  </li>
+</ul>
+
+<p>Note that the configuration file <code>java.util.spi.ResourceBundleControlProvider</code> must be packaged in the directory <code>/META-INF/services</code>. This sample packages these files in the JAR file <code>rbcontrolprovider.jar</code> in the <code>lib</code> directory.</p>
+
+<p>See
+<a class="TutorialLink" target="_top" href="../../deployment/jar/index.html">Packaging Programs in JAR Files</a> for more information about creating JAR files.</p>  
+
+<p>Alternatively, download and install <a href="http://ant.apache.org/">Apache Ant</a>, which is a tool that enables you to automate build processes, such as compiling Java files and creating JAR files. Ensure that the Apache Ant executable file is in your <code>PATH</code> environment variable so that you can run it from any directory. Once you have installed Apache Ant, follow these steps:</p>
+
+<ol>
+  <li><p>Edit the file
+<a class="SourceLink" target="_blank" href="examples/rbcpsample/build.xml" onclick="showCode('../../displayCode.html', 'examples/rbcpsample/build.xml'); return false;"><code><code>build.xml</code></code></a> and change <code>${JAVAC}</code> to the full path name of your Java compiler, <code>javac</code>, and <code>${JAVA}</code> to the full path name of your Java runtime executable, <code>java</code>.</p></li>
+  <li><p>Run the following command from the same directory that contains the file <code>build.xml</code>:</p>
+  <pre class="codeblock">ant jar</pre>
+  <p>This command compiles the Java source files and packages them, along with the required resource and configuration files, into the JAR file <code>rbcontrolprovider.jar</code> in the <code>lib</code> directory.</p></li>
+</ol>
+
+
+
+<!-- ********************************************************************* -->
+
+<h2><a name="run-rbcptest">6. Run the RBCPTest program.</a></h2>
+
+<p>At a command prompt, run the following command from the directory that contains the <code>build.xml</code> file:</p>
+
+<pre class="codeblock">java -Djava.ext.dirs=lib -cp build RBCPTest</pre>
+
+<p>This command assumes the following:</p>
+
+<ul>
+  <li>The JAR file that contains the compiled code of the RBCPTest sample is in the directory <code>lib</code>.</li>
+  <li>The compiled class, <code>RBCPTest.class</code>, is in the <code>build</code> directory.</li>
+</ul>
+
+<p>Alternatively, use Apache Ant and run the following command from the directory that contains the <code>build.xml</code> file:</p>
+
+<pre class="codeblocK">ant run</pre>
+
+<p>When you install a Java extension, you typically put the JAR file of the extension in the <code>lib/ext</code> directory of your JRE. However, this command specifies the directory that contains Java extensions with the system property <code>java.ext.dirs</code>.</p>
+
+<p>The <code>RBCPTest</code> program first attempts to retrieve resource bundles with the base name <code>resources.XmlRB</code> and the locales <code>Locale.ROOT</code> and <code>Local.JAPAN</code>. The output of the program retrieving these resource bundles is similar to the following:</p>
+
+<pre class="codeblock">
+Class: rbcp.XMLResourceBundleControlProvider.getControl
+    called for resources.XmlRB
+    returns rbcp.XMLResourceBundleControl@16c1857
+Root locale. Key, type: XML
+
+Class: rbcp.XMLResourceBundleControlProvider.getControl
+    called for resources.XmlRB
+    returns rbcp.XMLResourceBundleControl@16c1857
+Japan locale. Key, type: Value from Japan locale
+</pre>
+
+<p>The program successfully obtains an instance of <code>XMLResourceBundleControl</code> and accesses the properties files <code>XmlRB.xml</code> and <code>XmlRB_ja.xml</code>.</p>
+
+<p>When the <code>RBCPTest</code> program tries to retrieve a resource bundle, it calls all the classes defined in the configuration file <code>java.util.spi.ResourceBundleControlProvider</code>. For example, when the program retrieves the resource bundle with the base name <code>resources.RBControl</code> and the locale <code>Locale.CHINA</code>, it prints the following output:</p>   
+
+<pre class="codeblock">
+Class: rbcp.XMLResourceBundleControlProvider.getControl
+    called for resources.RBControl
+    returns null
+
+Class: rbcp.PropertiesResourceBundleControlProvider.getControl
+    called for resources.RBControl
+    returns rbcp.PropertiesResourceBundleControl@1ad2911
+locale: zh_CN
+    region: China
+    language: Simplified Chinese
+</pre>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="index.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="../end.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Service Providers for Internationalization
+        <br /><b>Next page:</b> End of Trail
+    </div>
+</body>
+</html> 

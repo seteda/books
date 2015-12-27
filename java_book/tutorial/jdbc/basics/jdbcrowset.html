@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Using JdbcRowSet Objects (The Java&trade; Tutorials &gt;        
+            JDBC(TM) Database Access &gt; JDBC Basics)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This JDBC Java tutorial describes how to use JDBC API to create, insert into, update, and query tables. You will also learn how to use simple and prepared statements, stored procedures and perform transactions" />
+     <meta name="keywords" content="java programming, learn java, java sample code, jdbc, prepared statement, result set" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">JDBC Basics</a></div>
+<div class="linkAHEAD"><a href="gettingstarted.html">Getting Started</a></div>
+<div class="linkAHEAD"><a href="processingsqlstatements.html">Processing SQL Statements with JDBC</a></div>
+<div class="linkAHEAD"><a href="connecting.html">Establishing a Connection</a></div>
+<div class="linkAHEAD"><a href="sqldatasources.html">Connecting with DataSource Objects</a></div>
+<div class="linkAHEAD"><a href="sqlexception.html">Handling SQLExceptions</a></div>
+<div class="linkAHEAD"><a href="tables.html">Setting Up Tables</a></div>
+<div class="linkAHEAD"><a href="retrieving.html">Retrieving and Modifying Values from Result Sets</a></div>
+<div class="linkAHEAD"><a href="prepared.html">Using Prepared Statements</a></div>
+<div class="linkAHEAD"><a href="transactions.html">Using Transactions</a></div>
+<div class="linkAHEAD"><a href="rowset.html">Using RowSet Objects</a></div>
+<div class="nolinkAHEAD">Using JdbcRowSet Objects</div>
+<div class="linkAHEAD"><a href="cachedrowset.html">Using CachedRowSetObjects</a></div>
+<div class="linkAHEAD"><a href="joinrowset.html">Using JoinRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="filteredrowset.html">Using FilteredRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="webrowset.html">Using WebRowSet Objects</a></div>
+<div class="linkAHEAD"><a href="sqltypes.html">Using Advanced Data Types</a></div>
+<div class="linkAHEAD"><a href="blob.html">Using Large Objects</a></div>
+<div class="linkAHEAD"><a href="sqlxml.html">Using SQLXML Objects</a></div>
+<div class="linkAHEAD"><a href="array.html">Using Array Objects</a></div>
+<div class="linkAHEAD"><a href="distinct.html">Using DISTINCT Data Type</a></div>
+<div class="linkAHEAD"><a href="sqlstructured.html">Using Structured Objects</a></div>
+<div class="linkAHEAD"><a href="sqlcustommapping.html">Using Customized Type Mappings</a></div>
+<div class="linkAHEAD"><a href="sqldatalink.html">Using Datalink Objects</a></div>
+<div class="linkAHEAD"><a href="sqlrowid.html">Using RowId Objects</a></div>
+<div class="linkAHEAD"><a href="storedprocedures.html">Using Stored Procedures</a></div>
+<div class="linkAHEAD"><a href="jdbcswing.html">Using JDBC with GUI API</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> JDBC(TM) Database Access
+        <br /><b>Lesson:</b> JDBC Basics
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">JDBC(TM) Database Access</a>
+                &gt;
+                <a href="index.html" target="_top">JDBC Basics</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="rowset.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="cachedrowset.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Using JdbcRowSet Objects</h1></div>
+            <div id="PageContent">
+
+<p>A <code>JdbcRowSet</code> object is an enhanced <code>ResultSet</code> object. It maintains a connection to its data source, just as a <code>ResultSet</code> object does. The big difference is that it has a set of properties and a listener notification mechanism that make it a JavaBeans component.</p>
+<p>One of the main uses of a <code>JdbcRowSet</code> object is to make a <code>ResultSet</code> object scrollable and updatable when it does not otherwise have those capabilities.</p>
+<p>This section covers the following topics:</p>
+<ul>
+<li><a href="#creating-jdbcrowset-object">Creating JdbcRowSet Objects</a></li>
+<li><a href="#default-jdbcrowset-objects">Default JdbcRowSet Objects</a></li>
+<li><a href="#setting-properties">Setting Properties</a></li>
+<li><a href="#using-jdbcrowset-object">Using JdbcRowSet Objects</a></li>
+<li><a href="#code-sample">Code Sample</a></li>
+</ul>
+<!-- ********************************************************** -->
+<h2><a name="creating-jdbcrowset-object" id="creating-jdbcrowset-object">Creating JdbcRowSet Objects</a></h2>
+<p>You can create a <code>JdbcRowSet</code> object in various ways:</p>
+<ul>
+<li>By using the reference implementation constructor that takes a <code>ResultSet</code> object</li>
+<li>By using the reference implementation constructor that takes a <code>Connection</code> object</li>
+<li>By using the reference implementation default constructor</li>
+<li>By using an instance of <code>RowSetFactory</code>, which is created from the class <code>RowSetProvider</code></li>
+</ul>
+<p><strong>Note</strong>: Alternatively, you can use the constructor from the <code>JdbcRowSet</code> implementation of your JDBC driver. However, implementations of the <code>RowSet</code> interface will differ from the reference implementation. These implementations will have different names and constructors. For example, the Oracle JDBC driver&#39;s implementation of the <code>JdbcRowSet</code> interface is named <code>oracle.jdbc.rowset.OracleJDBCRowSet</code>.</p>
+<!-- ********************************************************** -->
+<h3><a name="passing-resultset-object" id="passing-resultset-object">Passing ResultSet Objects</a></h3>
+<p>The simplest way to create a <code>JdbcRowSet</code> object is to produce a <code>ResultSet</code> object and pass it to the <code>JdbcRowSetImpl</code> constructor. Doing this not only creates a <code>JdbcRowSet</code> object but also populates it with the data in the <code>ResultSet</code> object.</p>
+<p><strong>Note</strong>: The <code>ResultSet</code> object that is passed to the <code>JdbcRowSetImpl</code> constructor must be scrollable.</p>
+<p>As an example, the following code fragment uses the <code>Connection</code> object <code>con</code> to create a <code>Statement</code> object, <code>stmt</code>, which then executes a query. The query produces the <code>ResultSet</code> object <code>rs</code>, which is passed to the constructor to create a new <code>JdbcRowSet</code> object initialized with the data in <code>rs</code>:</p>
+<div class="codeblock"><pre>
+stmt = con.createStatement(
+           ResultSet.TYPE_SCROLL_SENSITIVE,
+           ResultSet.CONCUR_UPDATABLE);
+rs = stmt.executeQuery("select * from COFFEES");
+jdbcRs = new JdbcRowSetImpl(rs);
+</pre></div>
+<p>A <code>JdbcRowSet</code> object created with a <code>ResultSet</code> object serves as a wrapper for the <code>ResultSet</code> object. Because the <code>RowSet</code> object <code>rs</code> is scrollable and updatable, <code>jdbcRs</code> is also scrollable and updatable. If you have run the method <code>createStatement</code> without any arguments, <code>rs</code> would not be scrollable or updatable, and neither would <code>jdbcRs</code>.</p>
+<!-- ********************************************************** -->
+<h3><a name="passing-connection-object" id="passing-connection-object">Passing Connection Objects</a></h3>
+<p>The first statement in the following code excerpt from <a href="gettingstarted.html"><code>JdbcRowSetSample</code></a> creates a <code>JdbcRowSet</code> object that connects to the database with the <code>Connection</code> object <code>con</code>:</p>
+<div class="codeblock"><pre>
+<strong>jdbcRs = new JdbcRowSetImpl(con);</strong>
+jdbcRs.setCommand("select * from COFFEES");
+jdbcRs.execute();
+</pre></div>
+<p>The object <code>jdbcRs</code> contains no data until you specify a SQL statement with the method <code>setCommand</code>, then run the method <code>execute</code>.</p>
+<p>The object <code>jdbcRs</code> is scrollable and updatable; by default, <code>JdbcRowSet</code> and all other <code>RowSet</code> objects are scrollable and updatable unless otherwise specified. See <a href="#default-jdbcrowset-objects">Default JdbcRowSet Objects</a> for more information about <code>JdbcRowSet</code> properties you can specify.</p>
+<!-- ********************************************************** -->
+<h3>Using the Default Constructor</h3>
+<p>The first statement in the following code excerpt creates an empty <code>JdbcRowSet</code> object.</p>
+<div class="codeblock"><pre>
+public void createJdbcRowSet(String username, String password) {
+
+    jdbcRs = new JdbcRowSetImpl();
+    jdbcRs.setCommand("select * from COFFEES");
+    jdbcRs.setUrl("jdbc:myDriver:myAttribute");
+    jdbcRs.setUsername(username);
+    jdbcRs.setPassword(password);
+    jdbcRs.execute();
+    // ...
+}
+</pre></div>
+<p>The object <code>jdbcRs</code> contains no data until you specify a SQL statement with the method <code>setCommand</code>, specify how the <code>JdbcResultSet</code> object connects the database, and then run the method <code>execute</code>.</p>
+<p>All of the reference implementation constructors assign the default values for the properties listed in the section <a href="#default-jdbcrowset-objects">Default JdbcRowSet Objects</a>.</p>
+<!-- ********************************************************** -->
+<h3><a name="rowsetfactory" id="rowsetfactory">Using the RowSetFactory Interface</a></h3>
+<p>With RowSet 1.1, which is part of Java SE 7 and later, you can use an instance of <code>RowSetFactory</code> to create a <code>JdbcRowSet</code> object. For example, the following code excerpt uses an instance of the <code>RowSetFactory</code> interface to create the <code>JdbcRowSet</code> object, <code>jdbcRs</code>:</p>
+<div class="codeblock"><pre>
+public void createJdbcRowSetWithRowSetFactory(
+    String username, String password)
+    throws SQLException {
+
+    RowSetFactory myRowSetFactory = null;
+    JdbcRowSet jdbcRs = null;
+    ResultSet rs = null;
+    Statement stmt = null;
+
+    try {
+        myRowSetFactory = RowSetProvider.newFactory();
+        jdbcRs = myRowSetFactory.createJdbcRowSet();
+
+        jdbcRs.setUrl("jdbc:myDriver:myAttribute");
+        jdbcRs.setUsername(username);
+        jdbcRs.setPassword(password);
+
+        jdbcRs.setCommand("select * from COFFEES");
+        jdbcRs.execute();
+
+        // ...
+    }
+}
+</pre></div>
+<p>The following statement creates the <code>RowSetProvider</code> object <code>myRowSetFactory</code> with the default <code>RowSetFactory</code> implementation, <code>com.sun.rowset.RowSetFactoryImpl</code>:</p>
+<div class="codeblock"><pre>
+myRowSetFactory = RowSetProvider.newFactory();
+</pre></div>
+<p>Alternatively, if your JDBC driver has its own <code>RowSetFactory</code> implementation, you may specify it as an argument of the <code>newFactory</code> method.</p>
+<p>The following statements create the <code>JdbcRowSet</code> object <code>jdbcRs</code> and configure its database connection properties:</p>
+<div class="codeblock"><pre>
+jdbcRs = myRowSetFactory.createJdbcRowSet();
+jdbcRs.setUrl("jdbc:myDriver:myAttribute");
+jdbcRs.setUsername(username);
+jdbcRs.setPassword(password);
+</pre></div>
+<p>The <code>RowSetFactory</code> interface contains methods to create the different types of <code>RowSet</code> implementations available in RowSet 1.1 and later:</p>
+<ul>
+<li><code>createCachedRowSet</code></li>
+<li><code>createFilteredRowSet</code></li>
+<li><code>createJdbcRowSet</code></li>
+<li><code>createJoinRowSet</code></li>
+<li><code>createWebRowSet</code></li>
+</ul>
+<!-- ********************************************************** -->
+<h2><a name="default-jdbcrowset-objects" id="default-jdbcrowset-objects">Default JdbcRowSet Objects</a></h2>
+<p>When you create a <code>JdbcRowSet</code> object with the default constructor, the new <code>JdbcRowSet</code> object will have the following properties:</p>
+<ul>
+<li><code>type</code>: <code>ResultSet.TYPE_SCROLL_INSENSITIVE</code> (has a scrollable cursor)</li>
+<li><code>concurrency</code>: <code>ResultSet.CONCUR_UPDATABLE</code> (can be updated)</li>
+<li><code>escapeProcessing</code>: <code>true</code> (the driver will do escape processing; when escape processing is enabled, the driver will scan for any escape syntax and translate it into code that the particular database understands)</li>
+<li><code>maxRows</code>: <code>0</code> (no limit on the number of rows)</li>
+<li><code>maxFieldSize</code>: <code>0</code> (no limit on the number of bytes for a column value; applies only to columns that store <code>BINARY</code>, <code>VARBINARY</code>, <code>LONGVARBINARY</code>, <code>CHAR</code>, <code>VARCHAR</code>, and <code>LONGVARCHAR</code> values)</li>
+<li><code>queryTimeout</code>: <code>0</code> (has no time limit for how long it takes to execute a query)</li>
+<li><code>showDeleted</code>: <code>false</code> (deleted rows are not visible)</li>
+<li><code>transactionIsolation</code>: <code>Connection.TRANSACTION_READ_COMMITTED</code> (reads only data that has been committed)</li>
+<li><code>typeMap</code>: <code>null</code> (the type map associated with a <code>Connection</code> object used by this <code>RowSet</code> object is <code>null</code>)</li>
+</ul>
+<p>The main thing you must remember from this list is that a <code>JdbcRowSet</code> and all other <code>RowSet</code> objects are scrollable and updatable unless you set different values for those properties.</p>
+<!-- ********************************************************** -->
+<h2><a name="setting-properties" id="setting-properties">Setting Properties</a></h2>
+<p>The section <a href="#default-jdbcrowset-objects">Default JdbcRowSet Objects</a> lists the properties that are set by default when a new <code>JdbcRowSet</code> object is created. If you use the default constructor, you must set some additional properties before you can populate your new <code>JdbcRowSet</code> object with data.</p>
+<p>In order to get its data, a <code>JdbcRowSet</code> object first needs to connect to a database. The following four properties hold information used in obtaining a connection to a database.</p>
+<ul>
+<li><code>username</code>: the name a user supplies to a database as part of gaining access</li>
+<li><code>password</code>: the user&#39;s database password</li>
+<li><code>url</code>: the JDBC URL for the database to which the user wants to connect</li>
+<li><code>datasourceName</code>: the name used to retrieve a <code>DataSource</code> object that has been registered with a JNDI naming service</li>
+</ul>
+<p>Which of these properties you set depends on how you are going to make a connection. The preferred way is to use a <code>DataSource</code> object, but it may not be practical for you to register a <code>DataSource</code> object with a JNDI naming service, which is generally done by a system administrator. Therefore, the code examples all use the <code>DriverManager</code> mechanism to obtain a connection, for which you use the <code>url</code> property and not the <code>datasourceName</code> property.</p>
+<p>Another property that you must set is the <code>command</code> property. This property is the query that determines what data the <code>JdbcRowSet</code> object will hold. For example, the following line of code sets the <code>command</code> property with a query that produces a <code>ResultSet</code> object containing all the data in the table <code>COFFEES</code>:</p>
+<div class="codeblock"><pre>
+jdbcRs.setCommand("select * from COFFEES");
+</pre></div>
+<p>After you have set the <code>command</code> property and the properties necessary for making a connection, you are ready to populate the <code>jdbcRs</code> object with data by calling the <code>execute</code> method.</p>
+<div class="codeblock"><pre>
+jdbcRs.execute();
+</pre></div>
+<p>The <code>execute</code> method does many things for you in the background:</p>
+<ul>
+<li>It makes a connection to the database using the values you assigned to the <code>url</code>, <code>username</code>, and <code>password</code> properties.</li>
+<li>It executes the query you set in the <code>command</code> property.</li>
+<li>It reads the data from the resulting <code>ResultSet</code> object into the <code>jdbcRs</code> object.</li>
+</ul>
+<!-- ********************************************************** -->
+<h2><a name="using-jdbcrowset-object" id="using-jdbcrowset-object">Using JdbcRowSet Objects</a></h2>
+<p>You update, insert, and delete a row in a <code>JdbcRowSet</code> object the same way you update, insert, and delete a row in an updatable <code>ResultSet</code> object. Similarly, you navigate a <code>JdbcRowSet</code> object the same way you navigate a scrollable <code>ResultSet</code> object.</p>
+<p>The Coffee Break chain of coffee houses acquired another chain of coffee houses and now has a legacy database that does not support scrolling or updating of a result set. In other words, any <code>ResultSet</code> object produced by this legacy database does not have a scrollable cursor, and the data in it cannot be modified. However, by creating a <code>JdbcRowSet</code> object populated with the data from a <code>ResultSet</code> object, you can, in effect, make the <code>ResultSet</code> object scrollable and updatable.</p>
+<p>As mentioned previously, a <code>JdbcRowSet</code> object is by default scrollable and updatable. Because its contents are identical to those in a <code>ResultSet</code> object, operating on the <code>JdbcRowSet</code> object is equivalent to operating on the <code>ResultSet</code> object itself. And because a <code>JdbcRowSet</code> object has an ongoing connection to the database, changes it makes to its own data are also made to the data in the database.</p>
+<p>This section covers the following topics:</p>
+<ul>
+<li><a href="#navigating-jdbcrowset-object">Navigating JdbcRowSet Objects</a></li>
+<li><a href="#updating-column-value">Updating Column Values</a></li>
+<li><a href="#inserting-row">Inserting Rows</a></li>
+<li><a href="#deleting-row">Deleting Rows</a></li>
+</ul>
+<!-- ********************************************************** -->
+<h3><a name="navigating-jdbcrowset-object" id="navigating-jdbcrowset-object">Navigating JdbcRowSet Objects</a></h3>
+<p>A <code>ResultSet</code> object that is not scrollable can use only the <code>next</code> method to move its cursor forward, and it can move the cursor only forward from the first row to the last row. A default <code>JdbcRowSet</code> object, however, can use all of the cursor movement methods defined in the <code>ResultSet</code> interface.</p>
+<p>A <code>JdbcRowSet</code> object can call the method <code>next</code>, and it can also call any of the other <code>ResultSet</code> cursor movement methods. For example, the following lines of code move the cursor to the fourth row in the <code>jdbcRs</code> object and then back to the third row:</p>
+<div class="codeblock"><pre>
+jdbcRs.absolute(4);
+jdbcRs.previous();
+</pre></div>
+<p>The method <code>previous</code> is analogous to the method <code>next</code> in that it can be used in a <code>while</code> loop to traverse all of the rows in order. The difference is that you must move the cursor to a position after the last row, and <code>previous</code> moves the cursor toward the beginning.</p>
+<!-- ********************************************************** -->
+<h3><a name="updating-column-value" id="updating-column-value">Updating Column Values</a></h3>
+<p>You update data in a <code>JdbcRowSet</code> object the same way you update data in a <code>ResultSet</code> object.</p>
+<p>Assume that the Coffee Break owner wants to raise the price for a pound of Espresso coffee. If the owner knows that Espresso is in the third row of the <code>jdbcRs</code> object, the code for doing this might look like the following:</p>
+<div class="codeblock"><pre>
+jdbcRs.absolute(3);
+jdbcRs.updateFloat("PRICE", 10.99f);
+jdbcRs.updateRow();
+</pre></div>
+<p>The code moves the cursor to the third row and changes the value for the column <code>PRICE</code> to 10.99, and then updates the database with the new price.</p>
+<p>Calling the method <code>updateRow</code> updates the database because <code>jdbcRs</code> has maintained its connection to the database. For disconnected <code>RowSet</code> objects, the situation is different.</p>
+<!-- ********************************************************** -->
+<h3><a name="inserting-row" id="inserting-row">Inserting Rows</a></h3>
+<p>If the owner of the Coffee Break chain wants to add one or more coffees to what he offers, the owner will need to add one row to the <code>COFFEES</code> table for each new coffee, as is done in the following code fragment from <code><a href="gettingstarted.html">JdbcRowSetSample</a></code>. Notice that because the <code>jdbcRs</code> object is always connected to the database, inserting a row into a <code>JdbcRowSet</code> object is the same as inserting a row into a <code>ResultSet</code> object: You move to the cursor to the insert row, use the appropriate updater method to set a value for each column, and call the method <code>insertRow</code>:</p>
+<div class="codeblock"><pre>
+jdbcRs.moveToInsertRow();
+jdbcRs.updateString("COF_NAME", "HouseBlend");
+jdbcRs.updateInt("SUP_ID", 49);
+jdbcRs.updateFloat("PRICE", 7.99f);
+jdbcRs.updateInt("SALES", 0);
+jdbcRs.updateInt("TOTAL", 0);
+jdbcRs.insertRow();
+
+jdbcRs.moveToInsertRow();
+jdbcRs.updateString("COF_NAME", "HouseDecaf");
+jdbcRs.updateInt("SUP_ID", 49);
+jdbcRs.updateFloat("PRICE", 8.99f);
+jdbcRs.updateInt("SALES", 0);
+jdbcRs.updateInt("TOTAL", 0);
+jdbcRs.insertRow();
+</pre></div>
+<p>When you call the method <code>insertRow</code>, the new row is inserted into the <code>jdbcRs</code> object and is also inserted into the database. The preceding code fragment goes through this process twice, so two new rows are inserted into the <code>jdbcRs</code> object and the database.</p>
+<!-- ********************************************************** -->
+<h3><a name="deleting-row" id="deleting-row">Deleting Rows</a></h3>
+<p>As is true with updating data and inserting a new row, deleting a row is just the same for a <code>JdbcRowSet</code> object as for a <code>ResultSet</code> object. The owner wants to discontinue selling French Roast decaffeinated coffee, which is the last row in the <code>jdbcRs</code> object. In the following lines of code, the first line moves the cursor to the last row, and the second line deletes the last row from the <code>jdbcRs</code> object and from the database:</p>
+<div class="codeblock"><pre>
+jdbcRs.last();
+jdbcRs.deleteRow();
+</pre></div>
+<!-- ********************************************************** -->
+<h2><a name="code-sample" id="code-sample">Code Sample</a></h2>
+<p>The sample <code><a href="gettingstarted.html">JdbcRowSetSample</a></code> does the following:</p>
+<ul>
+<li>Creates a new <code>JdbcRowSet</code> object initialized with the <code>ResultSet</code> object that was produced by the execution of a query that retrieves all the rows in the <code>COFFEES</code> table</li>
+<li>Moves the cursor to the third row of the <code>COFFEES</code> table and updates the <code>PRICE</code> column in that row</li>
+<li>Inserts two new rows, one for <code>HouseBlend</code> and one for <code>HouseDecaf</code></li>
+<li>Moves the cursor to the last row and deletes it</li>
+</ul>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="rowset.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="cachedrowset.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Using RowSet Objects
+        <br /><b>Next page:</b> Using CachedRowSetObjects
+    </div>
+</body>
+</html> 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="Java DB Properties" default="all" basedir=".">
+
+
+    <property name="JAVAC" value="C:\\java\\jdk1.7.0\\bin\\javac"/>
+    <property name="JAVA" value="C:\\java\\jdk1.7.0\\bin\\java"/>
+
+
+  <property name="PROPERTIESFILE" value="properties/javadb-sample-properties.xml"/>
+  <property name="JAVADBDRIVER" value="C:\\java\\jdk1.7.0\\db\\lib\\derby.jar"/>
+  <property name="XALANDIRECTORY" value="C:\\apache\\xalan-j_2_7_1"/>
+
+  <path id="XALAN">
+    <pathelement location="${XALANDIRECTORY}\\xalan.jar"/>
+  </path>
+
+  <path id="CLASSPATH">
+    <pathelement location="classes"/>
+    <pathelement location="${JAVADBDRIVER}"/>
+    <pathelement location="lib/JDBCTutorial.jar"/>
+    <path refid="XALAN"/>
+  </path>
+
+
+  <property name="DB.VENDOR" value="javadb"/>
+  <property name="DB.DRIVER" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+  <property name="DB.HOST" value="localhost"/>
+  <property name="DB.PORT" value="3306"/>
+  <property name="DB.SID" value="testdb"/>
+  <property name="DB.URL" value="jdbc:derby:${DB.SID};create=true;"/>
+  <property name="DB.USER" value=""/>
+  <property name="DB.PASSWORD" value=""/>
+  <property name="DB.DELIMITER" value=";"/>
+
+</project>
+
+

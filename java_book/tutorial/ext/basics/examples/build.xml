@@ -1,0 +1,84 @@
+<project default="compile-all" name="Extension basics">
+
+    <target name="compile-all">
+        <echo message="Using ${JAVAC} as the Java compiler"/>
+        <ant target="compile-all" antfile="build.xml" dir="DictionaryServiceDemo"/>
+    </target>
+
+    <target name="compile-abort">
+        <ant target="compile-all" antfile="build.xml" dir="DictionaryServiceDemo"/>
+    </target>
+
+    <target name="clean">
+        <!--
+        <delete dir="dist"/>
+        <delete dir="zipfiles"/>
+        -->
+        <ant target="clean" antfile="build.xml" dir="DictionaryServiceDemo"/>
+    </target>
+
+    <target name="jar">
+        <ant target="jar" antfile="build.xml" dir="DictionaryServiceDemo"/>
+        <!-- Do not sign JAR files in this sample -->
+        <!--
+            <apply executable="java" parallel="false" verbose="true" force="true">
+                
+                <mapper type="regexp" from="^(.*)/([^/]*)$" to="\1"/>
+                <arg line="-jar"/>
+                <arg path="${ANTCLIENTJAR}"/>
+                <arg value="-file_to_sign"/>
+                <srcfile/>
+                <arg value="-user jsedteam"/>
+                <arg value="-pass sign2jsedteam"/>
+                <arg value="-signed_location"/>
+                <targetfile/>
+                <arg value="-sign_method java2"/>
+                <fileset dir=".">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </apply>
+        -->
+    </target>
+
+    
+    <target name="zip">
+        <ant target="zip" antfile="build.xml" dir="DictionaryServiceDemo"/>
+    </target>
+
+    <!--
+
+    <target name="zip">
+        <subant genericantfile="${ant.file}" target="do-zip">
+            <dirset dir="." includes="JDBCTutorial"/>
+            <property name="zip.dir" location="zipfiles"/>
+            <property name="top" location="."/>
+        </subant>
+        <zip zipfile="zipfiles/JDBCTutorial.zip">
+          <fileset dir=".">
+            <include name="JDBCTutorial/"/>
+            <exclude name="*/build/"/>
+            <exclude name="*/dist/"/>
+            <exclude name="*/nbproject/private/"/>
+          </fileset>
+        </zip>
+    </target>
+
+    -->
+
+    <!--
+
+    <target name="do-zip">
+        <pathconvert dirsep="-" property="name">
+            <path location="."/>
+            <mapper type="glob" from="${top}${file.separator}*" to="*"/>
+        </pathconvert>
+        <mkdir dir="${zip.dir}"/>
+        <zip zipfile="${zip.dir}/${name}.zip">
+            <zipfileset dir="." prefix="${name}"/>
+        </zip>
+    </target>
+
+    -->
+
+</project>
+

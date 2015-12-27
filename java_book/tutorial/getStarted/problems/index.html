@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Lesson: Common Problems (and Their Solutions) (The Java&trade; Tutorials &gt; Getting Started)</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This beginner Java tutorial describes getting started with Java and setting up your Netbeans IDE" />
+     <meta name="keywords" content="java programming, learn java, java sample code, getting started with java, development environment setup" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+    </head>
+<body>
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+    <!-- ixheader -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+        <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                    <div id="TopBar_left">
+                        The Java&trade; Tutorials
+                    </div>
+                    <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java
+                                Tutorials</a>
+                        <br />
+                    </div> 
+      </div> </div> </div> </div> </div>
+
+    <div class="MainFlow_wide">
+        <div class="PrintHeaders">
+            <b>Trail:</b> Getting Started
+        </div>
+        <div id="BreadCrumbs">
+            <a href="../../index.html" target="_top">Home Page</a>
+        &gt;
+            <a href="../index.html" target="_top">Getting Started</a>
+        </div>
+        <div class="NavBit">
+                <a target="_top" href="../application/index.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../end.html">Next&nbsp;&raquo;</a>
+        </div>
+        <div id="PageTitle"><h1>Lesson: Common Problems (and Their Solutions)</h1></div>
+        <div id="PageContent">
+
+<h2><a name="compiler" id="compiler">Compiler Problems</a></h2>
+<p><strong>Common Error Messages on Microsoft Windows Systems</strong></p>
+<p><code><strong>&#39;javac&#39; is not recognized as an internal or external command, operable program or batch file</strong></code></p>
+<p>If you receive this error, Windows cannot find the compiler (<code>javac</code>).</p>
+<p>Here&#39;s one way to tell Windows where to find <code>javac</code>. Suppose you installed the JDK in <code>C:\jdk1.8.0</code>. At the prompt you would type the following command and press  Enter:</p>
+<div class="codeblock"><pre>
+C:\jdk1.8.0\bin\javac HelloWorldApp.java
+</pre></div>
+<p>If you choose this option, you&#39;ll have to precede your <code>javac</code> and <code>java</code> commands with <code>C:\jdk1.8.0\bin\</code> each time you compile or run a program. To avoid this extra typing, consult the section 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/docs/technotes/guides/install/windows_jdk_install.html#BABGDJFH">Updating the PATH variable</a> in the JDK 8 installation instructions.</p>
+<p><code><strong>Class names, &#39;HelloWorldApp&#39;, are only accepted if annotation processing is explicitly requested</strong></code></p>
+<p>If you receive this error, you forgot to include the <code>.java</code> suffix when compiling the program. Remember, the command is <code>javac HelloWorldApp.java</code> not <code>javac HelloWorldApp</code>.</p>
+<p><strong>Common Error Messages on UNIX Systems</strong></p>
+<p style="font-weight: bold"><code>javac: Command not found</code></p>
+<p>If you receive this error, UNIX cannot find the compiler, <code>javac</code>.</p>
+<p>Here&#39;s one way to tell UNIX where to find <code>javac</code>. Suppose you installed the JDK in <code>/usr/local/jdk1.8.0</code>. At the prompt you would type the following command and press  Return:</p>
+<div class="codeblock"><pre>
+/usr/local/jdk1.8.0/javac HelloWorldApp.java
+</pre></div>
+<p><b>Note:</b> If you choose this option, each time you compile or run a program, you&#39;ll have to precede your <code>javac</code> and <code>java</code> commands with <code>/usr/local/jdk1.8.0/</code>. To avoid this extra typing, you could add this information to your PATH variable. The steps for doing so will vary depending on which shell you are currently running.</p>
+<p><code><strong>Class names, &#39;HelloWorldApp&#39;, are only accepted if annotation processing is explicitly requested</strong></code></p>
+<p>If you receive this error, you forgot to include the <code>.java</code> suffix when compiling the program. Remember, the command is <code>javac HelloWorldApp.java</code> not <code>javac HelloWorldApp</code>.</p>
+<p><strong>Syntax Errors (All Platforms)</strong></p>
+<p>If you mistype part of a program, the compiler may issue a <em>syntax</em> error. The message usually displays the type of the error, the line number where the error was detected, the code on that line, and the position of the error within the code. Here&#39;s an error caused by omitting a semicolon (<code>;</code>) at the end of a statement:</p>
+<div class="codeblock"><pre>
+testing.java:14: `;' expected.
+System.out.println("Input has " + count + " chars.")
+                                                     ^
+1 error
+</pre></div>
+<p>Sometimes the compiler can&#39;t guess your intent and prints a confusing error message or multiple error messages if the error cascades over several lines. For example, the following code snippet omits a semicolon (<code>;</code>) from the bold line:</p>
+<div class="codeblock"><pre>
+while (System.in.read() != -1)
+    <b>count++</b>
+System.out.println("Input has " + count + " chars."); 
+</pre></div>
+<p>When processing this code, the compiler issues two error messages:</p>
+<div class="codeblock"><pre>
+testing.java:13: Invalid type expression.
+        count++
+                 ^
+testing.java:14: Invalid declaration.
+    System.out.println("Input has " + count + " chars.");
+                      ^
+2 errors
+</pre></div>
+<p>The compiler issues two error messages because after it processes <code>count++</code>, the compiler&#39;s state indicates that it&#39;s in the middle of an expression. Without the semicolon, the compiler has no way of knowing that the statement is complete.</p>
+<p>If you see any compiler errors, then your program did not successfully compile, and the compiler did not create a <code>.class</code> file. Carefully verify the program, fix any errors that you detect, and try again.</p>
+<p><strong>Semantic Errors</strong></p>
+<p>In addition to verifying that your program is syntactically correct, the compiler checks for other basic correctness. For example, the compiler warns you each time you use a variable that has not been initialized:</p>
+<div class="codeblock"><pre>
+testing.java:13: Variable count may not have been initialized.
+        count++
+        ^
+testing.java:14: Variable count may not have been initialized.
+    System.out.println("Input has " + count + " chars.");
+                                       ^
+2 errors
+</pre></div>
+<p>Again, your program did not successfully compile, and the compiler did not create a <code>.class</code> file. Fix the error and try again.</p>
+<h2><a name="interpreter" id="interpreter">Runtime Problems</a></h2>
+<p style="font-weight: bold">Error Messages on Microsoft Windows Systems</p>
+<p style="font-weight: bold"><code>Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: HelloWorldApp</code></p>
+<p>If you receive this error, <code>java</code> cannot find your bytecode file, <code>HelloWorldApp.class</code>.</p>
+<p>One of the places <code>java</code> tries to find your <code>.class</code> file is your current directory. So if your <code>.class</code> file is in <code>C:\java</code>, you should change your current directory to that. To change your directory, type the following command at the prompt and press  Enter:</p>
+<div class="codeblock"><pre>
+cd c:\java
+</pre></div>
+<p>The prompt should change to <code>C:\java&gt;</code>. If you enter <code>dir</code> at the prompt, you should see your <code>.java</code> and <code>.class</code> files. Now enter <code>java HelloWorldApp</code> again.</p>
+<p>If you still have problems, you might have to change your CLASSPATH variable. To see if this is necessary, try clobbering the classpath with the following command.</p>
+<div class="codeblock"><pre>
+set CLASSPATH=
+</pre></div>
+<p>Now enter <code>java HelloWorldApp</code> again. If the program works now, you&#39;ll have to change your CLASSPATH variable. To set this variable, consult the 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/8/docs/technotes/guides/install/windows_jdk_install.html#BABGDJFH">Updating the PATH variable</a> section in the JDK 8 installation instructions. The CLASSPATH variable is set in the same manner.</p>
+<p><code><strong> Could not find or load main class HelloWorldApp.class</strong></code></p>
+<p>A common mistake made by beginner programmers is to try and run the <code>java</code> launcher on the <code>.class</code> file that was created by the compiler. For example, you&#39;ll get this error if you try to run your program with <code>java HelloWorldApp.class</code> instead of <code>java HelloWorldApp</code>. Remember, the argument is the <em>name of the class</em> that you want to use, <em>not</em> the filename.</p>
+<p><strong><code>Exception in thread &quot;main&quot; java.lang.NoSuchMethodError: main</code></strong></p>
+<p>The Java VM requires that the class you execute with it have a <code>main</code> method at which to begin execution of your application. 
+<a class="TutorialLink" target="_top" href="../application/index.html">A Closer Look at the "Hello World!" Application</a> discusses the <code>main</code> method in detail.</p>
+<p><strong>Error Messages on UNIX Systems</strong></p>
+<p style="font-weight: bold"><code>Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: HelloWorldApp</code></p>
+<p>If you receive this error, <code>java</code> cannot find your bytecode file, <code>HelloWorldApp.class</code>.</p>
+<p>One of the places <code>java</code> tries to find your bytecode file is your current directory. So, for example, if your bytecode file is in <code>/home/jdoe/java</code>, you should change your current directory to that. To change your directory, type the following command at the prompt and press  Return:</p>
+<div class="codeblock"><pre>
+cd /home/jdoe/java
+</pre></div>
+<p>If you enter <code>pwd</code> at the prompt, you should see <code>/home/jdoe/java</code>. If you enter <code>ls</code> at the prompt, you should see your <code>.java</code> and <code>.class</code> files. Now enter <code>java HelloWorldApp</code> again.</p>
+<p>If you still have problems, you might have to change your CLASSPATH environment variable. To see if this is necessary, try clobbering the classpath with the following command.</p>
+<div class="codeblock"><pre>
+unset CLASSPATH
+</pre></div>
+<p>Now enter <code>java HelloWorldApp</code> again. If the program works now, you&#39;ll have to change your CLASSPATH variable in the same manner as the PATH variable above.</p>
+<p><code><strong>Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: HelloWorldApp/class</strong></code></p>
+<p>A common mistake made by beginner programmers is to try and run the <code>java</code> launcher on the <code>.class</code> file that was created by the compiler. For example, you&#39;ll get this error if you try to run your program with <code>java HelloWorldApp.class</code> instead of <code>java HelloWorldApp</code>. Remember, the argument is the <em>name of the class</em> that you want to use, <em>not</em> the filename.</p>
+<p><strong><code>Exception in thread &quot;main&quot; java.lang.NoSuchMethodError: main</code></strong></p>
+<p>The Java VM requires that the class you execute with it have a <code>main</code> method at which to begin execution of your application. 
+<a class="TutorialLink" target="_top" href="../application/index.html">A Closer Look at the "Hello World!" Application</a> discusses the <code>main</code> method in detail.</p>
+ 
+<p><strong>Applet or Java Web Start Application Is Blocked</strong></p>
+<p>If you are running an application through a browser and get security warnings that say the application is blocked, check the following items:</p>
+<ul>
+<li><p>Verify that the attributes in the JAR file manifest are set correctly for the environment in which the application is running. The Permissions attribute is required. In a NetBeans project, you can open the manifest file from the Files tab of the NetBeans IDE by expanding the project folder and double-clicking <tt>manifest.mf</tt>.</p></li>
+<li><p>Verify that the application is signed by a valid certificate and that the certificate is located in the Signer CA keystore.</p></li>
+<li><p>If you are running a local applet, set up a web server to use for testing. You can also add your application to the exception site list, which is managed in the Security tab of the Java Control Panel. </p></li>
+</ul>
+
+
+        </div>
+    <div class="NavBit">
+        <a href="../application/index.html">&laquo; Previous</a>
+        &bull;
+        <a href="../TOC.html">Trail</a>
+        &bull;
+        <a href="../end.html">Next &raquo;</a>
+    </div>
+    </div>
+   
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+   
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Previous Lesson
+        <br /><b>Next page:</b> End of Trail
+    </div>
+</body>
+</html> 

@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Path Operations (The Java&trade; Tutorials &gt;        
+            Essential Classes &gt; Basic I/O)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Java tutorial describes exceptions, basic input/output, concurrency, regular expressions, and the platform environment" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java exception, java input output, java threads, java regex, regular expressions, path, classpath, environment variable" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Basic I/O</a></div>
+<div class="linkAHEAD"><a href="streams.html">I/O Streams</a></div>
+<div class="linkBHEAD"><a href="bytestreams.html">Byte Streams</a></div>
+<div class="linkBHEAD"><a href="charstreams.html">Character Streams</a></div>
+<div class="linkBHEAD"><a href="buffers.html">Buffered Streams</a></div>
+<div class="linkBHEAD"><a href="scanfor.html">Scanning and Formatting</a></div>
+<div class="linkCHEAD"><a href="scanning.html">Scanning</a></div>
+<div class="linkCHEAD"><a href="formatting.html">Formatting</a></div>
+<div class="linkBHEAD"><a href="cl.html">I/O from the Command Line</a></div>
+<div class="linkBHEAD"><a href="datastreams.html">Data Streams</a></div>
+<div class="linkBHEAD"><a href="objectstreams.html">Object Streams</a></div>
+<div class="linkAHEAD"><a href="fileio.html">File I/O (Featuring NIO.2)</a></div>
+<div class="linkBHEAD"><a href="path.html">What Is a Path? (And Other File System Facts)</a></div>
+<div class="linkBHEAD"><a href="pathClass.html">The Path Class</a></div>
+<div class="nolinkCHEAD">Path Operations</div>
+<div class="linkBHEAD"><a href="fileOps.html">File Operations</a></div>
+<div class="linkBHEAD"><a href="check.html">Checking a File or Directory</a></div>
+<div class="linkBHEAD"><a href="delete.html">Deleting a File or Directory</a></div>
+<div class="linkBHEAD"><a href="copy.html">Copying a File or Directory</a></div>
+<div class="linkBHEAD"><a href="move.html">Moving a File or Directory</a></div>
+<div class="linkBHEAD"><a href="fileAttr.html">Managing Metadata (File and File Store Attributes)</a></div>
+<div class="linkBHEAD"><a href="file.html">Reading, Writing, and Creating Files</a></div>
+<div class="linkBHEAD"><a href="rafs.html">Random Access Files</a></div>
+<div class="linkBHEAD"><a href="dirs.html">Creating and Reading Directories</a></div>
+<div class="linkBHEAD"><a href="links.html">Links, Symbolic or Otherwise</a></div>
+<div class="linkBHEAD"><a href="walk.html">Walking the File Tree</a></div>
+<div class="linkBHEAD"><a href="find.html">Finding Files</a></div>
+<div class="linkBHEAD"><a href="notification.html">Watching a Directory for Changes</a></div>
+<div class="linkBHEAD"><a href="misc.html">Other Useful Methods</a></div>
+<div class="linkBHEAD"><a href="legacy.html">Legacy File I/O Code</a></div>
+<div class="linkAHEAD"><a href="summary.html">Summary</a></div>
+<div class="linkQUESTIONS"><a href="QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Essential Classes
+        <br /><b>Lesson:</b> Basic I/O
+        <br /><b>Section:</b> File I/O (Featuring NIO.2)
+        <br /><b>Subsection:</b> The Path Class
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Essential Classes</a>
+                &gt;
+                <a href="index.html" target="_top">Basic I/O</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="pathClass.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="fileOps.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Path Operations</h1></div>
+            <div id="PageContent">
+
+<!-- Path Operations -->
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html"><code>Path</code></a> class includes various methods that can be used to obtain information about the path, access elements of the path, convert the path to other forms, or extract portions of a path. There are also methods for matching the path string and methods for removing redundancies in a path. This lesson addresses these <code>Path</code> methods, sometimes called <em>syntactic</em> operations, because they operate on the path itself and don&#39;t access the file system.</p>
+<p>This section covers the following:</p>
+<ul>
+<li><a href="#create">Creating a Path</a></li>
+<li><a href="#info">Retrieving Information About a Path</a></li>
+<li><a href="#normal">Removing Redundancies from a Path</a></li>
+<li><a href="#convert">Converting a Path</a></li>
+<li><a href="#resolve">Joining Two Paths</a></li>
+<li><a href="#relativize">Creating a Path Between Two Paths</a></li>
+<li><a href="#compare">Comparing Two Paths</a></li>
+</ul>
+<h2><a name="create" id="create">Creating a Path</a></h2>
+<p>A <code>Path</code> instance contains the information used to specify the location of a file or directory. At the time it is defined, a <code>Path</code> is provided with a series of one or more names. A root element or a file name might be included, but neither are required. A <code>Path</code> might consist of just a single directory or file name.</p>
+<p>You can easily create a <code>Path</code> object by using one of the following <code>get</code> methods from the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html"><code>Paths</code></a> (note the plural) helper class:</p>
+<div class="codeblock"><pre>
+Path p1 = Paths.get("/tmp/foo");
+Path p2 = Paths.get(args[0]);
+Path p3 = Paths.get(URI.create("file:///Users/joe/FileTest.java"));
+</pre></div>
+<p>The <code>Paths.get</code> method is shorthand for the following code:</p>
+<div class="codeblock"><pre>
+Path p4 = FileSystems.getDefault().getPath("/users/sally");
+</pre></div>
+<p>The following example creates <code>/u/joe/logs/foo.log</code> assuming your home directory is <code>/u/joe</code>, or <code>C:\joe\logs\foo.log</code> if you are on Windows.</p>
+<div class="codeblock"><pre>
+Path p5 = Paths.get(System.getProperty("user.home"),"logs", "foo.log");
+</pre></div>
+<h2><a name="info" id="info">Retrieving Information about a Path</a></h2>
+<p>You can think of the <code>Path</code> as storing these name elements as a sequence. The highest element in the directory structure would be located at index 0. The lowest element in the directory structure would be located at index <code>[n-1]</code>, where <code>n</code> is the number of name elements in the <code>Path</code>. Methods are available for retrieving individual elements or a subsequence of the <code>Path</code> using these indexes.</p>
+<p>The examples in this lesson use the following directory structure.</p>
+<center><img src="../../figures/essential/io-dirStructure.gif" width="228" height="308" align="bottom" alt="Sample directory structure" /></p><p class="FigureCaption"><center>Sample Directory Structure</center></p></center><p>The following code snippet defines a <code>Path</code> instance and then invokes several methods to obtain information about the path:</p>
+<div class="codeblock"><pre>
+// None of these methods requires that the file corresponding
+// to the Path exists.
+// Microsoft Windows syntax
+Path path = Paths.get("C:\\home\\joe\\foo");
+
+// Solaris syntax
+Path path = Paths.get("/home/joe/foo");
+
+System.out.format("toString: %s%n", path.toString());
+System.out.format("getFileName: %s%n", path.getFileName());
+System.out.format("getName(0): %s%n", path.getName(0));
+System.out.format("getNameCount: %d%n", path.getNameCount());
+System.out.format("subpath(0,2): %s%n", path.subpath(0,2));
+System.out.format("getParent: %s%n", path.getParent());
+System.out.format("getRoot: %s%n", path.getRoot());
+</pre></div>
+<p>Here is the output for both Windows and the Solaris OS:</p>
+<table border="1" cellspacing="2" cellpadding="0" summary="This table shows the output for various Path methods for
+       Microsoft Windows and Solaris and includes comments about the methods">
+<tr>
+<th id="h1">Method Invoked</th>
+<th id="h2">Returns in the Solaris OS</th>
+<th id="h3">Returns in Microsoft Windows</th>
+<th id="h4">Comment</th>
+</tr>
+<tr>
+<td headers="h1"><code>toString</code></td>
+<td headers="h2"><code>/home/joe/foo</code></td>
+<td headers="h3"><code>C:\home\joe\foo</code></td>
+<td headers="h4">Returns the string representation of the <code>Path</code>. If the path was created using <code>Filesystems.getDefault().getPath(String)</code> or <code>Paths.get</code> (the latter is a convenience method for <code>getPath</code>), the method performs minor syntactic cleanup. For example, in a UNIX operating system, it will correct the input string <code>//home/joe/foo</code> to <code>/home/joe/foo</code>.</td>
+</tr>
+<tr>
+<td headers="h1"><code>getFileName</code></td>
+<td headers="h2"><code>foo</code></td>
+<td headers="h3"><code>foo</code></td>
+<td headers="h4">Returns the file name or the last element of the sequence of name elements.</td>
+</tr>
+<tr>
+<td headers="h1"><code>getName(0)</code></td>
+<td headers="h2"><code>home</code></td>
+<td headers="h3"><code>home</code></td>
+<td headers="h4">Returns the path element corresponding to the specified index. The 0th element is the path element closest to the root.</td>
+</tr>
+<tr>
+<td headers="h1"><code>getNameCount</code></td>
+<td headers="h2"><code>3</code></td>
+<td headers="h3"><code>3</code></td>
+<td headers="h4">Returns the number of elements in the path.</td>
+</tr>
+<tr>
+<td headers="h1"><code>subpath(0,2)</code></td>
+<td headers="h2"><code>home/joe</code></td>
+<td headers="h3"><code>home\joe</code></td>
+<td headers="h4">Returns the subsequence of the <code>Path</code> (not including a root element) as specified by the beginning and ending indexes.</td>
+</tr>
+<tr>
+<td headers="h1"><code>getParent</code></td>
+<td headers="h2"><code>/home/joe</code></td>
+<td headers="h3"><code>\home\joe</code></td>
+<td headers="h4">Returns the path of the parent directory.</td>
+</tr>
+<tr>
+<td headers="h1"><code>getRoot</code></td>
+<td headers="h2"><code>/</code></td>
+<td headers="h3"><code>C:\</code></td>
+<td headers="h4">Returns the root of the path.</td>
+</tr>
+</table>
+<p>The previous example shows the output for an absolute path. In the following example, a relative path is specified:</p>
+<div class="codeblock"><pre>
+// Solaris syntax
+Path path = Paths.get("sally/bar");
+or
+// Microsoft Windows syntax
+Path path = Paths.get("sally\\bar");
+</pre></div>
+<p>Here is the output for Windows and the Solaris OS:</p>
+<table border="1" summary="This table shows the output for various Path methods for
+the Solaris OS and Microsoft Windows, this time using a relative path.
+cellspacing=" cellpadding="0">
+<tr>
+<th id="h101">Method Invoked</th>
+<th id="h102">Returns in the Solaris OS</th>
+<th id="h103">Returns in Microsoft Windows</th>
+</tr>
+<tr>
+<td headers="h101"><code>toString</code></td>
+<td headers="h102"><code>sally/bar</code></td>
+<td headers="h103"><code>sally\bar</code></td>
+</tr>
+<tr>
+<td headers="h101"><code>getFileName</code></td>
+<td headers="h102"><code>bar</code></td>
+<td headers="h103"><code>bar</code></td>
+</tr>
+<tr>
+<td headers="h101"><code>getName(0)</code></td>
+<td headers="h102"><code>sally</code></td>
+<td headers="h103"><code>sally</code></td>
+</tr>
+<tr>
+<td headers="h101"><code>getNameCount</code></td>
+<td headers="h102"><code>2</code></td>
+<td headers="h103"><code>2</code></td>
+</tr>
+<tr>
+<td headers="h101"><code>subpath(0,1)</code></td>
+<td headers="h102"><code>sally</code></td>
+<td headers="h103"><code>sally</code></td>
+</tr>
+<tr>
+<td headers="h101"><code>getParent</code></td>
+<td headers="h102"><code>sally</code></td>
+<td headers="h103"><code>sally</code></td>
+</tr>
+<tr>
+<td headers="h101"><code>getRoot</code></td>
+<td headers="h102"><code>null</code></td>
+<td headers="h103"><code>null</code></td>
+</tr>
+</table>
+<h2><a name="normal" id="normal">Removing Redundancies From a Path</a></h2>
+<p>Many file systems use &quot;.&quot; notation to denote the current directory and &quot;..&quot; to denote the parent directory. You might have a situation where a <code>Path</code> contains redundant directory information. Perhaps a server is configured to save its log files in the &quot;<code>/dir/logs/.</code>&quot; directory, and you want to delete the trailing &quot;<code>/.</code>&quot; notation from the path.</p>
+<p>The following examples both include redundancies:</p>
+<div class="codeblock"><pre>
+/home/./joe/foo
+/home/sally/../joe/foo
+</pre></div>
+<p>The <code>normalize</code> method removes any redundant elements, which includes any &quot;<code>.</code>&quot; or &quot;<code><em>directory</em>/..</code>&quot; occurrences. Both of the preceding examples normalize to <code>/home/joe/foo</code>.</p>
+<p>It is important to note that <code>normalize</code> doesn&#39;t check at the file system when it cleans up a path. It is a purely syntactic operation. In the second example, if <code>sally</code> were a symbolic link, removing <code>sally/..</code> might result in a <code>Path</code> that no longer locates the intended file.</p>
+<p>To clean up a path while ensuring that the result locates the correct file, you can use the <code>toRealPath</code> method. This method is described in the next section, 
+<a class="TutorialLink" target="_top" href="#convert">Converting a Path</a>.</p>
+<h2><a name="convert" id="convert">Converting a Path</a></h2>
+<p>You can use three methods to convert the <code>Path</code>. If you need to convert the path to a string that can be opened from a browser, you can use 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html#toUri--"><code>toUri</code></a>. For example:</p>
+<div class="codeblock"><pre>
+Path p1 = Paths.get("/home/logfile");
+// Result is <strong>file:///home/logfile</strong>
+System.out.format("%s%n", p1.toUri());
+</pre></div>
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html#toAbsolutePath--"><code>toAbsolutePath</code></a> method converts a path to an absolute path. If the passed-in path is already absolute, it returns the same <code>Path</code> object. The <code>toAbsolutePath</code> method can be very helpful when processing user-entered file names. For example:</p>
+<div class="codeblock"><pre>
+public class FileTest {
+    public static void main(String[] args) {
+
+        if (args.length &lt; 1) {
+            System.out.println("usage: FileTest file");
+            System.exit(-1);
+        }
+
+        // Converts the input string to a Path object.
+        Path inputPath = Paths.get(args[0]);
+
+        <strong>// Converts the input Path
+        // to an absolute path.
+        // Generally, this means prepending
+        // the current working
+        // directory.  If this example
+        // were called like this:
+        //     java FileTest foo
+        // the getRoot and getParent methods
+        // would return null
+        // on the original "inputPath"
+        // instance.  Invoking getRoot and
+        // getParent on the "fullPath"
+        // instance returns expected values.
+        Path fullPath = inputPath.toAbsolutePath();</strong>
+    }
+}
+</pre></div>
+<p>The <code>toAbsolutePath</code> method converts the user input and returns a <code>Path</code> that returns useful values when queried. The file does not need to exist for this method to work.</p>
+<p>The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html#toRealPath-java.nio.file.LinkOption...-"><code>toRealPath</code></a> method returns the <em>real</em> path of an existing file. This method performs several operations in one:</p>
+<ul>
+<li>If <code>true</code> is passed to this method and the file system supports symbolic links, this method resolves any symbolic links in the path.</li>
+<li>If the <code>Path</code> is relative, it returns an absolute path.</li>
+<li>If the <code>Path</code> contains any redundant elements, it returns a path with those elements removed.</li>
+</ul>
+<p>This method throws an exception if the file does not exist or cannot be accessed. You can catch the exception when you want to handle any of these cases. For example:</p>
+<div class="codeblock"><pre>
+try {
+    Path fp = path.toRealPath();
+} catch (NoSuchFileException x) {
+    System.err.format("%s: no such" + " file or directory%n", path);
+    // Logic for case when file doesn't exist.
+} catch (IOException x) {
+    System.err.format("%s%n", x);
+    // Logic for other sort of file error.
+}
+</pre></div>
+<h2><a name="resolve" id="resolve">Joining Two Paths</a></h2>
+<p>You can combine paths by using the <code>resolve</code> method. You pass in a <em>partial path</em> , which is a path that does not include a root element, and that partial path is appended to the original path.</p>
+<p>For example, consider the following code snippet:</p>
+<div class="codeblock"><pre>
+// Solaris
+Path p1 = Paths.get("/home/joe/foo");
+// Result is <strong>/home/joe/foo/bar</strong>
+System.out.format("%s%n", p1.resolve("bar"));
+
+or
+
+// Microsoft Windows
+Path p1 = Paths.get("C:\\home\\joe\\foo");
+// Result is <strong>C:\home\joe\foo\bar</strong>
+System.out.format("%s%n", p1.resolve("bar"));
+</pre></div>
+<p>Passing an absolute path to the <code>resolve</code> method returns the passed-in path:</p>
+<div class="codeblock"><pre>
+// Result is <strong>/home/joe</strong>
+Paths.get("foo").resolve("/home/joe");
+</pre></div>
+<h2><a name="relativize" id="relativize">Creating a Path Between Two Paths</a></h2>
+<p>A common requirement when you are writing file I/O code is the capability to construct a path from one location in the file system to another location. You can meet this using the <code>relativize</code> method. This method constructs a path originating from the original path and ending at the location specified by the passed-in path. The new path is <em>relative</em> to the original path.</p>
+<p>For example, consider two relative paths defined as <code>joe</code> and <code>sally</code>:</p>
+<div class="codeblock"><pre>
+Path p1 = Paths.get("joe");
+Path p2 = Paths.get("sally");
+</pre></div>
+<p>In the absence of any other information, it is assumed that <code>joe</code> and <code>sally</code> are siblings, meaning nodes that reside at the same level in the tree structure. To navigate from <code>joe</code> to <code>sally</code>, you would expect to first navigate one level up to the parent node and then down to <code>sally</code>:</p>
+<div class="codeblock"><pre>
+// Result is <strong>../sally</strong>
+Path p1_to_p2 = p1.relativize(p2);
+// Result is <strong>../joe</strong>
+Path p2_to_p1 = p2.relativize(p1);
+</pre></div>
+<p>Consider a slightly more complicated example:</p>
+<div class="codeblock"><pre>
+Path p1 = Paths.get("home");
+Path p3 = Paths.get("home/sally/bar");
+// Result is <strong>sally/bar</strong>
+Path p1_to_p3 = p1.relativize(p3);
+// Result is <strong>../..</strong>
+Path p3_to_p1 = p3.relativize(p1);
+</pre></div>
+<p>In this example, the two paths share the same node, <code>home</code>. To navigate from <code>home</code> to <code>bar</code>, you first navigate one level down to <code>sally</code> and then one more level down to <code>bar</code>. Navigating from <code>bar</code> to <code>home</code> requires moving up two levels.</p>
+<p>A relative path cannot be constructed if only one of the paths includes a root element. If both paths include a root element, the capability to construct a relative path is system dependent.</p>
+<p>The recursive 
+<a class="SourceLink" target="_blank" href="examples/Copy.java" onclick="showCode('../../displayCode.html', 'examples/Copy.java'); return false;"><code><code>Copy</code></code></a> example uses the <code>relativize</code> and <code>resolve</code> methods.</p>
+<h2><a name="compare" id="compare">Comparing Two Paths</a></h2>
+<p>The <code>Path</code> class supports 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html#equals-java.lang.Object-"><code>equals</code></a>, enabling you to test two paths for equality. The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html#startsWith-java.nio.file.Path-"><code>startsWith</code></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html#endsWith-java.nio.file.Path-"><code>endsWith</code></a> methods enable you to test whether a path begins or ends with a particular string. These methods are easy to use. For example:</p>
+<div class="codeblock"><pre>
+Path path = ...;
+Path otherPath = ...;
+Path beginning = Paths.get("/home");
+Path ending = Paths.get("foo");
+
+if (path.equals(otherPath)) {
+    // <em>equality logic here</em>
+} else if (path.startsWith(beginning)) {
+    // <em>path begins with "/home"</em>
+} else if (path.endsWith(ending)) {
+    // <em>path ends with "foo"</em>
+}
+</pre></div>
+<p>The <code>Path</code> class implements the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html"><code>Iterable</code></a> interface. The 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html#iterator--"><code>iterator</code></a> method returns an object that enables you to iterate over the name elements in the path. The first element returned is that closest to the root in the directory tree. The following code snippet iterates over a path, printing each name element:</p>
+<div class="codeblock"><pre>
+Path path = ...;
+for (Path name: path) {
+    System.out.println(name);
+}
+</pre></div>
+<p>The <code>Path</code> class also implements the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html"><code>Comparable</code></a> interface. You can compare <code>Path</code> objects by using <code>compareTo</code> which is useful for sorting.</p>
+<p>You can also put <code>Path</code> objects into a <code>Collection</code>. See the 
+<a class="TutorialLink" target="_top" href="../../collections/index.html">Collections</a> trail for more information about this powerful feature.</p>
+<p>When you want to verify that two <code>Path</code> objects locate the same file, you can use the <code>isSameFile</code> method, as described in 
+<a class="TutorialLink" target="_top" href="check.html#same">Checking Whether Two Paths Locate the Same File</a>.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="pathClass.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="fileOps.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> The Path Class
+        <br /><b>Next page:</b> File Operations
+    </div>
+</body>
+</html> 

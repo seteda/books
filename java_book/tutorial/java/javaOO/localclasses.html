@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Local Classes (The Java&trade; Tutorials &gt;        
+            Learning the Java Language &gt; Classes and Objects)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This beginner Java tutorial describes fundamentals of programming in the Java programming language" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java objects, java classes, java inheritance, interfaces, variables, arrays, data types, operators, control flow, number, string" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Classes and Objects</a></div>
+<div class="linkAHEAD"><a href="classes.html">Classes</a></div>
+<div class="linkBHEAD"><a href="classdecl.html">Declaring Classes</a></div>
+<div class="linkBHEAD"><a href="variables.html">Declaring Member Variables</a></div>
+<div class="linkBHEAD"><a href="methods.html">Defining Methods</a></div>
+<div class="linkBHEAD"><a href="constructors.html">Providing Constructors for Your Classes</a></div>
+<div class="linkBHEAD"><a href="arguments.html">Passing Information to a Method or a Constructor</a></div>
+<div class="linkAHEAD"><a href="objects.html">Objects</a></div>
+<div class="linkBHEAD"><a href="objectcreation.html">Creating Objects</a></div>
+<div class="linkBHEAD"><a href="usingobject.html">Using Objects</a></div>
+<div class="linkAHEAD"><a href="more.html">More on Classes</a></div>
+<div class="linkBHEAD"><a href="returnvalue.html">Returning a Value from a Method</a></div>
+<div class="linkBHEAD"><a href="thiskey.html">Using the this Keyword</a></div>
+<div class="linkBHEAD"><a href="accesscontrol.html">Controlling Access to Members of a Class</a></div>
+<div class="linkBHEAD"><a href="classvars.html">Understanding Class Members</a></div>
+<div class="linkBHEAD"><a href="initial.html">Initializing Fields</a></div>
+<div class="linkBHEAD"><a href="summaryclasses.html">Summary of Creating and Using Classes and Objects</a></div>
+<div class="linkQUESTIONS"><a href="QandE/creating-questions.html">Questions and Exercises</a></div>
+<div class="linkQUESTIONS"><a href="QandE/objects-questions.html">Questions and Exercises</a></div>
+<div class="linkAHEAD"><a href="nested.html">Nested Classes</a></div>
+<div class="linkBHEAD"><a href="innerclasses.html">Inner Class Example</a></div>
+<div class="nolinkBHEAD">Local Classes</div>
+<div class="linkBHEAD"><a href="anonymousclasses.html">Anonymous Classes</a></div>
+<div class="linkBHEAD"><a href="lambdaexpressions.html">Lambda Expressions</a></div>
+<div class="linkCHEAD"><a href="methodreferences.html">Method References</a></div>
+<div class="linkBHEAD"><a href="whentouse.html">When to Use Nested Classes, Local Classes, Anonymous Classes, and Lambda Expressions </a></div>
+<div class="linkQUESTIONS"><a href="QandE/nested-questions.html">Questions and Exercises</a></div>
+<div class="linkAHEAD"><a href="enum.html">Enum Types</a></div>
+<div class="linkQUESTIONS"><a href="QandE/enum-questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Learning the Java Language
+        <br /><b>Lesson:</b> Classes and Objects
+        <br /><b>Section:</b> Nested Classes
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Learning the Java Language</a>
+                &gt;
+                <a href="index.html" target="_top">Classes and Objects</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="innerclasses.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="anonymousclasses.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Local Classes</h1></div>
+            <div id="PageContent">
+
+<p>Local classes are classes that are defined in a <em>block</em>, which
+is a group of zero or more statements between balanced braces.
+You typically find local classes defined in the body of a
+method.</p>
+
+<p>This section covers the following topics:</p>
+
+<ul>
+  <li><a href="#declaring-local-classes">Declaring Local Classes</a></li>
+  <li><a href="#accessing-members-of-an-enclosing-class">Accessing Members of an Enclosing Class</a>
+    <ul>
+      <li><a href="#shadowing-and-local-classes">Shadowing and Local Classes</a></li>
+    </ul>
+  </li>
+  <li><a href="#local-classes-are-similar-to-inner-classes">Local Classes Are Similar To Inner Classes</a></li>
+</ul>
+
+<h2><a name="declaring-local-classes">Declaring Local Classes</a></h2>
+
+<p>You can define a local class inside any block (see
+<a class="TutorialLink" target="_top" href="../../java/nutsandbolts/expressions.html">Expressions, Statements, and Blocks</a> for more information).
+For example, you can define a local class in a method body, a
+<code>for</code> loop, or an
+<code>if</code> clause.</p>
+
+<p>The following example,
+<a class="SourceLink" target="_blank" href="examples/LocalClassExample.java" onclick="showCode('../../displayCode.html', 'examples/LocalClassExample.java'); return false;"><code>LocalClassExample</code></a>, validates two phone numbers. It defines
+the local class <code>PhoneNumber</code> in the method
+<code>validatePhoneNumber</code>:</p>
+
+<pre class="codeblock">
+ 
+public class LocalClassExample {
+  
+    static String regularExpression = &quot;[^0-9]&quot;;
+  
+    public static void validatePhoneNumber(
+        String phoneNumber1, String phoneNumber2) {
+      
+        final int numberLength = 10;
+        
+        // Valid in JDK 8 and later:
+       
+        // int numberLength = 10;
+       
+        class PhoneNumber {
+            
+            String formattedPhoneNumber = null;
+
+            PhoneNumber(String phoneNumber){
+                // numberLength = 7;
+                String currentNumber = phoneNumber.replaceAll(
+                  regularExpression, &quot;&quot;);
+                if (currentNumber.length() == numberLength)
+                    formattedPhoneNumber = currentNumber;
+                else
+                    formattedPhoneNumber = null;
+            }
+
+            public String getNumber() {
+                return formattedPhoneNumber;
+            }
+            
+            // Valid in JDK 8 and later:
+
+//            public void printOriginalNumbers() {
+//                System.out.println(&quot;Original numbers are &quot; + phoneNumber1 +
+//                    &quot; and &quot; + phoneNumber2);
+//            }
+        }
+
+        PhoneNumber myNumber1 = new PhoneNumber(phoneNumber1);
+        PhoneNumber myNumber2 = new PhoneNumber(phoneNumber2);
+        
+        // Valid in JDK 8 and later:
+
+//        myNumber1.printOriginalNumbers();
+
+        if (myNumber1.getNumber() == null) 
+            System.out.println(&quot;First number is invalid&quot;);
+        else
+            System.out.println(&quot;First number is &quot; + myNumber1.getNumber());
+        if (myNumber2.getNumber() == null)
+            System.out.println(&quot;Second number is invalid&quot;);
+        else
+            System.out.println(&quot;Second number is &quot; + myNumber2.getNumber());
+
+    }
+
+    public static void main(String... args) {
+        validatePhoneNumber(&quot;123-456-7890&quot;, &quot;456-7890&quot;);
+    }
+}
+
+</pre>
+
+<p>The example validates a phone number by
+first removing all characters from the phone number except the
+digits 0 through 9. After, it checks whether the phone number
+contains exactly ten digits (the length of a phone number in
+North America). This example prints the following:</p>
+
+<pre class="codeblock">First number is 1234567890
+Second number is invalid</pre>
+
+<h2><a name="accessing-members-of-an-enclosing-class">Accessing Members of an Enclosing Class</a></h2>
+
+<p>A local class has access to the members of its enclosing
+class. In the previous example, the <code>PhoneNumber</code> constructor accesses the member <code>LocalClassExample.regularExpression</code>.</p>
+
+<p>In addition, a local class has access to local variables. However, a local class can only access local variables that are declared final. When a local class accesses a local variable or parameter of the enclosing block, it <em>captures</em> that variable or parameter. For example, the <code>PhoneNumber</code> constructor can access the local variable <code>numberLength</code> because it is declared final; <code>numberLength</code> is a <em>captured variable</em>.</p>
+
+<p>However, starting in Java SE 8, a local class can access local variables and
+parameters of the enclosing block that are final or <em>effectively final</em>. A variable or parameter whose value is never changed after it is initialized is effectively final. For example, suppose that the variable <code>numberLength</code> is not declared final, and you add the highlighted assignment statement in the <code>PhoneNumber</code> constructor:</p>
+
+<pre class="codeblock">PhoneNumber(String phoneNumber) {
+    <strong>numberLength = 7;</strong>
+    String currentNumber = phoneNumber.replaceAll(
+        regularExpression, "");
+    if (currentNumber.length() == numberLength)
+        formattedPhoneNumber = currentNumber;
+    else
+        formattedPhoneNumber = null;
+}</pre>
+
+<p>Because of this assignment
+statement, the variable <code>numberLength</code> is not effectively final anymore. As a result, the Java compiler generates an error message similar to
+"local variables referenced from an inner class must be final or effectively final" where the inner class <code>PhoneNumber</code> tries to access the <code>numberLength</code> variable:</p>
+
+<pre class="codeblock">if (currentNumber.length() == numberLength)</pre>
+
+<p>Starting in Java SE 8, if you declare the local class in a method, it can access the method's parameters. For example, you can define the following method in the <code>PhoneNumber</code> local class:</p>
+
+<pre class="codeblock">public void printOriginalNumbers() {
+    System.out.println("Original numbers are " + phoneNumber1 +
+        " and " + phoneNumber2);
+}</pre>
+
+<p>The method <code>printOriginalNumbers</code> accesses the parameters <code>phoneNumber1</code> and <code>phoneNumber2</code> of the method <code>validatePhoneNumber</code>.</p>
+
+
+<h3><a name="shadowing-and-local-classes">Shadowing and Local Classes</a></h3>
+
+<p>Declarations of a type (such as a variable) in a local class shadow declarations in the enclosing scope that have the same name. See
+<a class="TutorialLink" target="_top" href="../../java/javaOO/nested.html#shadowing">Shadowing</a> for more information.</p>
+
+<h2><a name="local-classes-are-similar-to-inner-classes">Local Classes Are Similar To Inner Classes</a></h2>
+
+<p>Local classes are similar to inner classes because they cannot define or declare any static members. Local classes in static methods, such as the class <code>PhoneNumber</code>, which is defined in the static method <code>validatePhoneNumber</code>, can only refer to static members of the enclosing class. For example, if you do not define the member variable <code>regularExpression</code> as static, then the Java compiler generates an error similar to "non-static variable <code>regularExpression</code> cannot be referenced from a static context."</p> 
+
+<p>Local classes are non-static because they have access to
+instance members of the enclosing block. Consequently, they
+cannot contain most kinds of static declarations.</p>
+
+<p>You cannot declare an interface inside a block; interfaces are
+inherently static. For example, the following code excerpt does
+not compile because the interface <code>HelloThere</code> is defined inside the
+body of the method <code>greetInEnglish</code>:</p>
+
+<pre class="codeblock">    public void greetInEnglish() {
+        interface HelloThere {
+           public void greet();
+        }
+        class EnglishHelloThere implements HelloThere {
+            public void greet() {
+                System.out.println("Hello " + name);
+            }
+        }
+        HelloThere myGreeting = new EnglishHelloThere();
+        myGreeting.greet();
+    }</pre>
+
+<p>You cannot declare static
+initializers or member interfaces in a local class. The following
+code excerpt does not compile because the method
+<code>EnglishGoodbye.sayGoodbye</code> is declared <code>static</code>. The compiler generates an error
+similar to "modifier 'static' is only allowed in constant
+variable declaration" when it encounters this method
+definition:</p>
+
+<pre class="codeblock">    public void sayGoodbyeInEnglish() {
+        class EnglishGoodbye {
+            public static void sayGoodbye() {
+                System.out.println("Bye bye");
+            }
+        }
+        EnglishGoodbye.sayGoodbye();
+    }</pre>
+
+<p>A local class can have
+static members provided that they are constant variables. (A <em>constant variable</em> is a variable of primitive type or type <code>String</code> that is declared final and initialized with a compile-time constant expression. A compile-time constant expression is typically a string or an arithmetic expression that can be evaluated at compile time. See
+<a class="TutorialLink" target="_top" href="classvars.html">Understanding Class Members</a> for more information.) The
+following code excerpt compiles because the static member
+<code>EnglishGoodbye.farewell</code> is a
+constant variable:</p>
+
+<pre class="codeblock">    public void sayGoodbyeInEnglish() {
+        class EnglishGoodbye {
+            public static final String farewell = "Bye bye";
+            public void sayGoodbye() {
+                System.out.println(farewell);
+            }
+        }
+        EnglishGoodbye myEnglishGoodbye = new EnglishGoodbye();
+        myEnglishGoodbye.sayGoodbye();
+    }</pre>
+    
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="innerclasses.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="anonymousclasses.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Inner Class Example
+        <br /><b>Next page:</b> Anonymous Classes
+    </div>
+</body>
+</html> 

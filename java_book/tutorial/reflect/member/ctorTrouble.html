@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Troubleshooting (The Java&trade; Tutorials &gt;        
+            The Reflection API &gt; Members)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This reflection Java tutorial describes using reflection for accessing and manipulating classes, fields, methods, and constructors" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java reflection" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Members</a></div>
+<div class="linkAHEAD"><a href="field.html">Fields</a></div>
+<div class="linkBHEAD"><a href="fieldTypes.html">Obtaining Field Types</a></div>
+<div class="linkBHEAD"><a href="fieldModifiers.html">Retrieving and Parsing Field Modifiers</a></div>
+<div class="linkBHEAD"><a href="fieldValues.html">Getting and Setting Field Values</a></div>
+<div class="linkBHEAD"><a href="fieldTrouble.html">Troubleshooting</a></div>
+<div class="linkAHEAD"><a href="method.html">Methods</a></div>
+<div class="linkBHEAD"><a href="methodType.html">Obtaining Method Type Information</a></div>
+<div class="linkBHEAD"><a href="methodparameterreflection.html">Obtaining Names of Method Parameters</a></div>
+<div class="linkBHEAD"><a href="methodModifiers.html">Retrieving and Parsing Method Modifiers</a></div>
+<div class="linkBHEAD"><a href="methodInvocation.html">Invoking Methods</a></div>
+<div class="linkBHEAD"><a href="methodTrouble.html">Troubleshooting</a></div>
+<div class="linkAHEAD"><a href="ctor.html">Constructors</a></div>
+<div class="linkBHEAD"><a href="ctorLocation.html">Finding Constructors</a></div>
+<div class="linkBHEAD"><a href="ctorModifiers.html">Retrieving and Parsing Constructor Modifiers</a></div>
+<div class="linkBHEAD"><a href="ctorInstance.html">Creating New Class Instances</a></div>
+<div class="nolinkBHEAD">Troubleshooting</div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> The Reflection API
+        <br /><b>Lesson:</b> Members
+        <br /><b>Section:</b> Constructors
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">The Reflection API</a>
+                &gt;
+                <a href="index.html" target="_top">Members</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="ctorInstance.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="../special/index.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Troubleshooting</h1></div>
+            <div id="PageContent">
+
+<p>The following problems are sometimes encountered by developers when trying to invoke constructors via reflection.</p>
+<h2>InstantiationException Due to Missing Zero-Argument Constructor</h2>
+<p>The 
+<a class="SourceLink" target="_blank" href="example/ConstructorTrouble.java" onclick="showCode('../../displayCode.html', 'example/ConstructorTrouble.java'); return false;"><code>ConstructorTrouble</code></a> example illustrates what happens when code attempts to create a new instance of a class using 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#newInstance--"><code>Class.newInstance()</code></a> and there is no accessible zero-argument constructor:</p>
+<div class="codeblock"><pre>
+
+public class ConstructorTrouble {
+    private ConstructorTrouble(int i) {}
+
+    public static void main(String... args){
+	try {
+	    Class&lt;?&gt; c = Class.forName(&quot;ConstructorTrouble&quot;);
+	    Object o = c.newInstance();  // InstantiationException
+
+        // production code should handle these exceptions more gracefully
+	} catch (ClassNotFoundException x) {
+	    x.printStackTrace();
+	} catch (InstantiationException x) {
+	    x.printStackTrace();
+	} catch (IllegalAccessException x) {
+	    x.printStackTrace();
+	}
+    }
+}
+</pre></div>
+<div class="codeblock"><pre>
+&#36; <em>java ConstructorTrouble</em>
+java.lang.InstantiationException: ConstructorTrouble
+        at java.lang.Class.newInstance0(Class.java:340)
+        at java.lang.Class.newInstance(Class.java:308)
+        at ConstructorTrouble.main(ConstructorTrouble.java:7)
+</pre></div>
+<div class="note"><hr /><strong>Tip:</strong>&nbsp;There a number of different reasons an 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/InstantiationException.html"><code>InstantiationException</code></a> can occur. In this case, the problem is that the presence of the constructor with an <code>int</code> argument prevents the compiler from generating the default (or zero-argument) constructor and there is no explicit zero-argument constructor in the code. Remember that 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#newInstance--"><code>Class.newInstance()</code></a> behaves very much like the <code>new</code> keyword and will fail whenever <code>new</code> would fail.
+<hr /></div>
+<h2>Class.newInstance() Throws Unexpected Exception</h2>
+<p>The 
+<a class="SourceLink" target="_blank" href="example/ConstructorTroubleToo.java" onclick="showCode('../../displayCode.html', 'example/ConstructorTroubleToo.java'); return false;"><code>ConstructorTroubleToo</code></a> example shows an unresolvable problem in 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#newInstance--"><code>Class.newInstance()</code></a>. Namely, it propagates any exception &mdash; checked or unchecked &mdash; thrown by the constructor.</p>
+<div class="codeblock"><pre>
+
+import java.lang.reflect.InvocationTargetException;
+import static java.lang.System.err;
+
+public class ConstructorTroubleToo {
+    public ConstructorTroubleToo() {
+ 	throw new RuntimeException(&quot;exception in constructor&quot;);
+    }
+
+    public static void main(String... args) {
+	try {
+	    Class&lt;?&gt; c = Class.forName(&quot;ConstructorTroubleToo&quot;);
+	    // Method propagetes any exception thrown by the constructor
+	    // (including checked exceptions).
+	    if (args.length &gt; 0 &amp;&amp; args[0].equals(&quot;class&quot;)) {
+		Object o = c.newInstance();
+	    } else {
+		Object o = c.getConstructor().newInstance();
+	    }
+
+        // production code should handle these exceptions more gracefully
+	} catch (ClassNotFoundException x) {
+	    x.printStackTrace();
+	} catch (InstantiationException x) {
+	    x.printStackTrace();
+	} catch (IllegalAccessException x) {
+	    x.printStackTrace();
+	} catch (NoSuchMethodException x) {
+	    x.printStackTrace();
+	} catch (InvocationTargetException x) {
+	    x.printStackTrace();
+	    err.format(&quot;%n%nCaught exception: %s%n&quot;, x.getCause());
+	}
+    }
+}
+</pre></div>
+<div class="codeblock"><pre>
+&#36; <em>java ConstructorTroubleToo class</em>
+Exception in thread "main" java.lang.RuntimeException: exception in constructor
+        at ConstructorTroubleToo.&lt;init&gt;(ConstructorTroubleToo.java:6)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance
+          (NativeConstructorAccessorImpl.java:39)
+        at sun.reflect.DelegatingConstructorAccessorImpl.newInstance
+          (DelegatingConstructorAccessorImpl.java:27)
+        at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+        at java.lang.Class.newInstance0(Class.java:355)
+        at java.lang.Class.newInstance(Class.java:308)
+        at ConstructorTroubleToo.main(ConstructorTroubleToo.java:15)
+</pre></div>
+<p>This situation is unique to reflection. Normally, it is impossible to write code which ignores a checked exception because it would not compile. It is possible to wrap any exception thrown by a constructor by using 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Constructor.html#newInstance-java.lang.Object...-"><code>Constructor.newInstance()</code></a> rather than 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#newInstance--"><code>Class.newInstance()</code></a>.</p>
+<div class="codeblock"><pre>
+&#36; <em>java ConstructorTroubleToo</em>
+java.lang.reflect.InvocationTargetException
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance
+          (NativeConstructorAccessorImpl.java:39)
+        at sun.reflect.DelegatingConstructorAccessorImpl.newInstance
+          (DelegatingConstructorAccessorImpl.java:27)
+        at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+        at ConstructorTroubleToo.main(ConstructorTroubleToo.java:17)
+Caused by: java.lang.RuntimeException: exception in constructor
+        at ConstructorTroubleToo.&lt;init&gt;(ConstructorTroubleToo.java:6)
+        ... 5 more
+
+
+Caught exception: java.lang.RuntimeException: exception in constructor
+</pre></div>
+<p>If an 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/InvocationTargetException.html"><code>InvocationTargetException</code></a> is thrown, the method was invoked. Diagnosis of the problem would be the same as if the constructor was called directly and threw the exception that is retrieved by 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/InvocationTargetException.html#getCause--"><code>InvocationTargetException.getCause()</code></a>. This exception does not indicate a problem with the reflection package or its usage.</p>
+<div class="note"><hr /><strong>Tip:</strong>&nbsp;It is preferable to use 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Constructor.html#newInstance-java.lang.Object...-"><code>Constructor.newInstance()</code></a> over 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#newInstance--"><code>Class.newInstance()</code></a> because the former API permits examination and handling of arbitrary exceptions thrown by constructors.
+<hr /></div>
+<h2>Problems Locating or Invoking the Correct Constructor</h2>
+<p>The 
+<a class="SourceLink" target="_blank" href="example/ConstructorTroubleAgain.java" onclick="showCode('../../displayCode.html', 'example/ConstructorTroubleAgain.java'); return false;"><code>ConstructorTroubleAgain</code></a> class illustrates various ways in which incorrect code can fail to locate or invoke the expected constructor.</p>
+<div class="codeblock"><pre>
+
+import java.lang.reflect.InvocationTargetException;
+import static java.lang.System.out;
+
+public class ConstructorTroubleAgain {
+    public ConstructorTroubleAgain() {}
+
+    public ConstructorTroubleAgain(Integer i) {}
+
+    public ConstructorTroubleAgain(Object o) {
+	out.format(&quot;Constructor passed Object%n&quot;);
+    }
+
+    public ConstructorTroubleAgain(String s) {
+	out.format(&quot;Constructor passed String%n&quot;);
+    }
+
+    public static void main(String... args){
+	String argType = (args.length == 0 ? &quot;&quot; : args[0]);
+	try {
+	    Class&lt;?&gt; c = Class.forName(&quot;ConstructorTroubleAgain&quot;);
+	    if (&quot;&quot;.equals(argType)) {
+		// IllegalArgumentException: wrong number of arguments
+		Object o = c.getConstructor().newInstance(&quot;foo&quot;);
+	    } else if (&quot;int&quot;.equals(argType)) {
+		// NoSuchMethodException - looking for int, have Integer
+		Object o = c.getConstructor(int.class);
+	    } else if (&quot;Object&quot;.equals(argType)) {
+		// newInstance() does not perform method resolution
+		Object o = c.getConstructor(Object.class).newInstance(&quot;foo&quot;);
+	    } else {
+		assert false;
+	    }
+
+        // production code should handle these exceptions more gracefully
+	} catch (ClassNotFoundException x) {
+	    x.printStackTrace();
+	} catch (NoSuchMethodException x) {
+	    x.printStackTrace();
+	} catch (InvocationTargetException x) {
+	    x.printStackTrace();
+	} catch (InstantiationException x) {
+	    x.printStackTrace();
+	} catch (IllegalAccessException x) {
+	    x.printStackTrace();
+	}
+    }
+}
+</pre></div>
+<div class="codeblock"><pre>
+&#36; <em>java ConstructorTroubleAgain</em>
+Exception in thread "main" java.lang.IllegalArgumentException: wrong number of
+  arguments
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance
+          (NativeConstructorAccessorImpl.java:39)
+        at sun.reflect.DelegatingConstructorAccessorImpl.newInstance
+          (DelegatingConstructorAccessorImpl.java:27)
+        at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+        at ConstructorTroubleAgain.main(ConstructorTroubleAgain.java:23)
+</pre></div>
+<p>An 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html"><code>IllegalArgumentException</code></a> is thrown because the zero-argument constructor was requested and an attempt was made to pass an argument. The same exception would be thrown if the constructor was passed an argument of the wrong type.</p>
+<div class="codeblock"><pre>
+&#36; <em>java ConstructorTroubleAgain int</em>
+java.lang.NoSuchMethodException: ConstructorTroubleAgain.&lt;init&gt;(int)
+        at java.lang.Class.getConstructor0(Class.java:2706)
+        at java.lang.Class.getConstructor(Class.java:1657)
+        at ConstructorTroubleAgain.main(ConstructorTroubleAgain.java:26)
+</pre></div>
+<p>This exception may occur if the developer mistakenly believes that reflection will autobox or unbox types. Boxing (conversion of a primitive to a reference type) occurs only during compilation. There is no opportunity in reflection for this operation to occur, so the specific type must be used when locating a constructor.</p>
+<div class="codeblock"><pre>
+&#36; <em>java ConstructorTroubleAgain Object</em>
+Constructor passed Object
+</pre></div>
+<p>Here, it might be expected that the constructor taking a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html"><code>String</code></a> argument would be invoked since <code>newInstance()</code> was invoked with the more specific <code>String</code> type. However it is too late! The constructor which was found is already the constructor with an 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html"><code>Object</code></a> argument. <code>newInstance()</code> makes no attempt to do method resolution; it simply operates on the existing constructor object.</p>
+<div class="note"><hr /><strong>Tip:</strong>&nbsp;An important difference between <code>new</code> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Constructor.html#newInstance-java.lang.Object...-"><code>Constructor.newInstance()</code></a> is that <code>new</code> performs method argument type checking, boxing, and method resolution. None of these occur in reflection, where explicit choices must be made.
+<hr /></div>
+<h2>IllegalAccessException When Attempting to Invoke an Inaccessible Constructor</h2>
+<p>An 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalAccessException.html"><code>IllegalAccessException</code></a> may be thrown if an attempt is made to invoke a private or otherwise inaccessible constructor. The 
+<a class="SourceLink" target="_blank" href="example/ConstructorTroubleAccess.java" onclick="showCode('../../displayCode.html', 'example/ConstructorTroubleAccess.java'); return false;"><code>ConstructorTroubleAccess</code></a> example illustrates the resulting stack trace.</p>
+<div class="codeblock"><pre>
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+class Deny {
+    private Deny() {
+	System.out.format(&quot;Deny constructor%n&quot;);
+    }
+}
+
+public class ConstructorTroubleAccess {
+    public static void main(String... args) {
+	try {
+	    Constructor c = Deny.class.getDeclaredConstructor();
+//  	    c.setAccessible(true);   // solution
+	    c.newInstance();
+
+        // production code should handle these exceptions more gracefully
+	} catch (InvocationTargetException x) {
+	    x.printStackTrace();
+	} catch (NoSuchMethodException x) {
+	    x.printStackTrace();
+	} catch (InstantiationException x) {
+	    x.printStackTrace();
+	} catch (IllegalAccessException x) {
+	    x.printStackTrace();
+	}
+    }
+}
+</pre></div>
+<div class="codeblock"><pre>
+&#36; <em>java ConstructorTroubleAccess</em>
+java.lang.IllegalAccessException: Class ConstructorTroubleAccess can not access
+  a member of class Deny with modifiers "private"
+        at sun.reflect.Reflection.ensureMemberAccess(Reflection.java:65)
+        at java.lang.reflect.Constructor.newInstance(Constructor.java:505)
+        at ConstructorTroubleAccess.main(ConstructorTroubleAccess.java:15)
+</pre></div>
+<div class="note"><hr /><strong>Tip:</strong>&nbsp;An access restriction exists which prevents reflective invocation of constructors which normally would not be accessible via direct invocation. (This includes, but is not limited to, private constructors in a separate class and public constructors in a separate private class.) However, <code>Constructor</code> is declared to extend 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/AccessibleObject.html"><code>AccessibleObject</code></a> which provides the ability to suppress this check via 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/AccessibleObject.html#setAccessible-boolean-"><code>AccessibleObject.setAccessible()</code></a>.
+<hr /></div>
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="ctorInstance.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="../special/index.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Creating New Class Instances
+        <br /><b>Next page:</b> Arrays and Enumerated Types
+    </div>
+</body>
+</html> 

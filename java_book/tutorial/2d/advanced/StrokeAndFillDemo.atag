@@ -1,0 +1,5 @@
+<APPLET CODE="StrokeAndFill.class"
+        codebase="examples/"
+        archive="strokeandfill.jar"
+	WIDTH=450 HEIGHT=250>
+</APPLET>

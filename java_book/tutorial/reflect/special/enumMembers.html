@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Examining Enums (The Java&trade; Tutorials &gt;        
+            The Reflection API &gt; Arrays and Enumerated Types)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This reflection Java tutorial describes using reflection for accessing and manipulating classes, fields, methods, and constructors" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java reflection" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Arrays and Enumerated Types</a></div>
+<div class="linkAHEAD"><a href="array.html">Arrays</a></div>
+<div class="linkBHEAD"><a href="arrayComponents.html">Identifying Array Types</a></div>
+<div class="linkBHEAD"><a href="arrayInstance.html">Creating New Arrays</a></div>
+<div class="linkBHEAD"><a href="arraySetGet.html">Getting and Setting Arrays and Their Components</a></div>
+<div class="linkBHEAD"><a href="arrayTrouble.html">Troubleshooting</a></div>
+<div class="linkAHEAD"><a href="enum.html">Enumerated Types</a></div>
+<div class="nolinkBHEAD">Examining Enums</div>
+<div class="linkBHEAD"><a href="enumSetGet.html">Getting and Setting Fields with Enum Types</a></div>
+<div class="linkBHEAD"><a href="enumTrouble.html">Troubleshooting</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> The Reflection API
+        <br /><b>Lesson:</b> Arrays and Enumerated Types
+        <br /><b>Section:</b> Enumerated Types
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">The Reflection API</a>
+                &gt;
+                <a href="index.html" target="_top">Arrays and Enumerated Types</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="enum.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="enumSetGet.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Examining Enums</h1></div>
+            <div id="PageContent">
+
+<p>Reflection provides three enum-specific APIs:</p>
+<dl>
+<dt>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#isEnum--"><code>Class.isEnum()</code></a></dt>
+<dd>Indicates whether this class represents an enum type</dd>
+<dt>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getEnumConstants--"><code>Class.getEnumConstants()</code></a></dt>
+<dd>Retrieves the list of enum constants defined by the enum in the order they&#39;re declared</dd>
+<dt>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Field.html#isEnumConstant--"><code>java.lang.reflect.Field.isEnumConstant()</code></a></dt>
+<dd>Indicates whether this field represents an element of an enumerated type</dd>
+</dl>
+<p>Sometimes it is necessary to dynamically retrieve the list of enum constants; in non-reflective code this is accomplished by invoking the implicitly declared static method 
+<a class="OutsideLink" target="_blank" href="https://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html"><code>values()</code></a> on the enum. If an instance of an enum type is not available the only way to get a list of the possible values is to invoke 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getEnumConstants--"><code>Class.getEnumConstants()</code></a> since it is impossible to instantiate an enum type.</p>
+<p>Given a fully qualified name, the 
+<a class="SourceLink" target="_blank" href="example/EnumConstants.java" onclick="showCode('../../displayCode.html', 'example/EnumConstants.java'); return false;"><code><code>EnumConstants</code></code></a> example shows how to retrieve an ordered list of constants in an enum using 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getEnumConstants--"><code>Class.getEnumConstants()</code></a>.</p>
+<div class="codeblock"><pre>
+
+import java.util.Arrays;
+import static java.lang.System.out;
+
+enum Eon { HADEAN, ARCHAEAN, PROTEROZOIC, PHANEROZOIC }
+
+public class EnumConstants {
+    public static void main(String... args) {
+	try {
+	    Class&lt;?&gt; c = (args.length == 0 ? Eon.class : Class.forName(args[0]));
+	    out.format(&quot;Enum name:  %s%nEnum constants:  %s%n&quot;,
+		       c.getName(), Arrays.asList(c.getEnumConstants()));
+	    if (c == Eon.class)
+		out.format(&quot;  Eon.values():  %s%n&quot;,
+			   Arrays.asList(Eon.values()));
+
+        // production code should handle this exception more gracefully
+	} catch (ClassNotFoundException x) {
+	    x.printStackTrace();
+	}
+    }
+}
+</pre></div>
+<p>Samples of the output follows. User input is in italics.</p>
+<div class="codeblock"><pre>
+&#36; <em>java EnumConstants java.lang.annotation.RetentionPolicy</em>
+Enum name:  java.lang.annotation.RetentionPolicy
+Enum constants:  [SOURCE, CLASS, RUNTIME]
+</pre></div>
+<div class="codeblock"><pre>
+&#36; <em>java EnumConstants java.util.concurrent.TimeUnit</em>
+Enum name:  java.util.concurrent.TimeUnit
+Enum constants:  [NANOSECONDS, MICROSECONDS, 
+                  MILLISECONDS, SECONDS, 
+                  MINUTES, HOURS, DAYS]
+</pre></div>
+<p>This example also shows that value returned by 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getEnumConstants--"><code>Class.getEnumConstants()</code></a> is identical to the value returned by invoking <code>values()</code> on an enum type.</p>
+<div class="codeblock"><pre>
+&#36; <em>java EnumConstants</em>
+Enum name:  Eon
+Enum constants:  [HADEAN, ARCHAEAN, 
+                  PROTEROZOIC, PHANEROZOIC]
+Eon.values():  [HADEAN, ARCHAEAN, 
+                PROTEROZOIC, PHANEROZOIC]
+</pre></div>
+<p>Since enums are classes, other information may be obtained using the same Reflection APIs described in the <a href="../member/field.html">Fields</a>, <a href="../member/method.html">Methods</a>, and <a href="../member/ctor.html">Constructors</a> sections of this trail. The 
+<a class="SourceLink" target="_blank" href="example/EnumSpy.java" onclick="showCode('../../displayCode.html', 'example/EnumSpy.java'); return false;"><code><code>EnumSpy</code></code></a> code illustrates how to use these APIs to get additional information about the enum&#39;s declaration. The example uses 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#isEnum--"><code>Class.isEnum()</code></a> to restrict the set of classes examined. It also uses 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Field.html#isEnumConstant--"><code>Field.isEnumConstant()</code></a> to distinguish enum constants from other fields in the enum declaration (not all fields are enum constants).</p>
+<div class="codeblock"><pre>
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Member;
+import java.util.List;
+import java.util.ArrayList;
+import static java.lang.System.out;
+
+public class EnumSpy {
+    private static final String fmt = &quot;  %11s:  %s %s%n&quot;;
+
+    public static void main(String... args) {
+	try {
+	    Class&lt;?&gt; c = Class.forName(args[0]);
+	    if (!c.isEnum()) {
+		out.format(&quot;%s is not an enum type%n&quot;, c);
+		return;
+	    }
+	    out.format(&quot;Class:  %s%n&quot;, c);
+
+	    Field[] flds = c.getDeclaredFields();
+	    List&lt;Field&gt; cst = new ArrayList&lt;Field&gt;();  // enum constants
+	    List&lt;Field&gt; mbr = new ArrayList&lt;Field&gt;();  // member fields
+	    for (Field f : flds) {
+		if (f.isEnumConstant())
+		    cst.add(f);
+		else
+		    mbr.add(f);
+	    }
+	    if (!cst.isEmpty())
+		print(cst, &quot;Constant&quot;);
+	    if (!mbr.isEmpty())
+		print(mbr, &quot;Field&quot;);
+
+	    Constructor[] ctors = c.getDeclaredConstructors();
+	    for (Constructor ctor : ctors) {
+		out.format(fmt, &quot;Constructor&quot;, ctor.toGenericString(),
+			   synthetic(ctor));
+	    }
+
+	    Method[] mths = c.getDeclaredMethods();
+	    for (Method m : mths) {
+		out.format(fmt, &quot;Method&quot;, m.toGenericString(),
+			   synthetic(m));
+	    }
+
+        // production code should handle this exception more gracefully
+	} catch (ClassNotFoundException x) {
+	    x.printStackTrace();
+	}
+    }
+
+    private static void print(List&lt;Field&gt; lst, String s) {
+	for (Field f : lst) {
+ 	    out.format(fmt, s, f.toGenericString(), synthetic(f));
+	}
+    }
+
+    private static String synthetic(Member m) {
+	return (m.isSynthetic() ? &quot;[ synthetic ]&quot; : &quot;&quot;);
+    }
+}
+</pre></div>
+<div class="codeblock"><pre>
+&#36; <em>java EnumSpy java.lang.annotation.RetentionPolicy</em>
+Class:  class java.lang.annotation.RetentionPolicy
+     Constant:  public static final java.lang.annotation.RetentionPolicy
+                  java.lang.annotation.RetentionPolicy.SOURCE 
+     Constant:  public static final java.lang.annotation.RetentionPolicy
+                  java.lang.annotation.RetentionPolicy.CLASS 
+     Constant:  public static final java.lang.annotation.RetentionPolicy 
+                  java.lang.annotation.RetentionPolicy.RUNTIME 
+        Field:  private static final java.lang.annotation.RetentionPolicy[] 
+                  java.lang.annotation.RetentionPolicy. [ synthetic ]
+  Constructor:  private java.lang.annotation.RetentionPolicy() 
+       Method:  public static java.lang.annotation.RetentionPolicy[]
+                  java.lang.annotation.RetentionPolicy.values() 
+       Method:  public static java.lang.annotation.RetentionPolicy
+                  java.lang.annotation.RetentionPolicy.valueOf(java.lang.String) 
+</pre></div>
+<p>The output shows that declaration of 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/RetentionPolicy.html"><code>java.lang.annotation.RetentionPolicy</code></a> only contains the three enum constants. The enum constants are exposed as <code>public static final</code> fields. The field, constructor, and methods are compiler generated. The <code>&#36;VALUES</code> field is related to the implementation of the <code>values()</code> method.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;For various reasons, including support for evolution of the enum type, the declaration order of enum constants is important. 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getFields--"><code>Class.getFields()</code></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredFields--"><code>Class.getDeclaredFields()</code></a> do not make any guarantee that the order of the returned values matches the order in the declaring source code. If ordering is required by an application, use 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getEnumConstants--"><code>Class.getEnumConstants()</code></a>.
+<hr /></div>
+<p>The output for 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html"><code>java.util.concurrent.TimeUnit</code></a> shows that much more complicated enums are possible. This class includes several methods as well as additional fields declared <code>static final</code> which are not enum constants.</p>
+<div class="codeblock"><pre>
+$ java EnumSpy java.util.concurrent.TimeUnit
+Class:  class java.util.concurrent.TimeUnit
+     Constant:  public static final java.util.concurrent.TimeUnit
+                  java.util.concurrent.TimeUnit.NANOSECONDS
+     Constant:  public static final java.util.concurrent.TimeUnit
+                  java.util.concurrent.TimeUnit.MICROSECONDS
+     Constant:  public static final java.util.concurrent.TimeUnit
+                  java.util.concurrent.TimeUnit.MILLISECONDS
+     Constant:  public static final java.util.concurrent.TimeUnit
+                  java.util.concurrent.TimeUnit.SECONDS
+     Constant:  public static final java.util.concurrent.TimeUnit
+                  java.util.concurrent.TimeUnit.MINUTES
+     Constant:  public static final java.util.concurrent.TimeUnit
+                  java.util.concurrent.TimeUnit.HOURS
+     Constant:  public static final java.util.concurrent.TimeUnit
+                  java.util.concurrent.TimeUnit.DAYS
+        Field:  static final long java.util.concurrent.TimeUnit.C0
+        Field:  static final long java.util.concurrent.TimeUnit.C1
+        Field:  static final long java.util.concurrent.TimeUnit.C2
+        Field:  static final long java.util.concurrent.TimeUnit.C3
+        Field:  static final long java.util.concurrent.TimeUnit.C4
+        Field:  static final long java.util.concurrent.TimeUnit.C5
+        Field:  static final long java.util.concurrent.TimeUnit.C6
+        Field:  static final long java.util.concurrent.TimeUnit.MAX
+        Field:  private static final java.util.concurrent.TimeUnit[] 
+                  java.util.concurrent.TimeUnit. [ synthetic ]
+  Constructor:  private java.util.concurrent.TimeUnit()
+  Constructor:  java.util.concurrent.TimeUnit
+                  (java.lang.String,int,java.util.concurrent.TimeUnit)
+                  [ synthetic ]
+       Method:  public static java.util.concurrent.TimeUnit
+                  java.util.concurrent.TimeUnit.valueOf(java.lang.String)
+       Method:  public static java.util.concurrent.TimeUnit[] 
+                  java.util.concurrent.TimeUnit.values()
+       Method:  public void java.util.concurrent.TimeUnit.sleep(long) 
+                  throws java.lang.InterruptedException
+       Method:  public long java.util.concurrent.TimeUnit.toNanos(long)
+       Method:  public long java.util.concurrent.TimeUnit.convert
+                  (long,java.util.concurrent.TimeUnit)
+       Method:  abstract int java.util.concurrent.TimeUnit.excessNanos
+                  (long,long)
+       Method:  public void java.util.concurrent.TimeUnit.timedJoin
+                  (java.lang.Thread,long) throws java.lang.InterruptedException
+       Method:  public void java.util.concurrent.TimeUnit.timedWait
+                  (java.lang.Object,long) throws java.lang.InterruptedException
+       Method:  public long java.util.concurrent.TimeUnit.toDays(long)
+       Method:  public long java.util.concurrent.TimeUnit.toHours(long)
+       Method:  public long java.util.concurrent.TimeUnit.toMicros(long)
+       Method:  public long java.util.concurrent.TimeUnit.toMillis(long)
+       Method:  public long java.util.concurrent.TimeUnit.toMinutes(long)
+       Method:  public long java.util.concurrent.TimeUnit.toSeconds(long)
+       Method:  static long java.util.concurrent.TimeUnit.x(long,long,long)
+</pre></div>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="enum.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="enumSetGet.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Enumerated Types
+        <br /><b>Next page:</b> Getting and Setting Fields with Enum Types
+    </div>
+</body>
+</html> 

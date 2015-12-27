@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Troubleshooting (The Java&trade; Tutorials &gt;        
+            The Reflection API &gt; Members)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This reflection Java tutorial describes using reflection for accessing and manipulating classes, fields, methods, and constructors" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java reflection" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Members</a></div>
+<div class="linkAHEAD"><a href="field.html">Fields</a></div>
+<div class="linkBHEAD"><a href="fieldTypes.html">Obtaining Field Types</a></div>
+<div class="linkBHEAD"><a href="fieldModifiers.html">Retrieving and Parsing Field Modifiers</a></div>
+<div class="linkBHEAD"><a href="fieldValues.html">Getting and Setting Field Values</a></div>
+<div class="linkBHEAD"><a href="fieldTrouble.html">Troubleshooting</a></div>
+<div class="linkAHEAD"><a href="method.html">Methods</a></div>
+<div class="linkBHEAD"><a href="methodType.html">Obtaining Method Type Information</a></div>
+<div class="linkBHEAD"><a href="methodparameterreflection.html">Obtaining Names of Method Parameters</a></div>
+<div class="linkBHEAD"><a href="methodModifiers.html">Retrieving and Parsing Method Modifiers</a></div>
+<div class="linkBHEAD"><a href="methodInvocation.html">Invoking Methods</a></div>
+<div class="nolinkBHEAD">Troubleshooting</div>
+<div class="linkAHEAD"><a href="ctor.html">Constructors</a></div>
+<div class="linkBHEAD"><a href="ctorLocation.html">Finding Constructors</a></div>
+<div class="linkBHEAD"><a href="ctorModifiers.html">Retrieving and Parsing Constructor Modifiers</a></div>
+<div class="linkBHEAD"><a href="ctorInstance.html">Creating New Class Instances</a></div>
+<div class="linkBHEAD"><a href="ctorTrouble.html">Troubleshooting</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> The Reflection API
+        <br /><b>Lesson:</b> Members
+        <br /><b>Section:</b> Methods
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">The Reflection API</a>
+                &gt;
+                <a href="index.html" target="_top">Members</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="methodInvocation.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="ctor.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>Troubleshooting</h1></div>
+            <div id="PageContent">
+
+<p>This section contains examples of problems developers might encounter when using reflection to locate, invoke, or get information about methods.</p>
+<h2>NoSuchMethodException Due to Type Erasure</h2>
+<p>The 
+<a class="SourceLink" target="_blank" href="example/MethodTrouble.java" onclick="showCode('../../displayCode.html', 'example/MethodTrouble.java'); return false;"><code><code>MethodTrouble</code></code></a> example illustrates what happens when type erasure is not taken into consideration by code which searches for a particular method in a class.</p>
+<div class="codeblock"><pre>
+
+import java.lang.reflect.Method;
+
+public class MethodTrouble&lt;T&gt;  {
+    public void lookup(T t) {}
+    public void find(Integer i) {}
+
+    public static void main(String... args) {
+	try {
+	    String mName = args[0];
+	    Class cArg = Class.forName(args[1]);
+	    Class&lt;?&gt; c = (new MethodTrouble&lt;Integer&gt;()).getClass();
+	    Method m = c.getMethod(mName, cArg);
+	    System.out.format(&quot;Found:%n  %s%n&quot;, m.toGenericString());
+
+        // production code should handle these exceptions more gracefully
+	} catch (NoSuchMethodException x) {
+	    x.printStackTrace();
+	} catch (ClassNotFoundException x) {
+	    x.printStackTrace();
+	}
+    }
+}
+</pre></div>
+<div class="codeblock"><pre>
+&#36; <em>java MethodTrouble lookup java.lang.Integer</em>
+java.lang.NoSuchMethodException: MethodTrouble.lookup(java.lang.Integer)
+        at java.lang.Class.getMethod(Class.java:1605)
+        at MethodTrouble.main(MethodTrouble.java:12)
+</pre></div>
+<div class="codeblock"><pre>
+&#36; <em>java MethodTrouble lookup java.lang.Object</em>
+Found:
+  public void MethodTrouble.lookup(T)
+</pre></div>
+<p>When a method is declared with a generic parameter type, the compiler will replace the generic type with its upper bound, in this case, the upper bound of <code>T</code> is 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html"><code>Object</code></a>. Thus, when the code searches for <code>lookup(Integer)</code>, no method is found, despite the fact that the instance of <code>MethodTrouble</code> was created as follows:</p>
+<div class="codeblock"><pre>
+Class&lt;?&gt; c = (new MethodTrouble&lt;Integer&gt;()).getClass();
+</pre></div>
+<p>Searching for <code>lookup(Object)</code> succeeds as expected.</p>
+<div class="codeblock"><pre>
+&#36; <em>java MethodTrouble find java.lang.Integer</em>
+Found:
+  public void MethodTrouble.find(java.lang.Integer)
+&#36; <em>java MethodTrouble find java.lang.Object</em>
+java.lang.NoSuchMethodException: MethodTrouble.find(java.lang.Object)
+        at java.lang.Class.getMethod(Class.java:1605)
+        at MethodTrouble.main(MethodTrouble.java:12)
+</pre></div>
+<p>In this case, <code>find()</code> has no generic parameters, so the parameter types searched for by 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getMethod-java.lang.String-java.lang.Class...-"><code>getMethod()</code></a> must match exactly.</p>
+<div class="note"><hr /><strong>Tip:</strong>&nbsp;Always pass the upper bound of the parameterized type when searching for a method.
+<hr /></div>
+<h2>IllegalAccessException when Invoking a Method</h2>
+<p>An 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalAccessException.html"><code>IllegalAccessException</code></a> is thrown if an attempt is made to invoke a <code>private</code> or otherwise inaccessible method.</p>
+<p>The 
+<a class="SourceLink" target="_blank" href="example/MethodTroubleAgain.java" onclick="showCode('../../displayCode.html', 'example/MethodTroubleAgain.java'); return false;"><code><code>MethodTroubleAgain</code></code></a> example shows a typical stack trace which results from trying to invoke a private method in an another class.</p>
+<div class="codeblock"><pre>
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+class AnotherClass {
+    private void m() {}
+}
+
+public class MethodTroubleAgain {
+    public static void main(String... args) {
+	AnotherClass ac = new AnotherClass();
+	try {
+	    Class&lt;?&gt; c = ac.getClass();
+ 	    Method m = c.getDeclaredMethod(&quot;m&quot;);
+//  	    m.setAccessible(true);      // solution
+ 	    Object o = m.invoke(ac);    // IllegalAccessException
+
+        // production code should handle these exceptions more gracefully
+	} catch (NoSuchMethodException x) {
+	    x.printStackTrace();
+	} catch (InvocationTargetException x) {
+	    x.printStackTrace();
+	} catch (IllegalAccessException x) {
+	    x.printStackTrace();
+	}
+    }
+}
+</pre></div>
+<p>The stack trace for the exception thrown follows.</p>
+<div class="codeblock"><pre>
+&#36; <em>java MethodTroubleAgain</em>
+java.lang.IllegalAccessException: Class MethodTroubleAgain can not access a
+  member of class AnotherClass with modifiers "private"
+        at sun.reflect.Reflection.ensureMemberAccess(Reflection.java:65)
+        at java.lang.reflect.Method.invoke(Method.java:588)
+        at MethodTroubleAgain.main(MethodTroubleAgain.java:15)
+</pre></div>
+<div class="note"><hr /><strong>Tip:</strong>&nbsp;An access restriction exists which prevents reflective invocation of methods which normally would not be accessible via direct invocation. (This includes---but is not limited to---<code>private</code> methods in a separate class and public methods in a separate private class.) However, <code>Method</code> is declared to extend 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/AccessibleObject.html"><code>AccessibleObject</code></a> which provides the ability to suppress this check via 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/AccessibleObject.html#setAccessible-boolean-"><code>AccessibleObject.setAccessible()</code></a>. If it succeeds, then subsequent invocations of this method object will not fail due to this problem.
+<hr /></div>
+<h2>IllegalArgumentException from Method.invoke()</h2>
+<p>
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Method.html#invoke-java.lang.Object-java.lang.Object...-"><code>Method.invoke()</code></a> has been retrofitted to be a variable-arity method. This is an enormous convenience, however it can lead to unexpected behavior. The 
+<a class="SourceLink" target="_blank" href="example/MethodTroubleToo.java" onclick="showCode('../../displayCode.html', 'example/MethodTroubleToo.java'); return false;"><code><code>MethodTroubleToo</code></code></a> example shows various ways in which 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Method.html#invoke-java.lang.Object-java.lang.Object...-"><code>Method.invoke()</code></a> can produce confusing results.</p>
+<div class="codeblock"><pre>
+
+import java.lang.reflect.Method;
+
+public class MethodTroubleToo {
+    public void ping() { System.out.format(&quot;PONG!%n&quot;); }
+
+    public static void main(String... args) {
+	try {
+	    MethodTroubleToo mtt = new MethodTroubleToo();
+	    Method m = MethodTroubleToo.class.getMethod(&quot;ping&quot;);
+
+ 	    switch(Integer.parseInt(args[0])) {
+	    case 0:
+  		m.invoke(mtt);                 // works
+		break;
+	    case 1:
+ 		m.invoke(mtt, null);           // works (expect compiler warning)
+		break;
+	    case 2:
+		Object arg2 = null;
+		m.invoke(mtt, arg2);           // IllegalArgumentException
+		break;
+	    case 3:
+		m.invoke(mtt, new Object[0]);  // works
+		break;
+	    case 4:
+		Object arg4 = new Object[0];
+		m.invoke(mtt, arg4);           // IllegalArgumentException
+		break;
+	    default:
+		System.out.format(&quot;Test not found%n&quot;);
+	    }
+
+        // production code should handle these exceptions more gracefully
+	} catch (Exception x) {
+	    x.printStackTrace();
+	}
+    }
+}
+</pre></div>
+<div class="codeblock"><pre>
+&#36; <em>java MethodTroubleToo 0</em>
+PONG!
+</pre></div>
+<p>Since all of the parameters of 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Method.html#invoke-java.lang.Object-java.lang.Object...-"><code>Method.invoke()</code></a> are optional except for the first, they can be omitted when the method to be invoked has no parameters.</p>
+<div class="codeblock"><pre>
+&#36; <em>java MethodTroubleToo 1</em>
+PONG!
+</pre></div>
+<p>The code in this case generates this compiler warning because <code>null</code> is ambiguous.</p>
+<div class="codeblock"><pre>
+&#36; <em>javac MethodTroubleToo.java</em>
+MethodTroubleToo.java:16: warning: non-varargs call of varargs method with
+  inexact argument type for last parameter;
+ 		m.invoke(mtt, null);           // works (expect compiler warning)
+ 		              ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+1 warning
+</pre></div>
+<p>It is not possible to determine whether <code>null</code> represents an empty array of arguments or a first argument of <code>null</code>.</p>
+<div class="codeblock"><pre>
+&#36; <em>java MethodTroubleToo 2</em>
+java.lang.IllegalArgumentException: wrong number of arguments
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke
+          (NativeMethodAccessorImpl.java:39)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke
+          (DelegatingMethodAccessorImpl.java:25)
+        at java.lang.reflect.Method.invoke(Method.java:597)
+        at MethodTroubleToo.main(MethodTroubleToo.java:21)
+</pre></div>
+<p>This fails despite the fact that the argument is <code>null</code>, because the type is a 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html"><code>Object</code></a> and <code>ping()</code> expects no arguments at all.</p>
+<div class="codeblock"><pre>
+&#36; <em>java MethodTroubleToo 3</em>
+PONG!
+</pre></div>
+<p>This works because <code>new Object[0]</code> creates an empty array, and to a varargs method, this is equivalent to not passing any of the optional arguments.</p>
+<div class="codeblock"><pre>
+&#36; <em>java MethodTroubleToo 4</em>
+java.lang.IllegalArgumentException: wrong number of arguments
+        at sun.reflect.NativeMethodAccessorImpl.invoke0
+          (Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke
+          (NativeMethodAccessorImpl.java:39)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke
+          (DelegatingMethodAccessorImpl.java:25)
+        at java.lang.reflect.Method.invoke(Method.java:597)
+        at MethodTroubleToo.main(MethodTroubleToo.java:28)
+</pre></div>
+<p>Unlike the previous example, if the empty array is stored in an 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html"><code>Object</code></a>, then it is treated as an 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html"><code>Object</code></a>. This fails for the same reason that case 2 fails, <code>ping()</code> does not expect an argument.</p>
+<div class="note"><hr /><strong>Tip:</strong>&nbsp;When a method <code>foo(Object... o)</code> is declared the compiler will put all of the arguments passed to <code>foo()</code> in an array of type 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html"><code>Object</code></a>. The implementation of <code>foo()</code> is the same as if it were declared <code>foo(Object[] o)</code>. Understanding this may help avoid the types of problems illustrated above.
+<hr /></div>
+<h2>InvocationTargetException when Invoked Method Fails</h2>
+<p>An 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/InvocationTargetException.html"><code>InvocationTargetException</code></a> wraps all exceptions (checked and unchecked) produced when a method object is invoked. The 
+<a class="SourceLink" target="_blank" href="example/MethodTroubleReturns.java" onclick="showCode('../../displayCode.html', 'example/MethodTroubleReturns.java'); return false;"><code><code>MethodTroubleReturns</code></code></a> example shows how to retrieve the original exception thrown by the invoked method.</p>
+<div class="codeblock"><pre>
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+public class MethodTroubleReturns {
+    private void drinkMe(int liters) {
+	if (liters &lt; 0)
+	    throw new IllegalArgumentException(&quot;I can't drink a negative amount of liquid&quot;);
+    }
+
+    public static void main(String... args) {
+	try {
+	    MethodTroubleReturns mtr  = new MethodTroubleReturns();
+ 	    Class&lt;?&gt; c = mtr.getClass();
+   	    Method m = c.getDeclaredMethod(&quot;drinkMe&quot;, int.class);
+	    m.invoke(mtr, -1);
+
+        // production code should handle these exceptions more gracefully
+	} catch (InvocationTargetException x) {
+	    Throwable cause = x.getCause();
+	    System.err.format(&quot;drinkMe() failed: %s%n&quot;, cause.getMessage());
+	} catch (Exception x) {
+	    x.printStackTrace();
+	}
+    }
+}
+</pre></div>
+<div class="codeblock"><pre>
+&#36; <em>java MethodTroubleReturns</em>
+drinkMe() failed: I can't drink a negative amount of liquid
+</pre></div>
+<div class="note"><hr /><strong>Tip:</strong>&nbsp;If an 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/InvocationTargetException.html"><code>InvocationTargetException</code></a> is thrown, the method was invoked. Diagnosis of the problem would be the same as if the method was called directly and threw the exception that is retrieved by 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/InvocationTargetException.html#getCause--"><code>getCause()</code></a>. This exception does not indicate a problem with the reflection package or its usage.
+<hr /></div>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="methodInvocation.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="ctor.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Invoking Methods
+        <br /><b>Next page:</b> Constructors
+    </div>
+</body>
+</html> 

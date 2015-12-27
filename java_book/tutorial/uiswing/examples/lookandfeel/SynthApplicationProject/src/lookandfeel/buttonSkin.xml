@@ -1,0 +1,29 @@
+<synth>
+  <!-- Style that all regions will use -->
+  <style id="backingStyle">
+    <!-- Make all the regions opaque-->
+    <opaque value="TRUE"/>
+    <font name="Dialog" size="12"/>
+    <state>
+      <!-- Provide default colors -->
+      <color value="#D8D987" type="BACKGROUND"/>
+      <color value="RED" type="FOREGROUND"/>
+    </state>
+  </style>
+  <bind style="backingStyle" type="region" key=".*"/>
+  <style id="buttonStyle">
+    <!-- Shift the text one pixel when pressed -->
+    <property key="Button.textShiftOffset" type="integer" value="1"/>
+    <insets top="15" left="20" right="20" bottom="15"/>
+    <state>
+      <imagePainter method="buttonBackground" path="images/button.png"
+                    sourceInsets="10 10 10 10"/>
+    </state>
+    <state value="PRESSED">
+      <imagePainter method="buttonBackground" path="images/button2.png"
+                    sourceInsets="10 10 10 10"/>
+    </state>
+  </style>
+  <!-- Bind buttonStyle to all JButtons -->
+  <bind style="buttonStyle" type="region" key="button"/> 
+</synth>

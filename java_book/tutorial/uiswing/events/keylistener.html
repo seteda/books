@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>How to Write a Key Listener (The Java&trade; Tutorials &gt;        
+            Creating a GUI With JFC/Swing &gt; Writing Event Listeners)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Swing Java Tutorial describes developing graphical user interfaces (GUIs) for applications and applets using Swing components" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java swing, java ui, java user interface, swing components, swing events, swing layout  " />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Writing Event Listeners</a></div>
+<div class="linkAHEAD"><a href="intro.html">Introduction to Event Listeners</a></div>
+<div class="linkAHEAD"><a href="generalrules.html">General Information about Writing Event Listeners</a></div>
+<div class="linkAHEAD"><a href="eventsandcomponents.html">Listeners Supported by Swing Components</a></div>
+<div class="linkAHEAD"><a href="handling.html">Implementing Listeners for Commonly Handled Events</a></div>
+<div class="linkBHEAD"><a href="actionlistener.html">How to Write an Action Listener</a></div>
+<div class="linkBHEAD"><a href="caretlistener.html">How to Write a Caret Listener</a></div>
+<div class="linkBHEAD"><a href="changelistener.html">How to Write a Change Listener</a></div>
+<div class="linkBHEAD"><a href="componentlistener.html">How to Write a Component Listener</a></div>
+<div class="linkBHEAD"><a href="containerlistener.html">How to Write a Container Listener</a></div>
+<div class="linkBHEAD"><a href="documentlistener.html">How to Write a Document Listener</a></div>
+<div class="linkBHEAD"><a href="focuslistener.html">How to Write a Focus Listener</a></div>
+<div class="linkBHEAD"><a href="internalframelistener.html">How to Write an Internal Frame Listener</a></div>
+<div class="linkBHEAD"><a href="itemlistener.html">How to Write an Item Listener</a></div>
+<div class="nolinkBHEAD">How to Write a Key Listener</div>
+<div class="linkBHEAD"><a href="listdatalistener.html">How to Write a List Data Listener</a></div>
+<div class="linkBHEAD"><a href="listselectionlistener.html">How to Write a List Selection Listener</a></div>
+<div class="linkBHEAD"><a href="mouselistener.html">How to Write a Mouse Listener</a></div>
+<div class="linkBHEAD"><a href="mousemotionlistener.html">How to Write a Mouse-Motion Listener</a></div>
+<div class="linkBHEAD"><a href="mousewheellistener.html">How to Write a Mouse-Wheel Listener</a></div>
+<div class="linkBHEAD"><a href="propertychangelistener.html">How to Write a Property Change Listener</a></div>
+<div class="linkBHEAD"><a href="tablemodellistener.html">How to Write a Table Model Listener</a></div>
+<div class="linkBHEAD"><a href="treeexpansionlistener.html">How to Write a Tree Expansion Listener</a></div>
+<div class="linkBHEAD"><a href="treemodellistener.html">How to Write a Tree Model Listener</a></div>
+<div class="linkBHEAD"><a href="treeselectionlistener.html">How to Write a Tree Selection Listener</a></div>
+<div class="linkBHEAD"><a href="treewillexpandlistener.html">How to Write a Tree-Will-Expand Listener</a></div>
+<div class="linkBHEAD"><a href="undoableeditlistener.html">How to Write an Undoable Edit Listener</a></div>
+<div class="linkBHEAD"><a href="windowlistener.html">How to Write Window Listeners</a></div>
+<div class="linkAHEAD"><a href="api.html">Listener API Table</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Event-Handling Problems</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Creating a GUI With JFC/Swing
+        <br /><b>Lesson:</b> Writing Event Listeners
+        <br /><b>Section:</b> Implementing Listeners for Commonly Handled Events
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Creating a GUI With JFC/Swing</a>
+                &gt;
+                <a href="index.html" target="_top">Writing Event Listeners</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="itemlistener.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="listdatalistener.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>How to Write a Key Listener</h1></div>
+            <div id="PageContent">
+
+<p>Key events indicate when the user is typing at the keyboard. Specifically, key events are fired by the component with the keyboard focus when the user presses or releases keyboard keys. For detailed information about focus, see 
+<a class="TutorialLink" target="_top" href="../misc/focus.html">How to Use the Focus Subsystem</a>.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>To define special reactions to particular keys, use key bindings instead of a key listener. For further information, see 
+<a class="TutorialLink" target="_top" href="../misc/keybinding.html">How to Use Key Bindings</a>.</p>
+<hr /></div>
+<p>Notifications are sent about two basic kinds of key events:</p>
+<ul>
+<li>The typing of a Unicode character</li>
+<li>The pressing or releasing of a key on the keyboard</li>
+</ul>
+<p>The first kind of event is called a <em>key-typed</em> event. The second kind is either a <em>key-pressed</em> or <em>key-released</em> event.</p>
+<p>In general, you react to only key-typed events unless you need to know when the user presses keys that do not correspond to characters. For example, to know when the user types a Unicode character ??? whether by pressing one key such as &#39;a&#39; or by pressing several keys in sequence ??? you handle key-typed events. On the other hand, to know when the user presses the F1 key, or whether the user pressed the &#39;3&#39; key on the number pad, you handle key-pressed events.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>To fire keyboard events, a component <em>must</em> have the keyboard focus.</p>
+<hr /></div>
+<p>To make a component get the keyboard focus, follow these steps:</p>
+<ol>
+<li>Make sure the component&#39;s <code>isFocusable</code> method returns <code>true</code>. This state allows the component to receive the focus. For example, you can enable keyboard focus for a <code>JLabel</code> component by calling the <code>setFocusable(true)</code> method on the label.</li>
+<li>Make sure the component requests the focus when appropriate. For custom components, implement a mouse listener that calls the <code>requestFocusInWindow</code> method when the component is clicked.</li>
+</ol>
+<div class="note"><hr /><strong>Version note:</strong>&nbsp;<p>The focus subsystem consumes focus traversal keys, such as Tab and Shift Tab. If you need to prevent the focus traversal keys from being consumed, you can call</p>
+<div class="codeblock"><pre>
+component.setFocusTraversalKeysEnabled(false)
+</pre></div>
+<p>on the component that is firing the key events. Your program must then handle focus traversal on its own. Alternatively, you can use the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/KeyEventDispatcher.html"><code>KeyEventDispatcher</code></a> class to pre-listen to all key events. The 
+<a class="TutorialLink" target="_top" href="../misc/focus.html">focus page</a> has detailed information on the focus subsystem.</p>
+<hr /></div>
+<p>You can obtain detailed information about a particular key-pressed event. For example, you can query a key-pressed event to determine if it was fired from an action key. Examples of action keys include Copy, Paste, Page Up, Undo, and the arrow and function keys. You can also query a key-pressed or key-released event to determine the location of the key that fired the event. Most key events are fired from the standard keyboard, but the events for some keys, such as Shift, have information on whether the user pressed the Shift key on the left or the right side of the keyboard. Likewise, the number &#39;2&#39; can be typed from either the standard keyboard or from the number pad.</p>
+<p>For key-typed events you can obtain the key character value as well as any modifiers used.</p>
+<div class="note"><hr /><strong>Note:</strong>&nbsp;<p>You should not rely on the key character value returned from <code>getKeyChar</code> unless it is involved in a key-typed event.</p>
+<hr /></div>
+<p>The following example demonstrates key events. It consists of a text field that you can type into, followed by a text area that displays a message every time the text field fires a key event. A button at the bottom of the window lets you clear both the text field and text area.</p>
+<center><img src="../../figures/uiswing/events/KeyEventDemo.png" width="383" height="251" align="bottom" alt="KeyEventDemo.html" /></center><div class="note"><hr /><strong>Try this:</strong>&nbsp;<ol>
+<li>Click the Launch button to run KeyEventDemo using 
+<a class="OutsideLink" target="_blank" href="http://www.oracle.com/technetwork/java/javase/javawebstart/index.html">Java&trade; Web Start</a> (<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">download JDK 7 or later</a>). Alternatively, to compile and run the example yourself, consult the <a href="../examples/events/index.html#KeyEventDemo">example index</a>.<a href="https://docs.oracle.com/javase/tutorialJWS/samples/uiswing/KeyEventDemoProject/KeyEventDemo.jnlp"><img src="../../images/jws-launch-button.png" width="88" align="bottom" alt="Launches the KeyEventDemo application" /></a><br /></li>
+<li>Type a lowercase &#39;a&#39; by pressing and releasing the A key on the keyboard.<br />
+The text field fires three events: a key-pressed event, a key-typed event, and a key-released event. Note that the key-typed event doesn&#39;t have key code information, and key-pressed and key-released events don&#39;t have key character information. None of the events so far are from modifier or action keys and the key location, reported on the key-pressed and key-released events, is most likely standard.</li>
+<li>Press the Clear button.<br />
+You might want to do this after each of the following steps.</li>
+<li>Press and release the Shift key.<br />
+The text field fires two events: a key-pressed and a key-released. The text field doesn&#39;t fire a key-typed event because Shift, by itself, doesn&#39;t correspond to any character.</li>
+<li>Type an uppercase &#39;A&#39; by pressing the Shift and A keys.<br />
+You&#39;ll see the following events, although perhaps not in this order: key-pressed (Shift), key-pressed (A), key typed (&#39;A&#39;), key-released (A), key-released (Shift). Note that Shift is listed as the modifier key for the key-typed and key-pressed events.</li>
+<li>Type an uppercase &#39;A&#39; by pressing and releasing the Caps Lock key, and then pressing the A key.<br />
+You should see the following events: key-pressed (Caps Lock), key-pressed (A), key typed (&#39;A&#39;), key-released (A). Note that Caps Lock is <em>not</em> listed as a modifier key.</li>
+<li>Press the Tab key. No Tab key-pressed or key-released events are received by the key event listener. This is because the focus subsystem consumes focus traversal keys, such as Tab and Shift Tab. Press Tab twice more to return the focus to the text area.</li>
+<li>Press a function key, such as F3. You&#39;ll see that the function key is an action key.</li>
+<li>Press the left Shift key, followed by the right Shift key. The key-pressed and key-released events indicate which Shift key was typed.</li>
+<li>Press the Num Lock key if your keyboard has a number pad.<br />
+As for Caps Lock, there is a key-pressed event, but no key-released event.</li>
+<li>Press the &#39;2&#39; key on the number pad. You see the key-pressed, key-typed, and key-released events for the number &#39;2&#39;.</li>
+<li>Press the &#39;2&#39; key on the standard keyboard. Again, you see the three event messages. The key-typed events for both number 2 keys are identical. But the key-pressed and key-released events indicate different key codes and different key locations.</li>
+<li>Press the Num Lock key again. A key-released event is fired.</li>
+</ol>
+<hr /></div>
+<p>You can find the example&#39;s code in 
+<a class="SourceLink" target="_blank" href="../examples/events/KeyEventDemoProject/src/events/KeyEventDemo.java" onclick="showCode('../../displayCode.html', '../examples/events/KeyEventDemoProject/src/events/KeyEventDemo.java'); return false;"><code>KeyEventDemo.java</code></a>. Here is the demo&#39;s key event handling code:</p>
+<div class="codeblock"><pre>
+public class KeyEventDemo ...  implements KeyListener ... {
+    <em>...//where initialization occurs:</em>
+        typingArea = new JTextField(20);
+        typingArea.addKeyListener(this);
+
+        //Uncomment this if you wish to turn off focus
+        //traversal.  The focus subsystem consumes
+        //focus traversal keys, such as Tab and Shift Tab.
+        //If you uncomment the following line of code, this
+        //disables focus traversal and the Tab events 
+        //become available to the key event listener.
+        //typingArea.setFocusTraversalKeysEnabled(false);
+    ...
+    /** Handle the key typed event from the text field. */
+    public void keyTyped(KeyEvent e) {
+        displayInfo(e, "KEY TYPED: ");
+    }
+
+    /** Handle the key-pressed event from the text field. */
+    public void keyPressed(KeyEvent e) {
+        displayInfo(e, "KEY PRESSED: ");
+    }
+
+    /** Handle the key-released event from the text field. */
+    public void keyReleased(KeyEvent e) {
+        displayInfo(e, "KEY RELEASED: ");
+    }
+    ...
+    private void displayInfo(KeyEvent e, String keyStatus){
+        
+        //You should only rely on the key char if the event
+        //is a key typed event.
+        int id = e.getID();
+        String keyString;
+        if (id == KeyEvent.KEY_TYPED) {
+            char c = e.getKeyChar();
+            keyString = "key character = '" + c + "'";
+        } else {
+            int keyCode = e.getKeyCode();
+            keyString = "key code = " + keyCode
+                    + " ("
+                    + KeyEvent.getKeyText(keyCode)
+                    + ")";
+        }
+        
+        int modifiersEx = e.getModifiersEx();
+        String modString = "extended modifiers = " + modifiersEx;
+        String tmpString = KeyEvent.getModifiersExText(modifiersEx);
+        if (tmpString.length() > 0) {
+            modString += " (" + tmpString + ")";
+        } else {
+            modString += " (no extended modifiers)";
+        }
+        
+        String actionString = "action key? ";
+        if (e.isActionKey()) {
+            actionString += "YES";
+        } else {
+            actionString += "NO";
+        }
+        
+        String locationString = "key location: ";
+        int location = e.getKeyLocation();
+        if (location == KeyEvent.KEY_LOCATION_STANDARD) {
+            locationString += "standard";
+        } else if (location == KeyEvent.KEY_LOCATION_LEFT) {
+            locationString += "left";
+        } else if (location == KeyEvent.KEY_LOCATION_RIGHT) {
+            locationString += "right";
+        } else if (location == KeyEvent.KEY_LOCATION_NUMPAD) {
+            locationString += "numpad";
+        } else { // (location == KeyEvent.KEY_LOCATION_UNKNOWN)
+            locationString += "unknown";
+        }
+        
+        <em>...//Display information about the KeyEvent...</em>
+    }
+}
+</pre></div>
+<h2><a name="api" id="api">The Key Listener API</a></h2>
+<p style="text-align: center"><a name="keylistener" id="keylistener">The KeyListener Interface</a></p>
+<p><em>The corresponding adapter class is 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyAdapter.html"><code>KeyAdapter</code></a>.</em></p>
+<table border="1" summary="The KeyListener Interface">
+<tr>
+<th id="h1" align="left">Method</th>
+<th id="h2" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyListener.html#keyTyped-java.awt.event.KeyEvent-">keyTyped(KeyEvent)</a></td>
+<td headers="h2">Called just after the user types a Unicode character into the listened-to component.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyListener.html#keyPressed-java.awt.event.keyPressed-">keyPressed(KeyEvent)</a></td>
+<td headers="h2">Called just after the user presses a key while the listened-to component has the focus.</td>
+</tr>
+<tr>
+<td headers="h1">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyListener.html#keyReleased-java.awt.event.KeyEvent-">keyReleased(KeyEvent)</a></td>
+<td headers="h2">Called just after the user releases a key while the listened-to component has the focus.</td>
+</tr>
+</table>
+<p style="text-align: center"><a name="keyevent" id="keyevent">The KeyEvent Class</a></p>
+<p>The <code>KeyEvent</code> class inherits many useful methods from the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html"><code>InputEvent</code></a> class, such as <code>getModifiersEx</code>, and a couple of useful methods from the 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/ComponentEvent.html"><code>ComponentEvent</code></a> and 
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/AWTEvent.html"><code>AWTEvent</code></a> classes. See the <a href="mouselistener.html#inputevent">InputEvent Class</a> table in the <a href="mouselistener.html">mouse listener</a> page for a complete list.</p>
+<table border="1" summary="The KeyEvent Class">
+<tr>
+<th id="h101" align="left">Method</th>
+<th id="h102" align="left">Purpose</th>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyEvent.html#getKeyChar--">int getKeyChar()</a></td>
+<td headers="h102">Obtains the Unicode character associated with this event. Only rely on this value for key-typed events.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyEvent.html#getKeyCode--">int getKeyCode()</a></td>
+<td headers="h102">Obtains the key code associated with this event. The key code identifies the particular key on the keyboard that the user pressed or released. The <code>KeyEvent</code> class defines many key code constants for commonly seen keys. For example, <code>VK_A</code> specifies the key labeled <b>A</b>, and <code>VK_ESCAPE</code> specifies the Escape key.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyEvent.html#getKeyText-int-">String getKeyText(int)</a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyEvent.html#getKeyModifiersText-int-">String getKeyModifiersText(int)</a></td>
+<td headers="h102">Return text descriptions of the event&#39;s key code and modifier keys, respectively.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html#getModifiersEx--">int getModifiersEx() </a><br />
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/InputEvent.html#getModifiersExText-int-">String getModifiersExText(int modifiers)</a></td>
+<td headers="h102">Return the extended modifiers mask for this event. There are methods inherited from the <code>InputEvent</code> class. Extended modifiers represent the state of all modal keys. The <code>getModifiersExText</code> method returns a string describing the extended modifier keys and mouse buttons. Since the <code>getModifiersEx</code> and <code>getModifiersExText</code> methods provide more information about key events, they are preferred over the <code>getKeyText</code> or <code>getKeyModifiersText</code> methods.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyEvent.html#isActionKey--">boolean isActionKey()</a></td>
+<td headers="h102">Returns true if the key firing the event is an action key. Examples of action keys include Cut, Copy, Paste, Page Up, Caps Lock, the arrow and function keys. This information is valid only for key-pressed and key-released events.</td>
+</tr>
+<tr>
+<td headers="h101">
+<a class="APILink" target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyEvent.html#getKeyLocation--">int getKeyLocation()</a></td>
+<td headers="h102">Returns the location of the key that fired this event. This provides a way to distinguish keys that occur more than once on a keyboard, such as the two shift keys, for example. The possible values are <code>KEY_LOCATION_STANDARD</code>, <code>KEY_LOCATION_LEFT</code>, <code>KEY_LOCATION_RIGHT</code>, <code>KEY_LOCATION_NUMPAD</code>, or <code>KEY_LOCATION_UNKNOWN</code>. This method always returns <code>KEY_LOCATION_UNKNOWN</code> for key-typed events.</td>
+</tr>
+</table>
+<h2><a name="eg" id="eg">Examples that Use Key Listeners</a></h2>
+<p>The following table lists the examples that use key listeners.</p>
+<table summary="Examples that Use KeyListener">
+<tr>
+<th id="h201" align="left">Example</th>
+<th id="h202" align="left">Where Described</th>
+<th id="h203" align="left">Notes</th>
+</tr>
+<tr valign="top">
+<td headers="h201"><a href="../examples/events/index.html#KeyEventDemo"><code>KeyEventDemo</code></a></td>
+<td headers="h202">This section</td>
+<td headers="h203">Reports all key events that occur on a text field to demonstrate the circumstances under which key events are fired.</td>
+</tr>
+</table>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="itemlistener.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="listdatalistener.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> How to Write an Item Listener
+        <br /><b>Next page:</b> How to Write a List Data Listener
+    </div>
+</body>
+</html> 

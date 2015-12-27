@@ -1,0 +1,50 @@
+<project default="compile-all">
+
+    <target name="compile-all">
+        <echo message="Using ${JAVAC} as the Java compiler"/>
+        <ant target="compile" antfile="build.xml" dir="JDBCTutorial"/>
+    </target>
+
+    <target name="compile-abort">
+        <ant target="compile" antfile="build.xml" dir="JDBCTutorial"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="dist"/>
+        <delete dir="zipfiles"/>
+        <ant target="clean" antfile="build.xml" dir="JDBCTutorial"/>
+    </target>
+
+    <target name="jar">
+        <ant target="jar" antfile="build.xml" dir="JDBCTutorial"/>
+    </target>
+
+    <target name="zip">
+        <subant genericantfile="${ant.file}" target="do-zip">
+            <dirset dir="." includes="JDBCTutorial"/>
+            <property name="zip.dir" location="zipfiles"/>
+            <property name="top" location="."/>
+        </subant>
+        <zip zipfile="zipfiles/JDBCTutorial.zip">
+          <fileset dir=".">
+            <include name="JDBCTutorial/"/>
+            <exclude name="*/build/"/>
+            <exclude name="*/dist/"/>
+            <exclude name="*/nbproject/private/"/>
+          </fileset>
+        </zip>
+    </target>
+
+    <target name="do-zip">
+        <pathconvert dirsep="-" property="name">
+            <path location="."/>
+            <mapper type="glob" from="${top}${file.separator}*" to="*"/>
+        </pathconvert>
+        <mkdir dir="${zip.dir}"/>
+        <zip zipfile="${zip.dir}/${name}.zip">
+            <zipfileset dir="." prefix="${name}"/>
+        </zip>
+    </target>
+
+</project>
+

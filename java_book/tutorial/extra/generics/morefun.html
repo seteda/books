@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>More Fun with Wildcards (The Java&trade; Tutorials &gt;        
+            Bonus &gt; Generics)
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="This Java tutorial describes generics, full screen mode API, and Java certification related resources" />
+     <meta name="keywords" content="java programming, learn java, java sample code, java generics, full screen mode API, certification" />
+        
+<style type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    </head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+        <!-- header -->
+    <div class="header-container">
+        <div class="bookwrapper  clearfix">       
+            <div id="brandProdName">
+                <div id="logocover"></div>
+                <div id="productName" >Documentation</div>
+            </div> 
+            <br class="clearfloat" />
+        </div>
+    </div>
+    
+    <div id="TopBar">
+     <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_left">
+                            The Java&trade; Tutorials
+                        </div>
+                        <div id="TopBar_right"> 
+                            <a target="_blank"
+				href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html">Download Ebooks</a><br />
+                            <a target="_blank"
+                                href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+                            <br />
+                            <a href="../../search.html" target="_blank">Search Java Tutorials</a>
+                            <br />           
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="index.html">Generics</a></div>
+<div class="linkAHEAD"><a href="intro.html">Introduction</a></div>
+<div class="linkAHEAD"><a href="simple.html">Defining Simple Generics</a></div>
+<div class="linkAHEAD"><a href="subtype.html">Generics and Subtyping</a></div>
+<div class="linkAHEAD"><a href="wildcards.html">Wildcards</a></div>
+<div class="linkAHEAD"><a href="methods.html">Generic Methods</a></div>
+<div class="linkAHEAD"><a href="legacy.html">Interoperating with Legacy Code</a></div>
+<div class="linkAHEAD"><a href="fineprint.html">The Fine Print</a></div>
+<div class="linkAHEAD"><a href="literals.html">Class Literals as Runtime-Type Tokens</a></div>
+<div class="nolinkAHEAD">More Fun with Wildcards</div>
+<div class="linkAHEAD"><a href="convert.html">Converting Legacy Code to Use Generics</a></div>
+<div class="linkAHEAD"><a href="acknowledgements.html">Acknowledgements</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+    <div class="PrintHeaders">
+        <b>Trail:</b> Bonus
+        <br /><b>Lesson:</b> Generics
+    </div>
+            <div id="BreadCrumbs">
+                <a href="../../index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="../index.html" target="_top">Bonus</a>
+                &gt;
+                <a href="index.html" target="_top">Generics</a>
+            </div>
+            <div class="NavBit">
+                <a target="_top" href="literals.html">&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target="_top" href="../TOC.html">Trail</a>&nbsp;&bull;&nbsp;<a target="_top" href="convert.html">Next&nbsp;&raquo;</a>
+            </div>
+            <div id="PageTitle"><h1>More Fun with Wildcards</h1></div>
+            <div id="PageContent">
+
+<!--More Fun with Wildcards-->
+<!-- lower bounds-->
+<p>In this section, we&#39;ll consider some of the more advanced uses of wildcards. We&#39;ve seen several examples where bounded wildcards were useful when reading from a data structure. Now consider the inverse, a write-only data structure. The interface <code>Sink</code> is a simple example of this sort.</p>
+<div class="codeblock"><pre>
+<b>interface</b> Sink&lt;T&gt; {
+    flush(T t);
+}
+</pre></div>
+<p>We can imagine using it as demonstrated by the code below. The method <code>writeAll()</code> is designed to flush all elements of the collection <code>coll</code> to the sink <code>snk</code>, and return the last element flushed.</p>
+<div class="codeblock"><pre>
+<b>public static</b> &lt;T&gt; T writeAll(Collection&lt;T&gt; coll, Sink&lt;T&gt; snk) {
+    T last;
+    <b>for</b> (T t : coll) {
+        last = t;
+        snk.flush(last);
+    }
+    <b>return</b> last;
+}
+...
+Sink&lt;Object&gt; s;
+Collection&lt;String&gt; cs;
+String str = writeAll(cs, s); // <i>Illegal call.</i>
+</pre></div>
+<p>As written, the call to <code>writeAll()</code> is illegal, as no valid type argument can be inferred; neither <code>String</code> nor <code>Object</code> are appropriate types for <code>T</code>, because the <code>Collection</code> element and the <code>Sink</code> element must be of the same type.</p>
+<p>We can fix this error by modifying the signature of <code>writeAll()</code> as shown below, using a wildcard.</p>
+<div class="codeblock"><pre>
+<b>public static</b> &lt;T&gt; T writeAll(Collection&lt;? <b>extends</b> T&gt;, Sink&lt;T&gt;) {...}
+...
+// <i>Call is OK, but wrong return type.</i> 
+String str = writeAll(cs, s);
+</pre></div>
+<p>The call is now legal, but the assignment is erroneous, since the return type inferred is <code>Object</code> because <code>T</code> matches the element type of <code>s</code>, which is <code>Object</code>.</p>
+<p>The solution is to use a form of bounded wildcard we haven&#39;t seen yet: wildcards with a <i>lower bound</i>. The syntax <code>? <b>super</b> T</code> denotes an unknown type that is a supertype of <code>T</code> (or <code>T</code> itself; remember that the supertype relation is reflexive). It is the dual of the bounded wildcards we&#39;ve been using, where we use <code>? <b>extends</b> T</code> to denote an unknown type that is a subtype of <code>T</code>.</p>
+<div class="codeblock"><pre>
+<b>public static</b> &lt;T&gt; T writeAll(Collection&lt;T&gt; coll, Sink&lt;? <b>super</b> T&gt; snk) {
+    ...
+}
+String str = writeAll(cs, s); // <i>Yes!</i> 
+</pre></div>
+<p>Using this syntax, the call is legal, and the inferred type is <code>String</code>, as desired.</p>
+<p>Now let&#39;s turn to a more realistic example. A <code>java.util.TreeSet&lt;E&gt;</code> represents a tree of elements of type <code>E</code> that are ordered. One way to construct a <code>TreeSet</code> is to pass a <code>Comparator</code> object to the constructor. That comparator will be used to sort the elements of the <code>TreeSet</code> according to a desired ordering.</p>
+<div class="codeblock"><pre>
+TreeSet(Comparator&lt;E&gt; c) 
+</pre></div>
+<p>The <code>Comparator</code> interface is essentially:</p>
+<div class="codeblock"><pre>
+<b>interface</b> Comparator&lt;T&gt; {
+    <b>int</b> compare(T fst, T snd);
+}
+</pre></div>
+<p>Suppose we want to create a <code>TreeSet&lt;String&gt;</code> and pass in a suitable comparator, We need to pass it a <code>Comparator</code> that can compare <code>String</code>s. This can be done by a <code>Comparator&lt;String&gt;</code>, but a <code>Comparator&lt;Object&gt;</code> will do just as well. However, we won&#39;t be able to invoke the constructor given above on a <code>Comparator&lt;Object&gt;</code>. We can use a lower bounded wildcard to get the flexibility we want:</p>
+<div class="codeblock"><pre>
+TreeSet(Comparator&lt;? <b>super</b> E&gt; c) 
+</pre></div>
+<p>This code allows any applicable comparator to be used.</p>
+<p>As a final example of using lower bounded wildcards, lets look at the method <code>Collections.max()</code>, which returns the maximal element in a collection passed to it as an argument. Now, in order for <code>max()</code> to work, all elements of the collection being passed in must implement <code>Comparable</code>. Furthermore, they must all be comparable to <i>each other</i>.</p>
+<p>A first attempt at generifying this method signature yields:</p>
+<div class="codeblock"><pre>
+<b>public static</b> &lt;T <b>extends</b> Comparable&lt;T&gt;&gt; T max(Collection&lt;T&gt; coll)
+</pre></div>
+<p>That is, the method takes a collection of some type <code>T</code> that is comparable to itself, and returns an element of that type. However, this code turns out to be too restrictive. To see why, consider a type that is comparable to arbitrary objects:</p>
+<div class="codeblock"><pre>
+<b>class</b> Foo <b>implements</b> Comparable&lt;Object&gt; {
+    ...
+}
+Collection&lt;Foo&gt; cf = ... ;
+Collections.max(cf); // <i>Should work.</i>
+</pre></div>
+<p>Every element of <code>cf</code> is comparable to every other element in <code>cf</code>, since every such element is a <code>Foo</code>, which is comparable to any object, and in particular to another <code>Foo</code>. However, using the signature above, we find that the call is rejected. The inferred type must be <code>Foo</code>, but <code>Foo</code> does not implement <code>Comparable&lt;Foo&gt;</code>.</p>
+<p>It isn&#39;t necessary that <code>T</code> be comparable to <b>exactly</b> itself. All that&#39;s required is that <code>T</code> be comparable to one of its supertypes. This give us:</p>
+<div class="codeblock"><pre>
+<b>public static</b> &lt;T <b>extends</b> Comparable&lt;? <b>super</b> T&gt;&gt; 
+        T max(Collection&lt;T&gt; coll)
+</pre></div>
+<p>Note that the actual signature of <code>Collections.max()</code> is more involved. We return to it in the next section, 
+<a class="TutorialLink" target="_top" href="convert.html">Converting Legacy Code to Use Generics</a>. This reasoning applies to almost any usage of <code>Comparable</code> that is intended to work for arbitrary types: You always want to use <code>Comparable&lt;? <b>super</b> T&gt;</code>.</p>
+<p>In general, if you have an API that only uses a type parameter <code>T</code> as an argument, its uses should take advantage of lower bounded wildcards (<code>? <b>super</b> T</code>). Conversely, if the API only returns <code>T</code>, you&#39;ll give your clients more flexibility by using upper bounded wildcards (<code>? <b>extends</b> T</code>).</p>
+<h2>Wildcard Capture</h2>
+<p>It should be pretty clear by now that given:</p>
+<div class="codeblock"><pre>
+Set&lt;?&gt; unknownSet = new HashSet&lt;String&gt;();
+...
+/* Add an element  t to a Set s. */ 
+<b>public static</b> &lt;T&gt; <b>void</b> addToSet(Set&lt;T&gt; s, T t) {
+    ...
+}
+</pre></div>
+<p>The call below is illegal.</p>
+<div class="codeblock"><pre>
+addToSet(unknownSet, "abc"); // <i>Illegal.</i>
+</pre></div>
+<p>It makes no difference that the actual set being passed is a set of strings; what matters is that the expression being passed as an argument is a set of an unknown type, which cannot be guaranteed to be a set of strings, or of any type in particular.</p>
+<p>Now, consider the following code:</p>
+<div class="codeblock"><pre>
+<b>class</b> Collections {
+    ...
+    &lt;T&gt; <b>public static</b> Set&lt;T&gt; unmodifiableSet(Set&lt;T&gt; set) {
+        ...
+    }
+}
+...
+Set&lt;?&gt; s = Collections.unmodifiableSet(unknownSet); // <i>This works! Why?</i>
+</pre></div>
+<p>It seems this should not be allowed; yet, looking at this specific call, it is perfectly safe to permit it. After all, <code>unmodifiableSet()</code> does work for any kind of <code>Set</code>, regardless of its element type.</p>
+<p>Because this situation arises relatively frequently, there is a special rule that allows such code under very specific circumstances in which the code can be proven to be safe. This rule, known as <i>wildcard capture</i>, allows the compiler to infer the unknown type of a wildcard as a type argument to a generic method.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="literals.html">&laquo; Previous</a>
+            &bull;
+            <a target="_top" href="../TOC.html">Trail</a>
+            &bull;
+            <a target="_top" href="convert.html">Next &raquo;</a>
+        </div>
+    </div>
+    
+<hr class="clearfloat"/>
+
+<div id="Footer">
+<table width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+<tr>
+    <td>
+         <p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under &quot;The Java Tutorials&quot; banner 
+         is subject to these <a href="../../information/cpyr.html">legal notices</a>.
+         </p>
+         <p class="footertext">Copyright &copy; 1995, 2015 Oracle and/or its affiliates. All rights reserved.</p>
+    </td>
+    
+    <td align="right">
+        <p class="footertext">Problems with the examples? Try <a target="_blank"
+        href="../../information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+        </p>
+        <p class="footertext">
+        Complaints? Compliments? Suggestions? <a target="_blank"
+            href="https://docs.oracle.com/javase/feedback.html">Give
+        us your feedback</a>.       
+        </p>
+    </td>
+    
+</tr>
+</table>
+  
+</div>
+    
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Class Literals as Runtime-Type Tokens
+        <br /><b>Next page:</b> Converting Legacy Code to Use Generics
+    </div>
+</body>
+</html> 

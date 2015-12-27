@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+X-COMMENT: Main-Class will be added automatically by build
+Codebase: *.oracle.com
+Main-Class: LineBreakSample
+Permissions: sandbox
+Application-Name: Line Break Sample Demo

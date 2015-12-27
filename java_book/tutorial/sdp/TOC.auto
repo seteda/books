@@ -1,0 +1,17 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="sockets/index.html">Understanding the Sockets Direct Protocol</a>
+<ul>
+<li class="tocli"><a href="sockets/overview.html">Overview</a></li>
+<li class="tocli"><a href="sockets/file.html">Creating an SDP Configuration File</a></li>
+<li class="tocli"><a href="sockets/enable.html">Enabling the SDP Protocol</a></li>
+<li class="tocli"><a href="sockets/debug.html">Debugging SDP</a></li>
+<li class="tocli"><a href="sockets/issues.html">Technical Issues with SDP</a></li>
+<li class="tocli"><a href="sockets/support.html">Solaris and Linux Support</a></li>
+<li class="tocli"><a href="sockets/supported.html">Supported Java APIs</a></li>
+<li class="tocli"><a href="sockets/info.html">For More Information</a>
+</li>
+</ul>
+</li>
+</ul>

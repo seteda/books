@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+X-COMMENT: Main-Class will be added automatically by build
+Codebase: *.oracle.com
+Main-Class: LoadImageApplet
+Permissions: sandbox
+Application-Name: Load Image App
+

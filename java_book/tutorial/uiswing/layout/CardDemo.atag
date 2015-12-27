@@ -1,0 +1,19 @@
+<applet code="AppletButton.class"
+        archive="example-swing/layout.jar"
+        width="350" height="60"
+        alt="CardLayout applet">
+<param name="windowClass" value="CardWindow">
+<param name="windowTitle" value="CardLayout">
+<param name="buttonText" value="Click here to see a CardLayout in action">
+
+Since you can't run the applet,
+here's a picture of it:
+
+#usemacro UI_FIGURE (
+    NAME cardlayout.gif
+    W 306
+    H 99
+    ALT A program that puts two panels in the same space with CardLayout.
+)
+
+</applet>

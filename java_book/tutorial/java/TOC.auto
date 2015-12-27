@@ -1,0 +1,236 @@
+
+#define TOPOFTRAIL yesplease
+
+<ul><li class="tocli"><a href="concepts/index.html">Object-Oriented Programming Concepts</a>
+<ul>
+<li class="tocli"><a href="concepts/object.html">What Is an Object?</a></li>
+<li class="tocli"><a href="concepts/class.html">What Is a Class?</a></li>
+<li class="tocli"><a href="concepts/inheritance.html">What Is Inheritance?</a></li>
+<li class="tocli"><a href="concepts/interface.html">What Is an Interface?</a></li>
+<li class="tocli"><a href="concepts/package.html">What Is a Package?</a></li>
+<li class="tocli"><a href="concepts/QandE/questions.html">Questions and Exercises: Object-Oriented Programming Concepts</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="nutsandbolts/index.html">Language Basics</a>
+<ul>
+<li class="tocli"><a href="nutsandbolts/variables.html">Variables</a>
+<ul>
+<li class="tocli"><a href="nutsandbolts/datatypes.html">Primitive Data Types</a></li>
+<li class="tocli"><a href="nutsandbolts/arrays.html">Arrays</a></li>
+<li class="tocli"><a href="nutsandbolts/variablesummary.html">Summary of Variables</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="nutsandbolts/QandE/questions_variables.html">Questions and Exercises: Variables</a></li>
+<li class="tocli"><a href="nutsandbolts/operators.html">Operators</a>
+<ul>
+<li class="tocli"><a href="nutsandbolts/op1.html">Assignment, Arithmetic, and Unary Operators</a></li>
+<li class="tocli"><a href="nutsandbolts/op2.html">Equality, Relational, and Conditional Operators </a></li>
+<li class="tocli"><a href="nutsandbolts/op3.html">Bitwise and Bit Shift Operators</a></li>
+<li class="tocli"><a href="nutsandbolts/opsummary.html">Summary of Operators</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="nutsandbolts/QandE/questions_operators.html">Questions and Exercises: Operators</a></li>
+<li class="tocli"><a href="nutsandbolts/expressions.html">Expressions, Statements, and Blocks</a></li>
+<li class="tocli"><a href="nutsandbolts/QandE/questions_expressions.html">Questions and Exercises: Expressions, Statements, and Blocks</a></li>
+<li class="tocli"><a href="nutsandbolts/flow.html">Control Flow Statements</a>
+<ul>
+<li class="tocli"><a href="nutsandbolts/if.html">The if-then and if-then-else Statements</a></li>
+<li class="tocli"><a href="nutsandbolts/switch.html">The switch Statement</a></li>
+<li class="tocli"><a href="nutsandbolts/while.html">The while and do-while Statements</a></li>
+<li class="tocli"><a href="nutsandbolts/for.html">The for Statement</a></li>
+<li class="tocli"><a href="nutsandbolts/branch.html">Branching Statements</a></li>
+<li class="tocli"><a href="nutsandbolts/flowsummary.html">Summary of Control Flow Statements</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="nutsandbolts/QandE/questions_flow.html">Questions and Exercises: Control Flow Statements</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="javaOO/index.html">Classes and Objects</a>
+<ul>
+<li class="tocli"><a href="javaOO/classes.html">Classes</a>
+<ul>
+<li class="tocli"><a href="javaOO/classdecl.html">Declaring Classes</a></li>
+<li class="tocli"><a href="javaOO/variables.html">Declaring Member Variables</a></li>
+<li class="tocli"><a href="javaOO/methods.html">Defining Methods</a></li>
+<li class="tocli"><a href="javaOO/constructors.html">Providing Constructors for Your Classes</a></li>
+<li class="tocli"><a href="javaOO/arguments.html">Passing Information to a Method or a Constructor</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="javaOO/objects.html">Objects</a>
+<ul>
+<li class="tocli"><a href="javaOO/objectcreation.html">Creating Objects</a></li>
+<li class="tocli"><a href="javaOO/usingobject.html">Using Objects</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="javaOO/more.html">More on Classes</a>
+<ul>
+<li class="tocli"><a href="javaOO/returnvalue.html">Returning a Value from a Method</a></li>
+<li class="tocli"><a href="javaOO/thiskey.html">Using the this Keyword</a></li>
+<li class="tocli"><a href="javaOO/accesscontrol.html">Controlling Access to Members of a Class</a></li>
+<li class="tocli"><a href="javaOO/classvars.html">Understanding Class Members</a></li>
+<li class="tocli"><a href="javaOO/initial.html">Initializing Fields</a></li>
+<li class="tocli"><a href="javaOO/summaryclasses.html">Summary of Creating and Using Classes and Objects</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="javaOO/QandE/creating-questions.html">Questions and Exercises: Classes</a></li>
+<li class="tocli"><a href="javaOO/QandE/objects-questions.html">Questions and Exercises: Objects</a></li>
+<li class="tocli"><a href="javaOO/nested.html">Nested Classes</a>
+<ul>
+<li class="tocli"><a href="javaOO/innerclasses.html">Inner Class Example</a></li>
+<li class="tocli"><a href="javaOO/localclasses.html">Local Classes</a></li>
+<li class="tocli"><a href="javaOO/anonymousclasses.html">Anonymous Classes</a></li>
+<li class="tocli"><a href="javaOO/lambdaexpressions.html">Lambda Expressions</a>
+<ul>
+<li class="tocli"><a href="javaOO/methodreferences.html">Method References</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="javaOO/whentouse.html">When to Use Nested Classes, Local Classes, Anonymous Classes, and Lambda Expressions </a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="javaOO/QandE/nested-questions.html">Questions and Exercises: Nested Classes</a></li>
+<li class="tocli"><a href="javaOO/enum.html">Enum Types</a></li>
+<li class="tocli"><a href="javaOO/QandE/enum-questions.html">Questions and Exercises: Enum Types</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="annotations/index.html">Annotations</a>
+<ul>
+<li class="tocli"><a href="annotations/basics.html">Annotations Basics</a></li>
+<li class="tocli"><a href="annotations/declaring.html">Declaring an Annotation Type</a></li>
+<li class="tocli"><a href="annotations/predefined.html">Predefined Annotation Types</a></li>
+<li class="tocli"><a href="annotations/type_annotations.html">Type Annotations and Pluggable Type Systems</a></li>
+<li class="tocli"><a href="annotations/repeating.html">Repeating Annotations</a></li>
+<li class="tocli"><a href="annotations/QandE/questions.html">Questions and Exercises: Annotations</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="IandI/index.html">Interfaces and Inheritance</a>
+<ul>
+<li class="tocli"><a href="IandI/createinterface.html">Interfaces</a>
+<ul>
+<li class="tocli"><a href="IandI/interfaceDef.html">Defining an Interface</a></li>
+<li class="tocli"><a href="IandI/usinginterface.html">Implementing an Interface</a></li>
+<li class="tocli"><a href="IandI/interfaceAsType.html">Using an Interface as a Type</a></li>
+<li class="tocli"><a href="IandI/nogrow.html">Evolving Interfaces</a></li>
+<li class="tocli"><a href="IandI/defaultmethods.html">Default Methods</a></li>
+<li class="tocli"><a href="IandI/summary-interface.html">Summary of Interfaces</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="IandI/QandE/interfaces-questions.html">Questions and Exercises: Interfaces</a></li>
+<li class="tocli"><a href="IandI/subclasses.html">Inheritance</a>
+<ul>
+<li class="tocli"><a href="IandI/multipleinheritance.html">Multiple Inheritance of State, Implementation, and Type</a></li>
+<li class="tocli"><a href="IandI/override.html">Overriding and Hiding Methods</a></li>
+<li class="tocli"><a href="IandI/polymorphism.html">Polymorphism</a></li>
+<li class="tocli"><a href="IandI/hidevariables.html">Hiding Fields</a></li>
+<li class="tocli"><a href="IandI/super.html">Using the Keyword super</a></li>
+<li class="tocli"><a href="IandI/objectclass.html">Object as a Superclass</a></li>
+<li class="tocli"><a href="IandI/final.html">Writing Final Classes and Methods</a></li>
+<li class="tocli"><a href="IandI/abstract.html">Abstract Methods and Classes</a></li>
+<li class="tocli"><a href="IandI/summaryinherit.html">Summary of Inheritance</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="IandI/QandE/inherit-questions.html">Questions and Exercises: Inheritance</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="data/index.html">Numbers and Strings</a>
+<ul>
+<li class="tocli"><a href="data/numbers.html">Numbers</a>
+<ul>
+<li class="tocli"><a href="data/numberclasses.html">The Numbers Classes</a></li>
+<li class="tocli"><a href="data/numberformat.html">Formatting Numeric Print Output</a></li>
+<li class="tocli"><a href="data/beyondmath.html">Beyond Basic Arithmetic</a></li>
+<li class="tocli"><a href="data/numbersummary.html">Summary of Numbers</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="data/QandE/numbers-questions.html">Questions and Exercises: Numbers</a></li>
+<li class="tocli"><a href="data/characters.html">Characters</a></li>
+<li class="tocli"><a href="data/strings.html">Strings</a>
+<ul>
+<li class="tocli"><a href="data/converting.html">Converting Between Numbers and Strings</a></li>
+<li class="tocli"><a href="data/manipstrings.html">Manipulating Characters in a String</a></li>
+<li class="tocli"><a href="data/comparestrings.html">Comparing Strings and Portions of Strings</a></li>
+<li class="tocli"><a href="data/buffers.html">The StringBuilder Class</a></li>
+<li class="tocli"><a href="data/stringsummary.html">Summary of Characters and Strings</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="data/autoboxing.html">Autoboxing and Unboxing</a></li>
+<li class="tocli"><a href="data/QandE/characters-questions.html">Questions and Exercises: Characters and Strings</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="generics/index.html">Generics (Updated)</a>
+<ul>
+<li class="tocli"><a href="generics/why.html">Why Use Generics?</a></li>
+<li class="tocli"><a href="generics/types.html">Generic Types</a>
+<ul>
+<li class="tocli"><a href="generics/rawTypes.html">Raw Types</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="generics/methods.html">Generic Methods</a></li>
+<li class="tocli"><a href="generics/bounded.html">Bounded Type Parameters</a>
+<ul>
+<li class="tocli"><a href="generics/boundedTypeParams.html">Generic Methods and Bounded Type Parameters</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="generics/inheritance.html">Generics, Inheritance, and Subtypes</a></li>
+<li class="tocli"><a href="generics/genTypeInference.html">Type Inference</a></li>
+<li class="tocli"><a href="generics/wildcards.html">Wildcards</a>
+<ul>
+<li class="tocli"><a href="generics/upperBounded.html">Upper Bounded Wildcards</a></li>
+<li class="tocli"><a href="generics/unboundedWildcards.html">Unbounded Wildcards</a></li>
+<li class="tocli"><a href="generics/lowerBounded.html">Lower Bounded Wildcards</a></li>
+<li class="tocli"><a href="generics/subtyping.html">Wildcards and Subtyping</a></li>
+<li class="tocli"><a href="generics/capture.html">Wildcard Capture and Helper Methods</a></li>
+<li class="tocli"><a href="generics/wildcardGuidelines.html">Guidelines for Wildcard Use</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="generics/erasure.html">Type Erasure</a>
+<ul>
+<li class="tocli"><a href="generics/genTypes.html">Erasure of Generic Types</a></li>
+<li class="tocli"><a href="generics/genMethods.html">Erasure of Generic Methods</a></li>
+<li class="tocli"><a href="generics/bridgeMethods.html">Effects of Type Erasure and Bridge Methods</a></li>
+<li class="tocli"><a href="generics/nonReifiableVarargsType.html">Non-Reifiable Types</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="generics/restrictions.html">Restrictions on Generics</a></li>
+<li class="tocli"><a href="generics/QandE/generics-questions.html">Questions and Exercises: Generics</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="package/index.html">Packages</a>
+<ul>
+<li class="tocli"><a href="package/packages.html">Creating and Using Packages</a>
+<ul>
+<li class="tocli"><a href="package/createpkgs.html">Creating a Package</a></li>
+<li class="tocli"><a href="package/namingpkgs.html">Naming a Package</a></li>
+<li class="tocli"><a href="package/usepkgs.html">Using Package Members</a></li>
+<li class="tocli"><a href="package/managingfiles.html">Managing Source and Class Files</a></li>
+<li class="tocli"><a href="package/summary-package.html">Summary of Creating and Using Packages</a>
+</li>
+</ul>
+</li>
+<li class="tocli"><a href="package/QandE/packages-questions.html">Questions and Exercises: Creating and Using Packages</a>
+</li>
+</ul>
+</li>
+</ul>
