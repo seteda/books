@@ -1,3 +1,4 @@
+# author: seteda
 # if you want to commit large file (file have more than 50MB), install git lfs please
 # 1 - download git-lfs in git-lfs-1.1.0 folder
 # 2 - cd to git-lfs-1.1.0, run this command
