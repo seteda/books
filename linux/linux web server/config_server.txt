@@ -1,0 +1,738 @@
+#=========================================================================
+#	config httpd server
+#=========================================================================
+#config port httpd server
+vi /etc/httpd/conf/httpd.conf
+
+#edit port in line "Listen 80"
+#make sure that port is unblocked, check by: 
+sudo semanage port -l | grep http
+sudo semanage port -l | grep -w '^http_port_t'
+# return as:
+http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000
+
+#add port for listen
+sudo semanage port -a -t http_port_t -p tcp 8011
+#edit port in line "Listen 80" to Listen 8011 only
+Listen 8011
+
+#edit port in line "Listen 80" to Listen 8011 and 80
+Listen 8011
+Listen 80
+
+# config to support php in htmml
+AddType application/x-httpd-php .htm .html
+
+#restart httpd
+sudo service httpd restart
+
+#=========================================================================
+#	turn off firewall and selinux for connecting from internet
+#=========================================================================
+# check port is exported: http://ping.eu/port-chk
+# fix bug permission /index.html
+#if run: return Enforcing
+getenforce
+# then run this
+setenforce 0				#setenforce 1 for enable again
+sudo service firewall stop	#sudo service firewall start
+
+#=========================================================================
+#	mysql server
+#=========================================================================
+#User
+user: 	msc@seteda54
+pass: 	Msc@2016
+db: 	vmsc_1M
+port:	63150
+
+user: 	tungnt@seteda54
+pass: 	Tungnt@2016
+db: 	tungnt
+port:	63150
+
+adminseteda:	Secret_mysql
+#Config
+- get list port that mysqld can use:
+sudo semanage port -l | grep mysqld
+- change port in /etc/my.cnf
+- change IP of mys!ql server in /etc/my.cnf
+#=========================================================================
+#	config IP table
+#=========================================================================
+yum install iptables-services
+systemctl enable iptables
+systemctl [stop|start|restart] iptables
+# can edit this file: /etc/sysconfig/iptables
+
+# export port 63150 for any LAN in 192.168.10.1 -> 192.168.10.254 throw firewall
+/sbin/iptables -A INPUT -i eth0 -s 192.168.10.0/24 -p tcp --dport 63150 -j ACCEPT
+/sbin/iptables -A INPUT -i eth0 -p tcp --dport 8011 -j ACCEPT
+service iptables save
+
+
+#=========================================================================
+#	config httpd server for application supported
+#=========================================================================
+# Set encoding for file extensions
+<IfModule mod_mime.c>
+  # Plain text files
+  AddType text/plain .txt .text .def .list .log .in
+  # Source files
+  AddType text/x-asm .s .asm
+  AddType text/x-c .c .cc .cxx .cpp .h .hh .dic
+  AddType text/x-fortran .f .for .f77 .f90
+  AddType text/x-pascal .p .pas
+  AddType text/x-java-source .java
+  AddType text/x-setext .etx
+  AddType text/plain .bas
+  AddType text/plain .php .phtml .php5 .phps
+  AddType text/plain .asp .aspx
+  AddType text/plain .pl .pm
+  AddType text/plain .py .pyw .pyc .pyo .pyd
+  AddType text/plain .rb .rbw
+  AddType application/x-wais-source .src
+  AddType text/plain .make
+  AddType application/x-sh .sh
+  AddType text/csv .csv
+  AddType text/tab-separated-values .tsv
+  # Configuration files
+  AddType text/plain .cnf .conf .ini .inf
+  # Manual / Documentation files
+  AddType application/vnd.ms-htmlhelp .chm
+  AddType application/winhlp .hlp
+  AddType text/troff .t .tr .roff .man .me .ms
+  AddType application/x-troff-man .man
+  # Font files
+  AddType application/x-font-ghostscript .gsf
+  AddType application/x-font-linux-psf .psf
+  AddType application/x-font-otf .otf
+  AddType application/x-font-pcf .pcf
+  AddType application/x-font-snf .snf
+  AddType application/x-font-ttf .ttf ttc
+  AddType application/x-font-type1 .pfa .pfb .pfm .afm
+  # HyperText Markup Language (HTML) markup
+  AddType text/html .html .htm
+  # eXtensible HyperText Markup Language (XHTML) markup
+  AddType application/xhtml+xml .xhtml .xht
+  # Handheld Device Markup Language (HDML) markup
+  AddType text/x-hdml .hdml
+  # Wireless Markup Language (WML) markup
+  AddType text/vnd.wap.wml .wml
+  AddType application/vnd.wap.wmlc .wmlc
+  # Wireless Markup Language Script (WMLScript) (WLMS) markup
+  AddType text/vnd.wap.wmlscript .wmls
+  AddType application/vnd.wap.wmlscriptc .wmlsc
+  # WAP Binary XML (WBXML) markup
+  AddType application/vnd.wap.wbxml .wbxml
+  # Standard Generalized Markup Language (SGML) markup
+  AddType application/sgml .sgml .sgm
+  AddType text/sgml .sgml .sgm
+  # MIME HyperText Markup Language (MHTML) markup
+  AddType text/html .mhtml .mht .maff .maf
+  AddType message/rfc822 .mhtml .mht
+  AddType multipart/related .mhtml .mht .maff .maf
+  # HyperText Markup Language Application (HTA) markup
+  AddType application/x-hta .hta
+  # Server parsed HyperText Markup Language/Server Side Includes (SHTML/SSI) markup
+  AddType text/x-server-parsed-html .shtml .shtm .stm .ssi
+  # Extensible Markup Language (XML) markup
+  AddType application/xml .xml .xsl .xsf .xsd
+  AddType text/xml .xml .xsl .xsf .xsd
+  AddType text/xml-external-parsed-entity .xml
+  AddType application/xml-dtd .dtd
+  # Extensible Stylesheet Language Transformations (XSLT) markup
+  AddType application/xslt+xml .xslt
+  # Web Services Description Language (WSDL) markup
+  AddType application/wsdl+xml .wsdl
+  # Resource Description Framework (RDF) markup
+  AddType application/rdf+xml .rdf
+  # Really Simple Syndicatio (RSS) markup
+  AddType application/rss+xml .rss
+  # Atom Syndication Format (ATOM) markup
+  AddType application/atom+xml .atom
+  # Cascading Style Sheets (CSS) markup
+  AddType text/css .css
+  # ECMAScript (ES) markup
+  AddType application/ecmascript .es .ecma .as
+  # JavaScript (JS) markup
+  AddType application/javascript .js
+  AddType application/x-javascript .js
+  AddType text/javascript .js
+  AddType application/json .json
+  # VBScript (VBS) markup
+  AddType text/x-vbscript vbs .vbe .wsf .wsc
+  # Tcl, TeX and LaTeX markup
+  AddType application/x-tcl .tcl
+  AddType application/x-tex .tex
+  AddType application/x-latex .latex
+  # Texinfo (TEXI) markup
+  AddType application/x-texinfo .texi .texinfo
+  # Mathematical Markup Language (MathML) markup
+  AddType text/mathml .mml
+  AddType text/mathml-renderer .mml
+  AddType application/mathml+xml .mathml
+  # Mathematica (MA) markup
+  AddType application/mathematica .ma .nb .mb
+  # Extensible Markup Language User Interface Language (XUL) markup
+  AddType application/vnd.mozilla.xul+xml .xul
+  # Magic eXtensible Markup Language (MXML)
+  AddType application/x-mxml+xml .mxml
+  # Microsoft Extensible Application Markup Language (XAML) markup
+  AddType application/xaml+xml .xaml
+  # Google Earth, Keyhole Markup Language (KML) markup
+  AddType application/vnd.google-earth.kml+xml .kml
+  AddType application/vnd.google-earth.kmz .kmz
+  # vCard (VCF) calendar
+  AddType text/x-vcard .vcf .vcard
+  # vCalendar (VCS) calendar
+  AddType text/x-vcalendar .vcs
+  # iCalendar (ICS) calendar
+  AddType text/calendar .ics .ifb .ical .icalendar
+  # Microsft E-Mail Message (EML) document
+  AddType message/rfc822 .eml
+  # OpenOffice.org 2+, StarOffice 8+, Open Document Format (ODF): document (ODT)
+  AddType application/vnd.oasis.opendocument.text .odt
+  AddType application/vnd.oasis.opendocument.text-template .ott
+  AddType application/vnd.oasis.opendocument.text-master .otm
+  AddType application/vnd.oasis.opendocument.text-web .oth
+  # OpenOffice.org 2+, StarOffice 8+, Open Document Format (ODF): presentation (ODP)
+  AddType application/vnd.oasis.opendocument.presentation .odp
+  AddType application/vnd.oasis.opendocument.presentation-template .otp
+  # OpenOffice.org 2+, StarOffice 8+, Open Document Format (ODF): spreadsheet (ODS)
+  AddType application/vnd.oasis.opendocument.spreadsheet .ods
+  AddType application/vnd.oasis.opendocument.spreadsheet-template .ots
+  # OpenOffice.org 2+, StarOffice 8+, Open Document Format (ODF): graphics (ODG)
+  AddType application/vnd.oasis.opendocument.graphics .odg
+  AddType application/vnd.oasis.opendocument.graphics-template .otg
+  # OpenOffice.org 2+, StarOffice 8+, Open Document Format (ODF): database (ODB)
+  AddType application/vnd.oasis.opendocument.database .odb
+  # OpenOffice.org 2+, StarOffice 8+, Open Document Format (ODF): formula (ODF)
+  AddType application/vnd.oasis.opendocument.formula .odf
+  AddType application/vnd.oasis.opendocument.formula-template .odft
+  # OpenOffice.org 2+, StarOffice 8+, Open Document Format (ODF): others (...)
+  AddType application/vnd.oasis.opendocument.chart .odc
+  AddType application/vnd.oasis.opendocument.chart-template .otc
+  AddType application/vnd.oasis.opendocument.image .odi
+  AddType application/vnd.oasis.opendocument.image-template .oti
+  AddType application/vnd.openofficeorg.extension .oxt
+  # OpenOffice.org 1, StarOffice 6-7, Binary format: document (SXW)
+  AddType application/vnd.sun.xml.writer .sxw
+  AddType application/vnd.sun.xml.writer.template .stw
+  AddType application/vnd.sun.xml.writer.global .sxg
+  # OpenOffice.org 1, StarOffice 6-7, Binary format: presentation (SXI)
+  AddType application/vnd.sun.xml.impress .sxi
+  AddType application/vnd.sun.xml.impress.template .sti
+  # OpenOffice.org 1, StarOffice 6-7, Binary format: spreadsheet (SXC)
+  AddType application/vnd.sun.xml.calc .sxc
+  AddType application/vnd.sun.xml.calc.template .stc
+  # OpenOffice.org 1, StarOffice 6-7, Binary format: graphics (SXD)
+  AddType application/vnd.sun.xml.draw .sxd
+  AddType application/vnd.sun.xml.draw.template .std
+  # OpenOffice.org 1, StarOffice 6-7, Binary format: formula (SXM)
+  AddType application/vnd.sun.xml.math .sxm
+  # StarOffice 5, Binary format: document (SDW)
+  AddType application/vnd.stardivision.writer .sdw
+  AddType application/vnd.stardivision.writer .vor
+  AddType application/vnd.stardivision.writer-global .sgl
+  # StarOffice 5, Binary format: presentation (SDD)
+  AddType application/vnd.stardivision.impress .sdd
+  AddType application/vnd.stardivision.impress-packed .sdp
+  # StarOffice 5, Binary format: spreadsheet (SDC)
+  AddType application/vnd.stardivision.calc .sdc
+  # StarOffice 5, Binary format: graphics (SDA)
+  AddType application/vnd.stardivision.draw .sda
+  # StarOffice 5, Binary format: formula (SMF)
+  AddType application/vnd.stardivision.math .smf
+  # StarOffice 5, Binary format: others (...)
+  AddType application/vnd.stardivision.chart .sds
+  AddType application/vnd.stardivision.mail .sdm
+  # StarOffice 1-4, Binary format: document (SDW)
+  AddType application/x-starwriter .sdw
+  # StarOffice 1-4, Binary format: presentation (SDD)
+  AddType application/x-starimpress .sdd
+  # StarOffice 1-4, Binary format: spreadsheet (SDC)
+  AddType application/x-starcalc .sdc
+  # StarOffice 1-4, Binary format: graphics (SDA)
+  AddType application/x-stardraw .sda
+  # StarOffice 1-4, Binary format: formula (SMF)
+  AddType application/x-starmath .smf
+  # StarOffice 1-4, Binary format: others (...)
+  AddType application/x-starchart .sds
+  # Microsoft Office 12+, Office Open XML (OOXML/OpenXML): document (DOCX)
+  AddType application/vnd.openxmlformats-officedocument.wordprocessingml.document .docx
+  AddType application/vnd.openxmlformats-officedocument.wordprocessingml.template .dotx
+  AddType application/vnd.ms-word.document.macroEnabled.12 .docm
+  AddType application/vnd.ms-word.template.macroEnabled.12 .dotm
+  # Microsoft Office 12+, Office Open XML (OOXML/OpenXML): presentation (PPTX)
+  AddType application/vnd.openxmlformats-officedocument.presentationml.presentation .pptx
+  AddType application/vnd.openxmlformats-officedocument.presentationml.template .potx
+  AddType application/vnd.openxmlformats-officedocument.presentationml.slideshow .ppsx
+  AddType application/vnd.ms-powerpoint.presentation.macroEnabled.12 .pptm
+  AddType application/vnd.ms-powerpoint.template.macroEnabled.12 .potm
+  AddType application/vnd.ms-powerpoint.slideshow.macroEnabled.12 .ppsm
+  AddType application/vnd.ms-powerpoint.addin.macroEnabled.12 .ppam
+  # Microsoft Office 12+, Office Open XML (OOXML/OpenXML): spreadsheet (XLSX)
+  AddType application/vnd.openxmlformats-officedocument.spreadsheetml.sheet .xlsx
+  AddType application/vnd.openxmlformats-officedocument.spreadsheetml.template .xltx
+  AddType application/vnd.ms-excel.sheet.macroEnabled.12 .xlsm
+  AddType application/vnd.ms-excel.template.macroEnabled.12 .xltm
+  AddType application/vnd.ms-excel.addin.macroEnabled.12 .xlam
+  AddType application/vnd.ms-excel.sheet.binary.macroEnabled.12 .xlsb
+  # Microsoft Office 12+, Office Open XML (OOXML/OpenXML): database (ACCDB)
+  AddType application/msaccess .accdb .accdt .accde .accdr
+  # Microsoft Office 1-11, Binary format: document (DOC)
+  AddType application/msword .doc .dot
+  # Microsoft Office 1-11, Binary format: presentation (PPT)
+  AddType application/vnd.ms-powerpoint .ppt .pot .pps .ppa
+  AddType application/vnd.ms-powerpoint.addin.macroenabled.12 .ppam
+  AddType application/vnd.ms-powerpoint.presentation.macroenabled.12 .pptm
+  AddType application/vnd.ms-powerpoint.slide.macroenabled.12 .sldm
+  AddType application/vnd.ms-powerpoint.slideshow.macroenabled.12 .ppsm
+  AddType application/vnd.ms-powerpoint.template.macroenabled.12 .potm
+  # Microsoft Office 1-11, Binary format: spreadsheet (XLS)
+  AddType application/vnd.ms-excel .xls .xlt .xlm .xlw .xla .xlc .xlk .xlb .xld .xlv .xll
+  AddType application/vnd.ms-excel.addin.macroenabled.12 .xlam
+  AddType application/vnd.ms-excel.sheet.binary.macroenabled.12 .xlsb
+  AddType application/vnd.ms-excel.sheet.macroenabled.12 .xlsm
+  AddType application/vnd.ms-excel.template.macroenabled.12 .xltm
+  # Microsoft Office 1-11, Binary format: database (MDB)
+  AddType application/x-msaccess .mdb .mdn .mde .mda .mdt .mdf .mdw
+  AddType application/x-msaccess .adp .adn .ade
+  # Microsoft Office 1-11, Binary format: others (...)
+  AddType application/vnd.ms-project .mpp .mpt
+  # Microsoft Works, Binary format (...)
+  AddType application/vnd.ms-works .wps .wks .wk1 .wcm .wdb
+  # Microsoft Rich Text Format (RTF) document
+  AddType application/rtf .rtf
+  AddType text/rtf .rtf
+  AddType text/richtext .rtx
+  # Wordperfect document (WPD)
+  AddType application/vnd.wordperfect .wpd
+  # Lotus 1-2-3 spreadsheet (123)
+  AddType application/vnd.lotus-1-2-3 .123
+  # SYLK (SLK) spreadsheet
+  AddType application/x-excel .slk
+  # dBASE (DBF) database
+  AddType application/x-dbase .dbf
+  AddType application/x-dbf .dbf
+  # QuarkXpress (QXD) document
+  AddType application/vnd.quark.quarkxpress .qxd .qxt .qwd .qwt .qxl .qxb
+  # Microsoft Favicon (ICO) lossless icon
+  AddType image/vnd.microsoft.icon .ico
+  AddType image/x-icon .ico
+  # X BitMap (XBM) lossless icon
+  AddType image/x-xbitmap .xbm
+  AddType image/x-xbm .xbm
+  # X Pixmap (XPM) lossless icon
+  AddType image/x-xpixmap .xpm
+  AddType image/x-xpm .xpm
+  # Portable Network Graphics (PNG) raster lossless image
+  AddType image/png .png
+  # Portable Pixmap Format (PPM) lossless image
+  AddType image/x-portable-pixmap .ppm
+  # Portable Graymap Format (PGM) lossless image
+  AddType image/x-portable-graymap .pgm
+  # Portable Bitmap Format (PBM) lossless image
+  AddType image/x-portable-bitmap .pbm
+  # Portable Anymap Format (PNM) lossless image
+  AddType image/x-portable-anymap .pnm
+  # Microsoft Bitmap (BMP) raster lossless image
+  AddType image/bmp .bmp .dib
+  AddType image/x-bmp .bmp .dib
+  AddType image/x-ms-bmp .bmp .dib
+  # Apple MacPaint image (PNTG) raster lossless image
+  AddType image/x-macpaint .pnt .pntg .mac
+  # Apple Quicktime image (QTIF) raster lossless image
+  AddType image/x-quicktime .qti .qtif
+  # PC Paintbrush/Personal Computer eXchange (PCX) raster lossless image
+  AddType image/x-pcx .pcx
+  # Truevision TGA/Targa (TGA) raster lossless image
+  AddType image/x-tga .targa .tga .tpic
+  AddType image/x-targa .targa .tga .tpic
+  # Silicon Graphics Image (SGI) raster lossless image
+  AddType image/x-sgi .sgi
+  AddType image/x-rgb .rgb
+  # InterLeaved BitMap (ILBM) raster lossless image
+  AddType image/x-ilbm .ilbm
+  # Sun Raster Graphic (RAS) raster lossless image
+  AddType image/x-ras
+  # WebP, VP8 (WEBP) raster lossy image
+  AddType image/webp .webp
+  # JPEG raster lossy image
+  AddType image/jpeg .jpeg .jpg .jpe .jif .jfif .jfi
+  # JPEG 2000 raster lossy image
+  AddType image/jp2 .jp2 .j2k
+  AddType image/jpx .jpx .jpf
+  AddType image/jpm .jpm
+  # JPEG XR raster lossy/lossless image
+  AddType image/vnd.ms-photo .hdp .jxr .wdp
+  # Microsoft Windows Media Photo (WMP) raster lossy image
+  AddType video/x-ms-wmp .wmp
+  # Kodak PhotoCD (PCD) raster lossy image
+  AddType image/x-pcd .pcd
+  AddType image/x-photo-cd .pcd
+  # Animated Portable Network Graphics (APNG) animated raster lossless image
+  AddType image/png .apng
+  # Multiple-image Network Graphics (MNG) animated raster lossless image
+  AddType video/x-mng .mng
+  # Graphics Interchange Format (GIF) animated raster lossless image
+  AddType image/gif .gif
+  # Scalable Vector Graphics (SVG) vector graphic
+  AddType image/svg+xml .svg .svgz
+  # Adobe Illustrator Artwork (AI) vector graphic
+  AddType application/postscript .ai
+  # Macromedia Freehand (FH) vector graphic
+  AddType image/x-freehand .fh .fhc .fh4 .fh5 .fh7
+  # Corel Draw (CDR) vector graphic
+  AddType image/x-cdr .cdr
+  AddType application/x-cdr .cdr
+  AddType application/x-coreldraw .cdr
+  # Xara (XAR) vector graphic
+  AddType application/vnd.xara .xar
+  # Microsoft Enhanced Metafile (EMF) vector graphic
+  AddType image/x-emf .emf .emz
+  # Microsoft Windows Metafile (WMF) vector graphic
+  AddType application/x-msmetafile .wmf
+  AddType image/x-wmf .wmf .wmz
+  # Apple Picture (PICT) raster/vector graphic
+  AddType image/x-pict .pict .pct .pic
+  # Computer Graphics Metafile (CGM) vector graphic
+  AddType image/cgm .cgm
+  # eXperimental Computing Facility (XCF) graphic
+  AddType image/x-xcf .xcf
+  # Tagged Image File Format (TIFF) graphic
+  AddType image/tiff .tiff .tif
+  AddType image/tiff-fx .tiff .tif
+  # Corel PhotoPaint (CPT) graphic
+  AddType application/mac-compactpro .cpt
+  # PostScript (PS) compound image
+  AddType application/postscript .ps
+  # Encapsulated PostScript (EPS) compound image
+  AddType application/postscript .eps .epsf .epsi
+  # Adobe Photoshop (PSD) compound image
+  AddType image/vnd.adobe.photoshop .psd
+  AddType image/x-photoshop .psd
+  AddType image/x-psd .psd
+  # Dejavu/DjVu (DJVU) compound image
+  AddType image/vnd.djvu .djvu .djv
+  AddType image/x-djvu .djvu .djv
+  # Adobe Portable Document Format (PDF) compound image
+  AddType application/pdf .pdf
+  AddType application/x-pdf .pdf
+  AddType application/x-bzpdf .pdf
+  AddType application/x-gzpdf .pdf
+  # Microsoft Open XML Paper Specification (OpenXPS) (XPS) document
+  AddType application/oxps .oxps
+  AddType application/vnd.ms-xpsdocument .xps
+  # AutoCAD Drawing (DWG/DXF) drawing
+  AddType image/vnd.dwg .dwg
+  AddType image/x-dwg .dwg
+  AddType application/x-dwg .dwg
+  AddType image/vnd.dxf .dxf
+  AddType image/x-dxf .dxf
+  AddType application/x-dxf .dxf
+  AddType model/vnd.dwf .dwf
+  AddType image/x-dwf .dwf
+  AddType application/x-dwf .dwf
+  AddType application/x-autocad .dwg .dxf .dwf
+  # Initial Graphics Exchange Specification (IGES) drawing
+  AddType model/iges .igs .iges
+  # 3D Mesh Model (MESH) 3D model
+  AddType model/mesh .msh .mesh .silo
+  # Extensible 3D Graphics (X3D) 3D graphic
+  AddType model/x3d+vrml .x3d .x3dz
+  AddType model/x3d+xml .x3dv .x3dvz
+  AddType model/x3d+binary .x3db .x3dbz
+  # Virtual Reality Modeling Language (VRML) 3D graphic
+  AddType model/vrml .wrl .wrz .vrml
+  AddType x-world/x-vrml .wrl .wrz .vrml
+  AddType application/x-cc3d .wrl .wrz .vrml
+  # Synchronized Multimedia Integration Language (SMIL) markup
+  AddType application/smil+xml .smi .smil
+  # Xiph.org XML Shareable Playlist Format (XSPF) playlist
+  AddType application/xspf+xml .xspf
+  # Winamp playlist (M3U/PLS) playlist
+  AddType audio/x-mpegurl .m3u
+  AddType application/vnd.apple.mpegurl .m3u8
+  AddType video/vnd.mpegurl .mxu .m4u
+  AddType application/pls+xml .pls
+  AddType audio/x-scpls .pls
+  # Foobar2000 playlist (FPL) playlist
+  AddType application/octet-stream .fpl
+  # Microsoft Windows Media Player Playlist (WPL) playlist
+  AddType application/vnd.ms-wpl .wpl
+  # Microsoft Advanced Stream Redirector (ASX/LSX) playlist
+  AddType video/x-ms-asf .asx
+  AddType video/x-la-asf .lsx
+  # Microsoft Windows Media Video Redirector (WVX) shortcut
+  AddType video/x-ms-wmx .wmx
+  AddType audio/x-ms-wax .wax
+  AddType video/x-ms-wvx .wvx
+  # MPEG (M3A) playlist
+  AddType audio/mpeg .m3a
+  # WebM, VP8/Vorbis (WEBM) multimedia container
+  AddType video/webm .webm
+  AddType audio/webm .webm
+  # Matroska Multimedia Container (MKV/MKA/MKS) multimedia container
+  AddType audio/x-matroska .mka
+  AddType video/x-matroska .mkv .mks
+  # Xiph.org Vorbis (OGX/OGG) multimedia container
+  AddType application/ogg .ogx
+  AddType audio/ogg .ogg
+  AddType video/ogg .ogg
+  # Nullsoft Streaming Video (NSV) audio/video container
+  AddType application/x-winamp .nsv .nsa
+  # RealMedia Variable Bitrate (RMVB) audio/video container
+  AddType application/vnd.rn-realmedia-vbr .rmvb
+  # RealMedia (RM) audio/video container
+  AddType application/vnd.rn-realmedia .rm
+  AddType audio/x-pn-realaudio-plugin .rmp
+  # Adobe Flash Video (FLV) audio/video container
+  AddType audio/x-f4a .f4a .f4b
+  AddType audio/mp4 .f4a .f4b
+  AddType video/x-f4v .f4v .f4p
+  AddType video/mp4 .f4v .f4p
+  AddType video/x-fli .fli
+  AddType video/x-flv .flv
+  AddType video/x-m4v .m4v
+  # Third Generation Partnership Project (3GPP) multimedia container
+  AddType audio/3gpp .3gp .3ggp
+  AddType audio/3gpp2 .3g2 .3gp2
+  AddType video/3gpp .3gp .3ggp
+  AddType video/3gpp2 .3g2 .3gp2
+  # MPEG-4 Part 14, MP4 file format, MPEG-4 file format version 2 (MP4) multimedia container
+  AddType application/mp4 .mp4 .mpg4 .mp4s
+  AddType audio/mp4 .mp4 .mpg4
+  AddType video/mp4 .mp4 .mpg4
+  # Microsoft Advanced Systems Format (ASF) audio/video container
+  AddType application/vnd.ms-asf .asf
+  AddType video/x-ms-asf .asf
+  AddType video/x-la-asf .lsf
+  # Microsoft Audio Video Interleave (AVI) audio/video container
+  AddType video/vnd.avi .avi
+  AddType video/avi .avi
+  AddType video/msvideo .avi
+  AddType video/x-msvideo .avi
+  # Musical Instrument Digital Interface (MIDI) synthetized music
+  AddType audio/midi .mid .midi .kar .rmi
+  # Xiph.org Speex (OGA/OGG) lossy speech
+  AddType audio/speex .spx
+  AddType audio/ogg .spx
+  # Adaptive Multi-Rate Wideband (AMR-WB) lossy speech
+  AddType audio/amr-wb .awb
+  # Adaptive Multi-Rate (AMR/AMR-NB) lossy speech
+  AddType audio/amr .amr
+  # Xiph.org Free Lossless Audio Codec (FLAC) lossless audio
+  AddType audio/x-flac .flac
+  # WavPack (WV) lossless audio
+  AddType audio/x-wavpack .wv
+  # True Audio (TTA) lossless audio
+  AddType audio/x-tta .tta
+  # Monkey's Audio (APE) lossless audio
+  AddType audio/x-ape .ape .apl
+  # Apple Lossless Audio Codec (ALAC) lossless audio
+  AddType audio/x-alac .m4a
+  # Microsoft Windows Media Audio Lossless (WMA) lossless audio
+  AddType audio/x-ms-wma .wma
+  # Sony Adaptive Transform Acoustic Coding (ATRAC) Advanced Lossless (AA3) lossless audio
+  AddType audio/atrac-advanced-lossless .aa3 .at3
+  # Shorten (SHN) lossless audio
+  AddType audio/x-shorten .shn
+  # Apple Audio Interchange File Format (AIFF) lossless audio
+  AddType audio/x-aiff .aif .aiff .aifc
+  AddType audio/aiff .aif .aiff .aifc
+  # Adaptive Differential Pulse Code Modulation (ADPCM) lossless audio
+  AddType audio/adpcm .adp .adpcm
+  # Linear Pulse Code Modulation (LPCM) lossless audio
+  AddType audio/l16 .pcm .l16
+  AddType audio/l8 .pcm
+  AddType audio/l20 .pcm
+  AddType audio/l24 .pcm
+  # Microsoft Waveform Audio File Format (WAVE) lossless audio
+  AddType audio/vnd.wave .wav .wave
+  AddType audio/wav .wav .wave
+  AddType audio/wave .wav .wave
+  AddType audio/x-wav .wav .wave
+  # Xiph.org Vorbis (OGA/OGG) lossy audio
+  AddType audio/ogg .oga
+  AddType audio/vorbis .oga
+  AddType audio/vorbis-config .oga
+  # MusePack (MPC) lossy audio
+  AddType audio/x-musepack .mpc .mp+ .mpp
+  AddType audio/musepack .mpc .mp+ .mpp
+  # RealAudio (RA) lossy audio
+  AddType audio/x-pn-realaudio .ra .ram
+  # Microsoft Windows Media Audio (WMA) lossy audio
+  AddType audio/x-ms-wma .wma
+  # Sony Adaptive Transform Acoustic Coding (ATRAC) (AA3) lossy audio
+  AddType audio/atrac-x .aa3 .at3
+  AddType audio/atrac3 .aa3 .at3
+  AddType audio/x-oma .oma
+  # DTS Theater System (DTS) lossy audio
+  AddType audio/vnd.dts .dts
+  AddType audio/vnd.dts.hd .dtshd
+  # Dolby Digital (AC3) lossy audio
+  AddType audio/ac3 .ac3
+  # MPEG-4 Part 3, Audio, High-Efficiency Advanced Audio Coding (HE-AAC) (AAC) lossy audio
+  AddType audio/aacp .aac
+  # MPEG-4 Part 3, Audio, Advanced Audio Coding (AAC) lossy audio
+  AddType audio/x-aac .aac
+  AddType audio/aac .aac
+  AddType audio/mp4 .aac
+  # MPEG-4 Part 3, Audio, various formats (M4A) lossy audio
+  AddType audio/mp4 .m4a .mp4a .m4p .m4b .m4r
+  AddType audio/mp4a-latm .m4a
+  AddType audio/mpeg4-generic .m4a
+  # MPEG-2 Part 3, Audio, Layer I/II/II (M2A) lossy audio
+  AddType audio/mpeg .m2a .mp2a
+  # MPEG-1 Part 3, Audio, Layer III (MP3) lossy audio
+  AddType audio/mpeg .mp3
+  AddType audio/mpa .mp3
+  AddType audio/mpa-robust .mp3
+  # MPEG-1 Part 3, Audio, Layer II (MP2) lossy audio
+  AddType audio/mpeg .mp2 .mpa .mpga .mpega
+  AddType audio/mpa .mp2 .mpa .mpga .mpega
+  # MPEG-1 Part 3, Audio, Layer I (MP1) lossy audio
+  AddType audio/mpeg .mp1 .m1a .mpa .mpga .mpega
+  AddType audio/mpa .mp1 .m1a .mpa .mpga .mpega
+  # Sun Au file format (AU/SND) lossy audio
+  AddType audio/basic .au .snd
+  # Xiph.org Theora, VP3 (OGV/OGG) lossy video
+  AddType video/ogg .ogv
+  # RealVideo (RV) lossy video
+  AddType video/x-pn-realvideo .rv
+  AddType video/x-rn-realvideo .rv
+  # Apple QuickTime File Format (QTFF) (QT/MOV) lossy video
+  AddType video/quicktime .mov .qt
+  AddType video/x-sgi-movie .movie
+  # Microsoft Windows Media Video, VC-1 (WMV) lossy video
+  AddType video/x-ms-wm .wm
+  AddType video/x-ms-wmv .wmv
+  AddType video/x-ms-wmx .wmx
+  AddType video/x-ms-wvx .wvx
+  # MPEG-4 Part 10, Advanced Video Coding (AVC), H.264 lossy video
+  AddType video/h264 .h264
+  # VCEG H.261/H.263 lossy video
+  AddType video/h261 .h261
+  AddType video/h263 .h263
+  # MPEG-4 Part 2, Visual, Advanced Simple Profile (ASP), Xvid/DivX lossy video
+  AddType video/x-divx .xvid .divx
+  # MPEG-4 Part 2/10/14, Video, various formats (M4V) video
+  AddType video/mp4 .m4v .mp4v .3gp .3g2
+  AddType video/mpeg4-generic .m4v
+  # MPEG-2 Part 2, Video, H.262/DVD (M2V/VOB) lossy video
+  AddType video/mpeg .m2v .mpv2 .vob
+  # MPEG-1 Part 2, Video, VideoCD (M1V) lossy video
+  AddType video/mpeg .m1v .mpv .mpe .mpg .mpeg
+  AddType video/mpv .m1v .mpv .mpe .mpg .mpeg
+  # Motion JPEG 2000 (M-JPEG2K) (MJ2) lossy/lossless video
+  AddType video/mj2 .mj2 .mjp2
+  AddType video/jpeg2000 .mj2 .mjp2
+  # Motion JPEG (M-JPEG) (MJPG) lossy video
+  AddType video/x-motion-jpeg .mjpg
+  AddType video/jpeg .jpgv
+  # Digital Video (DV) DV-DIF raw video (DV/DIF) lossy video
+  AddType video/dv .dv .dif
+  AddType video/x-dv .dv .dif
+  # RAD Game Tools Bink Video (BIK) lossy video
+  AddType video/x-bink .bik
+  # RAD Game Tools Smacker Video (SMK) lossy video
+  AddType video/x-smacker .smk
+  # Mozilla XPInstall (Cross-Platform Install) (XPI) application
+  AddType application/x-xpinstall .xpi
+  # Adobe Adobe Integrated Runtime (AIR) application
+  AddType application/vnd.adobe.air-application-installer-package+zip .air
+  # Adobe Flash (SWF) application
+  AddType application/x-shockwave-flash .swf
+  # Adobe Director (DIR) application
+  AddType application/x-director .dir .dcr .dxr .cst .cct .cxt .w3d .fgd .swa
+  # Microsoft Silverlight (XAP) application
+  AddType application/x-silverlight-app .xap
+  AddType application/x-ms-xbap .xbap
+  # Java binaries
+  AddType application/octet-stream .java
+  AddType application/java-archive .jar
+  AddType application/java-serialized-object .ser
+  AddType application/java-vm .class
+  AddType application/x-java-jnlp-file .jnlp
+  # Windows binaries
+  AddType application/x-msdownload .exe .dll .ocx .com .bat .msi .mso
+  AddType application/x-ms-manifest .manifest
+  # Linux / Mac OS binaries
+  AddType application/octet-stream .bin .dms .lrf .so .o .elf .dist .distz .pkg .bpk .dump .elc .deploy
+  # Signatures
+  AddType application/pgp-encrypted .pgp
+  AddType application/pgp-signature .asc .sig
+  # BinHex (HQX) encoding
+  AddType application/mac-binhex40 .hqx
+  AddType application/mac-binhex .hqx
+  AddType application/binhex .hqx
+  # UUEncode (UU) encoding
+  AddType text/x-uuencode .uu
+  # Multi-Purpose Internet Mail Extension (MIME) encoding
+  AddType message/rfc822 .mime
+  # Encryption
+  AddType application/pkcs10 .p10
+  AddType application/x-pkcs12 .p12 .pfx
+  AddType application/pkcs7-mime .p7m .p7c
+  AddType application/pkcs7-signature .p7s
+  AddType application/x-pkcs7-certificates .p7b .spc
+  AddType application/x-pkcs7-certreqresp .p7r
+  AddType application/pkix-cert .cer
+  AddType application/pkix-crl .crl
+  AddType application/pkix-pkipath .pkipath
+  AddType application/pkixcmp .pki
+  AddType application/vnd.ms-pki.pko .pko
+  AddType application/vnd.ms-pki.certstore .sst
+  AddType application/vnd.ms-pki.seccat .cat
+  AddType application/vnd.ms-pki.stl .stl
+  AddType application/x-x509-ca-cert .der .crt
+  # BitTorrent metadata (TORRENT) download
+  AddType application/x-bittorrent .torrent
+  # Tape (TAR) archives
+  AddType application/x-tar .tar
+  AddType application/x-gtar .gtar
+  # Gzip (GZ) archives
+  AddType application/x-gzip .gz .tgz
+  AddType application/x-compressed .tgz
+  # Bzip (BZ) archives
+  AddType application/x-bzip .bz .tbz
+  AddType application/x-bzip2 .bz2 .boz .tbz2 .tb2
+  # Compress (Z) archives
+  AddType application/x-compress .Z .taz
+  # LZMA (LZMA) archives
+  AddType application/x-lzma .lzma .tlz
+  # LZMA2 (XZ) archives
+  AddType application/x-xz .xz .txz
+  # LZIP (LZ) archives
+  AddType application/x-lzip .lz
+  # LHA and LZH archives
+  AddType application/x-lzh-compressed .lha .lzh
+  # LZX archives
+  AddType application/x-lzx .lzx
+  # Disk Archiver (DAR) archives
+  AddType application/x-dar .dar
+  # Compact File Set (CFS) archives
+  AddType application/x-cfs-compressed .cfs
+  # 7-ZIP (7z) archives
+  AddType application/x-7z-compressed .7z
+  # ZIP archives
+  AddType application/zip .zip .zipx
+  # RAR files
+  AddType application/x-rar-compressed .rar .rev .r00 .r01 .r02 .r03 .r04 .r05
+  # Cabinet (CAB) archives
+  AddType application/vnd.ms-cab-compressed .cab
+  # Stuffit (SIT) archives
+  AddType application/x-stuffit .sit
+  AddType application/x-stuffitx .sitx
+  # Debian (DEB) archives
+  AddType application/x-debian-package .deb .udeb
+  # Apple DiskImage (DMG) archive
+  AddType application/x-apple-diskimage .dmg .smi .img
+  # ISO 9660 (ISO) archive
+  AddType application/x-iso9660-image .iso
+  #
+  #
+  #AddEncoding
+</IfModule>

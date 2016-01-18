@@ -1,0 +1,135 @@
+This howto guide explains you’ll how to install Apache Server with latest MySQL 5.5.32 and PHP 5.5.0 versions with php required following modules on RHEL 6.4/6.3/6.2/6.1/6.0/5.9/5.8/5.6, CentOS 6.4/6.3/6.2/6.1/6.0/5.9/5.8/5.6 and Fedora 12,13,14,15,16,17,18,19 systems using Remi repository via Yum tool.
+What is Apache?
+
+Apache is an open source freely available HTTP web server that runs on most UNIX-based operating systems as well as on Windows. Apache web server is used to serve web pages like (.htm .php .pl .cgi .js) etc. As per March 2012, Apache web server runs on almost 65.24% websites across all the domains.
+What is MySQL?
+
+MySQL is one of the world’s most popular open source relational database management system (RDBMS) that runs any server by providing multi-user access to multiple databases. MySQL runs with Apache.
+What is PHP?
+
+PHP (Hypertext Preprocessor) is an open source server-side scripting language that is best suited for web development and can be used to produce dynamic web pages for a website.
+PHP Modules
+	
+
+This howto guide explains you’ll how to install Apache Server with latest MySQL 5.5.32 and PHP 5.5.0 versions with php required following modules on RHEL 6.4/6.3/6.2/6.1/6.0/5.9/5.8/5.6, CentOS 6.4/6.3/6.2/6.1/6.0/5.9/5.8/5.6 and Fedora 12,13,14,15,16,17,18,19 systems using Remi repository via Yum tool.
+Install Linux LAMP Setup
+
+LAMP Setup in Linux
+What is Apache?
+
+Apache is an open source freely available HTTP web server that runs on most UNIX-based operating systems as well as on Windows. Apache web server is used to serve web pages like (.htm .php .pl .cgi .js) etc. As per March 2012, Apache web server runs on almost 65.24% websites across all the domains.
+What is MySQL?
+
+MySQL is one of the world’s most popular open source relational database management system (RDBMS) that runs any server by providing multi-user access to multiple databases. MySQL runs with Apache.
+What is PHP?
+
+PHP (Hypertext Preprocessor) is an open source server-side scripting language that is best suited for web development and can be used to produce dynamic web pages for a website.
+PHP Modules
+
+We are going to install all these following PHP modules in this installation.
+
+    MySQL (php-mysql) – A extension for PHP applications that use MySQL databases.
+    PostgreSQL (php-pgsql) – A extension for PostgreSQL database for PHP.
+    MongoDB (php-pecl-mongo) – A driver for MongoDB database.
+    SQLite (php-sqlite) – Extension for SQLite Database Engine.
+    Memcache (php-pecl-memcache) – Memcached caching daemon.
+    Memcached (php-pecl-memcached) – Memcached caching daemon.
+    GD (php-gd) – GD extension for PHP application to serve graphics.
+    XML (php-xml) – XML Parser for PHP applications.
+    MBString (php-mbstring) – Mbstring extension is used to handle multi-byte string in PHP applications.
+    MCrypt (php-mcrypt) – A Mcrypt library for PHP scripts.
+    APC (php-pecl-apc) – APC module used to optimize and cache PHP code.
+    CLI (php-cli) – Command-line interface for PHP.
+    PEAR (php-pear) – Application Repository framework for PHP.
+    PDO (php-pdo) – Database access module for PHP applications.
+
+Install Apache 2.2.15, MySQL 5.5.34 & PHP 5.5.4 on RHEL 6.4/6.3/6.2/6.1/6.0/5.9/5.8/5.6, CentOS 6.4/6.3/6.2/6.1/6.0/5.9/5.8/5.6 and Fedora 12,13,14,15,16,17,18,19
+Step 1: Installing Remi Repository
+
+## Install Remi Repository on Fedora 19, 18, 17, 16, 15 ##
+rpm -Uvh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm 
+rpm -Uvh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
+
+
+## Fedora 19 ##
+# rpm -Uvh http://rpms.famillecollet.com/remi-release-19.rpm
+
+## Fedora 18 ##
+# rpm -Uvh http://rpms.famillecollet.com/remi-release-18.rpm
+
+## Fedora 17 ##
+# rpm -Uvh http://rpms.famillecollet.com/remi-release-17.rpm
+
+## Fedora 16 ##
+# rpm -Uvh http://rpms.famillecollet.com/remi-release-16.rpm
+
+## Fedora 15 ##
+# rpm -Uvh http://rpms.famillecollet.com/remi-release-15.rpm
+
+## Fedora 14 ##
+# rpm -Uvh http://rpms.famillecollet.com/remi-release-14.rpm
+
+## Fedora 13 ##
+# rpm -Uvh http://rpms.famillecollet.com/remi-release-13.rpm
+
+## Fedora 12 ##
+# rpm -Uvh http://rpms.famillecollet.com/remi-release-12.rpm
+
+## Install Remi & Epel Repository on RHEL/CentOS 6.4-6.0 - 32 Bit ##
+rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm 
+
+## Install Remi & Epel Repository on RHEL/CentOS 6.4-6.0 - 64 Bit ##
+rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm 
+
+## Install Remi Repository on RHEL/CentOS 5.9-5.0 - 32 Bit ##
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-5.rpm
+
+## Install Remi Repository on RHEL/CentOS 5.9-5.0 - 64 Bit ##
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-5.rpm
+
+Step 2: Installing Apache 2.2.15, MySQL 5.5.34 & PHP 5.5.4
+
+## Installing on Fedora 12, 13, 14, 15, 16, 17, 18, 19 ##
+# yum --enablerepo=remi install httpd mysql mysql-server php php-common
+
+## Installing on RHEL/CentOS 5-6 ##
+# yum --enablerepo=remi,remi-test install httpd mysql mysql-server php php-common
+
+Step 3: Installing PHP 5.5.4 Modules
+
+## Installing on Fedora 12, 13, 14, 15, 16, 17, 18, 19 ##
+# yum --enablerepo=remi install php-mysql php-pgsql php-pecl-mongo php-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml php-pecl-apc php-cli php-pear php-pdo
+
+## Installing on RHEL/CentOS 5-6 ##
+# yum --enablerepo=remi,remi-test install php-mysql php-pgsql php-pecl-mongo php-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml php-pecl-apc php-cli php-pear php-pdo
+
+Step 4: Starting/Stopping Apache & MySQL
+
+## Enable Apache and MySQL on Run-Levels ##
+# chkconfig --levels 235 httpd on
+# chkconfig --levels 235 mysqld on
+
+## Apache Commands ## 
+# /etc/init.d/httpd start
+# /etc/init.d/httpd stop
+# /etc/init.d/httpd status
+
+## MySQL Commands ## 
+# /etc/init.d/mysqld start
+# /etc/init.d/mysqld stop
+# /etc/init.d/mysqld status
+
+Step 5: Verifying Apache 2.2.15, MySQL 5.5.34 & PHP 5.5.4
+
+1. Create a page called phpinfo.php under your Apache root directory and add the following lines to it. For example (/var/www/html/phpinfo.php).
+
+<?php
+
+     phpinfo ();
+?>
+
+2. Now access the page via web browser like http://localhost/phpinfo.php. You will see below screenshot.
