@@ -1,79 +1,17 @@
 #=========================================================================
 #	install java jdk
 #=========================================================================
-1. Introduction
-In the previous article we have discussed how to install OpenJDK java on ubuntu from the standard Ubuntu repository or Oracle's Java JDK 7 using Personal Package Archives ( PPA ). This article will cover installation of Oracle Java JDK 7 from a source package or by converting RPM Java package to the Debian software package format.
-
-2. Download Oracle Java JDK 7
-First, we need to download Oracle Java JDK source package from the official Oracle website. Navigate to JDK Downloads, accept license terms and download  jdk-7<version>-linux-<architecture>.tar.gz. Current version of this source package is jdk-7u11-linux-x64.tar.gz and this is also what we are going to use in this tutorial. Store this tarball source package into your home directory or some other arbitrary place. 
-
-3. Prepare Java's destination directory
-You can use Java by simply extracting it in any directory and then set your path to this location. However, in this article we will install Java into /usr/lib/jvm directory. Once we extract Java package to this directory we use this directory and set system's environment appropriately to reflect the new Java installation. As a root or with help of the sudo command create the directory /usr/lib/jvm:
-
 $ sudo mkdir /usr/lib/jvm
-4. Install Java JDK 7
-The initial installation involves a simple tar file extraction for the Java's source package to /usr/lib/jvm. This can be achieved with the following command:
-
 $ sudo tar -C /usr/lib/jvm -xzf jdk-7u11-linux-x64.tar.gz
- This will create a Java directory with a name appropriate to your Java version. For example, in this case it is:
-
 $ ls /usr/lib/jvm
-jdk1.7.0_11
-5. Set system environment
-Although we have copied Java to the right location we still need to set up working environment to recognize our new Java directory. If we now test for the Java version we will get error message:
-
 $ java -version
-The program 'java' can be found in the following packages:
- * default-jre
- * gcj-4.6-jre-headless
- * openjdk-6-jre-headless
- * gcj-4.5-jre-headless
- * openjdk-7-jre-headless
-Try: sudo apt-get install <selected package>
-First, we need to check whether there are already some Java alternatives installed on the system. To do that we can use the update-alternatives command:
-
 $ sudo update-alternatives --list java
-update-alternatives: error: no alternatives for java.
-Currently, we have no other Java installations on the system so let us add our new installation:
-
-$ sudo update-alternatives --install /usr/bin/java java \
- /usr/lib/jvm/jdk1.7.0_11/jre/bin/java 1
+$ sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_11/jre/bin/java 1
  Do not forget "1" ( priority ) of the above command. To confirm validity of this new environment settings use again the update-alternatives command:
+$ sudo update-alternatives --config java
+$ vi ~/bashrc
+ export JAVA_HOME="/usr/lib/jvm/jdk1.7.0_21"
+ export PATH="$PATH:$JAVA_HOME/bin"
 
-$ sudo update-alternatives --list java
-/usr/lib/jvm/jdk1.7.0_11/jre/bin/java
-or check directly for the Java version:
+ref: http://how-to.linuxcareer.com/oracle-java-jdk-7-on-ubuntu-linux-installation?jsn_setmobile=yes
 
-$ java -version
-java version "1.7.0_11"
-Java(TM) SE Runtime Environment (build 1.7.0_11-b21)
-Java HotSpot(TM) 64-Bit Server VM (build 23.6-b04, mixed mode)
-This confirms that the installation of Oracle Java JDK 7 on your Ubuntu Linux system was performed correctly.
-
-In case that you have had already installed OpenJDK Java from the Ubuntu's repository you would still need to add your new Oracle Java JDK 7 installation into the system's environment with the above update-alternatives --install command. Once you add another Java alternative to your system you can switch between both alternatives as shown in our previous article on how to install java on ubuntu from Ubuntu's PPA.
-
-6. Installation from RPM package
-The above should provide a clear and easy way to install Oracle Java JDK 7 on your Ubuntu Linux system. Another install alternative is to convert Oracle's official RPM package to DEB and install it with the dpkg command as follows:
-
-First download Oracle's official RPM package suited for your architecture and convert it with the alien command.
-
-$ sudo alien --scripts jdk-7u11-linux-x64.rpm 
-jdk_1.7.011-1_amd64.deb generated
-This may take a while. Once ready, install this package with the dpkg command:
-
-$ java -version
-The program 'java' can be found in the following packages:
-at this point no Java is available on the system.
-
-$ sudo dpkg -i jdk_1.7.011-1_amd64.deb 
-Selecting previously unselected package jdk.
-(Reading database ... 48744 files and directories currently installed.)
-Unpacking jdk (from jdk_1.7.011-1_amd64.deb) ...
-Now test for the Java version:
-
-$ java -version
-java version "1.7.0_11"
-Java(TM) SE Runtime Environment (build 1.7.0_11-b21)
-Java HotSpot(TM) 64-Bit Server VM (build 23.6-b04, mixed mode)
-7. Conclusion
-Since we have installed Java from the source package the above instruction should work for any Java version including older versions such as Oracle Java JDK 6.
