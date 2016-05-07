@@ -8,6 +8,10 @@ vi /etc/httpd/conf/httpd.conf
 #make sure that port is unblocked, check by: 
 sudo semanage port -l | grep http
 sudo semanage port -l | grep -w '^http_port_t'
+
+# install semanage if reported not found
+sudo yum install policycoreutils-python
+
 # return as:
 http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000
 
