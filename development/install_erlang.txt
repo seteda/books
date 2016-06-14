@@ -1,0 +1,5 @@
+http://erlang.org/doc/installation_guide/INSTALL.html
+# for observer:
+yum install wxWidgets-devel
+yum install wxBase #for /usr/bin/wx-config-3.0
+cd /usr/bin; ln -s wx-config-3.0 wx-config
