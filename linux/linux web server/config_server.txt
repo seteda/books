@@ -69,9 +69,8 @@ systemctl enable iptables
 systemctl [stop|start|restart] iptables
 # can edit this file: /etc/sysconfig/iptables
 
-# export port 63150 for any LAN in 192.168.10.1 -> 192.168.10.254 throw firewall
-/sbin/iptables -A INPUT -i eth0 -s 192.168.10.0/24 -p tcp --dport 63150 -j ACCEPT
-/sbin/iptables -A INPUT -i eth0 -p tcp --dport 8011 -j ACCEPT
+# export port 63150  throw firewall
+iptables -I INPUT -p tcp --dport 63150 -j ACCEPT
 service iptables save
 
 
