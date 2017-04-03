@@ -45,3 +45,12 @@ On RHEL, CentOS and Fedora
 --------------- For 64-bit Systems ---------------
 # alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /opt/java/jdk1.8.0_45/jre/lib/amd64/libnpjp2.so 20000
 ref: http://www.tecmint.com/install-java-jdk-jre-in-linux/
+
+
+#=========================================================================
+#	install virtual box extension for full screen mode
+#=========================================================================
+1. Install kernel header if OS use UEK (check by: uname -a)
+yum -y install kernel-uek-devel-$(uname -r)
+2. CD to /media/CD-ROM and run
+./VBoxLinuxAdditions.run
