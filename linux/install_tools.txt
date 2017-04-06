@@ -50,7 +50,10 @@ ref: http://www.tecmint.com/install-java-jdk-jre-in-linux/
 #=========================================================================
 #	install virtual box extension for full screen mode
 #=========================================================================
-1. Install kernel header if OS use UEK (check by: uname -a)
+1. Install kernel header if OS use UEK (check by: uname -a) 
+# for Oracle Linux
 yum -y install kernel-uek-devel-$(uname -r)
+# For Centos
+yum -y install gcc kernel-devel
 2. CD to /media/CD-ROM and run
 ./VBoxLinuxAdditions.run
